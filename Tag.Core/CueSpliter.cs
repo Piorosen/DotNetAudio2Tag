@@ -1,6 +1,7 @@
 ﻿using NAudio.Wave;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,18 +18,11 @@ namespace Tag.Core
                                                         .GetInstance()
                                                         .GetCatalogDataReader(cuePath);
             
-            //NAudio.Wave.CueWaveFileReader cue = new NAudio.Wave.CueWaveFileReader(@"D:\data\Coe\MYTH&ROID - HYDRA.wav");
-            //cue.Close();
-            ////NAudio.Wave.CueWaveFileWriter data = new NAudio.Wave.CueWaveFileWriter(@"D:\data\Coe\MYTH&ROID - HYDRA.wav"
-            ////                                                            , new NAudio.Wave.WaveFormat((int)reader.Tracks[0].SampleRate
-            ////                                                                                       , reader.Tracks[0].Bitrate
-            ////  
-            CueList f = new CueList();
             int s = 0, e = 0;
             for (int i = 0; i < reader.Tracks.Count; i++)
             {
                 e += reader.Tracks[i].Duration;
-                TrimWavFile(wavPath, savePath + $"\\{i + 1}. {reader.Tracks[i].Title}.wav"
+                TrimWavFile(wavPath, savePath + $"\\{i + 1}. {reader.Tracks[i].Title}.{Path.GetExtension(wavPath)}"
                                    , new TimeSpan(0,0, s), reader.Tracks[i]);
                 s += reader.Tracks[i].Duration;
             }
