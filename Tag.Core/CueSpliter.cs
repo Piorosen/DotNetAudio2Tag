@@ -1,4 +1,5 @@
-﻿using NAudio.Wave;
+﻿using ATL.CatalogDataReaders;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,46 +9,118 @@ using System.Threading.Tasks;
 
 namespace Tag.Core
 {
+    public class TrackInfo
+    {
+        public string Title = string.Empty;
+        public double DurationMS = 0.0;
+        
+    }
+    public class WavFormat
+    {
+        public double BytesPerMillisecond = 0.0;
+        public int BlockAlign = 0;
+    }
+    public class CueData
+    {
+        public string Path = string.Empty;
+        public string Title = string.Empty;
+        public string SavePath = string.Empty;
+        public string WavPath = string.Empty;
+        public WavFormat Format = null;
+        public List<TrackInfo> Track = new List<TrackInfo>();
+    }
+
     public class CueSpliter
     {
-        public void Test(string cuePath, string wavPath, string savePath)
+        readonly List<CueData> CueList = new List<CueData>();
+
+        public bool AddCueFile(string cuePath, string wavePath, string savePath)
         {
-            ATL.CatalogDataReaders
-                .ICatalogDataReader reader = ATL.CatalogDataReaders
-                                                        .CatalogDataReaderFactory
-                                                        .GetInstance()
-                                                        .GetCatalogDataReader(cuePath);
-            
-            int s = 0, e = 0;
-            for (int i = 0; i < reader.Tracks.Count; i++)
+            WaveFileReader wfr = null;
+            ICatalogDataReader reader;
+
+            try
             {
-                e += reader.Tracks[i].Duration;
-                TrimWavFile(wavPath, savePath + $"\\{i + 1}. {reader.Tracks[i].Title}.{Path.GetExtension(wavPath)}"
-                                   , new TimeSpan(0,0, s), reader.Tracks[i]);
-                s += reader.Tracks[i].Duration;
-            }
+                reader = CatalogDataReaderFactory
+                            .GetInstance()
+                            .GetCatalogDataReader(cuePath);
+
+                wfr = new WaveFileReader(wavePath);
                 
-        }
-        public static void TrimWavFile(string inPath, string outPath, TimeSpan cutFromStart, ATL.Track track)
-        {
-            using (WaveFileReader reader = new WaveFileReader(inPath))
+            }catch (Exception)
             {
-                using (WaveFileWriter writer = new WaveFileWriter(outPath, reader.WaveFormat))
+                return false;
+            }
+            finally
+            {
+                wfr.Close();
+            }
+
+            CueData data = new CueData
+            {
+                Path = cuePath,
+                WavPath = wavePath,
+                SavePath = savePath,
+                Format = new WavFormat
                 {
-                    //int bytesPerMillisecond = reader.WaveFormat.AverageBytesPerSecond / 1000;
-                    float bytesPerMillisecond = reader.WaveFormat.AverageBytesPerSecond / 1000f;
-                    int startPos = (int)(cutFromStart.TotalMilliseconds * bytesPerMillisecond);
-                    startPos = startPos - startPos % reader.WaveFormat.BlockAlign;
+                    BlockAlign = wfr.BlockAlign,
+                    BytesPerMillisecond = wfr.WaveFormat.AverageBytesPerSecond / 1000
+                }
+            };
+            
+            foreach (var track in reader.Tracks)
+            {
+                data.Track.Add(new TrackInfo
+                {
+                    DurationMS = track.DurationMs,
+                    Title = track.Title
+                });
+            }
 
-                    int endBytes = (int)((cutFromStart.TotalMilliseconds + track.DurationMs) * bytesPerMillisecond);
-                    endBytes = endBytes - endBytes % reader.WaveFormat.BlockAlign;
-                    int endPos = (int)reader.Length - endBytes;
+            CueList.Add(data);
+            return true;
+        }
+        
+        public IEnumerable<int> Execute()
+        {
+            int trackCount = 0;
+            for (int l = 0; l < CueList.Count; l++)
+            {
+                trackCount += CueList[l].Track.Count;
+            }
 
-                    TrimWavFile(reader, writer, startPos, endBytes);
+
+            int count = 0;
+            foreach (var list in CueList) 
+            {
+                using (WaveFileReader reader = new WaveFileReader(list.WavPath))
+                {
+                    int position = 0;
+                    int num = 0;
+                    foreach (var track in list.Track)
+                    {
+                        using (WaveFileWriter writer = new WaveFileWriter(list.SavePath + $"{num}. " + track.Title + ".wav", reader.WaveFormat))
+                        {
+                            int start = (int)(position * list.Format.BytesPerMillisecond);
+                            start -= start % reader.WaveFormat.BlockAlign;
+
+                            int end = (int)((position + track.DurationMS) * list.Format.BytesPerMillisecond);
+                            end -= end % reader.WaveFormat.BlockAlign;
+                            TrimWavFile(reader, writer, start, end);
+                        }
+                        position += (int)track.DurationMS;
+
+                        num++;
+                        count++;
+                        yield return (int)((100.0 / trackCount) * count);
+                    }
                 }
             }
+
+            yield return 100;
         }
-        private static void TrimWavFile(WaveFileReader reader, WaveFileWriter writer, int startPos, int endPos)
+        
+        private void TrimWavFile(WaveFileReader reader, WaveFileWriter writer, int startPos, int endPos)
         {
             reader.Position = startPos;
             byte[] buffer = new byte[reader.WaveFormat.BlockAlign * 100];

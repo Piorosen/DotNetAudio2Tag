@@ -29,16 +29,29 @@
         private void InitializeComponent()
         {
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
-            this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.materialTabControl1.SuspendLayout();
+            this.TabControl = new MaterialSkin.Controls.MaterialTabControl();
+            this.CuesplitTab = new System.Windows.Forms.TabPage();
+            this.CuesplitBtnOpenDialog = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.CuesplitTextCuePath = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.CuesplitBtnImport = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.CuesplitBtnExecute = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.CuesplitListStatus = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ConvMp3Tab = new System.Windows.Forms.TabPage();
+            this.TaggingTab = new System.Windows.Forms.TabPage();
+            this.CuesplitProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
+            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TabControl.SuspendLayout();
+            this.CuesplitTab.SuspendLayout();
+            this.ConvMp3Tab.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
             // 
-            this.materialTabSelector1.BaseTabControl = this.materialTabControl1;
+            this.materialTabSelector1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialTabSelector1.BaseTabControl = this.TabControl;
             this.materialTabSelector1.Depth = 0;
             this.materialTabSelector1.Location = new System.Drawing.Point(0, 64);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -46,58 +59,218 @@
             this.materialTabSelector1.Size = new System.Drawing.Size(800, 23);
             this.materialTabSelector1.TabIndex = 0;
             // 
-            // materialTabControl1
+            // TabControl
             // 
-            this.materialTabControl1.Controls.Add(this.tabPage1);
-            this.materialTabControl1.Controls.Add(this.tabPage2);
-            this.materialTabControl1.Controls.Add(this.tabPage3);
-            this.materialTabControl1.Depth = 0;
-            this.materialTabControl1.Location = new System.Drawing.Point(12, 93);
-            this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(776, 345);
-            this.materialTabControl1.TabIndex = 1;
+            this.TabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TabControl.Controls.Add(this.CuesplitTab);
+            this.TabControl.Controls.Add(this.ConvMp3Tab);
+            this.TabControl.Controls.Add(this.TaggingTab);
+            this.TabControl.Depth = 0;
+            this.TabControl.Location = new System.Drawing.Point(12, 93);
+            this.TabControl.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TabControl.Name = "TabControl";
+            this.TabControl.SelectedIndex = 0;
+            this.TabControl.Size = new System.Drawing.Size(776, 345);
+            this.TabControl.TabIndex = 1;
             // 
-            // tabPage1
+            // CuesplitTab
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(768, 319);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Cue Split";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.CuesplitTab.BackColor = System.Drawing.SystemColors.Control;
+            this.CuesplitTab.Controls.Add(this.CuesplitProgressStatus);
+            this.CuesplitTab.Controls.Add(this.CuesplitBtnOpenDialog);
+            this.CuesplitTab.Controls.Add(this.CuesplitTextCuePath);
+            this.CuesplitTab.Controls.Add(this.CuesplitBtnImport);
+            this.CuesplitTab.Controls.Add(this.CuesplitBtnExecute);
+            this.CuesplitTab.Controls.Add(this.CuesplitListStatus);
+            this.CuesplitTab.Location = new System.Drawing.Point(4, 22);
+            this.CuesplitTab.Name = "CuesplitTab";
+            this.CuesplitTab.Padding = new System.Windows.Forms.Padding(3);
+            this.CuesplitTab.Size = new System.Drawing.Size(768, 319);
+            this.CuesplitTab.TabIndex = 0;
+            this.CuesplitTab.Text = "Cue Split";
             // 
-            // tabPage2
+            // CuesplitBtnOpenDialog
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(768, 319);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Mp3 Converter";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.CuesplitBtnOpenDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CuesplitBtnOpenDialog.AutoSize = true;
+            this.CuesplitBtnOpenDialog.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CuesplitBtnOpenDialog.Depth = 0;
+            this.CuesplitBtnOpenDialog.Icon = null;
+            this.CuesplitBtnOpenDialog.Location = new System.Drawing.Point(507, 49);
+            this.CuesplitBtnOpenDialog.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitBtnOpenDialog.Name = "CuesplitBtnOpenDialog";
+            this.CuesplitBtnOpenDialog.Primary = true;
+            this.CuesplitBtnOpenDialog.Size = new System.Drawing.Size(108, 36);
+            this.CuesplitBtnOpenDialog.TabIndex = 4;
+            this.CuesplitBtnOpenDialog.Text = "Open Dialog";
+            this.CuesplitBtnOpenDialog.UseVisualStyleBackColor = true;
+            this.CuesplitBtnOpenDialog.Click += new System.EventHandler(this.CuesplitBtnOpenDialog_Click);
             // 
-            // tabPage3
+            // CuesplitTextCuePath
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(768, 319);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Tagging";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.CuesplitTextCuePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CuesplitTextCuePath.Depth = 0;
+            this.CuesplitTextCuePath.Hint = "( Cue Path )";
+            this.CuesplitTextCuePath.Location = new System.Drawing.Point(507, 20);
+            this.CuesplitTextCuePath.MaxLength = 32767;
+            this.CuesplitTextCuePath.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitTextCuePath.Name = "CuesplitTextCuePath";
+            this.CuesplitTextCuePath.PasswordChar = '\0';
+            this.CuesplitTextCuePath.SelectedText = "";
+            this.CuesplitTextCuePath.SelectionLength = 0;
+            this.CuesplitTextCuePath.SelectionStart = 0;
+            this.CuesplitTextCuePath.Size = new System.Drawing.Size(255, 23);
+            this.CuesplitTextCuePath.TabIndex = 3;
+            this.CuesplitTextCuePath.TabStop = false;
+            this.CuesplitTextCuePath.UseSystemPasswordChar = false;
+            // 
+            // CuesplitBtnImport
+            // 
+            this.CuesplitBtnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CuesplitBtnImport.AutoSize = true;
+            this.CuesplitBtnImport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CuesplitBtnImport.Depth = 0;
+            this.CuesplitBtnImport.Icon = null;
+            this.CuesplitBtnImport.Location = new System.Drawing.Point(690, 49);
+            this.CuesplitBtnImport.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitBtnImport.Name = "CuesplitBtnImport";
+            this.CuesplitBtnImport.Primary = true;
+            this.CuesplitBtnImport.Size = new System.Drawing.Size(72, 36);
+            this.CuesplitBtnImport.TabIndex = 2;
+            this.CuesplitBtnImport.Text = "Import";
+            this.CuesplitBtnImport.UseVisualStyleBackColor = true;
+            this.CuesplitBtnImport.Click += new System.EventHandler(this.CuesplitBtnImport_Click);
+            // 
+            // CuesplitBtnExecute
+            // 
+            this.CuesplitBtnExecute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CuesplitBtnExecute.AutoSize = true;
+            this.CuesplitBtnExecute.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CuesplitBtnExecute.Depth = 0;
+            this.CuesplitBtnExecute.Icon = null;
+            this.CuesplitBtnExecute.Location = new System.Drawing.Point(683, 91);
+            this.CuesplitBtnExecute.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitBtnExecute.Name = "CuesplitBtnExecute";
+            this.CuesplitBtnExecute.Primary = true;
+            this.CuesplitBtnExecute.Size = new System.Drawing.Size(79, 36);
+            this.CuesplitBtnExecute.TabIndex = 1;
+            this.CuesplitBtnExecute.Text = "Execute";
+            this.CuesplitBtnExecute.UseVisualStyleBackColor = true;
+            this.CuesplitBtnExecute.Click += new System.EventHandler(this.CuesplitBtnExecute_Click);
+            // 
+            // CuesplitListStatus
+            // 
+            this.CuesplitListStatus.AllowDrop = true;
+            this.CuesplitListStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CuesplitListStatus.BackColor = System.Drawing.SystemColors.Control;
+            this.CuesplitListStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CuesplitListStatus.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.CuesplitListStatus.Depth = 0;
+            this.CuesplitListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CuesplitListStatus.FullRowSelect = true;
+            this.CuesplitListStatus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.CuesplitListStatus.Location = new System.Drawing.Point(6, 3);
+            this.CuesplitListStatus.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CuesplitListStatus.MouseState = MaterialSkin.MouseState.OUT;
+            this.CuesplitListStatus.Name = "CuesplitListStatus";
+            this.CuesplitListStatus.OwnerDraw = true;
+            this.CuesplitListStatus.Size = new System.Drawing.Size(495, 307);
+            this.CuesplitListStatus.TabIndex = 0;
+            this.CuesplitListStatus.UseCompatibleStateImageBehavior = false;
+            this.CuesplitListStatus.View = System.Windows.Forms.View.Details;
+            this.CuesplitListStatus.DragDrop += new System.Windows.Forms.DragEventHandler(this.CuesplitListStatus_DragDrop);
+            this.CuesplitListStatus.DragEnter += new System.Windows.Forms.DragEventHandler(this.CuesplitListStatus_DragEnter);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Cue 이름";
+            this.columnHeader1.Width = 495;
+            // 
+            // ConvMp3Tab
+            // 
+            this.ConvMp3Tab.BackColor = System.Drawing.SystemColors.Control;
+            this.ConvMp3Tab.Controls.Add(this.materialSingleLineTextField1);
+            this.ConvMp3Tab.Controls.Add(this.materialRaisedButton1);
+            this.ConvMp3Tab.Location = new System.Drawing.Point(4, 22);
+            this.ConvMp3Tab.Name = "ConvMp3Tab";
+            this.ConvMp3Tab.Padding = new System.Windows.Forms.Padding(3);
+            this.ConvMp3Tab.Size = new System.Drawing.Size(768, 319);
+            this.ConvMp3Tab.TabIndex = 1;
+            this.ConvMp3Tab.Text = "Mp3 Converter";
+            // 
+            // TaggingTab
+            // 
+            this.TaggingTab.Location = new System.Drawing.Point(4, 22);
+            this.TaggingTab.Name = "TaggingTab";
+            this.TaggingTab.Size = new System.Drawing.Size(768, 319);
+            this.TaggingTab.TabIndex = 2;
+            this.TaggingTab.Text = "Tagging";
+            this.TaggingTab.UseVisualStyleBackColor = true;
+            // 
+            // CuesplitProgressStatus
+            // 
+            this.CuesplitProgressStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CuesplitProgressStatus.Depth = 0;
+            this.CuesplitProgressStatus.Location = new System.Drawing.Point(507, 133);
+            this.CuesplitProgressStatus.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitProgressStatus.Name = "CuesplitProgressStatus";
+            this.CuesplitProgressStatus.Size = new System.Drawing.Size(255, 5);
+            this.CuesplitProgressStatus.TabIndex = 5;
+            // 
+            // materialRaisedButton1
+            // 
+            this.materialRaisedButton1.AutoSize = true;
+            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Icon = null;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(499, 121);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(195, 36);
+            this.materialRaisedButton1.TabIndex = 0;
+            this.materialRaisedButton1.Text = "materialRaisedButton1";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
+            // 
+            // materialSingleLineTextField1
+            // 
+            this.materialSingleLineTextField1.Depth = 0;
+            this.materialSingleLineTextField1.Hint = "";
+            this.materialSingleLineTextField1.Location = new System.Drawing.Point(50, 60);
+            this.materialSingleLineTextField1.MaxLength = 32767;
+            this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
+            this.materialSingleLineTextField1.PasswordChar = '\0';
+            this.materialSingleLineTextField1.SelectedText = "";
+            this.materialSingleLineTextField1.SelectionLength = 0;
+            this.materialSingleLineTextField1.SelectionStart = 0;
+            this.materialSingleLineTextField1.Size = new System.Drawing.Size(398, 23);
+            this.materialSingleLineTextField1.TabIndex = 1;
+            this.materialSingleLineTextField1.TabStop = false;
+            this.materialSingleLineTextField1.Text = "materialSingleLineTextField1";
+            this.materialSingleLineTextField1.UseSystemPasswordChar = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.materialTabControl1);
+            this.Controls.Add(this.TabControl);
             this.Controls.Add(this.materialTabSelector1);
             this.Name = "Form1";
             this.Text = "Audio2Tag";
-            this.materialTabControl1.ResumeLayout(false);
+            this.TabControl.ResumeLayout(false);
+            this.CuesplitTab.ResumeLayout(false);
+            this.CuesplitTab.PerformLayout();
+            this.ConvMp3Tab.ResumeLayout(false);
+            this.ConvMp3Tab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -105,10 +278,19 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
-        private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private MaterialSkin.Controls.MaterialTabControl TabControl;
+        private System.Windows.Forms.TabPage CuesplitTab;
+        private System.Windows.Forms.TabPage ConvMp3Tab;
+        private System.Windows.Forms.TabPage TaggingTab;
+        private MaterialSkin.Controls.MaterialListView CuesplitListStatus;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private MaterialSkin.Controls.MaterialRaisedButton CuesplitBtnExecute;
+        private MaterialSkin.Controls.MaterialRaisedButton CuesplitBtnImport;
+        private MaterialSkin.Controls.MaterialSingleLineTextField CuesplitTextCuePath;
+        private MaterialSkin.Controls.MaterialRaisedButton CuesplitBtnOpenDialog;
+        private MaterialSkin.Controls.MaterialProgressBar CuesplitProgressStatus;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
     }
 }
 

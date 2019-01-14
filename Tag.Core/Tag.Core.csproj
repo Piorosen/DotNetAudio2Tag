@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comparer.cs" />
     <Compile Include="CueSpliter.cs" />
     <Compile Include="Mp3Tagging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
