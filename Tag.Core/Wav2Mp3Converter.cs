@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Tag.Core
 {
-    public class Wav2Mp3Converter
+    public class Wav2Mp3Converter : ICore<string>
     {
         readonly List<string> filePath = new List<string>();
 
-        public bool AddWavFile(string path)
+        public bool AddFile(string path)
         {
             if (Path.GetExtension(path) == ".wav")
             {
@@ -22,7 +22,7 @@ namespace Tag.Core
             return false;
         }
 
-        public bool DeleteWavFile(int at)
+        public bool Delete(int at)
         {
             if (0 <= at && at < filePath.Count)
             {
@@ -31,7 +31,7 @@ namespace Tag.Core
             }
             return false;
         }
-        public bool DeleteWavFile(string remove)
+        public bool Delete(string remove)
         {
             return filePath.Remove(remove);
         }

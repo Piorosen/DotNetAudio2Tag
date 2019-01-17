@@ -44,6 +44,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Mp3ConvBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TaggingTab = new System.Windows.Forms.TabPage();
+            this.SettingTab = new System.Windows.Forms.TabPage();
             this.TabControl.SuspendLayout();
             this.CuesplitTab.SuspendLayout();
             this.ConvMp3Tab.SuspendLayout();
@@ -69,6 +70,7 @@
             this.TabControl.Controls.Add(this.CuesplitTab);
             this.TabControl.Controls.Add(this.ConvMp3Tab);
             this.TabControl.Controls.Add(this.TaggingTab);
+            this.TabControl.Controls.Add(this.SettingTab);
             this.TabControl.Depth = 0;
             this.TabControl.Location = new System.Drawing.Point(12, 93);
             this.TabControl.MouseState = MaterialSkin.MouseState.HOVER;
@@ -197,6 +199,7 @@
             this.CuesplitListStatus.View = System.Windows.Forms.View.Details;
             this.CuesplitListStatus.DragDrop += new System.Windows.Forms.DragEventHandler(this.CuesplitListStatus_DragDrop);
             this.CuesplitListStatus.DragEnter += new System.Windows.Forms.DragEventHandler(this.CuesplitListStatus_DragEnter);
+            this.CuesplitListStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListView_KeyDown);
             // 
             // columnHeader1
             // 
@@ -251,7 +254,7 @@
             this.Mp3ConvListStatus.View = System.Windows.Forms.View.Details;
             this.Mp3ConvListStatus.DragDrop += new System.Windows.Forms.DragEventHandler(this.Mp3ConvListStatus_DragDrop);
             this.Mp3ConvListStatus.DragEnter += new System.Windows.Forms.DragEventHandler(this.Mp3ConvListStatus_DragEnter);
-            this.Mp3ConvListStatus.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Mp3ConvListStatus_KeyPress);
+            this.Mp3ConvListStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListView_KeyDown);
             // 
             // columnHeader2
             // 
@@ -282,6 +285,15 @@
             this.TaggingTab.TabIndex = 2;
             this.TaggingTab.Text = "Tagging";
             this.TaggingTab.UseVisualStyleBackColor = true;
+            // 
+            // SettingTab
+            // 
+            this.SettingTab.Location = new System.Drawing.Point(4, 22);
+            this.SettingTab.Name = "SettingTab";
+            this.SettingTab.Size = new System.Drawing.Size(768, 319);
+            this.SettingTab.TabIndex = 3;
+            this.SettingTab.Text = "Setting";
+            this.SettingTab.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -320,6 +332,7 @@
         private MaterialSkin.Controls.MaterialListView Mp3ConvListStatus;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private MaterialSkin.Controls.MaterialProgressBar Mp3ConvProgressStatus;
+        private System.Windows.Forms.TabPage SettingTab;
     }
 }
 

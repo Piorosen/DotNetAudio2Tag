@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICore.cs" />
     <Compile Include="Wav2Mp3Converter.cs" />
     <Compile Include="CueSpliter.cs" />
     <Compile Include="Mp3Tagging.cs" />

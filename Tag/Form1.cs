@@ -43,9 +43,7 @@ namespace Tag
                     {
                         CuesplitListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path)}));
 
-                        cueSpliter.AddCueFile(path
-                            , Path.GetDirectoryName(path) + @"\" + Path.GetFileNameWithoutExtension(path) + ".wav"
-                            , Path.GetDirectoryName(path) + @"\");
+                        cueSpliter.AddFile(path);
                     }
                 }
             }
@@ -92,7 +90,7 @@ namespace Tag
                 var t = Path.GetExtension(path).ToLower();
                 if (t == ".cue")
                 {
-                    cueSpliter.AddCueFile(path
+                    cueSpliter.AddFile(path
                         , Path.GetDirectoryName(path) + @"\" + Path.GetFileNameWithoutExtension(path) + ".wav"
                         , Path.GetDirectoryName(path) + @"\");
                     CuesplitListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
@@ -113,7 +111,7 @@ namespace Tag
                 var t = Path.GetExtension(path).ToLower();
                 if (t == ".wav")
                 {
-                    wav2Mp3Converter.AddWavFile(path);
+                    wav2Mp3Converter.AddFile(path);
                     Mp3ConvListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
                 }
             }
@@ -149,12 +147,27 @@ namespace Tag
                 }
                 isrun = false;
             });
-
         }
+        
 
-        private void Mp3ConvListStatus_KeyPress(object sender, KeyPressEventArgs e)
+        private void ListView_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Delete)
+            {
+                foreach (int value in (sender as ListView).SelectedIndices)
+                {
+                    (sender as ListView).Items.RemoveAt(value);
+                    if ((sender as ListView).Name == "CuesplitListStatus")
+                    {
+                        cueSpliter.Delete(value);
+                    }
+                    else
+                    {
+                        wav2Mp3Converter.Delete(value);
+                    }
+                    
+                }
+            }
         }
     }
 }

@@ -30,11 +30,18 @@ namespace Tag.Core
         public List<TrackInfo> Track = new List<TrackInfo>();
     }
 
-    public class CueSpliter
+    public class CueSpliter : ICore<CueData>
     {
         readonly List<CueData> CueList = new List<CueData>();
 
-        public bool AddCueFile(string cuePath, string wavePath, string savePath)
+        public bool AddFile(string path)
+        {
+            return AddFile(path
+                 , Path.GetDirectoryName(path) + @"\" + Path.GetFileNameWithoutExtension(path) + ".wav"
+                 , Path.GetDirectoryName(path) + @"\");
+        }
+
+        public bool AddFile(string cuePath, string wavePath, string savePath)
         {
             WaveFileReader wfr = null;
             ICatalogDataReader reader;
@@ -81,6 +88,20 @@ namespace Tag.Core
             return true;
         }
         
+        public bool Delete(int at)
+        {
+            if (0 <= at && at < CueList.Count)
+            {
+                CueList.RemoveAt(at);
+                return true;
+            }
+            return false;
+        }
+        public bool Delete(CueData remove)
+        {
+            return CueList.Remove(remove);
+        }
+
         public IEnumerable<int> Execute()
         {
             int trackCount = 0;
