@@ -15,8 +15,9 @@ namespace Tag
 {
     public partial class Form1 : MaterialForm
     {
-        private readonly MaterialSkinManager materialSkinManager;
-        Core.CueSpliter cueSpliter = new Core.CueSpliter();
+        readonly MaterialSkinManager materialSkinManager;
+        readonly Core.CueSpliter cueSpliter = new Core.CueSpliter();
+        readonly Core.Wav2Mp3Converter wav2Mp3Converter = new Core.Wav2Mp3Converter();
 
         public Form1()
         {
@@ -103,11 +104,56 @@ namespace Tag
         {
             e.Effect = DragDropEffects.Copy;
         }
-
-        private void materialRaisedButton1_Click(object sender, EventArgs e)
+       
+        private void Mp3ConvListStatus_DragDrop(object sender, DragEventArgs e)
         {
-            Core.Comparer b = new Core.Comparer();
-            b.IsEqual(@"D:\data\1.mp3", @"D:\data\2.mp3");
+            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (var path in items)
+            {
+                var t = Path.GetExtension(path).ToLower();
+                if (t == ".wav")
+                {
+                    wav2Mp3Converter.AddWavFile(path);
+                    Mp3ConvListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
+                }
+            }
+        }
+
+        private void Mp3ConvListStatus_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private async void Mp3ConvBtnExec_Click(object sender, EventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                if (isrun == true)
+                {
+                    return;
+                }
+                isrun = true;
+                foreach (var value in wav2Mp3Converter.Execute())
+                {
+                    if (this.InvokeRequired)
+                    {
+                        this.Invoke(new MethodInvoker(() =>
+                        {
+                            Mp3ConvProgressStatus.Value = value;
+                        }));
+                    }
+                    else
+                    {
+                        Mp3ConvProgressStatus.Value = value;
+                    }
+                }
+                isrun = false;
+            });
+
+        }
+
+        private void Mp3ConvListStatus_KeyPress(object sender, KeyPressEventArgs e)
+        {
 
         }
     }
