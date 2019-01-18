@@ -31,11 +31,13 @@ namespace Tag.Core
             throw new NotImplementedException();
         }
 
+        public List<string> List()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Tagging(string wave, string outFileName)
         {
-            TagLib.Id3v2.Tag taginfo = new TagLib.Id3v2.Tag();
-
-            
             
         }
     }

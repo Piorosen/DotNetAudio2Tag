@@ -37,8 +37,8 @@ namespace Tag.Core
         public bool AddFile(string path)
         {
             return AddFile(path
-                 , Path.GetDirectoryName(path) + @"\" + Path.GetFileNameWithoutExtension(path) + ".wav"
-                 , Path.GetDirectoryName(path) + @"\");
+                 , Path.GetDirectoryName(path) + @"/" + Path.GetFileNameWithoutExtension(path) + ".wav"
+                 , Path.GetDirectoryName(path) + @"/");
         }
 
         public bool AddFile(string cuePath, string wavePath, string savePath)
@@ -60,7 +60,7 @@ namespace Tag.Core
             }
             finally
             {
-                wfr.Close();
+                wfr?.Close();
             }
 
             CueData data = new CueData
@@ -140,7 +140,12 @@ namespace Tag.Core
 
             yield return 100;
         }
-        
+
+        public List<CueData> List()
+        {
+            return CueList;
+        }
+
         private void TrimWavFile(WaveFileReader reader, WaveFileWriter writer, int startPos, int endPos)
         {
             reader.Position = startPos;

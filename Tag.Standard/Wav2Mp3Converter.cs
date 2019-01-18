@@ -16,6 +16,10 @@ namespace Tag.Core
         {
             if (Path.GetExtension(path) == ".wav")
             {
+                while (path.IndexOf('\\') != -1)
+                {
+                    path = path.Remove(path.IndexOf('\\'), 1);
+                }
                 filePath.Add(path);
                 return true;
             }
@@ -52,7 +56,8 @@ namespace Tag.Core
 
             for (int i = 0; i < filePath.Count; i++)
             {
-                string filedata = $"{Path.GetDirectoryName(copyPath[i])}\\{Path.GetFileNameWithoutExtension(copyPath[i])}";
+                string filedata = $"{Path.GetDirectoryName(copyPath[i])}/{Path.GetFileNameWithoutExtension(copyPath[i])}";
+
                 using (var wav = new NAudio.Wave.WaveFileReader($"{filedata}.wav"))
                 {
                     using (var mp3 = new NAudio.Lame.LameMP3FileWriter($"{filedata}.mp3", wav.WaveFormat, 320))
@@ -62,6 +67,11 @@ namespace Tag.Core
                 }
                 yield return (int)(100.0 / filePath.Count * (i + 1));
             }
+        }
+
+        public List<string> List()
+        {
+            return filePath;
         }
     }
 }
