@@ -18,6 +18,8 @@ namespace Tag
         readonly MaterialSkinManager materialSkinManager;
         readonly Core.CueSpliter cueSpliter = new Core.CueSpliter();
         readonly Core.Wav2Mp3Converter wav2Mp3Converter = new Core.Wav2Mp3Converter();
+        readonly Core.Mp3Tagging mp3Tagging = new Core.Mp3Tagging();
+        TagLib.Tag tagTemp;
 
         public Form1()
         {
@@ -26,33 +28,34 @@ namespace Tag
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            
         }
 
         private void CuesplitBtnOpenDialog_Click(object sender, EventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Multiselect = true;
-            fileDialog.AddExtension = true;
-            fileDialog.Filter = "Cue 파일|*.cue";
-            fileDialog.CheckPathExists = true;
+            OpenFileDialog fileDialog = new OpenFileDialog
+            {
+                Multiselect = true,
+                AddExtension = true,
+                Filter = "Cue 파일|*.cue",
+                CheckPathExists = true
+            };
+
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
                 if (fileDialog.FileNames.Length != 0)
                 {
                     foreach (var path in fileDialog.FileNames)
                     {
-                        CuesplitListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path)}));
+                        CuesplitListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
 
                         cueSpliter.AddFile(path);
                     }
                 }
             }
         }
-        
-        private void CuesplitBtnImport_Click(object sender, EventArgs e)
-        {
 
-        }
+        #region Exec Program
         volatile bool isrun = false;
         private async void CuesplitBtnExecute_Click(object sender, EventArgs e)
         {
@@ -79,47 +82,7 @@ namespace Tag
                 }
                 isrun = false;
             });
-            
-        }
 
-        private void CuesplitListStatus_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
-            foreach (var path in items)
-            {
-                var t = Path.GetExtension(path).ToLower();
-                if (t == ".cue")
-                {
-                    cueSpliter.AddFile(path
-                        , Path.GetDirectoryName(path) + @"\" + Path.GetFileNameWithoutExtension(path) + ".wav"
-                        , Path.GetDirectoryName(path) + @"\");
-                    CuesplitListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
-                }
-            }
-        }
-
-        private void CuesplitListStatus_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Copy;
-        }
-       
-        private void Mp3ConvListStatus_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
-            foreach (var path in items)
-            {
-                var t = Path.GetExtension(path).ToLower();
-                if (t == ".wav")
-                {
-                    wav2Mp3Converter.AddFile(path);
-                    Mp3ConvListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
-                }
-            }
-        }
-
-        private void Mp3ConvListStatus_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Copy;
         }
 
         private async void Mp3ConvBtnExec_Click(object sender, EventArgs e)
@@ -148,7 +111,174 @@ namespace Tag
                 isrun = false;
             });
         }
-        
+        #endregion
+
+
+        #region Drag Enter & Drop
+        private void DragEnters(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void CuesplitListStatus_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (var path in items)
+            {
+                var t = Path.GetExtension(path).ToLower();
+                if (t == ".cue")
+                {
+                    cueSpliter.AddFile(path
+                        , Path.GetDirectoryName(path) + @"\" + Path.GetFileNameWithoutExtension(path) + ".wav"
+                        , Path.GetDirectoryName(path) + @"\");
+                    CuesplitListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
+                }
+            }
+        }
+        private void Mp3ConvListStatus_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (var path in items)
+            {
+                var t = Path.GetExtension(path).ToLower();
+                if (t == ".wav")
+                {
+                    wav2Mp3Converter.AddFile(path);
+                    Mp3ConvListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
+                }
+            }
+        }
+        private void TaggingListFile_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (var path in items)
+            {
+                var t = Path.GetExtension(path).ToLower();
+                if (t == ".mp3")
+                {
+                    TaggingListFile.Items.Add(new ListViewItem(new[] { path }));
+                }
+            }
+        }
+
+        private void TaggingListFile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tagTemp = TagLib.File.Create(TaggingListFile.SelectedItems[0].Text).Tag;
+        }
+
+        private void TaggingBtnTagSave_Click(object sender, EventArgs e)
+        {
+            if (TaggingListFile.SelectedIndices.Count != 0)
+            {
+                var t = TaggingListFile.SelectedItems[0].Text;
+                var file = TagLib.File.Create(t);
+                mp3Tagging.AddFile((t, file.Tag));
+            }
+        }
+
+
+        private void TaggingListTag_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (TaggingListTag.SelectedIndices[0])
+                {
+                    case 0:
+                        TaggingTextInfo.Text = tagTemp.Title;
+                        break;
+                    case 1:
+                        TaggingTextInfo.Text = tagTemp.Performers[0];
+                        break;
+                    case 2:
+                        TaggingTextInfo.Text = tagTemp.Album;
+                        break;
+                    case 3:
+                        TaggingTextInfo.Text = tagTemp.Year.ToString();
+                        break;
+                    case 4:
+                        // tagTemp.Track = TaggingTextInfo.Text;
+                        break;
+                    case 5:
+                        // tagTemp.TrackCount = TaggingTextInfo.Text;
+                        break;
+                    case 6:
+                        TaggingTextInfo.Text = tagTemp.Genres[0];
+                        break;
+                    case 7:
+                        TaggingTextInfo.Text = tagTemp.Comment;
+                        break;
+                    case 8:
+                        TaggingTextInfo.Text = tagTemp.AlbumArtists[0];
+                        break;
+                    case 9:
+                        TaggingTextInfo.Text = tagTemp.Composers[0];
+                        break;
+                    case 10:
+                        TaggingTextInfo.Text = tagTemp.Disc.ToString();
+                        break;
+                    case 11:
+                        TaggingTextInfo.Text = tagTemp.Pictures[0] == null ? "" : "존재함";
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void TaggingTextInfo_KeyDown(object sender, KeyEventArgs e)
+        {
+            try {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    switch (TaggingListTag.SelectedIndices[0])
+                    {
+                        case 0:
+                            tagTemp.Title = TaggingTextInfo.Text;
+                            break;
+                        case 1:
+                            tagTemp.Performers = new string[1] { TaggingTextInfo.Text };
+                            break;
+                        case 2:
+                            tagTemp.Album = TaggingTextInfo.Text;
+                            break;
+                        case 3:
+                            tagTemp.Year = uint.Parse(TaggingTextInfo.Text);
+                            break;
+                        case 4:
+                            // tagTemp.Track = TaggingTextInfo.Text;
+                            break;
+                        case 5:
+                            // tagTemp.TrackCount = TaggingTextInfo.Text;
+                            break;
+                        case 6:
+                            tagTemp.Genres = new string[1] { TaggingTextInfo.Text };
+                            break;
+                        case 7:
+                            tagTemp.Comment = TaggingTextInfo.Text;
+                            break;
+                        case 8:
+                            tagTemp.AlbumArtists = new string[1] { TaggingTextInfo.Text };
+                            break;
+                        case 9:
+                            tagTemp.Composers = new string[1] { TaggingTextInfo.Text };
+                            break;
+                        case 10:
+                            tagTemp.Disc = uint.Parse(TaggingTextInfo.Text);
+                            break;
+                        case 11:
+                            tagTemp.Pictures = new TagLib.IPicture[1] { new TagLib.Picture(TaggingTextInfo.Text) };
+                            break;
+                    }
+                }
+                MessageBox.Show("Complete");
+            }catch (Exception)
+            {
+                MessageBox.Show("Error!");
+            }
+        }
+        #endregion
 
         private void ListView_KeyDown(object sender, KeyEventArgs e)
         {
@@ -161,13 +291,17 @@ namespace Tag
                     {
                         cueSpliter.Delete(value);
                     }
-                    else
+                    else if ((sender as ListView).Name == "Mp3ConvListStatus")
                     {
                         wav2Mp3Converter.Delete(value);
                     }
-                    
+                    else
+                    {
+                        mp3Tagging.Delete(value);
+                    }
                 }
             }
         }
+
     }
 }

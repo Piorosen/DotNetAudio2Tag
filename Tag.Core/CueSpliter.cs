@@ -30,7 +30,7 @@ namespace Tag.Core
         public List<TrackInfo> Track = new List<TrackInfo>();
     }
 
-    public class CueSpliter : ICore<CueData>
+    public class CueSpliter : ICore<CueData, string>
     {
         readonly List<CueData> CueList = new List<CueData>();
 

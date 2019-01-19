@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Tag.Core
 {
-    public class Wav2Mp3Converter : ICore<string>
+    public class Wav2Mp3Converter : ICore<string, string>
     {
         readonly List<string> filePath = new List<string>();
 

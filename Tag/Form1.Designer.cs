@@ -28,6 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("Title");
+            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem("Artist");
+            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem("Album");
+            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem("Year");
+            System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem("Track");
+            System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem("TrackNum");
+            System.Windows.Forms.ListViewItem listViewItem31 = new System.Windows.Forms.ListViewItem("Genre");
+            System.Windows.Forms.ListViewItem listViewItem32 = new System.Windows.Forms.ListViewItem("Comments");
+            System.Windows.Forms.ListViewItem listViewItem33 = new System.Windows.Forms.ListViewItem("Album Artist");
+            System.Windows.Forms.ListViewItem listViewItem34 = new System.Windows.Forms.ListViewItem("Composer");
+            System.Windows.Forms.ListViewItem listViewItem35 = new System.Windows.Forms.ListViewItem("DiscNum");
+            System.Windows.Forms.ListViewItem listViewItem36 = new System.Windows.Forms.ListViewItem("PictureImagePath");
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.TabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.CuesplitTab = new System.Windows.Forms.TabPage();
@@ -44,10 +56,21 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Mp3ConvBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TaggingTab = new System.Windows.Forms.TabPage();
+            this.TaggingBtnTagSave = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.TaggingLabelValue = new MaterialSkin.Controls.MaterialLabel();
+            this.TaggingListTagHttp = new System.Windows.Forms.ListView();
+            this.TaggingTextHttp = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TaggingListFile = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TaggingTextInfo = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TaggingProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
+            this.TaggingBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.TaggingListTag = new System.Windows.Forms.ListView();
             this.SettingTab = new System.Windows.Forms.TabPage();
             this.TabControl.SuspendLayout();
             this.CuesplitTab.SuspendLayout();
             this.ConvMp3Tab.SuspendLayout();
+            this.TaggingTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -155,7 +178,6 @@
             this.CuesplitBtnImport.TabIndex = 2;
             this.CuesplitBtnImport.Text = "Import";
             this.CuesplitBtnImport.UseVisualStyleBackColor = true;
-            this.CuesplitBtnImport.Click += new System.EventHandler(this.CuesplitBtnImport_Click);
             // 
             // CuesplitBtnExecute
             // 
@@ -198,7 +220,7 @@
             this.CuesplitListStatus.UseCompatibleStateImageBehavior = false;
             this.CuesplitListStatus.View = System.Windows.Forms.View.Details;
             this.CuesplitListStatus.DragDrop += new System.Windows.Forms.DragEventHandler(this.CuesplitListStatus_DragDrop);
-            this.CuesplitListStatus.DragEnter += new System.Windows.Forms.DragEventHandler(this.CuesplitListStatus_DragEnter);
+            this.CuesplitListStatus.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnters);
             this.CuesplitListStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListView_KeyDown);
             // 
             // columnHeader1
@@ -253,7 +275,7 @@
             this.Mp3ConvListStatus.UseCompatibleStateImageBehavior = false;
             this.Mp3ConvListStatus.View = System.Windows.Forms.View.Details;
             this.Mp3ConvListStatus.DragDrop += new System.Windows.Forms.DragEventHandler(this.Mp3ConvListStatus_DragDrop);
-            this.Mp3ConvListStatus.DragEnter += new System.Windows.Forms.DragEventHandler(this.Mp3ConvListStatus_DragEnter);
+            this.Mp3ConvListStatus.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnters);
             this.Mp3ConvListStatus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListView_KeyDown);
             // 
             // columnHeader2
@@ -279,12 +301,175 @@
             // 
             // TaggingTab
             // 
+            this.TaggingTab.BackColor = System.Drawing.SystemColors.Control;
+            this.TaggingTab.Controls.Add(this.TaggingBtnTagSave);
+            this.TaggingTab.Controls.Add(this.TaggingLabelValue);
+            this.TaggingTab.Controls.Add(this.TaggingListTagHttp);
+            this.TaggingTab.Controls.Add(this.TaggingTextHttp);
+            this.TaggingTab.Controls.Add(this.TaggingListFile);
+            this.TaggingTab.Controls.Add(this.TaggingTextInfo);
+            this.TaggingTab.Controls.Add(this.TaggingProgressStatus);
+            this.TaggingTab.Controls.Add(this.TaggingBtnExec);
+            this.TaggingTab.Controls.Add(this.TaggingListTag);
             this.TaggingTab.Location = new System.Drawing.Point(4, 22);
             this.TaggingTab.Name = "TaggingTab";
             this.TaggingTab.Size = new System.Drawing.Size(768, 319);
             this.TaggingTab.TabIndex = 2;
             this.TaggingTab.Text = "Tagging";
-            this.TaggingTab.UseVisualStyleBackColor = true;
+            // 
+            // TaggingBtnTagSave
+            // 
+            this.TaggingBtnTagSave.AutoSize = true;
+            this.TaggingBtnTagSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TaggingBtnTagSave.Depth = 0;
+            this.TaggingBtnTagSave.Icon = null;
+            this.TaggingBtnTagSave.Location = new System.Drawing.Point(510, 263);
+            this.TaggingBtnTagSave.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaggingBtnTagSave.Name = "TaggingBtnTagSave";
+            this.TaggingBtnTagSave.Primary = true;
+            this.TaggingBtnTagSave.Size = new System.Drawing.Size(82, 36);
+            this.TaggingBtnTagSave.TabIndex = 13;
+            this.TaggingBtnTagSave.Text = "TagSave";
+            this.TaggingBtnTagSave.UseVisualStyleBackColor = true;
+            this.TaggingBtnTagSave.Click += new System.EventHandler(this.TaggingBtnTagSave_Click);
+            // 
+            // TaggingLabelValue
+            // 
+            this.TaggingLabelValue.AutoSize = true;
+            this.TaggingLabelValue.Depth = 0;
+            this.TaggingLabelValue.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TaggingLabelValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TaggingLabelValue.Location = new System.Drawing.Point(510, 237);
+            this.TaggingLabelValue.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaggingLabelValue.Name = "TaggingLabelValue";
+            this.TaggingLabelValue.Size = new System.Drawing.Size(59, 19);
+            this.TaggingLabelValue.TabIndex = 12;
+            this.TaggingLabelValue.Text = "Value : ";
+            // 
+            // TaggingListTagHttp
+            // 
+            this.TaggingListTagHttp.Location = new System.Drawing.Point(510, 34);
+            this.TaggingListTagHttp.Name = "TaggingListTagHttp";
+            this.TaggingListTagHttp.Size = new System.Drawing.Size(255, 200);
+            this.TaggingListTagHttp.TabIndex = 11;
+            this.TaggingListTagHttp.UseCompatibleStateImageBehavior = false;
+            // 
+            // TaggingTextHttp
+            // 
+            this.TaggingTextHttp.Depth = 0;
+            this.TaggingTextHttp.Hint = "Http Adress";
+            this.TaggingTextHttp.Location = new System.Drawing.Point(510, 4);
+            this.TaggingTextHttp.MaxLength = 32767;
+            this.TaggingTextHttp.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaggingTextHttp.Name = "TaggingTextHttp";
+            this.TaggingTextHttp.PasswordChar = '\0';
+            this.TaggingTextHttp.SelectedText = "";
+            this.TaggingTextHttp.SelectionLength = 0;
+            this.TaggingTextHttp.SelectionStart = 0;
+            this.TaggingTextHttp.Size = new System.Drawing.Size(255, 23);
+            this.TaggingTextHttp.TabIndex = 10;
+            this.TaggingTextHttp.TabStop = false;
+            this.TaggingTextHttp.UseSystemPasswordChar = false;
+            // 
+            // TaggingListFile
+            // 
+            this.TaggingListFile.AllowDrop = true;
+            this.TaggingListFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TaggingListFile.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TaggingListFile.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4});
+            this.TaggingListFile.Depth = 0;
+            this.TaggingListFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.TaggingListFile.FullRowSelect = true;
+            this.TaggingListFile.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.TaggingListFile.LabelEdit = true;
+            this.TaggingListFile.Location = new System.Drawing.Point(242, 3);
+            this.TaggingListFile.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.TaggingListFile.MouseState = MaterialSkin.MouseState.OUT;
+            this.TaggingListFile.Name = "TaggingListFile";
+            this.TaggingListFile.OwnerDraw = true;
+            this.TaggingListFile.Size = new System.Drawing.Size(262, 306);
+            this.TaggingListFile.TabIndex = 9;
+            this.TaggingListFile.UseCompatibleStateImageBehavior = false;
+            this.TaggingListFile.View = System.Windows.Forms.View.Details;
+            this.TaggingListFile.SelectedIndexChanged += new System.EventHandler(this.TaggingListFile_SelectedIndexChanged);
+            this.TaggingListFile.DragDrop += new System.Windows.Forms.DragEventHandler(this.TaggingListFile_DragDrop);
+            this.TaggingListFile.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnters);
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "경로";
+            this.columnHeader4.Width = 227;
+            // 
+            // TaggingTextInfo
+            // 
+            this.TaggingTextInfo.Depth = 0;
+            this.TaggingTextInfo.Hint = "Set Value";
+            this.TaggingTextInfo.Location = new System.Drawing.Point(3, 286);
+            this.TaggingTextInfo.MaxLength = 32767;
+            this.TaggingTextInfo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaggingTextInfo.Name = "TaggingTextInfo";
+            this.TaggingTextInfo.PasswordChar = '\0';
+            this.TaggingTextInfo.SelectedText = "";
+            this.TaggingTextInfo.SelectionLength = 0;
+            this.TaggingTextInfo.SelectionStart = 0;
+            this.TaggingTextInfo.Size = new System.Drawing.Size(233, 23);
+            this.TaggingTextInfo.TabIndex = 8;
+            this.TaggingTextInfo.TabStop = false;
+            this.TaggingTextInfo.UseSystemPasswordChar = false;
+            this.TaggingTextInfo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TaggingTextInfo_KeyDown);
+            // 
+            // TaggingProgressStatus
+            // 
+            this.TaggingProgressStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.TaggingProgressStatus.Depth = 0;
+            this.TaggingProgressStatus.Location = new System.Drawing.Point(510, 305);
+            this.TaggingProgressStatus.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaggingProgressStatus.Name = "TaggingProgressStatus";
+            this.TaggingProgressStatus.Size = new System.Drawing.Size(255, 5);
+            this.TaggingProgressStatus.TabIndex = 7;
+            // 
+            // TaggingBtnExec
+            // 
+            this.TaggingBtnExec.AutoSize = true;
+            this.TaggingBtnExec.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TaggingBtnExec.Depth = 0;
+            this.TaggingBtnExec.Icon = null;
+            this.TaggingBtnExec.Location = new System.Drawing.Point(686, 263);
+            this.TaggingBtnExec.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaggingBtnExec.Name = "TaggingBtnExec";
+            this.TaggingBtnExec.Primary = true;
+            this.TaggingBtnExec.Size = new System.Drawing.Size(79, 36);
+            this.TaggingBtnExec.TabIndex = 1;
+            this.TaggingBtnExec.Text = "Execute";
+            this.TaggingBtnExec.UseVisualStyleBackColor = true;
+            // 
+            // TaggingListTag
+            // 
+            this.TaggingListTag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.TaggingListTag.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem25,
+            listViewItem26,
+            listViewItem27,
+            listViewItem28,
+            listViewItem29,
+            listViewItem30,
+            listViewItem31,
+            listViewItem32,
+            listViewItem33,
+            listViewItem34,
+            listViewItem35,
+            listViewItem36});
+            this.TaggingListTag.Location = new System.Drawing.Point(3, 3);
+            this.TaggingListTag.Name = "TaggingListTag";
+            this.TaggingListTag.Size = new System.Drawing.Size(232, 272);
+            this.TaggingListTag.TabIndex = 0;
+            this.TaggingListTag.UseCompatibleStateImageBehavior = false;
+            this.TaggingListTag.View = System.Windows.Forms.View.List;
+            this.TaggingListTag.SelectedIndexChanged += new System.EventHandler(this.TaggingListTag_SelectedIndexChanged);
             // 
             // SettingTab
             // 
@@ -310,6 +495,8 @@
             this.CuesplitTab.PerformLayout();
             this.ConvMp3Tab.ResumeLayout(false);
             this.ConvMp3Tab.PerformLayout();
+            this.TaggingTab.ResumeLayout(false);
+            this.TaggingTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -333,6 +520,16 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private MaterialSkin.Controls.MaterialProgressBar Mp3ConvProgressStatus;
         private System.Windows.Forms.TabPage SettingTab;
+        private System.Windows.Forms.ListView TaggingListTag;
+        private MaterialSkin.Controls.MaterialRaisedButton TaggingBtnExec;
+        private MaterialSkin.Controls.MaterialProgressBar TaggingProgressStatus;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextInfo;
+        private MaterialSkin.Controls.MaterialListView TaggingListFile;
+        private MaterialSkin.Controls.MaterialLabel TaggingLabelValue;
+        private System.Windows.Forms.ListView TaggingListTagHttp;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextHttp;
+        private MaterialSkin.Controls.MaterialRaisedButton TaggingBtnTagSave;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
 

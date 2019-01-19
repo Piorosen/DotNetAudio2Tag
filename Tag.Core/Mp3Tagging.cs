@@ -6,37 +6,65 @@ using System.Text;
 using System.Threading.Tasks;
 using NAudio.Lame;
 using NAudio.Wave;
+using TagLib;
+
+using TagType = System.ValueTuple<string, TagLib.Tag>;
 
 namespace Tag.Core
 {
-    public class Mp3Tagging : ICore<string>
+    public class Mp3Tagging : ICore<TagType, TagType>
     {
-        public bool AddFile(string path)
-        {
-            throw new NotImplementedException();
-        }
+        readonly public List<(string Path, TagLib.Tag Tag)> tagList = new List<(string Path, TagLib.Tag Tag)>();
 
+        public bool AddFile(TagType file)
+        {
+            tagList.Add(file);
+            return true;
+        }
         public bool Delete(int at)
         {
-            throw new NotImplementedException();
+            if (0 <= at && at < tagList.Count)
+            {
+                tagList.RemoveAt(at);
+                return true;
+            }
+            return false;
         }
-
-        public bool Delete(string remove)
+        public bool Delete(TagType remove)
         {
-            throw new NotImplementedException();
+            return tagList.Remove(remove);
         }
-
         public IEnumerable<int> Execute()
         {
             throw new NotImplementedException();
         }
 
-        public void Tagging(string wave, string outFileName)
+        public TagLib.Tag this[int i]
         {
-            TagLib.Id3v2.Tag taginfo = new TagLib.Id3v2.Tag();
-
-            
-            
+            get
+            {
+                return tagList[i].Tag;
+            }
         }
+
+        public void Tagging(string file, TagLib.Tag taginfo)
+        {
+            var mp3File = TagLib.File.Create(file);
+            mp3File.Tag.Title = taginfo.Title;
+            mp3File.Tag.Performers = taginfo.Performers;
+            mp3File.Tag.Album = taginfo.Album;
+            mp3File.Tag.Year = taginfo.Year;
+            mp3File.Tag.Track = taginfo.Track;
+            mp3File.Tag.TrackCount = taginfo.TrackCount;
+            mp3File.Tag.Genres = taginfo.Genres;
+            mp3File.Tag.Comment = taginfo.Comment;
+            mp3File.Tag.AlbumArtists = taginfo.AlbumArtists;
+            mp3File.Tag.Composers = taginfo.Composers;
+            mp3File.Tag.Disc = taginfo.Disc;
+            mp3File.Tag.Pictures = taginfo.Pictures;
+
+            mp3File.Save();
+        }
+        
     }
 }
