@@ -111,6 +111,32 @@ namespace Tag
                 isrun = false;
             });
         }
+        private async void TaggingBtnExec_Click(object sender, EventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                if (isrun == true)
+                {
+                    return;
+                }
+                isrun = true;
+                foreach (var value in mp3Tagging.Execute())
+                {
+                    if (this.InvokeRequired)
+                    {
+                        this.Invoke(new MethodInvoker(() =>
+                        {
+                            Mp3ConvProgressStatus.Value = value;
+                        }));
+                    }
+                    else
+                    {
+                        Mp3ConvProgressStatus.Value = value;
+                    }
+                }
+                isrun = false;
+            });
+        }
         #endregion
 
 
@@ -163,16 +189,28 @@ namespace Tag
 
         private void TaggingListFile_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tagTemp = TagLib.File.Create(TaggingListFile.SelectedItems[0].Text).Tag;
+            try
+            {
+                tagTemp = TagLib.File.Create(TaggingListFile.SelectedItems[0].Text).Tag;
+            }catch(Exception)
+            {
+
+            }
         }
 
         private void TaggingBtnTagSave_Click(object sender, EventArgs e)
         {
-            if (TaggingListFile.SelectedIndices.Count != 0)
+            try
             {
-                var t = TaggingListFile.SelectedItems[0].Text;
-                var file = TagLib.File.Create(t);
-                mp3Tagging.AddFile((t, file.Tag));
+                if (TaggingListFile.SelectedIndices.Count != 0)
+                {
+                    var t = TaggingListFile.SelectedItems[0].Text;
+                    mp3Tagging.AddFile((t, tagTemp));
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -223,7 +261,7 @@ namespace Tag
             }
             catch (Exception)
             {
-
+                TaggingTextInfo.Text = "";
             }
         }
 
@@ -271,8 +309,8 @@ namespace Tag
                             tagTemp.Pictures = new TagLib.IPicture[1] { new TagLib.Picture(TaggingTextInfo.Text) };
                             break;
                     }
+                    MessageBox.Show("Complete");
                 }
-                MessageBox.Show("Complete");
             }catch (Exception)
             {
                 MessageBox.Show("Error!");

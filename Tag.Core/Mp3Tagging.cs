@@ -36,7 +36,11 @@ namespace Tag.Core
         }
         public IEnumerable<int> Execute()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < tagList.Count; i++)
+            {
+                Tagging(tagList[i].Path, tagList[i].Tag);
+                yield return (int)(100.0 / tagList.Count * (i+1));
+            }
         }
 
         public TagLib.Tag this[int i]
