@@ -202,7 +202,8 @@ namespace Tag
                 var t = Path.GetExtension(path).ToLower();
                 if (t == ".mp3")
                 {
-                    Log.FileWrite("{t}", Error.Success);
+                    Log.FileWrite($"{t}", Error.Success);
+                    mp3Tagging.AddFile(new Core.TagInfo(TagLib.File.Create(path).Tag));
                     TaggingListFile.Items.Add(new ListViewItem(new[] { path }));
                 }
             }
@@ -213,31 +214,18 @@ namespace Tag
         {
             Log.FileWrite("Start", Error.None);
             try
-            {
-                tagTemp = new Core.TagInfo(TagLib.File.Create(TaggingListFile.SelectedItems[0].Text).Tag);
+            {   if (TaggingListFile.SelectedIndices.Count == 0)
+                {
+                    Console.WriteLine("0 임");
+                    return;
+                }
+                tagTemp = mp3Tagging[TaggingListFile.SelectedIndices[0]];
             }
             catch (Exception)
             {
                 Log.FileWrite("fatal", Error.Error);
             }
             Log.FileWrite("End", Error.Success);
-        }
-
-        private void TaggingBtnTagSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (TaggingListFile.SelectedIndices.Count != 0)
-                {
-                    var t = TaggingListFile.SelectedItems[0].Text;
-                    tagTemp.Path = t;
-                    mp3Tagging.AddFile(tagTemp);
-                }
-            }
-            catch (Exception)
-            {
-
-            }
         }
         
         private void TaggingListTag_SelectedIndexChanged(object sender, EventArgs e)

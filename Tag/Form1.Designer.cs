@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem37 = new System.Windows.Forms.ListViewItem("Title");
-            System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem("Artist");
-            System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem("Album");
-            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem("Year");
-            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem("Track");
-            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem("TrackNum");
-            System.Windows.Forms.ListViewItem listViewItem43 = new System.Windows.Forms.ListViewItem("Genre");
-            System.Windows.Forms.ListViewItem listViewItem44 = new System.Windows.Forms.ListViewItem("Comments");
-            System.Windows.Forms.ListViewItem listViewItem45 = new System.Windows.Forms.ListViewItem("Album Artist");
-            System.Windows.Forms.ListViewItem listViewItem46 = new System.Windows.Forms.ListViewItem("Composer");
-            System.Windows.Forms.ListViewItem listViewItem47 = new System.Windows.Forms.ListViewItem("DiscNum");
-            System.Windows.Forms.ListViewItem listViewItem48 = new System.Windows.Forms.ListViewItem("PictureImagePath");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Title");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Artist");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Album");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Year");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Track");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("TrackNum");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Genre");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Comments");
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Album Artist");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Composer");
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("DiscNum");
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("PictureImagePath");
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.TabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.CuesplitTab = new System.Windows.Forms.TabPage();
@@ -56,7 +56,6 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Mp3ConvBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TaggingTab = new System.Windows.Forms.TabPage();
-            this.TaggingBtnTagSave = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TaggingLabelValue = new MaterialSkin.Controls.MaterialLabel();
             this.TaggingListTagHttp = new System.Windows.Forms.ListView();
             this.TaggingTextHttp = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -302,7 +301,6 @@
             // TaggingTab
             // 
             this.TaggingTab.BackColor = System.Drawing.SystemColors.Control;
-            this.TaggingTab.Controls.Add(this.TaggingBtnTagSave);
             this.TaggingTab.Controls.Add(this.TaggingLabelValue);
             this.TaggingTab.Controls.Add(this.TaggingListTagHttp);
             this.TaggingTab.Controls.Add(this.TaggingTextHttp);
@@ -316,22 +314,6 @@
             this.TaggingTab.Size = new System.Drawing.Size(768, 319);
             this.TaggingTab.TabIndex = 2;
             this.TaggingTab.Text = "Tagging";
-            // 
-            // TaggingBtnTagSave
-            // 
-            this.TaggingBtnTagSave.AutoSize = true;
-            this.TaggingBtnTagSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TaggingBtnTagSave.Depth = 0;
-            this.TaggingBtnTagSave.Icon = null;
-            this.TaggingBtnTagSave.Location = new System.Drawing.Point(510, 263);
-            this.TaggingBtnTagSave.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingBtnTagSave.Name = "TaggingBtnTagSave";
-            this.TaggingBtnTagSave.Primary = true;
-            this.TaggingBtnTagSave.Size = new System.Drawing.Size(82, 36);
-            this.TaggingBtnTagSave.TabIndex = 13;
-            this.TaggingBtnTagSave.Text = "TagSave";
-            this.TaggingBtnTagSave.UseVisualStyleBackColor = true;
-            this.TaggingBtnTagSave.Click += new System.EventHandler(this.TaggingBtnTagSave_Click);
             // 
             // TaggingLabelValue
             // 
@@ -452,18 +434,18 @@
             this.TaggingListTag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TaggingListTag.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem37,
-            listViewItem38,
-            listViewItem39,
-            listViewItem40,
-            listViewItem41,
-            listViewItem42,
-            listViewItem43,
-            listViewItem44,
-            listViewItem45,
-            listViewItem46,
-            listViewItem47,
-            listViewItem48});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12});
             this.TaggingListTag.Location = new System.Drawing.Point(3, 3);
             this.TaggingListTag.Name = "TaggingListTag";
             this.TaggingListTag.Size = new System.Drawing.Size(232, 272);
@@ -529,7 +511,6 @@
         private MaterialSkin.Controls.MaterialLabel TaggingLabelValue;
         private System.Windows.Forms.ListView TaggingListTagHttp;
         private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextHttp;
-        private MaterialSkin.Controls.MaterialRaisedButton TaggingBtnTagSave;
         private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
