@@ -226,7 +226,7 @@ namespace Tag.Core.Extension
 
             String FileName = FilePath + TDate() + ".log";
             StreamWriter mwriter = new StreamWriter(FileName, true, m_enc);
-            Data = $"{methodBase.DeclaringType.Name}{methodBase.Name} : {Data}";
+            Data = $"{methodBase.DeclaringType.Name}.{methodBase.Name} : {Data}";
 
             if (AES)
             {
