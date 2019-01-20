@@ -13,6 +13,7 @@ namespace Tag.Core
 
         bool AddFile(K path);
 
+        List<T> List();
         IEnumerable<int> Execute();
     }
 }

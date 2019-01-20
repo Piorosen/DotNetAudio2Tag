@@ -126,6 +126,11 @@ namespace Tag.Core
             }
             return result;
         }
+        public List<CueData> List()
+        {
+            return CueList;
+        }
+
 
         public IEnumerable<int> Execute()
         {
@@ -146,7 +151,7 @@ namespace Tag.Core
                     int num = 0;
                     foreach (var track in list.Track)
                     {
-                        using (WaveFileWriter writer = new WaveFileWriter(list.SavePath + $"{num}. " + track.Title + ".wav", reader.WaveFormat))
+                        using (WaveFileWriter writer = new WaveFileWriter(list.SavePath + $"{num + 1}. " + track.Title + ".wav", reader.WaveFormat))
                         {
                             int start = (int)(position * list.Format.BytesPerMillisecond);
                             start -= start % reader.WaveFormat.BlockAlign;

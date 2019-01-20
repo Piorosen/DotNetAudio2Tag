@@ -20,7 +20,7 @@ namespace Tag
         readonly Core.CueSpliter cueSpliter = new Core.CueSpliter();
         readonly Core.Wav2Mp3Converter wav2Mp3Converter = new Core.Wav2Mp3Converter();
         readonly Core.Mp3Tagging mp3Tagging = new Core.Mp3Tagging();
-        TagLib.Tag tagTemp;
+        Tag.Core.TagInfo tagTemp;
 
         public Form1()
         {
@@ -214,7 +214,7 @@ namespace Tag
             Log.FileWrite("Start", Error.None);
             try
             {
-                tagTemp = TagLib.File.Create(TaggingListFile.SelectedItems[0].Text).Tag;
+                tagTemp = new Core.TagInfo(TagLib.File.Create(TaggingListFile.SelectedItems[0].Text).Tag);
             }
             catch (Exception)
             {
@@ -230,7 +230,8 @@ namespace Tag
                 if (TaggingListFile.SelectedIndices.Count != 0)
                 {
                     var t = TaggingListFile.SelectedItems[0].Text;
-                    mp3Tagging.AddFile((t, tagTemp));
+                    tagTemp.Path = t;
+                    mp3Tagging.AddFile(tagTemp);
                 }
             }
             catch (Exception)
@@ -249,7 +250,7 @@ namespace Tag
                         TaggingTextInfo.Text = tagTemp.Title;
                         break;
                     case 1:
-                        TaggingTextInfo.Text = tagTemp.Performers[0];
+                        TaggingTextInfo.Text = tagTemp.Artist[0];
                         break;
                     case 2:
                         TaggingTextInfo.Text = tagTemp.Album;
@@ -264,22 +265,22 @@ namespace Tag
                         // tagTemp.TrackCount = TaggingTextInfo.Text;
                         break;
                     case 6:
-                        TaggingTextInfo.Text = tagTemp.Genres[0];
+                        TaggingTextInfo.Text = tagTemp.Genre[0];
                         break;
                     case 7:
                         TaggingTextInfo.Text = tagTemp.Comment;
                         break;
                     case 8:
-                        TaggingTextInfo.Text = tagTemp.AlbumArtists[0];
+                        TaggingTextInfo.Text = tagTemp.AlbumArtist[0];
                         break;
                     case 9:
-                        TaggingTextInfo.Text = tagTemp.Composers[0];
+                        TaggingTextInfo.Text = tagTemp.Composer[0];
                         break;
                     case 10:
-                        TaggingTextInfo.Text = tagTemp.Disc.ToString();
+                        // TaggingTextInfo.Text = tagTemp.Disc.ToString();
                         break;
                     case 11:
-                        TaggingTextInfo.Text = tagTemp.Pictures[0] == null ? "" : "존재함";
+                        TaggingTextInfo.Text = tagTemp.Image[0] == null ? "" : "존재함";
                         break;
                 }
             }
@@ -300,7 +301,7 @@ namespace Tag
                             tagTemp.Title = TaggingTextInfo.Text;
                             break;
                         case 1:
-                            tagTemp.Performers = new string[1] { TaggingTextInfo.Text };
+                            tagTemp.Artist = new List<string> { TaggingTextInfo.Text };
                             break;
                         case 2:
                             tagTemp.Album = TaggingTextInfo.Text;
@@ -309,28 +310,28 @@ namespace Tag
                             tagTemp.Year = uint.Parse(TaggingTextInfo.Text);
                             break;
                         case 4:
-                            // tagTemp.Track = TaggingTextInfo.Text;
+                            tagTemp.Track = uint.Parse(TaggingTextInfo.Text);
                             break;
                         case 5:
                             // tagTemp.TrackCount = TaggingTextInfo.Text;
                             break;
                         case 6:
-                            tagTemp.Genres = new string[1] { TaggingTextInfo.Text };
+                            tagTemp.Genre = new List<string> { TaggingTextInfo.Text };
                             break;
                         case 7:
                             tagTemp.Comment = TaggingTextInfo.Text;
                             break;
                         case 8:
-                            tagTemp.AlbumArtists = new string[1] { TaggingTextInfo.Text };
+                            tagTemp.AlbumArtist = new List<string> { TaggingTextInfo.Text };
                             break;
                         case 9:
-                            tagTemp.Composers = new string[1] { TaggingTextInfo.Text };
+                            tagTemp.Composer = new List<string> { TaggingTextInfo.Text };
                             break;
                         case 10:
-                            tagTemp.Disc = uint.Parse(TaggingTextInfo.Text);
+                            // tagTemp.Disc = uint.Parse(TaggingTextInfo.Text);
                             break;
                         case 11:
-                            tagTemp.Pictures = new TagLib.IPicture[1] { new TagLib.Picture(TaggingTextInfo.Text) };
+                            tagTemp.Image = new List<TagLib.IPicture> { new TagLib.Picture(TaggingTextInfo.Text) };
                             break;
                     }
                     MessageBox.Show("Complete");

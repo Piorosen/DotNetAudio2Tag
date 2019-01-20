@@ -48,7 +48,10 @@ namespace Tag.Core
             }
             return result;
         }
-
+        public List<string> List()
+        {
+            return filePath;
+        }
 
         public IEnumerable<int> Execute()
         {
@@ -79,5 +82,7 @@ namespace Tag.Core
                 yield return (int)(100.0 / filePath.Count * (i + 1));
             }
         }
+
+        
     }
 }

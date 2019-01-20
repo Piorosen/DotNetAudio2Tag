@@ -8,15 +8,15 @@ using NAudio.Lame;
 using NAudio.Wave;
 using TagLib;
 
-using TagType = System.ValueTuple<string, TagLib.Tag>;
+using TagType = System.ValueTuple<string, Tag.Core.TagInfo>;
 
 namespace Tag.Core
 {
-    public class Mp3Tagging : ICore<TagType, TagType>
+    public class Mp3Tagging : ICore<TagInfo, TagInfo>
     {
-        readonly public List<(string Path, TagLib.Tag Tag)> tagList = new List<(string Path, TagLib.Tag Tag)>();
+        readonly public List<TagInfo> tagList = new List<TagInfo>();
 
-        public bool AddFile(TagType file)
+        public bool AddFile(TagInfo file)
         {
             tagList.Add(file);
             
@@ -31,7 +31,7 @@ namespace Tag.Core
             }
             return false;
         }
-        public bool Delete(TagType remove)
+        public bool Delete(TagInfo remove)
         {
             return tagList.Remove(remove);
         }
@@ -39,16 +39,20 @@ namespace Tag.Core
         {
             for (int i = 0; i < tagList.Count; i++)
             {
-                Tagging(tagList[i].Path, tagList[i].Tag);
+                Tagging(tagList[i].Path, tagList[i].ToTagLib());
                 yield return (int)(100.0 / tagList.Count * (i+1));
             }
         }
+        public List<TagInfo> List()
+        {
+            return tagList;
+        }
 
-        public TagLib.Tag this[int i]
+        public TagInfo this[int i]
         {
             get
             {
-                return tagList[i].Tag;
+                return tagList[i];
             }
         }
 
