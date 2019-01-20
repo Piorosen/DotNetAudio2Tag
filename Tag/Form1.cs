@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tag.Core.Extension;
 
 namespace Tag
 {
@@ -28,11 +29,14 @@ namespace Tag
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-            
+
+            Log.FilePrepare(string.Empty);
+            Log.FileWrite("Run", Core.Extension.Error.None);
         }
 
         private void CuesplitBtnOpenDialog_Click(object sender, EventArgs e)
         {
+            Log.FileWrite("Start", Error.None);
             OpenFileDialog fileDialog = new OpenFileDialog
             {
                 Multiselect = true,
@@ -50,15 +54,18 @@ namespace Tag
                         CuesplitListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
 
                         cueSpliter.AddFile(path);
+                        Log.FileWrite($"{path}", Error.None);
                     }
                 }
             }
+            Log.FileWrite("End", Error.Success);
         }
 
         #region Exec Program
         volatile bool isrun = false;
         private async void CuesplitBtnExecute_Click(object sender, EventArgs e)
         {
+            Log.FileWrite("Start", Error.None);
             await Task.Run(() =>
             {
                 if (isrun == true)
@@ -80,13 +87,14 @@ namespace Tag
                         CuesplitProgressStatus.Value = value;
                     }
                 }
+                Log.FileWrite("End", Error.Success);
                 isrun = false;
             });
-
         }
 
         private async void Mp3ConvBtnExec_Click(object sender, EventArgs e)
         {
+            Log.FileWrite("Start", Error.None);
             await Task.Run(() =>
             {
                 if (isrun == true)
@@ -108,11 +116,13 @@ namespace Tag
                         Mp3ConvProgressStatus.Value = value;
                     }
                 }
+                Log.FileWrite("End", Error.Success);
                 isrun = false;
             });
         }
         private async void TaggingBtnExec_Click(object sender, EventArgs e)
         {
+            Log.FileWrite("Start", Error.None);
             await Task.Run(() =>
             {
                 if (isrun == true)
@@ -134,6 +144,7 @@ namespace Tag
                         Mp3ConvProgressStatus.Value = value;
                     }
                 }
+                Log.FileWrite("End", Error.Success);
                 isrun = false;
             });
         }
@@ -143,59 +154,73 @@ namespace Tag
         #region Drag Enter & Drop
         private void DragEnters(object sender, DragEventArgs e)
         {
+            Log.FileWrite("Start", Error.None);
             e.Effect = DragDropEffects.Copy;
+            Log.FileWrite("End", Error.Success);
         }
 
         private void CuesplitListStatus_DragDrop(object sender, DragEventArgs e)
         {
+            Log.FileWrite("Start", Error.None);
             string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (var path in items)
             {
                 var t = Path.GetExtension(path).ToLower();
                 if (t == ".cue")
                 {
+                    Log.FileWrite("{t}", Error.Success);
                     cueSpliter.AddFile(path
                         , Path.GetDirectoryName(path) + @"\" + Path.GetFileNameWithoutExtension(path) + ".wav"
                         , Path.GetDirectoryName(path) + @"\");
                     CuesplitListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
                 }
             }
+            Log.FileWrite("End", Error.Success);
         }
         private void Mp3ConvListStatus_DragDrop(object sender, DragEventArgs e)
         {
+            Log.FileWrite("Start", Error.None);
             string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (var path in items)
             {
                 var t = Path.GetExtension(path).ToLower();
                 if (t == ".wav")
                 {
+                    Log.FileWrite("{t}", Error.Success);
                     wav2Mp3Converter.AddFile(path);
                     Mp3ConvListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
                 }
             }
+            Log.FileWrite("End", Error.Success);
         }
         private void TaggingListFile_DragDrop(object sender, DragEventArgs e)
         {
+            Log.FileWrite("Start", Error.None);
             string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (var path in items)
             {
                 var t = Path.GetExtension(path).ToLower();
                 if (t == ".mp3")
                 {
+                    Log.FileWrite("{t}", Error.Success);
                     TaggingListFile.Items.Add(new ListViewItem(new[] { path }));
                 }
             }
+            Log.FileWrite("End", Error.Success);
         }
 
         private void TaggingListFile_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Log.FileWrite("Start", Error.None);
             try
             {
                 tagTemp = TagLib.File.Create(TaggingListFile.SelectedItems[0].Text).Tag;
-            }catch(Exception)
-            {
-
             }
+            catch (Exception)
+            {
+                Log.FileWrite("fatal", Error.Error);
+            }
+            Log.FileWrite("End", Error.Success);
         }
 
         private void TaggingBtnTagSave_Click(object sender, EventArgs e)
@@ -213,8 +238,7 @@ namespace Tag
 
             }
         }
-
-
+        
         private void TaggingListTag_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -320,6 +344,7 @@ namespace Tag
 
         private void ListView_KeyDown(object sender, KeyEventArgs e)
         {
+            Log.FileWrite("Start", Error.None);
             if (e.KeyCode == Keys.Delete)
             {
                 foreach (int value in (sender as ListView).SelectedIndices)
@@ -337,8 +362,10 @@ namespace Tag
                     {
                         mp3Tagging.Delete(value);
                     }
+                    Log.FileWrite($"{value}, {(sender as ListView).Name}", Error.None);
                 }
             }
+            Log.FileWrite("Start", Error.None);
         }
 
     }

@@ -19,6 +19,7 @@ namespace Tag.Core
         public bool AddFile(TagType file)
         {
             tagList.Add(file);
+            
             return true;
         }
         public bool Delete(int at)

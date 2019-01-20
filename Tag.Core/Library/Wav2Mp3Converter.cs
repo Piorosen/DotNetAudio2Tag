@@ -17,8 +17,10 @@ namespace Tag.Core
             if (Path.GetExtension(path) == ".wav")
             {
                 filePath.Add(path);
+                Extension.Log.FileWrite($"{path} : add", Extension.Error.Success);
                 return true;
             }
+            Extension.Log.FileWrite($"{path} : not wav file", Extension.Error.Error);
             return false;
         }
 
@@ -27,13 +29,24 @@ namespace Tag.Core
             if (0 <= at && at < filePath.Count)
             {
                 filePath.RemoveAt(at);
+                Extension.Log.FileWrite($"{at} delete", Extension.Error.Success);
                 return true;
             }
+            Extension.Log.FileWrite($"{at} Location Error", Extension.Error.IndexException);
             return false;
         }
         public bool Delete(string remove)
         {
-            return filePath.Remove(remove);
+            var result = filePath.Remove(remove);
+            if (result)
+            {
+                Extension.Log.FileWrite($"{remove} delete", Extension.Error.Success);
+            }
+            else
+            {
+                Extension.Log.FileWrite($"{remove} Location Error", Extension.Error.Error);
+            }
+            return result;
         }
 
 
@@ -49,9 +62,11 @@ namespace Tag.Core
                 }
                 copyPath.Add(data);
             }
+            Extension.Log.FileWrite($"Init", Extension.Error.None);
 
             for (int i = 0; i < filePath.Count; i++)
             {
+                Extension.Log.FileWrite($"File Load", Extension.Error.Success);
                 string filedata = $"{Path.GetDirectoryName(copyPath[i])}\\{Path.GetFileNameWithoutExtension(copyPath[i])}";
                 using (var wav = new NAudio.Wave.WaveFileReader($"{filedata}.wav"))
                 {
@@ -60,6 +75,7 @@ namespace Tag.Core
                         wav.CopyTo(mp3);
                     }
                 }
+                Extension.Log.FileWrite($"File Split {(int)filePath.Count * (i + 1)} / {100}", Extension.Error.Success);
                 yield return (int)(100.0 / filePath.Count * (i + 1));
             }
         }

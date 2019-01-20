@@ -56,27 +56,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoConverter.cs" />
-    <Compile Include="ICore.cs" />
-    <Compile Include="Wav2Mp3Converter.cs" />
-    <Compile Include="CueSpliter.cs" />
-    <Compile Include="Mp3Tagging.cs" />
+    <Compile Include="Extension\AES256.cs" />
+    <Compile Include="Extension\Error.cs" />
+    <Compile Include="Extension\IsAdmin.cs" />
+    <Compile Include="Extension\Log.cs" />
+    <Compile Include="Library\AutoConverter.cs" />
+    <Compile Include="Library\ICore.cs" />
+    <Compile Include="Library\Wav2Mp3Converter.cs" />
+    <Compile Include="Library\CueSpliter.cs" />
+    <Compile Include="Library\Mp3Tagging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="libmp3lame.32.dll">
+    <Content Include="dll\libmp3lame.32.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="libmp3lame.64.dll">
+    <Content Include="dll\libmp3lame.64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extension\" />
-    <Folder Include="Library\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

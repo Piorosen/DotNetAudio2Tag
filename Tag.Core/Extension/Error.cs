@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Tag.Core.Extension
 {
-    enum Error
+    public enum Error
     {
         None,
         Bug,
         IOException,
+        IndexException,
         Success,
         Error,
     }
