@@ -136,12 +136,12 @@ namespace Tag
                     {
                         this.Invoke(new MethodInvoker(() =>
                         {
-                            Mp3ConvProgressStatus.Value = value;
+                            TaggingProgressStatus.Value = value;
                         }));
                     }
                     else
                     {
-                        Mp3ConvProgressStatus.Value = value;
+                        TaggingProgressStatus.Value = value;
                     }
                 }
                 Log.FileWrite("End", Error.Success);
@@ -193,6 +193,8 @@ namespace Tag
             }
             Log.FileWrite("End", Error.Success);
         }
+
+
         private void TaggingListFile_DragDrop(object sender, DragEventArgs e)
         {
             Log.FileWrite("Start", Error.None);
@@ -203,8 +205,15 @@ namespace Tag
                 if (t == ".mp3")
                 {
                     Log.FileWrite($"{t}", Error.Success);
-                    mp3Tagging.AddFile(new Core.TagInfo(TagLib.File.Create(path).Tag));
-                    TaggingListFile.Items.Add(new ListViewItem(new[] { path }));
+                    try
+                    {
+                        mp3Tagging.AddFile(new Core.TagInfo(TagLib.File.Create(path).Tag) { Path = path });
+                        TaggingListFile.Items.Add(new ListViewItem(new[] { path }));
+                    }
+                    catch (Exception)
+                    {
+                        Log.FileWrite("path fatal", Error.IOException);
+                    }
                 }
             }
             Log.FileWrite("End", Error.Success);
@@ -220,6 +229,7 @@ namespace Tag
                     return;
                 }
                 tagTemp = mp3Tagging[TaggingListFile.SelectedIndices[0]];
+                GetTextTagging();
             }
             catch (Exception)
             {
@@ -227,101 +237,13 @@ namespace Tag
             }
             Log.FileWrite("End", Error.Success);
         }
-        
-        private void TaggingListTag_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                switch (TaggingListTag.SelectedIndices[0])
-                {
-                    case 0:
-                        TaggingTextInfo.Text = tagTemp.Title;
-                        break;
-                    case 1:
-                        TaggingTextInfo.Text = tagTemp.Artist[0];
-                        break;
-                    case 2:
-                        TaggingTextInfo.Text = tagTemp.Album;
-                        break;
-                    case 3:
-                        TaggingTextInfo.Text = tagTemp.Year.ToString();
-                        break;
-                    case 4:
-                        // tagTemp.Track = TaggingTextInfo.Text;
-                        break;
-                    case 5:
-                        // tagTemp.TrackCount = TaggingTextInfo.Text;
-                        break;
-                    case 6:
-                        TaggingTextInfo.Text = tagTemp.Genre[0];
-                        break;
-                    case 7:
-                        TaggingTextInfo.Text = tagTemp.Comment;
-                        break;
-                    case 8:
-                        TaggingTextInfo.Text = tagTemp.AlbumArtist[0];
-                        break;
-                    case 9:
-                        TaggingTextInfo.Text = tagTemp.Composer[0];
-                        break;
-                    case 10:
-                        // TaggingTextInfo.Text = tagTemp.Disc.ToString();
-                        break;
-                    case 11:
-                        TaggingTextInfo.Text = tagTemp.Image[0] == null ? "" : "존재함";
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-                TaggingTextInfo.Text = "";
-            }
-        }
 
         private void TaggingTextInfo_KeyDown(object sender, KeyEventArgs e)
         {
             try {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    switch (TaggingListTag.SelectedIndices[0])
-                    {
-                        case 0:
-                            tagTemp.Title = TaggingTextInfo.Text;
-                            break;
-                        case 1:
-                            tagTemp.Artist = new List<string> { TaggingTextInfo.Text };
-                            break;
-                        case 2:
-                            tagTemp.Album = TaggingTextInfo.Text;
-                            break;
-                        case 3:
-                            tagTemp.Year = uint.Parse(TaggingTextInfo.Text);
-                            break;
-                        case 4:
-                            tagTemp.Track = uint.Parse(TaggingTextInfo.Text);
-                            break;
-                        case 5:
-                            // tagTemp.TrackCount = TaggingTextInfo.Text;
-                            break;
-                        case 6:
-                            tagTemp.Genre = new List<string> { TaggingTextInfo.Text };
-                            break;
-                        case 7:
-                            tagTemp.Comment = TaggingTextInfo.Text;
-                            break;
-                        case 8:
-                            tagTemp.AlbumArtist = new List<string> { TaggingTextInfo.Text };
-                            break;
-                        case 9:
-                            tagTemp.Composer = new List<string> { TaggingTextInfo.Text };
-                            break;
-                        case 10:
-                            // tagTemp.Disc = uint.Parse(TaggingTextInfo.Text);
-                            break;
-                        case 11:
-                            tagTemp.Image = new List<TagLib.IPicture> { new TagLib.Picture(TaggingTextInfo.Text) };
-                            break;
-                    }
+                    SetTextTagging();
                     MessageBox.Show("Complete");
                 }
             }catch (Exception)
@@ -330,6 +252,68 @@ namespace Tag
             }
         }
         #endregion
+
+        private void TaggingBtnPrevImage_Click(object sender, EventArgs e)
+        {
+            int now, max;
+            now = int.Parse(TaggingLabelIndex.Text.Split('/')[0]);
+            max = int.Parse(TaggingLabelIndex.Text.Split('/')[1]);
+            now -= 1;
+            if (now <= 0)
+            {
+                return;
+            }
+
+            if (tagTemp.Image.Count > 0)
+            {
+                var bin = (byte[])(tagTemp.Image[now - 1].Data.Data);
+                TaggingImageList.Image = Image.FromStream(new MemoryStream(bin));
+                TaggingLabelFileSize.Text = bin.LongLength
+            }
+        }
+
+        private void TaggingBtnNextImage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        void SetTextTagging()
+        {
+            tagTemp.Title = TaggingTextTitle.Text;
+            tagTemp.Artist = TaggingTextArtists.Text.Split(';').ToList();
+            tagTemp.Album = TaggingTextAlbum.Text;
+            tagTemp.Year = uint.Parse(TaggingTextCreateYear.Text);
+            tagTemp.Track = uint.Parse(TaggingTextTrack.Text);
+            tagTemp.Genre = TaggingTextGenre.Text.Split(';').ToList();
+            tagTemp.Comment = TaggingTextComment.Text;
+            tagTemp.AlbumArtist = TaggingTextAlbumArtists.Text.Split(';').ToList();
+            tagTemp.Composer = TaggingTextComposers.Text.Split(';').ToList();
+            tagTemp.DiscNum = TaggingTextDiscNum.Text;
+            // tagTemp.Path = TaggingTextDirectory.Text;
+        }
+
+        void GetTextTagging()
+        {
+            TaggingTextTitle.Text = tagTemp.Title;
+            TaggingTextArtists.Text = string.Join(";", tagTemp.Artist);
+            TaggingTextAlbum.Text = tagTemp.Album;
+            TaggingTextCreateYear.Text = tagTemp.Year.ToString();
+            TaggingTextTrack.Text = tagTemp.Track.ToString();
+            TaggingTextGenre.Text = string.Join(";", tagTemp.Genre);
+            TaggingTextComment.Text = tagTemp.Comment;
+            TaggingTextAlbumArtists.Text = string.Join(";", tagTemp.AlbumArtist);
+            TaggingTextComposers.Text = string.Join(";", tagTemp.Composer);
+            TaggingTextDiscNum.Text = tagTemp.DiscNum;
+            TaggingTextDirectory.Text = tagTemp.Path;
+
+            if (tagTemp.Image.Count > 0)
+            {
+                var bin = (byte[])(tagTemp.Image[0].Data.Data);
+                TaggingImageList.Image = Image.FromStream(new MemoryStream(bin));
+            }
+            
+        }
 
         private void ListView_KeyDown(object sender, KeyEventArgs e)
         {
@@ -356,6 +340,7 @@ namespace Tag
             }
             Log.FileWrite("Start", Error.None);
         }
+        
 
     }
 }

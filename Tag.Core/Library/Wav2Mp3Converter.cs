@@ -35,6 +35,7 @@ namespace Tag.Core
             Extension.Log.FileWrite($"{at} Location Error", Extension.Error.IndexException);
             return false;
         }
+
         public bool Delete(string remove)
         {
             var result = filePath.Remove(remove);

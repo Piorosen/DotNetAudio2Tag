@@ -15,6 +15,8 @@ namespace Tag.Core
         
         void AutoConverting(string cueFile)
         {
+
+
             cueSpliter.AddFile(cueFile);
             var list = cueSpliter.List();
             cueSpliter.Execute();
