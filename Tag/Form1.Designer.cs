@@ -43,6 +43,13 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Mp3ConvBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TaggingTab = new System.Windows.Forms.TabPage();
+            this.TaggingBtnImageDelete = new MaterialSkin.Controls.MaterialFlatButton();
+            this.TaggingBtnNextImage = new MaterialSkin.Controls.MaterialFlatButton();
+            this.TaggingBtnPrevImage = new MaterialSkin.Controls.MaterialFlatButton();
+            this.TaggingLabelIndex = new MaterialSkin.Controls.MaterialLabel();
+            this.TaggingLabelFileSize = new MaterialSkin.Controls.MaterialLabel();
+            this.TaggingLabelImageSize = new MaterialSkin.Controls.MaterialLabel();
+            this.TaggingLabelMime = new MaterialSkin.Controls.MaterialLabel();
             this.TaggingImageList = new System.Windows.Forms.PictureBox();
             this.TaggingTextDirectory = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TaggingTextDiscNum = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -60,12 +67,6 @@
             this.TaggingProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
             this.TaggingBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SettingTab = new System.Windows.Forms.TabPage();
-            this.TaggingLabelMime = new MaterialSkin.Controls.MaterialLabel();
-            this.TaggingLabelImageSize = new MaterialSkin.Controls.MaterialLabel();
-            this.TaggingLabelFileSize = new MaterialSkin.Controls.MaterialLabel();
-            this.TaggingLabelIndex = new MaterialSkin.Controls.MaterialLabel();
-            this.TaggingBtnPrevImage = new MaterialSkin.Controls.MaterialFlatButton();
-            this.TaggingBtnNextImage = new MaterialSkin.Controls.MaterialFlatButton();
             this.TabControl.SuspendLayout();
             this.CuesplitTab.SuspendLayout();
             this.ConvMp3Tab.SuspendLayout();
@@ -193,12 +194,12 @@
             this.CuesplitListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.CuesplitListStatus.FullRowSelect = true;
             this.CuesplitListStatus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.CuesplitListStatus.Location = new System.Drawing.Point(6, 6);
+            this.CuesplitListStatus.Location = new System.Drawing.Point(6, 3);
             this.CuesplitListStatus.MouseLocation = new System.Drawing.Point(-1, -1);
             this.CuesplitListStatus.MouseState = MaterialSkin.MouseState.OUT;
             this.CuesplitListStatus.Name = "CuesplitListStatus";
             this.CuesplitListStatus.OwnerDraw = true;
-            this.CuesplitListStatus.Size = new System.Drawing.Size(714, 484);
+            this.CuesplitListStatus.Size = new System.Drawing.Size(714, 493);
             this.CuesplitListStatus.TabIndex = 0;
             this.CuesplitListStatus.UseCompatibleStateImageBehavior = false;
             this.CuesplitListStatus.View = System.Windows.Forms.View.Details;
@@ -209,7 +210,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Cue 이름";
-            this.columnHeader1.Width = 495;
+            this.columnHeader1.Width = 712;
             // 
             // ConvMp3Tab
             // 
@@ -248,12 +249,12 @@
             this.Mp3ConvListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.Mp3ConvListStatus.FullRowSelect = true;
             this.Mp3ConvListStatus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.Mp3ConvListStatus.Location = new System.Drawing.Point(6, 6);
+            this.Mp3ConvListStatus.Location = new System.Drawing.Point(6, 3);
             this.Mp3ConvListStatus.MouseLocation = new System.Drawing.Point(-1, -1);
             this.Mp3ConvListStatus.MouseState = MaterialSkin.MouseState.OUT;
             this.Mp3ConvListStatus.Name = "Mp3ConvListStatus";
             this.Mp3ConvListStatus.OwnerDraw = true;
-            this.Mp3ConvListStatus.Size = new System.Drawing.Size(714, 487);
+            this.Mp3ConvListStatus.Size = new System.Drawing.Size(714, 490);
             this.Mp3ConvListStatus.TabIndex = 1;
             this.Mp3ConvListStatus.UseCompatibleStateImageBehavior = false;
             this.Mp3ConvListStatus.View = System.Windows.Forms.View.Details;
@@ -286,6 +287,7 @@
             // TaggingTab
             // 
             this.TaggingTab.BackColor = System.Drawing.SystemColors.Control;
+            this.TaggingTab.Controls.Add(this.TaggingBtnImageDelete);
             this.TaggingTab.Controls.Add(this.TaggingBtnNextImage);
             this.TaggingTab.Controls.Add(this.TaggingBtnPrevImage);
             this.TaggingTab.Controls.Add(this.TaggingLabelIndex);
@@ -313,6 +315,109 @@
             this.TaggingTab.TabIndex = 2;
             this.TaggingTab.Text = "Tagging";
             // 
+            // TaggingBtnImageDelete
+            // 
+            this.TaggingBtnImageDelete.AutoSize = true;
+            this.TaggingBtnImageDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TaggingBtnImageDelete.Depth = 0;
+            this.TaggingBtnImageDelete.Icon = null;
+            this.TaggingBtnImageDelete.Location = new System.Drawing.Point(209, 447);
+            this.TaggingBtnImageDelete.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.TaggingBtnImageDelete.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaggingBtnImageDelete.Name = "TaggingBtnImageDelete";
+            this.TaggingBtnImageDelete.Primary = false;
+            this.TaggingBtnImageDelete.Size = new System.Drawing.Size(115, 36);
+            this.TaggingBtnImageDelete.TabIndex = 27;
+            this.TaggingBtnImageDelete.Text = "Image Delete";
+            this.TaggingBtnImageDelete.UseVisualStyleBackColor = true;
+            this.TaggingBtnImageDelete.Click += new System.EventHandler(this.TaggingBtnImageDelete_Click);
+            // 
+            // TaggingBtnNextImage
+            // 
+            this.TaggingBtnNextImage.AutoSize = true;
+            this.TaggingBtnNextImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TaggingBtnNextImage.Depth = 0;
+            this.TaggingBtnNextImage.Icon = null;
+            this.TaggingBtnNextImage.Location = new System.Drawing.Point(315, 405);
+            this.TaggingBtnNextImage.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.TaggingBtnNextImage.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaggingBtnNextImage.Name = "TaggingBtnNextImage";
+            this.TaggingBtnNextImage.Primary = false;
+            this.TaggingBtnNextImage.Size = new System.Drawing.Size(28, 36);
+            this.TaggingBtnNextImage.TabIndex = 26;
+            this.TaggingBtnNextImage.Text = ">";
+            this.TaggingBtnNextImage.UseVisualStyleBackColor = true;
+            this.TaggingBtnNextImage.Click += new System.EventHandler(this.TaggingBtnNextImage_Click);
+            // 
+            // TaggingBtnPrevImage
+            // 
+            this.TaggingBtnPrevImage.AutoSize = true;
+            this.TaggingBtnPrevImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.TaggingBtnPrevImage.Depth = 0;
+            this.TaggingBtnPrevImage.Icon = null;
+            this.TaggingBtnPrevImage.Location = new System.Drawing.Point(194, 405);
+            this.TaggingBtnPrevImage.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.TaggingBtnPrevImage.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaggingBtnPrevImage.Name = "TaggingBtnPrevImage";
+            this.TaggingBtnPrevImage.Primary = false;
+            this.TaggingBtnPrevImage.Size = new System.Drawing.Size(28, 36);
+            this.TaggingBtnPrevImage.TabIndex = 25;
+            this.TaggingBtnPrevImage.Text = "<";
+            this.TaggingBtnPrevImage.UseVisualStyleBackColor = true;
+            this.TaggingBtnPrevImage.Click += new System.EventHandler(this.TaggingBtnPrevImage_Click);
+            // 
+            // TaggingLabelIndex
+            // 
+            this.TaggingLabelIndex.Depth = 0;
+            this.TaggingLabelIndex.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TaggingLabelIndex.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TaggingLabelIndex.Location = new System.Drawing.Point(229, 405);
+            this.TaggingLabelIndex.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaggingLabelIndex.Name = "TaggingLabelIndex";
+            this.TaggingLabelIndex.Size = new System.Drawing.Size(79, 36);
+            this.TaggingLabelIndex.TabIndex = 24;
+            this.TaggingLabelIndex.Text = "0 / 0";
+            this.TaggingLabelIndex.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TaggingLabelFileSize
+            // 
+            this.TaggingLabelFileSize.Depth = 0;
+            this.TaggingLabelFileSize.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TaggingLabelFileSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TaggingLabelFileSize.Location = new System.Drawing.Point(190, 380);
+            this.TaggingLabelFileSize.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaggingLabelFileSize.Name = "TaggingLabelFileSize";
+            this.TaggingLabelFileSize.Size = new System.Drawing.Size(153, 19);
+            this.TaggingLabelFileSize.TabIndex = 23;
+            this.TaggingLabelFileSize.Text = "0 Kb";
+            this.TaggingLabelFileSize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TaggingLabelImageSize
+            // 
+            this.TaggingLabelImageSize.Depth = 0;
+            this.TaggingLabelImageSize.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TaggingLabelImageSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TaggingLabelImageSize.Location = new System.Drawing.Point(190, 355);
+            this.TaggingLabelImageSize.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaggingLabelImageSize.Name = "TaggingLabelImageSize";
+            this.TaggingLabelImageSize.Size = new System.Drawing.Size(153, 19);
+            this.TaggingLabelImageSize.TabIndex = 22;
+            this.TaggingLabelImageSize.Text = "0 x 0";
+            this.TaggingLabelImageSize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TaggingLabelMime
+            // 
+            this.TaggingLabelMime.Depth = 0;
+            this.TaggingLabelMime.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TaggingLabelMime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TaggingLabelMime.Location = new System.Drawing.Point(190, 330);
+            this.TaggingLabelMime.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TaggingLabelMime.Name = "TaggingLabelMime";
+            this.TaggingLabelMime.Size = new System.Drawing.Size(153, 19);
+            this.TaggingLabelMime.TabIndex = 21;
+            this.TaggingLabelMime.Text = "Mime / Type";
+            this.TaggingLabelMime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // TaggingImageList
             // 
             this.TaggingImageList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -322,6 +427,8 @@
             this.TaggingImageList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.TaggingImageList.TabIndex = 2;
             this.TaggingImageList.TabStop = false;
+            this.TaggingImageList.DragDrop += new System.Windows.Forms.DragEventHandler(this.TaggingImageList_DragDrop);
+            this.TaggingImageList.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnters);
             // 
             // TaggingTextDirectory
             // 
@@ -534,7 +641,6 @@
             this.TaggingListFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.TaggingListFile.FullRowSelect = true;
             this.TaggingListFile.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.TaggingListFile.LabelEdit = true;
             this.TaggingListFile.Location = new System.Drawing.Point(361, 3);
             this.TaggingListFile.MouseLocation = new System.Drawing.Point(-1, -1);
             this.TaggingListFile.MouseState = MaterialSkin.MouseState.OUT;
@@ -547,6 +653,7 @@
             this.TaggingListFile.SelectedIndexChanged += new System.EventHandler(this.TaggingListFile_SelectedIndexChanged);
             this.TaggingListFile.DragDrop += new System.Windows.Forms.DragEventHandler(this.TaggingListFile_DragDrop);
             this.TaggingListFile.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnters);
+            this.TaggingListFile.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListView_KeyDown);
             // 
             // columnHeader4
             // 
@@ -589,94 +696,9 @@
             this.SettingTab.Text = "Setting";
             this.SettingTab.UseVisualStyleBackColor = true;
             // 
-            // TaggingLabelMime
-            // 
-            this.TaggingLabelMime.Depth = 0;
-            this.TaggingLabelMime.Font = new System.Drawing.Font("Roboto", 11F);
-            this.TaggingLabelMime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TaggingLabelMime.Location = new System.Drawing.Point(190, 330);
-            this.TaggingLabelMime.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingLabelMime.Name = "TaggingLabelMime";
-            this.TaggingLabelMime.Size = new System.Drawing.Size(153, 19);
-            this.TaggingLabelMime.TabIndex = 21;
-            this.TaggingLabelMime.Text = "Mime / Type";
-            this.TaggingLabelMime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TaggingLabelImageSize
-            // 
-            this.TaggingLabelImageSize.Depth = 0;
-            this.TaggingLabelImageSize.Font = new System.Drawing.Font("Roboto", 11F);
-            this.TaggingLabelImageSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TaggingLabelImageSize.Location = new System.Drawing.Point(190, 355);
-            this.TaggingLabelImageSize.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingLabelImageSize.Name = "TaggingLabelImageSize";
-            this.TaggingLabelImageSize.Size = new System.Drawing.Size(153, 19);
-            this.TaggingLabelImageSize.TabIndex = 22;
-            this.TaggingLabelImageSize.Text = "0 x 0";
-            this.TaggingLabelImageSize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TaggingLabelFileSize
-            // 
-            this.TaggingLabelFileSize.Depth = 0;
-            this.TaggingLabelFileSize.Font = new System.Drawing.Font("Roboto", 11F);
-            this.TaggingLabelFileSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TaggingLabelFileSize.Location = new System.Drawing.Point(190, 380);
-            this.TaggingLabelFileSize.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingLabelFileSize.Name = "TaggingLabelFileSize";
-            this.TaggingLabelFileSize.Size = new System.Drawing.Size(153, 19);
-            this.TaggingLabelFileSize.TabIndex = 23;
-            this.TaggingLabelFileSize.Text = "0 Kb";
-            this.TaggingLabelFileSize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TaggingLabelIndex
-            // 
-            this.TaggingLabelIndex.Depth = 0;
-            this.TaggingLabelIndex.Font = new System.Drawing.Font("Roboto", 11F);
-            this.TaggingLabelIndex.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TaggingLabelIndex.Location = new System.Drawing.Point(229, 405);
-            this.TaggingLabelIndex.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingLabelIndex.Name = "TaggingLabelIndex";
-            this.TaggingLabelIndex.Size = new System.Drawing.Size(79, 36);
-            this.TaggingLabelIndex.TabIndex = 24;
-            this.TaggingLabelIndex.Text = "0 / 0";
-            this.TaggingLabelIndex.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TaggingBtnPrevImage
-            // 
-            this.TaggingBtnPrevImage.AutoSize = true;
-            this.TaggingBtnPrevImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TaggingBtnPrevImage.Depth = 0;
-            this.TaggingBtnPrevImage.Icon = null;
-            this.TaggingBtnPrevImage.Location = new System.Drawing.Point(194, 405);
-            this.TaggingBtnPrevImage.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.TaggingBtnPrevImage.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingBtnPrevImage.Name = "TaggingBtnPrevImage";
-            this.TaggingBtnPrevImage.Primary = false;
-            this.TaggingBtnPrevImage.Size = new System.Drawing.Size(28, 36);
-            this.TaggingBtnPrevImage.TabIndex = 25;
-            this.TaggingBtnPrevImage.Text = "<";
-            this.TaggingBtnPrevImage.UseVisualStyleBackColor = true;
-            this.TaggingBtnPrevImage.Click += new System.EventHandler(this.TaggingBtnPrevImage_Click);
-            // 
-            // TaggingBtnNextImage
-            // 
-            this.TaggingBtnNextImage.AutoSize = true;
-            this.TaggingBtnNextImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TaggingBtnNextImage.Depth = 0;
-            this.TaggingBtnNextImage.Icon = null;
-            this.TaggingBtnNextImage.Location = new System.Drawing.Point(315, 405);
-            this.TaggingBtnNextImage.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.TaggingBtnNextImage.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingBtnNextImage.Name = "TaggingBtnNextImage";
-            this.TaggingBtnNextImage.Primary = false;
-            this.TaggingBtnNextImage.Size = new System.Drawing.Size(28, 36);
-            this.TaggingBtnNextImage.TabIndex = 26;
-            this.TaggingBtnNextImage.Text = ">";
-            this.TaggingBtnNextImage.UseVisualStyleBackColor = true;
-            this.TaggingBtnNextImage.Click += new System.EventHandler(this.TaggingBtnNextImage_Click);
-            // 
             // Form1
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
@@ -737,6 +759,7 @@
         private MaterialSkin.Controls.MaterialLabel TaggingLabelIndex;
         private MaterialSkin.Controls.MaterialFlatButton TaggingBtnNextImage;
         private MaterialSkin.Controls.MaterialFlatButton TaggingBtnPrevImage;
+        private MaterialSkin.Controls.MaterialFlatButton TaggingBtnImageDelete;
     }
 }
 

@@ -39,7 +39,7 @@ namespace Tag.Core
         {
             for (int i = 0; i < tagList.Count; i++)
             {
-                Tagging(tagList[i].Path, tagList[i].ToTagLib());
+                Tagging(tagList[i].Path, tagList[i]);
                 yield return (int)(100.0 / tagList.Count * (i+1));
             }
         }
@@ -56,22 +56,21 @@ namespace Tag.Core
             }
         }
 
-        public void Tagging(string file, TagLib.Tag taginfo)
+        public void Tagging(string file, TagInfo taginfo)
         {
             var mp3File = TagLib.File.Create(file);
             mp3File.Tag.Title = taginfo.Title;
-            mp3File.Tag.Performers = taginfo.Performers;
+            mp3File.Tag.Performers = taginfo.Artist.ToArray();
             mp3File.Tag.Album = taginfo.Album;
             mp3File.Tag.Year = taginfo.Year;
             mp3File.Tag.Track = taginfo.Track;
-            mp3File.Tag.TrackCount = taginfo.TrackCount;
-            mp3File.Tag.Genres = taginfo.Genres;
+            mp3File.Tag.TrackCount = taginfo.Track;
+            mp3File.Tag.Genres = taginfo.Genre.ToArray();
             mp3File.Tag.Comment = taginfo.Comment;
-            mp3File.Tag.AlbumArtists = taginfo.AlbumArtists;
-            mp3File.Tag.Composers = taginfo.Composers;
-            mp3File.Tag.Disc = taginfo.Disc;
-            mp3File.Tag.Pictures = taginfo.Pictures;
-
+            mp3File.Tag.AlbumArtists = taginfo.AlbumArtist.ToArray();
+            mp3File.Tag.Composers = taginfo.Composer.ToArray();
+            // mp3File.Tag.Disc = taginfo.DiscNum;
+            mp3File.Tag.Pictures = taginfo.Image.ToArray();
             mp3File.Save();
         }
         

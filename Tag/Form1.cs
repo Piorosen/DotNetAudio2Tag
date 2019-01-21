@@ -30,7 +30,7 @@ namespace Tag
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-
+            (TaggingImageList as Control).AllowDrop = true;
             Log.FilePrepare(string.Empty);
             Log.FileWrite("Run", Core.Extension.Error.None);
         }
@@ -150,8 +150,7 @@ namespace Tag
             });
         }
         #endregion
-
-
+        
         #region Drag Enter & Drop
         private void DragEnters(object sender, DragEventArgs e)
         {
@@ -220,11 +219,38 @@ namespace Tag
             Log.FileWrite("End", Error.Success);
         }
 
+
+        private void TaggingImageList_DragDrop(object sender, DragEventArgs e)
+        {
+            Log.FileWrite("Start", Error.None);
+            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (var path in items)
+            {
+                try
+                {
+                    TagLib.Picture picture = new TagLib.Picture(path);
+                    int now = int.Parse(TaggingLabelIndex.Text.Split('/')[0]);
+                    int max = int.Parse(TaggingLabelIndex.Text.Split('/')[1]);
+                    tagTemp.Image.Insert(now, picture);
+                    SetCoverImage(now, tagTemp.Image.Count);
+                    Log.FileWrite($"Check Vailidate", Error.Success);
+                }
+                catch (Exception)
+                {
+                    Log.FileWrite("Not Image File, Check Vailidate", Error.IOException);
+                }
+                    
+            }
+            Log.FileWrite("End", Error.Success);
+        }
+        #endregion
+
         private void TaggingListFile_SelectedIndexChanged(object sender, EventArgs e)
         {
             Log.FileWrite("Start", Error.None);
             try
-            {   if (TaggingListFile.SelectedIndices.Count == 0)
+            {
+                if (TaggingListFile.SelectedIndices.Count == 0)
                 {
                     Console.WriteLine("0 임");
                     return;
@@ -241,18 +267,19 @@ namespace Tag
 
         private void TaggingTextInfo_KeyDown(object sender, KeyEventArgs e)
         {
-            try {
+            try
+            {
                 if (e.KeyCode == Keys.Enter)
                 {
                     SetTextTagging();
                     MessageBox.Show("Complete");
                 }
-            }catch (Exception)
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Error!");
             }
         }
-        #endregion
 
         private void TaggingBtnPrevImage_Click(object sender, EventArgs e)
         {
@@ -284,7 +311,14 @@ namespace Tag
         {
             if (tagTemp.Image.Count > 0)
             {
-                var bin = (byte[])(tagTemp.Image[index].Data.Data);
+                if (0 > index)
+                {
+                    index = 0;
+                }else if (index >= maxIndex)
+                {
+                    index = maxIndex - 1;
+                }
+                var bin = tagTemp.Image[index].Data.Data;
                 var image = Image.FromStream(new MemoryStream(bin));
                 TaggingImageList.Image = image;
                 TaggingLabelImageSize.Text = $"{image.Width} x {image.Height}";
@@ -292,6 +326,21 @@ namespace Tag
                 TaggingLabelMime.Text = $"Image/{ImageCodecInfo.GetImageEncoders().FirstOrDefault(x => x.FormatID == image.RawFormat.Guid).FilenameExtension.Split(';')[0]}";
                 TaggingLabelIndex.Text = $"{index + 1} / {maxIndex}";
             }
+            else
+            {
+                TaggingImageList.Image = null;
+                TaggingLabelImageSize.Text = $"{0} x {0}";
+                TaggingLabelFileSize.Text = CapacityConverter.Change(0);
+                TaggingLabelMime.Text = $"Mime/Type";
+                TaggingLabelIndex.Text = $"{0} / {0}";
+            }
+        }
+
+        private void TaggingBtnImageDelete_Click(object sender, EventArgs e)
+        {
+            int now = int.Parse(TaggingLabelIndex.Text.Split('/')[0]);
+            tagTemp.Image.RemoveAt(now - 1);
+            SetCoverImage(now - 1, tagTemp.Image.Count);
         }
 
 
@@ -323,11 +372,8 @@ namespace Tag
             TaggingTextComposers.Text = string.Join(";", tagTemp.Composer);
             TaggingTextDiscNum.Text = tagTemp.DiscNum;
             TaggingTextDirectory.Text = tagTemp.Path;
-
-            if (tagTemp.Image.Count > 0)
-            {
-                SetCoverImage(0, tagTemp.Image.Count);
-            }
+            
+            SetCoverImage(0, tagTemp.Image.Count);
             
         }
 
@@ -356,7 +402,6 @@ namespace Tag
             }
             Log.FileWrite("Start", Error.None);
         }
-        
 
     }
 }

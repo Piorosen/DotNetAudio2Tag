@@ -9,8 +9,6 @@ namespace Tag.Core
 {
     public class TagInfo
     {
-        private TagLib.Tag File;
-
         public string Path = string.Empty;
         public string Title = string.Empty;
         public List<string> Artist = new List<string>();
@@ -26,8 +24,6 @@ namespace Tag.Core
        
         public TagInfo(TagLib.Tag value)
         {
-            File = value;
-
             Title = value.Title;
             Artist = value.Performers.ToList();
             Album = value.Album;
@@ -38,22 +34,6 @@ namespace Tag.Core
             AlbumArtist = value.AlbumArtists.ToList();
             Composer = value.Composers.ToList();
             Image = value.Pictures.ToList();
-        }
-
-        public TagLib.Tag ToTagLib()
-        {
-            File.Title = Title;
-            File.Performers = Artist.ToArray();
-            File.Album = Album;
-            File.Year = Year;
-            File.Track = Track;
-            File.Genres = Genre.ToArray();
-            File.Comment = Comment;
-            File.AlbumArtists = AlbumArtist.ToArray();
-            File.Composers = Composer.ToArray();
-            File.Pictures = Image.ToArray();
-
-            return File;
         }
     }
 }
