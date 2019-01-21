@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -263,18 +264,34 @@ namespace Tag
             {
                 return;
             }
-
-            if (tagTemp.Image.Count > 0)
-            {
-                var bin = (byte[])(tagTemp.Image[now - 1].Data.Data);
-                TaggingImageList.Image = Image.FromStream(new MemoryStream(bin));
-                TaggingLabelFileSize.Text = bin.LongLength
-            }
+            SetCoverImage(now - 1, max);
+            
         }
-
         private void TaggingBtnNextImage_Click(object sender, EventArgs e)
         {
+            int now, max;
+            now = int.Parse(TaggingLabelIndex.Text.Split('/')[0]);
+            max = int.Parse(TaggingLabelIndex.Text.Split('/')[1]);
+            now += 1;
+            if (now > max)
+            {
+                return;
+            }
+            SetCoverImage(now - 1, max);
+        }
 
+        void SetCoverImage(int index, int maxIndex)
+        {
+            if (tagTemp.Image.Count > 0)
+            {
+                var bin = (byte[])(tagTemp.Image[index].Data.Data);
+                var image = Image.FromStream(new MemoryStream(bin));
+                TaggingImageList.Image = image;
+                TaggingLabelImageSize.Text = $"{image.Width} x {image.Height}";
+                TaggingLabelFileSize.Text = CapacityConverter.Change(bin.LongLength);
+                TaggingLabelMime.Text = $"Image/{ImageCodecInfo.GetImageEncoders().FirstOrDefault(x => x.FormatID == image.RawFormat.Guid).FilenameExtension.Split(';')[0]}";
+                TaggingLabelIndex.Text = $"{index + 1} / {maxIndex}";
+            }
         }
 
 
@@ -309,8 +326,7 @@ namespace Tag
 
             if (tagTemp.Image.Count > 0)
             {
-                var bin = (byte[])(tagTemp.Image[0].Data.Data);
-                TaggingImageList.Image = Image.FromStream(new MemoryStream(bin));
+                SetCoverImage(0, tagTemp.Image.Count);
             }
             
         }

@@ -315,6 +315,7 @@
             // 
             // TaggingImageList
             // 
+            this.TaggingImageList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TaggingImageList.Location = new System.Drawing.Point(3, 322);
             this.TaggingImageList.Name = "TaggingImageList";
             this.TaggingImageList.Size = new System.Drawing.Size(180, 180);

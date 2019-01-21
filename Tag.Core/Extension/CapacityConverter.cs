@@ -7,7 +7,7 @@ using System.Numerics;
 
 namespace Tag.Core.Extension
 {
-    class CapacityConverter
+    public class CapacityConverter
     {
         static private readonly string[] Unit = { "Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
         static public string Change(BigInteger capcity)

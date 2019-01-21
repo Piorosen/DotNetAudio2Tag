@@ -49,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extension\AES256.cs" />
+    <Compile Include="Extension\CapacityConverter.cs" />
     <Compile Include="Extension\Error.cs" />
     <Compile Include="Extension\IsAdmin.cs" />
     <Compile Include="Extension\Log.cs" />
