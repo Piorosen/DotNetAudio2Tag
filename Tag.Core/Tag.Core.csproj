@@ -70,9 +70,9 @@
     <Compile Include="Library\ICore.cs" />
     <Compile Include="Library\TagInfo.cs" />
     <Compile Include="Library\Wav2Mp3Converter.cs" />
-    <Compile Include="Library\CueSpliter.cs" />
     <Compile Include="Library\Mp3Tagging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Library\CueSpliter.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

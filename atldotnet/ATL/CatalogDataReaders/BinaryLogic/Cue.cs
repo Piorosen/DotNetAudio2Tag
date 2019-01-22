@@ -152,7 +152,8 @@ namespace ATL.CatalogDataReaders.BinaryLogic
                         {
                             if (comments.Length > 0) comments += Settings.InternalValueSeparator;
                             comments += s.Substring(firstBlank + 1, s.Length - firstBlank - 1);
-                        }else if("CATALOG".Equals(firstWord, StringComparison.OrdinalIgnoreCase))
+                        }
+                        else if("CATALOG".Equals(firstWord, StringComparison.OrdinalIgnoreCase))
                         {
                             barcode = stripBeginEndQuotes(s.Substring(firstBlank + 1, s.Length - firstBlank - 1));
                         }

@@ -26,9 +26,8 @@ namespace Tag.Core
         public string Title = string.Empty;
         public string SavePath = string.Empty;
         public string WavPath = string.Empty;
-        public string Comments = String.Empty;
         public string Artists = String.Empty;
-
+        public string Genre = String.Empty;
         public string Barcord = String.Empty;
 
 
@@ -77,6 +76,11 @@ namespace Tag.Core
                 Path = cuePath,
                 WavPath = wavePath,
                 SavePath = savePath,
+                Artists = reader.Artists,
+                Title = reader.Title,
+                Barcord = reader.Barcode,
+                Genre = reader.Genre,
+
                 Format = new WavFormat
                 {
                     BlockAlign = wfr.BlockAlign,
