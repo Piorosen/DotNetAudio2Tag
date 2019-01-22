@@ -63,6 +63,7 @@ namespace ATL.CatalogDataReaders.BinaryLogic
                 return genre;
             }
         }
+
         public string Date
         {
             get
@@ -231,10 +232,6 @@ namespace ATL.CatalogDataReaders.BinaryLogic
                         else if ("PERFORMER".Equals(firstWord, StringComparison.OrdinalIgnoreCase))
                         {
                             currentTrack.Artist = stripBeginEndQuotes(s.Substring(firstBlank + 1, s.Length - firstBlank - 1));
-                        }
-                        else if ("CATALOG".Equals(firstWord, StringComparison.OrdinalIgoreCase))
-                        {
-                            currentTrackl.
                         }
                         else if ("TITLE".Equals(firstWord, StringComparison.OrdinalIgnoreCase))
                         {

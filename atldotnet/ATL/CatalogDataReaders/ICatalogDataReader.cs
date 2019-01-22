@@ -39,13 +39,21 @@ namespace ATL.CatalogDataReaders
         {
             get;
         }
+        string Barcode
+        {
+            get;
+        }
+        string Genre
+        {
+            get;
+        }
 
         /// <summary>
         /// List of the tracks described in the container
         /// </summary>
 		IList<ATL.Track> Tracks
-		{
-			get;
-		}
-	}
+        {
+            get;
+        }
+    }
 }

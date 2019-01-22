@@ -16,6 +16,10 @@
     <PackageReleaseNotes>TBD</PackageReleaseNotes>
     <Version>2.6</Version>
     <TargetFramework>net35</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net30|AnyCPU'">
     <DebugType>full</DebugType>

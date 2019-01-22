@@ -35,5 +35,8 @@ namespace Tag.Core
             Composer = value.Composers.ToList();
             Image = value.Pictures.ToList();
         }
+        public TagInfo()
+        {
+        }
     }
 }

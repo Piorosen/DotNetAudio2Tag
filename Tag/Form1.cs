@@ -168,10 +168,12 @@ namespace Tag
                 var t = Path.GetExtension(path).ToLower();
                 if (t == ".cue")
                 {
+                    Core.AutoConverter a = new Core.AutoConverter();
+                    a.AutoConverting(path);
+
+
                     Log.FileWrite("{t}", Error.Success);
-                    cueSpliter.AddFile(path
-                        , Path.GetDirectoryName(path) + @"\" + Path.GetFileNameWithoutExtension(path) + ".wav"
-                        , Path.GetDirectoryName(path) + @"\");
+                    cueSpliter.AddFile(path);
                     CuesplitListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
                 }
             }
@@ -403,5 +405,16 @@ namespace Tag
             Log.FileWrite("Start", Error.None);
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

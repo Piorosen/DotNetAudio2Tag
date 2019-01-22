@@ -67,6 +67,7 @@
             this.TaggingProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
             this.TaggingBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SettingTab = new System.Windows.Forms.TabPage();
+            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TabControl.SuspendLayout();
             this.CuesplitTab.SuspendLayout();
             this.ConvMp3Tab.SuspendLayout();
@@ -287,6 +288,7 @@
             // TaggingTab
             // 
             this.TaggingTab.BackColor = System.Drawing.SystemColors.Control;
+            this.TaggingTab.Controls.Add(this.materialRaisedButton1);
             this.TaggingTab.Controls.Add(this.TaggingBtnImageDelete);
             this.TaggingTab.Controls.Add(this.TaggingBtnNextImage);
             this.TaggingTab.Controls.Add(this.TaggingBtnPrevImage);
@@ -696,6 +698,22 @@
             this.SettingTab.Text = "Setting";
             this.SettingTab.UseVisualStyleBackColor = true;
             // 
+            // materialRaisedButton1
+            // 
+            this.materialRaisedButton1.AutoSize = true;
+            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Icon = null;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(390, 443);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(195, 36);
+            this.materialRaisedButton1.TabIndex = 28;
+            this.materialRaisedButton1.Text = "materialRaisedButton1";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -707,6 +725,7 @@
             this.Controls.Add(this.materialTabSelector1);
             this.Name = "Form1";
             this.Text = "Audio2Tag";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.TabControl.ResumeLayout(false);
             this.CuesplitTab.ResumeLayout(false);
             this.CuesplitTab.PerformLayout();
@@ -760,6 +779,7 @@
         private MaterialSkin.Controls.MaterialFlatButton TaggingBtnNextImage;
         private MaterialSkin.Controls.MaterialFlatButton TaggingBtnPrevImage;
         private MaterialSkin.Controls.MaterialFlatButton TaggingBtnImageDelete;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
     }
 }
 

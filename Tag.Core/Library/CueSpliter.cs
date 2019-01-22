@@ -13,7 +13,7 @@ namespace Tag.Core
     {
         public string Title = string.Empty;
         public double DurationMS = 0.0;
-        
+
     }
     public class WavFormat
     {
@@ -29,29 +29,28 @@ namespace Tag.Core
         public string Artists = String.Empty;
         public string Genre = String.Empty;
         public string Barcord = String.Empty;
-
-
+        
         public WavFormat Format = null;
         public List<TrackInfo> Track = new List<TrackInfo>();
     }
 
-    public class CueSpliter : ICore<CueData>
+    public class CueSpliter : ICore<CueData, CueData>
     {
         readonly List<CueData> CueList = new List<CueData>();
 
         public bool AddFile(string path)
         {
             return AddFile(path
-                 , Path.GetDirectoryName(path) + @"/" + Path.GetFileNameWithoutExtension(path) + ".wav"
-                 , Path.GetDirectoryName(path) + @"/");
+                 , Path.GetDirectoryName(path) + @"\" + Path.GetFileNameWithoutExtension(path) + ".wav"
+                 , Path.GetDirectoryName(path) + @"\");
         }
 
         public bool AddFile(string cuePath, string wavePath, string savePath)
         {
             WaveFileReader wfr = null;
+            
             ICatalogDataReader reader;
             NAudio.Wave.CueList list = new CueList();
-            list[0].
 
             try
             {
@@ -60,8 +59,9 @@ namespace Tag.Core
                             .GetCatalogDataReader(cuePath);
 
                 wfr = new WaveFileReader(wavePath);
-                
-            }catch (Exception)
+
+            }
+            catch (Exception)
             {
                 return false;
             }
@@ -76,18 +76,18 @@ namespace Tag.Core
                 Path = cuePath,
                 WavPath = wavePath,
                 SavePath = savePath,
-                Artists = reader.Artists,
+                Artists = reader.Artist,
                 Title = reader.Title,
                 Barcord = reader.Barcode,
                 Genre = reader.Genre,
-
+                
                 Format = new WavFormat
                 {
                     BlockAlign = wfr.BlockAlign,
                     BytesPerMillisecond = wfr.WaveFormat.AverageBytesPerSecond / 1000
                 }
             };
-            
+
             foreach (var track in reader.Tracks)
             {
                 data.Track.Add(new TrackInfo
@@ -96,11 +96,15 @@ namespace Tag.Core
                     Title = track.Title
                 });
             }
-
             CueList.Add(data);
             return true;
         }
-        
+
+        public bool AddFile(CueData path)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Delete(int at)
         {
             if (0 <= at && at < CueList.Count)
@@ -125,7 +129,7 @@ namespace Tag.Core
 
 
             int count = 0;
-            foreach (var list in CueList) 
+            foreach (var list in CueList)
             {
                 using (WaveFileReader reader = new WaveFileReader(list.WavPath))
                 {
@@ -133,7 +137,7 @@ namespace Tag.Core
                     int num = 0;
                     foreach (var track in list.Track)
                     {
-                        using (WaveFileWriter writer = new WaveFileWriter(list.SavePath + $"{num}. " + track.Title + ".wav", reader.WaveFormat))
+                        using (WaveFileWriter writer = new WaveFileWriter(list.SavePath + $"{num + 1}. " + track.Title + ".wav", reader.WaveFormat))
                         {
                             int start = (int)(position * list.Format.BytesPerMillisecond);
                             start -= start % reader.WaveFormat.BlockAlign;

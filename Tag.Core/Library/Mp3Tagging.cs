@@ -8,8 +8,6 @@ using NAudio.Lame;
 using NAudio.Wave;
 using TagLib;
 
-using TagType = System.ValueTuple<string, Tag.Core.TagInfo>;
-
 namespace Tag.Core
 {
     public class Mp3Tagging : ICore<TagInfo, TagInfo>

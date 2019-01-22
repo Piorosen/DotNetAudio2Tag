@@ -39,5 +39,9 @@ namespace ATL.CatalogDataReaders.BinaryLogic
         {
             get { return new List<Track>(); }
         }
+
+        public string Barcode => "";
+
+        public string Genre => "";
     }
 }
