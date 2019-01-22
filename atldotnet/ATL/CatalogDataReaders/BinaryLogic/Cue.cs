@@ -52,7 +52,29 @@ namespace ATL.CatalogDataReaders.BinaryLogic
         {
             get
             {
-                return 
+                return barcode;
+            }
+        }
+
+        public string Genre
+        {
+            get
+            {
+                return genre;
+            }
+        }
+        public string Date
+        {
+            get
+            {
+                return date;
+            }
+        }
+        public string Composers
+        {
+            get
+            {
+                return composers;
             }
         }
 
@@ -130,6 +152,9 @@ namespace ATL.CatalogDataReaders.BinaryLogic
                         {
                             if (comments.Length > 0) comments += Settings.InternalValueSeparator;
                             comments += s.Substring(firstBlank + 1, s.Length - firstBlank - 1);
+                        }else if("CATALOG".Equals(firstWord, StringComparison.OrdinalIgnoreCase))
+                        {
+                            barcode = stripBeginEndQuotes(s.Substring(firstBlank + 1, s.Length - firstBlank - 1));
                         }
                         else if ("PERFORMER".Equals(firstWord, StringComparison.OrdinalIgnoreCase))
                         {
