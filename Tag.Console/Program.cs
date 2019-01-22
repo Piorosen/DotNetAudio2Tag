@@ -12,6 +12,7 @@ namespace Tag.Console
             Tag.Core.CueSpliter spliter = new Core.CueSpliter();
             Tag.Core.Wav2Mp3Converter converter = new Core.Wav2Mp3Converter();
             Tag.Core.Mp3Tagging tagging = new Core.Mp3Tagging();
+            Tag.Core.MusicBrainzLib lib = new Core.MusicBrainzLib();
 
             while (true)
             {
@@ -93,6 +94,10 @@ namespace Tag.Console
                         System.Console.WriteLine("cue");
                         System.Console.WriteLine("conv");
                     }
+                }
+                else if (token[0] == "mb")
+                {
+                    lib.SetTrack(new Core.CueData() { Title = "Hydra", Artists = null, Comments = null });
                 }
                 else
                 {

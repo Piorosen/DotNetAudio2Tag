@@ -86,5 +86,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\atldotnet\ATL\ATL.csproj">
+      <Project>{DE2EA61D-C6C5-458A-922B-C0AE6A680EBE}</Project>
+      <Name>ATL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

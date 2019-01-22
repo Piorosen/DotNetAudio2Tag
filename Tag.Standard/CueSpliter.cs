@@ -26,6 +26,12 @@ namespace Tag.Core
         public string Title = string.Empty;
         public string SavePath = string.Empty;
         public string WavPath = string.Empty;
+        public string Comments = String.Empty;
+        public string Artists = String.Empty;
+
+        public string Barcord = String.Empty;
+
+
         public WavFormat Format = null;
         public List<TrackInfo> Track = new List<TrackInfo>();
     }
@@ -45,6 +51,8 @@ namespace Tag.Core
         {
             WaveFileReader wfr = null;
             ICatalogDataReader reader;
+            NAudio.Wave.CueList list = new CueList();
+            list[0].
 
             try
             {
@@ -62,6 +70,7 @@ namespace Tag.Core
             {
                 wfr?.Close();
             }
+
 
             CueData data = new CueData
             {

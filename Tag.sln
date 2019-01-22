@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tag.Standard", "Tag.Standar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tag.Console", "Tag.Console\Tag.Console.csproj", "{95C8915D-8A25-47FD-AE18-6BBAE335A4B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATL", "atldotnet\ATL\ATL.csproj", "{DE2EA61D-C6C5-458A-922B-C0AE6A680EBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{95C8915D-8A25-47FD-AE18-6BBAE335A4B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95C8915D-8A25-47FD-AE18-6BBAE335A4B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95C8915D-8A25-47FD-AE18-6BBAE335A4B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE2EA61D-C6C5-458A-922B-C0AE6A680EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE2EA61D-C6C5-458A-922B-C0AE6A680EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE2EA61D-C6C5-458A-922B-C0AE6A680EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE2EA61D-C6C5-458A-922B-C0AE6A680EBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

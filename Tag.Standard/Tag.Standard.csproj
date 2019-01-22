@@ -7,7 +7,8 @@
   <ItemGroup>
     <PackageReference Include="NAudio" Version="1.8.5" />
     <PackageReference Include="NAudio.Lame" Version="1.0.5" />
-    <PackageReference Include="z440.atl.core" Version="2.5.0" />
+    <PackageReference Include="MusicBrainz.Core" Version="1.0.1" />
+    <PackageReference Include="taglib" Version="2.1.0" />
   </ItemGroup>
 
 </Project>
