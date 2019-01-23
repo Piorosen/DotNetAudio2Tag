@@ -82,7 +82,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\atldotnet\ATL\ATL.csproj">
+      <Project>{de2ea61d-c6c5-458a-922b-c0ae6a680ebe}</Project>
+      <Name>ATL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="libmp3lame.32.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -90,16 +95,6 @@
     <Content Include="libmp3lame.64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\atldotnet\ATL\ATL.csproj">
-      <Project>{DE2EA61D-C6C5-458A-922B-C0AE6A680EBE}</Project>
-      <Name>ATL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\atldotnet\ATL\ATL.csproj">
-      <Project>{de2ea61d-c6c5-458a-922b-c0ae6a680ebe}</Project>
-      <Name>ATL</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
