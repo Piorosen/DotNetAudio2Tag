@@ -141,10 +141,6 @@ namespace Tag
                 var t = Path.GetExtension(path).ToLower();
                 if (t == ".cue")
                 {
-                    Core.AutoConverter a = new Core.AutoConverter();
-                    a.AutoConverting(path);
-
-
                     Log.FileWrite("{t}", Error.Success);
                     cueSpliter.AddFile(path);
                     CuesplitListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
@@ -388,6 +384,15 @@ namespace Tag
         private void materialRaisedButton1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void AutoBtnExec_Click(object sender, EventArgs e)
+        {
+            Core.AutoConverter autoConv = new Core.AutoConverter();
+            foreach (var i in autoConv.AutoConverting(AutoTextCuepath.Text, AutoTextWavpath.Text, AutoTextMp3path.Text, AutoTextWorkDir.Text))
+            {
+
+            }
         }
     }
 }

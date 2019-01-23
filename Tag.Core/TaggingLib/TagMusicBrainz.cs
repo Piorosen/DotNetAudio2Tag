@@ -10,12 +10,26 @@ using System.Xml;
 
 namespace Tag.Core
 {
+    public class BrainzInfo
+    {
+        public bool TagInfo = false;
+        public string Title = string.Empty;
+        public TagInfo Tag = new TagInfo();
+        public int Score = 0;
+        public string Type = string.Empty;
+        public List<string> Artist = new List<string>();
+        public string Album = string.Empty;
+        public List<int> Track = new List<int>();
+        public string Year = string.Empty;
+        public string Country = string.Empty;
+        public List<string> Format = new List<string>();
+        public List<string> Publisher = new List<string>();
+        public List<string> CatNo = new List<string>();
+        public string Barcode = string.Empty;
+    }
+
     public class TagMusicBrainz : ITagger
     {
-        public TagMusicBrainz()
-        {
-        }
-
         private string Get(string Link, bool check = false)
         {
             try
@@ -83,21 +97,57 @@ namespace Tag.Core
 
             return pimage;
         }
+        
+        public List<BrainzInfo> GetReleaseInfo(TagInfo info)
+        {
+            var result -new List<BrainzInfo>();
 
+            var data = MusicBrainz.Search.Release(query: info.Title, artist: string.Join(";", info.Artist));
+
+            foreach (var value in data.Data)
+            {
+                BrainzInfo binfo = new BrainzInfo
+                {
+                    Score = value.Score,
+                    Title = value.Title,
+                    TagInfo = false,
+                    Country = value.Country,
+                    Year = value.Date,
+                    Barcode = value.Id
+                };
+
+                foreach (var i in value.Artistcredit)
+                {
+                    binfo.Artist.Add(i.Artist.Name);
+                }
+
+                foreach (var i in value.Labelinfolist)
+                {
+                    binfo.Publisher.Add(i.Label.Name);
+                    binfo.CatNo.Add(i.Catalognumber);
+                }
+                foreach (var i in value.Mediumlist.Medium)
+                {
+                    binfo.Format.Add(i.Format);
+                    binfo.Track.Add(int.Parse(i.Tracklist.Count));
+                }
+                result.Add(binfo);
+            }
+            return result;
+        }
 
         public List<TagInfo> GetTagInfo(Core.CueData info)
         {
             var result = new List<TagInfo>();
-
-            var data = MusicBrainz.Search.Release(barcode: info.Barcord);
-           
-            if (data.Count == 1)
+            if (info.Barcord != null)
             {
+                var data = MusicBrainz.Search.Release(barcode: info.Barcord);
+
                 var tagging = Get($"http://musicbrainz.org/ws/2/recording/?query=reid:{data.Data[0].Id}");
                 XmlDocument xmlreader = new XmlDocument();
                 xmlreader.LoadXml(tagging);
                 var list = xmlreader["metadata"]["recording-list"].ChildNodes;
-                
+
                 var pimage = GetImage($"http://coverartarchive.org/release/{data.Data[0].Id}");
 
                 for (int i = 0; i < list.Count && i < info.Track.Count; i++)
@@ -115,18 +165,15 @@ namespace Tag.Core
                         Track = (uint)(i + 1),
                         Artist = Artist,
                         Composer = Composer,
-                        Year = uint.Parse(data.Data[0].Date.Split('-')[0]),
+                        Year = uint.Parse(data.Data[0].Date.Split('-')[0])
                     };
 
                     ti.Image.Add(pimage);
 
                     result.Add(ti);
                 }
-                
             }
-
             return result;
         }
-
     }
 }

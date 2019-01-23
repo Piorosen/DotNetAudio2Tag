@@ -8,6 +8,6 @@ namespace Tag.Core
 {
     interface ITagger
     {
-        List<TagInfo> GetTagInfo(Core.CueData info);
+      //  List<TagInfo> GetTagInfo(Core.CueData info);
     }
 }

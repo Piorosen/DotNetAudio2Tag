@@ -12,6 +12,7 @@ namespace Tag.Core
     public class TrackInfo
     {
         public string Title = string.Empty;
+        public string Artist = string.Empty;
         public double DurationMS = 0.0;
 
     }
@@ -93,7 +94,8 @@ namespace Tag.Core
                 data.Track.Add(new TrackInfo
                 {
                     DurationMS = track.DurationMs,
-                    Title = track.Title
+                    Title = track.Title,
+                    Artist = track.Artist
                 });
             }
             CueList.Add(data);

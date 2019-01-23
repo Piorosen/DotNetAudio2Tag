@@ -31,10 +31,44 @@
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.TabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.AutoTab = new System.Windows.Forms.TabPage();
-            this.materialSingleLineTextField3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.AutoTextWorkDir = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.AutoBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.AutoTextMp3path = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.AutoTextWavpath = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.AutoTextCuepath = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialProgressBar1 = new MaterialSkin.Controls.MaterialProgressBar();
             this.CuesplitTab = new System.Windows.Forms.TabPage();
+            this.materialSingleLineTextField4 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField5 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField6 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField7 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField8 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField9 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField10 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField11 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField12 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField13 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.CuesplitTextTitle = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.CuesplitListStatus = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CuesplitProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
+            this.CuesplitBtnExecute = new MaterialSkin.Controls.MaterialRaisedButton();
             this.ConvMp3Tab = new System.Windows.Forms.TabPage();
+            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField15 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField16 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField17 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField18 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField19 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField20 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField21 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField22 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialSingleLineTextField23 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.Mp3ConvListStatus = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Mp3ConvProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
+            this.Mp3ConvBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TaggingTab = new System.Windows.Forms.TabPage();
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TaggingBtnImageDelete = new MaterialSkin.Controls.MaterialFlatButton();
@@ -62,39 +96,6 @@
             this.TaggingBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SettingTab = new System.Windows.Forms.TabPage();
             this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
-            this.materialSingleLineTextField4 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField5 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField6 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField7 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField8 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField9 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField10 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField11 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField12 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField13 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField14 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.CuesplitListStatus = new MaterialSkin.Controls.MaterialListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CuesplitProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
-            this.CuesplitBtnExecute = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField15 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField16 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField17 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField18 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField19 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField20 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField21 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField22 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField23 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.Mp3ConvListStatus = new MaterialSkin.Controls.MaterialListView();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Mp3ConvProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
-            this.Mp3ConvBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialSingleLineTextField24 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField25 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialRaisedButton2 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TabControl.SuspendLayout();
             this.AutoTab.SuspendLayout();
             this.CuesplitTab.SuspendLayout();
@@ -137,10 +138,11 @@
             // AutoTab
             // 
             this.AutoTab.BackColor = System.Drawing.SystemColors.Control;
-            this.AutoTab.Controls.Add(this.materialRaisedButton2);
-            this.AutoTab.Controls.Add(this.materialSingleLineTextField25);
-            this.AutoTab.Controls.Add(this.materialSingleLineTextField24);
-            this.AutoTab.Controls.Add(this.materialSingleLineTextField3);
+            this.AutoTab.Controls.Add(this.AutoTextWorkDir);
+            this.AutoTab.Controls.Add(this.AutoBtnExec);
+            this.AutoTab.Controls.Add(this.AutoTextMp3path);
+            this.AutoTab.Controls.Add(this.AutoTextWavpath);
+            this.AutoTab.Controls.Add(this.AutoTextCuepath);
             this.AutoTab.Controls.Add(this.materialProgressBar1);
             this.AutoTab.Location = new System.Drawing.Point(4, 22);
             this.AutoTab.Name = "AutoTab";
@@ -148,22 +150,91 @@
             this.AutoTab.TabIndex = 4;
             this.AutoTab.Text = "Auto";
             // 
-            // materialSingleLineTextField3
+            // AutoTextWorkDir
             // 
-            this.materialSingleLineTextField3.Depth = 0;
-            this.materialSingleLineTextField3.Hint = "Cue File Path";
-            this.materialSingleLineTextField3.Location = new System.Drawing.Point(19, 30);
-            this.materialSingleLineTextField3.MaxLength = 32767;
-            this.materialSingleLineTextField3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField3.Name = "materialSingleLineTextField3";
-            this.materialSingleLineTextField3.PasswordChar = '\0';
-            this.materialSingleLineTextField3.SelectedText = "";
-            this.materialSingleLineTextField3.SelectionLength = 0;
-            this.materialSingleLineTextField3.SelectionStart = 0;
-            this.materialSingleLineTextField3.Size = new System.Drawing.Size(530, 23);
-            this.materialSingleLineTextField3.TabIndex = 1;
-            this.materialSingleLineTextField3.TabStop = false;
-            this.materialSingleLineTextField3.UseSystemPasswordChar = false;
+            this.AutoTextWorkDir.Depth = 0;
+            this.AutoTextWorkDir.Hint = "Work Directory";
+            this.AutoTextWorkDir.Location = new System.Drawing.Point(22, 48);
+            this.AutoTextWorkDir.MaxLength = 32767;
+            this.AutoTextWorkDir.MouseState = MaterialSkin.MouseState.HOVER;
+            this.AutoTextWorkDir.Name = "AutoTextWorkDir";
+            this.AutoTextWorkDir.PasswordChar = '\0';
+            this.AutoTextWorkDir.SelectedText = "";
+            this.AutoTextWorkDir.SelectionLength = 0;
+            this.AutoTextWorkDir.SelectionStart = 0;
+            this.AutoTextWorkDir.Size = new System.Drawing.Size(530, 23);
+            this.AutoTextWorkDir.TabIndex = 5;
+            this.AutoTextWorkDir.TabStop = false;
+            this.AutoTextWorkDir.Text = "D:\\data\\Coe\\wav\\";
+            this.AutoTextWorkDir.UseSystemPasswordChar = false;
+            // 
+            // AutoBtnExec
+            // 
+            this.AutoBtnExec.AutoSize = true;
+            this.AutoBtnExec.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoBtnExec.Depth = 0;
+            this.AutoBtnExec.Icon = null;
+            this.AutoBtnExec.Location = new System.Drawing.Point(783, 439);
+            this.AutoBtnExec.MouseState = MaterialSkin.MouseState.HOVER;
+            this.AutoBtnExec.Name = "AutoBtnExec";
+            this.AutoBtnExec.Primary = true;
+            this.AutoBtnExec.Size = new System.Drawing.Size(195, 36);
+            this.AutoBtnExec.TabIndex = 4;
+            this.AutoBtnExec.Text = "materialRaisedButton2";
+            this.AutoBtnExec.UseVisualStyleBackColor = true;
+            this.AutoBtnExec.Click += new System.EventHandler(this.AutoBtnExec_Click);
+            // 
+            // AutoTextMp3path
+            // 
+            this.AutoTextMp3path.Depth = 0;
+            this.AutoTextMp3path.Hint = "Mp3 Save Path";
+            this.AutoTextMp3path.Location = new System.Drawing.Point(22, 166);
+            this.AutoTextMp3path.MaxLength = 32767;
+            this.AutoTextMp3path.MouseState = MaterialSkin.MouseState.HOVER;
+            this.AutoTextMp3path.Name = "AutoTextMp3path";
+            this.AutoTextMp3path.PasswordChar = '\0';
+            this.AutoTextMp3path.SelectedText = "";
+            this.AutoTextMp3path.SelectionLength = 0;
+            this.AutoTextMp3path.SelectionStart = 0;
+            this.AutoTextMp3path.Size = new System.Drawing.Size(530, 23);
+            this.AutoTextMp3path.TabIndex = 3;
+            this.AutoTextMp3path.TabStop = false;
+            this.AutoTextMp3path.UseSystemPasswordChar = false;
+            // 
+            // AutoTextWavpath
+            // 
+            this.AutoTextWavpath.Depth = 0;
+            this.AutoTextWavpath.Hint = "Wav Save Path";
+            this.AutoTextWavpath.Location = new System.Drawing.Point(22, 128);
+            this.AutoTextWavpath.MaxLength = 32767;
+            this.AutoTextWavpath.MouseState = MaterialSkin.MouseState.HOVER;
+            this.AutoTextWavpath.Name = "AutoTextWavpath";
+            this.AutoTextWavpath.PasswordChar = '\0';
+            this.AutoTextWavpath.SelectedText = "";
+            this.AutoTextWavpath.SelectionLength = 0;
+            this.AutoTextWavpath.SelectionStart = 0;
+            this.AutoTextWavpath.Size = new System.Drawing.Size(530, 23);
+            this.AutoTextWavpath.TabIndex = 2;
+            this.AutoTextWavpath.TabStop = false;
+            this.AutoTextWavpath.UseSystemPasswordChar = false;
+            // 
+            // AutoTextCuepath
+            // 
+            this.AutoTextCuepath.Depth = 0;
+            this.AutoTextCuepath.Hint = "Cue File Path";
+            this.AutoTextCuepath.Location = new System.Drawing.Point(22, 93);
+            this.AutoTextCuepath.MaxLength = 32767;
+            this.AutoTextCuepath.MouseState = MaterialSkin.MouseState.HOVER;
+            this.AutoTextCuepath.Name = "AutoTextCuepath";
+            this.AutoTextCuepath.PasswordChar = '\0';
+            this.AutoTextCuepath.SelectedText = "";
+            this.AutoTextCuepath.SelectionLength = 0;
+            this.AutoTextCuepath.SelectionStart = 0;
+            this.AutoTextCuepath.Size = new System.Drawing.Size(530, 23);
+            this.AutoTextCuepath.TabIndex = 1;
+            this.AutoTextCuepath.TabStop = false;
+            this.AutoTextCuepath.Text = "MYTH&ROID - HYDRA";
+            this.AutoTextCuepath.UseSystemPasswordChar = false;
             // 
             // materialProgressBar1
             // 
@@ -187,7 +258,7 @@
             this.CuesplitTab.Controls.Add(this.materialSingleLineTextField11);
             this.CuesplitTab.Controls.Add(this.materialSingleLineTextField12);
             this.CuesplitTab.Controls.Add(this.materialSingleLineTextField13);
-            this.CuesplitTab.Controls.Add(this.materialSingleLineTextField14);
+            this.CuesplitTab.Controls.Add(this.CuesplitTextTitle);
             this.CuesplitTab.Controls.Add(this.CuesplitListStatus);
             this.CuesplitTab.Controls.Add(this.CuesplitProgressStatus);
             this.CuesplitTab.Controls.Add(this.CuesplitBtnExecute);
@@ -197,6 +268,248 @@
             this.CuesplitTab.Size = new System.Drawing.Size(987, 499);
             this.CuesplitTab.TabIndex = 0;
             this.CuesplitTab.Text = "Cue Split";
+            // 
+            // materialSingleLineTextField4
+            // 
+            this.materialSingleLineTextField4.Depth = 0;
+            this.materialSingleLineTextField4.Hint = "Directory ( Not Change )";
+            this.materialSingleLineTextField4.Location = new System.Drawing.Point(3, 293);
+            this.materialSingleLineTextField4.MaxLength = 32767;
+            this.materialSingleLineTextField4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField4.Name = "materialSingleLineTextField4";
+            this.materialSingleLineTextField4.PasswordChar = '\0';
+            this.materialSingleLineTextField4.SelectedText = "";
+            this.materialSingleLineTextField4.SelectionLength = 0;
+            this.materialSingleLineTextField4.SelectionStart = 0;
+            this.materialSingleLineTextField4.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField4.TabIndex = 34;
+            this.materialSingleLineTextField4.TabStop = false;
+            this.materialSingleLineTextField4.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField5
+            // 
+            this.materialSingleLineTextField5.Depth = 0;
+            this.materialSingleLineTextField5.Hint = "Barcode ( Never Fix it )";
+            this.materialSingleLineTextField5.Location = new System.Drawing.Point(3, 264);
+            this.materialSingleLineTextField5.MaxLength = 32767;
+            this.materialSingleLineTextField5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField5.Name = "materialSingleLineTextField5";
+            this.materialSingleLineTextField5.PasswordChar = '\0';
+            this.materialSingleLineTextField5.SelectedText = "";
+            this.materialSingleLineTextField5.SelectionLength = 0;
+            this.materialSingleLineTextField5.SelectionStart = 0;
+            this.materialSingleLineTextField5.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField5.TabIndex = 33;
+            this.materialSingleLineTextField5.TabStop = false;
+            this.materialSingleLineTextField5.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField6
+            // 
+            this.materialSingleLineTextField6.Depth = 0;
+            this.materialSingleLineTextField6.Hint = "Composers ( Blank & Statable )";
+            this.materialSingleLineTextField6.Location = new System.Drawing.Point(3, 235);
+            this.materialSingleLineTextField6.MaxLength = 32767;
+            this.materialSingleLineTextField6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField6.Name = "materialSingleLineTextField6";
+            this.materialSingleLineTextField6.PasswordChar = '\0';
+            this.materialSingleLineTextField6.SelectedText = "";
+            this.materialSingleLineTextField6.SelectionLength = 0;
+            this.materialSingleLineTextField6.SelectionStart = 0;
+            this.materialSingleLineTextField6.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField6.TabIndex = 32;
+            this.materialSingleLineTextField6.TabStop = false;
+            this.materialSingleLineTextField6.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField7
+            // 
+            this.materialSingleLineTextField7.Depth = 0;
+            this.materialSingleLineTextField7.Hint = "Album Artists ( Blank & Statable )";
+            this.materialSingleLineTextField7.Location = new System.Drawing.Point(3, 206);
+            this.materialSingleLineTextField7.MaxLength = 32767;
+            this.materialSingleLineTextField7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField7.Name = "materialSingleLineTextField7";
+            this.materialSingleLineTextField7.PasswordChar = '\0';
+            this.materialSingleLineTextField7.SelectedText = "";
+            this.materialSingleLineTextField7.SelectionLength = 0;
+            this.materialSingleLineTextField7.SelectionStart = 0;
+            this.materialSingleLineTextField7.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField7.TabIndex = 31;
+            this.materialSingleLineTextField7.TabStop = false;
+            this.materialSingleLineTextField7.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField8
+            // 
+            this.materialSingleLineTextField8.Depth = 0;
+            this.materialSingleLineTextField8.Hint = "Comment ( Blank & Statable )";
+            this.materialSingleLineTextField8.Location = new System.Drawing.Point(3, 177);
+            this.materialSingleLineTextField8.MaxLength = 32767;
+            this.materialSingleLineTextField8.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField8.Name = "materialSingleLineTextField8";
+            this.materialSingleLineTextField8.PasswordChar = '\0';
+            this.materialSingleLineTextField8.SelectedText = "";
+            this.materialSingleLineTextField8.SelectionLength = 0;
+            this.materialSingleLineTextField8.SelectionStart = 0;
+            this.materialSingleLineTextField8.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField8.TabIndex = 30;
+            this.materialSingleLineTextField8.TabStop = false;
+            this.materialSingleLineTextField8.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField9
+            // 
+            this.materialSingleLineTextField9.Depth = 0;
+            this.materialSingleLineTextField9.Hint = "Genre ( Blank & Statable )";
+            this.materialSingleLineTextField9.Location = new System.Drawing.Point(3, 148);
+            this.materialSingleLineTextField9.MaxLength = 32767;
+            this.materialSingleLineTextField9.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField9.Name = "materialSingleLineTextField9";
+            this.materialSingleLineTextField9.PasswordChar = '\0';
+            this.materialSingleLineTextField9.SelectedText = "";
+            this.materialSingleLineTextField9.SelectionLength = 0;
+            this.materialSingleLineTextField9.SelectionStart = 0;
+            this.materialSingleLineTextField9.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField9.TabIndex = 29;
+            this.materialSingleLineTextField9.TabStop = false;
+            this.materialSingleLineTextField9.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField10
+            // 
+            this.materialSingleLineTextField10.Depth = 0;
+            this.materialSingleLineTextField10.Hint = "Track ( Blank & Statable )";
+            this.materialSingleLineTextField10.Location = new System.Drawing.Point(3, 119);
+            this.materialSingleLineTextField10.MaxLength = 32767;
+            this.materialSingleLineTextField10.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField10.Name = "materialSingleLineTextField10";
+            this.materialSingleLineTextField10.PasswordChar = '\0';
+            this.materialSingleLineTextField10.SelectedText = "";
+            this.materialSingleLineTextField10.SelectionLength = 0;
+            this.materialSingleLineTextField10.SelectionStart = 0;
+            this.materialSingleLineTextField10.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField10.TabIndex = 28;
+            this.materialSingleLineTextField10.TabStop = false;
+            this.materialSingleLineTextField10.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField11
+            // 
+            this.materialSingleLineTextField11.Depth = 0;
+            this.materialSingleLineTextField11.Hint = "Create Year ( Blank & Statable )";
+            this.materialSingleLineTextField11.Location = new System.Drawing.Point(3, 90);
+            this.materialSingleLineTextField11.MaxLength = 32767;
+            this.materialSingleLineTextField11.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField11.Name = "materialSingleLineTextField11";
+            this.materialSingleLineTextField11.PasswordChar = '\0';
+            this.materialSingleLineTextField11.SelectedText = "";
+            this.materialSingleLineTextField11.SelectionLength = 0;
+            this.materialSingleLineTextField11.SelectionStart = 0;
+            this.materialSingleLineTextField11.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField11.TabIndex = 27;
+            this.materialSingleLineTextField11.TabStop = false;
+            this.materialSingleLineTextField11.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField12
+            // 
+            this.materialSingleLineTextField12.Depth = 0;
+            this.materialSingleLineTextField12.Hint = "Album ( Blank & Statable )";
+            this.materialSingleLineTextField12.Location = new System.Drawing.Point(3, 61);
+            this.materialSingleLineTextField12.MaxLength = 32767;
+            this.materialSingleLineTextField12.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField12.Name = "materialSingleLineTextField12";
+            this.materialSingleLineTextField12.PasswordChar = '\0';
+            this.materialSingleLineTextField12.SelectedText = "";
+            this.materialSingleLineTextField12.SelectionLength = 0;
+            this.materialSingleLineTextField12.SelectionStart = 0;
+            this.materialSingleLineTextField12.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField12.TabIndex = 26;
+            this.materialSingleLineTextField12.TabStop = false;
+            this.materialSingleLineTextField12.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField13
+            // 
+            this.materialSingleLineTextField13.Depth = 0;
+            this.materialSingleLineTextField13.Hint = "Artists ( Blank & Statable )";
+            this.materialSingleLineTextField13.Location = new System.Drawing.Point(3, 32);
+            this.materialSingleLineTextField13.MaxLength = 32767;
+            this.materialSingleLineTextField13.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField13.Name = "materialSingleLineTextField13";
+            this.materialSingleLineTextField13.PasswordChar = '\0';
+            this.materialSingleLineTextField13.SelectedText = "";
+            this.materialSingleLineTextField13.SelectionLength = 0;
+            this.materialSingleLineTextField13.SelectionStart = 0;
+            this.materialSingleLineTextField13.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField13.TabIndex = 25;
+            this.materialSingleLineTextField13.TabStop = false;
+            this.materialSingleLineTextField13.UseSystemPasswordChar = false;
+            // 
+            // CuesplitTextTitle
+            // 
+            this.CuesplitTextTitle.Depth = 0;
+            this.CuesplitTextTitle.Hint = "Title ( Blank & Statable )";
+            this.CuesplitTextTitle.Location = new System.Drawing.Point(3, 3);
+            this.CuesplitTextTitle.MaxLength = 32767;
+            this.CuesplitTextTitle.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitTextTitle.Name = "CuesplitTextTitle";
+            this.CuesplitTextTitle.PasswordChar = '\0';
+            this.CuesplitTextTitle.SelectedText = "";
+            this.CuesplitTextTitle.SelectionLength = 0;
+            this.CuesplitTextTitle.SelectionStart = 0;
+            this.CuesplitTextTitle.Size = new System.Drawing.Size(340, 23);
+            this.CuesplitTextTitle.TabIndex = 24;
+            this.CuesplitTextTitle.TabStop = false;
+            this.CuesplitTextTitle.UseSystemPasswordChar = false;
+            // 
+            // CuesplitListStatus
+            // 
+            this.CuesplitListStatus.AllowDrop = true;
+            this.CuesplitListStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CuesplitListStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CuesplitListStatus.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.CuesplitListStatus.Depth = 0;
+            this.CuesplitListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.CuesplitListStatus.FullRowSelect = true;
+            this.CuesplitListStatus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.CuesplitListStatus.Location = new System.Drawing.Point(361, 3);
+            this.CuesplitListStatus.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CuesplitListStatus.MouseState = MaterialSkin.MouseState.OUT;
+            this.CuesplitListStatus.Name = "CuesplitListStatus";
+            this.CuesplitListStatus.OwnerDraw = true;
+            this.CuesplitListStatus.Size = new System.Drawing.Size(626, 434);
+            this.CuesplitListStatus.TabIndex = 23;
+            this.CuesplitListStatus.UseCompatibleStateImageBehavior = false;
+            this.CuesplitListStatus.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "경로";
+            this.columnHeader1.Width = 626;
+            // 
+            // CuesplitProgressStatus
+            // 
+            this.CuesplitProgressStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CuesplitProgressStatus.Depth = 0;
+            this.CuesplitProgressStatus.Location = new System.Drawing.Point(340, 485);
+            this.CuesplitProgressStatus.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitProgressStatus.Name = "CuesplitProgressStatus";
+            this.CuesplitProgressStatus.Size = new System.Drawing.Size(644, 5);
+            this.CuesplitProgressStatus.TabIndex = 22;
+            // 
+            // CuesplitBtnExecute
+            // 
+            this.CuesplitBtnExecute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CuesplitBtnExecute.AutoSize = true;
+            this.CuesplitBtnExecute.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CuesplitBtnExecute.Depth = 0;
+            this.CuesplitBtnExecute.Icon = null;
+            this.CuesplitBtnExecute.Location = new System.Drawing.Point(905, 443);
+            this.CuesplitBtnExecute.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitBtnExecute.Name = "CuesplitBtnExecute";
+            this.CuesplitBtnExecute.Primary = true;
+            this.CuesplitBtnExecute.Size = new System.Drawing.Size(79, 36);
+            this.CuesplitBtnExecute.TabIndex = 21;
+            this.CuesplitBtnExecute.Text = "Execute";
+            this.CuesplitBtnExecute.UseVisualStyleBackColor = true;
+            this.CuesplitBtnExecute.Click += new System.EventHandler(this.CuesplitBtnExecute_Click);
             // 
             // ConvMp3Tab
             // 
@@ -221,6 +534,248 @@
             this.ConvMp3Tab.Size = new System.Drawing.Size(987, 499);
             this.ConvMp3Tab.TabIndex = 1;
             this.ConvMp3Tab.Text = "Mp3 Converter";
+            // 
+            // materialSingleLineTextField1
+            // 
+            this.materialSingleLineTextField1.Depth = 0;
+            this.materialSingleLineTextField1.Hint = "Directory ( Not Change )";
+            this.materialSingleLineTextField1.Location = new System.Drawing.Point(3, 293);
+            this.materialSingleLineTextField1.MaxLength = 32767;
+            this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
+            this.materialSingleLineTextField1.PasswordChar = '\0';
+            this.materialSingleLineTextField1.SelectedText = "";
+            this.materialSingleLineTextField1.SelectionLength = 0;
+            this.materialSingleLineTextField1.SelectionStart = 0;
+            this.materialSingleLineTextField1.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField1.TabIndex = 34;
+            this.materialSingleLineTextField1.TabStop = false;
+            this.materialSingleLineTextField1.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField2
+            // 
+            this.materialSingleLineTextField2.Depth = 0;
+            this.materialSingleLineTextField2.Hint = "MBID";
+            this.materialSingleLineTextField2.Location = new System.Drawing.Point(3, 264);
+            this.materialSingleLineTextField2.MaxLength = 32767;
+            this.materialSingleLineTextField2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField2.Name = "materialSingleLineTextField2";
+            this.materialSingleLineTextField2.PasswordChar = '\0';
+            this.materialSingleLineTextField2.SelectedText = "";
+            this.materialSingleLineTextField2.SelectionLength = 0;
+            this.materialSingleLineTextField2.SelectionStart = 0;
+            this.materialSingleLineTextField2.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField2.TabIndex = 33;
+            this.materialSingleLineTextField2.TabStop = false;
+            this.materialSingleLineTextField2.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField15
+            // 
+            this.materialSingleLineTextField15.Depth = 0;
+            this.materialSingleLineTextField15.Hint = "Composers ( Blank & Statable )";
+            this.materialSingleLineTextField15.Location = new System.Drawing.Point(3, 235);
+            this.materialSingleLineTextField15.MaxLength = 32767;
+            this.materialSingleLineTextField15.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField15.Name = "materialSingleLineTextField15";
+            this.materialSingleLineTextField15.PasswordChar = '\0';
+            this.materialSingleLineTextField15.SelectedText = "";
+            this.materialSingleLineTextField15.SelectionLength = 0;
+            this.materialSingleLineTextField15.SelectionStart = 0;
+            this.materialSingleLineTextField15.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField15.TabIndex = 32;
+            this.materialSingleLineTextField15.TabStop = false;
+            this.materialSingleLineTextField15.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField16
+            // 
+            this.materialSingleLineTextField16.Depth = 0;
+            this.materialSingleLineTextField16.Hint = "Album Artists ( Blank & Statable )";
+            this.materialSingleLineTextField16.Location = new System.Drawing.Point(3, 206);
+            this.materialSingleLineTextField16.MaxLength = 32767;
+            this.materialSingleLineTextField16.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField16.Name = "materialSingleLineTextField16";
+            this.materialSingleLineTextField16.PasswordChar = '\0';
+            this.materialSingleLineTextField16.SelectedText = "";
+            this.materialSingleLineTextField16.SelectionLength = 0;
+            this.materialSingleLineTextField16.SelectionStart = 0;
+            this.materialSingleLineTextField16.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField16.TabIndex = 31;
+            this.materialSingleLineTextField16.TabStop = false;
+            this.materialSingleLineTextField16.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField17
+            // 
+            this.materialSingleLineTextField17.Depth = 0;
+            this.materialSingleLineTextField17.Hint = "Comment ( Blank & Statable )";
+            this.materialSingleLineTextField17.Location = new System.Drawing.Point(3, 177);
+            this.materialSingleLineTextField17.MaxLength = 32767;
+            this.materialSingleLineTextField17.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField17.Name = "materialSingleLineTextField17";
+            this.materialSingleLineTextField17.PasswordChar = '\0';
+            this.materialSingleLineTextField17.SelectedText = "";
+            this.materialSingleLineTextField17.SelectionLength = 0;
+            this.materialSingleLineTextField17.SelectionStart = 0;
+            this.materialSingleLineTextField17.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField17.TabIndex = 30;
+            this.materialSingleLineTextField17.TabStop = false;
+            this.materialSingleLineTextField17.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField18
+            // 
+            this.materialSingleLineTextField18.Depth = 0;
+            this.materialSingleLineTextField18.Hint = "Genre ( Blank & Statable )";
+            this.materialSingleLineTextField18.Location = new System.Drawing.Point(3, 148);
+            this.materialSingleLineTextField18.MaxLength = 32767;
+            this.materialSingleLineTextField18.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField18.Name = "materialSingleLineTextField18";
+            this.materialSingleLineTextField18.PasswordChar = '\0';
+            this.materialSingleLineTextField18.SelectedText = "";
+            this.materialSingleLineTextField18.SelectionLength = 0;
+            this.materialSingleLineTextField18.SelectionStart = 0;
+            this.materialSingleLineTextField18.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField18.TabIndex = 29;
+            this.materialSingleLineTextField18.TabStop = false;
+            this.materialSingleLineTextField18.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField19
+            // 
+            this.materialSingleLineTextField19.Depth = 0;
+            this.materialSingleLineTextField19.Hint = "Track ( Blank & Statable )";
+            this.materialSingleLineTextField19.Location = new System.Drawing.Point(3, 119);
+            this.materialSingleLineTextField19.MaxLength = 32767;
+            this.materialSingleLineTextField19.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField19.Name = "materialSingleLineTextField19";
+            this.materialSingleLineTextField19.PasswordChar = '\0';
+            this.materialSingleLineTextField19.SelectedText = "";
+            this.materialSingleLineTextField19.SelectionLength = 0;
+            this.materialSingleLineTextField19.SelectionStart = 0;
+            this.materialSingleLineTextField19.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField19.TabIndex = 28;
+            this.materialSingleLineTextField19.TabStop = false;
+            this.materialSingleLineTextField19.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField20
+            // 
+            this.materialSingleLineTextField20.Depth = 0;
+            this.materialSingleLineTextField20.Hint = "Create Year ( Blank & Statable )";
+            this.materialSingleLineTextField20.Location = new System.Drawing.Point(3, 90);
+            this.materialSingleLineTextField20.MaxLength = 32767;
+            this.materialSingleLineTextField20.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField20.Name = "materialSingleLineTextField20";
+            this.materialSingleLineTextField20.PasswordChar = '\0';
+            this.materialSingleLineTextField20.SelectedText = "";
+            this.materialSingleLineTextField20.SelectionLength = 0;
+            this.materialSingleLineTextField20.SelectionStart = 0;
+            this.materialSingleLineTextField20.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField20.TabIndex = 27;
+            this.materialSingleLineTextField20.TabStop = false;
+            this.materialSingleLineTextField20.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField21
+            // 
+            this.materialSingleLineTextField21.Depth = 0;
+            this.materialSingleLineTextField21.Hint = "Album ( Blank & Statable )";
+            this.materialSingleLineTextField21.Location = new System.Drawing.Point(3, 61);
+            this.materialSingleLineTextField21.MaxLength = 32767;
+            this.materialSingleLineTextField21.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField21.Name = "materialSingleLineTextField21";
+            this.materialSingleLineTextField21.PasswordChar = '\0';
+            this.materialSingleLineTextField21.SelectedText = "";
+            this.materialSingleLineTextField21.SelectionLength = 0;
+            this.materialSingleLineTextField21.SelectionStart = 0;
+            this.materialSingleLineTextField21.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField21.TabIndex = 26;
+            this.materialSingleLineTextField21.TabStop = false;
+            this.materialSingleLineTextField21.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField22
+            // 
+            this.materialSingleLineTextField22.Depth = 0;
+            this.materialSingleLineTextField22.Hint = "Artists ( Blank & Statable )";
+            this.materialSingleLineTextField22.Location = new System.Drawing.Point(3, 32);
+            this.materialSingleLineTextField22.MaxLength = 32767;
+            this.materialSingleLineTextField22.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField22.Name = "materialSingleLineTextField22";
+            this.materialSingleLineTextField22.PasswordChar = '\0';
+            this.materialSingleLineTextField22.SelectedText = "";
+            this.materialSingleLineTextField22.SelectionLength = 0;
+            this.materialSingleLineTextField22.SelectionStart = 0;
+            this.materialSingleLineTextField22.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField22.TabIndex = 25;
+            this.materialSingleLineTextField22.TabStop = false;
+            this.materialSingleLineTextField22.UseSystemPasswordChar = false;
+            // 
+            // materialSingleLineTextField23
+            // 
+            this.materialSingleLineTextField23.Depth = 0;
+            this.materialSingleLineTextField23.Hint = "Title ( Blank & Statable )";
+            this.materialSingleLineTextField23.Location = new System.Drawing.Point(3, 3);
+            this.materialSingleLineTextField23.MaxLength = 32767;
+            this.materialSingleLineTextField23.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField23.Name = "materialSingleLineTextField23";
+            this.materialSingleLineTextField23.PasswordChar = '\0';
+            this.materialSingleLineTextField23.SelectedText = "";
+            this.materialSingleLineTextField23.SelectionLength = 0;
+            this.materialSingleLineTextField23.SelectionStart = 0;
+            this.materialSingleLineTextField23.Size = new System.Drawing.Size(340, 23);
+            this.materialSingleLineTextField23.TabIndex = 24;
+            this.materialSingleLineTextField23.TabStop = false;
+            this.materialSingleLineTextField23.UseSystemPasswordChar = false;
+            // 
+            // Mp3ConvListStatus
+            // 
+            this.Mp3ConvListStatus.AllowDrop = true;
+            this.Mp3ConvListStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Mp3ConvListStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Mp3ConvListStatus.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
+            this.Mp3ConvListStatus.Depth = 0;
+            this.Mp3ConvListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.Mp3ConvListStatus.FullRowSelect = true;
+            this.Mp3ConvListStatus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.Mp3ConvListStatus.Location = new System.Drawing.Point(361, 3);
+            this.Mp3ConvListStatus.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.Mp3ConvListStatus.MouseState = MaterialSkin.MouseState.OUT;
+            this.Mp3ConvListStatus.Name = "Mp3ConvListStatus";
+            this.Mp3ConvListStatus.OwnerDraw = true;
+            this.Mp3ConvListStatus.Size = new System.Drawing.Size(626, 434);
+            this.Mp3ConvListStatus.TabIndex = 23;
+            this.Mp3ConvListStatus.UseCompatibleStateImageBehavior = false;
+            this.Mp3ConvListStatus.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "경로";
+            this.columnHeader2.Width = 626;
+            // 
+            // Mp3ConvProgressStatus
+            // 
+            this.Mp3ConvProgressStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Mp3ConvProgressStatus.Depth = 0;
+            this.Mp3ConvProgressStatus.Location = new System.Drawing.Point(340, 485);
+            this.Mp3ConvProgressStatus.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Mp3ConvProgressStatus.Name = "Mp3ConvProgressStatus";
+            this.Mp3ConvProgressStatus.Size = new System.Drawing.Size(644, 5);
+            this.Mp3ConvProgressStatus.TabIndex = 22;
+            // 
+            // Mp3ConvBtnExec
+            // 
+            this.Mp3ConvBtnExec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Mp3ConvBtnExec.AutoSize = true;
+            this.Mp3ConvBtnExec.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Mp3ConvBtnExec.Depth = 0;
+            this.Mp3ConvBtnExec.Icon = null;
+            this.Mp3ConvBtnExec.Location = new System.Drawing.Point(905, 443);
+            this.Mp3ConvBtnExec.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Mp3ConvBtnExec.Name = "Mp3ConvBtnExec";
+            this.Mp3ConvBtnExec.Primary = true;
+            this.Mp3ConvBtnExec.Size = new System.Drawing.Size(79, 36);
+            this.Mp3ConvBtnExec.TabIndex = 21;
+            this.Mp3ConvBtnExec.Text = "Execute";
+            this.Mp3ConvBtnExec.UseVisualStyleBackColor = true;
+            this.Mp3ConvBtnExec.Click += new System.EventHandler(this.Mp3ConvBtnExec_Click);
             // 
             // TaggingTab
             // 
@@ -613,7 +1168,7 @@
             // columnHeader4
             // 
             this.columnHeader4.Text = "경로";
-            this.columnHeader4.Width = 592;
+            this.columnHeader4.Width = 627;
             // 
             // TaggingProgressStatus
             // 
@@ -670,539 +1225,6 @@
             this.materialCheckBox1.Text = "DarkMode";
             this.materialCheckBox1.UseVisualStyleBackColor = true;
             this.materialCheckBox1.CheckedChanged += new System.EventHandler(this.pp);
-            // 
-            // materialSingleLineTextField4
-            // 
-            this.materialSingleLineTextField4.Depth = 0;
-            this.materialSingleLineTextField4.Hint = "Directory ( Not Change )";
-            this.materialSingleLineTextField4.Location = new System.Drawing.Point(3, 293);
-            this.materialSingleLineTextField4.MaxLength = 32767;
-            this.materialSingleLineTextField4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField4.Name = "materialSingleLineTextField4";
-            this.materialSingleLineTextField4.PasswordChar = '\0';
-            this.materialSingleLineTextField4.SelectedText = "";
-            this.materialSingleLineTextField4.SelectionLength = 0;
-            this.materialSingleLineTextField4.SelectionStart = 0;
-            this.materialSingleLineTextField4.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField4.TabIndex = 34;
-            this.materialSingleLineTextField4.TabStop = false;
-            this.materialSingleLineTextField4.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField5
-            // 
-            this.materialSingleLineTextField5.Depth = 0;
-            this.materialSingleLineTextField5.Hint = "Barcode ( Never Fix it )";
-            this.materialSingleLineTextField5.Location = new System.Drawing.Point(3, 264);
-            this.materialSingleLineTextField5.MaxLength = 32767;
-            this.materialSingleLineTextField5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField5.Name = "materialSingleLineTextField5";
-            this.materialSingleLineTextField5.PasswordChar = '\0';
-            this.materialSingleLineTextField5.SelectedText = "";
-            this.materialSingleLineTextField5.SelectionLength = 0;
-            this.materialSingleLineTextField5.SelectionStart = 0;
-            this.materialSingleLineTextField5.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField5.TabIndex = 33;
-            this.materialSingleLineTextField5.TabStop = false;
-            this.materialSingleLineTextField5.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField6
-            // 
-            this.materialSingleLineTextField6.Depth = 0;
-            this.materialSingleLineTextField6.Hint = "Composers ( Blank & Statable )";
-            this.materialSingleLineTextField6.Location = new System.Drawing.Point(3, 235);
-            this.materialSingleLineTextField6.MaxLength = 32767;
-            this.materialSingleLineTextField6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField6.Name = "materialSingleLineTextField6";
-            this.materialSingleLineTextField6.PasswordChar = '\0';
-            this.materialSingleLineTextField6.SelectedText = "";
-            this.materialSingleLineTextField6.SelectionLength = 0;
-            this.materialSingleLineTextField6.SelectionStart = 0;
-            this.materialSingleLineTextField6.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField6.TabIndex = 32;
-            this.materialSingleLineTextField6.TabStop = false;
-            this.materialSingleLineTextField6.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField7
-            // 
-            this.materialSingleLineTextField7.Depth = 0;
-            this.materialSingleLineTextField7.Hint = "Album Artists ( Blank & Statable )";
-            this.materialSingleLineTextField7.Location = new System.Drawing.Point(3, 206);
-            this.materialSingleLineTextField7.MaxLength = 32767;
-            this.materialSingleLineTextField7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField7.Name = "materialSingleLineTextField7";
-            this.materialSingleLineTextField7.PasswordChar = '\0';
-            this.materialSingleLineTextField7.SelectedText = "";
-            this.materialSingleLineTextField7.SelectionLength = 0;
-            this.materialSingleLineTextField7.SelectionStart = 0;
-            this.materialSingleLineTextField7.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField7.TabIndex = 31;
-            this.materialSingleLineTextField7.TabStop = false;
-            this.materialSingleLineTextField7.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField8
-            // 
-            this.materialSingleLineTextField8.Depth = 0;
-            this.materialSingleLineTextField8.Hint = "Comment ( Blank & Statable )";
-            this.materialSingleLineTextField8.Location = new System.Drawing.Point(3, 177);
-            this.materialSingleLineTextField8.MaxLength = 32767;
-            this.materialSingleLineTextField8.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField8.Name = "materialSingleLineTextField8";
-            this.materialSingleLineTextField8.PasswordChar = '\0';
-            this.materialSingleLineTextField8.SelectedText = "";
-            this.materialSingleLineTextField8.SelectionLength = 0;
-            this.materialSingleLineTextField8.SelectionStart = 0;
-            this.materialSingleLineTextField8.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField8.TabIndex = 30;
-            this.materialSingleLineTextField8.TabStop = false;
-            this.materialSingleLineTextField8.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField9
-            // 
-            this.materialSingleLineTextField9.Depth = 0;
-            this.materialSingleLineTextField9.Hint = "Genre ( Blank & Statable )";
-            this.materialSingleLineTextField9.Location = new System.Drawing.Point(3, 148);
-            this.materialSingleLineTextField9.MaxLength = 32767;
-            this.materialSingleLineTextField9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField9.Name = "materialSingleLineTextField9";
-            this.materialSingleLineTextField9.PasswordChar = '\0';
-            this.materialSingleLineTextField9.SelectedText = "";
-            this.materialSingleLineTextField9.SelectionLength = 0;
-            this.materialSingleLineTextField9.SelectionStart = 0;
-            this.materialSingleLineTextField9.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField9.TabIndex = 29;
-            this.materialSingleLineTextField9.TabStop = false;
-            this.materialSingleLineTextField9.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField10
-            // 
-            this.materialSingleLineTextField10.Depth = 0;
-            this.materialSingleLineTextField10.Hint = "Track ( Blank & Statable )";
-            this.materialSingleLineTextField10.Location = new System.Drawing.Point(3, 119);
-            this.materialSingleLineTextField10.MaxLength = 32767;
-            this.materialSingleLineTextField10.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField10.Name = "materialSingleLineTextField10";
-            this.materialSingleLineTextField10.PasswordChar = '\0';
-            this.materialSingleLineTextField10.SelectedText = "";
-            this.materialSingleLineTextField10.SelectionLength = 0;
-            this.materialSingleLineTextField10.SelectionStart = 0;
-            this.materialSingleLineTextField10.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField10.TabIndex = 28;
-            this.materialSingleLineTextField10.TabStop = false;
-            this.materialSingleLineTextField10.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField11
-            // 
-            this.materialSingleLineTextField11.Depth = 0;
-            this.materialSingleLineTextField11.Hint = "Create Year ( Blank & Statable )";
-            this.materialSingleLineTextField11.Location = new System.Drawing.Point(3, 90);
-            this.materialSingleLineTextField11.MaxLength = 32767;
-            this.materialSingleLineTextField11.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField11.Name = "materialSingleLineTextField11";
-            this.materialSingleLineTextField11.PasswordChar = '\0';
-            this.materialSingleLineTextField11.SelectedText = "";
-            this.materialSingleLineTextField11.SelectionLength = 0;
-            this.materialSingleLineTextField11.SelectionStart = 0;
-            this.materialSingleLineTextField11.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField11.TabIndex = 27;
-            this.materialSingleLineTextField11.TabStop = false;
-            this.materialSingleLineTextField11.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField12
-            // 
-            this.materialSingleLineTextField12.Depth = 0;
-            this.materialSingleLineTextField12.Hint = "Album ( Blank & Statable )";
-            this.materialSingleLineTextField12.Location = new System.Drawing.Point(3, 61);
-            this.materialSingleLineTextField12.MaxLength = 32767;
-            this.materialSingleLineTextField12.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField12.Name = "materialSingleLineTextField12";
-            this.materialSingleLineTextField12.PasswordChar = '\0';
-            this.materialSingleLineTextField12.SelectedText = "";
-            this.materialSingleLineTextField12.SelectionLength = 0;
-            this.materialSingleLineTextField12.SelectionStart = 0;
-            this.materialSingleLineTextField12.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField12.TabIndex = 26;
-            this.materialSingleLineTextField12.TabStop = false;
-            this.materialSingleLineTextField12.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField13
-            // 
-            this.materialSingleLineTextField13.Depth = 0;
-            this.materialSingleLineTextField13.Hint = "Artists ( Blank & Statable )";
-            this.materialSingleLineTextField13.Location = new System.Drawing.Point(3, 32);
-            this.materialSingleLineTextField13.MaxLength = 32767;
-            this.materialSingleLineTextField13.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField13.Name = "materialSingleLineTextField13";
-            this.materialSingleLineTextField13.PasswordChar = '\0';
-            this.materialSingleLineTextField13.SelectedText = "";
-            this.materialSingleLineTextField13.SelectionLength = 0;
-            this.materialSingleLineTextField13.SelectionStart = 0;
-            this.materialSingleLineTextField13.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField13.TabIndex = 25;
-            this.materialSingleLineTextField13.TabStop = false;
-            this.materialSingleLineTextField13.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField14
-            // 
-            this.materialSingleLineTextField14.Depth = 0;
-            this.materialSingleLineTextField14.Hint = "Title ( Blank & Statable )";
-            this.materialSingleLineTextField14.Location = new System.Drawing.Point(3, 3);
-            this.materialSingleLineTextField14.MaxLength = 32767;
-            this.materialSingleLineTextField14.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField14.Name = "materialSingleLineTextField14";
-            this.materialSingleLineTextField14.PasswordChar = '\0';
-            this.materialSingleLineTextField14.SelectedText = "";
-            this.materialSingleLineTextField14.SelectionLength = 0;
-            this.materialSingleLineTextField14.SelectionStart = 0;
-            this.materialSingleLineTextField14.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField14.TabIndex = 24;
-            this.materialSingleLineTextField14.TabStop = false;
-            this.materialSingleLineTextField14.UseSystemPasswordChar = false;
-            // 
-            // CuesplitListStatus
-            // 
-            this.CuesplitListStatus.AllowDrop = true;
-            this.CuesplitListStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CuesplitListStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CuesplitListStatus.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.CuesplitListStatus.Depth = 0;
-            this.CuesplitListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.CuesplitListStatus.FullRowSelect = true;
-            this.CuesplitListStatus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.CuesplitListStatus.Location = new System.Drawing.Point(361, 3);
-            this.CuesplitListStatus.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.CuesplitListStatus.MouseState = MaterialSkin.MouseState.OUT;
-            this.CuesplitListStatus.Name = "CuesplitListStatus";
-            this.CuesplitListStatus.OwnerDraw = true;
-            this.CuesplitListStatus.Size = new System.Drawing.Size(626, 434);
-            this.CuesplitListStatus.TabIndex = 23;
-            this.CuesplitListStatus.UseCompatibleStateImageBehavior = false;
-            this.CuesplitListStatus.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "경로";
-            this.columnHeader1.Width = 592;
-            // 
-            // CuesplitProgressStatus
-            // 
-            this.CuesplitProgressStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CuesplitProgressStatus.Depth = 0;
-            this.CuesplitProgressStatus.Location = new System.Drawing.Point(340, 485);
-            this.CuesplitProgressStatus.MouseState = MaterialSkin.MouseState.HOVER;
-            this.CuesplitProgressStatus.Name = "CuesplitProgressStatus";
-            this.CuesplitProgressStatus.Size = new System.Drawing.Size(644, 5);
-            this.CuesplitProgressStatus.TabIndex = 22;
-            // 
-            // CuesplitBtnExecute
-            // 
-            this.CuesplitBtnExecute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CuesplitBtnExecute.AutoSize = true;
-            this.CuesplitBtnExecute.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.CuesplitBtnExecute.Depth = 0;
-            this.CuesplitBtnExecute.Icon = null;
-            this.CuesplitBtnExecute.Location = new System.Drawing.Point(905, 443);
-            this.CuesplitBtnExecute.MouseState = MaterialSkin.MouseState.HOVER;
-            this.CuesplitBtnExecute.Name = "CuesplitBtnExecute";
-            this.CuesplitBtnExecute.Primary = true;
-            this.CuesplitBtnExecute.Size = new System.Drawing.Size(79, 36);
-            this.CuesplitBtnExecute.TabIndex = 21;
-            this.CuesplitBtnExecute.Text = "Execute";
-            this.CuesplitBtnExecute.UseVisualStyleBackColor = true;
-            this.CuesplitBtnExecute.Click += new System.EventHandler(this.CuesplitBtnExecute_Click);
-            // 
-            // materialSingleLineTextField1
-            // 
-            this.materialSingleLineTextField1.Depth = 0;
-            this.materialSingleLineTextField1.Hint = "Directory ( Not Change )";
-            this.materialSingleLineTextField1.Location = new System.Drawing.Point(3, 293);
-            this.materialSingleLineTextField1.MaxLength = 32767;
-            this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
-            this.materialSingleLineTextField1.PasswordChar = '\0';
-            this.materialSingleLineTextField1.SelectedText = "";
-            this.materialSingleLineTextField1.SelectionLength = 0;
-            this.materialSingleLineTextField1.SelectionStart = 0;
-            this.materialSingleLineTextField1.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField1.TabIndex = 34;
-            this.materialSingleLineTextField1.TabStop = false;
-            this.materialSingleLineTextField1.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField2
-            // 
-            this.materialSingleLineTextField2.Depth = 0;
-            this.materialSingleLineTextField2.Hint = "MBID";
-            this.materialSingleLineTextField2.Location = new System.Drawing.Point(3, 264);
-            this.materialSingleLineTextField2.MaxLength = 32767;
-            this.materialSingleLineTextField2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField2.Name = "materialSingleLineTextField2";
-            this.materialSingleLineTextField2.PasswordChar = '\0';
-            this.materialSingleLineTextField2.SelectedText = "";
-            this.materialSingleLineTextField2.SelectionLength = 0;
-            this.materialSingleLineTextField2.SelectionStart = 0;
-            this.materialSingleLineTextField2.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField2.TabIndex = 33;
-            this.materialSingleLineTextField2.TabStop = false;
-            this.materialSingleLineTextField2.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField15
-            // 
-            this.materialSingleLineTextField15.Depth = 0;
-            this.materialSingleLineTextField15.Hint = "Composers ( Blank & Statable )";
-            this.materialSingleLineTextField15.Location = new System.Drawing.Point(3, 235);
-            this.materialSingleLineTextField15.MaxLength = 32767;
-            this.materialSingleLineTextField15.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField15.Name = "materialSingleLineTextField15";
-            this.materialSingleLineTextField15.PasswordChar = '\0';
-            this.materialSingleLineTextField15.SelectedText = "";
-            this.materialSingleLineTextField15.SelectionLength = 0;
-            this.materialSingleLineTextField15.SelectionStart = 0;
-            this.materialSingleLineTextField15.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField15.TabIndex = 32;
-            this.materialSingleLineTextField15.TabStop = false;
-            this.materialSingleLineTextField15.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField16
-            // 
-            this.materialSingleLineTextField16.Depth = 0;
-            this.materialSingleLineTextField16.Hint = "Album Artists ( Blank & Statable )";
-            this.materialSingleLineTextField16.Location = new System.Drawing.Point(3, 206);
-            this.materialSingleLineTextField16.MaxLength = 32767;
-            this.materialSingleLineTextField16.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField16.Name = "materialSingleLineTextField16";
-            this.materialSingleLineTextField16.PasswordChar = '\0';
-            this.materialSingleLineTextField16.SelectedText = "";
-            this.materialSingleLineTextField16.SelectionLength = 0;
-            this.materialSingleLineTextField16.SelectionStart = 0;
-            this.materialSingleLineTextField16.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField16.TabIndex = 31;
-            this.materialSingleLineTextField16.TabStop = false;
-            this.materialSingleLineTextField16.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField17
-            // 
-            this.materialSingleLineTextField17.Depth = 0;
-            this.materialSingleLineTextField17.Hint = "Comment ( Blank & Statable )";
-            this.materialSingleLineTextField17.Location = new System.Drawing.Point(3, 177);
-            this.materialSingleLineTextField17.MaxLength = 32767;
-            this.materialSingleLineTextField17.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField17.Name = "materialSingleLineTextField17";
-            this.materialSingleLineTextField17.PasswordChar = '\0';
-            this.materialSingleLineTextField17.SelectedText = "";
-            this.materialSingleLineTextField17.SelectionLength = 0;
-            this.materialSingleLineTextField17.SelectionStart = 0;
-            this.materialSingleLineTextField17.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField17.TabIndex = 30;
-            this.materialSingleLineTextField17.TabStop = false;
-            this.materialSingleLineTextField17.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField18
-            // 
-            this.materialSingleLineTextField18.Depth = 0;
-            this.materialSingleLineTextField18.Hint = "Genre ( Blank & Statable )";
-            this.materialSingleLineTextField18.Location = new System.Drawing.Point(3, 148);
-            this.materialSingleLineTextField18.MaxLength = 32767;
-            this.materialSingleLineTextField18.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField18.Name = "materialSingleLineTextField18";
-            this.materialSingleLineTextField18.PasswordChar = '\0';
-            this.materialSingleLineTextField18.SelectedText = "";
-            this.materialSingleLineTextField18.SelectionLength = 0;
-            this.materialSingleLineTextField18.SelectionStart = 0;
-            this.materialSingleLineTextField18.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField18.TabIndex = 29;
-            this.materialSingleLineTextField18.TabStop = false;
-            this.materialSingleLineTextField18.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField19
-            // 
-            this.materialSingleLineTextField19.Depth = 0;
-            this.materialSingleLineTextField19.Hint = "Track ( Blank & Statable )";
-            this.materialSingleLineTextField19.Location = new System.Drawing.Point(3, 119);
-            this.materialSingleLineTextField19.MaxLength = 32767;
-            this.materialSingleLineTextField19.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField19.Name = "materialSingleLineTextField19";
-            this.materialSingleLineTextField19.PasswordChar = '\0';
-            this.materialSingleLineTextField19.SelectedText = "";
-            this.materialSingleLineTextField19.SelectionLength = 0;
-            this.materialSingleLineTextField19.SelectionStart = 0;
-            this.materialSingleLineTextField19.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField19.TabIndex = 28;
-            this.materialSingleLineTextField19.TabStop = false;
-            this.materialSingleLineTextField19.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField20
-            // 
-            this.materialSingleLineTextField20.Depth = 0;
-            this.materialSingleLineTextField20.Hint = "Create Year ( Blank & Statable )";
-            this.materialSingleLineTextField20.Location = new System.Drawing.Point(3, 90);
-            this.materialSingleLineTextField20.MaxLength = 32767;
-            this.materialSingleLineTextField20.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField20.Name = "materialSingleLineTextField20";
-            this.materialSingleLineTextField20.PasswordChar = '\0';
-            this.materialSingleLineTextField20.SelectedText = "";
-            this.materialSingleLineTextField20.SelectionLength = 0;
-            this.materialSingleLineTextField20.SelectionStart = 0;
-            this.materialSingleLineTextField20.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField20.TabIndex = 27;
-            this.materialSingleLineTextField20.TabStop = false;
-            this.materialSingleLineTextField20.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField21
-            // 
-            this.materialSingleLineTextField21.Depth = 0;
-            this.materialSingleLineTextField21.Hint = "Album ( Blank & Statable )";
-            this.materialSingleLineTextField21.Location = new System.Drawing.Point(3, 61);
-            this.materialSingleLineTextField21.MaxLength = 32767;
-            this.materialSingleLineTextField21.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField21.Name = "materialSingleLineTextField21";
-            this.materialSingleLineTextField21.PasswordChar = '\0';
-            this.materialSingleLineTextField21.SelectedText = "";
-            this.materialSingleLineTextField21.SelectionLength = 0;
-            this.materialSingleLineTextField21.SelectionStart = 0;
-            this.materialSingleLineTextField21.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField21.TabIndex = 26;
-            this.materialSingleLineTextField21.TabStop = false;
-            this.materialSingleLineTextField21.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField22
-            // 
-            this.materialSingleLineTextField22.Depth = 0;
-            this.materialSingleLineTextField22.Hint = "Artists ( Blank & Statable )";
-            this.materialSingleLineTextField22.Location = new System.Drawing.Point(3, 32);
-            this.materialSingleLineTextField22.MaxLength = 32767;
-            this.materialSingleLineTextField22.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField22.Name = "materialSingleLineTextField22";
-            this.materialSingleLineTextField22.PasswordChar = '\0';
-            this.materialSingleLineTextField22.SelectedText = "";
-            this.materialSingleLineTextField22.SelectionLength = 0;
-            this.materialSingleLineTextField22.SelectionStart = 0;
-            this.materialSingleLineTextField22.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField22.TabIndex = 25;
-            this.materialSingleLineTextField22.TabStop = false;
-            this.materialSingleLineTextField22.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField23
-            // 
-            this.materialSingleLineTextField23.Depth = 0;
-            this.materialSingleLineTextField23.Hint = "Title ( Blank & Statable )";
-            this.materialSingleLineTextField23.Location = new System.Drawing.Point(3, 3);
-            this.materialSingleLineTextField23.MaxLength = 32767;
-            this.materialSingleLineTextField23.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField23.Name = "materialSingleLineTextField23";
-            this.materialSingleLineTextField23.PasswordChar = '\0';
-            this.materialSingleLineTextField23.SelectedText = "";
-            this.materialSingleLineTextField23.SelectionLength = 0;
-            this.materialSingleLineTextField23.SelectionStart = 0;
-            this.materialSingleLineTextField23.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField23.TabIndex = 24;
-            this.materialSingleLineTextField23.TabStop = false;
-            this.materialSingleLineTextField23.UseSystemPasswordChar = false;
-            // 
-            // Mp3ConvListStatus
-            // 
-            this.Mp3ConvListStatus.AllowDrop = true;
-            this.Mp3ConvListStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Mp3ConvListStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Mp3ConvListStatus.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader2});
-            this.Mp3ConvListStatus.Depth = 0;
-            this.Mp3ConvListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.Mp3ConvListStatus.FullRowSelect = true;
-            this.Mp3ConvListStatus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.Mp3ConvListStatus.Location = new System.Drawing.Point(361, 3);
-            this.Mp3ConvListStatus.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.Mp3ConvListStatus.MouseState = MaterialSkin.MouseState.OUT;
-            this.Mp3ConvListStatus.Name = "Mp3ConvListStatus";
-            this.Mp3ConvListStatus.OwnerDraw = true;
-            this.Mp3ConvListStatus.Size = new System.Drawing.Size(626, 434);
-            this.Mp3ConvListStatus.TabIndex = 23;
-            this.Mp3ConvListStatus.UseCompatibleStateImageBehavior = false;
-            this.Mp3ConvListStatus.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "경로";
-            this.columnHeader2.Width = 592;
-            // 
-            // Mp3ConvProgressStatus
-            // 
-            this.Mp3ConvProgressStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Mp3ConvProgressStatus.Depth = 0;
-            this.Mp3ConvProgressStatus.Location = new System.Drawing.Point(340, 485);
-            this.Mp3ConvProgressStatus.MouseState = MaterialSkin.MouseState.HOVER;
-            this.Mp3ConvProgressStatus.Name = "Mp3ConvProgressStatus";
-            this.Mp3ConvProgressStatus.Size = new System.Drawing.Size(644, 5);
-            this.Mp3ConvProgressStatus.TabIndex = 22;
-            // 
-            // Mp3ConvBtnExec
-            // 
-            this.Mp3ConvBtnExec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Mp3ConvBtnExec.AutoSize = true;
-            this.Mp3ConvBtnExec.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Mp3ConvBtnExec.Depth = 0;
-            this.Mp3ConvBtnExec.Icon = null;
-            this.Mp3ConvBtnExec.Location = new System.Drawing.Point(905, 443);
-            this.Mp3ConvBtnExec.MouseState = MaterialSkin.MouseState.HOVER;
-            this.Mp3ConvBtnExec.Name = "Mp3ConvBtnExec";
-            this.Mp3ConvBtnExec.Primary = true;
-            this.Mp3ConvBtnExec.Size = new System.Drawing.Size(79, 36);
-            this.Mp3ConvBtnExec.TabIndex = 21;
-            this.Mp3ConvBtnExec.Text = "Execute";
-            this.Mp3ConvBtnExec.UseVisualStyleBackColor = true;
-            this.Mp3ConvBtnExec.Click += new System.EventHandler(this.Mp3ConvBtnExec_Click);
-            // 
-            // materialSingleLineTextField24
-            // 
-            this.materialSingleLineTextField24.Depth = 0;
-            this.materialSingleLineTextField24.Hint = "Wav Save Path";
-            this.materialSingleLineTextField24.Location = new System.Drawing.Point(19, 65);
-            this.materialSingleLineTextField24.MaxLength = 32767;
-            this.materialSingleLineTextField24.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField24.Name = "materialSingleLineTextField24";
-            this.materialSingleLineTextField24.PasswordChar = '\0';
-            this.materialSingleLineTextField24.SelectedText = "";
-            this.materialSingleLineTextField24.SelectionLength = 0;
-            this.materialSingleLineTextField24.SelectionStart = 0;
-            this.materialSingleLineTextField24.Size = new System.Drawing.Size(530, 23);
-            this.materialSingleLineTextField24.TabIndex = 2;
-            this.materialSingleLineTextField24.TabStop = false;
-            this.materialSingleLineTextField24.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField25
-            // 
-            this.materialSingleLineTextField25.Depth = 0;
-            this.materialSingleLineTextField25.Hint = "Mp3 Save Path";
-            this.materialSingleLineTextField25.Location = new System.Drawing.Point(19, 103);
-            this.materialSingleLineTextField25.MaxLength = 32767;
-            this.materialSingleLineTextField25.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField25.Name = "materialSingleLineTextField25";
-            this.materialSingleLineTextField25.PasswordChar = '\0';
-            this.materialSingleLineTextField25.SelectedText = "";
-            this.materialSingleLineTextField25.SelectionLength = 0;
-            this.materialSingleLineTextField25.SelectionStart = 0;
-            this.materialSingleLineTextField25.Size = new System.Drawing.Size(530, 23);
-            this.materialSingleLineTextField25.TabIndex = 3;
-            this.materialSingleLineTextField25.TabStop = false;
-            this.materialSingleLineTextField25.UseSystemPasswordChar = false;
-            // 
-            // materialRaisedButton2
-            // 
-            this.materialRaisedButton2.AutoSize = true;
-            this.materialRaisedButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton2.Depth = 0;
-            this.materialRaisedButton2.Icon = null;
-            this.materialRaisedButton2.Location = new System.Drawing.Point(783, 439);
-            this.materialRaisedButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton2.Name = "materialRaisedButton2";
-            this.materialRaisedButton2.Primary = true;
-            this.materialRaisedButton2.Size = new System.Drawing.Size(195, 36);
-            this.materialRaisedButton2.TabIndex = 4;
-            this.materialRaisedButton2.Text = "materialRaisedButton2";
-            this.materialRaisedButton2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1267,7 +1289,7 @@
         private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
         private System.Windows.Forms.TabPage AutoTab;
         private MaterialSkin.Controls.MaterialProgressBar materialProgressBar1;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField3;
+        private MaterialSkin.Controls.MaterialSingleLineTextField AutoTextCuepath;
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField4;
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField5;
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField6;
@@ -1278,7 +1300,7 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField11;
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField12;
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField13;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField14;
+        private MaterialSkin.Controls.MaterialSingleLineTextField CuesplitTextTitle;
         private MaterialSkin.Controls.MaterialListView CuesplitListStatus;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private MaterialSkin.Controls.MaterialProgressBar CuesplitProgressStatus;
@@ -1298,9 +1320,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private MaterialSkin.Controls.MaterialProgressBar Mp3ConvProgressStatus;
         private MaterialSkin.Controls.MaterialRaisedButton Mp3ConvBtnExec;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField25;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField24;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton2;
+        private MaterialSkin.Controls.MaterialSingleLineTextField AutoTextMp3path;
+        private MaterialSkin.Controls.MaterialSingleLineTextField AutoTextWavpath;
+        private MaterialSkin.Controls.MaterialRaisedButton AutoBtnExec;
+        private MaterialSkin.Controls.MaterialSingleLineTextField AutoTextWorkDir;
     }
 }
 
