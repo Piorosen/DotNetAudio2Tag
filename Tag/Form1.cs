@@ -418,8 +418,32 @@ namespace Tag
         {
             if (sender is ListView)
             {
-                autoConv.SelectBrainzIndex((sender as ListView).SelectedIndices[0]);
+                if ((sender as ListView).SelectedIndices.Count != 0)
+                {
+                    autoConv.SelectBrainzIndex((sender as ListView).SelectedIndices[0]);
+                }
                 autoConv.Execute();
+            }
+        }
+
+        private void CuesplitListStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (sender is ListView)
+            {
+                if ((sender as ListView).SelectedIndices.Count != 0)
+                {
+                    var t = (sender as ListView).SelectedIndices[0];
+                    var data = cueSpliter.List()[t];
+                    CuesplitTextTitle.Text = data.Title;
+                    CuesplitTextArtist.Text = data.Artists;
+                    CuesplitTextGenre.Text = data.Genre;
+                    CuesplitTextTrackCount.Text = data.Track.Count.ToString();
+                    
+                    CuesplitTextBarcode.Text = data.Barcord;
+                    CuesplitTextSavePath.Text = data.SavePath;
+                    CuesplitTextWavPath.Text = data.WavPath;
+                    CuesplitTextCuePath.Text = data.Path;
+                }
             }
         }
     }

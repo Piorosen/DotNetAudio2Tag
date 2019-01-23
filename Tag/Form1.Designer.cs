@@ -48,16 +48,14 @@
             this.AutoTextCuepath = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialProgressBar1 = new MaterialSkin.Controls.MaterialProgressBar();
             this.CuesplitTab = new System.Windows.Forms.TabPage();
-            this.materialSingleLineTextField4 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField5 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField6 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField7 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField8 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.CuesplitTextCuePath = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.CuesplitTextWavPath = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.CuesplitTextSavePath = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.CuesplitTextBarcode = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialSingleLineTextField9 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField10 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField11 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField12 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextField13 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.CuesplitTextTrackCount = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.CuesplitTextGenre = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.CuesplitTextArtist = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.CuesplitTextTitle = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.CuesplitListStatus = new MaterialSkin.Controls.MaterialListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -342,16 +340,14 @@
             // CuesplitTab
             // 
             this.CuesplitTab.BackColor = System.Drawing.SystemColors.Control;
-            this.CuesplitTab.Controls.Add(this.materialSingleLineTextField4);
-            this.CuesplitTab.Controls.Add(this.materialSingleLineTextField5);
-            this.CuesplitTab.Controls.Add(this.materialSingleLineTextField6);
-            this.CuesplitTab.Controls.Add(this.materialSingleLineTextField7);
-            this.CuesplitTab.Controls.Add(this.materialSingleLineTextField8);
+            this.CuesplitTab.Controls.Add(this.CuesplitTextCuePath);
+            this.CuesplitTab.Controls.Add(this.CuesplitTextWavPath);
+            this.CuesplitTab.Controls.Add(this.CuesplitTextSavePath);
+            this.CuesplitTab.Controls.Add(this.CuesplitTextBarcode);
             this.CuesplitTab.Controls.Add(this.materialSingleLineTextField9);
-            this.CuesplitTab.Controls.Add(this.materialSingleLineTextField10);
-            this.CuesplitTab.Controls.Add(this.materialSingleLineTextField11);
-            this.CuesplitTab.Controls.Add(this.materialSingleLineTextField12);
-            this.CuesplitTab.Controls.Add(this.materialSingleLineTextField13);
+            this.CuesplitTab.Controls.Add(this.CuesplitTextTrackCount);
+            this.CuesplitTab.Controls.Add(this.CuesplitTextGenre);
+            this.CuesplitTab.Controls.Add(this.CuesplitTextArtist);
             this.CuesplitTab.Controls.Add(this.CuesplitTextTitle);
             this.CuesplitTab.Controls.Add(this.CuesplitListStatus);
             this.CuesplitTab.Controls.Add(this.CuesplitProgressStatus);
@@ -363,96 +359,79 @@
             this.CuesplitTab.TabIndex = 0;
             this.CuesplitTab.Text = "Cue Split";
             // 
-            // materialSingleLineTextField4
+            // CuesplitTextCuePath
             // 
-            this.materialSingleLineTextField4.Depth = 0;
-            this.materialSingleLineTextField4.Hint = "Directory ( Not Change )";
-            this.materialSingleLineTextField4.Location = new System.Drawing.Point(3, 293);
-            this.materialSingleLineTextField4.MaxLength = 32767;
-            this.materialSingleLineTextField4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField4.Name = "materialSingleLineTextField4";
-            this.materialSingleLineTextField4.PasswordChar = '\0';
-            this.materialSingleLineTextField4.SelectedText = "";
-            this.materialSingleLineTextField4.SelectionLength = 0;
-            this.materialSingleLineTextField4.SelectionStart = 0;
-            this.materialSingleLineTextField4.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField4.TabIndex = 34;
-            this.materialSingleLineTextField4.TabStop = false;
-            this.materialSingleLineTextField4.UseSystemPasswordChar = false;
+            this.CuesplitTextCuePath.Depth = 0;
+            this.CuesplitTextCuePath.Hint = "Cue Path ( Not Change )";
+            this.CuesplitTextCuePath.Location = new System.Drawing.Point(3, 235);
+            this.CuesplitTextCuePath.MaxLength = 32767;
+            this.CuesplitTextCuePath.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitTextCuePath.Name = "CuesplitTextCuePath";
+            this.CuesplitTextCuePath.PasswordChar = '\0';
+            this.CuesplitTextCuePath.SelectedText = "";
+            this.CuesplitTextCuePath.SelectionLength = 0;
+            this.CuesplitTextCuePath.SelectionStart = 0;
+            this.CuesplitTextCuePath.Size = new System.Drawing.Size(340, 23);
+            this.CuesplitTextCuePath.TabIndex = 34;
+            this.CuesplitTextCuePath.TabStop = false;
+            this.CuesplitTextCuePath.UseSystemPasswordChar = false;
             // 
-            // materialSingleLineTextField5
+            // CuesplitTextWavPath
             // 
-            this.materialSingleLineTextField5.Depth = 0;
-            this.materialSingleLineTextField5.Hint = "Barcode ( Never Fix it )";
-            this.materialSingleLineTextField5.Location = new System.Drawing.Point(3, 264);
-            this.materialSingleLineTextField5.MaxLength = 32767;
-            this.materialSingleLineTextField5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField5.Name = "materialSingleLineTextField5";
-            this.materialSingleLineTextField5.PasswordChar = '\0';
-            this.materialSingleLineTextField5.SelectedText = "";
-            this.materialSingleLineTextField5.SelectionLength = 0;
-            this.materialSingleLineTextField5.SelectionStart = 0;
-            this.materialSingleLineTextField5.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField5.TabIndex = 33;
-            this.materialSingleLineTextField5.TabStop = false;
-            this.materialSingleLineTextField5.UseSystemPasswordChar = false;
+            this.CuesplitTextWavPath.Depth = 0;
+            this.CuesplitTextWavPath.Hint = "WavPath ( Never Fix it )";
+            this.CuesplitTextWavPath.Location = new System.Drawing.Point(3, 206);
+            this.CuesplitTextWavPath.MaxLength = 32767;
+            this.CuesplitTextWavPath.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitTextWavPath.Name = "CuesplitTextWavPath";
+            this.CuesplitTextWavPath.PasswordChar = '\0';
+            this.CuesplitTextWavPath.SelectedText = "";
+            this.CuesplitTextWavPath.SelectionLength = 0;
+            this.CuesplitTextWavPath.SelectionStart = 0;
+            this.CuesplitTextWavPath.Size = new System.Drawing.Size(340, 23);
+            this.CuesplitTextWavPath.TabIndex = 33;
+            this.CuesplitTextWavPath.TabStop = false;
+            this.CuesplitTextWavPath.UseSystemPasswordChar = false;
             // 
-            // materialSingleLineTextField6
+            // CuesplitTextSavePath
             // 
-            this.materialSingleLineTextField6.Depth = 0;
-            this.materialSingleLineTextField6.Hint = "Composers ( Blank & Statable )";
-            this.materialSingleLineTextField6.Location = new System.Drawing.Point(3, 235);
-            this.materialSingleLineTextField6.MaxLength = 32767;
-            this.materialSingleLineTextField6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField6.Name = "materialSingleLineTextField6";
-            this.materialSingleLineTextField6.PasswordChar = '\0';
-            this.materialSingleLineTextField6.SelectedText = "";
-            this.materialSingleLineTextField6.SelectionLength = 0;
-            this.materialSingleLineTextField6.SelectionStart = 0;
-            this.materialSingleLineTextField6.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField6.TabIndex = 32;
-            this.materialSingleLineTextField6.TabStop = false;
-            this.materialSingleLineTextField6.UseSystemPasswordChar = false;
+            this.CuesplitTextSavePath.Depth = 0;
+            this.CuesplitTextSavePath.Hint = "SavePath ( You can chang )";
+            this.CuesplitTextSavePath.Location = new System.Drawing.Point(3, 177);
+            this.CuesplitTextSavePath.MaxLength = 32767;
+            this.CuesplitTextSavePath.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitTextSavePath.Name = "CuesplitTextSavePath";
+            this.CuesplitTextSavePath.PasswordChar = '\0';
+            this.CuesplitTextSavePath.SelectedText = "";
+            this.CuesplitTextSavePath.SelectionLength = 0;
+            this.CuesplitTextSavePath.SelectionStart = 0;
+            this.CuesplitTextSavePath.Size = new System.Drawing.Size(340, 23);
+            this.CuesplitTextSavePath.TabIndex = 32;
+            this.CuesplitTextSavePath.TabStop = false;
+            this.CuesplitTextSavePath.UseSystemPasswordChar = false;
             // 
-            // materialSingleLineTextField7
+            // CuesplitTextBarcode
             // 
-            this.materialSingleLineTextField7.Depth = 0;
-            this.materialSingleLineTextField7.Hint = "Album Artists ( Blank & Statable )";
-            this.materialSingleLineTextField7.Location = new System.Drawing.Point(3, 206);
-            this.materialSingleLineTextField7.MaxLength = 32767;
-            this.materialSingleLineTextField7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField7.Name = "materialSingleLineTextField7";
-            this.materialSingleLineTextField7.PasswordChar = '\0';
-            this.materialSingleLineTextField7.SelectedText = "";
-            this.materialSingleLineTextField7.SelectionLength = 0;
-            this.materialSingleLineTextField7.SelectionStart = 0;
-            this.materialSingleLineTextField7.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField7.TabIndex = 31;
-            this.materialSingleLineTextField7.TabStop = false;
-            this.materialSingleLineTextField7.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField8
-            // 
-            this.materialSingleLineTextField8.Depth = 0;
-            this.materialSingleLineTextField8.Hint = "Comment ( Blank & Statable )";
-            this.materialSingleLineTextField8.Location = new System.Drawing.Point(3, 177);
-            this.materialSingleLineTextField8.MaxLength = 32767;
-            this.materialSingleLineTextField8.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField8.Name = "materialSingleLineTextField8";
-            this.materialSingleLineTextField8.PasswordChar = '\0';
-            this.materialSingleLineTextField8.SelectedText = "";
-            this.materialSingleLineTextField8.SelectionLength = 0;
-            this.materialSingleLineTextField8.SelectionStart = 0;
-            this.materialSingleLineTextField8.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField8.TabIndex = 30;
-            this.materialSingleLineTextField8.TabStop = false;
-            this.materialSingleLineTextField8.UseSystemPasswordChar = false;
+            this.CuesplitTextBarcode.Depth = 0;
+            this.CuesplitTextBarcode.Hint = "Barcode ( Blank & Statable )";
+            this.CuesplitTextBarcode.Location = new System.Drawing.Point(3, 148);
+            this.CuesplitTextBarcode.MaxLength = 32767;
+            this.CuesplitTextBarcode.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitTextBarcode.Name = "CuesplitTextBarcode";
+            this.CuesplitTextBarcode.PasswordChar = '\0';
+            this.CuesplitTextBarcode.SelectedText = "";
+            this.CuesplitTextBarcode.SelectionLength = 0;
+            this.CuesplitTextBarcode.SelectionStart = 0;
+            this.CuesplitTextBarcode.Size = new System.Drawing.Size(340, 23);
+            this.CuesplitTextBarcode.TabIndex = 31;
+            this.CuesplitTextBarcode.TabStop = false;
+            this.CuesplitTextBarcode.UseSystemPasswordChar = false;
             // 
             // materialSingleLineTextField9
             // 
             this.materialSingleLineTextField9.Depth = 0;
             this.materialSingleLineTextField9.Hint = "Genre ( Blank & Statable )";
-            this.materialSingleLineTextField9.Location = new System.Drawing.Point(3, 148);
+            this.materialSingleLineTextField9.Location = new System.Drawing.Point(3, 119);
             this.materialSingleLineTextField9.MaxLength = 32767;
             this.materialSingleLineTextField9.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialSingleLineTextField9.Name = "materialSingleLineTextField9";
@@ -465,73 +444,56 @@
             this.materialSingleLineTextField9.TabStop = false;
             this.materialSingleLineTextField9.UseSystemPasswordChar = false;
             // 
-            // materialSingleLineTextField10
+            // CuesplitTextTrackCount
             // 
-            this.materialSingleLineTextField10.Depth = 0;
-            this.materialSingleLineTextField10.Hint = "Track ( Blank & Statable )";
-            this.materialSingleLineTextField10.Location = new System.Drawing.Point(3, 119);
-            this.materialSingleLineTextField10.MaxLength = 32767;
-            this.materialSingleLineTextField10.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField10.Name = "materialSingleLineTextField10";
-            this.materialSingleLineTextField10.PasswordChar = '\0';
-            this.materialSingleLineTextField10.SelectedText = "";
-            this.materialSingleLineTextField10.SelectionLength = 0;
-            this.materialSingleLineTextField10.SelectionStart = 0;
-            this.materialSingleLineTextField10.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField10.TabIndex = 28;
-            this.materialSingleLineTextField10.TabStop = false;
-            this.materialSingleLineTextField10.UseSystemPasswordChar = false;
+            this.CuesplitTextTrackCount.Depth = 0;
+            this.CuesplitTextTrackCount.Hint = "TrackCount ( Blank & Statable )";
+            this.CuesplitTextTrackCount.Location = new System.Drawing.Point(3, 90);
+            this.CuesplitTextTrackCount.MaxLength = 32767;
+            this.CuesplitTextTrackCount.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitTextTrackCount.Name = "CuesplitTextTrackCount";
+            this.CuesplitTextTrackCount.PasswordChar = '\0';
+            this.CuesplitTextTrackCount.SelectedText = "";
+            this.CuesplitTextTrackCount.SelectionLength = 0;
+            this.CuesplitTextTrackCount.SelectionStart = 0;
+            this.CuesplitTextTrackCount.Size = new System.Drawing.Size(340, 23);
+            this.CuesplitTextTrackCount.TabIndex = 28;
+            this.CuesplitTextTrackCount.TabStop = false;
+            this.CuesplitTextTrackCount.UseSystemPasswordChar = false;
             // 
-            // materialSingleLineTextField11
+            // CuesplitTextGenre
             // 
-            this.materialSingleLineTextField11.Depth = 0;
-            this.materialSingleLineTextField11.Hint = "Create Year ( Blank & Statable )";
-            this.materialSingleLineTextField11.Location = new System.Drawing.Point(3, 90);
-            this.materialSingleLineTextField11.MaxLength = 32767;
-            this.materialSingleLineTextField11.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField11.Name = "materialSingleLineTextField11";
-            this.materialSingleLineTextField11.PasswordChar = '\0';
-            this.materialSingleLineTextField11.SelectedText = "";
-            this.materialSingleLineTextField11.SelectionLength = 0;
-            this.materialSingleLineTextField11.SelectionStart = 0;
-            this.materialSingleLineTextField11.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField11.TabIndex = 27;
-            this.materialSingleLineTextField11.TabStop = false;
-            this.materialSingleLineTextField11.UseSystemPasswordChar = false;
+            this.CuesplitTextGenre.Depth = 0;
+            this.CuesplitTextGenre.Hint = "Genre ( Blank & Statable )";
+            this.CuesplitTextGenre.Location = new System.Drawing.Point(3, 61);
+            this.CuesplitTextGenre.MaxLength = 32767;
+            this.CuesplitTextGenre.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitTextGenre.Name = "CuesplitTextGenre";
+            this.CuesplitTextGenre.PasswordChar = '\0';
+            this.CuesplitTextGenre.SelectedText = "";
+            this.CuesplitTextGenre.SelectionLength = 0;
+            this.CuesplitTextGenre.SelectionStart = 0;
+            this.CuesplitTextGenre.Size = new System.Drawing.Size(340, 23);
+            this.CuesplitTextGenre.TabIndex = 26;
+            this.CuesplitTextGenre.TabStop = false;
+            this.CuesplitTextGenre.UseSystemPasswordChar = false;
             // 
-            // materialSingleLineTextField12
+            // CuesplitTextArtist
             // 
-            this.materialSingleLineTextField12.Depth = 0;
-            this.materialSingleLineTextField12.Hint = "Album ( Blank & Statable )";
-            this.materialSingleLineTextField12.Location = new System.Drawing.Point(3, 61);
-            this.materialSingleLineTextField12.MaxLength = 32767;
-            this.materialSingleLineTextField12.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField12.Name = "materialSingleLineTextField12";
-            this.materialSingleLineTextField12.PasswordChar = '\0';
-            this.materialSingleLineTextField12.SelectedText = "";
-            this.materialSingleLineTextField12.SelectionLength = 0;
-            this.materialSingleLineTextField12.SelectionStart = 0;
-            this.materialSingleLineTextField12.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField12.TabIndex = 26;
-            this.materialSingleLineTextField12.TabStop = false;
-            this.materialSingleLineTextField12.UseSystemPasswordChar = false;
-            // 
-            // materialSingleLineTextField13
-            // 
-            this.materialSingleLineTextField13.Depth = 0;
-            this.materialSingleLineTextField13.Hint = "Artists ( Blank & Statable )";
-            this.materialSingleLineTextField13.Location = new System.Drawing.Point(3, 32);
-            this.materialSingleLineTextField13.MaxLength = 32767;
-            this.materialSingleLineTextField13.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField13.Name = "materialSingleLineTextField13";
-            this.materialSingleLineTextField13.PasswordChar = '\0';
-            this.materialSingleLineTextField13.SelectedText = "";
-            this.materialSingleLineTextField13.SelectionLength = 0;
-            this.materialSingleLineTextField13.SelectionStart = 0;
-            this.materialSingleLineTextField13.Size = new System.Drawing.Size(340, 23);
-            this.materialSingleLineTextField13.TabIndex = 25;
-            this.materialSingleLineTextField13.TabStop = false;
-            this.materialSingleLineTextField13.UseSystemPasswordChar = false;
+            this.CuesplitTextArtist.Depth = 0;
+            this.CuesplitTextArtist.Hint = "Artists ( Blank & Statable )";
+            this.CuesplitTextArtist.Location = new System.Drawing.Point(3, 32);
+            this.CuesplitTextArtist.MaxLength = 32767;
+            this.CuesplitTextArtist.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CuesplitTextArtist.Name = "CuesplitTextArtist";
+            this.CuesplitTextArtist.PasswordChar = '\0';
+            this.CuesplitTextArtist.SelectedText = "";
+            this.CuesplitTextArtist.SelectionLength = 0;
+            this.CuesplitTextArtist.SelectionStart = 0;
+            this.CuesplitTextArtist.Size = new System.Drawing.Size(340, 23);
+            this.CuesplitTextArtist.TabIndex = 25;
+            this.CuesplitTextArtist.TabStop = false;
+            this.CuesplitTextArtist.UseSystemPasswordChar = false;
             // 
             // CuesplitTextTitle
             // 
@@ -572,6 +534,9 @@
             this.CuesplitListStatus.TabIndex = 23;
             this.CuesplitListStatus.UseCompatibleStateImageBehavior = false;
             this.CuesplitListStatus.View = System.Windows.Forms.View.Details;
+            this.CuesplitListStatus.SelectedIndexChanged += new System.EventHandler(this.CuesplitListStatus_SelectedIndexChanged);
+            this.CuesplitListStatus.DragDrop += new System.Windows.Forms.DragEventHandler(this.CuesplitListStatus_DragDrop);
+            this.CuesplitListStatus.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnters);
             // 
             // columnHeader1
             // 
@@ -838,6 +803,8 @@
             this.Mp3ConvListStatus.TabIndex = 23;
             this.Mp3ConvListStatus.UseCompatibleStateImageBehavior = false;
             this.Mp3ConvListStatus.View = System.Windows.Forms.View.Details;
+            this.Mp3ConvListStatus.DragDrop += new System.Windows.Forms.DragEventHandler(this.Mp3ConvListStatus_DragDrop);
+            this.Mp3ConvListStatus.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnters);
             // 
             // columnHeader2
             // 
@@ -1322,7 +1289,6 @@
             // 
             // Form1
             // 
-            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
@@ -1384,16 +1350,14 @@
         private System.Windows.Forms.TabPage AutoTab;
         private MaterialSkin.Controls.MaterialProgressBar materialProgressBar1;
         private MaterialSkin.Controls.MaterialSingleLineTextField AutoTextCuepath;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField4;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField5;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField6;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField7;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField8;
+        private MaterialSkin.Controls.MaterialSingleLineTextField CuesplitTextCuePath;
+        private MaterialSkin.Controls.MaterialSingleLineTextField CuesplitTextWavPath;
+        private MaterialSkin.Controls.MaterialSingleLineTextField CuesplitTextSavePath;
+        private MaterialSkin.Controls.MaterialSingleLineTextField CuesplitTextBarcode;
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField9;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField10;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField11;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField12;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField13;
+        private MaterialSkin.Controls.MaterialSingleLineTextField CuesplitTextTrackCount;
+        private MaterialSkin.Controls.MaterialSingleLineTextField CuesplitTextGenre;
+        private MaterialSkin.Controls.MaterialSingleLineTextField CuesplitTextArtist;
         private MaterialSkin.Controls.MaterialSingleLineTextField CuesplitTextTitle;
         private MaterialSkin.Controls.MaterialListView CuesplitListStatus;
         private System.Windows.Forms.ColumnHeader columnHeader1;

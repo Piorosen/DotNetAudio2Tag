@@ -35,7 +35,7 @@ namespace Tag.Core
         public List<TrackInfo> Track = new List<TrackInfo>();
     }
 
-    public class CueSpliter : ICore<CueData, CueData>
+    public class CueSpliter : ICore<CueData, string>
     {
         readonly List<CueData> CueList = new List<CueData>();
 
@@ -60,7 +60,7 @@ namespace Tag.Core
                             .GetCatalogDataReader(cuePath);
 
                 wfr = new WaveFileReader(wavePath);
-
+               
             }
             catch (Exception)
             {
@@ -101,11 +101,7 @@ namespace Tag.Core
             CueList.Add(data);
             return true;
         }
-
-        public bool AddFile(CueData path)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public bool Delete(int at)
         {
