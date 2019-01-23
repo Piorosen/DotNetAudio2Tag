@@ -15,7 +15,7 @@
     <FileVersion>2.5.0.0</FileVersion>
     <PackageReleaseNotes>TBD</PackageReleaseNotes>
     <Version>2.6</Version>
-    <TargetFramework>net35</TargetFramework>
+    <TargetFramework>net472</TargetFramework>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <ApplicationIcon />
     <OutputType>Library</OutputType>
