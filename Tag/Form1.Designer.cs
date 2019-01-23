@@ -261,6 +261,7 @@
             // 
             // AutoBtnExec
             // 
+            this.AutoBtnExec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AutoBtnExec.AutoSize = true;
             this.AutoBtnExec.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoBtnExec.Depth = 0;
@@ -329,6 +330,8 @@
             // 
             // materialProgressBar1
             // 
+            this.materialProgressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.materialProgressBar1.Depth = 0;
             this.materialProgressBar1.Location = new System.Drawing.Point(7, 481);
             this.materialProgressBar1.MouseState = MaterialSkin.MouseState.HOVER;
