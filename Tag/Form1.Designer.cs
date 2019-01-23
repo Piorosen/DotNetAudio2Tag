@@ -30,14 +30,18 @@
         {
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.TabControl = new MaterialSkin.Controls.MaterialTabControl();
+            this.AutoTab = new System.Windows.Forms.TabPage();
+            this.materialSingleLineTextField3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialProgressBar1 = new MaterialSkin.Controls.MaterialProgressBar();
             this.CuesplitTab = new System.Windows.Forms.TabPage();
             this.CuesplitProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
-            this.CuesplitBtnOpenDialog = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.CuesplitTextCuePath = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.CuesplitBtnExecute = new MaterialSkin.Controls.MaterialRaisedButton();
             this.CuesplitListStatus = new MaterialSkin.Controls.MaterialListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ConvMp3Tab = new System.Windows.Forms.TabPage();
+            this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.Mp3ConvProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
             this.Mp3ConvListStatus = new MaterialSkin.Controls.MaterialListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -68,9 +72,9 @@
             this.TaggingProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
             this.TaggingBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SettingTab = new System.Windows.Forms.TabPage();
-            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
             this.TabControl.SuspendLayout();
+            this.AutoTab.SuspendLayout();
             this.CuesplitTab.SuspendLayout();
             this.ConvMp3Tab.SuspendLayout();
             this.TaggingTab.SuspendLayout();
@@ -95,6 +99,7 @@
             this.TabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.TabControl.Controls.Add(this.AutoTab);
             this.TabControl.Controls.Add(this.CuesplitTab);
             this.TabControl.Controls.Add(this.ConvMp3Tab);
             this.TabControl.Controls.Add(this.TaggingTab);
@@ -107,12 +112,47 @@
             this.TabControl.Size = new System.Drawing.Size(995, 525);
             this.TabControl.TabIndex = 1;
             // 
+            // AutoTab
+            // 
+            this.AutoTab.BackColor = System.Drawing.SystemColors.Control;
+            this.AutoTab.Controls.Add(this.materialSingleLineTextField3);
+            this.AutoTab.Controls.Add(this.materialProgressBar1);
+            this.AutoTab.Location = new System.Drawing.Point(4, 22);
+            this.AutoTab.Name = "AutoTab";
+            this.AutoTab.Size = new System.Drawing.Size(987, 499);
+            this.AutoTab.TabIndex = 4;
+            this.AutoTab.Text = "Auto";
+            // 
+            // materialSingleLineTextField3
+            // 
+            this.materialSingleLineTextField3.Depth = 0;
+            this.materialSingleLineTextField3.Hint = "Cue File Path";
+            this.materialSingleLineTextField3.Location = new System.Drawing.Point(24, 88);
+            this.materialSingleLineTextField3.MaxLength = 32767;
+            this.materialSingleLineTextField3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField3.Name = "materialSingleLineTextField3";
+            this.materialSingleLineTextField3.PasswordChar = '\0';
+            this.materialSingleLineTextField3.SelectedText = "";
+            this.materialSingleLineTextField3.SelectionLength = 0;
+            this.materialSingleLineTextField3.SelectionStart = 0;
+            this.materialSingleLineTextField3.Size = new System.Drawing.Size(530, 23);
+            this.materialSingleLineTextField3.TabIndex = 1;
+            this.materialSingleLineTextField3.TabStop = false;
+            this.materialSingleLineTextField3.UseSystemPasswordChar = false;
+            // 
+            // materialProgressBar1
+            // 
+            this.materialProgressBar1.Depth = 0;
+            this.materialProgressBar1.Location = new System.Drawing.Point(7, 481);
+            this.materialProgressBar1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialProgressBar1.Name = "materialProgressBar1";
+            this.materialProgressBar1.Size = new System.Drawing.Size(971, 5);
+            this.materialProgressBar1.TabIndex = 0;
+            // 
             // CuesplitTab
             // 
             this.CuesplitTab.BackColor = System.Drawing.SystemColors.Control;
             this.CuesplitTab.Controls.Add(this.CuesplitProgressStatus);
-            this.CuesplitTab.Controls.Add(this.CuesplitBtnOpenDialog);
-            this.CuesplitTab.Controls.Add(this.CuesplitTextCuePath);
             this.CuesplitTab.Controls.Add(this.CuesplitBtnExecute);
             this.CuesplitTab.Controls.Add(this.CuesplitListStatus);
             this.CuesplitTab.Location = new System.Drawing.Point(4, 22);
@@ -131,41 +171,6 @@
             this.CuesplitProgressStatus.Name = "CuesplitProgressStatus";
             this.CuesplitProgressStatus.Size = new System.Drawing.Size(255, 5);
             this.CuesplitProgressStatus.TabIndex = 5;
-            // 
-            // CuesplitBtnOpenDialog
-            // 
-            this.CuesplitBtnOpenDialog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CuesplitBtnOpenDialog.AutoSize = true;
-            this.CuesplitBtnOpenDialog.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.CuesplitBtnOpenDialog.Depth = 0;
-            this.CuesplitBtnOpenDialog.Icon = null;
-            this.CuesplitBtnOpenDialog.Location = new System.Drawing.Point(726, 49);
-            this.CuesplitBtnOpenDialog.MouseState = MaterialSkin.MouseState.HOVER;
-            this.CuesplitBtnOpenDialog.Name = "CuesplitBtnOpenDialog";
-            this.CuesplitBtnOpenDialog.Primary = true;
-            this.CuesplitBtnOpenDialog.Size = new System.Drawing.Size(108, 36);
-            this.CuesplitBtnOpenDialog.TabIndex = 4;
-            this.CuesplitBtnOpenDialog.Text = "Open Dialog";
-            this.CuesplitBtnOpenDialog.UseVisualStyleBackColor = true;
-            this.CuesplitBtnOpenDialog.Click += new System.EventHandler(this.CuesplitBtnOpenDialog_Click);
-            // 
-            // CuesplitTextCuePath
-            // 
-            this.CuesplitTextCuePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CuesplitTextCuePath.Depth = 0;
-            this.CuesplitTextCuePath.Hint = "( Cue Path )";
-            this.CuesplitTextCuePath.Location = new System.Drawing.Point(726, 20);
-            this.CuesplitTextCuePath.MaxLength = 32767;
-            this.CuesplitTextCuePath.MouseState = MaterialSkin.MouseState.HOVER;
-            this.CuesplitTextCuePath.Name = "CuesplitTextCuePath";
-            this.CuesplitTextCuePath.PasswordChar = '\0';
-            this.CuesplitTextCuePath.SelectedText = "";
-            this.CuesplitTextCuePath.SelectionLength = 0;
-            this.CuesplitTextCuePath.SelectionStart = 0;
-            this.CuesplitTextCuePath.Size = new System.Drawing.Size(255, 23);
-            this.CuesplitTextCuePath.TabIndex = 3;
-            this.CuesplitTextCuePath.TabStop = false;
-            this.CuesplitTextCuePath.UseSystemPasswordChar = false;
             // 
             // CuesplitBtnExecute
             // 
@@ -198,12 +203,12 @@
             this.CuesplitListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.CuesplitListStatus.FullRowSelect = true;
             this.CuesplitListStatus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.CuesplitListStatus.Location = new System.Drawing.Point(6, 3);
+            this.CuesplitListStatus.Location = new System.Drawing.Point(267, 0);
             this.CuesplitListStatus.MouseLocation = new System.Drawing.Point(-1, -1);
             this.CuesplitListStatus.MouseState = MaterialSkin.MouseState.OUT;
             this.CuesplitListStatus.Name = "CuesplitListStatus";
             this.CuesplitListStatus.OwnerDraw = true;
-            this.CuesplitListStatus.Size = new System.Drawing.Size(714, 493);
+            this.CuesplitListStatus.Size = new System.Drawing.Size(714, 418);
             this.CuesplitListStatus.TabIndex = 0;
             this.CuesplitListStatus.UseCompatibleStateImageBehavior = false;
             this.CuesplitListStatus.View = System.Windows.Forms.View.Details;
@@ -219,6 +224,9 @@
             // ConvMp3Tab
             // 
             this.ConvMp3Tab.BackColor = System.Drawing.SystemColors.Control;
+            this.ConvMp3Tab.Controls.Add(this.materialSingleLineTextField2);
+            this.ConvMp3Tab.Controls.Add(this.materialLabel1);
+            this.ConvMp3Tab.Controls.Add(this.materialSingleLineTextField1);
             this.ConvMp3Tab.Controls.Add(this.Mp3ConvProgressStatus);
             this.ConvMp3Tab.Controls.Add(this.Mp3ConvListStatus);
             this.ConvMp3Tab.Controls.Add(this.Mp3ConvBtnExec);
@@ -228,6 +236,53 @@
             this.ConvMp3Tab.Size = new System.Drawing.Size(987, 499);
             this.ConvMp3Tab.TabIndex = 1;
             this.ConvMp3Tab.Text = "Mp3 Converter";
+            // 
+            // materialSingleLineTextField2
+            // 
+            this.materialSingleLineTextField2.Depth = 0;
+            this.materialSingleLineTextField2.Hint = "( lame arg )";
+            this.materialSingleLineTextField2.Location = new System.Drawing.Point(9, 43);
+            this.materialSingleLineTextField2.MaxLength = 32767;
+            this.materialSingleLineTextField2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField2.Name = "materialSingleLineTextField2";
+            this.materialSingleLineTextField2.PasswordChar = '\0';
+            this.materialSingleLineTextField2.SelectedText = "";
+            this.materialSingleLineTextField2.SelectionLength = 0;
+            this.materialSingleLineTextField2.SelectionStart = 0;
+            this.materialSingleLineTextField2.Size = new System.Drawing.Size(252, 23);
+            this.materialSingleLineTextField2.TabIndex = 9;
+            this.materialSingleLineTextField2.TabStop = false;
+            this.materialSingleLineTextField2.UseSystemPasswordChar = false;
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(6, 14);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(54, 19);
+            this.materialLabel1.TabIndex = 8;
+            this.materialLabel1.Text = "Lame :";
+            // 
+            // materialSingleLineTextField1
+            // 
+            this.materialSingleLineTextField1.Depth = 0;
+            this.materialSingleLineTextField1.Hint = "( lame file path )";
+            this.materialSingleLineTextField1.Location = new System.Drawing.Point(66, 14);
+            this.materialSingleLineTextField1.MaxLength = 32767;
+            this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
+            this.materialSingleLineTextField1.PasswordChar = '\0';
+            this.materialSingleLineTextField1.SelectedText = "";
+            this.materialSingleLineTextField1.SelectionLength = 0;
+            this.materialSingleLineTextField1.SelectionStart = 0;
+            this.materialSingleLineTextField1.Size = new System.Drawing.Size(195, 23);
+            this.materialSingleLineTextField1.TabIndex = 7;
+            this.materialSingleLineTextField1.TabStop = false;
+            this.materialSingleLineTextField1.UseSystemPasswordChar = false;
             // 
             // Mp3ConvProgressStatus
             // 
@@ -253,12 +308,12 @@
             this.Mp3ConvListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.Mp3ConvListStatus.FullRowSelect = true;
             this.Mp3ConvListStatus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.Mp3ConvListStatus.Location = new System.Drawing.Point(6, 3);
+            this.Mp3ConvListStatus.Location = new System.Drawing.Point(270, 3);
             this.Mp3ConvListStatus.MouseLocation = new System.Drawing.Point(-1, -1);
             this.Mp3ConvListStatus.MouseState = MaterialSkin.MouseState.OUT;
             this.Mp3ConvListStatus.Name = "Mp3ConvListStatus";
             this.Mp3ConvListStatus.OwnerDraw = true;
-            this.Mp3ConvListStatus.Size = new System.Drawing.Size(714, 490);
+            this.Mp3ConvListStatus.Size = new System.Drawing.Size(714, 435);
             this.Mp3ConvListStatus.TabIndex = 1;
             this.Mp3ConvListStatus.UseCompatibleStateImageBehavior = false;
             this.Mp3ConvListStatus.View = System.Windows.Forms.View.Details;
@@ -711,43 +766,31 @@
             // SettingTab
             // 
             this.SettingTab.BackColor = System.Drawing.SystemColors.Control;
-            this.SettingTab.Controls.Add(this.materialLabel1);
-            this.SettingTab.Controls.Add(this.materialSingleLineTextField1);
+            this.SettingTab.Controls.Add(this.materialCheckBox1);
             this.SettingTab.Location = new System.Drawing.Point(4, 22);
             this.SettingTab.Name = "SettingTab";
             this.SettingTab.Size = new System.Drawing.Size(987, 499);
             this.SettingTab.TabIndex = 3;
             this.SettingTab.Text = "Setting";
             // 
-            // materialSingleLineTextField1
+            // materialCheckBox1
             // 
-            this.materialSingleLineTextField1.Depth = 0;
-            this.materialSingleLineTextField1.Hint = "( lame file path )";
-            this.materialSingleLineTextField1.Location = new System.Drawing.Point(72, 16);
-            this.materialSingleLineTextField1.MaxLength = 32767;
-            this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
-            this.materialSingleLineTextField1.PasswordChar = '\0';
-            this.materialSingleLineTextField1.SelectedText = "";
-            this.materialSingleLineTextField1.SelectionLength = 0;
-            this.materialSingleLineTextField1.SelectionStart = 0;
-            this.materialSingleLineTextField1.Size = new System.Drawing.Size(394, 23);
-            this.materialSingleLineTextField1.TabIndex = 0;
-            this.materialSingleLineTextField1.TabStop = false;
-            this.materialSingleLineTextField1.UseSystemPasswordChar = false;
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(12, 17);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(54, 19);
-            this.materialLabel1.TabIndex = 1;
-            this.materialLabel1.Text = "Lame :";
+            this.materialCheckBox1.AutoSize = true;
+            this.materialCheckBox1.Checked = true;
+            this.materialCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.materialCheckBox1.Depth = 0;
+            this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
+            this.materialCheckBox1.Location = new System.Drawing.Point(16, 199);
+            this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckBox1.Name = "materialCheckBox1";
+            this.materialCheckBox1.Ripple = true;
+            this.materialCheckBox1.Size = new System.Drawing.Size(93, 30);
+            this.materialCheckBox1.TabIndex = 3;
+            this.materialCheckBox1.Text = "DarkMode";
+            this.materialCheckBox1.UseVisualStyleBackColor = true;
+            this.materialCheckBox1.CheckedChanged += new System.EventHandler(this.pp);
             // 
             // Form1
             // 
@@ -762,6 +805,7 @@
             this.Text = "Audio2Tag";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.TabControl.ResumeLayout(false);
+            this.AutoTab.ResumeLayout(false);
             this.CuesplitTab.ResumeLayout(false);
             this.CuesplitTab.PerformLayout();
             this.ConvMp3Tab.ResumeLayout(false);
@@ -785,8 +829,6 @@
         private MaterialSkin.Controls.MaterialListView CuesplitListStatus;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private MaterialSkin.Controls.MaterialRaisedButton CuesplitBtnExecute;
-        private MaterialSkin.Controls.MaterialSingleLineTextField CuesplitTextCuePath;
-        private MaterialSkin.Controls.MaterialRaisedButton CuesplitBtnOpenDialog;
         private MaterialSkin.Controls.MaterialProgressBar CuesplitProgressStatus;
         private MaterialSkin.Controls.MaterialRaisedButton Mp3ConvBtnExec;
         private MaterialSkin.Controls.MaterialListView Mp3ConvListStatus;
@@ -817,8 +859,13 @@
         private MaterialSkin.Controls.MaterialFlatButton TaggingBtnPrevImage;
         private MaterialSkin.Controls.MaterialFlatButton TaggingBtnImageDelete;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
+        private System.Windows.Forms.TabPage AutoTab;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
+        private MaterialSkin.Controls.MaterialProgressBar materialProgressBar1;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField3;
     }
 }
 
