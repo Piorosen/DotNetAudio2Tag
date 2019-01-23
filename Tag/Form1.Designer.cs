@@ -43,6 +43,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Mp3ConvBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TaggingTab = new System.Windows.Forms.TabPage();
+            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TaggingBtnImageDelete = new MaterialSkin.Controls.MaterialFlatButton();
             this.TaggingBtnNextImage = new MaterialSkin.Controls.MaterialFlatButton();
             this.TaggingBtnPrevImage = new MaterialSkin.Controls.MaterialFlatButton();
@@ -67,12 +68,14 @@
             this.TaggingProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
             this.TaggingBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SettingTab = new System.Windows.Forms.TabPage();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.TabControl.SuspendLayout();
             this.CuesplitTab.SuspendLayout();
             this.ConvMp3Tab.SuspendLayout();
             this.TaggingTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TaggingImageList)).BeginInit();
+            this.SettingTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -316,6 +319,22 @@
             this.TaggingTab.Size = new System.Drawing.Size(987, 499);
             this.TaggingTab.TabIndex = 2;
             this.TaggingTab.Text = "Tagging";
+            // 
+            // materialRaisedButton1
+            // 
+            this.materialRaisedButton1.AutoSize = true;
+            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Icon = null;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(390, 443);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(195, 36);
+            this.materialRaisedButton1.TabIndex = 28;
+            this.materialRaisedButton1.Text = "materialRaisedButton1";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
             // 
             // TaggingBtnImageDelete
             // 
@@ -660,7 +679,7 @@
             // columnHeader4
             // 
             this.columnHeader4.Text = "경로";
-            this.columnHeader4.Width = 227;
+            this.columnHeader4.Width = 592;
             // 
             // TaggingProgressStatus
             // 
@@ -691,28 +710,44 @@
             // 
             // SettingTab
             // 
+            this.SettingTab.BackColor = System.Drawing.SystemColors.Control;
+            this.SettingTab.Controls.Add(this.materialLabel1);
+            this.SettingTab.Controls.Add(this.materialSingleLineTextField1);
             this.SettingTab.Location = new System.Drawing.Point(4, 22);
             this.SettingTab.Name = "SettingTab";
             this.SettingTab.Size = new System.Drawing.Size(987, 499);
             this.SettingTab.TabIndex = 3;
             this.SettingTab.Text = "Setting";
-            this.SettingTab.UseVisualStyleBackColor = true;
             // 
-            // materialRaisedButton1
+            // materialSingleLineTextField1
             // 
-            this.materialRaisedButton1.AutoSize = true;
-            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(390, 443);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(195, 36);
-            this.materialRaisedButton1.TabIndex = 28;
-            this.materialRaisedButton1.Text = "materialRaisedButton1";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
-            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
+            this.materialSingleLineTextField1.Depth = 0;
+            this.materialSingleLineTextField1.Hint = "( lame file path )";
+            this.materialSingleLineTextField1.Location = new System.Drawing.Point(72, 16);
+            this.materialSingleLineTextField1.MaxLength = 32767;
+            this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
+            this.materialSingleLineTextField1.PasswordChar = '\0';
+            this.materialSingleLineTextField1.SelectedText = "";
+            this.materialSingleLineTextField1.SelectionLength = 0;
+            this.materialSingleLineTextField1.SelectionStart = 0;
+            this.materialSingleLineTextField1.Size = new System.Drawing.Size(394, 23);
+            this.materialSingleLineTextField1.TabIndex = 0;
+            this.materialSingleLineTextField1.TabStop = false;
+            this.materialSingleLineTextField1.UseSystemPasswordChar = false;
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(12, 17);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(54, 19);
+            this.materialLabel1.TabIndex = 1;
+            this.materialLabel1.Text = "Lame :";
             // 
             // Form1
             // 
@@ -734,6 +769,8 @@
             this.TaggingTab.ResumeLayout(false);
             this.TaggingTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TaggingImageList)).EndInit();
+            this.SettingTab.ResumeLayout(false);
+            this.SettingTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -780,6 +817,8 @@
         private MaterialSkin.Controls.MaterialFlatButton TaggingBtnPrevImage;
         private MaterialSkin.Controls.MaterialFlatButton TaggingBtnImageDelete;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
     }
 }
 
