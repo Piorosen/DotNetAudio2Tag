@@ -163,6 +163,9 @@
             // 
             // AutoListStatus
             // 
+            this.AutoListStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AutoListStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AutoListStatus.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.AutoColumnScore,
@@ -175,7 +178,7 @@
             this.AutoColumnPublisher,
             this.AutoColumnCatNo});
             this.AutoListStatus.Depth = 0;
-            this.AutoListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.AutoListStatus.FullRowSelect = true;
             this.AutoListStatus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.AutoListStatus.Location = new System.Drawing.Point(360, 3);
@@ -183,10 +186,11 @@
             this.AutoListStatus.MouseState = MaterialSkin.MouseState.OUT;
             this.AutoListStatus.Name = "AutoListStatus";
             this.AutoListStatus.OwnerDraw = true;
-            this.AutoListStatus.Size = new System.Drawing.Size(618, 430);
+            this.AutoListStatus.Size = new System.Drawing.Size(618, 403);
             this.AutoListStatus.TabIndex = 6;
             this.AutoListStatus.UseCompatibleStateImageBehavior = false;
             this.AutoListStatus.View = System.Windows.Forms.View.Details;
+            this.AutoListStatus.SelectedIndexChanged += new System.EventHandler(this.AutoListStatus_SelectedIndexChanged);
             // 
             // AutoColumnScore
             // 

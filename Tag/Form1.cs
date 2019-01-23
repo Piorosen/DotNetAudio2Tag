@@ -21,6 +21,7 @@ namespace Tag
         readonly Core.CueSpliter cueSpliter = new Core.CueSpliter();
         readonly Core.Wav2Mp3Converter wav2Mp3Converter = new Core.Wav2Mp3Converter();
         readonly Core.Mp3Tagging mp3Tagging = new Core.Mp3Tagging();
+        readonly Core.AutoConverter autoConv = new Core.AutoConverter();
         Tag.Core.TagInfo tagTemp;
 
         public Form1()
@@ -388,7 +389,7 @@ namespace Tag
 
         private void AutoBtnExec_Click(object sender, EventArgs e)
         {
-            Core.AutoConverter autoConv = new Core.AutoConverter();
+            
             var list = autoConv.AutoConverting(AutoTextCuepath.Text, AutoTextWavpath.Text, AutoTextMp3path.Text, AutoTextWorkDir.Text);
             if (list != null)
             {
@@ -411,7 +412,15 @@ namespace Tag
                             
                 }
             }
+        }
 
+        private void AutoListStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (sender is ListView)
+            {
+                autoConv.SelectBrainzIndex((sender as ListView).SelectedIndices[0]);
+                autoConv.Execute();
+            }
         }
     }
 }

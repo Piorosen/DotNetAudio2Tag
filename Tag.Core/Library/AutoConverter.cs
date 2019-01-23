@@ -78,7 +78,7 @@ namespace Tag.Core
             }
             foreach (var t2 in wav2Mp3.Execute()) ;
 
-            for (int k = 0; k < wait.cue.Track.Count; k++)
+            for (int k = 0; k < wait.cue.Track.Count && k < wait.tag.Count; k++)
             {
                 var path = wait.cue.SavePath + $"{k + 1}. " + wait.cue.Track[k].Title + ".mp3";
                 tagging.AddFile(new TagInfo(TagLib.File.Create(path).Tag) { Path = path });

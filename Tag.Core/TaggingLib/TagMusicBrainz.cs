@@ -135,11 +135,11 @@ namespace Tag.Core
             }
             return result;
         }
-
+        
         public List<TagInfo> GetTagInfo(Core.CueData info)
         {
             var result = new List<TagInfo>();
-            if (info.Barcord != null)
+            if (info.Barcord != string.Empty)
             {
                 var data = MusicBrainz.Search.Release(barcode: info.Barcord);
 
@@ -150,7 +150,7 @@ namespace Tag.Core
 
                 var pimage = GetImage($"http://coverartarchive.org/release/{data.Data[0].Id}");
 
-                for (int i = 0; i < list.Count && i < info.Track.Count; i++)
+                for (int i = 0; i < list.Count; i++)
                 {
                     List<string> Artist = new List<string>();
                     Artist.Add(list[i]["artist-credit"]["name-credit"]["artist"]["name"].InnerText);
