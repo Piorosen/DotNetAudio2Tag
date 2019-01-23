@@ -31,6 +31,16 @@
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.TabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.AutoTab = new System.Windows.Forms.TabPage();
+            this.AutoListStatus = new MaterialSkin.Controls.MaterialListView();
+            this.AutoColumnScore = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AutoColumnTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AutoColumnArtist = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AutoColumnAlbum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AutoColumnTracks = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AutoColumnCountry = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AutoColumnFormat = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AutoColumnPublisher = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AutoColumnCatNo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AutoTextWorkDir = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.AutoBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.AutoTextMp3path = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -138,6 +148,7 @@
             // AutoTab
             // 
             this.AutoTab.BackColor = System.Drawing.SystemColors.Control;
+            this.AutoTab.Controls.Add(this.AutoListStatus);
             this.AutoTab.Controls.Add(this.AutoTextWorkDir);
             this.AutoTab.Controls.Add(this.AutoBtnExec);
             this.AutoTab.Controls.Add(this.AutoTextMp3path);
@@ -149,6 +160,82 @@
             this.AutoTab.Size = new System.Drawing.Size(987, 499);
             this.AutoTab.TabIndex = 4;
             this.AutoTab.Text = "Auto";
+            // 
+            // AutoListStatus
+            // 
+            this.AutoListStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.AutoListStatus.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.AutoColumnScore,
+            this.AutoColumnTitle,
+            this.AutoColumnArtist,
+            this.AutoColumnAlbum,
+            this.AutoColumnTracks,
+            this.AutoColumnCountry,
+            this.AutoColumnFormat,
+            this.AutoColumnPublisher,
+            this.AutoColumnCatNo});
+            this.AutoListStatus.Depth = 0;
+            this.AutoListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoListStatus.FullRowSelect = true;
+            this.AutoListStatus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.AutoListStatus.Location = new System.Drawing.Point(360, 3);
+            this.AutoListStatus.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.AutoListStatus.MouseState = MaterialSkin.MouseState.OUT;
+            this.AutoListStatus.Name = "AutoListStatus";
+            this.AutoListStatus.OwnerDraw = true;
+            this.AutoListStatus.Size = new System.Drawing.Size(618, 430);
+            this.AutoListStatus.TabIndex = 6;
+            this.AutoListStatus.UseCompatibleStateImageBehavior = false;
+            this.AutoListStatus.View = System.Windows.Forms.View.Details;
+            // 
+            // AutoColumnScore
+            // 
+            this.AutoColumnScore.Text = "Score";
+            // 
+            // AutoColumnTitle
+            // 
+            this.AutoColumnTitle.DisplayIndex = 8;
+            this.AutoColumnTitle.Text = "Title";
+            // 
+            // AutoColumnArtist
+            // 
+            this.AutoColumnArtist.DisplayIndex = 1;
+            this.AutoColumnArtist.Text = "Artist";
+            this.AutoColumnArtist.Width = 94;
+            // 
+            // AutoColumnAlbum
+            // 
+            this.AutoColumnAlbum.DisplayIndex = 2;
+            this.AutoColumnAlbum.Text = "Album";
+            this.AutoColumnAlbum.Width = 76;
+            // 
+            // AutoColumnTracks
+            // 
+            this.AutoColumnTracks.DisplayIndex = 3;
+            this.AutoColumnTracks.Text = "Tracks";
+            // 
+            // AutoColumnCountry
+            // 
+            this.AutoColumnCountry.DisplayIndex = 4;
+            this.AutoColumnCountry.Text = "Country";
+            this.AutoColumnCountry.Width = 74;
+            // 
+            // AutoColumnFormat
+            // 
+            this.AutoColumnFormat.DisplayIndex = 5;
+            this.AutoColumnFormat.Text = "Format";
+            this.AutoColumnFormat.Width = 79;
+            // 
+            // AutoColumnPublisher
+            // 
+            this.AutoColumnPublisher.DisplayIndex = 6;
+            this.AutoColumnPublisher.Text = "Publisher";
+            this.AutoColumnPublisher.Width = 95;
+            // 
+            // AutoColumnCatNo
+            // 
+            this.AutoColumnCatNo.DisplayIndex = 7;
+            this.AutoColumnCatNo.Text = "CatNo";
             // 
             // AutoTextWorkDir
             // 
@@ -162,7 +249,7 @@
             this.AutoTextWorkDir.SelectedText = "";
             this.AutoTextWorkDir.SelectionLength = 0;
             this.AutoTextWorkDir.SelectionStart = 0;
-            this.AutoTextWorkDir.Size = new System.Drawing.Size(530, 23);
+            this.AutoTextWorkDir.Size = new System.Drawing.Size(332, 23);
             this.AutoTextWorkDir.TabIndex = 5;
             this.AutoTextWorkDir.TabStop = false;
             this.AutoTextWorkDir.Text = "D:\\data\\Coe\\wav\\";
@@ -196,7 +283,7 @@
             this.AutoTextMp3path.SelectedText = "";
             this.AutoTextMp3path.SelectionLength = 0;
             this.AutoTextMp3path.SelectionStart = 0;
-            this.AutoTextMp3path.Size = new System.Drawing.Size(530, 23);
+            this.AutoTextMp3path.Size = new System.Drawing.Size(332, 23);
             this.AutoTextMp3path.TabIndex = 3;
             this.AutoTextMp3path.TabStop = false;
             this.AutoTextMp3path.UseSystemPasswordChar = false;
@@ -213,7 +300,7 @@
             this.AutoTextWavpath.SelectedText = "";
             this.AutoTextWavpath.SelectionLength = 0;
             this.AutoTextWavpath.SelectionStart = 0;
-            this.AutoTextWavpath.Size = new System.Drawing.Size(530, 23);
+            this.AutoTextWavpath.Size = new System.Drawing.Size(332, 23);
             this.AutoTextWavpath.TabIndex = 2;
             this.AutoTextWavpath.TabStop = false;
             this.AutoTextWavpath.UseSystemPasswordChar = false;
@@ -230,7 +317,7 @@
             this.AutoTextCuepath.SelectedText = "";
             this.AutoTextCuepath.SelectionLength = 0;
             this.AutoTextCuepath.SelectionStart = 0;
-            this.AutoTextCuepath.Size = new System.Drawing.Size(530, 23);
+            this.AutoTextCuepath.Size = new System.Drawing.Size(332, 23);
             this.AutoTextCuepath.TabIndex = 1;
             this.AutoTextCuepath.TabStop = false;
             this.AutoTextCuepath.Text = "MYTH&ROID - HYDRA";
@@ -1324,6 +1411,16 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField AutoTextWavpath;
         private MaterialSkin.Controls.MaterialRaisedButton AutoBtnExec;
         private MaterialSkin.Controls.MaterialSingleLineTextField AutoTextWorkDir;
+        private MaterialSkin.Controls.MaterialListView AutoListStatus;
+        private System.Windows.Forms.ColumnHeader AutoColumnScore;
+        private System.Windows.Forms.ColumnHeader AutoColumnArtist;
+        private System.Windows.Forms.ColumnHeader AutoColumnAlbum;
+        private System.Windows.Forms.ColumnHeader AutoColumnTracks;
+        private System.Windows.Forms.ColumnHeader AutoColumnCountry;
+        private System.Windows.Forms.ColumnHeader AutoColumnFormat;
+        private System.Windows.Forms.ColumnHeader AutoColumnPublisher;
+        private System.Windows.Forms.ColumnHeader AutoColumnCatNo;
+        private System.Windows.Forms.ColumnHeader AutoColumnTitle;
     }
 }
 

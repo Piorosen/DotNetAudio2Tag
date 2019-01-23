@@ -389,10 +389,29 @@ namespace Tag
         private void AutoBtnExec_Click(object sender, EventArgs e)
         {
             Core.AutoConverter autoConv = new Core.AutoConverter();
-            foreach (var i in autoConv.AutoConverting(AutoTextCuepath.Text, AutoTextWavpath.Text, AutoTextMp3path.Text, AutoTextWorkDir.Text))
+            var list = autoConv.AutoConverting(AutoTextCuepath.Text, AutoTextWavpath.Text, AutoTextMp3path.Text, AutoTextWorkDir.Text);
+            if (list != null)
             {
-
+                foreach (var item in list)
+                {
+                    AutoListStatus.Items.Add(
+                        new ListViewItem(
+                            new string[]
+                            {
+                                item.Score.ToString(),
+                                item.Title,
+                                string.Join(", ", item.Artist),
+                                item.Album,
+                                string.Join(", ", item.Track),
+                                item.Country,
+                                string.Join(", ", item.Format),
+                                string.Join(", ", item.Publisher),
+                                string.Join(", ", item.CatNo)
+                            }));
+                            
+                }
             }
+
         }
     }
 }

@@ -100,7 +100,7 @@ namespace Tag.Core
         
         public List<BrainzInfo> GetReleaseInfo(TagInfo info)
         {
-            var result -new List<BrainzInfo>();
+            var result = new List<BrainzInfo>();
 
             var data = MusicBrainz.Search.Release(query: info.Title, artist: string.Join(";", info.Artist));
 
@@ -113,7 +113,7 @@ namespace Tag.Core
                     TagInfo = false,
                     Country = value.Country,
                     Year = value.Date,
-                    Barcode = value.Id
+                    Barcode = value.Barcode
                 };
 
                 foreach (var i in value.Artistcredit)
