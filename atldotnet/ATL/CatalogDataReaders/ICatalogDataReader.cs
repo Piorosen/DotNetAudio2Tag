@@ -48,6 +48,23 @@ namespace ATL.CatalogDataReaders
             get;
         }
 
+        string Date
+        {
+            get;
+        }
+        string Composers
+        {
+            get;
+        }
+        string DiscId
+        {
+            get;
+        }
+        AudioType Extension
+        {
+            get;
+        }
+
         /// <summary>
         /// List of the tracks described in the container
         /// </summary>

@@ -19,6 +19,7 @@ namespace ATL.CatalogDataReaders.BinaryLogic
         private string date = string.Empty;
         private string composers = string.Empty;
         private string discid = string.Empty;
+        private AudioType extension = AudioType.NONE;
 
         IList<Track> tracks = new List<Track>();
 
@@ -44,6 +45,8 @@ namespace ATL.CatalogDataReaders.BinaryLogic
         public string Composers => composers;
 
         public string DiscId => discid;
+
+        public AudioType Extension => extension;
 
         // ----------------------- Constructor
 
@@ -160,6 +163,19 @@ namespace ATL.CatalogDataReaders.BinaryLogic
                             audioFilePath = s.Substring(firstBlank + 1, s.Length - firstBlank - 1);
                             audioFilePath = audioFilePath.Substring(0, audioFilePath.LastIndexOf(' ')); // Get rid of the last word representing the audio format
                             audioFilePath = stripBeginEndQuotes(audioFilePath);
+
+                            switch (System.IO.Path.GetExtension(audioFilePath).ToLower())
+                            {
+                                case ".wav":
+                                    extension = AudioType.WAV;
+                                    break;
+                                case ".flac":
+                                    extension = AudioType.FLAC;
+                                    break;
+                                default:
+                                    extension = AudioType.NONE;
+                                    break;
+                            }
 
                             // Strip the ending word representing the audio format
                             if (!System.IO.Path.IsPathRooted(audioFilePath))

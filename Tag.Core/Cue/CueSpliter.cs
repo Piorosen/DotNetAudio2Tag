@@ -32,7 +32,6 @@ namespace Tag.Core.Cue
                 reader = CatalogDataReaderFactory
                             .GetInstance()
                             .GetCatalogDataReader(cuePath);
-               
             }
             catch (Exception)
             {
@@ -41,12 +40,36 @@ namespace Tag.Core.Cue
 
             CueInfo info = new CueInfo
             {
-
+                Artist = reader.Artist,
+                Barcord = reader.Barcode,
+                Path = reader.Path,
+                SavePath = savePath,
+                WavPath = wavePath,
+                Title = reader.Title,
+                AudioType = reader.Extension,
+                REM = new REM
+                {
+                    Date = reader.Date,
+                    DiscId = reader.DiscId,
+                    Genre = reader.Genre
+                }
             };
-
+            double StartPosition = 0.0;
+            foreach (var value in reader.Tracks)
+            {
+                info.Track.Add(new TrackInfo
+                {
+                    Artist = value.Artist,
+                    Composer = value.Composer,
+                    DurationMS = value.DurationMs,
+                    Title = value.Title,
+                    Track = value.TrackNumber,
+                    StartPosition = StartPosition
+                });
+                StartPosition += value.DurationMs;
+            }
             return true;
         }
-        
 
         public bool Delete(int at)
         {

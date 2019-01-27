@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ATL.CatalogDataReaders;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,8 @@ namespace Tag.Core.Cue
     {
         public string Title = string.Empty;
         public string Artist = string.Empty;
-        public List<string> Index = new List<string>();
+        public string Composer = string.Empty;
 
-        public string ISRC = string.Empty;
         public double StartPosition = 0.0;
         public double DurationMS = 0.0;
         public int Track = 0;
@@ -23,9 +23,7 @@ namespace Tag.Core.Cue
         public string Genre = String.Empty;
         public string Date = string.Empty;
         public string DiscId = string.Empty;
-        public int? DiscNumber = null;
-        public int? TotalDiscs = null;
-
+    
     }
 
     public class CueInfo
@@ -37,7 +35,7 @@ namespace Tag.Core.Cue
         public string Title = string.Empty;
         public string Artist = String.Empty;
         public string Barcord = String.Empty;
-
+        public AudioType AudioType = AudioType.NONE;
         public REM REM = new REM();
         public List<TrackInfo> Track = new List<TrackInfo>();
     }

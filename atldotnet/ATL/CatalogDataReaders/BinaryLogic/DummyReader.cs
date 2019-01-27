@@ -43,5 +43,13 @@ namespace ATL.CatalogDataReaders.BinaryLogic
         public string Barcode => "";
 
         public string Genre => "";
+
+        public string Date => "";
+
+        public string Composers => "";
+
+        public string DiscId => "";
+
+        public AudioType Extension => AudioType.NONE;
     }
 }
