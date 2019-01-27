@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tag.Core.Converter
+namespace Tag.Core.Conv
 {
     interface IMp3Conv
     {

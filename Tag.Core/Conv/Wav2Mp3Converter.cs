@@ -5,9 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tag.Core.Converter;
+using Tag.Core.Conv;
 
-namespace Tag.Core
+namespace Tag.Core.Conv
 {
     public class Wav2Mp3Converter : IMp3Conv
     {

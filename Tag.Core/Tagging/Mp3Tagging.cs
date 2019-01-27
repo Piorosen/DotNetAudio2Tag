@@ -8,9 +8,9 @@ using NAudio.Lame;
 using NAudio.Wave;
 using TagLib;
 
-namespace Tag.Core
+namespace Tag.Core.Tagging
 {
-    public class Mp3Tagging : ICore<TagInfo, TagInfo>
+    public class Mp3Tagging
     {
         readonly public List<TagInfo> tagList = new List<TagInfo>();
 

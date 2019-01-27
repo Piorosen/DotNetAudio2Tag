@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tag.Core.Converter
+namespace Tag.Core.Conv.Library
 {
     class User2Mp3 : IMp3Conv
     {
+        public IEnumerable<int> Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

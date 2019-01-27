@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tag.Core.Tagging.TaggingLib
+namespace Tag.Core.Tagging.Library
 {
     class MusicDb
     {

@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Tag.Core
 {
-    interface ICore<T, K>
+    interface ICore<T>
     {
-        bool Delete(int at);
-        bool Delete(T remove);
 
-        bool AddFile(K path);
-
-        List<T> List();
-        IEnumerable<int> Execute();
     }
 }

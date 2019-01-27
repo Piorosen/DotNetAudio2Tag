@@ -7,8 +7,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using Tag.Core.Cue;
 
-namespace Tag.Core
+namespace Tag.Core.Tagging.Library
 {
     public class BrainzInfo
     {
@@ -136,7 +137,7 @@ namespace Tag.Core
             return result;
         }
         
-        public List<TagInfo> GetTagInfo(Core.CueData info)
+        public List<TagInfo> GetTagInfo(CueInfo info)
         {
             var result = new List<TagInfo>();
             if (info.Barcord != string.Empty)

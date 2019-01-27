@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Tag.Core.Cue;
 
-namespace Tag.Core
+namespace Tag.Core.Cue
 {
     
 
-    public class CueSpliter : ICore<CueInfo, string>
+    public class CueSpliter 
     {
         readonly List<CueInfo> CueList = new List<CueInfo>();
 

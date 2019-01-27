@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tag.Core.Cue.Encoding
+namespace Tag.Core.Cue.Split
 {
     class WaveSplit
     {
