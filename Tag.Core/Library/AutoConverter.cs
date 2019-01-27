@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tag.Core.Cue;
 
 namespace Tag.Core
 {
     class Wait
     {
-        public CueData cue = new CueData();
+        public CueInfo cue = new CueInfo();
         public List<TagInfo> tag = new List<TagInfo>();
         public List<BrainzInfo> info = new List<BrainzInfo>();
     }
@@ -64,7 +65,7 @@ namespace Tag.Core
             }
             if (0 <= index && index < wait.info.Count)
             {
-                wait.tag = brainz.GetTagInfo(new CueData { Barcord = wait.info[index].Barcode });
+                wait.tag = brainz.GetTagInfo(new CueInfo { Barcord = wait.info[index].Barcode });
                 return true;
             }
             return false;

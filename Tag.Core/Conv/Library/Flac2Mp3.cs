@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Tag.Core.Converter
 {
-    class Flac2Mp3
+    class Flac2Mp3 : IMp3Conv
     {
+        public IEnumerable<int> Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

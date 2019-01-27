@@ -6,38 +6,15 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tag.Core.Cue;
 
 namespace Tag.Core
 {
-    public class TrackInfo
-    {
-        public string Title = string.Empty;
-        public string Artist = string.Empty;
-        public double DurationMS = 0.0;
+    
 
-    }
-    public class WavFormat
+    public class CueSpliter : ICore<CueInfo, string>
     {
-        public double BytesPerMillisecond = 0.0;
-        public int BlockAlign = 0;
-    }
-    public class CueData
-    {
-        public string Path = string.Empty;
-        public string Title = string.Empty;
-        public string SavePath = string.Empty;
-        public string WavPath = string.Empty;
-        public string Artists = String.Empty;
-        public string Genre = String.Empty;
-        public string Barcord = String.Empty;
-        
-        public WavFormat Format = null;
-        public List<TrackInfo> Track = new List<TrackInfo>();
-    }
-
-    public class CueSpliter : ICore<CueData, string>
-    {
-        readonly List<CueData> CueList = new List<CueData>();
+        readonly List<CueInfo> CueList = new List<CueInfo>();
 
         public bool AddFile(string path)
         {
@@ -72,7 +49,7 @@ namespace Tag.Core
             }
 
 
-            CueData data = new CueData
+            CueInfo data = new CueInfo
             {
                 Path = cuePath,
                 WavPath = wavePath,
@@ -112,7 +89,7 @@ namespace Tag.Core
             }
             return false;
         }
-        public bool Delete(CueData remove)
+        public bool Delete(CueInfo remove)
         {
             return CueList.Remove(remove);
         }
@@ -156,7 +133,7 @@ namespace Tag.Core
             yield return 100;
         }
 
-        public List<CueData> List()
+        public List<CueInfo> List()
         {
             return CueList;
         }

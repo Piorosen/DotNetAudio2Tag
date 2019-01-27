@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tag.Core.Converter
 {
-    class User2Mp3
+    class User2Mp3 : IMp3Conv
     {
     }
 }

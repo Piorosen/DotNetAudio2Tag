@@ -8,5 +8,7 @@ namespace Tag.Core.Converter
 {
     interface IMp3Conv
     {
+        IEnumerable<int> Execute();
+
     }
 }

@@ -5,10 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tag.Core.Converter;
 
 namespace Tag.Core
 {
-    public class Wav2Mp3Converter : ICore<string, string>
+    public class Wav2Mp3Converter : IMp3Conv
     {
         readonly List<string> filePath = new List<string>();
 

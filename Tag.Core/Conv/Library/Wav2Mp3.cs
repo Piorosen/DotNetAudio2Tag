@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Tag.Core.Converter
 {
-    class Wav2Mp3
+    class Wav2Mp3 : IMp3Conv
     {
+        public IEnumerable<int> Execute()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
