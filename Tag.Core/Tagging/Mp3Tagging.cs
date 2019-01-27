@@ -60,9 +60,9 @@ namespace Tag.Core.Tagging
             mp3File.Tag.Title = taginfo.Title;
             mp3File.Tag.Performers = taginfo.Artist.ToArray();
             mp3File.Tag.Album = taginfo.Album;
-            mp3File.Tag.Year = taginfo.Year;
-            mp3File.Tag.Track = taginfo.Track;
-            mp3File.Tag.TrackCount = taginfo.Track;
+            //mp3File.Tag.Year = taginfo.Year;
+            //mp3File.Tag.Track = taginfo.Track;
+            //mp3File.Tag.TrackCount = taginfo.Track;
             mp3File.Tag.Genres = taginfo.Genre.ToArray();
             mp3File.Tag.Comment = taginfo.Comment;
             mp3File.Tag.AlbumArtists = taginfo.AlbumArtist.ToArray();

@@ -85,6 +85,9 @@ namespace Tag.Core.Conv
             }
         }
 
-        
+        public IEnumerable<int> Execute(string filePath, string resultPath)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -12,5 +12,10 @@ namespace Tag.Core.Conv.Library
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<int> Execute(string filePath, string resultPath)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

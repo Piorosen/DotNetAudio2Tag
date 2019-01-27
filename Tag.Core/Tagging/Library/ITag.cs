@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Tag.Core.Tagging.Library
 {
-    interface ITagger
+    interface ITag
     {
-      //  List<TagInfo> GetTagInfo(Core.CueData info);
+        // List<TagInfo> GetTagInfo(Core.CueData info);
     }
 }

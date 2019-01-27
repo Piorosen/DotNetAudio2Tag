@@ -13,12 +13,9 @@ namespace Tag.Core.Cue
         public List<string> Index = new List<string>();
 
         public string ISRC = string.Empty;
+        public double StartPosition = 0.0;
         public double DurationMS = 0.0;
-    }
-    public class AudioFormat
-    {
-        public double BytesPerMillisecond = 0.0;
-        public int BlockAlign = 0;
+        public int Track = 0;
     }
     public class REM
     {
@@ -42,7 +39,6 @@ namespace Tag.Core.Cue
         public string Barcord = String.Empty;
 
         public REM REM = new REM();
-        public AudioFormat Format = null;
         public List<TrackInfo> Track = new List<TrackInfo>();
     }
 }

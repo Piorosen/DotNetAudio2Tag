@@ -11,25 +11,7 @@ using Tag.Core.Cue;
 
 namespace Tag.Core.Tagging.Library
 {
-    public class BrainzInfo
-    {
-        public bool TagInfo = false;
-        public string Title = string.Empty;
-        public TagInfo Tag = new TagInfo();
-        public int Score = 0;
-        public string Type = string.Empty;
-        public List<string> Artist = new List<string>();
-        public string Album = string.Empty;
-        public List<int> Track = new List<int>();
-        public string Year = string.Empty;
-        public string Country = string.Empty;
-        public List<string> Format = new List<string>();
-        public List<string> Publisher = new List<string>();
-        public List<string> CatNo = new List<string>();
-        public string Barcode = string.Empty;
-    }
-
-    public class TagMusicBrainz : ITagger
+    public class TagMusicBrainz : ITag
     {
         private string Get(string Link, bool check = false)
         {
@@ -125,12 +107,12 @@ namespace Tag.Core.Tagging.Library
                 foreach (var i in value.Labelinfolist)
                 {
                     binfo.Publisher.Add(i.Label.Name);
-                    binfo.CatNo.Add(i.Catalognumber);
+                    binfo.DiscNum += i.Catalognumber + " ";
                 }
                 foreach (var i in value.Mediumlist.Medium)
                 {
                     binfo.Format.Add(i.Format);
-                    binfo.Track.Add(int.Parse(i.Tracklist.Count));
+                    binfo.Track.Add(uint.Parse(i.Tracklist.Count));
                 }
                 result.Add(binfo);
             }
@@ -159,19 +141,19 @@ namespace Tag.Core.Tagging.Library
                     {
                         list[i]["release-list"]["release"]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
                     };
-                    TagInfo ti = new TagInfo
-                    {
-                        Title = list[i]["title"].InnerText,
-                        Album = info.Title,
-                        Track = (uint)(i + 1),
-                        Artist = Artist,
-                        Composer = Composer,
-                        Year = uint.Parse(data.Data[0].Date.Split('-')[0])
-                    };
+                    //TagInfo ti = new TagInfo
+                    //{
+                    //    Title = list[i]["title"].InnerText,
+                    //    Album = info.Title,
+                    //    Track = (uint)(i + 1),
+                    //    Artist = Artist,
+                    //    Composer = Composer,
+                    //    Year = uint.Parse(data.Data[0].Date.Split('-')[0])
+                    //};
 
-                    ti.Image.Add(pimage);
+                    //ti.Image.Add(pimage);
 
-                    result.Add(ti);
+                    //result.Add(ti);
                 }
             }
             return result;
