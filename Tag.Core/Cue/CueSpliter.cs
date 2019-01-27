@@ -25,8 +25,6 @@ namespace Tag.Core.Cue
 
         public bool AddFile(string cuePath, string wavePath, string savePath)
         {
-            WaveFileReader wfr = null;
-            
             ICatalogDataReader reader;
 
             try
@@ -34,18 +32,17 @@ namespace Tag.Core.Cue
                 reader = CatalogDataReaderFactory
                             .GetInstance()
                             .GetCatalogDataReader(cuePath);
-
-                wfr = new WaveFileReader(wavePath);
                
             }
             catch (Exception)
             {
                 return false;
             }
-            finally
+
+            CueInfo info = new CueInfo
             {
-                wfr?.Close();
-            }
+
+            };
 
             return true;
         }

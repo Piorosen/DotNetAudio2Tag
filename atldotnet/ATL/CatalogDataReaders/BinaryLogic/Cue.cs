@@ -18,66 +18,32 @@ namespace ATL.CatalogDataReaders.BinaryLogic
         private string genre = string.Empty;
         private string date = string.Empty;
         private string composers = string.Empty;
+        private string discid = string.Empty;
 
         IList<Track> tracks = new List<Track>();
 
 
         public string Path
         {
-            get { return path; }
+            get => path;
             set { path = value; }
         }
 
-        public string Artist
-        {
-            get { return artist; }
-        }
+        public string Artist => artist;
 
-        public string Comments
-        {
-            get { return comments; }
-        }
+        public string Comments => comments;
 
-        public string Title
-        {
-            get { return title; }
-        }
+        public string Title => title;
+        public IList<Track> Tracks => tracks;
 
-        public IList<Track> Tracks
-        {
-            get { return tracks; }
-        }
+        public string Barcode => barcode;
 
-        public string Barcode
-        {
-            get
-            {
-                return barcode;
-            }
-        }
+        public string Genre => genre;
 
-        public string Genre
-        {
-            get
-            {
-                return genre;
-            }
-        }
+        public string Date => date;
+        public string Composers => composers;
 
-        public string Date
-        {
-            get
-            {
-                return date;
-            }
-        }
-        public string Composers
-        {
-            get
-            {
-                return composers;
-            }
-        }
+        public string DiscId => discid;
 
         // ----------------------- Constructor
 
@@ -151,8 +117,31 @@ namespace ATL.CatalogDataReaders.BinaryLogic
                     {
                         if ("REM".Equals(firstWord, StringComparison.OrdinalIgnoreCase))
                         {
-                            if (comments.Length > 0) comments += Settings.InternalValueSeparator;
-                            comments += s.Substring(firstBlank + 1, s.Length - firstBlank - 1);
+                            int nextBlank = firstBlank + s.IndexOf(' ', firstBlank + 1);
+                            var nextWord = s.Split(' ');
+
+                            if ("GENRE".Equals(nextWord[1], StringComparison.OrdinalIgnoreCase))
+                            {
+                                genre = stripBeginEndQuotes(s.Substring(nextBlank + 1, s.Length - nextBlank - 1));
+                            }
+                            else if ("DATE".Equals(nextWord[1], StringComparison.OrdinalIgnoreCase))
+                            {
+                                date = stripBeginEndQuotes(s.Substring(nextBlank + 1, s.Length - nextBlank - 1));
+                            }
+                            else if ("DISCID".Equals(nextWord[1], StringComparison.OrdinalIgnoreCase))
+                            {
+                                discid = stripBeginEndQuotes(s.Substring(nextBlank + 1, s.Length - nextBlank - 1));
+                            }
+                            else if ("COMMENT".Equals(nextWord[1], StringComparison.OrdinalIgnoreCase))
+                            {
+                                comments = stripBeginEndQuotes(s.Substring(nextBlank + 1, s.Length - nextBlank - 1));
+                            }
+                            else if ("COMPOSER".Equals(nextWord[1], StringComparison.OrdinalIgnoreCase))
+                            {
+                                composers = stripBeginEndQuotes(s.Substring(nextBlank + 1, s.Length - nextBlank - 1));
+                            }
+                            //if (comments.Length > 0) comments += Settings.InternalValueSeparator;
+                            //comments += s.Substring(firstBlank + 1, s.Length - firstBlank - 1);
                         }
                         else if("CATALOG".Equals(firstWord, StringComparison.OrdinalIgnoreCase))
                         {

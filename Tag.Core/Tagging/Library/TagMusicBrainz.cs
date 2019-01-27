@@ -137,7 +137,7 @@ namespace Tag.Core.Tagging.Library
                 {
                     List<string> Artist = new List<string>();
                     Artist.Add(list[i]["artist-credit"]["name-credit"]["artist"]["name"].InnerText);
-                    var Composer = new List<string>
+                    _ = new List<string>
                     {
                         list[i]["release-list"]["release"]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
                     };

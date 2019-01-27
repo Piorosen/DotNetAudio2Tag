@@ -64,7 +64,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\CueSpliter.cs" />
+    <Compile Include="Conv\Library\Flac2Mp3.cs" />
+    <Compile Include="Conv\IMp3Conv.cs" />
+    <Compile Include="Conv\Library\User2Mp3.cs" />
+    <Compile Include="Conv\Library\Wav2Mp3.cs" />
+    <Compile Include="Cue\CueInfo.cs" />
+    <Compile Include="Cue\CueSpliter.cs" />
+    <Compile Include="Cue\Split\FlacSplit.cs" />
+    <Compile Include="Cue\Split\WaveSplit.cs" />
     <Compile Include="Extension\AES256.cs" />
     <Compile Include="Extension\CapacityConverter.cs" />
     <Compile Include="Extension\Error.cs" />
@@ -72,12 +79,13 @@
     <Compile Include="Extension\Log.cs" />
     <Compile Include="Library\AutoConverter.cs" />
     <Compile Include="Library\ICore.cs" />
-    <Compile Include="Library\TagInfo.cs" />
-    <Compile Include="Library\Wav2Mp3Converter.cs" />
-    <Compile Include="Library\Mp3Tagging.cs" />
+    <Compile Include="Tagging\Library\MusicDb.cs" />
+    <Compile Include="Tagging\TagInfo.cs" />
+    <Compile Include="Conv\Wav2Mp3Converter.cs" />
+    <Compile Include="Tagging\Mp3Tagging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaggingLib\ITagger.cs" />
-    <Compile Include="TaggingLib\TagMusicBrainz.cs" />
+    <Compile Include="Tagging\Library\ITag.cs" />
+    <Compile Include="Tagging\Library\TagMusicBrainz.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
