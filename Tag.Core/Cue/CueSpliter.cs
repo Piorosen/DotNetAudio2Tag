@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tag.Core.Cue;
+using Tag.Core.Cue.Split;
 
 namespace Tag.Core.Cue
 {
@@ -84,6 +85,54 @@ namespace Tag.Core.Cue
         {
             return CueList.Remove(remove);
         }
+
+        public IEnumerable<int> Execute()
+        {
+            int trackCount = 0;
+            for (int l = 0; l < CueList.Count; l++)
+            {
+                trackCount += CueList[l].Track.Count;
+            }
+
+
+            int count = 0;
+
+            foreach (var list in CueList)
+            {
+                if (list.AudioType == AudioType.WAV)
+                {
+                    WaveSplit wav = new WaveSplit();
+                    foreach (var track in list.Track)
+                    {
+                        wav.Execute(list.WavPath, list.SavePath, track);
+                        yield return (int)((100.0 / trackCount) * count);
+                    }
+                }
+                else if (list.AudioType == AudioType.FLAC)
+                {
+                    FlacSplit flac = new FlacSplit();
+                    foreach (var track in list.Track)
+                    {
+                        flac.Execute(list.WavPath, list.SavePath, track);
+                        yield return (int)((100.0 / trackCount) * count);
+                    }
+                }
+                // 커스텀 Spliter 사용함.
+                else if (list.AudioType == AudioType.NONE)
+                {
+                    UserSplit user = new UserSplit();
+                    foreach (var track in list.Track)
+                    {
+                        user.Execute(list.WavPath, list.SavePath, track);
+                        yield return (int)((100.0 / trackCount) * count);
+                    }
+                }
+                count++;
+            }
+
+            yield return 100;
+        }
+
 
     }
 }
