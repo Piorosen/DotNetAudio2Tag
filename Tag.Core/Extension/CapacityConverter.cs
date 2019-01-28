@@ -22,7 +22,7 @@ namespace Tag.Core.Extension
 
             return capcity + Unit[i];
         }
-        static public BigInteger? ReverseChange(BigInteger capacity, String Unit)
+        static public BigInteger ReverseChange(BigInteger capacity, String Unit)
         {
             double k = -1;
             for (int i = 0; i < CapacityConverter.Unit.Length; i++)

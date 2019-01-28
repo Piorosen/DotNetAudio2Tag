@@ -95,10 +95,8 @@ namespace Tag.Core.Cue
             {
                 trackCount += CueList[l].Track.Count;
             }
-
-
+            
             int count = 0;
-
             foreach (var list in CueList)
             {
                 if (list.AudioType == AudioType.WAV)
