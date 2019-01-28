@@ -11,18 +11,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tag.Core;
+using Tag.Core.Conv;
+using Tag.Core.Cue;
 using Tag.Core.Extension;
+using Tag.Core.Tagging;
 
 namespace Tag
 {
     public partial class Form1 : MaterialForm
     {
         readonly MaterialSkinManager materialSkinManager;
-        readonly Core.CueSpliter cueSpliter = new Core.CueSpliter();
-        readonly Core.Wav2Mp3Converter wav2Mp3Converter = new Core.Wav2Mp3Converter();
-        readonly Core.Mp3Tagging mp3Tagging = new Core.Mp3Tagging();
-        readonly Core.AutoConverter autoConv = new Core.AutoConverter();
-        Tag.Core.TagInfo tagTemp;
+        readonly CueSpliter cueSpliter = new CueSpliter();
+        readonly Wav2Mp3Converter wav2Mp3Converter = new Wav2Mp3Converter();
+        readonly Mp3Tagging mp3Tagging = new Mp3Tagging();
+        readonly AutoConverter autoConv = new AutoConverter();
+        TagInfo tagTemp;
 
         public Form1()
         {
@@ -179,7 +183,7 @@ namespace Tag
                     Log.FileWrite($"{t}", Error.Success);
                     try
                     {
-                        mp3Tagging.AddFile(new Core.TagInfo(TagLib.File.Create(path).Tag) { Path = path });
+                        mp3Tagging.AddFile(new TagInfo(TagLib.File.Create(path).Tag) { Path = path });
                         TaggingListFile.Items.Add(new ListViewItem(new[] { path }));
                     }
                     catch (Exception)
@@ -321,8 +325,8 @@ namespace Tag
             tagTemp.Title = TaggingTextTitle.Text;
             tagTemp.Artist = TaggingTextArtists.Text.Split(';').ToList();
             tagTemp.Album = TaggingTextAlbum.Text;
-            tagTemp.Year = uint.Parse(TaggingTextCreateYear.Text);
-            tagTemp.Track = uint.Parse(TaggingTextTrack.Text);
+            tagTemp.Year = TaggingTextCreateYear.Text;
+            tagTemp.Track.Add(uint.Parse(TaggingTextTrack.Text));
             tagTemp.Genre = TaggingTextGenre.Text.Split(';').ToList();
             tagTemp.Comment = TaggingTextComment.Text;
             tagTemp.AlbumArtist = TaggingTextAlbumArtists.Text.Split(';').ToList();
@@ -390,40 +394,40 @@ namespace Tag
         private void AutoBtnExec_Click(object sender, EventArgs e)
         {
             
-            var list = autoConv.AutoConverting(AutoTextCuepath.Text, AutoTextWavpath.Text, AutoTextMp3path.Text, AutoTextWorkDir.Text);
-            if (list != null)
-            {
-                foreach (var item in list)
-                {
-                    AutoListStatus.Items.Add(
-                        new ListViewItem(
-                            new string[]
-                            {
-                                item.Score.ToString(),
-                                item.Title,
-                                string.Join(", ", item.Artist),
-                                item.Album,
-                                string.Join(", ", item.Track),
-                                item.Country,
-                                string.Join(", ", item.Format),
-                                string.Join(", ", item.Publisher),
-                                string.Join(", ", item.CatNo)
-                            }));
+            //var list = autoConv.AutoConverting(AutoTextCuepath.Text, AutoTextWavpath.Text, AutoTextMp3path.Text, AutoTextWorkDir.Text);
+            //if (list != null)
+            //{
+            //    foreach (var item in list)
+            //    {
+            //        AutoListStatus.Items.Add(
+            //            new ListViewItem(
+            //                new string[]
+            //                {
+            //                    item.Score.ToString(),
+            //                    item.Title,
+            //                    string.Join(", ", item.Artist),
+            //                    item.Album,
+            //                    string.Join(", ", item.Track),
+            //                    item.Country,
+            //                    string.Join(", ", item.Format),
+            //                    string.Join(", ", item.Publisher),
+            //                    string.Join(", ", item.CatNo)
+            //                }));
                             
-                }
-            }
+            //    }
+            //}
         }
 
         private void AutoListStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (sender is ListView)
-            {
-                if ((sender as ListView).SelectedIndices.Count != 0)
-                {
-                    autoConv.SelectBrainzIndex((sender as ListView).SelectedIndices[0]);
-                }
-                autoConv.Execute();
-            }
+            //if (sender is ListView)
+            //{
+            //    if ((sender as ListView).SelectedIndices.Count != 0)
+            //    {
+            //        autoConv.SelectBrainzIndex((sender as ListView).SelectedIndices[0]);
+            //    }
+            //    autoConv.Execute();
+            //}
         }
 
         private void CuesplitListStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -433,13 +437,13 @@ namespace Tag
                 if ((sender as ListView).SelectedIndices.Count != 0)
                 {
                     var t = (sender as ListView).SelectedIndices[0];
-                    var data = cueSpliter.List()[t];
+                    var data = cueSpliter[t];
                     CuesplitTextTitle.Text = data.Title;
-                    CuesplitTextArtist.Text = data.Artists;
-                    CuesplitTextGenre.Text = data.Genre;
+                    CuesplitTextArtist.Text = data.Artist;
+                    CuesplitTextGenre.Text = data.REM.Genre;
                     CuesplitTextTrackCount.Text = data.Track.Count.ToString();
                     
-                    CuesplitTextBarcode.Text = data.Barcord;
+                    CuesplitTextBarcode.Text = data.Barcode;
                     CuesplitTextSavePath.Text = data.SavePath;
                     CuesplitTextWavPath.Text = data.WavPath;
                     CuesplitTextCuePath.Text = data.Path;

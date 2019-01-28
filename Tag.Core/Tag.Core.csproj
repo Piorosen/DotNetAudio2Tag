@@ -71,6 +71,8 @@
     <Compile Include="Cue\CueInfo.cs" />
     <Compile Include="Cue\CueSpliter.cs" />
     <Compile Include="Cue\Split\FlacSplit.cs" />
+    <Compile Include="Cue\Split\ISplit.cs" />
+    <Compile Include="Cue\Split\UserSplit.cs" />
     <Compile Include="Cue\Split\WaveSplit.cs" />
     <Compile Include="Extension\AES256.cs" />
     <Compile Include="Extension\CapacityConverter.cs" />

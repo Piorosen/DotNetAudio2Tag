@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace ATL.CatalogDataReaders.BinaryLogic
 {
@@ -120,7 +121,7 @@ namespace ATL.CatalogDataReaders.BinaryLogic
                     {
                         if ("REM".Equals(firstWord, StringComparison.OrdinalIgnoreCase))
                         {
-                            int nextBlank = firstBlank + s.IndexOf(' ', firstBlank + 1);
+                            int nextBlank = s.IndexOf(' ', firstBlank + 1);
                             var nextWord = s.Split(' ');
 
                             if ("GENRE".Equals(nextWord[1], StringComparison.OrdinalIgnoreCase))

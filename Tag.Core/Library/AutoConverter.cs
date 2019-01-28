@@ -17,8 +17,8 @@ namespace Tag.Core
         public List<BrainzInfo> info = new List<BrainzInfo>();
     }
 
-    //public class AutoConverter
-    //{
+    public class AutoConverter
+    {
     //    readonly CueSpliter cueSpliter = new CueSpliter();
     //    readonly Wav2Mp3Converter wav2Mp3 = new Wav2Mp3Converter();
     //    readonly Mp3Tagging tagging = new Mp3Tagging();
@@ -96,6 +96,6 @@ namespace Tag.Core
     //        }
     //        foreach (var t3 in tagging.Execute()) ;
     //        return true;
-    //    }
+        }
     
 }

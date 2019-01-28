@@ -17,6 +17,8 @@ namespace Tag.Core.Cue
     {
         readonly List<CueInfo> CueList = new List<CueInfo>();
 
+        public CueInfo this[int index] => CueList[index];
+
         public bool AddFile(string path)
         {
             return AddFile(path
@@ -34,7 +36,7 @@ namespace Tag.Core.Cue
                             .GetInstance()
                             .GetCatalogDataReader(cuePath);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return false;
             }
@@ -42,7 +44,7 @@ namespace Tag.Core.Cue
             CueInfo info = new CueInfo
             {
                 Artist = reader.Artist,
-                Barcord = reader.Barcode,
+                Barcode = reader.Barcode,
                 Path = reader.Path,
                 SavePath = savePath,
                 WavPath = wavePath,

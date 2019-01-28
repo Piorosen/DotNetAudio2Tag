@@ -122,9 +122,9 @@ namespace Tag.Core.Tagging.Library
         public List<TagInfo> GetTagInfo(CueInfo info)
         {
             var result = new List<TagInfo>();
-            if (info.Barcord != string.Empty)
+            if (info.Barcode != string.Empty)
             {
-                var data = MusicBrainz.Search.Release(barcode: info.Barcord);
+                var data = MusicBrainz.Search.Release(barcode: info.Barcode);
 
                 var tagging = Get($"http://musicbrainz.org/ws/2/recording/?query=reid:{data.Data[0].Id}");
                 XmlDocument xmlreader = new XmlDocument();

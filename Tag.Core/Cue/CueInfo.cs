@@ -34,7 +34,7 @@ namespace Tag.Core.Cue
 
         public string Title = string.Empty;
         public string Artist = String.Empty;
-        public string Barcord = String.Empty;
+        public string Barcode = String.Empty;
         public AudioType AudioType = AudioType.NONE;
         public REM REM = new REM();
         public List<TrackInfo> Track = new List<TrackInfo>();
