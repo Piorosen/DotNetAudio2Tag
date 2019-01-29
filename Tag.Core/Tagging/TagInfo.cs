@@ -60,15 +60,15 @@ namespace Tag.Core.Tagging
         public TagInfo(TagInfo value)
         {
             Title = value.Title;
-            Artist = value.Artist;
+            Artist = value.Artist.ToArray().ToList();
             Album = value.Album;
             Year = value.Year;
-            Track = value.Track;
-            Genre = value.Genre;
+            Track = value.Track.ToArray().ToList();
+            Genre = value.Genre.ToArray().ToList();
             Comment = value.Comment;
-            AlbumArtist = value.AlbumArtist;
-            Composer = value.Composer;
-            Image = value.Image;
+            AlbumArtist = value.AlbumArtist.ToArray().ToList();
+            Composer = value.Composer.ToArray().ToList();
+            Image = value.Image.ToArray().ToList();
             Barcode = value.Barcode;
         }
     }

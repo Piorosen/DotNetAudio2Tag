@@ -159,7 +159,7 @@ namespace Tag.Core.Tagging.Library
             return SearchAlbum(info);
         }
 
-        private string RequestTrackWeb(string identifier)
+        private string RequestTrackWeb(string identifier, string lang)
         {
             WebClient wc = new WebClient();
             wc.Encoding = Encoding.UTF8;
@@ -189,7 +189,7 @@ namespace Tag.Core.Tagging.Library
             return pimage;
         }
 
-        private List<TagInfo> SplitTrackWeb(string web)
+        private List<TagInfo> SplitTrackWeb(string web, string lang)
         {
             List<TagInfo> result = new List<TagInfo>();
             TagInfo basic = new TagInfo();
@@ -200,6 +200,7 @@ namespace Tag.Core.Tagging.Library
             var Stat = doc.DocumentNode.SelectNodes("//body//div[@class='page']")[1];
             Stat = Stat.SelectNodes("./table/tr")[0];
 
+            #region Genre
             var Genre = Stat.SelectSingleNode("./td[@id='rightcolumn']");
             Genre = Genre.SelectNodes("./div")[1];
             Genre = Genre.SelectNodes("./div")[0];
@@ -208,22 +209,30 @@ namespace Tag.Core.Tagging.Library
             text = text.Remove(0, "Category".Length + 1);
 
             basic.Genre.Add(text.Trim());
-
+            #endregion
 
             Stat = Stat.SelectSingleNode("./td/div");
 
+            #region Title
             var Title = Stat.SelectNodes("./h1/span");
             foreach (var data in Title)
             {
-                basic.Title += ($"{data.Attributes["lang"].Value} : {data.InnerText.TrimStart(' ', '\\', '/', ';')}\n");
+                if (data.Attributes["lang"].Value == lang)
+                {
+                    basic.Album = data.InnerText.TrimStart(' ', '\\', '/', ';');
+                    break;
+                }
             }
-
+            #endregion
+            #region Image
             var Image = Stat.SelectSingleNode("./div/div[@id='leftfloat']");
             Image = Image.SelectSingleNode("./div/table/tr/td/div[@id='coverart']");
             var imagePath = Image.Attributes["style"].Value.Split('\'')[1];
 
             basic.Image.Add(GetImage(imagePath));
+            #endregion
 
+            #region Tag
             var tag = Stat.SelectSingleNode("./div/div[@id='rightfloat']");
             var tagcollection = tag.SelectNodes("./div/div/table[@id='album_infobit_large']/tr");
 
@@ -237,32 +246,96 @@ namespace Tag.Core.Tagging.Library
 
             foreach (var data in tagcollection[6].SelectNodes("./td/a/span[@class='productname']"))
             {
-                basic.Publisher.Add($"{data.Attributes["lang"].Value} : {data.InnerText}");
+                if (data.Attributes["lang"].Value == lang)
+                {
+                    basic.Publisher.Add(data.InnerText);
+                    break;
+                }
             }
 
-            foreach (var data in tagcollection[7].SelectNodes("./td/a/span[@class='artistname']"))
+            foreach (var data in tagcollection[7].SelectNodes("./td/a"))
             {
-                basic.Composer.Add($"{data.Attributes["lang"].Value} : {data.InnerText}");
+                if (data.Attributes["lang"] == null)
+                {
+                    basic.Composer.Add(data.InnerText);
+                }
+                else if (data.Attributes["lang"].Value == lang)
+                {
+                    basic.Composer.Add(data.SelectSingleNode("./span").InnerText);
+                }
             }
 
-            foreach (var data in tagcollection[8].SelectNodes("./td/a/span[@class='artistname']"))
+            foreach (var data in tagcollection[8].SelectNodes("./td/a"))
             {
-                basic.AlbumArtist.Add($"{data.Attributes["lang"].Value} : {data.InnerText}");
+                if (data.Attributes["lang"] == null)
+                {
+                    basic.AlbumArtist.Add(data.InnerText);
+                }
+                else if (data.Attributes["lang"].Value == lang)
+                {
+                    basic.AlbumArtist.Add(data.SelectSingleNode("./span").InnerText);
+                }
             }
 
-            foreach (var data in tagcollection[9].SelectNodes("./td/a/span[@class='artistname']"))
+            foreach (var data in tagcollection[9].SelectNodes("./td/a"))
             {
-                basic.Artist.Add($"{data.Attributes["lang"].Value} : {data.InnerText}");
+                if (data.Attributes["lang"] == null)
+                {
+                    basic.Artist.Add(data.InnerText);
+                }
+                else if (data.Attributes["lang"].Value == lang)
+                {
+                    basic.Artist.Add(data.SelectSingleNode("./span").InnerText);
+                }
             }
+            #endregion
+
+            var tracklang = Stat.SelectNodes("./div/div/ul[@id='tlnav']/li");
+            var tracklist = Stat.SelectNodes("./div/div/div[@id='tracklist']/span");
+            int count = 0;
+            
+            // 언어 갯수 만큼 반복
+            foreach (var data in tracklang)
+            {
+                var convertLang = string.Empty;
+                switch (data.SelectSingleNode("./a").InnerText)
+                {
+                    case "English":
+                        convertLang = "en";
+                        break;
+                    case "Romjai":
+                        convertLang = "ja-Latn";
+                        break;
+                    case "Japanese":
+                        convertLang = "ja";
+                        break;
+                }
+
+                if (lang == convertLang)
+                {
+                    break;
+                }
+                count++;
+            }
+
+            foreach (var list in tracklist[count].SelectNodes("./table"))
+            {
+                foreach (var data in list.SelectNodes("./tr"))
+                {
+                    TagInfo value = new TagInfo(basic);
+                    value.Track.Add(uint.Parse(data.SelectSingleNode("./td/span[@class='label']").InnerText));
+                    value.Title = data.SelectNodes("./td")[1].InnerText;
+                    result.Add(value);
+                }
+            }  
 
             return result;
         }
-        public List<TagInfo> GetTrackInfo(string id)
+        public List<TagInfo> GetTrackInfo(string id, string lang)
         {
-            var web = RequestTrackWeb(id);
-            SplitTrackWeb(web);
-
-            return new List<TagInfo>();
+            var web = RequestTrackWeb(id,lang);
+            
+            return SplitTrackWeb(web, lang);
         }
 
 

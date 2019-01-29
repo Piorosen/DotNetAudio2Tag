@@ -395,7 +395,7 @@ namespace Tag
         {
             Core.Tagging.Library.MusicDb db = new Core.Tagging.Library.MusicDb();
 
-            db.GetTrackInfo("30780");
+            db.GetTrackInfo("72867", "en");
 
 
 
