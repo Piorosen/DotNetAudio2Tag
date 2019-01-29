@@ -93,7 +93,6 @@ namespace Tag.Core.Tagging.Library
                 {
                     Score = value.Score,
                     Title = value.Title,
-                    TagInfo = false,
                     Country = value.Country,
                     Year = value.Date,
                     Barcode = value.Barcode

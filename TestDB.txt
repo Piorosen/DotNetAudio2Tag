@@ -1,0 +1,28 @@
+﻿<tr>
+	<td class='alt1' style='padding: 4px; font-size:9pt' nowrap="nowrap">
+		<span class="catalog album-anime">
+			SRCL-7048
+		</span>
+	</td>
+	<td class='alt1' style='padding: 4px'>
+	</td>
+		<td class='alt1' style='padding: 4px; font-size:9pt'>
+			<a class="albumtitle album-anime" href="https://vgmdb.net/album/30778" title='A hydrangea blooms / Stereopony'>
+				<span class="albumtitle" lang="en" style="display:inline">
+					A hydrangea blooms / Stereopony
+				</span>
+				<span class="albumtitle" lang="ja" style="display:none">
+				<em> / </em>
+					ハイド.ランジアが咲いている / ステレオポニー</span>
+				<span class="albumtitle" lang="ja-Latn" style="display:none">
+				<em> / </em>
+					Hydrangea ga Saiteiru / Stereopony
+				</span>
+			</a>
+		</td>
+	<td class='alt1' style='padding: 4px; font-size:9pt; text-align: right' nowrap="nowrap">
+		<a title="View albums released on Jun 17, 2009" href="/db/calendar.php?year=2009&month=6#20090617">
+			Jun 17, 2009
+		</a>
+	</td>
+</tr>

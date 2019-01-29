@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Tag.Core.Cue;
 
@@ -48,8 +49,8 @@ namespace Tag.Core.Tagging.Library
             {
                 byte[] data = Encoding.UTF8.GetBytes("action=advancedsearch" +
                                 $"&albumtitles={info.Title}" +
-                                $"&catalognum={info.Barcode}" +
-                                $"&eanupcjan={string.Empty /* Barcode */}" +
+                                $"&catalognum={info.DiscNum}" +
+                                $"&eanupcjan={info.Barcode}" +
                                 $"&dosearch=Search+Albums+Now&pubtype%5B0%5D=1&pubtype%5B1%5D=1&pubtype%5B2%5D=1&distype%5B0%5D=1&distype%5B1%5D=1&distype%5B2%5D=1&distype%5B3%5D=1&distype%5B4%5D=1&distype%5B5%5D=1&distype%5B6%5D=1&distype%5B7%5D=1&distype%5B8%5D=1&category%5B1%5D=0&category%5B2%5D=0&category%5B4%5D=0&category%5B8%5D=0&category%5B16%5D=0" +
                                 $"&composer={string.Join(" ", info.Composer)}" +
                                 $"&arranger={string.Empty}" +
@@ -76,12 +77,80 @@ namespace Tag.Core.Tagging.Library
             }
             return respondText;
         }
-
-        private List<TagInfo> Search(TagInfo info)
+        
+        private List<string> SplitWeb(string Web)
         {
-            string data = RequestWeb(info);
+            var result = new List<string>();
+
+            var next = Regex.Split(Web, "Release Date</a></td>")[1];
+            next = Regex.Split(next, "</table>")[0];
+
+            var list = Regex.Split(next, "<tr>");
             
-            return new List<TagInfo>();
+            for (int i = 2; i < list.Length; i++)
+            {
+                result.Add(list[i]);
+            }
+
+            return result;
+        }
+
+        private VgmDbInfo ParsingWeb(string parse)
+        {
+            VgmDbInfo tag = new VgmDbInfo();
+            var next = Regex.Split(parse, "<span class=\"catalog album-")[1];
+            tag.Genre.Add(next.Split('\"')[0]);
+
+            
+            tag.DiscNum = next.Split('>')[1].Split('<')[0];
+
+            string tmp = Regex.Split(next, "href=\"")[2];
+
+            next = Regex.Split(next, "href=\"")[1];
+            tag.Identifier = next.Split('\"')[0];
+
+
+            next = Regex.Split(next, "title=\'")[1];
+            tag.Title = Regex.Split(next, "\'>")[0];
+            
+            try
+            {
+                var langlist = Regex.Split(next, "<span class");
+                for (int i = 2;  i < langlist.Length; i++)
+                {
+                    var next2 = Regex.Split(langlist[i], "lang=\"")[1];
+                    var lang = next2.Split('\"')[0];
+
+                    next2 = Regex.Split(next2, "</em>")[1];
+                    var title = Regex.Split(next2, "</span>")[0];
+
+                    title.Trim('\r', '\t', '\n', ' ', '/', '\\', '\"', '\'');
+
+                    tag.AnothorName[lang] = title;
+                }
+            }catch (Exception e)
+            {
+
+            }
+
+            next = tmp.Split('#')[1].Split('\"')[0];
+            tag.Year = next.Split('\"')[0].Insert(6, "-").Insert(4, "-");
+
+
+            return tag;
+        }
+
+        private List<VgmDbInfo> Search(TagInfo info)
+        {
+            var result = new List<VgmDbInfo>();
+            string data = RequestWeb(info);
+            var split = SplitWeb(data);
+
+            foreach (var parse in split)
+            {
+                result.Add(ParsingWeb(parse));
+            }
+            return result;
         }
 
 

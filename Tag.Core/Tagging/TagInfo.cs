@@ -8,9 +8,14 @@ using System.Threading.Tasks;
 
 namespace Tag.Core.Tagging
 {
+    public class VgmDbInfo : TagInfo
+    {
+        public string Identifier = string.Empty;
+        public Dictionary<string, string> AnothorName = new Dictionary<string, string>();
+    }
+   
     public class BrainzInfo : TagInfo
     {
-        public bool TagInfo = false;
         public int Score = 0;
         public string Type = string.Empty;
     }
