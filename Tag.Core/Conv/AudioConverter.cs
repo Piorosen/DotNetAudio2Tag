@@ -33,10 +33,30 @@ namespace Tag.Core.Conv
         {
             foreach (var value in TagList)
             {
-                if (value.Type == AudioType.WAV)
+                if (mode == ConvMode.NORMAL)
                 {
-
+                    if (value.Type == AudioType.WAV)
+                    {
+                        Wav2Mp3 conv = new Wav2Mp3();
+                        conv.Execute(value);
+                    }
+                    else if (value.Type == AudioType.FLAC)
+                    {
+                        Flac2Mp3 conv = new Flac2Mp3();
+                        conv.Execute(value);
+                    }
+                    else if (value.Type == AudioType.NONE)
+                    {
+                        yield return 0;
+                        yield break;
+                    }
                 }
+                else if (mode == ConvMode.USER)
+                {
+                    User2Mp3 conv = new User2Mp3();
+                    conv.Execute(value);
+                }
+                
             }
             yield return 0;
         }

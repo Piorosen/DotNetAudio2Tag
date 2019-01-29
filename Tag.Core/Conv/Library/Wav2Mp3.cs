@@ -25,12 +25,14 @@ namespace Tag.Core.Conv.Library
             }
 
             yield return 100;
-
         }
 
         public IEnumerable<int> Execute(ConvInfo info)
         {
-            throw new NotImplementedException();
+            foreach (var value in Execute(info.FilePath, info.ResultPath))
+            {
+                yield return value;
+            }
         }
     }
 }

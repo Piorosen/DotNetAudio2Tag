@@ -8,10 +8,6 @@ namespace Tag.Core.Conv.Library
 {
     class Flac2Mp3 : IConv
     {
-        public IEnumerable<int> Execute(string filePath, string resultPath)
-        {
-            throw new NotImplementedException();
-        }
 
         public IEnumerable<int> Execute(ConvInfo info)
         {
