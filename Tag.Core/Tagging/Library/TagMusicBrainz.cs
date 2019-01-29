@@ -119,7 +119,7 @@ namespace Tag.Core.Tagging.Library
             return result;
         }
         
-        public List<TagInfo> GetTagInfo(CueInfo info)
+        public List<TagInfo> GetTagInfo(TagInfo info)
         {
             var result = new List<TagInfo>();
             if (info.Barcode != string.Empty)

@@ -26,9 +26,9 @@ do: results
 요청 데이터
 MIME 유형: application/x-www-form-urlencoded
 action: advancedsearch
-albumtitles: HYDRA
-catalognum
-eanupcjan
+albumtitles: TITLETEST
+catalognum: CATALTEST
+eanupcjan: BARCODETEST
 dosearch: Search Albums Now
 pubtype[0]: 1
 pubtype[1]: 1
@@ -47,16 +47,16 @@ category[2]: 0
 category[4]: 0
 category[8]: 0
 category[16]: 0
-composer
-arranger
-performer
-lyricist
-publisher
-game
-trackname
-caption
-notes
-anyfield
+composer: COMPOSERTEST
+arranger: ARRANGERTEST
+performer: PERFORMERTEST
+lyricist: LYRICISTTEST
+publisher: PUBLISHERTEST
+game: PRODUCTTEST
+trackname: TRACKTITLETSET
+caption: SCANCAPTIONTEST
+notes: NOTESTEST
+anyfield: ANYFILEDTEST
 classification[1]: 0
 classification[2]: 0
 classification[32]: 0
@@ -93,3 +93,4 @@ tracklistlastedit
 sortby: albumtitle
 orderby: ASC
 childmodifier: 0
+

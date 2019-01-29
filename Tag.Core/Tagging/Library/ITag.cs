@@ -9,6 +9,6 @@ namespace Tag.Core.Tagging.Library
 {
     interface ITag
     {
-        List<TagInfo> GetTagInfo(CueInfo info);
+        List<TagInfo> GetTagInfo(TagInfo info);
     }
 }
