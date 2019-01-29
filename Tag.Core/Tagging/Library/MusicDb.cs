@@ -200,7 +200,16 @@ namespace Tag.Core.Tagging.Library
             var Stat = doc.DocumentNode.SelectNodes("//body//div[@class='page']")[1];
             Stat = Stat.SelectNodes("./table/tr")[0];
 
-            var Genre = Stat.SelectNodes("./td")[1];
+            var Genre = Stat.SelectSingleNode("./td[@id='rightcolumn']");
+            Genre = Genre.SelectNodes("./div")[1];
+            Genre = Genre.SelectNodes("./div")[0];
+            Genre = Genre.SelectNodes("./div")[3];
+            var text = Genre.InnerText;
+            text = text.Remove(0, "Category".Length + 1);
+
+            basic.Genre.Add(text.Trim());
+
+
             Stat = Stat.SelectSingleNode("./td/div");
 
             var Title = Stat.SelectNodes("./h1/span");
