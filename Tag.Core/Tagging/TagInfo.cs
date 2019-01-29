@@ -17,7 +17,6 @@ namespace Tag.Core.Tagging
 
     public class TagInfo
     {
-        public AudioType AudioType = AudioType.NONE;
         public string Path = string.Empty;
         public string Title = string.Empty;
         public List<string> Artist = new List<string>();
@@ -66,7 +65,6 @@ namespace Tag.Core.Tagging
             Composer = value.Composer;
             Image = value.Image;
             Barcode = value.Barcode;
-            AudioType = value.AudioType;
         }
     }
 }

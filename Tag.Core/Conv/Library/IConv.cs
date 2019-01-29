@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Tag.Core.Conv
 {
-    interface IMp3Conv
+    interface IConv
     {
+        IEnumerable<int> Execute(ConvInfo info);
 
     }
 }

@@ -9,10 +9,11 @@ using Tag.Core.Tagging;
 
 namespace Tag.Core.Conv
 {
-    class AudioConverter : ICore<TagInfo>
+    class AudioConverter : ICore<ConvInfo>
     {
-        readonly List<TagInfo> TagList = new List<TagInfo>();
+        readonly List<ConvInfo> TagList = new List<ConvInfo>();
 
+        public ConvInfo this[int index] => TagList[index];
         public bool Delete(int at)
         {
             if (0 <= at && at < TagList.Count)
@@ -22,22 +23,21 @@ namespace Tag.Core.Conv
             }
             return false;
         }
-
-        public bool Delete(TagInfo item)
+        public bool Delete(ConvInfo item)
         {
             return TagList.Remove(item);
         }
 
-        public IEnumerable<int> Execute()
+        public IEnumerable<int> Execute() => Execute(ConvMode.NORMAL);
+        public IEnumerable<int> Execute(ConvMode mode)
         {
             foreach (var value in TagList)
             {
-                if (value.AudioType == AudioType.WAV)
+                if (value.Type == AudioType.WAV)
                 {
-                    Wav2Mp3 conv = new Wav2Mp3();
-                    conv.Execute()
-                }
 
+                }
+            }
             yield return 0;
         }
     }

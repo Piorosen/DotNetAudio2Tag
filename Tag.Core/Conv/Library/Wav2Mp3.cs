@@ -10,9 +10,9 @@ using Tag.Core.Cue;
 
 namespace Tag.Core.Conv.Library
 {
-    class Wav2Mp3 : IMp3Conv
+    class Wav2Mp3 : IConv
     {
-        public IEnumerable<int> Execute(string filePath, string resultPath, LAMEPreset preset)
+        public IEnumerable<int> Execute(string filePath, string resultPath, LAMEPreset preset = LAMEPreset.ABR_320 | LAMEPreset.V0)
         {
             string filedata = $"{Path.GetDirectoryName(filePath)}\\{Path.GetFileNameWithoutExtension(filePath)}";
 
@@ -26,6 +26,11 @@ namespace Tag.Core.Conv.Library
 
             yield return 100;
 
+        }
+
+        public IEnumerable<int> Execute(ConvInfo info)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -9,7 +9,7 @@ using Tag.Core.Conv;
 
 namespace Tag.Core.Conv
 {
-    public class Wav2Mp3Converter : IMp3Conv
+    public class Wav2Mp3Converter
     {
         readonly List<string> filePath = new List<string>();
 
