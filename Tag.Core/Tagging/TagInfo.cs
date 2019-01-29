@@ -11,6 +11,7 @@ namespace Tag.Core.Tagging
     public class VgmDbInfo : TagInfo
     {
         public string Identifier = string.Empty;
+        public List<string> Lang = new List<string>();
         public Dictionary<string, string> AnothorName = new Dictionary<string, string>();
     }
    
