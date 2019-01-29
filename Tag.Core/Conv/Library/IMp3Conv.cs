@@ -8,7 +8,6 @@ namespace Tag.Core.Conv
 {
     interface IMp3Conv
     {
-        IEnumerable<int> Execute(string filePath, string resultPath);
 
     }
 }

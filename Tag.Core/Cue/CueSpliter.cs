@@ -13,7 +13,7 @@ namespace Tag.Core.Cue
 {
     
 
-    public class CueSpliter 
+    public class CueSpliter :ICore<CueInfo>
     {
         readonly List<CueInfo> CueList = new List<CueInfo>();
 

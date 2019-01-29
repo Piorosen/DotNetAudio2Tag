@@ -57,7 +57,7 @@ namespace Tag.Core.Conv
 
         public IEnumerable<int> Execute()
         {
-            
+            yield break;   
         }
 
         public IEnumerable<int> Execute(string filePath, string resultPath)

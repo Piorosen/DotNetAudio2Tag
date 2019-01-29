@@ -9,5 +9,10 @@ namespace Tag.Core
     interface ICore<T>
     {
 
+        bool Delete(int at);
+        bool Delete(T item);
+
+        IEnumerable<int> Execute();
+
     }
 }
