@@ -9,7 +9,7 @@ using Tag.Core.Cue;
 
 namespace Tag.Core.Tagging.Library
 {
-    class MusicDb : ITag
+    public class MusicDb : ITag
     {
         /*
          * Title
@@ -38,6 +38,7 @@ namespace Tag.Core.Tagging.Library
         {
             string Url = "https://vgmdb.net/search?do=results";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
+            request.Method = "POST";
             request.Referer = "https://vgmdb.net/search";
             request.ContentType = "application/x-www-form-urlencoded";
             request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
@@ -50,11 +51,11 @@ namespace Tag.Core.Tagging.Library
                                 $"&catalognum={info.Barcode}" +
                                 $"&eanupcjan={string.Empty /* Barcode */}" +
                                 $"&dosearch=Search+Albums+Now&pubtype%5B0%5D=1&pubtype%5B1%5D=1&pubtype%5B2%5D=1&distype%5B0%5D=1&distype%5B1%5D=1&distype%5B2%5D=1&distype%5B3%5D=1&distype%5B4%5D=1&distype%5B5%5D=1&distype%5B6%5D=1&distype%5B7%5D=1&distype%5B8%5D=1&category%5B1%5D=0&category%5B2%5D=0&category%5B4%5D=0&category%5B8%5D=0&category%5B16%5D=0" +
-                                $"&composer={info.Composer}" +
-                                $"&arranger=ARRANGERTEST" +
-                                $"&performer={info.Artist}" +
+                                $"&composer={string.Join(" ", info.Composer)}" +
+                                $"&arranger={string.Empty}" +
+                                $"&performer={string.Join(" ", info.Artist)}" +
                                 $"&lyricist={string.Empty}" +
-                                $"&publisher={info.Publisher}" +
+                                $"&publisher={string.Join(" ", info.Publisher)}" +
                                 $"&game={string.Empty /* Product */}" +
                                 $"&trackname={string.Empty}" +
                                 $"&caption={string.Empty /* Scan Caption */}" +
@@ -78,7 +79,7 @@ namespace Tag.Core.Tagging.Library
 
         private List<TagInfo> Search(TagInfo info)
         {
-            
+            string data = RequestWeb(info);
             
             return new List<TagInfo>();
         }
@@ -86,7 +87,7 @@ namespace Tag.Core.Tagging.Library
 
         public List<TagInfo> GetTagInfo(TagInfo info)
         {
-
+            Search(info);
 
             return new List<TagInfo>();
         }

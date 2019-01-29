@@ -393,7 +393,16 @@ namespace Tag
 
         private void AutoBtnExec_Click(object sender, EventArgs e)
         {
-            
+            Core.Tagging.Library.MusicDb db = new Core.Tagging.Library.MusicDb();
+
+            db.GetTagInfo(new TagInfo
+            {
+                Title = "Hydra"
+
+            });
+
+
+
             //var list = autoConv.AutoConverting(AutoTextCuepath.Text, AutoTextWavpath.Text, AutoTextMp3path.Text, AutoTextWorkDir.Text);
             //if (list != null)
             //{

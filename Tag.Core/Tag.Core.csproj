@@ -64,8 +64,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conv\AudioConverter.cs" />
+    <Compile Include="Conv\ConvInfo.cs" />
+    <Compile Include="Conv\ConvMode.cs" />
     <Compile Include="Conv\Library\Flac2Mp3.cs" />
-    <Compile Include="Conv\IMp3Conv.cs" />
+    <Compile Include="Conv\Library\IConv.cs" />
     <Compile Include="Conv\Library\User2Mp3.cs" />
     <Compile Include="Conv\Library\Wav2Mp3.cs" />
     <Compile Include="Cue\CueInfo.cs" />
