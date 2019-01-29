@@ -7,8 +7,8 @@ using Tag.Core.Cue;
 
 namespace Tag.Core.Tagging.Library
 {
-    interface ITag
+    interface ITag<T>
     {
-        List<TagInfo> GetTagInfo(TagInfo info);
+        List<T> GetAlbumInfo(TagInfo info);
     }
 }

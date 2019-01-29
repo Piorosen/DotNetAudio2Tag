@@ -395,11 +395,7 @@ namespace Tag
         {
             Core.Tagging.Library.MusicDb db = new Core.Tagging.Library.MusicDb();
 
-            db.GetTagInfo(new TagInfo
-            {
-                Title = "Hydra"
-
-            });
+            db.GetTrackInfo("64000");
 
 
 

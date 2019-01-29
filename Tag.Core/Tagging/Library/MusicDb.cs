@@ -10,7 +10,7 @@ using Tag.Core.Cue;
 
 namespace Tag.Core.Tagging.Library
 {
-    public class MusicDb : ITag
+    public class MusicDb : ITag<VgmDbInfo>
     {
         /*
          * Title
@@ -77,7 +77,7 @@ namespace Tag.Core.Tagging.Library
             }
             return respondText;
         }
-        
+
         private List<string> SplitWeb(string Web)
         {
             var result = new List<string>();
@@ -86,7 +86,7 @@ namespace Tag.Core.Tagging.Library
             next = Regex.Split(next, "</table>")[0];
 
             var list = Regex.Split(next, "<tr>");
-            
+
             for (int i = 2; i < list.Length; i++)
             {
                 result.Add(list[i]);
@@ -101,22 +101,22 @@ namespace Tag.Core.Tagging.Library
             var next = Regex.Split(parse, "<span class=\"catalog album-")[1];
             tag.Genre.Add(next.Split('\"')[0]);
 
-            
+
             tag.DiscNum = next.Split('>')[1].Split('<')[0];
 
             string tmp = Regex.Split(next, "href=\"")[2];
 
             next = Regex.Split(next, "href=\"")[1];
-            tag.Identifier = next.Split('\"')[0];
+            tag.Identifier = next.Split('\"')[0].Split('/')[4];
 
 
             next = Regex.Split(next, "title=\'")[1];
             tag.Title = Regex.Split(next, "\'>")[0];
-            
+
             try
             {
                 var langlist = Regex.Split(next, "<span class");
-                for (int i = 2;  i < langlist.Length; i++)
+                for (int i = 2; i < langlist.Length; i++)
                 {
                     var next2 = Regex.Split(langlist[i], "lang=\"")[1];
                     var lang = next2.Split('\"')[0];
@@ -128,7 +128,8 @@ namespace Tag.Core.Tagging.Library
 
                     tag.AnothorName[lang] = title;
                 }
-            }catch (Exception e)
+            }
+            catch (Exception e)
             {
 
             }
@@ -140,7 +141,7 @@ namespace Tag.Core.Tagging.Library
             return tag;
         }
 
-        private List<VgmDbInfo> Search(TagInfo info)
+        private List<VgmDbInfo> SearchAlbum(TagInfo info)
         {
             var result = new List<VgmDbInfo>();
             string data = RequestWeb(info);
@@ -152,13 +153,38 @@ namespace Tag.Core.Tagging.Library
             }
             return result;
         }
-
-
-        public List<TagInfo> GetTagInfo(TagInfo info)
+    
+        public List<VgmDbInfo> GetAlbumInfo(TagInfo info)
         {
-            Search(info);
+            return SearchAlbum(info);
+        }
+
+        private string RequestTrackWeb(string identifier)
+        {
+            WebClient wc = new WebClient();
+            wc.Encoding = Encoding.UTF8;
+            var data = wc.DownloadString($"https://vgmdb.net/album/{identifier}");
+            
+            return data;
+        }
+        private (List<string> Tag, List<string> Title) SplitTrackWeb(string web)
+        {
+            var Content = Regex.Split(web, "<!-- main page contents -->")[1];
+            var Tracklist = Regex.Split(web, "<!-- / tracklist tools menu -->").ToList();
+            Tracklist.RemoveAt(0);
+            return (Tracklist, Tracklist);
+        }
+        public List<TagInfo> GetTrackInfo(string id)
+        {
+            var web = RequestTrackWeb(id);
+            SplitTrackWeb(web);
 
             return new List<TagInfo>();
         }
+
+
+
+
+        
     }
 }
