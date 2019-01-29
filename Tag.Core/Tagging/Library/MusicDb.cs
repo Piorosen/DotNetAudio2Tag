@@ -167,12 +167,86 @@ namespace Tag.Core.Tagging.Library
             
             return data;
         }
-        private (List<string> Tag, List<string> Title) SplitTrackWeb(string web)
+
+        private TagLib.Picture GetImage(string Link)
         {
-            var Content = Regex.Split(web, "<!-- main page contents -->")[1];
-            var Tracklist = Regex.Split(web, "<!-- / tracklist tools menu -->").ToList();
-            Tracklist.RemoveAt(0);
-            return (Tracklist, Tracklist);
+            
+            WebClient wc = new WebClient();
+            var nameImage = Path.GetRandomFileName();
+            wc.DownloadFile(Link, nameImage);
+
+            var pimage = new TagLib.Picture(nameImage); ;
+
+            try
+            {
+                new FileInfo(nameImage).Delete();
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return pimage;
+        }
+
+        private List<TagInfo> SplitTrackWeb(string web)
+        {
+            List<TagInfo> result = new List<TagInfo>();
+            TagInfo basic = new TagInfo();
+
+            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(web);
+
+            var Stat = doc.DocumentNode.SelectNodes("//body//div[@class='page']")[1];
+            Stat = Stat.SelectNodes("./table/tr")[0];
+
+            var Genre = Stat.SelectNodes("./td")[1];
+            Stat = Stat.SelectSingleNode("./td/div");
+
+            var Title = Stat.SelectNodes("./h1/span");
+            foreach (var data in Title)
+            {
+                basic.Title += ($"{data.Attributes["lang"].Value} : {data.InnerText.TrimStart(' ', '\\', '/', ';')}\n");
+            }
+
+            var Image = Stat.SelectSingleNode("./div/div[@id='leftfloat']");
+            Image = Image.SelectSingleNode("./div/table/tr/td/div[@id='coverart']");
+            var imagePath = Image.Attributes["style"].Value.Split('\'')[1];
+
+            basic.Image.Add(GetImage(imagePath));
+
+            var tag = Stat.SelectSingleNode("./div/div[@id='rightfloat']");
+            var tagcollection = tag.SelectNodes("./div/div/table[@id='album_infobit_large']/tr");
+
+            basic.DiscNum = tagcollection[0].SelectNodes("./td")[1].InnerText.Trim();
+            basic.Year = tagcollection[1].SelectSingleNode("./td/a").Attributes["href"].Value.Split('#')[1].Split('\"')[0].Insert(6, "-").Insert(4, "-");
+
+            foreach (var data in tagcollection[4].SelectNodes("./td")[1].InnerText.Split('+'))
+            {
+                basic.Format.Add(data.Trim());
+            }
+
+            foreach (var data in tagcollection[6].SelectNodes("./td/a/span[@class='productname']"))
+            {
+                basic.Publisher.Add($"{data.Attributes["lang"].Value} : {data.InnerText}");
+            }
+
+            foreach (var data in tagcollection[7].SelectNodes("./td/a/span[@class='artistname']"))
+            {
+                basic.Composer.Add($"{data.Attributes["lang"].Value} : {data.InnerText}");
+            }
+
+            foreach (var data in tagcollection[8].SelectNodes("./td/a/span[@class='artistname']"))
+            {
+                basic.AlbumArtist.Add($"{data.Attributes["lang"].Value} : {data.InnerText}");
+            }
+
+            foreach (var data in tagcollection[9].SelectNodes("./td/a/span[@class='artistname']"))
+            {
+                basic.Artist.Add($"{data.Attributes["lang"].Value} : {data.InnerText}");
+            }
+
+            return result;
         }
         public List<TagInfo> GetTrackInfo(string id)
         {
