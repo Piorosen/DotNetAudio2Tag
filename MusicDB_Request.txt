@@ -1,0 +1,95 @@
+요약
+URL: https://vgmdb.net/search?do=results
+상태: 200 OK
+소스: 네트워크
+
+요청
+Referer: https://vgmdb.net/search
+Origin: https://vgmdb.net
+Content-Type: application/x-www-form-urlencoded
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Safari/605.1.15
+
+응답
+Content-Type: text/html; charset=UTF-8
+Pragma: private
+Connection: close
+Date: Tue, 29 Jan 2019 09:36:52 GMT
+Cache-Control: private
+Transfer-Encoding: Identity
+Server: Apache
+X-Powered-By: PHP/5.3.13
+
+쿼리 문자열 매개변수
+do: results
+
+요청 데이터
+MIME 유형: application/x-www-form-urlencoded
+action: advancedsearch
+albumtitles: HYDRA
+catalognum
+eanupcjan
+dosearch: Search Albums Now
+pubtype[0]: 1
+pubtype[1]: 1
+pubtype[2]: 1
+distype[0]: 1
+distype[1]: 1
+distype[2]: 1
+distype[3]: 1
+distype[4]: 1
+distype[5]: 1
+distype[6]: 1
+distype[7]: 1
+distype[8]: 1
+category[1]: 0
+category[2]: 0
+category[4]: 0
+category[8]: 0
+category[16]: 0
+composer
+arranger
+performer
+lyricist
+publisher
+game
+trackname
+caption
+notes
+anyfield
+classification[1]: 0
+classification[2]: 0
+classification[32]: 0
+classification[4]: 0
+classification[16]: 0
+classification[256]: 0
+classification[512]: 0
+classification[64]: 0
+classification[4096]: 0
+classification[8]: 0
+classification[128]: 0
+classification[1024]: 0
+classification[2048]: 0
+releasedatemodifier: is
+day: 0
+month: 0
+year: 0
+discsmodifier: is
+discs
+pricemodifier: is
+price_value
+wishmodifier: 0
+sellmodifier: 0
+collectionmodifier: 0
+tracklistmodifier: is
+tracklists
+scanmodifier: is
+scans
+albumadded
+albumlastedit
+scanupload
+tracklistadded
+tracklistlastedit
+sortby: albumtitle
+orderby: ASC
+childmodifier: 0
