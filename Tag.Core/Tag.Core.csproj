@@ -114,6 +114,10 @@
       <Project>{de2ea61d-c6c5-458a-922b-c0ae6a680ebe}</Project>
       <Name>ATL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CustomDesign.Core\CustomDesign.Core.csproj">
+      <Project>{44464636-8fe6-4bdf-81a6-eaf1586323e7}</Project>
+      <Name>CustomDesign.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NAudio.Lame.1.0.9\build\NAudio.Lame.targets" Condition="Exists('..\packages\NAudio.Lame.1.0.9\build\NAudio.Lame.targets')" />
