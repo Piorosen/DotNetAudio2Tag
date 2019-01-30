@@ -127,7 +127,6 @@ namespace Tag.Core.Tagging.Library
                     title.Trim('\r', '\t', '\n', ' ', '/', '\\', '\"', '\'');
 
                     tag.AnothorName[lang] = title;
-                    tag.Lang.Add(lang);
                 }
             }
             catch (Exception e)
@@ -332,11 +331,11 @@ namespace Tag.Core.Tagging.Library
 
             return result;
         }
-        public List<TagInfo> GetTrackInfo(string id, string lang)
+        public List<TagInfo> GetTrackInfo(TagInfo tag)
         {
-            var web = RequestTrackWeb(id, lang);
+            var web = RequestTrackWeb(tag.Identifier, tag.Lang);
 
-            return SplitTrackWeb(web, lang);
+            return SplitTrackWeb(web, tag.Lang);
         }
     }
 }

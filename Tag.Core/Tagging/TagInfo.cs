@@ -10,19 +10,19 @@ namespace Tag.Core.Tagging
 {
     public class VgmDbInfo : TagInfo
     {
-        public string Identifier = string.Empty;
-        public List<string> Lang = new List<string>();
         public Dictionary<string, string> AnothorName = new Dictionary<string, string>();
     }
    
     public class BrainzInfo : TagInfo
     {
         public int Score = 0;
-        public string Type = string.Empty;
     }
 
     public class TagInfo
     {
+        public string Identifier = string.Empty;
+        public string Lang = "en";
+
         public string Path = string.Empty;
         public string Title = string.Empty;
         public List<string> Artist = new List<string>();

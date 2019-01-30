@@ -14,6 +14,12 @@ namespace Tag.Core.Conv
         readonly List<ConvInfo> TagList = new List<ConvInfo>();
 
         public ConvInfo this[int index] => TagList[index];
+
+        public bool AddFile(ConvInfo file)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Delete(int at)
         {
             if (0 <= at && at < TagList.Count)
@@ -59,6 +65,11 @@ namespace Tag.Core.Conv
                 
             }
             yield return 0;
+        }
+
+        public List<ConvInfo> List()
+        {
+            throw new NotImplementedException();
         }
     }
 }

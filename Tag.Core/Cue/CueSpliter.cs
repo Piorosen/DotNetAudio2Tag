@@ -11,9 +11,9 @@ using Tag.Core.Cue.Split;
 
 namespace Tag.Core.Cue
 {
-    
 
-    public class CueSpliter :ICore<CueInfo>
+
+    public class CueSpliter : ICore<CueInfo>
     {
         readonly List<CueInfo> CueList = new List<CueInfo>();
 
@@ -72,6 +72,11 @@ namespace Tag.Core.Cue
                 StartPosition += value.DurationMs;
             }
             return true;
+        }
+
+        public bool AddFile(CueInfo file)
+        {
+            throw new NotImplementedException();
         }
 
         public bool Delete(int at)
@@ -133,6 +138,9 @@ namespace Tag.Core.Cue
             yield return 100;
         }
 
-
+        public List<CueInfo> List()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

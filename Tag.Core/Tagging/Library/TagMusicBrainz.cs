@@ -95,7 +95,8 @@ namespace Tag.Core.Tagging.Library
                     Title = value.Title,
                     Country = value.Country,
                     Year = value.Date,
-                    Barcode = value.Barcode
+                    Barcode = value.Barcode,
+                    Identifier = value.Id
                 };
 
                 foreach (var i in value.Artistcredit)

@@ -98,11 +98,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="libmp3lame.32.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\atldotnet\ATL\ATL.csproj">
       <Project>{de2ea61d-c6c5-458a-922b-c0ae6a680ebe}</Project>
       <Name>ATL</Name>

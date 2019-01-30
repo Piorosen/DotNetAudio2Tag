@@ -231,7 +231,7 @@ namespace Tag
                     Console.WriteLine("0 임");
                     return;
                 }
-                tagTemp = mp3Tagging[TaggingListFile.SelectedIndices[0]];
+                tagTemp = mp3Tagging.List()[TaggingListFile.SelectedIndices[0]];
                 GetTextTagging();
             }
             catch (Exception)
@@ -395,7 +395,11 @@ namespace Tag
         {
             Core.Tagging.Library.MusicDb db = new Core.Tagging.Library.MusicDb();
 
-            db.GetTrackInfo("72867", "en");
+            db.GetTrackInfo(new TagInfo
+            {
+                Identifier = "72867",
+                Lang = "en"
+            });
 
 
 
