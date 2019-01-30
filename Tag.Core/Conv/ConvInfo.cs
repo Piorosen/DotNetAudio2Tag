@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Tag.Core.Conv
 {
-    class ConvInfo
+    public class ConvInfo
     {
         public AudioType Type = AudioType.NONE;
         public string FilePath = string.Empty;
@@ -19,6 +19,7 @@ namespace Tag.Core.Conv
         public string Directory => Path.GetDirectoryName(FilePath);
         
         public List<object> Parameter = new List<object>();
+        public string Format = string.Empty;
         public string Source = string.Empty;
     }
 }

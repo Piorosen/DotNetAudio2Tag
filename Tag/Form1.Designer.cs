@@ -104,6 +104,9 @@
             this.TaggingBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SettingTab = new System.Windows.Forms.TabPage();
             this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.TabControl.SuspendLayout();
             this.AutoTab.SuspendLayout();
             this.CuesplitTab.SuspendLayout();
@@ -243,7 +246,7 @@
             // 
             this.AutoTextWorkDir.Depth = 0;
             this.AutoTextWorkDir.Hint = "Work Directory";
-            this.AutoTextWorkDir.Location = new System.Drawing.Point(22, 48);
+            this.AutoTextWorkDir.Location = new System.Drawing.Point(7, 47);
             this.AutoTextWorkDir.MaxLength = 32767;
             this.AutoTextWorkDir.MouseState = MaterialSkin.MouseState.HOVER;
             this.AutoTextWorkDir.Name = "AutoTextWorkDir";
@@ -278,7 +281,7 @@
             // 
             this.AutoTextMp3path.Depth = 0;
             this.AutoTextMp3path.Hint = "Mp3 Save Path";
-            this.AutoTextMp3path.Location = new System.Drawing.Point(22, 166);
+            this.AutoTextMp3path.Location = new System.Drawing.Point(7, 165);
             this.AutoTextMp3path.MaxLength = 32767;
             this.AutoTextMp3path.MouseState = MaterialSkin.MouseState.HOVER;
             this.AutoTextMp3path.Name = "AutoTextMp3path";
@@ -295,7 +298,7 @@
             // 
             this.AutoTextWavpath.Depth = 0;
             this.AutoTextWavpath.Hint = "Wav Save Path";
-            this.AutoTextWavpath.Location = new System.Drawing.Point(22, 128);
+            this.AutoTextWavpath.Location = new System.Drawing.Point(7, 127);
             this.AutoTextWavpath.MaxLength = 32767;
             this.AutoTextWavpath.MouseState = MaterialSkin.MouseState.HOVER;
             this.AutoTextWavpath.Name = "AutoTextWavpath";
@@ -312,7 +315,7 @@
             // 
             this.AutoTextCuepath.Depth = 0;
             this.AutoTextCuepath.Hint = "Cue File Path";
-            this.AutoTextCuepath.Location = new System.Drawing.Point(22, 93);
+            this.AutoTextCuepath.Location = new System.Drawing.Point(7, 92);
             this.AutoTextCuepath.MaxLength = 32767;
             this.AutoTextCuepath.MouseState = MaterialSkin.MouseState.HOVER;
             this.AutoTextCuepath.Name = "AutoTextCuepath";
@@ -340,6 +343,7 @@
             // CuesplitTab
             // 
             this.CuesplitTab.BackColor = System.Drawing.SystemColors.Control;
+            this.CuesplitTab.Controls.Add(this.panel2);
             this.CuesplitTab.Controls.Add(this.CuesplitTextCuePath);
             this.CuesplitTab.Controls.Add(this.CuesplitTextWavPath);
             this.CuesplitTab.Controls.Add(this.CuesplitTextSavePath);
@@ -547,10 +551,10 @@
             // 
             this.CuesplitProgressStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CuesplitProgressStatus.Depth = 0;
-            this.CuesplitProgressStatus.Location = new System.Drawing.Point(340, 485);
+            this.CuesplitProgressStatus.Location = new System.Drawing.Point(361, 485);
             this.CuesplitProgressStatus.MouseState = MaterialSkin.MouseState.HOVER;
             this.CuesplitProgressStatus.Name = "CuesplitProgressStatus";
-            this.CuesplitProgressStatus.Size = new System.Drawing.Size(644, 5);
+            this.CuesplitProgressStatus.Size = new System.Drawing.Size(623, 5);
             this.CuesplitProgressStatus.TabIndex = 22;
             // 
             // CuesplitBtnExecute
@@ -573,6 +577,7 @@
             // ConvMp3Tab
             // 
             this.ConvMp3Tab.BackColor = System.Drawing.SystemColors.Control;
+            this.ConvMp3Tab.Controls.Add(this.panel3);
             this.ConvMp3Tab.Controls.Add(this.materialSingleLineTextField1);
             this.ConvMp3Tab.Controls.Add(this.materialSingleLineTextField2);
             this.ConvMp3Tab.Controls.Add(this.materialSingleLineTextField15);
@@ -815,10 +820,10 @@
             // 
             this.Mp3ConvProgressStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Mp3ConvProgressStatus.Depth = 0;
-            this.Mp3ConvProgressStatus.Location = new System.Drawing.Point(340, 485);
+            this.Mp3ConvProgressStatus.Location = new System.Drawing.Point(361, 485);
             this.Mp3ConvProgressStatus.MouseState = MaterialSkin.MouseState.HOVER;
             this.Mp3ConvProgressStatus.Name = "Mp3ConvProgressStatus";
-            this.Mp3ConvProgressStatus.Size = new System.Drawing.Size(644, 5);
+            this.Mp3ConvProgressStatus.Size = new System.Drawing.Size(623, 5);
             this.Mp3ConvProgressStatus.TabIndex = 22;
             // 
             // Mp3ConvBtnExec
@@ -841,6 +846,7 @@
             // TaggingTab
             // 
             this.TaggingTab.BackColor = System.Drawing.SystemColors.Control;
+            this.TaggingTab.Controls.Add(this.panel4);
             this.TaggingTab.Controls.Add(this.materialRaisedButton1);
             this.TaggingTab.Controls.Add(this.TaggingBtnImageDelete);
             this.TaggingTab.Controls.Add(this.TaggingBtnNextImage);
@@ -1235,10 +1241,10 @@
             // 
             this.TaggingProgressStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.TaggingProgressStatus.Depth = 0;
-            this.TaggingProgressStatus.Location = new System.Drawing.Point(340, 485);
+            this.TaggingProgressStatus.Location = new System.Drawing.Point(367, 485);
             this.TaggingProgressStatus.MouseState = MaterialSkin.MouseState.HOVER;
             this.TaggingProgressStatus.Name = "TaggingProgressStatus";
-            this.TaggingProgressStatus.Size = new System.Drawing.Size(644, 5);
+            this.TaggingProgressStatus.Size = new System.Drawing.Size(613, 5);
             this.TaggingProgressStatus.TabIndex = 7;
             // 
             // TaggingBtnExec
@@ -1286,6 +1292,30 @@
             this.materialCheckBox1.Text = "DarkMode";
             this.materialCheckBox1.UseVisualStyleBackColor = true;
             this.materialCheckBox1.CheckedChanged += new System.EventHandler(this.pp);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Gray;
+            this.panel4.Location = new System.Drawing.Point(344, 9);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(10, 483);
+            this.panel4.TabIndex = 36;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Gray;
+            this.panel3.Location = new System.Drawing.Point(345, 6);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(10, 483);
+            this.panel3.TabIndex = 37;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Gray;
+            this.panel2.Location = new System.Drawing.Point(345, 7);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(10, 483);
+            this.panel2.TabIndex = 37;
             // 
             // Form1
             // 
@@ -1392,6 +1422,9 @@
         private System.Windows.Forms.ColumnHeader AutoColumnPublisher;
         private System.Windows.Forms.ColumnHeader AutoColumnCatNo;
         private System.Windows.Forms.ColumnHeader AutoColumnTitle;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
     }
 }
 

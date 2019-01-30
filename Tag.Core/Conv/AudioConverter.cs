@@ -1,6 +1,7 @@
 ﻿using ATL.CatalogDataReaders;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using Tag.Core.Tagging;
 
 namespace Tag.Core.Conv
 {
-    class AudioConverter : ICore<ConvInfo>
+    public class AudioConverter : ICore<ConvInfo>
     {
         readonly List<ConvInfo> TagList = new List<ConvInfo>();
 
@@ -17,7 +18,13 @@ namespace Tag.Core.Conv
 
         public bool AddFile(ConvInfo file)
         {
-            throw new NotImplementedException();
+            if (file.ResultPath == string.Empty)
+            {
+                file.ResultPath = Path.Combine(file.Directory, file.FileName);
+                file.ResultPath += ".mp3";
+            }
+            TagList.Add(file);
+            return true;
         }
 
         public bool Delete(int at)

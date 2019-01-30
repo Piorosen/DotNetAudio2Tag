@@ -12,7 +12,7 @@ namespace Tag.Core.Conv.Library
 {
     class Wav2Mp3 : IConv
     {
-        public IEnumerable<int> Execute(string filePath, string resultPath, LAMEPreset preset = LAMEPreset.ABR_320 | LAMEPreset.V0)
+        private IEnumerable<int> Execute(string filePath, string resultPath, LAMEPreset preset = LAMEPreset.ABR_320 | LAMEPreset.V0)
         {
             string filedata = $"{Path.GetDirectoryName(filePath)}\\{Path.GetFileNameWithoutExtension(filePath)}";
 
@@ -29,7 +29,17 @@ namespace Tag.Core.Conv.Library
 
         public IEnumerable<int> Execute(ConvInfo info)
         {
-            foreach (var value in Execute(info.FilePath, info.ResultPath))
+            LAMEPreset preset = new LAMEPreset();
+
+            foreach (var value in info.Parameter)
+            {
+                if (value is LAMEPreset)
+                {
+                    preset |= (LAMEPreset)value;
+                }
+            }
+
+            foreach (var value in Execute(info.FilePath, info.ResultPath, preset))
             {
                 yield return value;
             }

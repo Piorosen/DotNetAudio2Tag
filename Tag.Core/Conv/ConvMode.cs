@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tag.Core.Conv
 {
-    enum ConvMode
+    public enum ConvMode
     {
         MYFLAC = 1,
         MYWAV = 2,

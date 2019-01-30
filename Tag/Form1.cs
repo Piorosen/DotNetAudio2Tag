@@ -23,7 +23,7 @@ namespace Tag
     {
         readonly MaterialSkinManager materialSkinManager;
         readonly CueSpliter cueSpliter = new CueSpliter();
-        readonly Wav2Mp3Converter wav2Mp3Converter = new Wav2Mp3Converter();
+        readonly AudioConverter audioConv = new AudioConverter();
         readonly Mp3Tagging mp3Tagging = new Mp3Tagging();
         readonly AutoConverter autoConv = new AutoConverter();
         TagInfo tagTemp;
@@ -82,7 +82,7 @@ namespace Tag
                     return;
                 }
                 isrun = true;
-                foreach (var value in wav2Mp3Converter.Execute())
+                foreach (var value in audioConv.Execute())
                 {
                     if (this.InvokeRequired)
                     {
@@ -163,7 +163,10 @@ namespace Tag
                 if (t == ".wav")
                 {
                     Log.FileWrite("{t}", Error.Success);
-                    wav2Mp3Converter.AddFile(path);
+                    audioConv.AddFile(new ConvInfo
+                    {
+                        FilePath = path
+                    });
                     Mp3ConvListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
                 }
             }
@@ -367,7 +370,7 @@ namespace Tag
                     }
                     else if ((sender as ListView).Name == "Mp3ConvListStatus")
                     {
-                        wav2Mp3Converter.Delete(value);
+                        audioConv.Delete(value);
                     }
                     else
                     {
@@ -393,12 +396,6 @@ namespace Tag
 
         private void AutoBtnExec_Click(object sender, EventArgs e)
         {
-            Core.Tagging.Library.MusicDb db = new Core.Tagging.Library.MusicDb();
-            db.GetTrackInfo(new TagInfo
-            {
-                Identifier = "72867",
-                Lang = "en"
-            });
 
 
 
