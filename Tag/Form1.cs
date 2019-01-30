@@ -394,7 +394,6 @@ namespace Tag
         private void AutoBtnExec_Click(object sender, EventArgs e)
         {
             Core.Tagging.Library.MusicDb db = new Core.Tagging.Library.MusicDb();
-
             db.GetTrackInfo(new TagInfo
             {
                 Identifier = "72867",

@@ -35,6 +35,7 @@ namespace Tag.Core.Tagging.Library
         // Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
         // User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0.2 Safari/605.1.15
         //
+        #region GetAlbumInfo Libaray
         private string RequestWeb(TagInfo info)
         {
             string Url = "https://vgmdb.net/search?do=results";
@@ -77,7 +78,6 @@ namespace Tag.Core.Tagging.Library
             }
             return respondText;
         }
-
         private List<string> SplitWeb(string Web)
         {
             var result = new List<string>();
@@ -94,7 +94,6 @@ namespace Tag.Core.Tagging.Library
 
             return result;
         }
-
         private VgmDbInfo ParsingWeb(string parse)
         {
             VgmDbInfo tag = new VgmDbInfo();
@@ -140,7 +139,6 @@ namespace Tag.Core.Tagging.Library
 
             return tag;
         }
-
         private List<VgmDbInfo> SearchAlbum(TagInfo info)
         {
             var result = new List<VgmDbInfo>();
@@ -153,13 +151,19 @@ namespace Tag.Core.Tagging.Library
             }
             return result;
         }
-    
+        /// <summary>
+        /// 검색할 정보를 담습니다.
+        /// </summary>
+        /// <param name="info">요청 가능한 목록 : Title, DiscNum, Barcode, Composer, Artist, Publisher</param>
+        /// <returns>검색한 결과를 리턴합니다.</returns>
         public List<VgmDbInfo> GetAlbumInfo(TagInfo info)
         {
             return SearchAlbum(info);
         }
+        #endregion
 
-        private string RequestTrackWeb(string identifier, string lang)
+        #region GetTrackInfo Library
+        private string RequestTrackWeb(string identifier)
         {
             WebClient wc = new WebClient();
             wc.Encoding = Encoding.UTF8;
@@ -167,7 +171,6 @@ namespace Tag.Core.Tagging.Library
             
             return data;
         }
-
         private TagLib.Picture GetImage(string Link)
         {
             
@@ -188,7 +191,6 @@ namespace Tag.Core.Tagging.Library
 
             return pimage;
         }
-
         private List<TagInfo> SplitTrackWeb(string web, string lang)
         {
             List<TagInfo> result = new List<TagInfo>();
@@ -331,11 +333,18 @@ namespace Tag.Core.Tagging.Library
 
             return result;
         }
+        /// <summary>
+        /// 앨범의 고유 아이디와 검색할 언어를 선택합니다.
+        /// </summary>
+        /// <param name="tag">Tag : Identifier, Lang = "en"을 꼭 선택하셔야합니다.</param>
+        /// <returns></returns>
         public List<TagInfo> GetTrackInfo(TagInfo tag)
         {
-            var web = RequestTrackWeb(tag.Identifier, tag.Lang);
+            var web = RequestTrackWeb(tag.Identifier);
 
             return SplitTrackWeb(web, tag.Lang);
         }
+        #endregion
+
     }
 }

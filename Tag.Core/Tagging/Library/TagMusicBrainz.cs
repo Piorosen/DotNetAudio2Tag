@@ -80,7 +80,12 @@ namespace Tag.Core.Tagging.Library
 
             return pimage;
         }
-        
+
+        /// <summary>
+        /// 검색할 정보를 담습니다.
+        /// </summary>
+        /// <param name="info">요청 가능한 목록 : Title, Artist</param>
+        /// <returns>검색한 결과를 리턴합니다.</returns>
         public List<BrainzInfo> GetAlbumInfo(TagInfo info)
         {
             var result = new List<BrainzInfo>();
@@ -119,12 +124,17 @@ namespace Tag.Core.Tagging.Library
             return result;
         }
 
+        /// <summary>
+        /// 앨범의 고유 아이디와 검색할 언어를 선택합니다.
+        /// </summary>
+        /// <param name="tag">Tag : Barcode Or Identifier</param>
+        /// <returns>앨범의 태그 목록을 가져옵니다. 순차적입니다.</returns>
         public List<TagInfo> GetTrackInfo(TagInfo info)
         {
             var result = new List<TagInfo>();
-            if (info.Barcode != string.Empty)
+            if (info.Barcode != string.Empty || info.Identifier != string.Empty)
             {
-                var data = MusicBrainz.Search.Release(barcode: info.Barcode);
+                var data = MusicBrainz.Search.Release(barcode: info.Barcode, reid: info.Identifier);
 
                 var value = data.Data[0];
 
