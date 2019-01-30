@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using Tag.Core;
 using Tag.Core.Conv;
 using Tag.Core.Cue;
+using Tag.Core.Cue.Split;
 using Tag.Core.Extension;
 using Tag.Core.Tagging;
 
@@ -396,7 +397,8 @@ namespace Tag
 
         private void AutoBtnExec_Click(object sender, EventArgs e)
         {
-
+            cueSpliter.AddFile(@"D:\data\Coe\BoA - MASAYUME CHASING (初回生産限定盤) [Single, Limited Edition, Maxi].cue");
+            foreach (var t in cueSpliter.Execute()) { }
 
 
             //var list = autoConv.AutoConverting(AutoTextCuepath.Text, AutoTextWavpath.Text, AutoTextMp3path.Text, AutoTextWorkDir.Text);

@@ -71,6 +71,7 @@ namespace Tag.Core.Cue
                 });
                 StartPosition += value.DurationMs;
             }
+            CueList.Add(info);
             return true;
         }
 
@@ -109,7 +110,10 @@ namespace Tag.Core.Cue
                     WaveSplit wav = new WaveSplit();
                     foreach (var track in list.Track)
                     {
-                        wav.Execute(list.WavPath, list.SavePath, track);
+                        foreach (var value in wav.Execute(list.WavPath, list.SavePath, track))
+                        {
+
+                        }
                         yield return (int)((100.0 / trackCount) * count);
                     }
                 }
@@ -118,7 +122,10 @@ namespace Tag.Core.Cue
                     FlacSplit flac = new FlacSplit();
                     foreach (var track in list.Track)
                     {
-                        flac.Execute(list.WavPath, list.SavePath, track);
+                        foreach (var value in flac.Execute(list.WavPath, list.SavePath, track))
+                        {
+
+                        }
                         yield return (int)((100.0 / trackCount) * count);
                     }
                 }
@@ -128,7 +135,10 @@ namespace Tag.Core.Cue
                     UserSplit user = new UserSplit();
                     foreach (var track in list.Track)
                     {
-                        user.Execute(list.WavPath, list.SavePath, track);
+                        foreach (var value in user.Execute(list.WavPath, list.SavePath, track))
+                        {
+
+                        }
                         yield return (int)((100.0 / trackCount) * count);
                     }
                 }

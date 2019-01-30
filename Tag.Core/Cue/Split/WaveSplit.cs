@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tag.Core.Cue.Split
 {
-    class WaveSplit : ISplit
+    public class WaveSplit : ISplit
     {
         public IEnumerable<int> Execute(string filePath, string resultPath, TrackInfo trackinfo)
         {
