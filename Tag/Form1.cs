@@ -27,6 +27,8 @@ namespace Tag
         readonly AudioConverter audioConv = new AudioConverter();
         readonly Mp3Tagging mp3Tagging = new Mp3Tagging();
         readonly AutoConverter autoConv = new AutoConverter();
+
+
         TagInfo tagTemp;
 
         public Form1()
@@ -397,8 +399,11 @@ namespace Tag
 
         private void AutoBtnExec_Click(object sender, EventArgs e)
         {
-            cueSpliter.AddFile(@"D:\data\Coe\BoA - MASAYUME CHASING (初回生産限定盤) [Single, Limited Edition, Maxi].cue");
-            foreach (var t in cueSpliter.Execute()) { }
+
+            Log.FileWrite("파일을 다 하였습니다!", Error.None);
+
+            //cueSpliter.AddFile(@"D:\data\Coe\BoA - MASAYUME CHASING (初回生産限定盤) [Single, Limited Edition, Maxi].cue");
+            //foreach (var t in cueSpliter.Execute()) { }
 
 
             //var list = autoConv.AutoConverting(AutoTextCuepath.Text, AutoTextWavpath.Text, AutoTextMp3path.Text, AutoTextWorkDir.Text);

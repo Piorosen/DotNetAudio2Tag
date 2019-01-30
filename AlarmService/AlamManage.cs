@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Library
 {
-    public class AlamManage
+    public class AlarmManage
     {
         public int Size
         {
@@ -25,7 +25,7 @@ namespace Library
             }
         }
         private int _Size = 0;
-        private List<Alam> AlamList = new List<Alam>();
+        private List<Alarm> AlamList = new List<Alarm>();
         public Point Padding
         {
             get
@@ -65,11 +65,19 @@ namespace Library
             }
         }
 
-        private void Remove(object sender, AlamStruct AlamStruct)
+        private void Remove(object sender, AlarmStruct AlamStruct)
         {
-            AlamList.Remove(sender as Alam);
+            AlamList.Remove(sender as Alarm);
 
             try
+            {
+                ChangeFormSize();
+                ChangeDeskLocation();
+                ChangeControlLocation();
+
+                (sender as Control).Dispose();
+            }
+            catch (Exception)
             {
                 Form.Invoke(new MethodInvoker(() =>
                 {
@@ -80,22 +88,15 @@ namespace Library
                     (sender as Control).Dispose();
                 }));
             }
-            catch (Exception)
-            {
-                ChangeFormSize();
-                ChangeDeskLocation();
-                ChangeControlLocation();
-
-                (sender as Control).Dispose();
-            }
 
             
         }
 
-        public AlamManage(Form _Form)
+        public AlarmManage()
         {
-            Form = _Form;
-            Size = 200;
+            Form = new Form();
+            Form.Show();
+            Size = 150;
             Form.BackColor = Color.FromArgb(254, 254, 254);
             Form.FormBorderStyle = FormBorderStyle.None;
             Form.TransparencyKey = Color.FromArgb(254, 254, 254);
@@ -103,30 +104,30 @@ namespace Library
             Form.TopMost = true;
         }
 
-        public void Add(AlamStruct AlamStruct)
+        public void Add(AlarmStruct alarmStruct)
         {
-            Alam alam = new Alam(AlamStruct);
-
-            alam.LifeTimeEnd += Remove;
-            AlamList.Add(alam);
+            Alarm alarm = new Alarm(alarmStruct);
+            
+            alarm.LifeTimeEnd += Remove;
+            AlamList.Add(alarm);
             try
+            {
+                Form.Controls.Add(alarm);
+
+                ChangeFormSize();
+                ChangeDeskLocation();
+                ChangeControlLocation();
+            }
+            catch (Exception)
             {
                 Form.Invoke(new MethodInvoker(() =>
                 {
-                    Form.Controls.Add(alam);
+                    Form.Controls.Add(alarm);
 
                     ChangeFormSize();
                     ChangeDeskLocation();
                     ChangeControlLocation();
                 }));
-            }
-            catch (Exception)
-            {
-                Form.Controls.Add(alam);
-
-                ChangeFormSize();
-                ChangeDeskLocation();
-                ChangeControlLocation();
             }
             
         }
@@ -135,43 +136,5 @@ namespace Library
 
 
 
-    public class AlamStruct
-    {
-        public AlamStruct(string Title, string Body, float LifeTime = -1.0f)
-        {
-            this.Title = Title;
-            this.Body = Body;
-            this.LifeTime = LifeTime;
-        }
-
-        /// <summary>
-        /// 알람의 제목을 설정합니다.
-        /// </summary>
-        public string Title { get; set; } = string.Empty;
-        /// <summary>
-        /// 알람의 주 내용을 설정합니다.
-        /// </summary>
-        public string Body { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 이미지 경로설정.
-        /// </summary>
-        public string ImagePath { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 백컬러 지정.
-        /// </summary>
-        public Color BackColor { get; set; } = Color.Empty;
-
-        /// <summary>
-        /// 이미지 스타일 지정.
-        /// </summary>
-        public BorderStyle BorderStyle { get; set; } = BorderStyle.None;
-
-        /// <summary>
-        /// 표기할 시간을 지정합니다. ( -1.0f => infinity )
-        /// </summary>
-        public float LifeTime { get; set; } = 0.0f;
-
-    }
+    
 }

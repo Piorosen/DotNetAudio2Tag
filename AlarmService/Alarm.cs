@@ -11,35 +11,35 @@ using System.IO;
 
 namespace Library
 {
-    public delegate void LifeTimeEvent(object sender, AlamStruct AlamStruct);
-    public partial class Alam : UserControl
+    delegate void LifeTimeEvent(object sender, AlarmStruct alarmStruct);
+    partial class Alarm : UserControl
     {
         public event LifeTimeEvent LifeTimeEnd;
-        private void OnLifeTimeEnd(AlamStruct alamStruct)
+        private void OnLifeTimeEnd(AlarmStruct alarmStruct)
         {
-            LifeTimeEnd?.Invoke(this, alamStruct);
+            LifeTimeEnd?.Invoke(this, alarmStruct);
         }
 
-        AlamStruct AlamStruct;
+        AlarmStruct alarmStruct;
 
-        public Alam(AlamStruct alam)
+        public Alarm(AlarmStruct alarm)
         {
             InitializeComponent();
 
-            AlamStruct = alam;
+            alarmStruct = alarm;
 
-            AlamStruct = alam;
-            Label_Title.Text = AlamStruct.Title;
-            Label_Body.Text = AlamStruct.Body;
+            alarmStruct = alarm;
+            Label_Title.Text = alarmStruct.Title;
+            Label_Body.Text = alarmStruct.Body;
 
-            if (alam.BackColor != Color.Empty)
-                Panel_Main.BackColor = AlamStruct.BackColor;
+            if (alarm.BackColor != Color.Empty)
+                Panel_Main.BackColor = alarmStruct.BackColor;
 
-            if (alam.ImagePath != string.Empty && new FileInfo(alam.ImagePath).Exists)
+            if (alarm.ImagePath != string.Empty && new FileInfo(alarm.ImagePath).Exists)
             {
                 try
                 {
-                    Picture_Image.Image = Image.FromFile(AlamStruct.ImagePath);
+                    Picture_Image.Image = Image.FromFile(alarmStruct.ImagePath);
                     Label_Title.Size = new Size(Label_Title.Size.Width - Picture_Image.Size.Width - 10, Label_Title.Size.Height);
                     Label_Body.Size = new Size(Label_Body.Size.Width - Picture_Image.Size.Width - 10, Label_Body.Size.Height);
                 }
@@ -48,8 +48,8 @@ namespace Library
                 }
             }
 
-            if (alam.BorderStyle != Picture_Image.BorderStyle)
-                Picture_Image.BorderStyle = AlamStruct.BorderStyle;
+            if (alarm.BorderStyle != Picture_Image.BorderStyle)
+                Picture_Image.BorderStyle = alarmStruct.BorderStyle;
 
             Timer.Start();
         }
@@ -63,18 +63,18 @@ namespace Library
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (AlamStruct.LifeTime == -1) return;
-            AlamStruct.LifeTime -= Timer.Interval / 1000.0f;
-            if (AlamStruct.LifeTime <= 0)
+            if (alarmStruct.LifeTime == -1) return;
+            alarmStruct.LifeTime -= Timer.Interval / 1000.0f;
+            if (alarmStruct.LifeTime <= 0)
             {
                 Timer.Stop();
-                OnLifeTimeEnd(AlamStruct);
+                OnLifeTimeEnd(alarmStruct);
             }
         }
 
         private void Btn_Close_Click(object sender, EventArgs e)
         {
-            OnLifeTimeEnd(AlamStruct);
+            OnLifeTimeEnd(alarmStruct);
         }
     }
 }

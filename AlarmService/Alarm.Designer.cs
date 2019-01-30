@@ -1,6 +1,6 @@
 ﻿namespace Library
 {
-    partial class Alam
+    partial class Alarm
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
