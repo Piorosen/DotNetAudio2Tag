@@ -1,0 +1,18 @@
+[{
+	"Name": "Form1",
+	"Field": [{
+		"Name": "checkBox1",
+		"Property": [{
+			"Name": "Checked",
+			"Type": "System.Boolean",
+			"Value": "true"
+		}]
+	}, {
+		"Name": "textBox3",
+		"Property": [{
+			"Name": "Text",
+			"Type": "System.String",
+			"Value": "123asd"
+		}]
+	}]
+}]

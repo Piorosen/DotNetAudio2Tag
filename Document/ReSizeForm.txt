@@ -1,0 +1,17 @@
+[{
+	"Name": "Form1",
+	"Property": [{
+		"Name": "Size",
+		"Constructor": {
+			"System.Int32$0": "500",
+			"System.Int32$1": "500"
+		}
+	}],
+	"Field": [{
+		"Name": "textBox3",
+		"Property": [{
+			"Name": "Text",
+			"Value": "123asd"
+		}]
+	}]
+}]

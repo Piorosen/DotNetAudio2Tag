@@ -1,0 +1,10 @@
+[{
+	"Name": "Form1",
+	"Field": [{
+		"Name": "button2",
+		"EventHandler": {
+			"Name": "Click",
+			"Method": "Write"
+		}
+	}]
+}]

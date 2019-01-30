@@ -1,0 +1,7 @@
+[{
+	"Name": "Form1",
+	"CallFunc": {
+		"Name": "Write",
+		"Param": {}
+	}
+}]
