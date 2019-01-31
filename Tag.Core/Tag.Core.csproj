@@ -107,7 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\atldotnet\ATL\ATL.csproj">
-      <Project>{de2ea61d-c6c5-458a-922b-c0ae6a680ebe}</Project>
+      <Project>{d512d5a9-c5e1-4e0c-aeed-5ab037425741}</Project>
       <Name>ATL</Name>
     </ProjectReference>
   </ItemGroup>
