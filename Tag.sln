@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tag", "Tag\Tag.csproj", "{EECFDBE8-19E2-4AC3-BA1B-F2A658C0BBAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tag.Core", "Tag.Core\Tag.Core.csproj", "{4928D8C2-BF0B-41EC-AD58-1E4ED1DBA88B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DE2EA61D-C6C5-458A-922B-C0AE6A680EBE} = {DE2EA61D-C6C5-458A-922B-C0AE6A680EBE}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ATL", "atldotnet\ATL\ATL.csproj", "{DE2EA61D-C6C5-458A-922B-C0AE6A680EBE}"
 EndProject

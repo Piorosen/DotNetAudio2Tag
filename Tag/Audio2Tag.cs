@@ -21,7 +21,7 @@ using Tag.Core.Tagging;
 
 namespace Tag
 {
-    public partial class Form1 : MaterialForm
+    public partial class Audio2Tag : MaterialForm
     {
         readonly MaterialSkinManager materialSkinManager;
         readonly CueSpliter cueSpliter = new CueSpliter();
@@ -32,7 +32,7 @@ namespace Tag
 
         TagInfo tagTemp;
 
-        public Form1()
+        public Audio2Tag()
         {
             InitializeComponent();
             materialSkinManager = MaterialSkinManager.Instance;

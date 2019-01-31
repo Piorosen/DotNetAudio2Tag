@@ -12,7 +12,7 @@ namespace Tag
 	/// <summary>
     /// UI Relative
     /// </summary>
-    partial class Form1
+    partial class Audio2Tag
     {
 
         private void pp(object sender, EventArgs e)
