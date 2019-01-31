@@ -128,10 +128,7 @@ namespace Tag.Core.Tagging.Library
                     tag.AnothorName[lang] = title;
                 }
             }
-            catch (Exception e)
-            {
-
-            }
+            catch { }
 
             next = tmp.Split('#')[1].Split('\"')[0];
             tag.Year = next.Split('\"')[0].Insert(6, "-").Insert(4, "-");

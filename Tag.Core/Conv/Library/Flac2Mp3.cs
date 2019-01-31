@@ -12,11 +12,11 @@ namespace Tag.Core.Conv.Library
     {
         private IEnumerable<int> Execute(string filePath, string resultPath, LAMEPreset preset = LAMEPreset.ABR_320 | LAMEPreset.V0)
         {
-            using (var wav = new NAudio.Flac.FlacReader(filePath))
+            using (var flac = new NAudio.Flac.FlacReader(filePath))
             {
-                using (var mp3 = new LameMP3FileWriter($"{resultPath}", wav.WaveFormat, preset))
+                using (var mp3 = new LameMP3FileWriter($"{resultPath}", flac.WaveFormat, preset))
                 {
-                    wav.CopyTo(mp3);
+                    flac.CopyTo(mp3);
                 }
             }
             yield return 100;

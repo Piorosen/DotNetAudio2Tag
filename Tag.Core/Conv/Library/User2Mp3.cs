@@ -15,19 +15,19 @@ namespace Tag.Core.Conv.Library
             {
                 String.Format(info.Format, info.Parameter);
             }
-            catch (Exception) { }
+            catch { }
 
             try
             {
                 info.Format.Replace("%File%", info.FilePath);
             }
-            catch (Exception) { }
+            catch { }
 
             try
             {
                 info.Format.Replace("%SaveFile%", info.ResultPath);
             }
-            catch (Exception) { }
+            catch { }
 
             bool result = false;
             try
@@ -35,7 +35,7 @@ namespace Tag.Core.Conv.Library
                 Process.Start(info.Source, info.Format);
                 result = true;
             }
-            catch (Exception)
+            catch
             {
                 result = false;
             }

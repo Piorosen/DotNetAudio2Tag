@@ -101,7 +101,7 @@
     <Compile Include="Tagging\AudioTagging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tagging\Library\ITag.cs" />
-    <Compile Include="Tagging\Library\TagMusicBrainz.cs" />
+    <Compile Include="Tagging\Library\MusicBrain.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
