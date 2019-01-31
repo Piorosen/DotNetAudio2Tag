@@ -19,13 +19,12 @@ Move Clone folder.
 
 Dependency project clone.
 3. git clone https://github.com/Piorosen/atldotnet.git
-4. git clone https://github.com/IgnaceMaes/MaterialSkin.git
 
 connect solution file.
-5. load atldotnet csproj and MaterialSkin crproj.
+4. load atldotnet csproj and MaterialSkin crproj.
 
 Build.
-6. this project is dotnet framework 4.7.2 base.
+5. this project is dotnet framework 4.7.2 base.
 ```
 
 <hr />
