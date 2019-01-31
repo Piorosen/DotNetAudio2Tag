@@ -98,6 +98,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ATL\ATL\ATL.csproj">
+      <Project>{0892D108-8D58-4D68-9768-41878DDE390B}</Project>
+      <Name>ATL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tag.Core\Tag.Core.csproj">
       <Project>{4928d8c2-bf0b-41ec-ad58-1e4ed1dba88b}</Project>
       <Name>Tag.Core</Name>

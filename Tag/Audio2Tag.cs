@@ -1,4 +1,5 @@
-﻿using MaterialSkin;
+﻿using ATL.CatalogDataReaders;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using Notifications.Wpf;
 using System;
@@ -164,12 +165,13 @@ namespace Tag
             foreach (var path in items)
             {
                 var t = Path.GetExtension(path).ToLower();
-                if (t == ".wav")
+                if (t == ".wav" || t == ".flac")
                 {
                     Log.FileWrite("{t}", Error.Success);
                     audioConv.AddFile(new ConvInfo
                     {
-                        FilePath = path
+                        FilePath = path,
+                        Type = t == ".wav" ? AudioType.WAV : AudioType.FLAC
                     });
                     Mp3ConvListStatus.Items.Add(new ListViewItem(new[] { Path.GetFileName(path) }));
                 }

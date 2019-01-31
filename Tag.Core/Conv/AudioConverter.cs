@@ -51,12 +51,18 @@ namespace Tag.Core.Conv
                     if (value.Type == AudioType.WAV)
                     {
                         Wav2Mp3 conv = new Wav2Mp3();
-                        conv.Execute(value);
+                        foreach (var status in conv.Execute(value))
+                        {
+
+                        }
                     }
                     else if (value.Type == AudioType.FLAC)
                     {
                         Flac2Mp3 conv = new Flac2Mp3();
-                        conv.Execute(value);
+                        foreach (var status in conv.Execute(value))
+                        {
+
+                        }
                     }
                     else if (value.Type == AudioType.NONE)
                     {

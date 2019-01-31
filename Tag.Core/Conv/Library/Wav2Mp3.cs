@@ -14,9 +14,7 @@ namespace Tag.Core.Conv.Library
     {
         private IEnumerable<int> Execute(string filePath, string resultPath, LAMEPreset preset = LAMEPreset.ABR_320 | LAMEPreset.V0)
         {
-            string filedata = $"{Path.GetDirectoryName(filePath)}\\{Path.GetFileNameWithoutExtension(filePath)}";
-
-            using (var wav = new NAudio.Wave.WaveFileReader($"{filedata}.wav"))
+            using (var wav = new NAudio.Wave.WaveFileReader(filePath))
             {
                 using (var mp3 = new NAudio.Lame.LameMP3FileWriter($"{resultPath}", wav.WaveFormat, preset))
                 {
