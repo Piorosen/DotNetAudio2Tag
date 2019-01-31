@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.TabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.AutoTab = new System.Windows.Forms.TabPage();
@@ -108,7 +107,6 @@
             this.TaggingBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SettingTab = new System.Windows.Forms.TabPage();
             this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
-            this.AlarmService = new System.Windows.Forms.NotifyIcon(this.components);
             this.TabControl.SuspendLayout();
             this.AutoTab.SuspendLayout();
             this.CuesplitTab.SuspendLayout();
@@ -1319,11 +1317,6 @@
             this.materialCheckBox1.UseVisualStyleBackColor = true;
             this.materialCheckBox1.CheckedChanged += new System.EventHandler(this.pp);
             // 
-            // AlarmService
-            // 
-            this.AlarmService.Text = "Audio2Tag";
-            this.AlarmService.Visible = true;
-            // 
             // Audio2Tag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1432,7 +1425,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.NotifyIcon AlarmService;
     }
 }
 
