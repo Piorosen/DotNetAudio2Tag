@@ -1,0 +1,3 @@
+[submodule "ATL"]
+	path = ATL
+	url = https://github.com/Piorosen/atldotnet.git

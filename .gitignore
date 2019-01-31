@@ -24,10 +24,6 @@ bld/
 [Oo]bj/
 [Ll]og/
 
-# External Library
-atldotnet/
-MaterialSkin/
-
 #MacOS
 .DS_Store
 
