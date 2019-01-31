@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.TabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.AutoTab = new System.Windows.Forms.TabPage();
@@ -48,6 +49,7 @@
             this.AutoTextCuepath = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialProgressBar1 = new MaterialSkin.Controls.MaterialProgressBar();
             this.CuesplitTab = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.CuesplitTextCuePath = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.CuesplitTextWavPath = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.CuesplitTextSavePath = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -62,6 +64,7 @@
             this.CuesplitProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
             this.CuesplitBtnExecute = new MaterialSkin.Controls.MaterialRaisedButton();
             this.ConvMp3Tab = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialSingleLineTextField15 = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -78,6 +81,7 @@
             this.Mp3ConvProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
             this.Mp3ConvBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TaggingTab = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TaggingBtnImageDelete = new MaterialSkin.Controls.MaterialFlatButton();
             this.TaggingBtnNextImage = new MaterialSkin.Controls.MaterialFlatButton();
@@ -104,9 +108,7 @@
             this.TaggingBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SettingTab = new System.Windows.Forms.TabPage();
             this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.AlarmService = new System.Windows.Forms.NotifyIcon(this.components);
             this.TabControl.SuspendLayout();
             this.AutoTab.SuspendLayout();
             this.CuesplitTab.SuspendLayout();
@@ -363,6 +365,14 @@
             this.CuesplitTab.TabIndex = 0;
             this.CuesplitTab.Text = "Cue Split";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Gray;
+            this.panel2.Location = new System.Drawing.Point(345, 7);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(10, 483);
+            this.panel2.TabIndex = 37;
+            // 
             // CuesplitTextCuePath
             // 
             this.CuesplitTextCuePath.Depth = 0;
@@ -598,6 +608,14 @@
             this.ConvMp3Tab.Size = new System.Drawing.Size(987, 499);
             this.ConvMp3Tab.TabIndex = 1;
             this.ConvMp3Tab.Text = "Mp3 Converter";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Gray;
+            this.panel3.Location = new System.Drawing.Point(345, 6);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(10, 483);
+            this.panel3.TabIndex = 37;
             // 
             // materialSingleLineTextField1
             // 
@@ -875,6 +893,14 @@
             this.TaggingTab.Size = new System.Drawing.Size(987, 499);
             this.TaggingTab.TabIndex = 2;
             this.TaggingTab.Text = "Tagging";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Gray;
+            this.panel4.Location = new System.Drawing.Point(344, 9);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(10, 483);
+            this.panel4.TabIndex = 36;
             // 
             // materialRaisedButton1
             // 
@@ -1293,29 +1319,10 @@
             this.materialCheckBox1.UseVisualStyleBackColor = true;
             this.materialCheckBox1.CheckedChanged += new System.EventHandler(this.pp);
             // 
-            // panel4
+            // AlarmService
             // 
-            this.panel4.BackColor = System.Drawing.Color.Gray;
-            this.panel4.Location = new System.Drawing.Point(344, 9);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(10, 483);
-            this.panel4.TabIndex = 36;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Gray;
-            this.panel3.Location = new System.Drawing.Point(345, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 483);
-            this.panel3.TabIndex = 37;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Gray;
-            this.panel2.Location = new System.Drawing.Point(345, 7);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(10, 483);
-            this.panel2.TabIndex = 37;
+            this.AlarmService.Text = "Audio2Tag";
+            this.AlarmService.Visible = true;
             // 
             // Form1
             // 
@@ -1425,6 +1432,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.NotifyIcon AlarmService;
     }
 }
 

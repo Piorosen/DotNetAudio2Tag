@@ -106,17 +106,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AlarmService\AlarmService.csproj">
-      <Project>{0b93ff4b-d9e3-43de-940d-0a1f313db5f0}</Project>
-      <Name>AlarmService</Name>
-    </ProjectReference>
     <ProjectReference Include="..\atldotnet\ATL\ATL.csproj">
       <Project>{de2ea61d-c6c5-458a-922b-c0ae6a680ebe}</Project>
       <Name>ATL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CustomDesign.Core\CustomDesign.Core.csproj">
-      <Project>{44464636-8fe6-4bdf-81a6-eaf1586323e7}</Project>
-      <Name>CustomDesign.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

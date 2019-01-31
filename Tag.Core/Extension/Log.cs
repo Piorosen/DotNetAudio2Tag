@@ -78,8 +78,7 @@ namespace Tag.Core.Extension
                 로그 기능을 사용하기 위해 반드시 해야하는 기능입니다.
             </summary>
         */
-
-        static global::Library.AlarmManage manage = new Library.AlarmManage();
+        
 
         #region Prepare
         public static bool FilePrepare(string path) // File Log를 사용할 준비를 합니다.
@@ -236,10 +235,7 @@ namespace Tag.Core.Extension
                 Data = new AES256().AESEncrypt256(Data);
             }
             string str = LDate() + " [" + ((int)i) + "] " + Data;
-            mwriter.WriteLine(str);
-
-            manage.Add(new Library.AlarmStruct(LDate(), Data, 2));
-
+            
             mwriter.Close();
         }
         #endregion

@@ -1,5 +1,6 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using Notifications.Wpf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -399,6 +400,13 @@ namespace Tag
 
         private void AutoBtnExec_Click(object sender, EventArgs e)
         {
+            var notificationManager = new NotificationManager();
+            notificationManager.Show(new NotificationContent
+            {
+                Title = "Title",
+                Message = "BOdy",
+                Type = NotificationType.Information
+            });
 
             Log.FileWrite("파일을 다 하였습니다!", Error.None);
 
