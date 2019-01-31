@@ -14,15 +14,15 @@ namespace Tag.Core.Cue.Split
     {
         public IEnumerable<int> Execute(string filePath, string resultPath, TrackInfo trackinfo)
         {
-            NAudio.Flac.FlacReader f = new NAudio.Flac.FlacReader(@"D:\data\Coe\1.flac");
+            NAudio.Flac.FlacReader f = new NAudio.Flac.FlacReader(filePath);
             double BytesPerMillisecond = f.WaveFormat.AverageBytesPerSecond / 1000.0;
-            
+            f.Close();
 
-            StreamReader stream = new StreamReader(@"D:\data\Coe\1.flac");
-            using (FlakeReader b = new FlakeReader(@"D:\data\Coe\1.flac", stream.BaseStream))
+            StreamReader stream = new StreamReader(filePath);
+            using (FlakeReader b = new FlakeReader(filePath, stream.BaseStream))
             {
                 var config = b.PCM;
-                using (FlakeWriter a = new FlakeWriter(resultPath + $"{ trackinfo.Track + 1 }. " + trackinfo.Title + ".flac", config))
+                using (FlakeWriter a = new FlakeWriter(resultPath + $"{ trackinfo.Track }. " + trackinfo.Title + ".flac", config))
                 {
                     int start = (int)(trackinfo.StartPosition * BytesPerMillisecond / 4.0) ;
                     start -= start % config.BlockAlign;
@@ -35,8 +35,7 @@ namespace Tag.Core.Cue.Split
                     }
                 }
             }
-            f.Close();
-            yield return 0;
+            yield return 100;
         }
 
         private IEnumerable<int> TrimFlacFile(FlakeReader reader, FlakeWriter writer, int startPos, int endPos, AudioPCMConfig conf)

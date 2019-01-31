@@ -26,7 +26,7 @@ namespace Tag
         readonly MaterialSkinManager materialSkinManager;
         readonly CueSpliter cueSpliter = new CueSpliter();
         readonly AudioConverter audioConv = new AudioConverter();
-        readonly Mp3Tagging mp3Tagging = new Mp3Tagging();
+        readonly AudioTagging mp3Tagging = new AudioTagging();
         readonly AutoConverter autoConv = new AutoConverter();
 
 

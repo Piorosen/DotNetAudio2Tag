@@ -10,7 +10,7 @@ using TagLib;
 
 namespace Tag.Core.Tagging
 {
-    public class Mp3Tagging : ICore<TagInfo>
+    public class AudioTagging : ICore<TagInfo>
     {
         readonly public List<TagInfo> tagList = new List<TagInfo>();
 

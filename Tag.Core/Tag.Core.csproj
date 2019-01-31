@@ -96,8 +96,9 @@
     <Compile Include="Library\AutoConverter.cs" />
     <Compile Include="Library\ICore.cs" />
     <Compile Include="Tagging\Library\MusicDb.cs" />
+    <Compile Include="Tagging\ReadTagDb.cs" />
     <Compile Include="Tagging\TagInfo.cs" />
-    <Compile Include="Tagging\Mp3Tagging.cs" />
+    <Compile Include="Tagging\AudioTagging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tagging\Library\ITag.cs" />
     <Compile Include="Tagging\Library\TagMusicBrainz.cs" />
@@ -106,8 +107,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\atldotnet\ATL\ATL.csproj">
-      <Project>{d512d5a9-c5e1-4e0c-aeed-5ab037425741}</Project>
+    <ProjectReference Include="..\ATL\ATL\ATL.csproj">
+      <Project>{0892d108-8d58-4d68-9768-41878dde390b}</Project>
       <Name>ATL</Name>
     </ProjectReference>
   </ItemGroup>

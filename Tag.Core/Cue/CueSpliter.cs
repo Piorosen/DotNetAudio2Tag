@@ -21,8 +21,9 @@ namespace Tag.Core.Cue
 
         public bool AddFile(string path)
         {
+
             return AddFile(path
-                 , Path.GetDirectoryName(path) + @"\" + Path.GetFileNameWithoutExtension(path) + ".wav"
+                 , Path.GetDirectoryName(path) + @"\" + Path.GetFileNameWithoutExtension(path)
                  , Path.GetDirectoryName(path) + @"\");
         }
 
@@ -35,8 +36,20 @@ namespace Tag.Core.Cue
                 reader = CatalogDataReaderFactory
                             .GetInstance()
                             .GetCatalogDataReader(cuePath);
+
+                switch (reader.Extension)
+                {
+                    case AudioType.FLAC:
+                        wavePath += ".flac";
+                        break;
+                    case AudioType.WAV:
+                        wavePath += ".wav";
+                        break;
+                    case AudioType.NONE:
+                        throw new Exception();
+                }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
