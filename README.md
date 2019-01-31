@@ -21,7 +21,7 @@ Dependency project clone.
 3. git clone https://github.com/Piorosen/atldotnet.git
 
 connect solution file.
-4. load atldotnet csproj and MaterialSkin crproj.
+4. load atldotnet csproj.
 
 Build.
 5. this project is dotnet framework 4.7.2 base.
