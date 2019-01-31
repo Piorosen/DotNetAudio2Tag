@@ -16,7 +16,7 @@ Move Clone folder.
 2. cd Audio2Tag
 
 Dependency project clone.
-3. git clone https://github.com/Piorosen/atldotnet.git
+3. git submodule update
 
 connect solution file.
 4. load atldotnet csproj.
