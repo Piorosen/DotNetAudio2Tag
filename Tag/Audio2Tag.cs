@@ -40,7 +40,7 @@ namespace Tag
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-            (TaggingImageList as Control).AllowDrop = true;
+           // (TaggingImageList as Control).AllowDrop = true;
             Log.FilePrepare(string.Empty);
             Log.FileWrite("Run", Core.Extension.Error.None);
         }
@@ -105,34 +105,34 @@ namespace Tag
                 isrun = false;
             });
         }
-        private async void TaggingBtnExec_Click(object sender, EventArgs e)
-        {
-            Log.FileWrite("Start", Error.None);
-            await Task.Run(() =>
-            {
-                if (isrun == true)
-                {
-                    return;
-                }
-                isrun = true;
-                foreach (var value in mp3Tagging.Execute())
-                {
-                    if (this.InvokeRequired)
-                    {
-                        this.Invoke(new MethodInvoker(() =>
-                        {
-                            TaggingProgressStatus.Value = value;
-                        }));
-                    }
-                    else
-                    {
-                        TaggingProgressStatus.Value = value;
-                    }
-                }
-                Log.FileWrite("End", Error.Success);
-                isrun = false;
-            });
-        }
+        //private async void TaggingBtnExec_Click(object sender, EventArgs e)
+        //{
+        //    Log.FileWrite("Start", Error.None);
+        //    await Task.Run(() =>
+        //    {
+        //        if (isrun == true)
+        //        {
+        //            return;
+        //        }
+        //        isrun = true;
+        //        foreach (var value in mp3Tagging.Execute())
+        //        {
+        //            if (this.InvokeRequired)
+        //            {
+        //                this.Invoke(new MethodInvoker(() =>
+        //                {
+        //                    TaggingProgressStatus.Value = value;
+        //                }));
+        //            }
+        //            else
+        //            {
+        //                TaggingProgressStatus.Value = value;
+        //            }
+        //        }
+        //        Log.FileWrite("End", Error.Success);
+        //        isrun = false;
+        //    });
+        //}
         #endregion
         #region Drag Enter & Drop
         private void DragEnters(object sender, DragEventArgs e)
@@ -180,75 +180,75 @@ namespace Tag
         }
 
 
-        private void TaggingListFile_DragDrop(object sender, DragEventArgs e)
-        {
-            Log.FileWrite("Start", Error.None);
-            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
-            foreach (var path in items)
-            {
-                var t = Path.GetExtension(path).ToLower();
-                if (t == ".mp3")
-                {
-                    Log.FileWrite($"{t}", Error.Success);
-                    try
-                    {
-                        mp3Tagging.AddFile(new TagInfo(TagLib.File.Create(path).Tag) { Path = path });
-                        TaggingListFile.Items.Add(new ListViewItem(new[] { path }));
-                    }
-                    catch (Exception)
-                    {
-                        Log.FileWrite("path fatal", Error.IOException);
-                    }
-                }
-            }
-            Log.FileWrite("End", Error.Success);
-        }
+        //private void TaggingListFile_DragDrop(object sender, DragEventArgs e)
+        //{
+        //    Log.FileWrite("Start", Error.None);
+        //    string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
+        //    foreach (var path in items)
+        //    {
+        //        var t = Path.GetExtension(path).ToLower();
+        //        if (t == ".mp3")
+        //        {
+        //            Log.FileWrite($"{t}", Error.Success);
+        //            try
+        //            {
+        //                mp3Tagging.AddFile(new TagInfo(TagLib.File.Create(path).Tag) { Path = path });
+        //                TaggingListFile.Items.Add(new ListViewItem(new[] { path }));
+        //            }
+        //            catch (Exception)
+        //            {
+        //                Log.FileWrite("path fatal", Error.IOException);
+        //            }
+        //        }
+        //    }
+        //    Log.FileWrite("End", Error.Success);
+        //}
 
 
-        private void TaggingImageList_DragDrop(object sender, DragEventArgs e)
-        {
-            Log.FileWrite("Start", Error.None);
-            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
-            foreach (var path in items)
-            {
-                try
-                {
-                    TagLib.Picture picture = new TagLib.Picture(path);
-                    int now = int.Parse(TaggingLabelIndex.Text.Split('/')[0]);
-                    int max = int.Parse(TaggingLabelIndex.Text.Split('/')[1]);
-                    tagTemp.Image.Insert(now, picture);
-                    SetCoverImage(now, tagTemp.Image.Count);
-                    Log.FileWrite($"Check Vailidate", Error.Success);
-                }
-                catch (Exception)
-                {
-                    Log.FileWrite("Not Image File, Check Vailidate", Error.IOException);
-                }
+        //private void TaggingImageList_DragDrop(object sender, DragEventArgs e)
+        //{
+        //    Log.FileWrite("Start", Error.None);
+        //    string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
+        //    foreach (var path in items)
+        //    {
+        //        try
+        //        {
+        //            TagLib.Picture picture = new TagLib.Picture(path);
+        //            int now = int.Parse(TaggingLabelIndex.Text.Split('/')[0]);
+        //            int max = int.Parse(TaggingLabelIndex.Text.Split('/')[1]);
+        //            tagTemp.Image.Insert(now, picture);
+        //            SetCoverImage(now, tagTemp.Image.Count);
+        //            Log.FileWrite($"Check Vailidate", Error.Success);
+        //        }
+        //        catch (Exception)
+        //        {
+        //            Log.FileWrite("Not Image File, Check Vailidate", Error.IOException);
+        //        }
                     
-            }
-            Log.FileWrite("End", Error.Success);
-        }
+        //    }
+        //    Log.FileWrite("End", Error.Success);
+        //}
         #endregion
 
-        private void TaggingListFile_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Log.FileWrite("Start", Error.None);
-            try
-            {
-                if (TaggingListFile.SelectedIndices.Count == 0)
-                {
-                    Console.WriteLine("0 임");
-                    return;
-                }
-                tagTemp = mp3Tagging.List()[TaggingListFile.SelectedIndices[0]];
-                GetTextTagging();
-            }
-            catch (Exception)
-            {
-                Log.FileWrite("fatal", Error.Error);
-            }
-            Log.FileWrite("End", Error.Success);
-        }
+        //private void TaggingListFile_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    Log.FileWrite("Start", Error.None);
+        //    try
+        //    {
+        //        if (TaggingListFile.SelectedIndices.Count == 0)
+        //        {
+        //            Console.WriteLine("0 임");
+        //            return;
+        //        }
+        //        tagTemp = mp3Tagging.List()[TaggingListFile.SelectedIndices[0]];
+        //        GetTextTagging();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        Log.FileWrite("fatal", Error.Error);
+        //    }
+        //    Log.FileWrite("End", Error.Success);
+        //}
 
         private void TaggingTextInfo_KeyDown(object sender, KeyEventArgs e)
         {
@@ -256,7 +256,7 @@ namespace Tag
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    SetTextTagging();
+                    //SetTextTagging();
                     MessageBox.Show("Complete");
                 }
             }
@@ -266,101 +266,101 @@ namespace Tag
             }
         }
 
-        private void TaggingBtnPrevImage_Click(object sender, EventArgs e)
-        {
-            int now, max;
-            now = int.Parse(TaggingLabelIndex.Text.Split('/')[0]);
-            max = int.Parse(TaggingLabelIndex.Text.Split('/')[1]);
-            now -= 1;
-            if (now <= 0)
-            {
-                return;
-            }
-            SetCoverImage(now - 1, max);
+        //private void TaggingBtnPrevImage_Click(object sender, EventArgs e)
+        //{
+        //    int now, max;
+        //    now = int.Parse(TaggingLabelIndex.Text.Split('/')[0]);
+        //    max = int.Parse(TaggingLabelIndex.Text.Split('/')[1]);
+        //    now -= 1;
+        //    if (now <= 0)
+        //    {
+        //        return;
+        //    }
+        //    SetCoverImage(now - 1, max);
             
-        }
-        private void TaggingBtnNextImage_Click(object sender, EventArgs e)
-        {
-            int now, max;
-            now = int.Parse(TaggingLabelIndex.Text.Split('/')[0]);
-            max = int.Parse(TaggingLabelIndex.Text.Split('/')[1]);
-            now += 1;
-            if (now > max)
-            {
-                return;
-            }
-            SetCoverImage(now - 1, max);
-        }
+        //}
+        //private void TaggingBtnNextImage_Click(object sender, EventArgs e)
+        //{
+        //    int now, max;
+        //    now = int.Parse(TaggingLabelIndex.Text.Split('/')[0]);
+        //    max = int.Parse(TaggingLabelIndex.Text.Split('/')[1]);
+        //    now += 1;
+        //    if (now > max)
+        //    {
+        //        return;
+        //    }
+        //    SetCoverImage(now - 1, max);
+        //}
 
-        void SetCoverImage(int index, int maxIndex)
-        {
-            if (tagTemp.Image.Count > 0)
-            {
-                if (0 > index)
-                {
-                    index = 0;
-                }else if (index >= maxIndex)
-                {
-                    index = maxIndex - 1;
-                }
-                var bin = tagTemp.Image[index].Data.Data;
-                var image = Image.FromStream(new MemoryStream(bin));
-                TaggingImageList.Image = image;
-                TaggingLabelImageSize.Text = $"{image.Width} x {image.Height}";
-                TaggingLabelFileSize.Text = CapacityConverter.Change(bin.LongLength);
-                TaggingLabelMime.Text = $"Image/{ImageCodecInfo.GetImageEncoders().FirstOrDefault(x => x.FormatID == image.RawFormat.Guid).FilenameExtension.Split(';')[0]}";
-                TaggingLabelIndex.Text = $"{index + 1} / {maxIndex}";
-            }
-            else
-            {
-                TaggingImageList.Image = null;
-                TaggingLabelImageSize.Text = $"{0} x {0}";
-                TaggingLabelFileSize.Text = CapacityConverter.Change(0);
-                TaggingLabelMime.Text = $"Mime/Type";
-                TaggingLabelIndex.Text = $"{0} / {0}";
-            }
-        }
+        //void SetCoverImage(int index, int maxIndex)
+        //{
+        //    if (tagTemp.Image.Count > 0)
+        //    {
+        //        if (0 > index)
+        //        {
+        //            index = 0;
+        //        }else if (index >= maxIndex)
+        //        {
+        //            index = maxIndex - 1;
+        //        }
+        //        var bin = tagTemp.Image[index].Data.Data;
+        //        var image = Image.FromStream(new MemoryStream(bin));
+        //        TaggingImageList.Image = image;
+        //        TaggingLabelImageSize.Text = $"{image.Width} x {image.Height}";
+        //        TaggingLabelFileSize.Text = CapacityConverter.Change(bin.LongLength);
+        //        TaggingLabelMime.Text = $"Image/{ImageCodecInfo.GetImageEncoders().FirstOrDefault(x => x.FormatID == image.RawFormat.Guid).FilenameExtension.Split(';')[0]}";
+        //        TaggingLabelIndex.Text = $"{index + 1} / {maxIndex}";
+        //    }
+        //    else
+        //    {
+        //        TaggingImageList.Image = null;
+        //        TaggingLabelImageSize.Text = $"{0} x {0}";
+        //        TaggingLabelFileSize.Text = CapacityConverter.Change(0);
+        //        TaggingLabelMime.Text = $"Mime/Type";
+        //        TaggingLabelIndex.Text = $"{0} / {0}";
+        //    }
+        //}
 
-        private void TaggingBtnImageDelete_Click(object sender, EventArgs e)
-        {
-            int now = int.Parse(TaggingLabelIndex.Text.Split('/')[0]);
-            tagTemp.Image.RemoveAt(now - 1);
-            SetCoverImage(now - 1, tagTemp.Image.Count);
-        }
+        //private void TaggingBtnImageDelete_Click(object sender, EventArgs e)
+        //{
+        //    int now = int.Parse(TaggingLabelIndex.Text.Split('/')[0]);
+        //    tagTemp.Image.RemoveAt(now - 1);
+        //    SetCoverImage(now - 1, tagTemp.Image.Count);
+        //}
 
 
-        void SetTextTagging()
-        {
-            tagTemp.Title = TaggingTextTitle.Text;
-            tagTemp.Artist = TaggingTextArtists.Text.Split(';').ToList();
-            tagTemp.Album = TaggingTextAlbum.Text;
-            tagTemp.Year = TaggingTextCreateYear.Text;
-            tagTemp.Track.Add(uint.Parse(TaggingTextTrack.Text));
-            tagTemp.Genre = TaggingTextGenre.Text.Split(';').ToList();
-            tagTemp.Comment = TaggingTextComment.Text;
-            tagTemp.AlbumArtist = TaggingTextAlbumArtists.Text.Split(';').ToList();
-            tagTemp.Composer = TaggingTextComposers.Text.Split(';').ToList();
-            tagTemp.DiscNum = TaggingTextDiscNum.Text;
-            // tagTemp.Path = TaggingTextDirectory.Text;
-        }
+        //void SetTextTagging()
+        //{
+        //    tagTemp.Title = TaggingTextTitle.Text;
+        //    tagTemp.Artist = TaggingTextArtists.Text.Split(';').ToList();
+        //    tagTemp.Album = TaggingTextAlbum.Text;
+        //    tagTemp.Year = TaggingTextCreateYear.Text;
+        //    tagTemp.Track.Add(uint.Parse(TaggingTextTrack.Text));
+        //    tagTemp.Genre = TaggingTextGenre.Text.Split(';').ToList();
+        //    tagTemp.Comment = TaggingTextComment.Text;
+        //    tagTemp.AlbumArtist = TaggingTextAlbumArtists.Text.Split(';').ToList();
+        //    tagTemp.Composer = TaggingTextComposers.Text.Split(';').ToList();
+        //    tagTemp.DiscNum = TaggingTextDiscNum.Text;
+        //    // tagTemp.Path = TaggingTextDirectory.Text;
+        //}
 
-        void GetTextTagging()
-        {
-            TaggingTextTitle.Text = tagTemp.Title;
-            TaggingTextArtists.Text = string.Join(";", tagTemp.Artist);
-            TaggingTextAlbum.Text = tagTemp.Album;
-            TaggingTextCreateYear.Text = tagTemp.Year.ToString();
-            TaggingTextTrack.Text = tagTemp.Track.ToString();
-            TaggingTextGenre.Text = string.Join(";", tagTemp.Genre);
-            TaggingTextComment.Text = tagTemp.Comment;
-            TaggingTextAlbumArtists.Text = string.Join(";", tagTemp.AlbumArtist);
-            TaggingTextComposers.Text = string.Join(";", tagTemp.Composer);
-            TaggingTextDiscNum.Text = tagTemp.DiscNum;
-            TaggingTextDirectory.Text = tagTemp.Path;
+        //void GetTextTagging()
+        //{
+        //    TaggingTextTitle.Text = tagTemp.Title;
+        //    TaggingTextArtists.Text = string.Join(";", tagTemp.Artist);
+        //    TaggingTextAlbum.Text = tagTemp.Album;
+        //    TaggingTextCreateYear.Text = tagTemp.Year.ToString();
+        //    TaggingTextTrack.Text = tagTemp.Track.ToString();
+        //    TaggingTextGenre.Text = string.Join(";", tagTemp.Genre);
+        //    TaggingTextComment.Text = tagTemp.Comment;
+        //    TaggingTextAlbumArtists.Text = string.Join(";", tagTemp.AlbumArtist);
+        //    TaggingTextComposers.Text = string.Join(";", tagTemp.Composer);
+        //    TaggingTextDiscNum.Text = tagTemp.DiscNum;
+        //    TaggingTextDirectory.Text = tagTemp.Path;
             
-            SetCoverImage(0, tagTemp.Image.Count);
+        //    SetCoverImage(0, tagTemp.Image.Count);
             
-        }
+        //}
 
         private void ListView_KeyDown(object sender, KeyEventArgs e)
         {
@@ -471,6 +471,16 @@ namespace Tag
                     CuesplitTextCuePath.Text = data.Path;
                 }
             }
+        }
+
+        private void SplitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

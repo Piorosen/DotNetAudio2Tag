@@ -63,7 +63,6 @@
             this.CuesplitProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
             this.CuesplitBtnExecute = new MaterialSkin.Controls.MaterialRaisedButton();
             this.ConvMp3Tab = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialSingleLineTextField15 = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -80,40 +79,61 @@
             this.Mp3ConvProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
             this.Mp3ConvBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TaggingTab = new System.Windows.Forms.TabPage();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.TaggingBtnImageDelete = new MaterialSkin.Controls.MaterialFlatButton();
-            this.TaggingBtnNextImage = new MaterialSkin.Controls.MaterialFlatButton();
-            this.TaggingBtnPrevImage = new MaterialSkin.Controls.MaterialFlatButton();
-            this.TaggingLabelIndex = new MaterialSkin.Controls.MaterialLabel();
-            this.TaggingLabelFileSize = new MaterialSkin.Controls.MaterialLabel();
-            this.TaggingLabelImageSize = new MaterialSkin.Controls.MaterialLabel();
-            this.TaggingLabelMime = new MaterialSkin.Controls.MaterialLabel();
-            this.TaggingImageList = new System.Windows.Forms.PictureBox();
-            this.TaggingTextDirectory = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.TaggingTextDiscNum = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.TaggingTextComposers = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.TaggingTextAlbumArtists = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.TaggingTextComment = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.TaggingTextGenre = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.TaggingTextTrack = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.TaggingTextCreateYear = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.TaggingTextAlbum = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.TaggingTextArtists = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.TaggingTextTitle = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.TaggingListFile = new MaterialSkin.Controls.MaterialListView();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.TaggingProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
-            this.TaggingBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             this.SettingTab = new System.Windows.Forms.TabPage();
             this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.TagLabelArt = new MaterialSkin.Controls.MaterialLabel();
+            this.TagPictureArt = new System.Windows.Forms.PictureBox();
+            this.TagTextComposer = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TagLabelComposer = new MaterialSkin.Controls.MaterialLabel();
+            this.TagTextAlbumArtist = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TagLabelAlbumArtist = new MaterialSkin.Controls.MaterialLabel();
+            this.TagTextDiscNum = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TagLabelDiscNum = new MaterialSkin.Controls.MaterialLabel();
+            this.TagTextTrack = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TagLabelTrack = new MaterialSkin.Controls.MaterialLabel();
+            this.TagTextYear = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TagLabelYear = new MaterialSkin.Controls.MaterialLabel();
+            this.TagTextGenre = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TagTextComment = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TagTextAlbum = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TagLabelAlbum = new MaterialSkin.Controls.MaterialLabel();
+            this.TagTextArtist = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TagLabelArtist = new MaterialSkin.Controls.MaterialLabel();
+            this.TagTextTitle = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.TagLabelTitle = new MaterialSkin.Controls.MaterialLabel();
+            this.TagLabelGenre = new MaterialSkin.Controls.MaterialLabel();
+            this.TagLabelComment = new MaterialSkin.Controls.MaterialLabel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TabControl.SuspendLayout();
             this.AutoTab.SuspendLayout();
             this.CuesplitTab.SuspendLayout();
             this.ConvMp3Tab.SuspendLayout();
             this.TaggingTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TaggingImageList)).BeginInit();
             this.SettingTab.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TagPictureArt)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -125,25 +145,24 @@
             this.materialTabSelector1.Location = new System.Drawing.Point(0, 64);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(1019, 23);
+            this.materialTabSelector1.Size = new System.Drawing.Size(1045, 23);
             this.materialTabSelector1.TabIndex = 0;
             // 
             // TabControl
             // 
-            this.TabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.TabControl.Controls.Add(this.AutoTab);
             this.TabControl.Controls.Add(this.CuesplitTab);
             this.TabControl.Controls.Add(this.ConvMp3Tab);
             this.TabControl.Controls.Add(this.TaggingTab);
             this.TabControl.Controls.Add(this.SettingTab);
             this.TabControl.Depth = 0;
-            this.TabControl.Location = new System.Drawing.Point(12, 93);
+            this.TabControl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.TabControl.Location = new System.Drawing.Point(0, 85);
+            this.TabControl.Margin = new System.Windows.Forms.Padding(0);
             this.TabControl.MouseState = MaterialSkin.MouseState.HOVER;
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(995, 525);
+            this.TabControl.Size = new System.Drawing.Size(1045, 644);
             this.TabControl.TabIndex = 1;
             // 
             // AutoTab
@@ -158,7 +177,7 @@
             this.AutoTab.Controls.Add(this.materialProgressBar1);
             this.AutoTab.Location = new System.Drawing.Point(4, 22);
             this.AutoTab.Name = "AutoTab";
-            this.AutoTab.Size = new System.Drawing.Size(987, 499);
+            this.AutoTab.Size = new System.Drawing.Size(1013, 552);
             this.AutoTab.TabIndex = 4;
             this.AutoTab.Text = "Auto";
             // 
@@ -359,7 +378,7 @@
             this.CuesplitTab.Location = new System.Drawing.Point(4, 22);
             this.CuesplitTab.Name = "CuesplitTab";
             this.CuesplitTab.Padding = new System.Windows.Forms.Padding(3);
-            this.CuesplitTab.Size = new System.Drawing.Size(987, 499);
+            this.CuesplitTab.Size = new System.Drawing.Size(1013, 552);
             this.CuesplitTab.TabIndex = 0;
             this.CuesplitTab.Text = "Cue Split";
             // 
@@ -585,7 +604,6 @@
             // ConvMp3Tab
             // 
             this.ConvMp3Tab.BackColor = System.Drawing.SystemColors.Control;
-            this.ConvMp3Tab.Controls.Add(this.panel3);
             this.ConvMp3Tab.Controls.Add(this.materialSingleLineTextField1);
             this.ConvMp3Tab.Controls.Add(this.materialSingleLineTextField2);
             this.ConvMp3Tab.Controls.Add(this.materialSingleLineTextField15);
@@ -603,17 +621,9 @@
             this.ConvMp3Tab.Location = new System.Drawing.Point(4, 22);
             this.ConvMp3Tab.Name = "ConvMp3Tab";
             this.ConvMp3Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.ConvMp3Tab.Size = new System.Drawing.Size(987, 499);
+            this.ConvMp3Tab.Size = new System.Drawing.Size(1037, 618);
             this.ConvMp3Tab.TabIndex = 1;
             this.ConvMp3Tab.Text = "Mp3 Converter";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Gray;
-            this.panel3.Location = new System.Drawing.Point(345, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 483);
-            this.panel3.TabIndex = 37;
             // 
             // materialSingleLineTextField1
             // 
@@ -820,7 +830,7 @@
             this.Mp3ConvListStatus.MouseState = MaterialSkin.MouseState.OUT;
             this.Mp3ConvListStatus.Name = "Mp3ConvListStatus";
             this.Mp3ConvListStatus.OwnerDraw = true;
-            this.Mp3ConvListStatus.Size = new System.Drawing.Size(626, 434);
+            this.Mp3ConvListStatus.Size = new System.Drawing.Size(650, 500);
             this.Mp3ConvListStatus.TabIndex = 23;
             this.Mp3ConvListStatus.UseCompatibleStateImageBehavior = false;
             this.Mp3ConvListStatus.View = System.Windows.Forms.View.Details;
@@ -836,7 +846,7 @@
             // 
             this.Mp3ConvProgressStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Mp3ConvProgressStatus.Depth = 0;
-            this.Mp3ConvProgressStatus.Location = new System.Drawing.Point(361, 485);
+            this.Mp3ConvProgressStatus.Location = new System.Drawing.Point(385, 551);
             this.Mp3ConvProgressStatus.MouseState = MaterialSkin.MouseState.HOVER;
             this.Mp3ConvProgressStatus.Name = "Mp3ConvProgressStatus";
             this.Mp3ConvProgressStatus.Size = new System.Drawing.Size(623, 5);
@@ -849,7 +859,7 @@
             this.Mp3ConvBtnExec.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Mp3ConvBtnExec.Depth = 0;
             this.Mp3ConvBtnExec.Icon = null;
-            this.Mp3ConvBtnExec.Location = new System.Drawing.Point(905, 443);
+            this.Mp3ConvBtnExec.Location = new System.Drawing.Point(929, 509);
             this.Mp3ConvBtnExec.MouseState = MaterialSkin.MouseState.HOVER;
             this.Mp3ConvBtnExec.Name = "Mp3ConvBtnExec";
             this.Mp3ConvBtnExec.Primary = true;
@@ -861,432 +871,32 @@
             // 
             // TaggingTab
             // 
-            this.TaggingTab.BackColor = System.Drawing.SystemColors.Control;
+            this.TaggingTab.Controls.Add(this.panel5);
             this.TaggingTab.Controls.Add(this.panel4);
-            this.TaggingTab.Controls.Add(this.materialRaisedButton1);
-            this.TaggingTab.Controls.Add(this.TaggingBtnImageDelete);
-            this.TaggingTab.Controls.Add(this.TaggingBtnNextImage);
-            this.TaggingTab.Controls.Add(this.TaggingBtnPrevImage);
-            this.TaggingTab.Controls.Add(this.TaggingLabelIndex);
-            this.TaggingTab.Controls.Add(this.TaggingLabelFileSize);
-            this.TaggingTab.Controls.Add(this.TaggingLabelImageSize);
-            this.TaggingTab.Controls.Add(this.TaggingLabelMime);
-            this.TaggingTab.Controls.Add(this.TaggingImageList);
-            this.TaggingTab.Controls.Add(this.TaggingTextDirectory);
-            this.TaggingTab.Controls.Add(this.TaggingTextDiscNum);
-            this.TaggingTab.Controls.Add(this.TaggingTextComposers);
-            this.TaggingTab.Controls.Add(this.TaggingTextAlbumArtists);
-            this.TaggingTab.Controls.Add(this.TaggingTextComment);
-            this.TaggingTab.Controls.Add(this.TaggingTextGenre);
-            this.TaggingTab.Controls.Add(this.TaggingTextTrack);
-            this.TaggingTab.Controls.Add(this.TaggingTextCreateYear);
-            this.TaggingTab.Controls.Add(this.TaggingTextAlbum);
-            this.TaggingTab.Controls.Add(this.TaggingTextArtists);
-            this.TaggingTab.Controls.Add(this.TaggingTextTitle);
-            this.TaggingTab.Controls.Add(this.TaggingListFile);
-            this.TaggingTab.Controls.Add(this.TaggingProgressStatus);
-            this.TaggingTab.Controls.Add(this.TaggingBtnExec);
+            this.TaggingTab.Controls.Add(this.panel1);
+            this.TaggingTab.Controls.Add(this.splitter2);
+            this.TaggingTab.Controls.Add(this.splitter1);
             this.TaggingTab.Location = new System.Drawing.Point(4, 22);
             this.TaggingTab.Name = "TaggingTab";
-            this.TaggingTab.Size = new System.Drawing.Size(987, 499);
+            this.TaggingTab.Size = new System.Drawing.Size(1037, 618);
             this.TaggingTab.TabIndex = 2;
             this.TaggingTab.Text = "Tagging";
             // 
-            // panel4
+            // splitter2
             // 
-            this.panel4.BackColor = System.Drawing.Color.Gray;
-            this.panel4.Location = new System.Drawing.Point(344, 9);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(10, 483);
-            this.panel4.TabIndex = 36;
+            this.splitter2.Location = new System.Drawing.Point(3, 0);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(3, 618);
+            this.splitter2.TabIndex = 0;
+            this.splitter2.TabStop = false;
             // 
-            // materialRaisedButton1
+            // splitter1
             // 
-            this.materialRaisedButton1.AutoSize = true;
-            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(390, 443);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(195, 36);
-            this.materialRaisedButton1.TabIndex = 28;
-            this.materialRaisedButton1.Text = "materialRaisedButton1";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
-            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
-            // 
-            // TaggingBtnImageDelete
-            // 
-            this.TaggingBtnImageDelete.AutoSize = true;
-            this.TaggingBtnImageDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TaggingBtnImageDelete.Depth = 0;
-            this.TaggingBtnImageDelete.Icon = null;
-            this.TaggingBtnImageDelete.Location = new System.Drawing.Point(209, 447);
-            this.TaggingBtnImageDelete.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.TaggingBtnImageDelete.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingBtnImageDelete.Name = "TaggingBtnImageDelete";
-            this.TaggingBtnImageDelete.Primary = false;
-            this.TaggingBtnImageDelete.Size = new System.Drawing.Size(115, 36);
-            this.TaggingBtnImageDelete.TabIndex = 27;
-            this.TaggingBtnImageDelete.Text = "Image Delete";
-            this.TaggingBtnImageDelete.UseVisualStyleBackColor = true;
-            this.TaggingBtnImageDelete.Click += new System.EventHandler(this.TaggingBtnImageDelete_Click);
-            // 
-            // TaggingBtnNextImage
-            // 
-            this.TaggingBtnNextImage.AutoSize = true;
-            this.TaggingBtnNextImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TaggingBtnNextImage.Depth = 0;
-            this.TaggingBtnNextImage.Icon = null;
-            this.TaggingBtnNextImage.Location = new System.Drawing.Point(315, 405);
-            this.TaggingBtnNextImage.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.TaggingBtnNextImage.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingBtnNextImage.Name = "TaggingBtnNextImage";
-            this.TaggingBtnNextImage.Primary = false;
-            this.TaggingBtnNextImage.Size = new System.Drawing.Size(28, 36);
-            this.TaggingBtnNextImage.TabIndex = 26;
-            this.TaggingBtnNextImage.Text = ">";
-            this.TaggingBtnNextImage.UseVisualStyleBackColor = true;
-            this.TaggingBtnNextImage.Click += new System.EventHandler(this.TaggingBtnNextImage_Click);
-            // 
-            // TaggingBtnPrevImage
-            // 
-            this.TaggingBtnPrevImage.AutoSize = true;
-            this.TaggingBtnPrevImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TaggingBtnPrevImage.Depth = 0;
-            this.TaggingBtnPrevImage.Icon = null;
-            this.TaggingBtnPrevImage.Location = new System.Drawing.Point(194, 405);
-            this.TaggingBtnPrevImage.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.TaggingBtnPrevImage.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingBtnPrevImage.Name = "TaggingBtnPrevImage";
-            this.TaggingBtnPrevImage.Primary = false;
-            this.TaggingBtnPrevImage.Size = new System.Drawing.Size(28, 36);
-            this.TaggingBtnPrevImage.TabIndex = 25;
-            this.TaggingBtnPrevImage.Text = "<";
-            this.TaggingBtnPrevImage.UseVisualStyleBackColor = true;
-            this.TaggingBtnPrevImage.Click += new System.EventHandler(this.TaggingBtnPrevImage_Click);
-            // 
-            // TaggingLabelIndex
-            // 
-            this.TaggingLabelIndex.Depth = 0;
-            this.TaggingLabelIndex.Font = new System.Drawing.Font("Roboto", 11F);
-            this.TaggingLabelIndex.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TaggingLabelIndex.Location = new System.Drawing.Point(229, 405);
-            this.TaggingLabelIndex.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingLabelIndex.Name = "TaggingLabelIndex";
-            this.TaggingLabelIndex.Size = new System.Drawing.Size(79, 36);
-            this.TaggingLabelIndex.TabIndex = 24;
-            this.TaggingLabelIndex.Text = "0 / 0";
-            this.TaggingLabelIndex.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TaggingLabelFileSize
-            // 
-            this.TaggingLabelFileSize.Depth = 0;
-            this.TaggingLabelFileSize.Font = new System.Drawing.Font("Roboto", 11F);
-            this.TaggingLabelFileSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TaggingLabelFileSize.Location = new System.Drawing.Point(190, 380);
-            this.TaggingLabelFileSize.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingLabelFileSize.Name = "TaggingLabelFileSize";
-            this.TaggingLabelFileSize.Size = new System.Drawing.Size(153, 19);
-            this.TaggingLabelFileSize.TabIndex = 23;
-            this.TaggingLabelFileSize.Text = "0 Kb";
-            this.TaggingLabelFileSize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TaggingLabelImageSize
-            // 
-            this.TaggingLabelImageSize.Depth = 0;
-            this.TaggingLabelImageSize.Font = new System.Drawing.Font("Roboto", 11F);
-            this.TaggingLabelImageSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TaggingLabelImageSize.Location = new System.Drawing.Point(190, 355);
-            this.TaggingLabelImageSize.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingLabelImageSize.Name = "TaggingLabelImageSize";
-            this.TaggingLabelImageSize.Size = new System.Drawing.Size(153, 19);
-            this.TaggingLabelImageSize.TabIndex = 22;
-            this.TaggingLabelImageSize.Text = "0 x 0";
-            this.TaggingLabelImageSize.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TaggingLabelMime
-            // 
-            this.TaggingLabelMime.Depth = 0;
-            this.TaggingLabelMime.Font = new System.Drawing.Font("Roboto", 11F);
-            this.TaggingLabelMime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TaggingLabelMime.Location = new System.Drawing.Point(190, 330);
-            this.TaggingLabelMime.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingLabelMime.Name = "TaggingLabelMime";
-            this.TaggingLabelMime.Size = new System.Drawing.Size(153, 19);
-            this.TaggingLabelMime.TabIndex = 21;
-            this.TaggingLabelMime.Text = "Mime / Type";
-            this.TaggingLabelMime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TaggingImageList
-            // 
-            this.TaggingImageList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TaggingImageList.Location = new System.Drawing.Point(3, 322);
-            this.TaggingImageList.Name = "TaggingImageList";
-            this.TaggingImageList.Size = new System.Drawing.Size(180, 180);
-            this.TaggingImageList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.TaggingImageList.TabIndex = 2;
-            this.TaggingImageList.TabStop = false;
-            this.TaggingImageList.DragDrop += new System.Windows.Forms.DragEventHandler(this.TaggingImageList_DragDrop);
-            this.TaggingImageList.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnters);
-            // 
-            // TaggingTextDirectory
-            // 
-            this.TaggingTextDirectory.Depth = 0;
-            this.TaggingTextDirectory.Hint = "Directory ( Not Change )";
-            this.TaggingTextDirectory.Location = new System.Drawing.Point(3, 293);
-            this.TaggingTextDirectory.MaxLength = 32767;
-            this.TaggingTextDirectory.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingTextDirectory.Name = "TaggingTextDirectory";
-            this.TaggingTextDirectory.PasswordChar = '\0';
-            this.TaggingTextDirectory.SelectedText = "";
-            this.TaggingTextDirectory.SelectionLength = 0;
-            this.TaggingTextDirectory.SelectionStart = 0;
-            this.TaggingTextDirectory.Size = new System.Drawing.Size(340, 23);
-            this.TaggingTextDirectory.TabIndex = 20;
-            this.TaggingTextDirectory.TabStop = false;
-            this.TaggingTextDirectory.UseSystemPasswordChar = false;
-            this.TaggingTextDirectory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TaggingTextInfo_KeyDown);
-            // 
-            // TaggingTextDiscNum
-            // 
-            this.TaggingTextDiscNum.Depth = 0;
-            this.TaggingTextDiscNum.Hint = "DiscNum ( Not Implementation )";
-            this.TaggingTextDiscNum.Location = new System.Drawing.Point(3, 264);
-            this.TaggingTextDiscNum.MaxLength = 32767;
-            this.TaggingTextDiscNum.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingTextDiscNum.Name = "TaggingTextDiscNum";
-            this.TaggingTextDiscNum.PasswordChar = '\0';
-            this.TaggingTextDiscNum.SelectedText = "";
-            this.TaggingTextDiscNum.SelectionLength = 0;
-            this.TaggingTextDiscNum.SelectionStart = 0;
-            this.TaggingTextDiscNum.Size = new System.Drawing.Size(340, 23);
-            this.TaggingTextDiscNum.TabIndex = 19;
-            this.TaggingTextDiscNum.TabStop = false;
-            this.TaggingTextDiscNum.UseSystemPasswordChar = false;
-            this.TaggingTextDiscNum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TaggingTextInfo_KeyDown);
-            // 
-            // TaggingTextComposers
-            // 
-            this.TaggingTextComposers.Depth = 0;
-            this.TaggingTextComposers.Hint = "Composers ( Blank & Statable )";
-            this.TaggingTextComposers.Location = new System.Drawing.Point(3, 235);
-            this.TaggingTextComposers.MaxLength = 32767;
-            this.TaggingTextComposers.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingTextComposers.Name = "TaggingTextComposers";
-            this.TaggingTextComposers.PasswordChar = '\0';
-            this.TaggingTextComposers.SelectedText = "";
-            this.TaggingTextComposers.SelectionLength = 0;
-            this.TaggingTextComposers.SelectionStart = 0;
-            this.TaggingTextComposers.Size = new System.Drawing.Size(340, 23);
-            this.TaggingTextComposers.TabIndex = 18;
-            this.TaggingTextComposers.TabStop = false;
-            this.TaggingTextComposers.UseSystemPasswordChar = false;
-            this.TaggingTextComposers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TaggingTextInfo_KeyDown);
-            // 
-            // TaggingTextAlbumArtists
-            // 
-            this.TaggingTextAlbumArtists.Depth = 0;
-            this.TaggingTextAlbumArtists.Hint = "Album Artists ( Blank & Statable )";
-            this.TaggingTextAlbumArtists.Location = new System.Drawing.Point(3, 206);
-            this.TaggingTextAlbumArtists.MaxLength = 32767;
-            this.TaggingTextAlbumArtists.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingTextAlbumArtists.Name = "TaggingTextAlbumArtists";
-            this.TaggingTextAlbumArtists.PasswordChar = '\0';
-            this.TaggingTextAlbumArtists.SelectedText = "";
-            this.TaggingTextAlbumArtists.SelectionLength = 0;
-            this.TaggingTextAlbumArtists.SelectionStart = 0;
-            this.TaggingTextAlbumArtists.Size = new System.Drawing.Size(340, 23);
-            this.TaggingTextAlbumArtists.TabIndex = 17;
-            this.TaggingTextAlbumArtists.TabStop = false;
-            this.TaggingTextAlbumArtists.UseSystemPasswordChar = false;
-            this.TaggingTextAlbumArtists.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TaggingTextInfo_KeyDown);
-            // 
-            // TaggingTextComment
-            // 
-            this.TaggingTextComment.Depth = 0;
-            this.TaggingTextComment.Hint = "Comment ( Blank & Statable )";
-            this.TaggingTextComment.Location = new System.Drawing.Point(3, 177);
-            this.TaggingTextComment.MaxLength = 32767;
-            this.TaggingTextComment.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingTextComment.Name = "TaggingTextComment";
-            this.TaggingTextComment.PasswordChar = '\0';
-            this.TaggingTextComment.SelectedText = "";
-            this.TaggingTextComment.SelectionLength = 0;
-            this.TaggingTextComment.SelectionStart = 0;
-            this.TaggingTextComment.Size = new System.Drawing.Size(340, 23);
-            this.TaggingTextComment.TabIndex = 16;
-            this.TaggingTextComment.TabStop = false;
-            this.TaggingTextComment.UseSystemPasswordChar = false;
-            this.TaggingTextComment.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TaggingTextInfo_KeyDown);
-            // 
-            // TaggingTextGenre
-            // 
-            this.TaggingTextGenre.Depth = 0;
-            this.TaggingTextGenre.Hint = "Genre ( Blank & Statable )";
-            this.TaggingTextGenre.Location = new System.Drawing.Point(3, 148);
-            this.TaggingTextGenre.MaxLength = 32767;
-            this.TaggingTextGenre.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingTextGenre.Name = "TaggingTextGenre";
-            this.TaggingTextGenre.PasswordChar = '\0';
-            this.TaggingTextGenre.SelectedText = "";
-            this.TaggingTextGenre.SelectionLength = 0;
-            this.TaggingTextGenre.SelectionStart = 0;
-            this.TaggingTextGenre.Size = new System.Drawing.Size(340, 23);
-            this.TaggingTextGenre.TabIndex = 15;
-            this.TaggingTextGenre.TabStop = false;
-            this.TaggingTextGenre.UseSystemPasswordChar = false;
-            this.TaggingTextGenre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TaggingTextInfo_KeyDown);
-            // 
-            // TaggingTextTrack
-            // 
-            this.TaggingTextTrack.Depth = 0;
-            this.TaggingTextTrack.Hint = "Track ( Blank & Statable )";
-            this.TaggingTextTrack.Location = new System.Drawing.Point(3, 119);
-            this.TaggingTextTrack.MaxLength = 32767;
-            this.TaggingTextTrack.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingTextTrack.Name = "TaggingTextTrack";
-            this.TaggingTextTrack.PasswordChar = '\0';
-            this.TaggingTextTrack.SelectedText = "";
-            this.TaggingTextTrack.SelectionLength = 0;
-            this.TaggingTextTrack.SelectionStart = 0;
-            this.TaggingTextTrack.Size = new System.Drawing.Size(340, 23);
-            this.TaggingTextTrack.TabIndex = 14;
-            this.TaggingTextTrack.TabStop = false;
-            this.TaggingTextTrack.UseSystemPasswordChar = false;
-            this.TaggingTextTrack.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TaggingTextInfo_KeyDown);
-            // 
-            // TaggingTextCreateYear
-            // 
-            this.TaggingTextCreateYear.Depth = 0;
-            this.TaggingTextCreateYear.Hint = "Create Year ( Blank & Statable )";
-            this.TaggingTextCreateYear.Location = new System.Drawing.Point(3, 90);
-            this.TaggingTextCreateYear.MaxLength = 32767;
-            this.TaggingTextCreateYear.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingTextCreateYear.Name = "TaggingTextCreateYear";
-            this.TaggingTextCreateYear.PasswordChar = '\0';
-            this.TaggingTextCreateYear.SelectedText = "";
-            this.TaggingTextCreateYear.SelectionLength = 0;
-            this.TaggingTextCreateYear.SelectionStart = 0;
-            this.TaggingTextCreateYear.Size = new System.Drawing.Size(340, 23);
-            this.TaggingTextCreateYear.TabIndex = 13;
-            this.TaggingTextCreateYear.TabStop = false;
-            this.TaggingTextCreateYear.UseSystemPasswordChar = false;
-            this.TaggingTextCreateYear.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TaggingTextInfo_KeyDown);
-            // 
-            // TaggingTextAlbum
-            // 
-            this.TaggingTextAlbum.Depth = 0;
-            this.TaggingTextAlbum.Hint = "Album ( Blank & Statable )";
-            this.TaggingTextAlbum.Location = new System.Drawing.Point(3, 61);
-            this.TaggingTextAlbum.MaxLength = 32767;
-            this.TaggingTextAlbum.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingTextAlbum.Name = "TaggingTextAlbum";
-            this.TaggingTextAlbum.PasswordChar = '\0';
-            this.TaggingTextAlbum.SelectedText = "";
-            this.TaggingTextAlbum.SelectionLength = 0;
-            this.TaggingTextAlbum.SelectionStart = 0;
-            this.TaggingTextAlbum.Size = new System.Drawing.Size(340, 23);
-            this.TaggingTextAlbum.TabIndex = 12;
-            this.TaggingTextAlbum.TabStop = false;
-            this.TaggingTextAlbum.UseSystemPasswordChar = false;
-            this.TaggingTextAlbum.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TaggingTextInfo_KeyDown);
-            // 
-            // TaggingTextArtists
-            // 
-            this.TaggingTextArtists.Depth = 0;
-            this.TaggingTextArtists.Hint = "Artists ( Blank & Statable )";
-            this.TaggingTextArtists.Location = new System.Drawing.Point(3, 32);
-            this.TaggingTextArtists.MaxLength = 32767;
-            this.TaggingTextArtists.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingTextArtists.Name = "TaggingTextArtists";
-            this.TaggingTextArtists.PasswordChar = '\0';
-            this.TaggingTextArtists.SelectedText = "";
-            this.TaggingTextArtists.SelectionLength = 0;
-            this.TaggingTextArtists.SelectionStart = 0;
-            this.TaggingTextArtists.Size = new System.Drawing.Size(340, 23);
-            this.TaggingTextArtists.TabIndex = 11;
-            this.TaggingTextArtists.TabStop = false;
-            this.TaggingTextArtists.UseSystemPasswordChar = false;
-            this.TaggingTextArtists.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TaggingTextInfo_KeyDown);
-            // 
-            // TaggingTextTitle
-            // 
-            this.TaggingTextTitle.Depth = 0;
-            this.TaggingTextTitle.Hint = "Title ( Blank & Statable )";
-            this.TaggingTextTitle.Location = new System.Drawing.Point(3, 3);
-            this.TaggingTextTitle.MaxLength = 32767;
-            this.TaggingTextTitle.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingTextTitle.Name = "TaggingTextTitle";
-            this.TaggingTextTitle.PasswordChar = '\0';
-            this.TaggingTextTitle.SelectedText = "";
-            this.TaggingTextTitle.SelectionLength = 0;
-            this.TaggingTextTitle.SelectionStart = 0;
-            this.TaggingTextTitle.Size = new System.Drawing.Size(340, 23);
-            this.TaggingTextTitle.TabIndex = 10;
-            this.TaggingTextTitle.TabStop = false;
-            this.TaggingTextTitle.UseSystemPasswordChar = false;
-            this.TaggingTextTitle.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TaggingTextInfo_KeyDown);
-            // 
-            // TaggingListFile
-            // 
-            this.TaggingListFile.AllowDrop = true;
-            this.TaggingListFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TaggingListFile.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TaggingListFile.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader4});
-            this.TaggingListFile.Depth = 0;
-            this.TaggingListFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.TaggingListFile.FullRowSelect = true;
-            this.TaggingListFile.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.TaggingListFile.Location = new System.Drawing.Point(361, 3);
-            this.TaggingListFile.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.TaggingListFile.MouseState = MaterialSkin.MouseState.OUT;
-            this.TaggingListFile.Name = "TaggingListFile";
-            this.TaggingListFile.OwnerDraw = true;
-            this.TaggingListFile.Size = new System.Drawing.Size(626, 434);
-            this.TaggingListFile.TabIndex = 9;
-            this.TaggingListFile.UseCompatibleStateImageBehavior = false;
-            this.TaggingListFile.View = System.Windows.Forms.View.Details;
-            this.TaggingListFile.SelectedIndexChanged += new System.EventHandler(this.TaggingListFile_SelectedIndexChanged);
-            this.TaggingListFile.DragDrop += new System.Windows.Forms.DragEventHandler(this.TaggingListFile_DragDrop);
-            this.TaggingListFile.DragEnter += new System.Windows.Forms.DragEventHandler(this.DragEnters);
-            this.TaggingListFile.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListView_KeyDown);
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "경로";
-            this.columnHeader4.Width = 627;
-            // 
-            // TaggingProgressStatus
-            // 
-            this.TaggingProgressStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.TaggingProgressStatus.Depth = 0;
-            this.TaggingProgressStatus.Location = new System.Drawing.Point(367, 485);
-            this.TaggingProgressStatus.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingProgressStatus.Name = "TaggingProgressStatus";
-            this.TaggingProgressStatus.Size = new System.Drawing.Size(613, 5);
-            this.TaggingProgressStatus.TabIndex = 7;
-            // 
-            // TaggingBtnExec
-            // 
-            this.TaggingBtnExec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.TaggingBtnExec.AutoSize = true;
-            this.TaggingBtnExec.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.TaggingBtnExec.Depth = 0;
-            this.TaggingBtnExec.Icon = null;
-            this.TaggingBtnExec.Location = new System.Drawing.Point(905, 443);
-            this.TaggingBtnExec.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TaggingBtnExec.Name = "TaggingBtnExec";
-            this.TaggingBtnExec.Primary = true;
-            this.TaggingBtnExec.Size = new System.Drawing.Size(79, 36);
-            this.TaggingBtnExec.TabIndex = 1;
-            this.TaggingBtnExec.Text = "Execute";
-            this.TaggingBtnExec.UseVisualStyleBackColor = true;
-            this.TaggingBtnExec.Click += new System.EventHandler(this.TaggingBtnExec_Click);
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 618);
+            this.splitter1.TabIndex = 1;
+            this.splitter1.TabStop = false;
             // 
             // SettingTab
             // 
@@ -1294,7 +904,7 @@
             this.SettingTab.Controls.Add(this.materialCheckBox1);
             this.SettingTab.Location = new System.Drawing.Point(4, 22);
             this.SettingTab.Name = "SettingTab";
-            this.SettingTab.Size = new System.Drawing.Size(987, 499);
+            this.SettingTab.Size = new System.Drawing.Size(1037, 618);
             this.SettingTab.TabIndex = 3;
             this.SettingTab.Text = "Setting";
             // 
@@ -1315,14 +925,516 @@
             this.materialCheckBox1.TabIndex = 3;
             this.materialCheckBox1.Text = "DarkMode";
             this.materialCheckBox1.UseVisualStyleBackColor = true;
-            this.materialCheckBox1.CheckedChanged += new System.EventHandler(this.pp);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.TagLabelArt);
+            this.panel1.Controls.Add(this.TagPictureArt);
+            this.panel1.Controls.Add(this.TagTextComposer);
+            this.panel1.Controls.Add(this.TagLabelComposer);
+            this.panel1.Controls.Add(this.TagTextAlbumArtist);
+            this.panel1.Controls.Add(this.TagLabelAlbumArtist);
+            this.panel1.Controls.Add(this.TagTextDiscNum);
+            this.panel1.Controls.Add(this.TagLabelDiscNum);
+            this.panel1.Controls.Add(this.TagTextTrack);
+            this.panel1.Controls.Add(this.TagLabelTrack);
+            this.panel1.Controls.Add(this.TagTextYear);
+            this.panel1.Controls.Add(this.TagLabelYear);
+            this.panel1.Controls.Add(this.TagTextGenre);
+            this.panel1.Controls.Add(this.TagTextComment);
+            this.panel1.Controls.Add(this.TagTextAlbum);
+            this.panel1.Controls.Add(this.TagLabelAlbum);
+            this.panel1.Controls.Add(this.TagTextArtist);
+            this.panel1.Controls.Add(this.TagLabelArtist);
+            this.panel1.Controls.Add(this.TagTextTitle);
+            this.panel1.Controls.Add(this.TagLabelTitle);
+            this.panel1.Controls.Add(this.TagLabelGenre);
+            this.panel1.Controls.Add(this.TagLabelComment);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(6, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(267, 618);
+            this.panel1.TabIndex = 2;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
+            // 
+            // TagLabelArt
+            // 
+            this.TagLabelArt.AutoSize = true;
+            this.TagLabelArt.Depth = 0;
+            this.TagLabelArt.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TagLabelArt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TagLabelArt.Location = new System.Drawing.Point(0, 387);
+            this.TagLabelArt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagLabelArt.Name = "TagLabelArt";
+            this.TagLabelArt.Size = new System.Drawing.Size(57, 19);
+            this.TagLabelArt.TabIndex = 192;
+            this.TagLabelArt.Text = "앨범 아트";
+            // 
+            // TagPictureArt
+            // 
+            this.TagPictureArt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TagPictureArt.Location = new System.Drawing.Point(0, 408);
+            this.TagPictureArt.Name = "TagPictureArt";
+            this.TagPictureArt.Size = new System.Drawing.Size(140, 140);
+            this.TagPictureArt.TabIndex = 191;
+            this.TagPictureArt.TabStop = false;
+            // 
+            // TagTextComposer
+            // 
+            this.TagTextComposer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TagTextComposer.Depth = 0;
+            this.TagTextComposer.Hint = "";
+            this.TagTextComposer.Location = new System.Drawing.Point(0, 362);
+            this.TagTextComposer.MaxLength = 32767;
+            this.TagTextComposer.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagTextComposer.Name = "TagTextComposer";
+            this.TagTextComposer.PasswordChar = '\0';
+            this.TagTextComposer.SelectedText = "";
+            this.TagTextComposer.SelectionLength = 0;
+            this.TagTextComposer.SelectionStart = 0;
+            this.TagTextComposer.Size = new System.Drawing.Size(261, 23);
+            this.TagTextComposer.TabIndex = 188;
+            this.TagTextComposer.TabStop = false;
+            this.TagTextComposer.UseSystemPasswordChar = false;
+            // 
+            // TagLabelComposer
+            // 
+            this.TagLabelComposer.AutoSize = true;
+            this.TagLabelComposer.Depth = 0;
+            this.TagLabelComposer.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TagLabelComposer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TagLabelComposer.Location = new System.Drawing.Point(0, 339);
+            this.TagLabelComposer.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagLabelComposer.Name = "TagLabelComposer";
+            this.TagLabelComposer.Size = new System.Drawing.Size(42, 19);
+            this.TagLabelComposer.TabIndex = 187;
+            this.TagLabelComposer.Text = "작곡가";
+            // 
+            // TagTextAlbumArtist
+            // 
+            this.TagTextAlbumArtist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TagTextAlbumArtist.Depth = 0;
+            this.TagTextAlbumArtist.Hint = "";
+            this.TagTextAlbumArtist.Location = new System.Drawing.Point(0, 313);
+            this.TagTextAlbumArtist.MaxLength = 32767;
+            this.TagTextAlbumArtist.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagTextAlbumArtist.Name = "TagTextAlbumArtist";
+            this.TagTextAlbumArtist.PasswordChar = '\0';
+            this.TagTextAlbumArtist.SelectedText = "";
+            this.TagTextAlbumArtist.SelectionLength = 0;
+            this.TagTextAlbumArtist.SelectionStart = 0;
+            this.TagTextAlbumArtist.Size = new System.Drawing.Size(261, 23);
+            this.TagTextAlbumArtist.TabIndex = 186;
+            this.TagTextAlbumArtist.TabStop = false;
+            this.TagTextAlbumArtist.UseSystemPasswordChar = false;
+            // 
+            // TagLabelAlbumArtist
+            // 
+            this.TagLabelAlbumArtist.AutoSize = true;
+            this.TagLabelAlbumArtist.Depth = 0;
+            this.TagLabelAlbumArtist.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TagLabelAlbumArtist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TagLabelAlbumArtist.Location = new System.Drawing.Point(0, 289);
+            this.TagLabelAlbumArtist.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagLabelAlbumArtist.Name = "TagLabelAlbumArtist";
+            this.TagLabelAlbumArtist.Size = new System.Drawing.Size(79, 19);
+            this.TagLabelAlbumArtist.TabIndex = 185;
+            this.TagLabelAlbumArtist.Text = "앨범 아티스트";
+            // 
+            // TagTextDiscNum
+            // 
+            this.TagTextDiscNum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TagTextDiscNum.Depth = 0;
+            this.TagTextDiscNum.Hint = "";
+            this.TagTextDiscNum.Location = new System.Drawing.Point(157, 264);
+            this.TagTextDiscNum.MaxLength = 32767;
+            this.TagTextDiscNum.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagTextDiscNum.Name = "TagTextDiscNum";
+            this.TagTextDiscNum.PasswordChar = '\0';
+            this.TagTextDiscNum.SelectedText = "";
+            this.TagTextDiscNum.SelectionLength = 0;
+            this.TagTextDiscNum.SelectionStart = 0;
+            this.TagTextDiscNum.Size = new System.Drawing.Size(104, 23);
+            this.TagTextDiscNum.TabIndex = 184;
+            this.TagTextDiscNum.TabStop = false;
+            this.TagTextDiscNum.UseSystemPasswordChar = false;
+            // 
+            // TagLabelDiscNum
+            // 
+            this.TagLabelDiscNum.AutoSize = true;
+            this.TagLabelDiscNum.Depth = 0;
+            this.TagLabelDiscNum.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TagLabelDiscNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TagLabelDiscNum.Location = new System.Drawing.Point(153, 241);
+            this.TagLabelDiscNum.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagLabelDiscNum.Name = "TagLabelDiscNum";
+            this.TagLabelDiscNum.Size = new System.Drawing.Size(68, 19);
+            this.TagLabelDiscNum.TabIndex = 183;
+            this.TagLabelDiscNum.Text = "디스크 번호";
+            // 
+            // TagTextTrack
+            // 
+            this.TagTextTrack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TagTextTrack.Depth = 0;
+            this.TagTextTrack.Hint = "";
+            this.TagTextTrack.Location = new System.Drawing.Point(86, 264);
+            this.TagTextTrack.MaxLength = 32767;
+            this.TagTextTrack.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagTextTrack.Name = "TagTextTrack";
+            this.TagTextTrack.PasswordChar = '\0';
+            this.TagTextTrack.SelectedText = "";
+            this.TagTextTrack.SelectionLength = 0;
+            this.TagTextTrack.SelectionStart = 0;
+            this.TagTextTrack.Size = new System.Drawing.Size(65, 23);
+            this.TagTextTrack.TabIndex = 182;
+            this.TagTextTrack.TabStop = false;
+            this.TagTextTrack.UseSystemPasswordChar = false;
+            // 
+            // TagLabelTrack
+            // 
+            this.TagLabelTrack.AutoSize = true;
+            this.TagLabelTrack.Depth = 0;
+            this.TagLabelTrack.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TagLabelTrack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TagLabelTrack.Location = new System.Drawing.Point(82, 241);
+            this.TagLabelTrack.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagLabelTrack.Name = "TagLabelTrack";
+            this.TagLabelTrack.Size = new System.Drawing.Size(31, 19);
+            this.TagLabelTrack.TabIndex = 181;
+            this.TagLabelTrack.Text = "트랙";
+            // 
+            // TagTextYear
+            // 
+            this.TagTextYear.Depth = 0;
+            this.TagTextYear.Hint = "";
+            this.TagTextYear.Location = new System.Drawing.Point(0, 263);
+            this.TagTextYear.MaxLength = 32767;
+            this.TagTextYear.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagTextYear.Name = "TagTextYear";
+            this.TagTextYear.PasswordChar = '\0';
+            this.TagTextYear.SelectedText = "";
+            this.TagTextYear.SelectionLength = 0;
+            this.TagTextYear.SelectionStart = 0;
+            this.TagTextYear.Size = new System.Drawing.Size(80, 23);
+            this.TagTextYear.TabIndex = 180;
+            this.TagTextYear.TabStop = false;
+            this.TagTextYear.UseSystemPasswordChar = false;
+            // 
+            // TagLabelYear
+            // 
+            this.TagLabelYear.AutoSize = true;
+            this.TagLabelYear.Depth = 0;
+            this.TagLabelYear.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TagLabelYear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TagLabelYear.Location = new System.Drawing.Point(0, 241);
+            this.TagLabelYear.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagLabelYear.Name = "TagLabelYear";
+            this.TagLabelYear.Size = new System.Drawing.Size(53, 19);
+            this.TagLabelYear.TabIndex = 179;
+            this.TagLabelYear.Text = "제작년도";
+            // 
+            // TagTextGenre
+            // 
+            this.TagTextGenre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TagTextGenre.Depth = 0;
+            this.TagTextGenre.Hint = "";
+            this.TagTextGenre.Location = new System.Drawing.Point(1, 215);
+            this.TagTextGenre.MaxLength = 32767;
+            this.TagTextGenre.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagTextGenre.Name = "TagTextGenre";
+            this.TagTextGenre.PasswordChar = '\0';
+            this.TagTextGenre.SelectedText = "";
+            this.TagTextGenre.SelectionLength = 0;
+            this.TagTextGenre.SelectionStart = 0;
+            this.TagTextGenre.Size = new System.Drawing.Size(260, 23);
+            this.TagTextGenre.TabIndex = 178;
+            this.TagTextGenre.TabStop = false;
+            this.TagTextGenre.UseSystemPasswordChar = false;
+            // 
+            // TagTextComment
+            // 
+            this.TagTextComment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TagTextComment.Depth = 0;
+            this.TagTextComment.Hint = "";
+            this.TagTextComment.Location = new System.Drawing.Point(0, 166);
+            this.TagTextComment.MaxLength = 32767;
+            this.TagTextComment.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagTextComment.Name = "TagTextComment";
+            this.TagTextComment.PasswordChar = '\0';
+            this.TagTextComment.SelectedText = "";
+            this.TagTextComment.SelectionLength = 0;
+            this.TagTextComment.SelectionStart = 0;
+            this.TagTextComment.Size = new System.Drawing.Size(261, 23);
+            this.TagTextComment.TabIndex = 177;
+            this.TagTextComment.TabStop = false;
+            this.TagTextComment.UseSystemPasswordChar = false;
+            // 
+            // TagTextAlbum
+            // 
+            this.TagTextAlbum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TagTextAlbum.Depth = 0;
+            this.TagTextAlbum.Hint = "";
+            this.TagTextAlbum.Location = new System.Drawing.Point(0, 117);
+            this.TagTextAlbum.MaxLength = 32767;
+            this.TagTextAlbum.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagTextAlbum.Name = "TagTextAlbum";
+            this.TagTextAlbum.PasswordChar = '\0';
+            this.TagTextAlbum.SelectedText = "";
+            this.TagTextAlbum.SelectionLength = 0;
+            this.TagTextAlbum.SelectionStart = 0;
+            this.TagTextAlbum.Size = new System.Drawing.Size(261, 23);
+            this.TagTextAlbum.TabIndex = 176;
+            this.TagTextAlbum.TabStop = false;
+            this.TagTextAlbum.UseSystemPasswordChar = false;
+            // 
+            // TagLabelAlbum
+            // 
+            this.TagLabelAlbum.AutoSize = true;
+            this.TagLabelAlbum.Depth = 0;
+            this.TagLabelAlbum.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TagLabelAlbum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TagLabelAlbum.Location = new System.Drawing.Point(0, 96);
+            this.TagLabelAlbum.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagLabelAlbum.Name = "TagLabelAlbum";
+            this.TagLabelAlbum.Size = new System.Drawing.Size(46, 19);
+            this.TagLabelAlbum.TabIndex = 175;
+            this.TagLabelAlbum.Text = "앨범 명";
+            // 
+            // TagTextArtist
+            // 
+            this.TagTextArtist.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TagTextArtist.Depth = 0;
+            this.TagTextArtist.Hint = "";
+            this.TagTextArtist.Location = new System.Drawing.Point(0, 70);
+            this.TagTextArtist.MaxLength = 32767;
+            this.TagTextArtist.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagTextArtist.Name = "TagTextArtist";
+            this.TagTextArtist.PasswordChar = '\0';
+            this.TagTextArtist.SelectedText = "";
+            this.TagTextArtist.SelectionLength = 0;
+            this.TagTextArtist.SelectionStart = 0;
+            this.TagTextArtist.Size = new System.Drawing.Size(261, 23);
+            this.TagTextArtist.TabIndex = 174;
+            this.TagTextArtist.TabStop = false;
+            this.TagTextArtist.UseSystemPasswordChar = false;
+            // 
+            // TagLabelArtist
+            // 
+            this.TagLabelArtist.AutoSize = true;
+            this.TagLabelArtist.Depth = 0;
+            this.TagLabelArtist.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TagLabelArtist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TagLabelArtist.Location = new System.Drawing.Point(0, 48);
+            this.TagLabelArtist.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagLabelArtist.Name = "TagLabelArtist";
+            this.TagLabelArtist.Size = new System.Drawing.Size(53, 19);
+            this.TagLabelArtist.TabIndex = 173;
+            this.TagLabelArtist.Text = "아티스트";
+            // 
+            // TagTextTitle
+            // 
+            this.TagTextTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TagTextTitle.Depth = 0;
+            this.TagTextTitle.Hint = "";
+            this.TagTextTitle.Location = new System.Drawing.Point(0, 22);
+            this.TagTextTitle.MaxLength = 32767;
+            this.TagTextTitle.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagTextTitle.Name = "TagTextTitle";
+            this.TagTextTitle.PasswordChar = '\0';
+            this.TagTextTitle.SelectedText = "";
+            this.TagTextTitle.SelectionLength = 0;
+            this.TagTextTitle.SelectionStart = 0;
+            this.TagTextTitle.Size = new System.Drawing.Size(261, 23);
+            this.TagTextTitle.TabIndex = 172;
+            this.TagTextTitle.TabStop = false;
+            this.TagTextTitle.UseSystemPasswordChar = false;
+            // 
+            // TagLabelTitle
+            // 
+            this.TagLabelTitle.AutoSize = true;
+            this.TagLabelTitle.Depth = 0;
+            this.TagLabelTitle.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TagLabelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TagLabelTitle.Location = new System.Drawing.Point(0, 0);
+            this.TagLabelTitle.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagLabelTitle.Name = "TagLabelTitle";
+            this.TagLabelTitle.Size = new System.Drawing.Size(31, 19);
+            this.TagLabelTitle.TabIndex = 171;
+            this.TagLabelTitle.Text = "제목";
+            // 
+            // TagLabelGenre
+            // 
+            this.TagLabelGenre.AutoSize = true;
+            this.TagLabelGenre.Depth = 0;
+            this.TagLabelGenre.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TagLabelGenre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TagLabelGenre.Location = new System.Drawing.Point(0, 192);
+            this.TagLabelGenre.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagLabelGenre.Name = "TagLabelGenre";
+            this.TagLabelGenre.Size = new System.Drawing.Size(31, 19);
+            this.TagLabelGenre.TabIndex = 170;
+            this.TagLabelGenre.Text = "장르";
+            // 
+            // TagLabelComment
+            // 
+            this.TagLabelComment.AutoSize = true;
+            this.TagLabelComment.Depth = 0;
+            this.TagLabelComment.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TagLabelComment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TagLabelComment.Location = new System.Drawing.Point(0, 143);
+            this.TagLabelComment.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagLabelComment.Name = "TagLabelComment";
+            this.TagLabelComment.Size = new System.Drawing.Size(31, 19);
+            this.TagLabelComment.TabIndex = 169;
+            this.TagLabelComment.Text = "설명";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.materialListView1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel4.Location = new System.Drawing.Point(279, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(758, 618);
+            this.panel4.TabIndex = 3;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Gray;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(273, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(6, 618);
+            this.panel5.TabIndex = 4;
+            // 
+            // materialListView1
+            // 
+            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11,
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14,
+            this.columnHeader15,
+            this.columnHeader16,
+            this.columnHeader18,
+            this.columnHeader19});
+            this.materialListView1.Depth = 0;
+            this.materialListView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialListView1.FullRowSelect = true;
+            this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.materialListView1.Location = new System.Drawing.Point(0, 0);
+            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialListView1.Name = "materialListView1";
+            this.materialListView1.OwnerDraw = true;
+            this.materialListView1.Size = new System.Drawing.Size(758, 618);
+            this.materialListView1.TabIndex = 0;
+            this.materialListView1.UseCompatibleStateImageBehavior = false;
+            this.materialListView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "파일명";
+            this.columnHeader3.Width = 100;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "제목";
+            this.columnHeader4.Width = 100;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "경로";
+            this.columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "태그";
+            this.columnHeader6.Width = 100;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "아티스트";
+            this.columnHeader7.Width = 100;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "앨범 아티스트";
+            this.columnHeader8.Width = 100;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "앨범";
+            this.columnHeader9.Width = 100;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "트랙";
+            this.columnHeader10.Width = 100;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "디스크 번호";
+            this.columnHeader11.Width = 100;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "제작년도";
+            this.columnHeader12.Width = 100;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "장르";
+            this.columnHeader13.Width = 100;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "설명";
+            this.columnHeader14.Width = 100;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "코덱";
+            this.columnHeader15.Width = 100;
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "비트레이트";
+            this.columnHeader16.Width = 100;
+            // 
+            // columnHeader18
+            // 
+            this.columnHeader18.Text = "길이";
+            this.columnHeader18.Width = 100;
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "수정됨";
+            this.columnHeader19.Width = 100;
             // 
             // Audio2Tag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1019, 630);
+            this.ClientSize = new System.Drawing.Size(1045, 729);
             this.Controls.Add(this.TabControl);
             this.Controls.Add(this.materialTabSelector1);
             this.Name = "Audio2Tag";
@@ -1336,10 +1448,12 @@
             this.ConvMp3Tab.ResumeLayout(false);
             this.ConvMp3Tab.PerformLayout();
             this.TaggingTab.ResumeLayout(false);
-            this.TaggingTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TaggingImageList)).EndInit();
             this.SettingTab.ResumeLayout(false);
             this.SettingTab.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TagPictureArt)).EndInit();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1352,30 +1466,6 @@
         private System.Windows.Forms.TabPage ConvMp3Tab;
         private System.Windows.Forms.TabPage TaggingTab;
         private System.Windows.Forms.TabPage SettingTab;
-        private MaterialSkin.Controls.MaterialRaisedButton TaggingBtnExec;
-        private MaterialSkin.Controls.MaterialProgressBar TaggingProgressStatus;
-        private MaterialSkin.Controls.MaterialListView TaggingListFile;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.PictureBox TaggingImageList;
-        private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextDirectory;
-        private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextDiscNum;
-        private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextComposers;
-        private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextAlbumArtists;
-        private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextComment;
-        private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextGenre;
-        private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextTrack;
-        private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextCreateYear;
-        private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextAlbum;
-        private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextArtists;
-        private MaterialSkin.Controls.MaterialSingleLineTextField TaggingTextTitle;
-        private MaterialSkin.Controls.MaterialLabel TaggingLabelFileSize;
-        private MaterialSkin.Controls.MaterialLabel TaggingLabelImageSize;
-        private MaterialSkin.Controls.MaterialLabel TaggingLabelMime;
-        private MaterialSkin.Controls.MaterialLabel TaggingLabelIndex;
-        private MaterialSkin.Controls.MaterialFlatButton TaggingBtnNextImage;
-        private MaterialSkin.Controls.MaterialFlatButton TaggingBtnPrevImage;
-        private MaterialSkin.Controls.MaterialFlatButton TaggingBtnImageDelete;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
         private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
         private System.Windows.Forms.TabPage AutoTab;
         private MaterialSkin.Controls.MaterialProgressBar materialProgressBar1;
@@ -1423,8 +1513,50 @@
         private System.Windows.Forms.ColumnHeader AutoColumnCatNo;
         private System.Windows.Forms.ColumnHeader AutoColumnTitle;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Splitter splitter2;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.Panel panel1;
+        private MaterialSkin.Controls.MaterialLabel TagLabelArt;
+        private System.Windows.Forms.PictureBox TagPictureArt;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TagTextComposer;
+        private MaterialSkin.Controls.MaterialLabel TagLabelComposer;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TagTextAlbumArtist;
+        private MaterialSkin.Controls.MaterialLabel TagLabelAlbumArtist;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TagTextDiscNum;
+        private MaterialSkin.Controls.MaterialLabel TagLabelDiscNum;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TagTextTrack;
+        private MaterialSkin.Controls.MaterialLabel TagLabelTrack;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TagTextYear;
+        private MaterialSkin.Controls.MaterialLabel TagLabelYear;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TagTextGenre;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TagTextComment;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TagTextAlbum;
+        private MaterialSkin.Controls.MaterialLabel TagLabelAlbum;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TagTextArtist;
+        private MaterialSkin.Controls.MaterialLabel TagLabelArtist;
+        private MaterialSkin.Controls.MaterialSingleLineTextField TagTextTitle;
+        private MaterialSkin.Controls.MaterialLabel TagLabelTitle;
+        private MaterialSkin.Controls.MaterialLabel TagLabelGenre;
+        private MaterialSkin.Controls.MaterialLabel TagLabelComment;
+        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
+        private MaterialSkin.Controls.MaterialListView materialListView1;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.ColumnHeader columnHeader18;
+        private System.Windows.Forms.ColumnHeader columnHeader19;
     }
 }
 
