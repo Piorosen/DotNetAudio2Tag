@@ -29,10 +29,7 @@ namespace Tag
         readonly AudioConverter audioConv = new AudioConverter();
         readonly AudioTagging mp3Tagging = new AudioTagging();
         readonly AutoConverter autoConv = new AutoConverter();
-
-
-        TagInfo tagTemp;
-
+    
         public Audio2Tag()
         {
             InitializeComponent();
@@ -40,11 +37,26 @@ namespace Tag
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-           // (TaggingImageList as Control).AllowDrop = true;
+            // (TaggingImageList as Control).AllowDrop = true;
+
+            materialSingleLineTextField3.Text = "kor.lang";
+            MaterialRaisedButton1_Click_1(null, null);
+            
+
+
             Log.FilePrepare(string.Empty);
             Log.FileWrite("Run", Core.Extension.Error.None);
         }
 
+
+        private void MaterialRaisedButton1_Click_1(object sender, EventArgs e)
+        {
+            Setting.Global.Language.Load(materialSingleLineTextField3.Text);
+            CueSplitLoad();
+            ConvLoad();
+            TagLoad();
+            this.Refresh();
+        }
 
         #region Exec Program
         volatile bool isrun = false;
@@ -482,5 +494,6 @@ namespace Tag
         {
 
         }
+
     }
 }

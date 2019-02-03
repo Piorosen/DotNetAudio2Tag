@@ -1,0 +1,27 @@
+[Lang]
+Title=Title
+Artist=Artist
+Album=Album
+Year=Year
+Track=Track
+Genre=Genre
+Comment=Comment
+AlbumArtist=AlbumArtist
+Composer=Composer
+DiscNum=DiscNum
+AlbumArt=AlbumArt
+Directory=Directory
+
+FileName=File Name
+Path=Path
+Tag=Tag Type
+Codec=Codec Type
+Bitrate=Bitrate
+Length=Length
+Fixed=Fixed
+
+CueSplit=CueSplit
+Tagging=Tagging
+Mp3Conv=Mp3Conv
+AutoMode=AutoMode
+Setting=Setting

@@ -8,6 +8,11 @@ namespace Tag
 {
     partial class Audio2Tag
     {
+        void CueSplitLoad()
+        {
+
+        }
+
 
     }
 }

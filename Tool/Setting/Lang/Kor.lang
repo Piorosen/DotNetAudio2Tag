@@ -1,0 +1,27 @@
+﻿[Lang]
+Title=제목
+Artist=아티스트
+Album=앨범
+Year=제작년도
+Track=트랙
+Genre=장르
+Comment=설명
+AlbumArtist=앨범 아티스트
+Composer=작곡가
+DiscNum=디스크 번호
+AlbumArt=앨범 아트
+Directory=디렉토리
+
+FileName=파일 명
+Path=경로
+Tag=태그
+Codec=코덱
+Bitrate=비트레이트
+Length=길이
+Fixed=수정 됨
+
+CueSplit=큐 분리
+Tagging=태그
+Mp3Conv=Mp3 변환
+AutoMode=자동 모드
+Setting=설정

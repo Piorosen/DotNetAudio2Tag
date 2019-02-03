@@ -78,13 +78,28 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Mp3ConvProgressStatus = new MaterialSkin.Controls.MaterialProgressBar();
             this.Mp3ConvBtnExec = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.TaggingTab = new System.Windows.Forms.TabPage();
-            this.splitter2 = new System.Windows.Forms.Splitter();
-            this.splitter1 = new System.Windows.Forms.Splitter();
-            this.SettingTab = new System.Windows.Forms.TabPage();
-            this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.TagLabelArt = new MaterialSkin.Controls.MaterialLabel();
+            this.TagTab = new System.Windows.Forms.TabPage();
+            this.TagPanelSplit = new System.Windows.Forms.Panel();
+            this.TagPanelStatus = new System.Windows.Forms.Panel();
+            this.TagListStatus = new MaterialSkin.Controls.MaterialListView();
+            this.TagColumnFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnTagType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnArtist = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnAlbumArtist = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnAlbum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnTrack = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnDiscNum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnYear = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnGenre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnComment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnCodec = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnBitrate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnLength = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagColumnFixed = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TagPanelTagInfo = new System.Windows.Forms.Panel();
+            this.TagLabelAlbumArt = new MaterialSkin.Controls.MaterialLabel();
             this.TagPictureArt = new System.Windows.Forms.PictureBox();
             this.TagTextComposer = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.TagLabelComposer = new MaterialSkin.Controls.MaterialLabel();
@@ -106,34 +121,21 @@
             this.TagLabelTitle = new MaterialSkin.Controls.MaterialLabel();
             this.TagLabelGenre = new MaterialSkin.Controls.MaterialLabel();
             this.TagLabelComment = new MaterialSkin.Controls.MaterialLabel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.SettingTab = new System.Windows.Forms.TabPage();
+            this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
+            this.materialSingleLineTextField3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.TabControl.SuspendLayout();
             this.AutoTab.SuspendLayout();
             this.CuesplitTab.SuspendLayout();
             this.ConvMp3Tab.SuspendLayout();
-            this.TaggingTab.SuspendLayout();
-            this.SettingTab.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.TagTab.SuspendLayout();
+            this.TagPanelStatus.SuspendLayout();
+            this.TagPanelTagInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TagPictureArt)).BeginInit();
-            this.panel4.SuspendLayout();
+            this.SettingTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -153,7 +155,7 @@
             this.TabControl.Controls.Add(this.AutoTab);
             this.TabControl.Controls.Add(this.CuesplitTab);
             this.TabControl.Controls.Add(this.ConvMp3Tab);
-            this.TabControl.Controls.Add(this.TaggingTab);
+            this.TabControl.Controls.Add(this.TagTab);
             this.TabControl.Controls.Add(this.SettingTab);
             this.TabControl.Depth = 0;
             this.TabControl.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -177,7 +179,7 @@
             this.AutoTab.Controls.Add(this.materialProgressBar1);
             this.AutoTab.Location = new System.Drawing.Point(4, 22);
             this.AutoTab.Name = "AutoTab";
-            this.AutoTab.Size = new System.Drawing.Size(1013, 552);
+            this.AutoTab.Size = new System.Drawing.Size(1037, 618);
             this.AutoTab.TabIndex = 4;
             this.AutoTab.Text = "Auto";
             // 
@@ -206,7 +208,7 @@
             this.AutoListStatus.MouseState = MaterialSkin.MouseState.OUT;
             this.AutoListStatus.Name = "AutoListStatus";
             this.AutoListStatus.OwnerDraw = true;
-            this.AutoListStatus.Size = new System.Drawing.Size(618, 403);
+            this.AutoListStatus.Size = new System.Drawing.Size(642, 469);
             this.AutoListStatus.TabIndex = 6;
             this.AutoListStatus.UseCompatibleStateImageBehavior = false;
             this.AutoListStatus.View = System.Windows.Forms.View.Details;
@@ -286,7 +288,7 @@
             this.AutoBtnExec.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoBtnExec.Depth = 0;
             this.AutoBtnExec.Icon = null;
-            this.AutoBtnExec.Location = new System.Drawing.Point(783, 439);
+            this.AutoBtnExec.Location = new System.Drawing.Point(807, 505);
             this.AutoBtnExec.MouseState = MaterialSkin.MouseState.HOVER;
             this.AutoBtnExec.Name = "AutoBtnExec";
             this.AutoBtnExec.Primary = true;
@@ -353,10 +355,10 @@
             this.materialProgressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialProgressBar1.Depth = 0;
-            this.materialProgressBar1.Location = new System.Drawing.Point(7, 481);
+            this.materialProgressBar1.Location = new System.Drawing.Point(7, 547);
             this.materialProgressBar1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialProgressBar1.Name = "materialProgressBar1";
-            this.materialProgressBar1.Size = new System.Drawing.Size(971, 5);
+            this.materialProgressBar1.Size = new System.Drawing.Size(995, 5);
             this.materialProgressBar1.TabIndex = 0;
             // 
             // CuesplitTab
@@ -378,7 +380,7 @@
             this.CuesplitTab.Location = new System.Drawing.Point(4, 22);
             this.CuesplitTab.Name = "CuesplitTab";
             this.CuesplitTab.Padding = new System.Windows.Forms.Padding(3);
-            this.CuesplitTab.Size = new System.Drawing.Size(1013, 552);
+            this.CuesplitTab.Size = new System.Drawing.Size(1037, 618);
             this.CuesplitTab.TabIndex = 0;
             this.CuesplitTab.Text = "Cue Split";
             // 
@@ -561,7 +563,7 @@
             this.CuesplitListStatus.MouseState = MaterialSkin.MouseState.OUT;
             this.CuesplitListStatus.Name = "CuesplitListStatus";
             this.CuesplitListStatus.OwnerDraw = true;
-            this.CuesplitListStatus.Size = new System.Drawing.Size(626, 434);
+            this.CuesplitListStatus.Size = new System.Drawing.Size(650, 500);
             this.CuesplitListStatus.TabIndex = 23;
             this.CuesplitListStatus.UseCompatibleStateImageBehavior = false;
             this.CuesplitListStatus.View = System.Windows.Forms.View.Details;
@@ -578,7 +580,7 @@
             // 
             this.CuesplitProgressStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CuesplitProgressStatus.Depth = 0;
-            this.CuesplitProgressStatus.Location = new System.Drawing.Point(361, 485);
+            this.CuesplitProgressStatus.Location = new System.Drawing.Point(385, 551);
             this.CuesplitProgressStatus.MouseState = MaterialSkin.MouseState.HOVER;
             this.CuesplitProgressStatus.Name = "CuesplitProgressStatus";
             this.CuesplitProgressStatus.Size = new System.Drawing.Size(623, 5);
@@ -591,7 +593,7 @@
             this.CuesplitBtnExecute.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CuesplitBtnExecute.Depth = 0;
             this.CuesplitBtnExecute.Icon = null;
-            this.CuesplitBtnExecute.Location = new System.Drawing.Point(905, 443);
+            this.CuesplitBtnExecute.Location = new System.Drawing.Point(929, 509);
             this.CuesplitBtnExecute.MouseState = MaterialSkin.MouseState.HOVER;
             this.CuesplitBtnExecute.Name = "CuesplitBtnExecute";
             this.CuesplitBtnExecute.Primary = true;
@@ -869,106 +871,194 @@
             this.Mp3ConvBtnExec.UseVisualStyleBackColor = true;
             this.Mp3ConvBtnExec.Click += new System.EventHandler(this.Mp3ConvBtnExec_Click);
             // 
-            // TaggingTab
+            // TagTab
             // 
-            this.TaggingTab.Controls.Add(this.panel5);
-            this.TaggingTab.Controls.Add(this.panel4);
-            this.TaggingTab.Controls.Add(this.panel1);
-            this.TaggingTab.Controls.Add(this.splitter2);
-            this.TaggingTab.Controls.Add(this.splitter1);
-            this.TaggingTab.Location = new System.Drawing.Point(4, 22);
-            this.TaggingTab.Name = "TaggingTab";
-            this.TaggingTab.Size = new System.Drawing.Size(1037, 618);
-            this.TaggingTab.TabIndex = 2;
-            this.TaggingTab.Text = "Tagging";
+            this.TagTab.Controls.Add(this.TagPanelSplit);
+            this.TagTab.Controls.Add(this.TagPanelStatus);
+            this.TagTab.Controls.Add(this.TagPanelTagInfo);
+            this.TagTab.Controls.Add(this.splitter2);
+            this.TagTab.Controls.Add(this.splitter1);
+            this.TagTab.Location = new System.Drawing.Point(4, 22);
+            this.TagTab.Name = "TagTab";
+            this.TagTab.Size = new System.Drawing.Size(1037, 618);
+            this.TagTab.TabIndex = 2;
+            this.TagTab.Text = "Tagging";
             // 
-            // splitter2
+            // TagPanelSplit
             // 
-            this.splitter2.Location = new System.Drawing.Point(3, 0);
-            this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(3, 618);
-            this.splitter2.TabIndex = 0;
-            this.splitter2.TabStop = false;
+            this.TagPanelSplit.BackColor = System.Drawing.Color.Gray;
+            this.TagPanelSplit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TagPanelSplit.Location = new System.Drawing.Point(273, 0);
+            this.TagPanelSplit.Name = "TagPanelSplit";
+            this.TagPanelSplit.Size = new System.Drawing.Size(6, 618);
+            this.TagPanelSplit.TabIndex = 4;
             // 
-            // splitter1
+            // TagPanelStatus
             // 
-            this.splitter1.Location = new System.Drawing.Point(0, 0);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 618);
-            this.splitter1.TabIndex = 1;
-            this.splitter1.TabStop = false;
+            this.TagPanelStatus.Controls.Add(this.TagListStatus);
+            this.TagPanelStatus.Dock = System.Windows.Forms.DockStyle.Right;
+            this.TagPanelStatus.Location = new System.Drawing.Point(279, 0);
+            this.TagPanelStatus.Name = "TagPanelStatus";
+            this.TagPanelStatus.Size = new System.Drawing.Size(758, 618);
+            this.TagPanelStatus.TabIndex = 3;
             // 
-            // SettingTab
+            // TagListStatus
             // 
-            this.SettingTab.BackColor = System.Drawing.SystemColors.Control;
-            this.SettingTab.Controls.Add(this.materialCheckBox1);
-            this.SettingTab.Location = new System.Drawing.Point(4, 22);
-            this.SettingTab.Name = "SettingTab";
-            this.SettingTab.Size = new System.Drawing.Size(1037, 618);
-            this.SettingTab.TabIndex = 3;
-            this.SettingTab.Text = "Setting";
+            this.TagListStatus.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TagListStatus.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.TagColumnFileName,
+            this.TagColumnTitle,
+            this.TagColumnPath,
+            this.TagColumnTagType,
+            this.TagColumnArtist,
+            this.TagColumnAlbumArtist,
+            this.TagColumnAlbum,
+            this.TagColumnTrack,
+            this.TagColumnDiscNum,
+            this.TagColumnYear,
+            this.TagColumnGenre,
+            this.TagColumnComment,
+            this.TagColumnCodec,
+            this.TagColumnBitrate,
+            this.TagColumnLength,
+            this.TagColumnFixed});
+            this.TagListStatus.Depth = 0;
+            this.TagListStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TagListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.TagListStatus.FullRowSelect = true;
+            this.TagListStatus.Location = new System.Drawing.Point(0, 0);
+            this.TagListStatus.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.TagListStatus.MouseState = MaterialSkin.MouseState.OUT;
+            this.TagListStatus.Name = "TagListStatus";
+            this.TagListStatus.OwnerDraw = true;
+            this.TagListStatus.Size = new System.Drawing.Size(758, 618);
+            this.TagListStatus.TabIndex = 0;
+            this.TagListStatus.UseCompatibleStateImageBehavior = false;
+            this.TagListStatus.View = System.Windows.Forms.View.Details;
             // 
-            // materialCheckBox1
+            // TagColumnFileName
             // 
-            this.materialCheckBox1.AutoSize = true;
-            this.materialCheckBox1.Checked = true;
-            this.materialCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.materialCheckBox1.Depth = 0;
-            this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialCheckBox1.Location = new System.Drawing.Point(16, 199);
-            this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckBox1.Name = "materialCheckBox1";
-            this.materialCheckBox1.Ripple = true;
-            this.materialCheckBox1.Size = new System.Drawing.Size(93, 30);
-            this.materialCheckBox1.TabIndex = 3;
-            this.materialCheckBox1.Text = "DarkMode";
-            this.materialCheckBox1.UseVisualStyleBackColor = true;
+            this.TagColumnFileName.Text = "파일명";
+            this.TagColumnFileName.Width = 100;
             // 
-            // panel1
+            // TagColumnTitle
             // 
-            this.panel1.Controls.Add(this.TagLabelArt);
-            this.panel1.Controls.Add(this.TagPictureArt);
-            this.panel1.Controls.Add(this.TagTextComposer);
-            this.panel1.Controls.Add(this.TagLabelComposer);
-            this.panel1.Controls.Add(this.TagTextAlbumArtist);
-            this.panel1.Controls.Add(this.TagLabelAlbumArtist);
-            this.panel1.Controls.Add(this.TagTextDiscNum);
-            this.panel1.Controls.Add(this.TagLabelDiscNum);
-            this.panel1.Controls.Add(this.TagTextTrack);
-            this.panel1.Controls.Add(this.TagLabelTrack);
-            this.panel1.Controls.Add(this.TagTextYear);
-            this.panel1.Controls.Add(this.TagLabelYear);
-            this.panel1.Controls.Add(this.TagTextGenre);
-            this.panel1.Controls.Add(this.TagTextComment);
-            this.panel1.Controls.Add(this.TagTextAlbum);
-            this.panel1.Controls.Add(this.TagLabelAlbum);
-            this.panel1.Controls.Add(this.TagTextArtist);
-            this.panel1.Controls.Add(this.TagLabelArtist);
-            this.panel1.Controls.Add(this.TagTextTitle);
-            this.panel1.Controls.Add(this.TagLabelTitle);
-            this.panel1.Controls.Add(this.TagLabelGenre);
-            this.panel1.Controls.Add(this.TagLabelComment);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(6, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(267, 618);
-            this.panel1.TabIndex = 2;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
+            this.TagColumnTitle.Text = "제목";
+            this.TagColumnTitle.Width = 100;
             // 
-            // TagLabelArt
+            // TagColumnPath
             // 
-            this.TagLabelArt.AutoSize = true;
-            this.TagLabelArt.Depth = 0;
-            this.TagLabelArt.Font = new System.Drawing.Font("Roboto", 11F);
-            this.TagLabelArt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TagLabelArt.Location = new System.Drawing.Point(0, 387);
-            this.TagLabelArt.MouseState = MaterialSkin.MouseState.HOVER;
-            this.TagLabelArt.Name = "TagLabelArt";
-            this.TagLabelArt.Size = new System.Drawing.Size(57, 19);
-            this.TagLabelArt.TabIndex = 192;
-            this.TagLabelArt.Text = "앨범 아트";
+            this.TagColumnPath.Text = "경로";
+            this.TagColumnPath.Width = 100;
+            // 
+            // TagColumnTagType
+            // 
+            this.TagColumnTagType.Text = "태그";
+            this.TagColumnTagType.Width = 100;
+            // 
+            // TagColumnArtist
+            // 
+            this.TagColumnArtist.Text = "아티스트";
+            this.TagColumnArtist.Width = 100;
+            // 
+            // TagColumnAlbumArtist
+            // 
+            this.TagColumnAlbumArtist.Text = "앨범 아티스트";
+            this.TagColumnAlbumArtist.Width = 100;
+            // 
+            // TagColumnAlbum
+            // 
+            this.TagColumnAlbum.Text = "앨범";
+            this.TagColumnAlbum.Width = 100;
+            // 
+            // TagColumnTrack
+            // 
+            this.TagColumnTrack.Text = "트랙";
+            this.TagColumnTrack.Width = 100;
+            // 
+            // TagColumnDiscNum
+            // 
+            this.TagColumnDiscNum.Text = "디스크 번호";
+            this.TagColumnDiscNum.Width = 100;
+            // 
+            // TagColumnYear
+            // 
+            this.TagColumnYear.Text = "제작년도";
+            this.TagColumnYear.Width = 100;
+            // 
+            // TagColumnGenre
+            // 
+            this.TagColumnGenre.Text = "장르";
+            this.TagColumnGenre.Width = 100;
+            // 
+            // TagColumnComment
+            // 
+            this.TagColumnComment.Text = "설명";
+            this.TagColumnComment.Width = 100;
+            // 
+            // TagColumnCodec
+            // 
+            this.TagColumnCodec.Text = "코덱";
+            this.TagColumnCodec.Width = 100;
+            // 
+            // TagColumnBitrate
+            // 
+            this.TagColumnBitrate.Text = "비트레이트";
+            this.TagColumnBitrate.Width = 100;
+            // 
+            // TagColumnLength
+            // 
+            this.TagColumnLength.Text = "길이";
+            this.TagColumnLength.Width = 100;
+            // 
+            // TagColumnFixed
+            // 
+            this.TagColumnFixed.Text = "수정됨";
+            this.TagColumnFixed.Width = 100;
+            // 
+            // TagPanelTagInfo
+            // 
+            this.TagPanelTagInfo.Controls.Add(this.TagLabelAlbumArt);
+            this.TagPanelTagInfo.Controls.Add(this.TagPictureArt);
+            this.TagPanelTagInfo.Controls.Add(this.TagTextComposer);
+            this.TagPanelTagInfo.Controls.Add(this.TagLabelComposer);
+            this.TagPanelTagInfo.Controls.Add(this.TagTextAlbumArtist);
+            this.TagPanelTagInfo.Controls.Add(this.TagLabelAlbumArtist);
+            this.TagPanelTagInfo.Controls.Add(this.TagTextDiscNum);
+            this.TagPanelTagInfo.Controls.Add(this.TagLabelDiscNum);
+            this.TagPanelTagInfo.Controls.Add(this.TagTextTrack);
+            this.TagPanelTagInfo.Controls.Add(this.TagLabelTrack);
+            this.TagPanelTagInfo.Controls.Add(this.TagTextYear);
+            this.TagPanelTagInfo.Controls.Add(this.TagLabelYear);
+            this.TagPanelTagInfo.Controls.Add(this.TagTextGenre);
+            this.TagPanelTagInfo.Controls.Add(this.TagTextComment);
+            this.TagPanelTagInfo.Controls.Add(this.TagTextAlbum);
+            this.TagPanelTagInfo.Controls.Add(this.TagLabelAlbum);
+            this.TagPanelTagInfo.Controls.Add(this.TagTextArtist);
+            this.TagPanelTagInfo.Controls.Add(this.TagLabelArtist);
+            this.TagPanelTagInfo.Controls.Add(this.TagTextTitle);
+            this.TagPanelTagInfo.Controls.Add(this.TagLabelTitle);
+            this.TagPanelTagInfo.Controls.Add(this.TagLabelGenre);
+            this.TagPanelTagInfo.Controls.Add(this.TagLabelComment);
+            this.TagPanelTagInfo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TagPanelTagInfo.Location = new System.Drawing.Point(6, 0);
+            this.TagPanelTagInfo.Name = "TagPanelTagInfo";
+            this.TagPanelTagInfo.Size = new System.Drawing.Size(267, 618);
+            this.TagPanelTagInfo.TabIndex = 2;
+            this.TagPanelTagInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
+            // 
+            // TagLabelAlbumArt
+            // 
+            this.TagLabelAlbumArt.AutoSize = true;
+            this.TagLabelAlbumArt.Depth = 0;
+            this.TagLabelAlbumArt.Font = new System.Drawing.Font("Roboto", 11F);
+            this.TagLabelAlbumArt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TagLabelAlbumArt.Location = new System.Drawing.Point(0, 387);
+            this.TagLabelAlbumArt.MouseState = MaterialSkin.MouseState.HOVER;
+            this.TagLabelAlbumArt.Name = "TagLabelAlbumArt";
+            this.TagLabelAlbumArt.Size = new System.Drawing.Size(57, 19);
+            this.TagLabelAlbumArt.TabIndex = 192;
+            this.TagLabelAlbumArt.Text = "앨범 아트";
             // 
             // TagPictureArt
             // 
@@ -1296,138 +1386,85 @@
             this.TagLabelComment.TabIndex = 169;
             this.TagLabelComment.Text = "설명";
             // 
-            // panel4
+            // splitter2
             // 
-            this.panel4.Controls.Add(this.materialListView1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(279, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(758, 618);
-            this.panel4.TabIndex = 3;
+            this.splitter2.Location = new System.Drawing.Point(3, 0);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(3, 618);
+            this.splitter2.TabIndex = 0;
+            this.splitter2.TabStop = false;
             // 
-            // panel5
+            // splitter1
             // 
-            this.panel5.BackColor = System.Drawing.Color.Gray;
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(273, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(6, 618);
-            this.panel5.TabIndex = 4;
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 618);
+            this.splitter1.TabIndex = 1;
+            this.splitter1.TabStop = false;
             // 
-            // materialListView1
+            // SettingTab
             // 
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6,
-            this.columnHeader7,
-            this.columnHeader8,
-            this.columnHeader9,
-            this.columnHeader10,
-            this.columnHeader11,
-            this.columnHeader12,
-            this.columnHeader13,
-            this.columnHeader14,
-            this.columnHeader15,
-            this.columnHeader16,
-            this.columnHeader18,
-            this.columnHeader19});
-            this.materialListView1.Depth = 0;
-            this.materialListView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView1.Location = new System.Drawing.Point(0, 0);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(758, 618);
-            this.materialListView1.TabIndex = 0;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
+            this.SettingTab.BackColor = System.Drawing.SystemColors.Control;
+            this.SettingTab.Controls.Add(this.materialRaisedButton1);
+            this.SettingTab.Controls.Add(this.materialSingleLineTextField3);
+            this.SettingTab.Controls.Add(this.materialCheckBox1);
+            this.SettingTab.Location = new System.Drawing.Point(4, 22);
+            this.SettingTab.Name = "SettingTab";
+            this.SettingTab.Size = new System.Drawing.Size(1037, 618);
+            this.SettingTab.TabIndex = 3;
+            this.SettingTab.Text = "Setting";
             // 
-            // columnHeader3
+            // materialCheckBox1
             // 
-            this.columnHeader3.Text = "파일명";
-            this.columnHeader3.Width = 100;
+            this.materialCheckBox1.AutoSize = true;
+            this.materialCheckBox1.Checked = true;
+            this.materialCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.materialCheckBox1.Depth = 0;
+            this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
+            this.materialCheckBox1.Location = new System.Drawing.Point(16, 199);
+            this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckBox1.Name = "materialCheckBox1";
+            this.materialCheckBox1.Ripple = true;
+            this.materialCheckBox1.Size = new System.Drawing.Size(93, 30);
+            this.materialCheckBox1.TabIndex = 3;
+            this.materialCheckBox1.Text = "DarkMode";
+            this.materialCheckBox1.UseVisualStyleBackColor = true;
             // 
-            // columnHeader4
+            // materialSingleLineTextField3
             // 
-            this.columnHeader4.Text = "제목";
-            this.columnHeader4.Width = 100;
+            this.materialSingleLineTextField3.Depth = 0;
+            this.materialSingleLineTextField3.Hint = "";
+            this.materialSingleLineTextField3.Location = new System.Drawing.Point(92, 65);
+            this.materialSingleLineTextField3.MaxLength = 32767;
+            this.materialSingleLineTextField3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField3.Name = "materialSingleLineTextField3";
+            this.materialSingleLineTextField3.PasswordChar = '\0';
+            this.materialSingleLineTextField3.SelectedText = "";
+            this.materialSingleLineTextField3.SelectionLength = 0;
+            this.materialSingleLineTextField3.SelectionStart = 0;
+            this.materialSingleLineTextField3.Size = new System.Drawing.Size(312, 23);
+            this.materialSingleLineTextField3.TabIndex = 4;
+            this.materialSingleLineTextField3.TabStop = false;
+            this.materialSingleLineTextField3.Text = "materialSingleLineTextField3";
+            this.materialSingleLineTextField3.UseSystemPasswordChar = false;
             // 
-            // columnHeader5
+            // materialRaisedButton1
             // 
-            this.columnHeader5.Text = "경로";
-            this.columnHeader5.Width = 100;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "태그";
-            this.columnHeader6.Width = 100;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "아티스트";
-            this.columnHeader7.Width = 100;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "앨범 아티스트";
-            this.columnHeader8.Width = 100;
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "앨범";
-            this.columnHeader9.Width = 100;
-            // 
-            // columnHeader10
-            // 
-            this.columnHeader10.Text = "트랙";
-            this.columnHeader10.Width = 100;
-            // 
-            // columnHeader11
-            // 
-            this.columnHeader11.Text = "디스크 번호";
-            this.columnHeader11.Width = 100;
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "제작년도";
-            this.columnHeader12.Width = 100;
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "장르";
-            this.columnHeader13.Width = 100;
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "설명";
-            this.columnHeader14.Width = 100;
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "코덱";
-            this.columnHeader15.Width = 100;
-            // 
-            // columnHeader16
-            // 
-            this.columnHeader16.Text = "비트레이트";
-            this.columnHeader16.Width = 100;
-            // 
-            // columnHeader18
-            // 
-            this.columnHeader18.Text = "길이";
-            this.columnHeader18.Width = 100;
-            // 
-            // columnHeader19
-            // 
-            this.columnHeader19.Text = "수정됨";
-            this.columnHeader19.Width = 100;
+            this.materialRaisedButton1.AutoSize = true;
+            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Icon = null;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(410, 52);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(195, 36);
+            this.materialRaisedButton1.TabIndex = 5;
+            this.materialRaisedButton1.Text = "materialRaisedButton1";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.MaterialRaisedButton1_Click_1);
             // 
             // Audio2Tag
             // 
@@ -1447,13 +1484,13 @@
             this.CuesplitTab.PerformLayout();
             this.ConvMp3Tab.ResumeLayout(false);
             this.ConvMp3Tab.PerformLayout();
-            this.TaggingTab.ResumeLayout(false);
+            this.TagTab.ResumeLayout(false);
+            this.TagPanelStatus.ResumeLayout(false);
+            this.TagPanelTagInfo.ResumeLayout(false);
+            this.TagPanelTagInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TagPictureArt)).EndInit();
             this.SettingTab.ResumeLayout(false);
             this.SettingTab.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TagPictureArt)).EndInit();
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1464,7 +1501,7 @@
         private MaterialSkin.Controls.MaterialTabControl TabControl;
         private System.Windows.Forms.TabPage CuesplitTab;
         private System.Windows.Forms.TabPage ConvMp3Tab;
-        private System.Windows.Forms.TabPage TaggingTab;
+        private System.Windows.Forms.TabPage TagTab;
         private System.Windows.Forms.TabPage SettingTab;
         private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
         private System.Windows.Forms.TabPage AutoTab;
@@ -1515,8 +1552,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Splitter splitter2;
         private System.Windows.Forms.Splitter splitter1;
-        private System.Windows.Forms.Panel panel1;
-        private MaterialSkin.Controls.MaterialLabel TagLabelArt;
+        private System.Windows.Forms.Panel TagPanelTagInfo;
+        private MaterialSkin.Controls.MaterialLabel TagLabelAlbumArt;
         private System.Windows.Forms.PictureBox TagPictureArt;
         private MaterialSkin.Controls.MaterialSingleLineTextField TagTextComposer;
         private MaterialSkin.Controls.MaterialLabel TagLabelComposer;
@@ -1538,25 +1575,27 @@
         private MaterialSkin.Controls.MaterialLabel TagLabelTitle;
         private MaterialSkin.Controls.MaterialLabel TagLabelGenre;
         private MaterialSkin.Controls.MaterialLabel TagLabelComment;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel4;
-        private MaterialSkin.Controls.MaterialListView materialListView1;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.ColumnHeader columnHeader6;
-        private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.ColumnHeader columnHeader8;
-        private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.ColumnHeader columnHeader10;
-        private System.Windows.Forms.ColumnHeader columnHeader11;
-        private System.Windows.Forms.ColumnHeader columnHeader12;
-        private System.Windows.Forms.ColumnHeader columnHeader13;
-        private System.Windows.Forms.ColumnHeader columnHeader14;
-        private System.Windows.Forms.ColumnHeader columnHeader15;
-        private System.Windows.Forms.ColumnHeader columnHeader16;
-        private System.Windows.Forms.ColumnHeader columnHeader18;
-        private System.Windows.Forms.ColumnHeader columnHeader19;
+        private System.Windows.Forms.Panel TagPanelSplit;
+        private System.Windows.Forms.Panel TagPanelStatus;
+        private MaterialSkin.Controls.MaterialListView TagListStatus;
+        private System.Windows.Forms.ColumnHeader TagColumnFileName;
+        private System.Windows.Forms.ColumnHeader TagColumnTitle;
+        private System.Windows.Forms.ColumnHeader TagColumnPath;
+        private System.Windows.Forms.ColumnHeader TagColumnTagType;
+        private System.Windows.Forms.ColumnHeader TagColumnArtist;
+        private System.Windows.Forms.ColumnHeader TagColumnAlbumArtist;
+        private System.Windows.Forms.ColumnHeader TagColumnAlbum;
+        private System.Windows.Forms.ColumnHeader TagColumnTrack;
+        private System.Windows.Forms.ColumnHeader TagColumnDiscNum;
+        private System.Windows.Forms.ColumnHeader TagColumnYear;
+        private System.Windows.Forms.ColumnHeader TagColumnGenre;
+        private System.Windows.Forms.ColumnHeader TagColumnComment;
+        private System.Windows.Forms.ColumnHeader TagColumnCodec;
+        private System.Windows.Forms.ColumnHeader TagColumnBitrate;
+        private System.Windows.Forms.ColumnHeader TagColumnLength;
+        private System.Windows.Forms.ColumnHeader TagColumnFixed;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField3;
     }
 }
 
