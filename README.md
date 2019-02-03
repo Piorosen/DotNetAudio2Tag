@@ -11,19 +11,26 @@ Here you can see the test and auto-run one by one.
 ```
 You need Clone this repo.
 1. git clone https://github.com/Piorosen/Audio2Tag
+move 2.
+
+or
+
+1. git clone --recursive https://github.com/Piorosen/Audio2Tag
+move 4.
 
 Move Clone folder.
 2. cd Audio2Tag
 
 Dependency project clone.
-3. git submodule update
+3. git submodule init
+3.1. git submodule update
 
 connect solution file.
 4. load atldotnet csproj.
 5. Add a reference to Tag.Core.
 
 Build.
-5. this project is dotnet framework 4.7.2 base.
+6. this project is dotnet framework 4.7.2 base.
 ```
 
 <hr />
