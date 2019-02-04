@@ -10,8 +10,17 @@ namespace Tag.Setting.Setting
 {
     public class Language : SingleTon<Language>
     {
+        private string _fileName = string.Empty;
+
         public void Load(string filename)
         {
+            if (_fileName == filename)
+            {
+                return;
+            }
+
+            this._fileName = filename;
+
             if (new FileInfo(FilePath.SettingPath + filename).Exists)
             {
                 Config.Path = FilePath.SettingPath + filename;

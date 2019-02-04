@@ -4,6 +4,7 @@
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
                       xmlns:dockablz="clr-namespace:Dragablz.Dockablz;assembly=Dragablz"
+                      xmlns:mylib="clr-namespace:Tag.WPF"
                       xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"                      
                       WindowTransitionsEnabled="False"
                       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -47,6 +48,7 @@
                 -->
             </TabItem>
             <TabItem Header="{Binding Tagging}">
+                <mylib:Tagging/>
                 <!-- 
                 <mahMaterialDragablzMashUp:Mah Margin="16" />
                 -->
