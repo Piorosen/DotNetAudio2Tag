@@ -20,9 +20,14 @@ namespace Tag.WPF
     /// </summary>
     public partial class MainWindow
     {
+        MainWindowsViewModel viewModel;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            Setting.Global.Language.Load("Kor.lang");
+            DataContext = viewModel = new MainWindowsViewModel();
         }
     }
 }

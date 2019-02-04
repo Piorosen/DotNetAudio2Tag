@@ -90,6 +90,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainWindowsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -115,6 +116,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tag.Core\Tag.Core.csproj">
+      <Project>{4928d8c2-bf0b-41ec-ad58-1e4ed1dba88b}</Project>
+      <Name>Tag.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tag.Setting\Tag.Setting.csproj">
+      <Project>{9500fedc-e74c-47c8-86c9-16bcd0285740}</Project>
+      <Name>Tag.Setting</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
