@@ -1,4 +1,4 @@
-﻿<controls:MetroWindow x:Class="Tag.WPF.MainWindow"
+﻿<controls:MetroWindow
                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
@@ -6,6 +6,9 @@
                       xmlns:dockablz="clr-namespace:Dragablz.Dockablz;assembly=Dragablz"
                       xmlns:mylib="clr-namespace:Tag.WPF"
                       xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"                      
+                      xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Tag.WPF.MainWindow"
                       WindowTransitionsEnabled="False"
                       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
                       Background="{DynamicResource MaterialDesignPaper}"					  
@@ -30,15 +33,51 @@
                 <dragablz:InterTabController />
             </dragablz:TabablzControl.InterTabController>
             <TabItem Header="{Binding CustomizeMode}">
+                <materialDesign:DialogHost
+  HorizontalAlignment="Center"
+  VerticalAlignment="Center">
+                    <materialDesign:DialogHost.DialogContent>
+                        <StackPanel
+      Margin="16">
+                            <TextBlock><Run Text="Add a new fruit."/></TextBlock>
+                            <TextBox
+        Margin="0 8 0 0"
+        HorizontalAlignment="Stretch"
+        x:Name="FruitTextBox" />
+                            <StackPanel
+        Orientation="Horizontal"
+        HorizontalAlignment="Right">
+                                <Button
+          Style="{StaticResource MaterialDesignFlatButton}"
+          IsDefault="True"
+          Margin="0 8 8 0"
+          Command="materialDesign:DialogHost.CloseDialogCommand" Content="ACCEPT">
+                                    <Button.CommandParameter>
+                                        <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">True</system:Boolean>
+                                    </Button.CommandParameter>
+                                </Button>
+                                <Button
+          Style="{StaticResource MaterialDesignFlatButton}"
+          IsCancel="True"
+          Margin="0 8 8 0"
+          Command="materialDesign:DialogHost.CloseDialogCommand" Content="CANCEL">
+                                    <Button.CommandParameter>
+                                        <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">False</system:Boolean>
+                                    </Button.CommandParameter>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                    </materialDesign:DialogHost.DialogContent>
+                </materialDesign:DialogHost>
                 <!-- 
-                <mahMaterialDragablzMashUp:Dialogs Margin="8">
+                                                <mahMaterialDragablzMashUp:Dialogs Margin="8">
                     <mahMaterialDragablzMashUp:Dialogs.DataContext>
                         <mahMaterialDragablzMashUp:DialogsViewModel />
                     </mahMaterialDragablzMashUp:Dialogs.DataContext>
                 </mahMaterialDragablzMashUp:Dialogs>
                 -->
             </TabItem>
-            <TabItem Header="{Binding  CueSplit}">
+            <TabItem Header="{Binding CueSplit}">
                 <!-- 
                 <mahMaterialDragablzMashUp:Dialogs Margin="8">
                     <mahMaterialDragablzMashUp:Dialogs.DataContext>

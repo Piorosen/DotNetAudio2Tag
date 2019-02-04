@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
              xmlns:Setting="clr-namespace:Tag.Setting.Setting;assembly=Tag.Setting" x:Class="Tag.WPF.Tagging"
-             mc:Ignorable="d"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    
+    mc:Ignorable="d"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -14,6 +16,8 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}" Height="724" Width="899">
+
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -154,6 +158,7 @@
             <Button
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"
                 Width="120"
+               Click="Button_Click"
                 ToolTip="Resource name: MaterialDesignRaisedAccentButton" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom"
                 >
                 Tag All Save

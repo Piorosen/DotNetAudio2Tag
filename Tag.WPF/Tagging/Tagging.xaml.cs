@@ -28,5 +28,10 @@ namespace Tag.WPF
             Setting.Global.Language.Load("Kor.lang");
             DataContext = viewModel = new TaggingViewModel();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

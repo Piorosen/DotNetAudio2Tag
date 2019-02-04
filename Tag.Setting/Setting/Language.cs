@@ -64,5 +64,7 @@ namespace Tag.Setting.Setting
         public string Setting = string.Empty;
 
         public string Execute = string.Empty;
+
+
     }
 }

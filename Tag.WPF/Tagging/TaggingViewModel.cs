@@ -28,11 +28,14 @@ namespace Tag.WPF
         public string Directory => Setting.Global.Language.Path;
         public string TagType => Setting.Global.Language.Tag;
         public string Codec => Setting.Global.Language.Codec;
+        public string Bitrate => Setting.Global.Language.Bitrate;
         public string Length => Setting.Global.Language.Length;
         public string Fixed => Setting.Global.Language.Fixed;
 
+        
 
         public ObservableCollection<TaggingModel> Items { get; set; }
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string Name = "")

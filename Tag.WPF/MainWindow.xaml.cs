@@ -29,5 +29,6 @@ namespace Tag.WPF
             Setting.Global.Language.Load("Kor.lang");
             DataContext = viewModel = new MainWindowsViewModel();
         }
+
     }
 }
