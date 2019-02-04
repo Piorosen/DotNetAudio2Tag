@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
              xmlns:Setting="clr-namespace:Tag.Setting.Setting;assembly=Tag.Setting" x:Class="Tag.WPF.Tagging"
-             mc:Ignorable="d" d:DesignWidth="800"
+             mc:Ignorable="d"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -13,7 +13,7 @@
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}" Height="724">
+        FontFamily="{DynamicResource MaterialDesignFont}" Height="724" Width="899">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Column="0" Grid.RowSpan="2">
@@ -150,6 +150,23 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Button
+                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                Width="120"
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom"
+                >
+                Tag All Save
+            </Button>
+            <Button
+                Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                Width="120"
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton" HorizontalAlignment="Right" Margin="0,0,149,10" VerticalAlignment="Bottom"
+                >
+                Get Tag Info
+            </Button>
+        </Grid>
+        
         <!--
         <Grid Height="60" Width="180" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
             <Label x:Name="LabelTitle" Content="{Binding Title}" Margin="6,5,10,29"/>
