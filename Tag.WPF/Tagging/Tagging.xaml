@@ -4,12 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
-             xmlns:Setting="clr-namespace:Tag.Setting.Setting;assembly=Tag.Setting" x:Class="Tag.WPF.Tagging"
-             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-    
+     xmlns:system="clr-namespace:System;assembly=mscorlib"         
+    xmlns:Setting="clr-namespace:Tag.Setting.Setting;assembly=Tag.Setting" x:Class="Tag.WPF.Tagging"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     mc:Ignorable="d"
-    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
@@ -17,7 +16,15 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}" Height="724" Width="899">
 
-    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DialogHost.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -27,7 +34,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-
         <Grid Grid.Column="0" Grid.RowSpan="2">
             <Grid VerticalAlignment="Top">
                 <Grid Height="60" Width="180" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
@@ -155,6 +161,7 @@
             </ListView.View>
         </ListView>
         <Grid Grid.Column="1" Grid.Row="1">
+            <Button Click="Button_Click" HorizontalAlignment="Left" Margin="0,9" Width="289"/>
             <Button
                 Style="{StaticResource MaterialDesignRaisedAccentButton}"
                 Width="120"
@@ -171,7 +178,8 @@
                 Get Tag Info
             </Button>
         </Grid>
-        
+
+
         <!--
         <Grid Height="60" Width="180" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
             <Label x:Name="LabelTitle" Content="{Binding Title}" Margin="6,5,10,29"/>
