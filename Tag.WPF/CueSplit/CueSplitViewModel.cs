@@ -13,6 +13,11 @@ namespace Tag.WPF
 {
     public class CueSplitViewModel : INotifyPropertyChanged
     {
+        public string CueFileOpen { get; private set; } = Setting.Global.Language.CueFileOpen;
+        public string CueFileSplitExecute { get; private set; } = Setting.Global.Language.CueFileSplitExecute;
+
+
+
         public ObservableCollection<CueSplitModel> Items { get; set; }
 
         private Tag.Core.Cue.CueSpliter cueSpliter;

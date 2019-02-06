@@ -65,6 +65,8 @@ namespace Tag.Setting.Setting
 
         public string Execute = string.Empty;
 
+        public string CueFileOpen = string.Empty;
+        public string CueFileSplitExecute = string.Empty;
 
     }
 }

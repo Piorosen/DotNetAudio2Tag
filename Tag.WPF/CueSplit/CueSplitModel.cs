@@ -7,8 +7,8 @@ namespace Tag.WPF
     public class CueSplitModel : TrackInfo
     {
         public int Index { get; set; } = 0;
-        public Brush Color => IsSelect ? Brushes.LightGray : Index % 2 == 0 ? Brushes.Beige : Brushes.Transparent;
-        public bool IsSelect = false;
+        public Brush Color => Index % 2 == 0 ? Brushes.Beige : Brushes.Transparent;
+        public bool IsSelect { get; set; } = false;
 
         public CueSplitModel()
         {
