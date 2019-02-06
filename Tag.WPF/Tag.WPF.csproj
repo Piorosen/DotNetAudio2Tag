@@ -78,6 +78,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CueSplit\CueSplit.xaml.cs">
+      <DependentUpon>CueSplit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tagging\Design\Alarm.xaml.cs">
       <DependentUpon>Alarm.xaml</DependentUpon>
     </Compile>
@@ -86,6 +89,10 @@
     </Compile>
     <Compile Include="Tagging\TaggingModel.cs" />
     <Compile Include="Tagging\TaggingViewModel.cs" />
+    <Page Include="CueSplit\CueSplit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

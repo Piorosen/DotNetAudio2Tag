@@ -168,18 +168,16 @@
         </ListView>
         <Grid Grid.Column="1" Grid.Row="1">
             <Button
-                Style="{DynamicResource PrimaryHueMidBrush}"
                 Width="150" HorizontalAlignment="Right" Margin="0,9,10,9" Click="Button_Click_1"
                 >
                 일괄 저장
             </Button>
             <Button
-                Style="{DynamicResource PrimaryHueMidBrush}"
                 ToolTip="Resource name: MaterialDesignRaisedAccentButton" Margin="236,0,182,10" VerticalAlignment="Bottom"
                 >
                 태그 정보 가져오기
             </Button>
-        </Grid>
+            </Grid>
 
         <!--
         <Grid Height="60" Width="180" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
