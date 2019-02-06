@@ -9,34 +9,34 @@ namespace Tag.Core.Cue
 {
     public class TrackInfo
     {
-        public string Title = string.Empty;
-        public string Artist = string.Empty;
-        public string Composer = string.Empty;
+        public string Title { get; set; } = string.Empty;
+        public string Artist { get; set; } = string.Empty;
+        public string Composer { get; set; } = string.Empty;
 
-        public double StartPosition = 0.0;
-        public double DurationMS = 0.0;
-        public int Track = 0;
+        public double StartPosition { get; set; } = 0.0;
+        public double DurationMS { get; set; } = 0.0;
+        public int Track { get; set; } = 0;
     }
     public class REM
     {
 
-        public string Genre = String.Empty;
-        public string Date = string.Empty;
-        public string DiscId = string.Empty;
+        public string Genre { get; set; } = String.Empty;
+        public string Date { get; set; } = string.Empty;
+        public string DiscId { get; set; } = string.Empty;
     
     }
 
     public class CueInfo
     {
-        public string Path = string.Empty;
-        public string SavePath = string.Empty;
-        public string WavPath = string.Empty;
+        public string Path { get; set; } = string.Empty;
+        public string SavePath { get; set; } = string.Empty;
+        public string WavPath { get; set; } = string.Empty;
 
-        public string Title = string.Empty;
-        public string Artist = String.Empty;
-        public string Barcode = String.Empty;
-        public AudioType AudioType = AudioType.NONE;
-        public REM REM = new REM();
-        public List<TrackInfo> Track = new List<TrackInfo>();
+        public string Title { get; set; } = string.Empty;
+        public string Artist { get; set; } = String.Empty;
+        public string Barcode { get; set; } = String.Empty;
+        public AudioType AudioType { get; set; } = AudioType.NONE;
+        public REM REM { get; set; } = new REM();
+        public List<TrackInfo> Track { get; set; } = new List<TrackInfo>();
     }
 }
