@@ -28,7 +28,7 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -40,69 +40,69 @@
                 <local:Status/>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
-        <Grid Grid.Column="0" Grid.RowSpan="2">
+        <Grid Grid.Column="0" Grid.RowSpan="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <Grid VerticalAlignment="Top">
-                <Grid Height="60" Width="180" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
+                <Grid Height="60" Margin="10,10,10,0" VerticalAlignment="Top">
                     <Label x:Name="LabelTitle" Content="{Binding Title}" Margin="6,5,10,29"/>
                     <TextBox x:Name="TextTitle" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
-                <Grid Height="60" Width="180" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top">
+                <Grid Height="60" Margin="10,75,0,0" VerticalAlignment="Top">
                     <Label x:Name="LabelArtist" Content="{Binding Artist}" Margin="6,5,10,29"/>
                     <TextBox x:Name="TextArtist" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
-                <Grid Height="60" Width="180" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top">
+                <Grid Height="60" Margin="10,140,0,0" VerticalAlignment="Top">
                     <Label x:Name="LabelAlbum" Content="{Binding Album}" Margin="6,5,10,29"/>
                     <TextBox x:Name="TextAlbum" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
-                <Grid Height="60" Width="180" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top">
+                <Grid Height="60" Margin="10,205,0,0" VerticalAlignment="Top">
                     <Label x:Name="LabelComment" Content="{Binding Comment}" Margin="6,5,10,29"/>
                     <TextBox x:Name="TextComment" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
-                <Grid Width="180" HorizontalAlignment="Left" Margin="10,270,0,0" VerticalAlignment="Top" Height="60">
+                <Grid Margin="10,270,0,0" VerticalAlignment="Top" Height="60">
                     <Label x:Name="LabelGenre" Content="{Binding Genre}" Margin="6,5,8,29"/>
                     <TextBox x:Name="TextGenre" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,8,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
 
-                <Grid Width="180" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top" Height="60">
+                <Grid Margin="10,335,0,0" VerticalAlignment="Top" Height="60">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" >
                         <Label x:Name="LabelYear" Content="{Binding Year}" Margin="6,5,0,29" HorizontalAlignment="Left" Width="84"/>
-                        <TextBox x:Name="TextYear" materialDesign:HintAssist.Hint="(origin)" Height="23" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="74" Margin="10,0,6,6"/>
+                        <TextBox x:Name="TextYear" materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10,0,6,6"/>
                     </Grid>
                     <Grid Grid.Column="1">
                         <Label x:Name="LabelTrack" Content="{Binding Track}" Margin="2,5,0,29" Width="88" HorizontalAlignment="Left"/>
-                        <TextBox x:Name="TextTrack" materialDesign:HintAssist.Hint="(origin)" Height="23" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="74" Margin="6,0,10,6"/>
+                        <TextBox x:Name="TextTrack" materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="6,0,10,6"/>
                     </Grid>
                 </Grid>
 
-                <Grid Width="180" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top" Height="60">
+                <Grid Margin="10,400,0,0" VerticalAlignment="Top" Height="60">
                     <Label x:Name="LabelAlbumArtist" Content="{Binding AlbumArtist}" Margin="6,5,10,29"/>
                     <TextBox x:Name="TextAlbumArtist" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
 
-                <Grid Width="180" HorizontalAlignment="Left" Margin="10,465,0,0" VerticalAlignment="Top" Height="60">
+                <Grid Margin="10,465,0,0" VerticalAlignment="Top" Height="60">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" >
                         <Label x:Name="LabelComposer" Content="{Binding Composer}" Margin="6,5,0,29" HorizontalAlignment="Left" Width="84"/>
-                        <TextBox x:Name="TextComposer" materialDesign:HintAssist.Hint="(origin)" Height="23" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="74" Margin="10,0,6,6"/>
+                        <TextBox x:Name="TextComposer" materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10,0,6,6"/>
                     </Grid>
                     <Grid Grid.Column="1">
                         <Label x:Name="LabelDiscNum" Content="{Binding DiscNum}" Margin="2,5,0,29" Width="88" HorizontalAlignment="Left"/>
-                        <TextBox x:Name="TextDiscNum" materialDesign:HintAssist.Hint="(origin)" Height="23" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="74" Margin="6,0,10,6"/>
+                        <TextBox x:Name="TextDiscNum" materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="6,0,10,6" d:IsLocked="True"/>
                     </Grid>
                 </Grid>
 
-                <Grid Width="180" HorizontalAlignment="Left" Margin="10,530,0,0" VerticalAlignment="Top" Height="166">
+                <Grid Margin="10,530,0,0" VerticalAlignment="Top" Height="166">
                     <Label x:Name="LabelAlbumArt" Content="{Binding AlbumArt}" Margin="6,5,10,0" Height="23" VerticalAlignment="Top"/>
-                    <Grid Margin="10,36,50,10">
-                        <Border BorderBrush="Black" BorderThickness="1,1,1,1">
-                            <Image x:Name="image"/>
+                    <Grid Margin="6,33,10,-33">
+                        <Border BorderBrush="Black" BorderThickness="1,1,1,1" Margin="0,0,124,-6" Width="150" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Image x:Name="image" Height="150" Width="150"/>
                         </Border>
                     </Grid>
                 </Grid>
@@ -167,23 +167,21 @@
             </ListView.View>
         </ListView>
         <Grid Grid.Column="1" Grid.Row="1">
-            <Button Click="Button_Click" HorizontalAlignment="Left" Margin="0,9" Width="289"/>
             <Button
-                Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                Width="120"
+                Style="{DynamicResource PrimaryHueMidBrush}"
+                Width="150" HorizontalAlignment="Right" Margin="0,9,10,9" Click="Button_Click_1"
                 >
-                Tag All Save
+                일괄 저장
             </Button>
             <Button
-                Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                Width="120"
-                ToolTip="Resource name: MaterialDesignRaisedAccentButton" HorizontalAlignment="Right" Margin="0,0,149,10" VerticalAlignment="Bottom"
+                Style="{DynamicResource PrimaryHueMidBrush}"
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton" Margin="236,0,182,10" VerticalAlignment="Bottom"
                 >
-                Get Tag Info
+                태그 정보 가져오기
             </Button>
         </Grid>
 
-            <!--
+        <!--
         <Grid Height="60" Width="180" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
             <Label x:Name="LabelTitle" Content="{Binding Title}" Margin="6,5,10,29"/>
             <TextBox x:Name="TextTitle" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>

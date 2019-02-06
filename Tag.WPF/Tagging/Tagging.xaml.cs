@@ -29,18 +29,7 @@ namespace Tag.WPF
             Setting.Global.Language.Load("Kor.lang");
             DataContext = viewModel = new TaggingViewModel();
         }
-
-        private async void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var view = new Status
-            {
-                
-            };
-            var result = await DialogHost.Show(view,ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
-
-            //check the result...
-            Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
-        }
+        
 
         private void ExtendedOpenedEventHandler(object sender, DialogOpenedEventArgs eventargs)
         {
@@ -61,6 +50,18 @@ namespace Tag.WPF
                 .ContinueWith((t, _) => eventArgs.Session.Close(false), null,
                     TaskScheduler.FromCurrentSynchronizationContext());
 
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var view = new Status
+            {
+
+            };
+            var result = await DialogHost.Show(view, ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
+
+            //check the result...
+            Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
         }
     }
 }

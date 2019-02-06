@@ -36,7 +36,7 @@
 
             </TabItem>
             <TabItem Header="{Binding CueSplit}">
-
+                <mylib:CueSplit Width="Auto" Height="Auto"/>
             </TabItem>
             <TabItem Header="{Binding Tagging}">
                 <mylib:Tagging Width="Auto" Height="Auto"/>

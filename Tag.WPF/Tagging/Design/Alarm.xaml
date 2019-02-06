@@ -6,18 +6,18 @@
              xmlns:local="clr-namespace:Tag.WPF"
              xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
-             mc:Ignorable="d" Width="405.353" Height="182.314"
+             mc:Ignorable="d" Width="284" Height="128"
              Background="AliceBlue">
     <Grid>
-        <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}"
-                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}" Margin="199,0,0,25" VerticalAlignment="Bottom" d:LayoutOverrides="Height">
+        <Button BorderBrush="Gray" BorderThickness="1"  IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}"
+                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}" Margin="149,0,15,6" VerticalAlignment="Bottom" d:LayoutOverrides="Height" Width="120">
             <Button.CommandParameter>
                 <system:Boolean>True</system:Boolean>
             </Button.CommandParameter>
             ACCEPT
         </Button>
-        <Button IsCancel="True" Margin="10,0,0,25" Style="{DynamicResource MaterialDesignFlatButton}"
-                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}" VerticalAlignment="Bottom" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="158">
+        <Button BorderBrush="Gray" BorderThickness="1" IsCancel="True" Margin="15,0,0,6" Style="{DynamicResource MaterialDesignFlatButton}"
+                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment, Height" HorizontalAlignment="Left" Width="120">
             <Button.CommandParameter>
                 <system:Boolean>False</system:Boolean>
             </Button.CommandParameter>
