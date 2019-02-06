@@ -64,7 +64,7 @@ namespace Tag.WPF
             }
         }
 
-        private void Button_Copy_Click(object sender, RoutedEventArgs e)
+        private void CueFileOpen(object sender, RoutedEventArgs e)
         {
 
         }

@@ -13,5 +13,9 @@ namespace Tag.WPF
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Setting.Global.Language.Load("Kor.lang");
+        }
     }
 }

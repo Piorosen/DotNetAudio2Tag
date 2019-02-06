@@ -30,10 +30,9 @@ namespace Tag.WPF
             InitializeComponent();
 
             new PaletteHelper().ReplacePrimaryColor("grey");
-            Setting.Global.Language.Load("Kor.lang");
+            
             DataContext = viewModel = new MainWindowsViewModel();
-            AutoConverter a = new AutoConverter();
-            a.Run();
+            
         }
 
     }

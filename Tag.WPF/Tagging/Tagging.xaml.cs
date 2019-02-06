@@ -26,7 +26,6 @@ namespace Tag.WPF
         public Tagging()
         {
             InitializeComponent();
-            Setting.Global.Language.Load("Kor.lang");
             DataContext = viewModel = new TaggingViewModel();
         }
         
