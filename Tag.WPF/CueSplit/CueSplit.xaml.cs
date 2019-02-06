@@ -6,6 +6,11 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Position;
+using ToastNotifications.Messages;
+
 
 namespace Tag.WPF
 {
@@ -63,16 +68,20 @@ namespace Tag.WPF
                 }
             }
         }
-        private void Execute(object sender, RoutedEventArgs e)
+        private async void Execute(object sender, RoutedEventArgs e)
         {
-            viewModel.Execute();
+            await viewModel.Execute();
+            Application.notifier.ShowInformation("성공적으로 분리를 하였습니다.");
         }
-
+        
         private void CueFileOpen(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
-            dialog.Filter = "Cue (*.cue)|*.cue";
-            dialog.Multiselect = false;
+
+            System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog
+            {
+                Filter = "Cue (*.cue)|*.cue",
+                Multiselect = false
+            };
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 if (dialog.FileName != string.Empty)
