@@ -45,10 +45,8 @@ namespace Tag.WPF
 
         public TaggingViewModel()
         {
-            Items = new ObservableCollection<TaggingModel>
-            {
-                new TaggingModel { N = "123" }
-            };
+            Items = new ObservableCollection<TaggingModel>();
+            Items.Add(new TaggingModel { N = "123" });
         }
     }
 }

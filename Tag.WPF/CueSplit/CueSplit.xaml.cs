@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Tag.WPF
 {
@@ -20,9 +13,31 @@ namespace Tag.WPF
     /// </summary>
     public partial class CueSplit : UserControl
     {
+        CueSplitViewModel viewModel;
+
         public CueSplit()
         {
             InitializeComponent();
+            DataContext = viewModel = new CueSplitViewModel();
+
+
+        }
+        private void ItemsControl_DragEnter(object sender, System.Windows.DragEventArgs e)
+        {
+            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (var path in items)
+            {
+                var t = Path.GetExtension(path).ToLower();
+                if (t == ".cue")
+                {
+                    viewModel.AddFile(path);
+                }
+            }
+        }
+
+        private void Button_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.Items.Add(new CueSplitModel { Artist = "123123" });
         }
     }
 }

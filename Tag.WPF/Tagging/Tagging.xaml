@@ -116,7 +116,6 @@
                 <GridView>
                     <GridViewColumn
                         DisplayMemberBinding="{Binding N}"
-                       
                         Header="{Binding FileName}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding N}"

@@ -124,9 +124,9 @@
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.SettingTab = new System.Windows.Forms.TabPage();
-            this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
-            this.materialSingleLineTextField3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialSingleLineTextField3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
             this.TabControl.SuspendLayout();
             this.AutoTab.SuspendLayout();
             this.CuesplitTab.SuspendLayout();
@@ -924,8 +924,9 @@
             this.TagColumnFixed});
             this.TagListStatus.Depth = 0;
             this.TagListStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TagListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.TagListStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.TagListStatus.FullRowSelect = true;
+            this.TagListStatus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.TagListStatus.Location = new System.Drawing.Point(0, 0);
             this.TagListStatus.MouseLocation = new System.Drawing.Point(-1, -1);
             this.TagListStatus.MouseState = MaterialSkin.MouseState.OUT;
@@ -935,6 +936,7 @@
             this.TagListStatus.TabIndex = 0;
             this.TagListStatus.UseCompatibleStateImageBehavior = false;
             this.TagListStatus.View = System.Windows.Forms.View.Details;
+            this.TagListStatus.SelectedIndexChanged += new System.EventHandler(this.TagListStatus_SelectedIndexChanged);
             // 
             // TagColumnFileName
             // 
@@ -1414,23 +1416,21 @@
             this.SettingTab.TabIndex = 3;
             this.SettingTab.Text = "Setting";
             // 
-            // materialCheckBox1
+            // materialRaisedButton1
             // 
-            this.materialCheckBox1.AutoSize = true;
-            this.materialCheckBox1.Checked = true;
-            this.materialCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.materialCheckBox1.Depth = 0;
-            this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialCheckBox1.Location = new System.Drawing.Point(16, 199);
-            this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckBox1.Name = "materialCheckBox1";
-            this.materialCheckBox1.Ripple = true;
-            this.materialCheckBox1.Size = new System.Drawing.Size(93, 30);
-            this.materialCheckBox1.TabIndex = 3;
-            this.materialCheckBox1.Text = "DarkMode";
-            this.materialCheckBox1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.AutoSize = true;
+            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Icon = null;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(410, 52);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(195, 36);
+            this.materialRaisedButton1.TabIndex = 5;
+            this.materialRaisedButton1.Text = "materialRaisedButton1";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.MaterialRaisedButton1_Click_1);
             // 
             // materialSingleLineTextField3
             // 
@@ -1450,21 +1450,23 @@
             this.materialSingleLineTextField3.Text = "materialSingleLineTextField3";
             this.materialSingleLineTextField3.UseSystemPasswordChar = false;
             // 
-            // materialRaisedButton1
+            // materialCheckBox1
             // 
-            this.materialRaisedButton1.AutoSize = true;
-            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(410, 52);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(195, 36);
-            this.materialRaisedButton1.TabIndex = 5;
-            this.materialRaisedButton1.Text = "materialRaisedButton1";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
-            this.materialRaisedButton1.Click += new System.EventHandler(this.MaterialRaisedButton1_Click_1);
+            this.materialCheckBox1.AutoSize = true;
+            this.materialCheckBox1.Checked = true;
+            this.materialCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.materialCheckBox1.Depth = 0;
+            this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
+            this.materialCheckBox1.Location = new System.Drawing.Point(16, 199);
+            this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckBox1.Name = "materialCheckBox1";
+            this.materialCheckBox1.Ripple = true;
+            this.materialCheckBox1.Size = new System.Drawing.Size(93, 30);
+            this.materialCheckBox1.TabIndex = 3;
+            this.materialCheckBox1.Text = "DarkMode";
+            this.materialCheckBox1.UseVisualStyleBackColor = true;
             // 
             // Audio2Tag
             // 
