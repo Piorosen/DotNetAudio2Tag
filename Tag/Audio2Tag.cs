@@ -499,5 +499,10 @@ namespace Tag
         {
 
         }
+
+        private void OpenFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
     }
 }

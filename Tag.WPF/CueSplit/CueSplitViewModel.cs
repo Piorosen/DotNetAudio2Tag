@@ -16,12 +16,20 @@ namespace Tag.WPF
         public string CueFileOpen { get; private set; } = Setting.Global.Language.CueFileOpen;
         public string CueFileSplitExecute { get; private set; } = Setting.Global.Language.CueFileSplitExecute;
 
-
+        int _TaskPercent = 0;
+        public int TaskPercent
+        {
+            get { return _TaskPercent; }
+            set
+            {
+                _TaskPercent = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ObservableCollection<CueSplitModel> Items { get; set; }
 
-        private Tag.Core.Cue.CueSpliter cueSpliter;
-        
+        private readonly Tag.Core.Cue.CueSpliter cueSpliter;        
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string Name = "")
         {
@@ -34,7 +42,7 @@ namespace Tag.WPF
             cueSpliter = new Core.Cue.CueSpliter();
         }
         
-        public void Change(int index, CueSplitModel newdata)
+        void Change(int index, CueSplitModel newdata)
         {
             Items.RemoveAt(index);
             Items.Insert(index, newdata);
@@ -74,5 +82,27 @@ namespace Tag.WPF
                 index++;
             }
         }
+
+        bool isTask = false;
+        public async Task Execute()
+        {
+            if (isTask == false)
+            {
+                TaskPercent = 0;
+                isTask = true;
+                await Task.Run(() =>
+                {
+                    foreach (var value in cueSpliter.Execute())
+                    {
+                        if (TaskPercent < value)
+                        {
+                            TaskPercent = value;
+                        }
+                    }
+                    isTask = false;
+                });
+            }
+        }
+
     }
 }

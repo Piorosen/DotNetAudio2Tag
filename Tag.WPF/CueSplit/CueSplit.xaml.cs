@@ -63,10 +63,23 @@ namespace Tag.WPF
                 }
             }
         }
+        private async void Execute(object sender, RoutedEventArgs e)
+        {
+            viewModel.Execute();
+        }
 
         private void CueFileOpen(object sender, RoutedEventArgs e)
         {
-
+            System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
+            dialog.Filter = "Cue (*.cue)|*.cue";
+            dialog.Multiselect = false;
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (dialog.FileName != string.Empty)
+                {
+                    viewModel.AddFile(dialog.FileName);
+                }
+            }
         }
     }
 }

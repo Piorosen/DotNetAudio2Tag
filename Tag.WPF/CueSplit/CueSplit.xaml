@@ -48,22 +48,23 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <TextBlock
-                                Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
-                                Text="{Binding Index, StringFormat={}{0:00}}" 
-                                HorizontalAlignment="Center"/>
+                                    Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Index, StringFormat={}{0:00}}" 
+                                    HorizontalAlignment="Center"/>
                                 <TextBlock
-                                Grid.Column="1" Grid.Row="0" 
-                                Text="{Binding Title}"
+                                    Grid.Column="1" Grid.Row="0" 
+                                    Text="{Binding Title}"
                                 />
                                 <TextBlock
-                                Grid.Column="1" Grid.Row="1" 
-                                Text="{Binding Artist}"
+                                    Grid.Column="1" Grid.Row="1" 
+                                    Text="{Binding Artist}"
                                 />
                                 <TextBlock
-                                Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" 
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Text="{Binding DurationMS}"
+                                    Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" 
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding DurationMS}"
                                 />
                                 <TextBlock
                                 Grid.Column="3" Grid.Row="0" Grid.RowSpan="2"
@@ -90,8 +91,22 @@
         </Border>
 
 
-        <Button Content="{Binding CueFileSplitExecute}" HorizontalAlignment="Right" Margin="0,10,10,8" Grid.Row="1" Width="127"/>
-        <Button Content="{Binding CueFileOpen}" HorizontalAlignment="Right" Margin="0,10,142,8" Grid.Row="1" Width="142" Click="CueFileOpen"/>
-        
+        <Button
+            Content="{Binding CueFileSplitExecute}"
+            HorizontalAlignment="Right"
+            Margin="0,10,10,8"
+            Grid.Row="1"
+            Width="127"
+            Click="Execute"
+            />
+        <Button
+            Content="{Binding CueFileOpen}"
+            HorizontalAlignment="Right"
+            Margin="0,10,142,8"
+            Grid.Row="1"
+            Width="142"
+            Click="CueFileOpen"/>
+        <ProgressBar Value="{Binding TaskPercent}" Height="Auto" Grid.Row="1" Margin="10,15.5,289,15.5"/>
+
     </Grid>
 </UserControl>

@@ -45,6 +45,9 @@ namespace Tag.Core.Cue.Split
 
         private IEnumerable<int> TrimFlacFile(FlakeReader reader, FlakeWriter writer, int startPos, int endPos, AudioPCMConfig conf)
         {
+            endPos = endPos > reader.Length ? (int)reader.Length : endPos;
+            startPos = startPos > 0 ? startPos : 0;
+
             int percent = 0;
 
             reader.Position = startPos;
@@ -67,14 +70,14 @@ namespace Tag.Core.Cue.Split
                         {
                             break;
                         }
-                        if (percent == (bytesToRead / (endPos - startPos)))
-                        {
-                            yield return percent;
-                        }
-                        else
-                        {
-                            percent = (bytesToRead / (endPos - startPos));
-                        }
+                    }
+                    if (percent == (int)(reader.Position * 100.0 / endPos))
+                    {
+                        yield return percent;
+                    }
+                    else
+                    {
+                        percent = (int)(reader.Position * 100.0 / endPos);
                     }
                 }
             }

@@ -16,7 +16,7 @@ namespace Tag.Core.Cue.Split
                 int percent = 0;
                 foreach (var trackinfo in info.Track)
                 {
-                    using (WaveFileWriter writer = new WaveFileWriter(info.SavePath + $"{trackinfo.Track + 1}. " + trackinfo.Title + ".wav", reader.WaveFormat))
+                    using (WaveFileWriter writer = new WaveFileWriter(info.SavePath + $"{trackinfo.Track}. " + trackinfo.Title + ".wav", reader.WaveFormat))
                     {
 
                         double BytesPerMillisecond = reader.WaveFormat.AverageBytesPerSecond / 1000.0;
@@ -38,6 +38,9 @@ namespace Tag.Core.Cue.Split
         
         private IEnumerable<int> TrimWavFile(WaveFileReader reader, WaveFileWriter writer, int startPos, int endPos)
         {
+            endPos = endPos > reader.Length ? (int)reader.Length : endPos;
+            startPos = startPos > 0 ? startPos : 0;
+
             int percent = 0;
 
             reader.Position = startPos;
@@ -54,16 +57,17 @@ namespace Tag.Core.Cue.Split
                     {
                         writer.Write(buffer, 0, bytesRead);
                     }
-                    if (percent == (bytesToRead / (endPos - startPos)))
-                    {
-                        yield return percent;
-                    }
-                    else
-                    {
-                        percent = (bytesToRead / (endPos - startPos));
-                    }
                 }
-                yield return (int)((reader.Position / (double)(endPos - startPos)) * 100);
+                var value = (int)((reader.Position - startPos) * 100.0 / (endPos - startPos));
+                if (percent == value)
+                {
+                    continue;
+                }
+                if (percent != value)
+                {
+                    percent = value;
+                    yield return percent;
+                }
             }
             yield return 100;
         }
