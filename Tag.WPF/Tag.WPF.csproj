@@ -78,6 +78,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Tagging\Design\Alarm - 복사본.xaml.cs">
+      <DependentUpon>Alarm - 복사본.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tagging\Design\Alarm.xaml.cs">
       <DependentUpon>Alarm.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Tagging\Design\Alarm - 복사본.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Tagging\Design\Alarm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
