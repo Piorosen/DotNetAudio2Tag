@@ -36,7 +36,6 @@ namespace Tag.Core.Cue
                 reader = CatalogDataReaderFactory
                             .GetInstance()
                             .GetCatalogDataReader(cuePath);
-
                 switch (reader.Extension)
                 {
                     case AudioType.FLAC:
@@ -125,25 +124,21 @@ namespace Tag.Core.Cue
                 else if (CueList[index].AudioType == AudioType.FLAC)
                 {
                     FlacSplit flac = new FlacSplit();
-                    foreach (var track in CueList[index].Track)
+                    foreach (var value in flac.Execute(CueList[index]))
                     {
-                        foreach (var value in flac.Execute(CueList[index]))
-                        {
-                            yield return (int)((value / (index + 1)) * cueCount);
-                        }
+                        yield return (int)((value / (index + 1)) * cueCount);
                     }
                 }
                 // 커스텀 Spliter 사용함.
                 else if (CueList[index].AudioType == AudioType.NONE)
                 {
                     UserSplit user = new UserSplit();
-                    foreach (var track in CueList[index].Track)
+
+                    foreach (var value in user.Execute(CueList[index]))
                     {
-                        foreach (var value in user.Execute(CueList[index]))
-                        {
-                            yield return (int)((value / (index + 1)) * cueCount);
-                        }
+                        yield return (int)((value / (index + 1)) * cueCount);
                     }
+
                 }
             }
             yield return 100;

@@ -82,16 +82,16 @@ namespace Tag.WPF
                 index++;
             }
         }
-
+        delegate bool Test();
         bool isTask = false;
         public async Task Execute()
         {
-            if (isTask == false)
+            await Task.Factory.StartNew(() =>
             {
-                TaskPercent = 0;
-                isTask = true;
-                await Task.Run(() =>
+                if (isTask == false)
                 {
+                    TaskPercent = 0;
+                    isTask = true;
                     foreach (var value in cueSpliter.Execute())
                     {
                         if (TaskPercent < value)
@@ -100,9 +100,8 @@ namespace Tag.WPF
                         }
                     }
                     isTask = false;
-                });
-            }
+                }
+            }).ConfigureAwait(true);
         }
-
     }
 }

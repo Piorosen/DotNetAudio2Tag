@@ -27,9 +27,9 @@ namespace Tag.Core.Cue.Split
                     var config = b.PCM;
                     using (FlakeWriter a = new FlakeWriter(info.SavePath + $"{ trackinfo.Track }. " + trackinfo.Title + ".flac", config))
                     {
-                        int start = (int)(trackinfo.StartPosition * BytesPerMillisecond / 4.0);
+                        int start = (int)(trackinfo.StartPosition * BytesPerMillisecond / 8.0);
                         start -= start % config.BlockAlign;
-                        int end = (int)((trackinfo.StartPosition + trackinfo.DurationMS) * BytesPerMillisecond / 4.0);
+                        int end = (int)((trackinfo.StartPosition + trackinfo.DurationMS) * BytesPerMillisecond / 8.0);
                         end -= end % config.BlockAlign;
 
                         foreach (int value in TrimFlacFile(b, a, start, end, config))
@@ -71,13 +71,15 @@ namespace Tag.Core.Cue.Split
                             break;
                         }
                     }
-                    if (percent == (int)(reader.Position * 100.0 / endPos))
+                    var value = (int)((reader.Position - startPos) * 100.0 / (endPos - startPos));
+                    if (percent == value)
                     {
-                        yield return percent;
+                        continue;
                     }
-                    else
+                    if (percent != value)
                     {
-                        percent = (int)(reader.Position * 100.0 / endPos);
+                        percent = value;
+                        yield return percent;
                     }
                 }
             }

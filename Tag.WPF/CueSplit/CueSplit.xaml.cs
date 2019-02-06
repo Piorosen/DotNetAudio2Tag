@@ -63,7 +63,7 @@ namespace Tag.WPF
                 }
             }
         }
-        private async void Execute(object sender, RoutedEventArgs e)
+        private void Execute(object sender, RoutedEventArgs e)
         {
             viewModel.Execute();
         }

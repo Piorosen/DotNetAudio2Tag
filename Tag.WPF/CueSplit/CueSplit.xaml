@@ -106,7 +106,9 @@
             Grid.Row="1"
             Width="142"
             Click="CueFileOpen"/>
-        <ProgressBar Value="{Binding TaskPercent}" Height="Auto" Grid.Row="1" Margin="10,15.5,289,15.5"/>
+        <ProgressBar Value="{Binding TaskPercent}" Height="Auto" Grid.Row="1" Margin="10,16,345,16"/>
+        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding TaskPercent, StringFormat={}{0:0}%}" 
+                   Grid.Row="1" VerticalAlignment="Top" Margin="0,16,289,0" Width="51" TextAlignment="Center"/>
 
     </Grid>
 </UserControl>
