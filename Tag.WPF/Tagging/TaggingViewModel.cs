@@ -32,7 +32,7 @@ namespace Tag.WPF
         public string Length => Setting.Global.Language.Length;
         public string Fixed => Setting.Global.Language.Fixed;
 
-        
+         
 
         public ObservableCollection<TaggingModel> Items { get; set; }
         

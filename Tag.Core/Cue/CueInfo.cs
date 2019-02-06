@@ -1,4 +1,5 @@
 ﻿using ATL.CatalogDataReaders;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,9 @@ namespace Tag.Core.Cue
         public string Title { get; set; } = string.Empty;
         public string Artist { get; set; } = String.Empty;
         public string Barcode { get; set; } = String.Empty;
+
         public AudioType AudioType { get; set; } = AudioType.NONE;
+        public WaveFormat WaveFormat { get; set; } = new WaveFormat();
         public REM REM { get; set; } = new REM();
         public List<TrackInfo> Track { get; set; } = new List<TrackInfo>();
     }

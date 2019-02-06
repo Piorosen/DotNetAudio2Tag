@@ -11,18 +11,18 @@ namespace Tag.WPF
     {
         public ObservableCollection<CueSplitModel> Items { get; set; }
 
+        private Tag.Core.Cue.CueSpliter cueSpliter;
+
         public CueSplitViewModel()
         {
-            Items = new ObservableCollection<CueSplitModel>
-            {
-                   new CueSplitModel{ Artist= "123123" }
-                
-            };
+            Items = new ObservableCollection<CueSplitModel>();
+            cueSpliter = new Core.Cue.CueSpliter();
         }
 
         public void AddFile(string filePath)
         {
-            Items.Add(new CueSplitModel { Artist = "123123" });
+            cueSpliter.AddFile(filePath);
+            
         }
     }
 }

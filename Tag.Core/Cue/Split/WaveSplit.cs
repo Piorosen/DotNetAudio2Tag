@@ -9,29 +9,39 @@ namespace Tag.Core.Cue.Split
 {
     public class WaveSplit : ISplit
     {
-        public IEnumerable<int> Execute(string filePath, string resultPath, TrackInfo trackinfo)
+        public IEnumerable<int> Execute(CueInfo info)
         {
-            using (WaveFileReader reader = new WaveFileReader(filePath))
+            using (WaveFileReader reader = new WaveFileReader(info.WavPath))
             {
-                using (WaveFileWriter writer = new WaveFileWriter(resultPath + $"{trackinfo.Track + 1}. " + trackinfo.Title + ".wav", reader.WaveFormat))
+                int percent = 0;
+                foreach (var trackinfo in info.Track)
                 {
-                    double BytesPerMillisecond = reader.WaveFormat.AverageBytesPerSecond / 1000.0;
-                    int start = (int)(trackinfo.StartPosition * BytesPerMillisecond);
-                    start -= start % reader.WaveFormat.BlockAlign;
-
-                    int end = (int)((trackinfo.StartPosition + trackinfo.DurationMS) * BytesPerMillisecond);
-                    end -= end % reader.WaveFormat.BlockAlign;
-                    foreach (int value in TrimWavFile(reader, writer, start, end))
+                    using (WaveFileWriter writer = new WaveFileWriter(info.SavePath + $"{trackinfo.Track + 1}. " + trackinfo.Title + ".wav", reader.WaveFormat))
                     {
-                        yield return value;
+
+                        double BytesPerMillisecond = reader.WaveFormat.AverageBytesPerSecond / 1000.0;
+                        int start = (int)(trackinfo.StartPosition * BytesPerMillisecond);
+                        start -= start % reader.WaveFormat.BlockAlign;
+
+                        int end = (int)((trackinfo.StartPosition + trackinfo.DurationMS) * BytesPerMillisecond);
+                        end -= end % reader.WaveFormat.BlockAlign;
+                        foreach (int value in TrimWavFile(reader, writer, start, end))
+                        {
+                            yield return (percent + value) / info.Track.Count;
+                        }
                     }
+                    percent += 100;
                 }
             }
+            yield return 100;
         }
         
         private IEnumerable<int> TrimWavFile(WaveFileReader reader, WaveFileWriter writer, int startPos, int endPos)
         {
+            int percent = 0;
+
             reader.Position = startPos;
+
             byte[] buffer = new byte[reader.WaveFormat.BlockAlign * 100];
             while (reader.Position < endPos)
             {
@@ -43,6 +53,14 @@ namespace Tag.Core.Cue.Split
                     if (bytesRead > 0)
                     {
                         writer.Write(buffer, 0, bytesRead);
+                    }
+                    if (percent == (bytesToRead / (endPos - startPos)))
+                    {
+                        yield return percent;
+                    }
+                    else
+                    {
+                        percent = (bytesToRead / (endPos - startPos));
                     }
                 }
                 yield return (int)((reader.Position / (double)(endPos - startPos)) * 100);

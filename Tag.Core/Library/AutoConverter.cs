@@ -1,5 +1,8 @@
-﻿using System;
+﻿using NAudio.Flac;
+using NAudio.Wave;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +22,11 @@ namespace Tag.Core
 
     public class AutoConverter
     {
+        public void Run()
+        {
+            string file = @"D:\data\test.flac";
+            var a = new AudioFileReader(file).WaveFormat;
+        }
     //    readonly CueSpliter cueSpliter = new CueSpliter();
     //    readonly Wav2Mp3Converter wav2Mp3 = new Wav2Mp3Converter();
     //    readonly Mp3Tagging tagging = new Mp3Tagging();

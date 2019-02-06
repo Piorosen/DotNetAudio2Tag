@@ -8,6 +8,6 @@ namespace Tag.Core.Cue.Split
 {
     interface ISplit
     {
-        IEnumerable<int> Execute(string filePath, string resultPath, TrackInfo trackinfo);
+        IEnumerable<int> Execute(CueInfo info);
     }
 }

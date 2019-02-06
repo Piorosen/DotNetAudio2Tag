@@ -68,7 +68,8 @@ namespace Tag.Core.Cue
                     Date = reader.Date,
                     DiscId = reader.DiscId,
                     Genre = reader.Genre
-                }
+                },
+                WaveFormat = new AudioFileReader(wavePath).WaveFormat
             };
             double StartPosition = 0.0;
             foreach (var value in reader.Tracks)
@@ -121,21 +122,18 @@ namespace Tag.Core.Cue
                 if (list.AudioType == AudioType.WAV)
                 {
                     WaveSplit wav = new WaveSplit();
-                    foreach (var track in list.Track)
-                    {
-                        foreach (var value in wav.Execute(list.WavPath, list.SavePath, track))
+                        foreach (var value in wav.Execute(list))
                         {
 
                         }
                         yield return (int)((100.0 / trackCount) * count);
-                    }
                 }
                 else if (list.AudioType == AudioType.FLAC)
                 {
                     FlacSplit flac = new FlacSplit();
                     foreach (var track in list.Track)
                     {
-                        foreach (var value in flac.Execute(list.WavPath, list.SavePath, track))
+                        foreach (var value in flac.Execute(list))
                         {
 
                         }
@@ -148,7 +146,7 @@ namespace Tag.Core.Cue
                     UserSplit user = new UserSplit();
                     foreach (var track in list.Track)
                     {
-                        foreach (var value in user.Execute(list.WavPath, list.SavePath, track))
+                        foreach (var value in user.Execute(list))
                         {
 
                         }

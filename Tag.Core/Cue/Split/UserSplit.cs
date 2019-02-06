@@ -14,7 +14,7 @@ namespace Tag.Core.Cue.Split
             System.Diagnostics.Process.Start(fileName, arg);
         }
 
-        public IEnumerable<int> Execute(string filePath, string resultPath, TrackInfo trackinfo)
+        public IEnumerable<int> Execute(CueInfo info)
         {
             throw new NotImplementedException();
         }
