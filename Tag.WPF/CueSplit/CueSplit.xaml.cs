@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Tag.WPF
 {
@@ -19,10 +20,12 @@ namespace Tag.WPF
         {
             InitializeComponent();
             DataContext = viewModel = new CueSplitViewModel();
-
+            
 
         }
-        private void ItemsControl_DragEnter(object sender, System.Windows.DragEventArgs e)
+        
+
+        private void ItemDragDrop(object sender, DragEventArgs e)
         {
             string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (var path in items)
@@ -34,10 +37,31 @@ namespace Tag.WPF
                 }
             }
         }
-
-        private void Button_Copy_Click(object sender, RoutedEventArgs e)
+        private void ItemDragEnter(object sender, DragEventArgs e)
         {
-            viewModel.Items.Add(new CueSplitModel { Artist = "123123" });
+            e.Effects = DragDropEffects.Copy;
+        }
+
+        private void ItemMouseEnter(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+
+        }
+
+        private void ItemMouseLeave(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Arrow;
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed && e.ClickCount == 1)
+            {
+                if (sender is Border)
+                {
+                    viewModel.Click((int)(sender as Border).Tag - 1);
+                }
+            }
         }
     }
 }

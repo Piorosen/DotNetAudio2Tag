@@ -161,7 +161,7 @@ namespace Tag.Core.Cue
 
         public List<CueInfo> List()
         {
-            throw new NotImplementedException();
+            return CueList;
         }
     }
 }
