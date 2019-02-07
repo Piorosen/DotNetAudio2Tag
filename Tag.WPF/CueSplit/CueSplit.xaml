@@ -126,7 +126,6 @@
             Content="{Binding CueFileSplitExecute}"
             HorizontalAlignment="Right"
             Margin="0,9,10,9"
-            Grid.Row="1"
             Width="127"
             Click="Execute"
             />
@@ -134,12 +133,11 @@
             Content="{Binding CueFileOpen}"
             HorizontalAlignment="Right"
             Margin="0,9,142,9"
-            Grid.Row="1"
             Width="142"
             Click="CueFileOpen"/>
-        <ProgressBar Value="{Binding TaskPercent}" Height="Auto" Grid.Row="1" Margin="10,16,345,16"/>
+        <ProgressBar Value="{Binding TaskPercent}" Height="Auto" Margin="10,16,345,16"/>
         <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding TaskPercent, StringFormat={}{0:0}%}" 
-                   Grid.Row="1" VerticalAlignment="Top" Margin="0,16,289,0" Width="51" TextAlignment="Center"/>
+                    VerticalAlignment="Top" Margin="0,16,289,0" Width="51" TextAlignment="Center"/>
         </Grid>
     </Grid>
 </UserControl>
