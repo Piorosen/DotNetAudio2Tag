@@ -20,9 +20,12 @@ namespace Tag.WPF
     /// </summary>
     public partial class Convert : UserControl
     {
+        ConvertViewModel viewModel;
         public Convert()
         {
             InitializeComponent();
+            DataContext = viewModel = new ConvertViewModel();
+            
         }
     }
 }
