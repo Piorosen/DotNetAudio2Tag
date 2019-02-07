@@ -14,6 +14,7 @@ namespace Tag.Core.Conv.Library
     {
         private IEnumerable<int> Execute(string filePath, string resultPath, LAMEPreset preset = LAMEPreset.ABR_320 | LAMEPreset.V0)
         {
+            int percent = 0;
             using (var wav = new WaveFileReader(filePath))
             {
                 using (var mp3 = new LameMP3FileWriter($"{resultPath}", wav.WaveFormat, preset))
@@ -30,6 +31,17 @@ namespace Tag.Core.Conv.Library
                             {
                                 mp3.Write(buffer, 0, bytesRead);
                             }
+                        }
+
+                        var value = (int)(wav.Position * 100.0 / wav.Length);
+                        if (percent == value)
+                        {
+                            continue;
+                        }
+                        if (percent != value)
+                        {
+                            percent = value;
+                            yield return percent;
                         }
                     }
                     // wav.CopyTo(mp3);
@@ -50,8 +62,8 @@ namespace Tag.Core.Conv.Library
                     preset |= (LAMEPreset)value;
                 }
             }
-
-            foreach (var value in Execute(info.FilePath, info.ResultPath, preset))
+            
+            foreach (var value in Execute(info.FilePath, info.ResultPath, preset == 0 ? LAMEPreset.ABR_320 | LAMEPreset.V0 : preset))
             {
                 yield return value;
             }
