@@ -16,6 +16,7 @@ namespace Tag.Core.Conv
 
         public string FileName => Path.GetFileNameWithoutExtension(FilePath);
         public string Extension => Path.GetExtension(FilePath);
+        public string FileNamePlus => Path.GetFileName(FilePath);
         public string Directory => Path.GetDirectoryName(FilePath);
         
         public List<object> Parameter { get; set; } = new List<object>();

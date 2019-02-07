@@ -6,15 +6,17 @@
              xmlns:local="clr-namespace:Tag.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid AllowDrop="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <ListView>
+        <ListView Margin="5" DragEnter="ItemDragEnter" Drop="ItemDragDrop"
+                  AllowDrop="True"
+                  ItemsSource="{Binding ConvInfos}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding FileName}"
+                    <GridViewColumn DisplayMemberBinding="{Binding FileNamePlus}"
                                     Header="파일 이름"/>
                 </GridView>
             </ListView.View>
@@ -29,9 +31,8 @@
                     <TreeView
                     ItemsSource="{Binding ConvertExtension}"
                     RenderTransformOrigin="0.5,0.5"
-
+                        SelectedItemChanged="TreeView_SelectedItemChanged"
                     >
-
                         <TreeView.Resources>
                             <HierarchicalDataTemplate
                         DataType="{x:Type local:ConvertModel}"

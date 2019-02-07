@@ -11,10 +11,12 @@ namespace Tag.WPF
     {
         public string Title { get; set; }
         public LAMEPreset Preset { get; set; }
-        public PresetModel(string t, LAMEPreset p)
+        public int Index = 0;
+        public PresetModel(string t, LAMEPreset p, int index)
         {
             Title = t;
             Preset = p;
+            Index = index;
         }
     }
 }
