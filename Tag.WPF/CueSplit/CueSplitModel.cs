@@ -22,7 +22,7 @@ namespace Tag.WPF
             this.StartPosition = info.StartPosition;
             this.Title = info.Title;
             this.Track = info.Track;
-            this.MemberwiseClone();
+            this.TimeOffSet = info.TimeOffSet;
         }
     }
 }

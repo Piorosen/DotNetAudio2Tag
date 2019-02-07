@@ -80,7 +80,8 @@ namespace Tag.Core.Cue
                     DurationMS = value.DurationMs,
                     Title = value.Title,
                     Track = value.TrackNumber,
-                    StartPosition = StartPosition
+                    StartPosition = StartPosition,
+                    TimeOffSet = value.TimeOffSet
                 });
                 StartPosition += value.DurationMs;
             }

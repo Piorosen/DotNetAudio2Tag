@@ -70,7 +70,7 @@
                                 Grid.Column="3" Grid.Row="0" Grid.RowSpan="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                Text="{Binding StartPosition}"
+                                Text="{Binding TimeOffSet}"
                                 />
                             </Grid>
                         </Border>
@@ -94,7 +94,7 @@
         <Button
             Content="{Binding CueFileSplitExecute}"
             HorizontalAlignment="Right"
-            Margin="0,10,10,8"
+            Margin="0,9,10,9"
             Grid.Row="1"
             Width="127"
             Click="Execute"
@@ -102,7 +102,7 @@
         <Button
             Content="{Binding CueFileOpen}"
             HorizontalAlignment="Right"
-            Margin="0,10,142,8"
+            Margin="0,9,142,9"
             Grid.Row="1"
             Width="142"
             Click="CueFileOpen"/>

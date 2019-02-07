@@ -13,6 +13,8 @@ namespace Tag.Core.Cue
 
         public double StartPosition { get; set; } = 0.0;
         public double DurationMS { get; set; } = 0.0;
+
+        public int TimeOffSet { get; set; } = 0;
         public int Track { get; set; } = 0;
     }
     public class REM
