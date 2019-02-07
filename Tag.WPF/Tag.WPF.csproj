@@ -93,10 +93,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Convert\ConvertModel.cs" />
+    <Compile Include="Convert\Status\ConvertStatus.xaml.cs">
+      <DependentUpon>ConvertStatus.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Convert\ConvertViewModel.cs" />
     <Compile Include="Convert\Convert.xaml.cs">
       <DependentUpon>Convert.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Convert\Status\ConvertStatusModel.cs" />
+    <Compile Include="Convert\Status\ConvertStatusViewModel.cs" />
     <Compile Include="CueSplit\CueSplit.xaml.cs">
       <DependentUpon>CueSplit.xaml</DependentUpon>
     </Compile>
@@ -112,6 +117,10 @@
     <Compile Include="Tagging\TaggingModel.cs" />
     <Compile Include="Tagging\TaggingViewModel.cs" />
     <Page Include="Convert\Convert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Convert\Status\ConvertStatus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Tag.WPF.Convert"
+             xmlns:local="clr-namespace:Tag.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -24,7 +24,7 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock
-                                Text="1. Hydra"
+                                Text="{Binding Title}"
                                 TextAlignment="Center"
                                 VerticalAlignment="Center"
                                 Grid.Column="0"
@@ -32,11 +32,12 @@
 
                             <ProgressBar
                                 Height="Auto"
+                                Value="{Binding Value}"
                                 Grid.Column="1" Margin="10"
                                 />
 
                             <TextBlock
-                                Text="100%"
+                                Text="{Binding Value, StringFormat={}{0}%}"
                                 TextAlignment="Center"
                                 VerticalAlignment="Center"
                                 Grid.Column="2"
