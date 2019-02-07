@@ -36,11 +36,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <materialDesign:DialogHost  Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <materialDesign:DialogHost.DialogContent>
-                <local:Status/>
-            </materialDesign:DialogHost.DialogContent>
-        </materialDesign:DialogHost>
         <Grid Grid.Column="0" Grid.RowSpan="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <Grid VerticalAlignment="Top">
                 <Grid Height="60" Margin="10,10,10,0" VerticalAlignment="Top">

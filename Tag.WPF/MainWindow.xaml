@@ -27,26 +27,30 @@
             </wpf:PopupBox>
         </controls:WindowCommands>
     </controls:MetroWindow.LeftWindowCommands>-->
-    <dockablz:Layout>
-        <dragablz:TabablzControl BorderThickness="0">
-            <dragablz:TabablzControl.InterTabController>
-                <dragablz:InterTabController />
-            </dragablz:TabablzControl.InterTabController>
-            <TabItem Header="{Binding CustomizeMode}">
+    <Grid>
+        <materialDesign:DialogHost Width="Auto" Height="Auto"/>
+        
+        <dockablz:Layout>
+            <dragablz:TabablzControl BorderThickness="0">
+                <dragablz:TabablzControl.InterTabController>
+                    <dragablz:InterTabController />
+                </dragablz:TabablzControl.InterTabController>
+                <TabItem Header="{Binding CustomizeMode}">
 
-            </TabItem>
-            <TabItem Header="{Binding CueSplit}">
-                <mylib:CueSplit Width="Auto" Height="Auto"/>
-            </TabItem>
-            <TabItem Header="{Binding Tagging}">
-                <mylib:Tagging Width="Auto" Height="Auto"/>
-            </TabItem>
-            <TabItem Header="{Binding Converting}">
-                <mylib:Convert Width="Auto" Height="Auto"/>
-            </TabItem>
-            <TabItem Header="{Binding Option}">
+                </TabItem>
+                <TabItem Header="{Binding CueSplit}">
+                    <mylib:CueSplit Width="Auto" Height="Auto"/>
+                </TabItem>
+                <TabItem Header="{Binding Tagging}">
+                    <mylib:Tagging Width="Auto" Height="Auto"/>
+                </TabItem>
+                <TabItem Header="{Binding Converting}">
+                    <mylib:Convert Width="Auto" Height="Auto"/>
+                </TabItem>
+                <TabItem Header="{Binding Option}">
 
-            </TabItem>
-        </dragablz:TabablzControl>
-    </dockablz:Layout>
+                </TabItem>
+            </dragablz:TabablzControl>
+        </dockablz:Layout>
+    </Grid>
 </controls:MetroWindow>

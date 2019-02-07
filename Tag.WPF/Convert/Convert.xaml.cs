@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -53,6 +54,41 @@ namespace Tag.WPF
         private void ItemDragEnter(object sender, DragEventArgs e)
         {
             e.Effects = DragDropEffects.Copy;
+        }
+
+        DialogSession Session = null;
+        void OpenEventHandler(object sender, DialogOpenedEventArgs envetArgs)
+        {
+            Session = envetArgs.Session;
+        }
+
+        private void CloseEventHandler(object sender, DialogClosingEventArgs eventArgs)
+        {
+            if (bool.Parse(eventArgs.Parameter.ToString()) == false) return;
+
+            //note, you can also grab the session when the dialog opens via the DialogOpenedEventHandler
+            
+            if (!Session.IsEnded)
+            {
+                Session.Close();
+                Session = null;
+            }
+
+        }
+
+        private async void Execute(object sender, RoutedEventArgs e)
+        {
+
+            var result = await DialogHost.Show(new ConvertStatus
+            {
+                Width=450,
+                Height=400
+            }, OpenEventHandler, CloseEventHandler);
+        }
+
+        private void OpenDialog(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

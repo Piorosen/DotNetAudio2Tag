@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid AllowDrop="True">
@@ -11,6 +12,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+
         <ListView Margin="5" DragEnter="ItemDragEnter" Drop="ItemDragDrop"
                   AllowDrop="True"
                   ItemsSource="{Binding ConvInfos}">
@@ -93,13 +95,13 @@
                     Height="Auto"
                     HorizontalAlignment="Right"
                     Content="변환 시작"
-                    Width="94"/>
+                    Width="94" Click="Execute"/>
                 <Button
                     Margin="0,10,109,10"
                     Height="Auto"
                     Content="변환할 파일 열기"
                     HorizontalAlignment="Right"
-                    Width="150"/>
+                    Width="150" Click="OpenDialog"/>
 
             </Grid>
         </Grid>
