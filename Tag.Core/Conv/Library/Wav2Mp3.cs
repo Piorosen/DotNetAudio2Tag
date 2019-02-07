@@ -14,11 +14,25 @@ namespace Tag.Core.Conv.Library
     {
         private IEnumerable<int> Execute(string filePath, string resultPath, LAMEPreset preset = LAMEPreset.ABR_320 | LAMEPreset.V0)
         {
-            using (var wav = new NAudio.Wave.WaveFileReader(filePath))
+            using (var wav = new WaveFileReader(filePath))
             {
-                using (var mp3 = new NAudio.Lame.LameMP3FileWriter($"{resultPath}", wav.WaveFormat, preset))
+                using (var mp3 = new LameMP3FileWriter($"{resultPath}", wav.WaveFormat, preset))
                 {
-                    wav.CopyTo(mp3);
+                    byte[] buffer = new byte[wav.WaveFormat.BlockAlign * 100];
+                    while (wav.Position < wav.Length)
+                    {
+                        int bytesRequired = (int)(wav.Length - wav.Position);
+                        if (bytesRequired > 0)
+                        {
+                            int bytesToRead = Math.Min(bytesRequired, buffer.Length);
+                            int bytesRead = wav.Read(buffer, 0, bytesToRead);
+                            if (bytesRead > 0)
+                            {
+                                mp3.Write(buffer, 0, bytesRead);
+                            }
+                        }
+                    }
+                    // wav.CopyTo(mp3);
                 }
             }
 

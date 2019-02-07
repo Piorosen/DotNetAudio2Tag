@@ -1,18 +1,12 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Tag.WPF
 {
@@ -61,6 +55,23 @@ namespace Tag.WPF
 
             //check the result...
             Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
+        }
+
+        private void ItemDragDrop(object sender, DragEventArgs e)
+        {
+            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (var path in items)
+            {
+                var t = Path.GetExtension(path).ToLower();
+                if (t == ".cue")
+                {
+          //          viewModel.Add
+                }
+            }
+        }
+        private void ItemDragEnter(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.Copy;
         }
     }
 }

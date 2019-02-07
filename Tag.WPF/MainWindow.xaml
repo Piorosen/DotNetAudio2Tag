@@ -42,7 +42,7 @@
                 <mylib:Tagging Width="Auto" Height="Auto"/>
             </TabItem>
             <TabItem Header="{Binding Converting}">
-
+                <mylib:Convert Width="Auto" Height="Auto"/>
             </TabItem>
             <TabItem Header="{Binding Option}">
 

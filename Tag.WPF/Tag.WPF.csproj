@@ -85,6 +85,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Convert\Convert.xaml.cs">
+      <DependentUpon>Convert.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CueSplit\CueSplit.xaml.cs">
       <DependentUpon>CueSplit.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,10 @@
     </Compile>
     <Compile Include="Tagging\TaggingModel.cs" />
     <Compile Include="Tagging\TaggingViewModel.cs" />
+    <Page Include="Convert\Convert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CueSplit\CueSplit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,6 +171,9 @@
       <Project>{9500fedc-e74c-47c8-86c9-16bcd0285740}</Project>
       <Name>Tag.Setting</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Setting\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

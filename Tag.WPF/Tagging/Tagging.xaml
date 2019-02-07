@@ -9,6 +9,7 @@
     x:Class="Tag.WPF.Tagging"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     mc:Ignorable="d"
+    AllowDrop="True"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -26,10 +27,10 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid>
+    <Grid AllowDrop="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -109,9 +110,11 @@
 
             </Grid>
         </Grid>
-        <ListView Grid.Column="1" Grid.Row="0"
+        <ListView AllowDrop="True" Grid.Column="1" Grid.Row="0"
             ItemsSource="{Binding Items}"
-            ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
+            ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  DragEnter="ItemDragEnter" Drop="ItemDragDrop">
             <ListView.View>
                 <GridView>
                     <GridViewColumn
