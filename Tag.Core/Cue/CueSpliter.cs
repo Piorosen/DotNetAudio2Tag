@@ -73,6 +73,7 @@ namespace Tag.Core.Cue
             double StartPosition = 0.0;
             foreach (var value in reader.Tracks)
             {
+                StartPosition += value.TimeOffSet;
                 info.Track.Add(new TrackInfo
                 {
                     Artist = value.Artist,
