@@ -11,6 +11,7 @@ namespace Tag.Core.Cue
         public string Artist { get; set; } = string.Empty;
         public string Composer { get; set; } = string.Empty;
 
+        public string Album { get; set; } = string.Empty;
         public double StartPosition { get; set; } = 0.0;
         public double DurationMS { get; set; } = 0.0;
 

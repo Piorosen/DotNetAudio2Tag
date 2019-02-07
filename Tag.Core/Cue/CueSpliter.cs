@@ -76,6 +76,7 @@ namespace Tag.Core.Cue
                 StartPosition += value.TimeOffSet;
                 info.Track.Add(new TrackInfo
                 {
+                    Album = value.Album,
                     Artist = value.Artist,
                     Composer = value.Composer,
                     DurationMS = value.DurationMs,
@@ -92,7 +93,7 @@ namespace Tag.Core.Cue
 
         public bool AddFile(CueInfo file)
         {
-            throw new NotImplementedException();
+            return AddFile(file.Path, file.WavPath, file.SavePath);
         }
 
         public bool Delete(int at)

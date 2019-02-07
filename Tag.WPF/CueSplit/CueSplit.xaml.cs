@@ -64,7 +64,7 @@ namespace Tag.WPF
             {
                 if (sender is Border)
                 {
-                    viewModel.Click((int)(sender as Border).Tag - 1);
+                    viewModel.Click((int)(sender as Border).Tag);
                 }
             }
         }

@@ -10,10 +10,41 @@
              >
     <Grid AllowDrop="True">
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Border AllowDrop="True" Grid.Row="0"
+
+        <Border AllowDrop="True" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1.3*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock 
+                    Grid.Column="0"
+                    Text="{Binding AlbumTitle, StringFormat={}앨범 명 : {0}}"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock 
+                    Grid.Column="1"
+                    Text="{Binding Barcode, StringFormat={}바코드 : {0}}"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock 
+                    Grid.Column="2"
+                    Text="{Binding AvgBytePerSecond, StringFormat={}평균 바이트 : {0}}"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock 
+                    Grid.Column="3"
+                    Text="{Binding Genre, StringFormat={}장르 : {0}}"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            </Grid>
+        </Border>
+
+        <Border AllowDrop="True" Grid.Row="1"
                 Drop="ItemDragDrop"
                 Background="Transparent"
                 DragEnter="ItemDragEnter"
@@ -90,7 +121,7 @@
             </ItemsControl>
         </Border>
 
-
+        <Grid Grid.Row="2">
         <Button
             Content="{Binding CueFileSplitExecute}"
             HorizontalAlignment="Right"
@@ -109,6 +140,6 @@
         <ProgressBar Value="{Binding TaskPercent}" Height="Auto" Grid.Row="1" Margin="10,16,345,16"/>
         <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding TaskPercent, StringFormat={}{0:0}%}" 
                    Grid.Row="1" VerticalAlignment="Top" Margin="0,16,289,0" Width="51" TextAlignment="Center"/>
-
+        </Grid>
     </Grid>
 </UserControl>
