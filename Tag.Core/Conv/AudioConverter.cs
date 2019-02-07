@@ -44,6 +44,8 @@ namespace Tag.Core.Conv
         public IEnumerable<int> Execute() => Execute(ConvMode.NORMAL);
         public IEnumerable<int> Execute(ConvMode mode)
         {
+            int percent = 0;
+
             foreach (var value in TagList)
             {
                 if (mode == ConvMode.NORMAL)
@@ -53,7 +55,7 @@ namespace Tag.Core.Conv
                         Wav2Mp3 conv = new Wav2Mp3();
                         foreach (var status in conv.Execute(value))
                         {
-
+                            yield return (percent + status) / TagList.Count;
                         }
                     }
                     else if (value.Type == AudioType.FLAC)
@@ -61,7 +63,7 @@ namespace Tag.Core.Conv
                         Flac2Mp3 conv = new Flac2Mp3();
                         foreach (var status in conv.Execute(value))
                         {
-
+                            yield return (percent + status) / TagList.Count;
                         }
                     }
                     else if (value.Type == AudioType.NONE)
@@ -73,16 +75,20 @@ namespace Tag.Core.Conv
                 else if (mode == ConvMode.USER)
                 {
                     User2Mp3 conv = new User2Mp3();
-                    conv.Execute(value);
+                    foreach (var status in conv.Execute(value))
+                    {
+                        yield return (percent + status) / TagList.Count;
+                    }
                 }
-                
+
+                percent += 100;
             }
-            yield return 0;
+            yield return 100;
         }
 
         public List<ConvInfo> List()
         {
-            throw new NotImplementedException();
+            return TagList;
         }
     }
 }

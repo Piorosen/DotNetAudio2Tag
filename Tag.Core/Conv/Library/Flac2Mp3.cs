@@ -11,12 +11,11 @@ namespace Tag.Core.Conv.Library
 {
     class Flac2Mp3 : IConv
     {
-        private IEnumerable<int> Execute(string filePath, string resultPath, LAMEPreset preset = LAMEPreset.ABR_320 | LAMEPreset.V0)
+        private IEnumerable<int> Execute(string filePath, string resultPath, LAMEPreset preset = LAMEPreset.ABR_320)
         {
             int percent = 0;
             using (var flac = new FlacReader(filePath))
             {
-                preset = LAMEPreset.ABR_320;
                 using (var mp3 = new LameMP3FileWriter($"{resultPath}", flac.WaveFormat, preset))
                 {
                     byte[] buffer = new byte[flac.WaveFormat.BlockAlign * 100];
@@ -63,7 +62,7 @@ namespace Tag.Core.Conv.Library
             }
             
 
-            foreach (var value in Execute(info.FilePath, info.ResultPath, preset == 0 ? LAMEPreset.ABR_320 | LAMEPreset.V0 : preset))
+            foreach (var value in Execute(info.FilePath, info.ResultPath, preset == 0 ? LAMEPreset.ABR_320 : preset))
             {
                 yield return value;
             }
