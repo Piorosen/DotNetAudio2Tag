@@ -77,12 +77,6 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="ToastNotifications, Version=2.5.0.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
-      <HintPath>..\packages\ToastNotifications.2.5.0\lib\net40\ToastNotifications.dll</HintPath>
-    </Reference>
-    <Reference Include="ToastNotifications.Messages, Version=2.5.0.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
-      <HintPath>..\packages\ToastNotifications.Messages.2.5.0\lib\net40\ToastNotifications.Messages.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -177,9 +171,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ATL\ATL\ATL.csproj">
-      <Project>{0892d108-8d58-4d68-9768-41878dde390b}</Project>
+    <ProjectReference Include="..\Extension\ATL\ATL\ATL.csproj">
+      <Project>{5ec3495b-ba31-41ba-8dd2-a934b1630dc5}</Project>
       <Name>ATL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Extension\ToastNotifications\Src\ToastNotifications.Messages\ToastNotifications.Messages.csproj">
+      <Project>{4de2f314-b19f-423e-92d8-7d3a7d9acea2}</Project>
+      <Name>ToastNotifications.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Extension\ToastNotifications\Src\ToastNotifications\ToastNotifications.csproj">
+      <Project>{4a8879fc-9a6e-4904-910b-5c13fa5ed5be}</Project>
+      <Name>ToastNotifications</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tag.Core\Tag.Core.csproj">
       <Project>{4928d8c2-bf0b-41ec-ad58-1e4ed1dba88b}</Project>

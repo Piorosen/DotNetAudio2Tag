@@ -107,8 +107,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ATL\ATL\ATL.csproj">
-      <Project>{0892d108-8d58-4d68-9768-41878dde390b}</Project>
+    <ProjectReference Include="..\Extension\ATL\ATL\ATL.csproj">
+      <Project>{5EC3495B-BA31-41BA-8DD2-A934B1630DC5}</Project>
       <Name>ATL</Name>
     </ProjectReference>
   </ItemGroup>
