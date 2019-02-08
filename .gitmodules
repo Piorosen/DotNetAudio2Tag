@@ -1,3 +1,5 @@
-[submodule "ATL"]
-	path = ATL
-	url = https://github.com/Piorosen/atldotnet.git
+[submodule "Extension/ToastNotifications"]
+	path = Extension/ToastNotifications
+[submodule "Extension/ATL"]
+	path = Extension/ATL
+	url = https://github.com/Piorosen/atldotnet
