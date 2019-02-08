@@ -12,13 +12,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <wpf:DialogHost
-            Grid.RowSpan="2"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            >
-            
-        </wpf:DialogHost>
         <ItemsControl
             Grid.Row="0"
             ItemsSource="{Binding Items}">
