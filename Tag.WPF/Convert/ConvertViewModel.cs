@@ -80,8 +80,10 @@ namespace Tag.WPF
                     Value = 0
                 });
             }
+
             Content.Execute(ConvertMode[Index]);
             var result = await DialogHost.Show(Content, OpenEventHandler, CloseEventHandler);
+            
 
             return await Task.FromResult(result);
         }

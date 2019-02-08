@@ -76,7 +76,6 @@ namespace Tag.WPF
         
         private void CueFileOpen(object sender, RoutedEventArgs e)
         {
-
             System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog
             {
                 Filter = "Cue (*.cue)|*.cue",

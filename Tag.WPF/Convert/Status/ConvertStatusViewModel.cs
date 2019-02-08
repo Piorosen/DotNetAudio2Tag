@@ -58,6 +58,7 @@ namespace Tag.WPF
 
             var result = await converter.Execute(preset.ConvMode, MultiTask);
 
+            await Task.Delay(1000);
             DialogHost.CloseDialogCommand.Execute(result, null);
         }
 

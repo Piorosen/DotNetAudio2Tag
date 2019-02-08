@@ -15,7 +15,7 @@
 
         <ListView Margin="5" DragEnter="ItemDragEnter" Drop="ItemDragDrop"
                   AllowDrop="True"
-                  ItemsSource="{Binding ConvInfos}">
+                  ItemsSource="{Binding ConvInfos}" KeyDown="List_KeyDown">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding FileNamePlus}"
