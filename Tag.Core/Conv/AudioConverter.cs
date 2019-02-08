@@ -10,13 +10,6 @@ using Tag.Core.Tagging;
 
 namespace Tag.Core.Conv
 {
-    class DataBus
-    {
-        public ConvInfo convInfo;
-        public int ID;
-        public IConv conv;
-    }
-
     public class AudioConverter : ICore<ConvInfo>
     {
         readonly List<ConvInfo> AudioList = new List<ConvInfo>();
@@ -48,81 +41,91 @@ namespace Tag.Core.Conv
             return AudioList.Remove(item);
         }
 
-        public IEnumerable<int> Execute() => Execute(ConvMode.NORMAL, 1);
+        [Obsolete()]
+        public IEnumerable<int> Execute() { new NotImplementedException("사용하지 마세요."); yield break; }
 
         public event EventHandler<int> ChangeExecute;
+        public event EventHandler<int> CompleteOfIndex;
 
         void OnChangeExecute(int data)
         {
             ChangeExecute?.Invoke(this, data);
         }
-        
-        public IEnumerable<int> Execute(ConvMode mode, int MultiTask)
+
+        void OnCompleteOfIndex(int index)
         {
-            List<Task> Worker = new List<Task>();
-            
-            int percent = 0;
-
-            int CreateID = 0;
-
-            foreach (var value in AudioList)
+            CompleteOfIndex?.Invoke(this, index);
+        }
+        
+        public async Task<bool> Execute(ConvMode mode, int MultiTask)
+        {
+            return await Task.Run(async () =>
             {
-                Task worker = new Task(() => { });
+                List<Task> Worker = new List<Task>();
 
-                if (mode == ConvMode.NORMAL)
+                int percent = 0;
+                int CreateID = 0;
+
+                foreach (var value in AudioList)
                 {
-                    if (value.Type == AudioType.WAV)
+                    Task worker = new Task(() => { });
+
+                    IConv Conv = null;
+                    if (mode == ConvMode.NORMAL)
                     {
-                        Wav2Mp3 conv = new Wav2Mp3();
-                        worker = new Task(() =>
+                        if (value.Type == AudioType.WAV)
                         {
-                            var id = CreateID++;
-                            foreach (var status in conv.Execute(value))
-                            {
-                                OnChangeExecute(status + id);
-                            }
-                        });
-                        worker.Start();
-                    }
-                    else if (value.Type == AudioType.FLAC)
-                    {
-                        Flac2Mp3 conv = new Flac2Mp3();
-                        worker = new Task(() =>
+                            Conv = new Wav2Mp3();
+                        }
+                        else if (value.Type == AudioType.FLAC)
                         {
-                            var id = CreateID++;
-                            foreach (var status in conv.Execute(value))
-                            {
-                                OnChangeExecute(status + id);
-                            }
-                        });
-                        worker.Start();
+                            Conv = new Flac2Mp3();
+                        }
+                        else if (value.Type == AudioType.NONE)
+                        {
+                            return false;
+                        }
                     }
-                    else if (value.Type == AudioType.NONE)
+                    else if (mode == ConvMode.USER)
                     {
-                        yield return 0;
-                        yield break;
+                        Conv = new User2Mp3();
                     }
-                }
-                else if (mode == ConvMode.USER)
-                {
-                    User2Mp3 conv = new User2Mp3();
+
                     worker = new Task(() =>
                     {
                         var id = CreateID++;
-                        foreach (var status in conv.Execute(value))
+                        foreach (var status in Conv?.Execute(value))
                         {
-                            OnChangeExecute(status + id);
+                            OnChangeExecute(status + id * 10000);
                         }
+                        OnCompleteOfIndex(id);
                     });
-                   
+
+
+                    worker.Start();
+                    Worker.Add(worker);
+
+                    var Count = MultiTask > Worker.Count ? Worker.Count : MultiTask;
+                    for (int i = 0; i < Count; i++)
+                    {
+                        if (Worker[i].Status == TaskStatus.RanToCompletion)
+                        {
+                            Worker.RemoveAt(i);
+                        }
+                    }
+
+                    if (Worker.Count >= MultiTask)
+                    {
+                        await Task.WhenAny(Worker.ToArray());
+                    }
+
+                    percent += 100;
                 }
-                
-                Worker.Add(worker);
+                Task.WaitAll(Worker.ToArray());
 
+                return true;
+            });
 
-                percent += 100;
-            }
-            yield return 100;
         }
 
         public List<ConvInfo> List()

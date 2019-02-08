@@ -25,7 +25,8 @@ namespace Tag.WPF
         public ConvertStatus()
         {
             InitializeComponent();
-            DataContext = viewModel = new ConvertStatusViewModel();
+            DataContext = viewModel = new ConvertStatusViewModel(this);
+            
         }
         public void Execute(PresetModel preset)
         {
