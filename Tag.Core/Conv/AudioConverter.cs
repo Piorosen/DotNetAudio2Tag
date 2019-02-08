@@ -83,7 +83,7 @@ namespace Tag.Core.Conv
                         }
                         else if (value.Type == AudioType.NONE)
                         {
-                            return false;
+                            return await Task.FromResult(false);
                         }
                     }
                     else if (mode == ConvMode.USER)
@@ -123,7 +123,7 @@ namespace Tag.Core.Conv
                 }
                 Task.WaitAll(Worker.ToArray());
 
-                return true;
+                return await Task.FromResult(true);
             });
 
         }

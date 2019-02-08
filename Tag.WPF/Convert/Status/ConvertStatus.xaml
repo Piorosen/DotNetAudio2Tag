@@ -102,10 +102,12 @@
                 <ColumnDefinition Width="30*"/>
             </Grid.ColumnDefinitions>
             <Button Content="일시 정지"
+                    Width="100"
                     Margin="22,10,10,8" Grid.Column="1" Grid.ColumnSpan="2"
                     />
             <Button Content="중 단"
-                    Margin="180,10,-17,8"
+                    Width="100"
+                    Margin="180,10,-22,8"
                     CommandParameter="False"
                     Command="{x:Static wpf:DialogHost.CloseDialogCommand}"
                     />

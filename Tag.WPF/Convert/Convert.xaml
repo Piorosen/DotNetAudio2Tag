@@ -86,17 +86,17 @@
             </Border>
             <Grid Grid.Column="1" >
                 <Button
-                    Margin="0,40,109,20"
+                    Margin="0,40,115,20"
                     Height="Auto"
-                    Content="변환할 파일 열기"
+                    Content="파일 열기"
                     HorizontalAlignment="Right"
-                    Width="150" Click="OpenDialog"/>
+                    Width="100" Click="OpenDialog"/>
                 <Button
                     Margin="0,40,10,20"
                     HorizontalAlignment="Right"
                     Content="변환 시작"
                     Height="Auto"
-                    Width="94" Click="Execute"/>
+                    Width="100" Click="Execute"/>
     
             </Grid>
         </Grid>
