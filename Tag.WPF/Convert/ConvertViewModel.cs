@@ -1,4 +1,5 @@
 ﻿
+using MaterialDesignThemes.Wpf;
 using NAudio.Lame;
 using System;
 using System.Collections.Generic;
@@ -12,49 +13,69 @@ namespace Tag.WPF
 {
     class ConvertViewModel
     {
-        Tag.Core.Conv.AudioConverter converter;
+        public List<PresetModel> ConvertMode { get; set; }
+        public ObservableCollection<ConvInfo> ConvInfos { get; set; }
+        int Index = 0;
 
-        public ObservableCollection<ConvertModel> ConvertExtension { get; set; }
-        public ObservableCollection<ConvInfo> ConvInfos { get; set; } 
-
-        public void Change(int index)
+        public void Checked(int index)
         {
-            var data = ConvertExtension[0].Preset[index];
-            ConvertExtension[0].Preset.RemoveAt(index);
-            ConvertExtension[0].Preset.Add(data);
-
-            for (int i = 0; i < ConvertExtension[0].Preset.Count; i++)
-            {
-                ConvertExtension[0].Preset[i].Index = i;
-            }
+            Index = index;
         }
-
-        public bool AddFile(ConvInfo info)
-        {
-            if (converter.AddFile(info))
-            {
-                ConvInfos.Add(info);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         public ConvertViewModel()
         {
-            ConvertExtension = new ObservableCollection<ConvertModel>
+            ConvertMode = new List<PresetModel>
             {
-                new ConvertModel("변환할 프리셋",
-                new PresetModel("Flac", LAMEPreset.ABR_320,0),
-                new PresetModel("MP3 128Kb", LAMEPreset.ABR_128,1),
-                new PresetModel("MP3 256Kb", LAMEPreset.ABR_256,2),
-                new PresetModel("MP3 320Kb", LAMEPreset.ABR_320,3))
+                new PresetModel(LAMEPreset.ABR_320, ConvMode.MYWAV),
+                new PresetModel(LAMEPreset.ABR_256, ConvMode.MYFLAC),
+                new PresetModel(LAMEPreset.ABR_128, ConvMode.MYFLAC),
+                new PresetModel(LAMEPreset.ABR_320, ConvMode.MYFLAC),
+                new PresetModel(LAMEPreset.ABR_320, ConvMode.USER)
             };
+
             ConvInfos = new ObservableCollection<ConvInfo>();
-            converter = new Core.Conv.AudioConverter();
-            
+
+        }
+
+        DialogSession Session = null;
+        void OpenEventHandler(object sender, DialogOpenedEventArgs envetArgs)
+        {
+            Session = envetArgs.Session;
+        }
+
+        private void CloseEventHandler(object sender, DialogClosingEventArgs eventArgs)
+        {
+            if (bool.Parse(eventArgs.Parameter.ToString()) == false) return;
+
+            //note, you can also grab the session when the dialog opens via the DialogOpenedEventHandler
+
+            if (!Session.IsEnded)
+            {
+                Session.Close();
+                Session = null;
+            }
+
+        }
+
+        public async Task<object> Execute()
+        {
+            var Content = new ConvertStatus
+            {
+                Width = 450,
+                Height = 400,
+            };
+            foreach (var value in ConvInfos)
+            {
+                Content.Enqueue(new ConvertModel
+                {
+                    Info = value,
+                    Title = value.FileNamePlus,
+                    Value = 0
+                });
+            }
+            Content.Execute(ConvertMode[Index]);
+            var result = await DialogHost.Show(Content, OpenEventHandler, CloseEventHandler);
+
+            return await Task.FromResult(result);
         }
     }
 }

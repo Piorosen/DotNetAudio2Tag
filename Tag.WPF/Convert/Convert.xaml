@@ -46,25 +46,40 @@
                                VerticalAlignment="Center"
                                />
                     <RadioButton Grid.Row="1" Grid.Column="0"
-                            Style="{StaticResource MaterialDesignRadioButton}"
-                            Content="MP3 320Kb"
-                            VerticalAlignment="Center"
+                                Style="{StaticResource MaterialDesignRadioButton}"
+                                Content="MP3 320Kb"
+                                IsChecked="True"
+                                 Checked="RadioButton_Checked"
+                                VerticalAlignment="Center"
+                                Tag="0"
                             />
                     <RadioButton Grid.Row="1" Grid.Column="1"
-                            Content="MP3 256Kb"
-                            VerticalAlignment="Center"
+                                 Style="{StaticResource MaterialDesignRadioButton}"
+                                Content="MP3 256Kb"
+                                 Checked="RadioButton_Checked"
+                                VerticalAlignment="Center"
+                                 Tag="1"
                             />
                     <RadioButton Grid.Row="1" Grid.Column="2"
-                            Content="MP3 128Kb"
-                            VerticalAlignment="Center"
+                                 Style="{StaticResource MaterialDesignRadioButton}"
+                                Content="MP3 128Kb"
+                                 Checked="RadioButton_Checked"
+                                VerticalAlignment="Center"
+                                 Tag="2"
                             />
                     <RadioButton Grid.Row="2" Grid.Column="0"
-                            Content="Flac"
-                            VerticalAlignment="Center"
+                                Style="{StaticResource MaterialDesignRadioButton}"
+                                Content="Flac"
+                                 Checked="RadioButton_Checked"
+                                VerticalAlignment="Center"
+                                Tag="3"
                             />
                     <RadioButton Grid.Row="2" Grid.Column="1"
-                            Content="Mp3(User)"
-                            VerticalAlignment="Center"
+                                Style="{StaticResource MaterialDesignRadioButton}"
+                                Content="Mp3(User)"
+                                 Checked="RadioButton_Checked"
+                                VerticalAlignment="Center"
+                                Tag="4"
                             />
                 </Grid>
             </Border>
@@ -78,21 +93,20 @@
                     />
                 <ProgressBar
                     Height="Auto"
-                    Margin="10,40,318,20"/>
+                    Margin="10,48,318,37"/>
                 <Button
                     Margin="0,40,109,20"
                     Height="Auto"
                     Content="변환할 파일 열기"
                     HorizontalAlignment="Right"
                     Width="150" Click="OpenDialog"/>
-
                 <Button
                     Margin="0,40,10,20"
                     HorizontalAlignment="Right"
                     Content="변환 시작"
                     Height="Auto"
                     Width="94" Click="Execute"/>
-
+    
             </Grid>
         </Grid>
     </Grid>

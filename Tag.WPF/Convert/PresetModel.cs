@@ -4,19 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tag.Core.Conv;
 
 namespace Tag.WPF
 {
     public class PresetModel
     {
-        public string Title { get; set; }
         public LAMEPreset Preset { get; set; }
-        public int Index = 0;
-        public PresetModel(string t, LAMEPreset p, int index)
+        public ConvMode ConvMode { get; set; }
+        public PresetModel(LAMEPreset p, ConvMode mode)
         {
-            Title = t;
             Preset = p;
-            Index = index;
+            ConvMode = mode;
         }
     }
 }

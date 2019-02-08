@@ -100,7 +100,6 @@
     <Compile Include="Convert\Convert.xaml.cs">
       <DependentUpon>Convert.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Convert\Status\ConvertStatusModel.cs" />
     <Compile Include="Convert\Status\ConvertStatusViewModel.cs" />
     <Compile Include="CueSplit\CueSplit.xaml.cs">
       <DependentUpon>CueSplit.xaml</DependentUpon>

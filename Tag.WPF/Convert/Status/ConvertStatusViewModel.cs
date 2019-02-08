@@ -4,38 +4,43 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tag.Core.Conv;
 
 namespace Tag.WPF
 {
-    class ConvertStatusViewModel
+    public class ConvertStatusViewModel
     {
+        public int MultiTask = 4;
+        public ObservableCollection<ConvertModel> Items { get; set; }
+        public Queue<ConvertModel> ConvertModelQueue = new Queue<ConvertModel>();
 
-        public ObservableCollection<ConvertStatusModel> Items { get; set; }
+        Tag.Core.Conv.AudioConverter converter;
+
+        public bool AddFile(ConvInfo info)
+        {
+            if (converter.AddFile(info))
+            {
+               // ConvertModelQueue.Add(info);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void Execute(PresetModel preset)
+        {
+            for (int i = 0; i < (MultiTask > ConvertModelQueue.Count
+                ? ConvertModelQueue.Count
+                : MultiTask); i++)
+            {
+                Items.Add(ConvertModelQueue.Dequeue());
+            }
+        }
 
         public ConvertStatusViewModel()
         {
-            Items = new ObservableCollection<ConvertStatusModel>();
-            Items.Add(new ConvertStatusModel
-            {
-                Index = 0,
-                Title = "123",
-                Value = 0
-            }); Items.Add(new ConvertStatusModel
-            {
-                Index = 0,
-                Title = "122233",
-                Value = 75
-            }); Items.Add(new ConvertStatusModel
-            {
-                Index = 0,
-                Title = "1212343",
-                Value = 25
-            }); Items.Add(new ConvertStatusModel
-            {
-                Index = 0,
-                Title = "1231111",
-                Value = 100
-            });
+            Items = new ObservableCollection<ConvertModel>();
         }
 
     }
