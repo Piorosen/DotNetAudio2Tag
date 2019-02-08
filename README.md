@@ -2,7 +2,11 @@
 this program can Cue Split and Audio Tagging
 
 ## How do work?
-<img src="https://drive.google.com/uc?authuser=0&id=1kA-_LcyrB0Qma3YiOWkSYI_165Fk5NRQ&export=download" width="40%">
+
+Cue Split    | Wav, Flac to Mp3 Conv | Complete
+:----------:|:-----------------------:|:----------:
+<img src="https://drive.google.com/uc?authuser=0&id=1kA-_LcyrB0Qma3YiOWkSYI_165Fk5NRQ&export=download" width="100%"> | <img src="https://drive.google.com/uc?authuser=0&id=1skptmJfpJxWADUAYZ_8fIKK0axsuk3oP&export=download" width="100%"> | <img src="https://drive.google.com/uc?authuser=0&id=1RzTA6gx-rcvY0ExbMB9t_f-Q0e-tyqqI&export=download" width="100%">
+
 <hr/>
 
 ## How to build?
