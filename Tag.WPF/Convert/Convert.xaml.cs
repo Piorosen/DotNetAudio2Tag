@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using ATL.CatalogDataReaders;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,8 +19,8 @@ namespace Tag.WPF
         ConvertViewModel viewModel;
         public Convert()
         {
-            InitializeComponent();
             DataContext = viewModel = new ConvertViewModel();
+            InitializeComponent();
         }
 
         private void ItemDragDrop(object sender, DragEventArgs e)
@@ -28,19 +29,25 @@ namespace Tag.WPF
             foreach (var path in items)
             {
                 var t = Path.GetExtension(path).ToLower();
+                var q = new Core.Conv.ConvInfo
+                {
+                    FilePath = path
+                };
                 switch (t)
                 {
                     case ".wav":
+                        q.Type = AudioType.WAV;
+                        break;
                     case ".flac":
+                        q.Type = AudioType.FLAC;
+                        break;
                     case ".mp3":
-                        var q = new Core.Conv.ConvInfo
-                        {
-                            FilePath = path
-                        };
-                        q.ResultPath = q.Directory + "\\";
-                        viewModel.ConvInfos.Add(q);
+                        q.Type = AudioType.NONE;
                         break;
                 }
+
+                q.ResultPath = q.Directory + "\\" + q.FileName + ".mp3";
+                viewModel.ConvInfos.Add(q);
             }
         }
         private void ItemDragEnter(object sender, DragEventArgs e)

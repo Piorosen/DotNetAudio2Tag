@@ -10,12 +10,19 @@ using Tag.Core.Tagging;
 
 namespace Tag.Core.Conv
 {
+    class DataBus
+    {
+        public ConvInfo convInfo;
+        public int ID;
+        public IConv conv;
+    }
+
     public class AudioConverter : ICore<ConvInfo>
     {
-        readonly List<ConvInfo> TagList = new List<ConvInfo>();
+        readonly List<ConvInfo> AudioList = new List<ConvInfo>();
 
-        public ConvInfo this[int index] => TagList[index];
-
+        public ConvInfo this[int index] => AudioList[index];
+        public int MultiTask = 1;
         public bool AddFile(ConvInfo file)
         {
             if (file.ResultPath == string.Empty)
@@ -23,48 +30,72 @@ namespace Tag.Core.Conv
                 file.ResultPath = Path.Combine(file.Directory, file.FileName);
                 file.ResultPath += ".mp3";
             }
-            TagList.Add(file);
+            AudioList.Add(file);
             return true;
         }
 
         public bool Delete(int at)
         {
-            if (0 <= at && at < TagList.Count)
+            if (0 <= at && at < AudioList.Count)
             {
-                TagList.RemoveAt(at);
+                AudioList.RemoveAt(at);
                 return true;
             }
             return false;
         }
         public bool Delete(ConvInfo item)
         {
-            return TagList.Remove(item);
+            return AudioList.Remove(item);
         }
 
-        public IEnumerable<int> Execute() => Execute(ConvMode.NORMAL);
-        public IEnumerable<int> Execute(ConvMode mode)
+        public IEnumerable<int> Execute() => Execute(ConvMode.NORMAL, 1);
+
+        public event EventHandler<int> ChangeExecute;
+
+        void OnChangeExecute(int data)
         {
+            ChangeExecute?.Invoke(this, data);
+        }
+        
+        public IEnumerable<int> Execute(ConvMode mode, int MultiTask)
+        {
+            List<Task> Worker = new List<Task>();
+            
             int percent = 0;
 
-            foreach (var value in TagList)
+            int CreateID = 0;
+
+            foreach (var value in AudioList)
             {
+                Task worker = new Task(() => { });
+
                 if (mode == ConvMode.NORMAL)
                 {
                     if (value.Type == AudioType.WAV)
                     {
                         Wav2Mp3 conv = new Wav2Mp3();
-                        foreach (var status in conv.Execute(value))
+                        worker = new Task(() =>
                         {
-                            yield return (percent + status) / TagList.Count;
-                        }
+                            var id = CreateID++;
+                            foreach (var status in conv.Execute(value))
+                            {
+                                OnChangeExecute(status + id);
+                            }
+                        });
+                        worker.Start();
                     }
                     else if (value.Type == AudioType.FLAC)
                     {
                         Flac2Mp3 conv = new Flac2Mp3();
-                        foreach (var status in conv.Execute(value))
+                        worker = new Task(() =>
                         {
-                            yield return (percent + status) / TagList.Count;
-                        }
+                            var id = CreateID++;
+                            foreach (var status in conv.Execute(value))
+                            {
+                                OnChangeExecute(status + id);
+                            }
+                        });
+                        worker.Start();
                     }
                     else if (value.Type == AudioType.NONE)
                     {
@@ -75,11 +106,19 @@ namespace Tag.Core.Conv
                 else if (mode == ConvMode.USER)
                 {
                     User2Mp3 conv = new User2Mp3();
-                    foreach (var status in conv.Execute(value))
+                    worker = new Task(() =>
                     {
-                        yield return (percent + status) / TagList.Count;
-                    }
+                        var id = CreateID++;
+                        foreach (var status in conv.Execute(value))
+                        {
+                            OnChangeExecute(status + id);
+                        }
+                    });
+                   
                 }
+                
+                Worker.Add(worker);
+
 
                 percent += 100;
             }
@@ -88,7 +127,7 @@ namespace Tag.Core.Conv
 
         public List<ConvInfo> List()
         {
-            return TagList;
+            return AudioList;
         }
     }
 }

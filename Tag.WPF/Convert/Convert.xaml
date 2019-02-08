@@ -48,10 +48,11 @@
                     <RadioButton Grid.Row="1" Grid.Column="0"
                                 Style="{StaticResource MaterialDesignRadioButton}"
                                 Content="MP3 320Kb"
+                                 Tag="0"
                                 IsChecked="True"
                                  Checked="RadioButton_Checked"
                                 VerticalAlignment="Center"
-                                Tag="0"
+                                
                             />
                     <RadioButton Grid.Row="1" Grid.Column="1"
                                  Style="{StaticResource MaterialDesignRadioButton}"

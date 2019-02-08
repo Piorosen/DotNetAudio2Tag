@@ -14,33 +14,43 @@ namespace Tag.WPF
         public ObservableCollection<ConvertModel> Items { get; set; }
         public Queue<ConvertModel> ConvertModelQueue = new Queue<ConvertModel>();
 
-        Tag.Core.Conv.AudioConverter converter;
+        AudioConverter converter;
 
-        public bool AddFile(ConvInfo info)
-        {
-            if (converter.AddFile(info))
-            {
-               // ConvertModelQueue.Add(info);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
         public void Execute(PresetModel preset)
         {
-            for (int i = 0; i < (MultiTask > ConvertModelQueue.Count
+            int count = (MultiTask > ConvertModelQueue.Count
                 ? ConvertModelQueue.Count
-                : MultiTask); i++)
+                : MultiTask);
+
+            for (int i = 0; i < count; i++)
             {
-                Items.Add(ConvertModelQueue.Dequeue());
+                var value = ConvertModelQueue.Dequeue();
+                value.Info.Parameter.Add(preset.Preset);
+                Items.Add(value);
             }
+            converter.ChangeExecute += Converter_ChangeExecute;
+            foreach (var value in converter.Execute(preset.ConvMode, MultiTask))
+            {
+
+            }
+
+        }
+
+        private void Converter_ChangeExecute(object sender, int e)
+        {
+            Console.WriteLine(e);
+        }
+
+        public void Enqueue(ConvertModel info)
+        {   
+            ConvertModelQueue.Enqueue(info);
+            converter.AddFile(info.Info);
         }
 
         public ConvertStatusViewModel()
         {
             Items = new ObservableCollection<ConvertModel>();
+            converter = new AudioConverter();
         }
 
     }

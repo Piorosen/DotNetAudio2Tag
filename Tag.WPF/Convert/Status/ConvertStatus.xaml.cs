@@ -33,7 +33,7 @@ namespace Tag.WPF
         }
         public void Enqueue(ConvertModel info)
         {
-            viewModel.ConvertModelQueue.Enqueue(info);
+            viewModel.Enqueue(info);
         }
     }
 }

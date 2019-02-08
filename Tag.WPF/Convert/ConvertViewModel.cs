@@ -25,10 +25,10 @@ namespace Tag.WPF
         {
             ConvertMode = new List<PresetModel>
             {
-                new PresetModel(LAMEPreset.ABR_320, ConvMode.MYWAV),
-                new PresetModel(LAMEPreset.ABR_256, ConvMode.MYFLAC),
-                new PresetModel(LAMEPreset.ABR_128, ConvMode.MYFLAC),
-                new PresetModel(LAMEPreset.ABR_320, ConvMode.MYFLAC),
+                new PresetModel(LAMEPreset.ABR_320, ConvMode.NORMAL),
+                new PresetModel(LAMEPreset.ABR_256, ConvMode.NORMAL),
+                new PresetModel(LAMEPreset.ABR_128, ConvMode.NORMAL),
+                new PresetModel(LAMEPreset.ABR_320, ConvMode.NORMAL),
                 new PresetModel(LAMEPreset.ABR_320, ConvMode.USER)
             };
 
