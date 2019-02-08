@@ -9,8 +9,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid AllowDrop="True">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
         <ListView Margin="5" DragEnter="ItemDragEnter" Drop="ItemDragDrop"
@@ -23,85 +23,75 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="280"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" Margin="0,-130,0,0" Height="180" VerticalAlignment="Top">
-                <Border Margin="5">
-                    <TreeView
-                    ItemsSource="{Binding ConvertExtension}"
-                    RenderTransformOrigin="0.5,0.5"
-                        SelectedItemChanged="TreeView_SelectedItemChanged"
-                    >
-                        <TreeView.Resources>
-                            <HierarchicalDataTemplate
-                        DataType="{x:Type local:ConvertModel}"
-                        ItemsSource="{Binding Preset}">
-                                <TextBlock
-                                   Text="{Binding Title}" RenderTransformOrigin="0.5,0.5">
-                                    <TextBlock.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform/>
-                                            <SkewTransform/>
-                                            <RotateTransform Angle="180"/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </TextBlock.RenderTransform>
-                                </TextBlock>
-                            </HierarchicalDataTemplate>
-                            <DataTemplate
-                        DataType="{x:Type local:PresetModel}"
-                        >
-                                <TextBlock
-                                       Text="{Binding Title}" RenderTransformOrigin="0.5,0.5">
-                                    <TextBlock.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform/>
-                                            <SkewTransform/>
-                                            <RotateTransform Angle="180"/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </TextBlock.RenderTransform>
-                                </TextBlock>
-
-                            </DataTemplate>
-                        </TreeView.Resources>
-                        <TreeView.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="180"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TreeView.RenderTransform>
-                    </TreeView>
-                </Border>
+            <Border Grid.Column="0" Margin="5 0 0 5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.7*"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                               Text="변환할 확장자"
+                               Margin="5 0 0 0"
+                               VerticalAlignment="Center"
+                               />
+                    <RadioButton Grid.Row="1" Grid.Column="0"
+                            Style="{StaticResource MaterialDesignRadioButton}"
+                            Content="MP3 320Kb"
+                            VerticalAlignment="Center"
+                            />
+                    <RadioButton Grid.Row="1" Grid.Column="1"
+                            Content="MP3 256Kb"
+                            VerticalAlignment="Center"
+                            />
+                    <RadioButton Grid.Row="1" Grid.Column="2"
+                            Content="MP3 128Kb"
+                            VerticalAlignment="Center"
+                            />
+                    <RadioButton Grid.Row="2" Grid.Column="0"
+                            Content="Flac"
+                            VerticalAlignment="Center"
+                            />
+                    <RadioButton Grid.Row="2" Grid.Column="1"
+                            Content="Mp3(User)"
+                            VerticalAlignment="Center"
+                            />
+                </Grid>
             </Border>
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" >
+                <TextBlock
+                    TextWrapping="Wrap"
+                    Text="100 %"
+                    TextAlignment="Center"
+                    Margin="0,48,263,36"
+                    Width="50" HorizontalAlignment="Right" d:LayoutOverrides="Width"
+                    />
                 <ProgressBar
                     Height="Auto"
-                    Margin="10,10,320,10"/>
-                <TextBlock
-                    HorizontalAlignment="Right"
-                    Margin="0,18,264,16"
-                    TextWrapping="Wrap"
-                    Text="100 %" Width="51"
-                    VerticalAlignment="Center"
-                    TextAlignment="Center"/>
+                    Margin="10,40,318,20"/>
                 <Button
-                    Margin="0,10,10,10"
-                    Height="Auto"
-                    HorizontalAlignment="Right"
-                    Content="변환 시작"
-                    Width="94" Click="Execute"/>
-                <Button
-                    Margin="0,10,109,10"
+                    Margin="0,40,109,20"
                     Height="Auto"
                     Content="변환할 파일 열기"
                     HorizontalAlignment="Right"
                     Width="150" Click="OpenDialog"/>
+
+                <Button
+                    Margin="0,40,10,20"
+                    HorizontalAlignment="Right"
+                    Content="변환 시작"
+                    Height="Auto"
+                    Width="94" Click="Execute"/>
 
             </Grid>
         </Grid>
