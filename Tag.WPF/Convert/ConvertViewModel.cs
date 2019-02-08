@@ -69,7 +69,7 @@ namespace Tag.WPF
             var Content = new ConvertStatus
             {
                 Width = 450,
-                Height = 250,
+                Height = 280,
             };
             foreach (var value in ConvInfos)
             {

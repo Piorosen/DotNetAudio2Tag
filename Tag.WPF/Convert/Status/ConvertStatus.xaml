@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Tag.WPF"
              xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="280" d:DesignWidth="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -102,13 +102,12 @@
                 <ColumnDefinition Width="30*"/>
             </Grid.ColumnDefinitions>
             <Button Content="일시 정지"
-                    Margin="35,10,15,8" Grid.Column="2"
+                    Margin="22,10,10,8" Grid.Column="1" Grid.ColumnSpan="2"
                     />
             <Button Content="중 단"
-                    Margin="55,10,-30,8"
-                    IsCancel="True"
-                    CommandParameter='True'
-                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}" Grid.Column="1"
+                    Margin="180,10,-17,8"
+                    CommandParameter="False"
+                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}"
                     />
         </Grid>
     </Grid>

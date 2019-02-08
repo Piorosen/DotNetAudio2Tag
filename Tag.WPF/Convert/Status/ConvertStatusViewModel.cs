@@ -98,15 +98,18 @@ namespace Tag.WPF
 
         private void Converter_CompleteOfIndex(object sender, int e)
         {
-            Control.Dispatcher.Invoke(() =>
+            if (ConvertModelQueue.Count != 0)
             {
-                Items.Remove(Items.First((item) => item.Id == e));
-                var data = Dequeue();
-                if (data != null)
+                Control.Dispatcher.Invoke(() =>
                 {
-                    Items.Add(data);
-                }
-            });
+                    Items.Remove(Items.First((item) => item.Id == e));
+                    var data = Dequeue();
+                    if (data != null)
+                    {
+                        Items.Add(data);
+                    }
+                });
+            }
         }
 
         public void Enqueue(ConvertModel info)
