@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Tag.WPF
@@ -115,7 +116,7 @@ namespace Tag.WPF
         private int avgBytePerSecond;
         private string genre;
 
-        public async Task Execute()
+        public async Task Execute(Control control)
         {
             await Task.Factory.StartNew(() =>
             {
@@ -128,11 +129,14 @@ namespace Tag.WPF
                         if (TaskPercent < value)
                         {
                             TaskPercent = value;
+                            control.Dispatcher.Invoke(() =>
+                            {
+                                control.UpdateLayout();
+                            });
                         }
                     }
                     isTask = false;
                 }
-
             }).ConfigureAwait(true);
 
         }

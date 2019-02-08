@@ -70,7 +70,7 @@ namespace Tag.WPF
         }
         private async void Execute(object sender, RoutedEventArgs e)
         {
-            await viewModel.Execute();
+            await viewModel.Execute(this);
             Application.notifier.ShowInformation("성공적으로 분리를 하였습니다.");
         }
         

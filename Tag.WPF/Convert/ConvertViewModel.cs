@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tag.Core.Conv;
+using ToastNotifications.Messages;
 
 namespace Tag.WPF
 {
@@ -44,7 +45,14 @@ namespace Tag.WPF
 
         private void CloseEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
-            if (bool.Parse(eventArgs.Parameter.ToString()) == false) return;
+            if (bool.Parse(eventArgs.Parameter.ToString()) == true)
+            {
+                Application.notifier.ShowInformation("성공적으로 변환을 하였습니다.");
+            }
+            else
+            {
+                Application.notifier.ShowInformation("변환을 하는데 실패 하였습니다.");
+            }
 
             //note, you can also grab the session when the dialog opens via the DialogOpenedEventHandler
 
@@ -61,7 +69,7 @@ namespace Tag.WPF
             var Content = new ConvertStatus
             {
                 Width = 450,
-                Height = 400,
+                Height = 250,
             };
             foreach (var value in ConvInfos)
             {
