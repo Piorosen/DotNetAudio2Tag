@@ -111,8 +111,14 @@
     <Compile Include="Tagging\Design\GetTagInfo.xaml.cs">
       <DependentUpon>GetTagInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tagging\Design\MusicBrainzSearch.xaml.cs">
+      <DependentUpon>MusicBrainzSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tagging\Design\TagAllSave.xaml.cs">
       <DependentUpon>TagAllSave.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tagging\Design\VgmDbSearch.xaml.cs">
+      <DependentUpon>VgmDbSearch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tagging\Tagging.xaml.cs">
       <DependentUpon>Tagging.xaml</DependentUpon>
@@ -148,7 +154,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Tagging\Design\MusicBrainzSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Tagging\Design\TagAllSave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tagging\Design\VgmDbSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -27,5 +27,28 @@ namespace Tag.WPF
             InitializeComponent();
         }
 
+        private async void MusicBrainz_Search(object sender, RoutedEventArgs e)
+        {
+            var view = new MusicBrainzSearch
+            {
+                Width=100,
+                Height=100
+            };
+
+            DialogHost.CloseDialogCommand.Execute(false, null);
+            await Task.Delay(500);
+            await DialogHost.Show(view);
+        }
+        private async void VGMDB_Search(object sender, RoutedEventArgs e)
+        {
+            var view = new VgmDbSearch
+            {
+                Width = 100,
+                Height = 100
+            };
+            DialogHost.CloseDialogCommand.Execute(false, null);
+            await Task.Delay(500);
+            await DialogHost.Show(view);
+        }
     }
 }

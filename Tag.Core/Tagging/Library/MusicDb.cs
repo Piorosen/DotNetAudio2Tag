@@ -162,8 +162,10 @@ namespace Tag.Core.Tagging.Library
         #region GetTrackInfo Library
         private string RequestTrackWeb(string identifier)
         {
-            WebClient wc = new WebClient();
-            wc.Encoding = Encoding.UTF8;
+            WebClient wc = new WebClient
+            {
+                Encoding = Encoding.UTF8
+            };
             var data = wc.DownloadString($"https://vgmdb.net/album/{identifier}");
             
             return data;

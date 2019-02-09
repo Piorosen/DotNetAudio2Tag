@@ -26,9 +26,11 @@ namespace Tag.WPF
 
         private async void TagAllSave(object sender, RoutedEventArgs e)
         {
-            var view = new TagAllSave();
-            view.Width = 300;
-            view.Height = 100;
+            var view = new TagAllSave
+            {
+                Width = 300,
+                Height = 100
+            };
             var result = (bool)(await DialogHost.Show(view));
 
             if (result  == true)
@@ -40,7 +42,8 @@ namespace Tag.WPF
         {
             var view = new GetTagInfo
             {
-
+                Width = 200,
+                Height = 100
             };
             var result = await DialogHost.Show(view);
 

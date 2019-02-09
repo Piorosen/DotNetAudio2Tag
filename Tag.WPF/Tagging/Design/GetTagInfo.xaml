@@ -6,10 +6,33 @@
              xmlns:local="clr-namespace:Tag.WPF"
              xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
-             Width="300"
+             Width="200"
              Height="100"
              >
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <wpf:DialogHost Grid.RowSpan="2" Width="Auto" Height="Auto"/>
+
+        <Button Grid.Row="0"
+                Height="Auto"
+                Margin="5"
+                Content="MusicBrainz DB Search"
+                Padding="0"
+                Click="MusicBrainz_Search"
+                />
+        <Button Grid.Row="1"
+                Margin="5"
+                Height="Auto"
+                Content="VGMDB.Net Search"
+                Padding="0"
+                Click="VGMDB_Search"
+                />
+
 
     </Grid>
 </UserControl>
