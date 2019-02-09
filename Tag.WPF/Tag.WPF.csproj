@@ -108,8 +108,11 @@
     <Compile Include="CueSplit\CueSplitViewModel.cs" />
     <Compile Include="Convert\PresetModel.cs" />
     <Compile Include="Lib\ListToString.cs" />
-    <Compile Include="Tagging\Design\Alarm.xaml.cs">
-      <DependentUpon>Alarm.xaml</DependentUpon>
+    <Compile Include="Tagging\Design\GetTagInfo.xaml.cs">
+      <DependentUpon>GetTagInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tagging\Design\TagAllSave.xaml.cs">
+      <DependentUpon>TagAllSave.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tagging\Tagging.xaml.cs">
       <DependentUpon>Tagging.xaml</DependentUpon>
@@ -141,7 +144,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Tagging\Design\Alarm.xaml">
+    <Page Include="Tagging\Design\GetTagInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tagging\Design\TagAllSave.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -31,6 +31,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+
         <Grid Grid.Column="0" Grid.RowSpan="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <Grid VerticalAlignment="Top">
                 <Grid Height="60" Margin="10,10,10,0" VerticalAlignment="Top">
@@ -119,7 +120,6 @@
             ScrollViewer.HorizontalScrollBarVisibility="Visible"
                   ScrollViewer.VerticalScrollBarVisibility="Visible"
                   DragEnter="ItemDragEnter" Drop="ItemDragDrop" SelectionChanged="ListView_Selected"
-                  
                   >
             <ListView.View>
                 <GridView>
@@ -173,12 +173,15 @@
         </ListView>
         <Grid Grid.Column="1" Grid.Row="1">
             <Button
-                Width="150" HorizontalAlignment="Right" Margin="0,9,10,9" Click="Button_Click_1"
+                Width="150" HorizontalAlignment="Right" Margin="0,9,10,9"
+                Click="Button_Click"
                 >
                 일괄 저장
             </Button>
             <Button
-                ToolTip="Resource name: MaterialDesignRaisedAccentButton" Margin="236,0,182,10" VerticalAlignment="Bottom"
+                Width="150"
+                ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                Margin="0,9,165,9" HorizontalAlignment="Right"
                 >
                 태그 정보 가져오기
             </Button>
