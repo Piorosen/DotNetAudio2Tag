@@ -13,7 +13,7 @@ using Tag.Core.Tagging;
 
 namespace Tag.WPF
 {
-    public class TaggingViewModel : INotifyPropertyChanged, IValueConverter
+    public class TaggingViewModel : INotifyPropertyChanged
     {
         public string Title => Setting.Global.Language.Title;
         public string Artist => Setting.Global.Language.Artist;
@@ -40,43 +40,24 @@ namespace Tag.WPF
         public ObservableCollection<TaggingModel> Items { get; set; }
         public TaggingModel SelectItem { get => _selectItem; set { _selectItem = value; OnPropertyChanged(); } }
 
-
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-        public string ToString(object str)
-        {
-            if (str.GetType() == typeof(List<string>))
-            {
-                return string.Join(";", str);
-            }
-            else
-            {
-                return str.ToString();
-            }
-        }
-
+        
         public void AddModel(string filePath)
         {
             audioTagging.AddFile(filePath);
 
-            AudioFileReader reader = new AudioFileReader(filePath);
-            Items.Add(new TaggingModel
+            using (AudioFileReader reader = new AudioFileReader(filePath))
             {
-                TagInfo = audioTagging.List()[audioTagging.List().Count - 1],
-                WaveFormat = new WaveFormatModel
+                Items.Add(new TaggingModel
                 {
-                    Bitrate = reader.WaveFormat.BitsPerSample,
-                    Channel = reader.WaveFormat.Channels,
-                    Length = reader.TotalTime.TotalSeconds
-                }
-            });
+                    TagInfo = audioTagging.List()[audioTagging.List().Count - 1],
+                    WaveFormat = new WaveFormatModel
+                    {
+                        Bitrate = reader.WaveFormat.SampleRate,
+                        Channel = reader.WaveFormat.Channels,
+                        Length = reader.TotalTime.TotalSeconds
+                    }
+                });
+            }
         }
 
         public void RemoveModel(int index)

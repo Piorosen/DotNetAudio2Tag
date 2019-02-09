@@ -136,35 +136,38 @@
                         DisplayMemberBinding="{Binding TagIfno.TagType}"
                         Header="{Binding TagType}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding TagInfo.Artist}"
+                        DisplayMemberBinding="{Binding TagInfo.Artist, Converter={StaticResource ListToSring}}"
                         Header="{Binding Artist}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding TagInfo.AlbumArtist, Converter={StaticResource ListToSring}}"
                         Header="{Binding AlbumArtist}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding TagInfo.Album}"
                         Header="{Binding Album}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding TagInfo.Track, Converter={StaticResource ListToSring}}"
                         Header="{Binding Track}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding TagInfo.DiscNum}"
                         Header="{Binding DiscNum}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding TagInfo.Year}"
                         Header="{Binding Year}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding TagInfo.Genre, Converter={StaticResource ListToSring}}"
                         Header="{Binding Genre}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding TagInfo.Comment}"
                         Header="{Binding Comment}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding WaveFormat.Bitrate}"
                         Header="{Binding Bitrate}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding WaveFormat.Length}"
                         Header="{Binding Length}" />
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding WaveFormat.Channel}"
+                        Header="채널" />
                 </GridView>
             </ListView.View>
         </ListView>

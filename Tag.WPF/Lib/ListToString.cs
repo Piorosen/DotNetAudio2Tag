@@ -34,7 +34,15 @@ namespace Tag.WPF
                     return data;
                 }
                 return image;
-                
+            }
+
+            if (value is double)
+            {
+                return ((double)value).ToString();
+            }
+            if (value is int)
+            {
+                return ((int)value).ToString();
             }
 
             if (value is List<string>)
@@ -47,16 +55,8 @@ namespace Tag.WPF
             }
             return value.ToString();
         }
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
 
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
