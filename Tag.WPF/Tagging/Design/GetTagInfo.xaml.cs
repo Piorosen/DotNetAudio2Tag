@@ -20,11 +20,12 @@ namespace Tag.WPF
     /// UserControl1.xaml에 대한 상호 작용 논리
     /// </summary>
     /// 
-    public partial class Status : UserControl
+    public partial class GetTagInfo : UserControl
     {
-        public Status()
+        public GetTagInfo()
         {
             InitializeComponent();
         }
+
     }
 }

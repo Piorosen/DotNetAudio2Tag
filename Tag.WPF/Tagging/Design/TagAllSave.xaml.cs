@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,22 @@ namespace Tag.WPF
         public TagAllSave()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Y)
+            {
+                DialogHost.CloseDialogCommand.Execute(true, null);
+            }
+            else if (e.Key == Key.N)
+            {
+                DialogHost.CloseDialogCommand.Execute(false, null);
+            }
+            else if (e.Key == Key.C)
+            {
+                DialogHost.CloseDialogCommand.Execute(false, null);
+            }
         }
     }
 }

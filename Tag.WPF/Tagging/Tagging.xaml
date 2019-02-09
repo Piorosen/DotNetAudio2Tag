@@ -174,14 +174,14 @@
         <Grid Grid.Column="1" Grid.Row="1">
             <Button
                 Width="150" HorizontalAlignment="Right" Margin="0,9,10,9"
-                Click="Button_Click"
+                Click="TagAllSave"
                 >
                 일괄 저장
             </Button>
             <Button
                 Width="150"
-                ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                 Margin="0,9,165,9" HorizontalAlignment="Right"
+                Click="GetTagInfo"
                 >
                 태그 정보 가져오기
             </Button>

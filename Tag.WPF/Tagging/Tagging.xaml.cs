@@ -40,23 +40,22 @@ namespace Tag.WPF
 
         private void ExtendedClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
-            if ((bool)eventArgs.Parameter == false) return;
-
-            //OK, lets cancel the close...
-            eventArgs.Cancel();
-            
-            //note, you can also grab the session when the dialog opens via the DialogOpenedEventHandler
-
-            //lets run a fake operation for 3 seconds then close this baby.
-            Task.Delay(TimeSpan.FromSeconds(3))
-                .ContinueWith((t, _) => eventArgs.Session.Close(false), null,
-                    TaskScheduler.FromCurrentSynchronizationContext());
 
         }
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private async void TagAllSave(object sender, RoutedEventArgs e)
         {
-            var view = new Status
+            var view = new TagAllSave();
+            view.Width = 300;
+            view.Height = 100;
+            var result = await DialogHost.Show(view, ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
+
+            //check the result...
+            Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
+        }
+        private async void GetTagInfo(object sender, RoutedEventArgs e)
+        {
+            var view = new GetTagInfo
             {
 
             };

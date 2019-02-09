@@ -4,9 +4,71 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             Width="300"
+             Height="100"
+             KeyDown="UserControl_KeyDown">
+
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock
+                TextAlignment="Center"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Text="전체 내용이 저장됩니다. &#x0a; 저장하시겠습니까?"
+                >
+            </TextBlock>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="4"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Style="{DynamicResource MaterialDesignRaisedLightButton}"
+                    wpf:ShadowAssist.ShadowDepth="Depth1"
+                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}"
+                    Content="Yes (Y)"
+                    Margin="4"  Padding="0"
+                    >
+                <Button.CommandParameter>
+                    <system:Boolean>True</system:Boolean>
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Margin="4" Padding="0"
+                Grid.Column="1"
+                wpf:ShadowAssist.ShadowDepth="Depth1"
+                Style="{DynamicResource MaterialDesignRaisedLightButton}"
+                Command="{x:Static wpf:DialogHost.CloseDialogCommand}"
+                Content="No (N)">
+                <Button.CommandParameter>
+                    <system:Boolean>False</system:Boolean>
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Margin="4" Padding="0"
+               wpf:ShadowAssist.ShadowDepth="Depth1"
+                Grid.Column="2"
+                Style="{DynamicResource MaterialDesignRaisedLightButton}"
+                Command="{x:Static wpf:DialogHost.CloseDialogCommand}"
+                Content="Cancel (C)">
+                <Button.CommandParameter>
+                    <system:Boolean>False</system:Boolean>
+                </Button.CommandParameter>
+            </Button>
+
+        </Grid>
     </Grid>
 </UserControl>
