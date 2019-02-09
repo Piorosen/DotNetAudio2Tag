@@ -17,7 +17,8 @@
             ACCEPT
         </Button>
         <Button BorderBrush="Gray" BorderThickness="1" IsCancel="True" Margin="15,0,0,6" Style="{DynamicResource MaterialDesignFlatButton}"
-                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}" VerticalAlignment="Bottom" d:LayoutOverrides="HorizontalAlignment, Height" HorizontalAlignment="Left" Width="120">
+                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}" VerticalAlignment="Bottom" 
+                HorizontalAlignment="Left" Width="120">
             <Button.CommandParameter>
                 <system:Boolean>False</system:Boolean>
             </Button.CommandParameter>

@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TagLib;
 
 namespace Tag.Core.Tagging
 {
@@ -22,7 +23,7 @@ namespace Tag.Core.Tagging
     {
         public string Identifier { get; set; } = string.Empty;
         public string Lang { get; set; } = "en";
-
+        
         public string Path { get; set; } = string.Empty;
         public string Title { get; set; } = string.Empty;
         public List<string> Artist { get; set; } = new List<string>();
@@ -34,13 +35,14 @@ namespace Tag.Core.Tagging
         public List<string> AlbumArtist { get; set; } = new List<string>();
         public List<string> Composer { get; set; } = new List<string>();
         public string DiscNum { get; set; } = string.Empty;
-        public List<TagLib.IPicture> Image { get; set; } = new List<TagLib.IPicture>();
+        public List<IPicture> Image { get; set; } = new List<IPicture>();
         public string Barcode { get; set; } = string.Empty;
         public List<string> Publisher { get; set; } = new List<string>();
         public List<string> Format { get; set; } = new List<string>();
         public string Country { get; set; } = string.Empty;
+        public TagTypes TagType { get; set; } = TagTypes.Id3v2;
 
-        public TagInfo(TagLib.Tag value)
+        public TagInfo(TagLib.Tag value, string filePath)
         {
             Title = value.Title;
             Artist = value.Performers.ToList();
@@ -51,8 +53,12 @@ namespace Tag.Core.Tagging
             Comment = value.Comment;
             AlbumArtist = value.AlbumArtists.ToList();
             Composer = value.Composers.ToList();
+            DiscNum = value.MusicBrainzDiscId;
             Image = value.Pictures.ToList();
-            
+            Country = value.MusicBrainzReleaseCountry;
+            TagType = value.TagTypes;
+            Publisher.Add(value.Conductor);
+            Path = filePath;
         }
         public TagInfo()
         {
@@ -60,6 +66,9 @@ namespace Tag.Core.Tagging
 
         public TagInfo(TagInfo value)
         {
+            Identifier = value.Identifier;
+            Lang = value.Lang;
+            Path = value.Path;
             Title = value.Title;
             Artist = value.Artist.ToArray().ToList();
             Album = value.Album;
@@ -69,8 +78,14 @@ namespace Tag.Core.Tagging
             Comment = value.Comment;
             AlbumArtist = value.AlbumArtist.ToArray().ToList();
             Composer = value.Composer.ToArray().ToList();
+            DiscNum = value.DiscNum;
             Image = value.Image.ToArray().ToList();
             Barcode = value.Barcode;
+            Publisher = value.Publisher.ToArray().ToList();
+            Format = value.Format.ToArray().ToList();
+            Country = value.Country;
+            TagType = value.TagType;
+            Path = value.Path;
         }
     }
 }

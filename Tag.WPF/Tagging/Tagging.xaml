@@ -19,12 +19,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}" Height="724" Width="899">
 
     <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DialogHost.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <local:ListToString x:Key="ListToSring" />
     </UserControl.Resources>
 
     <Grid AllowDrop="True">
@@ -40,23 +35,23 @@
             <Grid VerticalAlignment="Top">
                 <Grid Height="60" Margin="10,10,10,0" VerticalAlignment="Top">
                     <Label x:Name="LabelTitle" Content="{Binding Title}" Margin="6,5,10,29"/>
-                    <TextBox x:Name="TextTitle" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TextTitle" Text="{Binding SelectItem.TagInfo.Title}"  materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
                 <Grid Height="60" Margin="10,75,0,0" VerticalAlignment="Top">
                     <Label x:Name="LabelArtist" Content="{Binding Artist}" Margin="6,5,10,29"/>
-                    <TextBox x:Name="TextArtist" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TextArtist" Text="{Binding SelectItem.TagInfo.Artist, Converter={StaticResource ListToSring}}" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
                 <Grid Height="60" Margin="10,140,0,0" VerticalAlignment="Top">
                     <Label x:Name="LabelAlbum" Content="{Binding Album}" Margin="6,5,10,29"/>
-                    <TextBox x:Name="TextAlbum" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TextAlbum" Text="{Binding SelectItem.TagInfo.Album}" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
                 <Grid Height="60" Margin="10,205,0,0" VerticalAlignment="Top">
                     <Label x:Name="LabelComment" Content="{Binding Comment}" Margin="6,5,10,29"/>
-                    <TextBox x:Name="TextComment" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TextComment" Text="{Binding SelectItem.TagInfo.Comment}" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
                 <Grid Margin="10,270,0,0" VerticalAlignment="Top" Height="60">
                     <Label x:Name="LabelGenre" Content="{Binding Genre}" Margin="6,5,8,29"/>
-                    <TextBox x:Name="TextGenre" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,8,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TextGenre" Text="{Binding SelectItem.TagInfo.Genre, Converter={StaticResource ListToSring}}" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,8,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
 
                 <Grid Margin="10,335,0,0" VerticalAlignment="Top" Height="60">
@@ -66,17 +61,23 @@
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" >
                         <Label x:Name="LabelYear" Content="{Binding Year}" Margin="6,5,0,29" HorizontalAlignment="Left" Width="84"/>
-                        <TextBox x:Name="TextYear" materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10,0,6,6"/>
+                        <TextBox x:Name="TextYear" 
+                                 Text="{Binding SelectItem.TagInfo.Year}"
+                                 materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10,0,6,6"/>
                     </Grid>
                     <Grid Grid.Column="1">
                         <Label x:Name="LabelTrack" Content="{Binding Track}" Margin="2,5,0,29" Width="88" HorizontalAlignment="Left"/>
-                        <TextBox x:Name="TextTrack" materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="6,0,10,6"/>
+                        <TextBox x:Name="TextTrack"
+                                 Text="{Binding SelectItem.TagInfo.Track, Converter={StaticResource ListToSring}}"
+                                 materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="6,0,10,6"/>
                     </Grid>
                 </Grid>
 
                 <Grid Margin="10,400,0,0" VerticalAlignment="Top" Height="60">
                     <Label x:Name="LabelAlbumArtist" Content="{Binding AlbumArtist}" Margin="6,5,10,29"/>
-                    <TextBox x:Name="TextAlbumArtist" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="TextAlbumArtist"
+                             Text="{Binding SelectItem.TagInfo.AlbumArtist, Converter={StaticResource ListToSring}}"
+                             materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
 
                 <Grid Margin="10,465,0,0" VerticalAlignment="Top" Height="60">
@@ -86,11 +87,15 @@
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" >
                         <Label x:Name="LabelComposer" Content="{Binding Composer}" Margin="6,5,0,29" HorizontalAlignment="Left" Width="84"/>
-                        <TextBox x:Name="TextComposer" materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10,0,6,6"/>
+                        <TextBox x:Name="TextComposer"
+                                 Text="{Binding SelectItem.TagInfo.Composer, Converter={StaticResource ListToSring}}"
+                                 materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10,0,6,6"/>
                     </Grid>
                     <Grid Grid.Column="1">
-                        <Label x:Name="LabelDiscNum" Content="{Binding DiscNum}" Margin="2,5,0,29" Width="88" HorizontalAlignment="Left"/>
-                        <TextBox x:Name="TextDiscNum" materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="6,0,10,6" d:IsLocked="True"/>
+                        <Label x:Name="LabelDiscNum" Content="{Binding Publisher}" Margin="2,5,0,29" Width="88" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="TextDiscNum" 
+                                 Text="{Binding SelectItem.TagInfo.Publisher, Converter={StaticResource ListToSring}}"
+                                 materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="6,0,10,6" d:IsLocked="True"/>
                     </Grid>
                 </Grid>
 
@@ -98,7 +103,11 @@
                     <Label x:Name="LabelAlbumArt" Content="{Binding AlbumArt}" Margin="6,5,10,0" Height="23" VerticalAlignment="Top"/>
                     <Grid Margin="6,33,10,-33">
                         <Border BorderBrush="Black" BorderThickness="1,1,1,1" Margin="0,0,124,-6" Width="150" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top">
-                            <Image x:Name="image" Height="150" Width="150"/>
+                            <Image 
+                                Source="{Binding SelectItem.TagInfo.Image,
+                                Converter={StaticResource ListToSring}}"
+                                x:Name="image" Height="150" Width="150">
+                            </Image>
                         </Border>
                     </Grid>
                 </Grid>
@@ -109,23 +118,25 @@
             ItemsSource="{Binding Items}"
             ScrollViewer.HorizontalScrollBarVisibility="Visible"
                   ScrollViewer.VerticalScrollBarVisibility="Visible"
-                  DragEnter="ItemDragEnter" Drop="ItemDragDrop">
+                  DragEnter="ItemDragEnter" Drop="ItemDragDrop" SelectionChanged="ListView_Selected"
+                  
+                  >
             <ListView.View>
                 <GridView>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding FileName}"
                         Header="{Binding FileName}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding TagInfo.Title}"
                         Header="{Binding Title}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding TagInfo.Path}"
                         Header="{Binding Directory}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding TagIfno.TagType}"
                         Header="{Binding TagType}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
+                        DisplayMemberBinding="{Binding TagInfo.Artist}"
                         Header="{Binding Artist}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding N}"
@@ -150,16 +161,10 @@
                         Header="{Binding Comment}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding N}"
-                        Header="{Binding Codec}" />
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
                         Header="{Binding Bitrate}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding N}"
                         Header="{Binding Length}" />
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding N}"
-                        Header="{Binding Fixed}" />
                 </GridView>
             </ListView.View>
         </ListView>

@@ -8,8 +8,16 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
+namespace System.Collections.Generic
+{
+    public static class ExtenList
+    {
+        
+    }
+}
 namespace Tag.WPF
 {
+    
     /// <summary>
     /// Tagging.xaml에 대한 상호 작용 논리
     /// </summary>
@@ -23,6 +31,7 @@ namespace Tag.WPF
             DataContext = viewModel = new TaggingViewModel();
         }
         
+
 
         private void ExtendedOpenedEventHandler(object sender, DialogOpenedEventArgs eventargs)
         {
@@ -63,15 +72,29 @@ namespace Tag.WPF
             foreach (var path in items)
             {
                 var t = Path.GetExtension(path).ToLower();
-                if (t == ".cue")
+                switch (t)
                 {
-          //          viewModel.Add
+                    case ".wav":
+                    case ".flac":
+                    case ".mp3":
+                        viewModel.AddModel(path);
+                        break;
                 }
             }
         }
         private void ItemDragEnter(object sender, DragEventArgs e)
         {
             e.Effects = DragDropEffects.Copy;
+        }
+
+        private void ListView_Selected(object sender, SelectionChangedEventArgs e)
+        {
+            var listView = (sender is ListView) ? sender as ListView : null ;
+            Console.WriteLine(sender.GetType());
+            if (listView != null && listView?.SelectedIndex != -1)
+            {
+                viewModel.SelectModel(listView.SelectedIndex);
+            }
         }
     }
 }

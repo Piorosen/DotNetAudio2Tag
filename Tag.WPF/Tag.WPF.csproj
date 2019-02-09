@@ -61,6 +61,9 @@
     <Reference Include="NAudio.Lame, Version=1.0.9.26885, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NAudio.Lame.1.0.9\lib\net40\NAudio.Lame.dll</HintPath>
     </Reference>
+    <Reference Include="policy.2.0.taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
+      <HintPath>..\packages\taglib.2.1.0.0\lib\policy.2.0.taglib-sharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -76,6 +79,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="taglib-sharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
+      <HintPath>..\packages\taglib.2.1.0.0\lib\taglib-sharp.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -101,6 +107,7 @@
     <Compile Include="CueSplit\CueSplitModel.cs" />
     <Compile Include="CueSplit\CueSplitViewModel.cs" />
     <Compile Include="Convert\PresetModel.cs" />
+    <Compile Include="Lib\ListToString.cs" />
     <Compile Include="Tagging\Design\Alarm.xaml.cs">
       <DependentUpon>Alarm.xaml</DependentUpon>
     </Compile>
@@ -109,6 +116,7 @@
     </Compile>
     <Compile Include="Tagging\TaggingModel.cs" />
     <Compile Include="Tagging\TaggingViewModel.cs" />
+    <Compile Include="Tagging\WaveFormatModel.cs" />
     <Page Include="Convert\Convert.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

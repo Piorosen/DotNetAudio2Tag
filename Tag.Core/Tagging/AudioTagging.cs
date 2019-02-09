@@ -20,6 +20,11 @@ namespace Tag.Core.Tagging
             return true;
         }
 
+        public bool AddFile(string filePath)
+        {
+            return AddFile(new TagInfo(TagLib.File.Create(filePath).Tag, filePath));
+        }
+
         public bool Delete(int at)
         {
             if (0 <= at && at < tagList.Count)

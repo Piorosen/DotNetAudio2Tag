@@ -115,7 +115,7 @@ namespace Tag.WPF
             {
                 var listView = (sender is ListView) ? null : (sender as ListView);
 
-                if (listView != null)
+                if (listView != null || listView.SelectedIndex != -1)
                 {
                     viewModel.ConvInfos.RemoveAt(listView.SelectedIndex);
                 }
