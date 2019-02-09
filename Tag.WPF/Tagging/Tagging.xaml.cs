@@ -8,13 +8,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace System.Collections.Generic
-{
-    public static class ExtenList
-    {
-        
-    }
-}
 namespace Tag.WPF
 {
     
@@ -30,28 +23,18 @@ namespace Tag.WPF
             InitializeComponent();
             DataContext = viewModel = new TaggingViewModel();
         }
-        
-
-
-        private void ExtendedOpenedEventHandler(object sender, DialogOpenedEventArgs eventargs)
-        {
-            Console.WriteLine("You could intercept the open and affect the dialog using eventArgs.Session.");
-        }
-
-        private void ExtendedClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
-        {
-
-        }
 
         private async void TagAllSave(object sender, RoutedEventArgs e)
         {
             var view = new TagAllSave();
             view.Width = 300;
             view.Height = 100;
-            var result = await DialogHost.Show(view, ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
+            var result = (bool)(await DialogHost.Show(view));
 
-            //check the result...
-            Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
+            if (result  == true)
+            {
+                viewModel.AllTagSave();
+            }
         }
         private async void GetTagInfo(object sender, RoutedEventArgs e)
         {
@@ -59,7 +42,7 @@ namespace Tag.WPF
             {
 
             };
-            var result = await DialogHost.Show(view, ExtendedOpenedEventHandler, ExtendedClosingEventHandler);
+            var result = await DialogHost.Show(view);
 
             //check the result...
             Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));

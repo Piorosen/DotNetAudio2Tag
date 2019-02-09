@@ -60,6 +60,22 @@ namespace Tag.WPF
             }
         }
 
+        public void SaveOne()
+        {
+
+        }
+
+        public void AllTagSave()
+        {
+
+        }
+
+        public TagInfo GetTagInfo(int index)
+        {
+
+            return new TagInfo();
+        }
+
         public void RemoveModel(int index)
         {
             Items.RemoveAt(index);
