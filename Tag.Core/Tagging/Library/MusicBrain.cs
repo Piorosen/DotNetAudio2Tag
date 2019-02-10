@@ -101,8 +101,12 @@ namespace Tag.Core.Tagging.Library
                     Country = value.Country,
                     Year = value.Date,
                     Barcode = value.Barcode,
-                    Identifier = value.Id
+                    Identifier = value.Id,
+                    Album = value.Title,
+
                 };
+                binfo.AlbumArtist.Add(value.Artistcredit[0].Artist.Name);
+                binfo.Composer.Add(value.Artistcredit[0].Artist.Name);
 
                 foreach (var i in value.Artistcredit)
                 {

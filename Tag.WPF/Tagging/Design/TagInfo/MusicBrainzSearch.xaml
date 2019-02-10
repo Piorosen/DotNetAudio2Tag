@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="400">
+             d:DesignHeight="250" d:DesignWidth="400">
     
     <UserControl.Resources>
         <local:ListToString x:Key="ListToString"/>
@@ -19,6 +19,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0"
@@ -34,7 +35,6 @@
         <ListView Grid.Row="1" Grid.Column="0"
                   Margin="3"
                   ItemsSource="{Binding Items}" SelectionChanged="ListView_SelectionChanged"
-                  
                   >
             <ListView.View>
                 <GridView>
@@ -56,15 +56,15 @@
                     <GridViewColumn
                         DisplayMemberBinding="{Binding Track, Converter={StaticResource ListToString}}"
                         Header="트랙"/>
-                    <GridViewColumn
+                    <!--<GridViewColumn
                         DisplayMemberBinding="{Binding Genre, Converter={StaticResource ListToString}}"
-                        Header="장르"/>
-                    <GridViewColumn
+                        Header="장르"/>-->
+                    <!--<GridViewColumn
                         DisplayMemberBinding="{Binding AlbumArtist, Converter={StaticResource ListToString}}"
                         Header="앨범 아티스트"/>
                     <GridViewColumn
                         DisplayMemberBinding="{Binding Composer, Converter={StaticResource ListToString}}"
-                        Header="작곡가"/>
+                        Header="작곡가"/>-->
                     <GridViewColumn
                         DisplayMemberBinding="{Binding DiscNum}"
                         Header="디스크 번호"/>
@@ -91,11 +91,29 @@
                 Margin="5"
             >
             <Image 
+                Source="{Binding ImageSource}"
                Width="Auto"
                Height="Auto"
                />
         </Border>
-        
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Height="Auto"
+                    Width="Auto"
+                    Margin="5"
+                    Click="Yes_Click"
+                Content="선택 (Y)"/>
+            <Button Grid.Column="1"
+                    Margin="5"
+                    Height="Auto"
+                    Width="Auto"
+                    Click="No_Click"
+                Content="취소 (Y)"/>
+        </Grid>
 
     </Grid>
 </UserControl>

@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Tag.Core.Tagging;
@@ -43,17 +44,29 @@ namespace Tag.WPF
                 Items.Add(value);
             }
         }
-        public void SelectItem(int index)
-        {
-            var bin = search.GetTrackInfo(Items[index])[0].Image[0].Data.Data;
-            var image = new Bitmap(Image.FromStream(new MemoryStream(bin)));
-            var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                 image.GetHbitmap(),
-                 IntPtr.Zero,
-                 Int32Rect.Empty,
-                 BitmapSizeOptions.FromEmptyOptions());
-            ImageSource = data;
 
+        int TaskIdentified = 0;
+        public async void SelectItem(int index, Control control)
+        {
+            await Task.Run(() =>
+            {
+                TaskIdentified++;
+                int id = TaskIdentified;
+                var bin = search.GetTrackInfo(Items[index])[0].Image[0].Data.Data;
+                if (id == TaskIdentified)
+                {
+                    control?.Dispatcher?.Invoke(() =>
+                    {
+                        var image = new Bitmap(System.Drawing.Image.FromStream(new MemoryStream(bin)));
+                        var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                             image.GetHbitmap(),
+                             IntPtr.Zero,
+                             Int32Rect.Empty,
+                             BitmapSizeOptions.FromEmptyOptions());
+                        ImageSource = data;
+                    });
+                }
+            });
         }
 
     }

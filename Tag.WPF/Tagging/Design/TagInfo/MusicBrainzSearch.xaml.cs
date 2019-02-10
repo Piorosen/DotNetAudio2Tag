@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,8 +37,18 @@ namespace Tag.WPF
             Console.WriteLine(sender.GetType());
             if (listView != null && listView?.SelectedIndex != -1)
             {
-                viewModel.SelectItem(listView.SelectedIndex);
+                viewModel.SelectItem(listView.SelectedIndex, this);
             }
+        }
+
+        private void Yes_Click(object sender, RoutedEventArgs e)
+        {
+            DialogHost.CloseDialogCommand.Execute(true, null);
+        }
+
+        private void No_Click(object sender, RoutedEventArgs e)
+        {
+            DialogHost.CloseDialogCommand.Execute(false, null);
         }
     }
 }
