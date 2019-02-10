@@ -61,6 +61,13 @@ namespace Tag.WPF
             }
         }
 
+        public void SelectModel(int index)
+        {
+            SelectItem = Items[index];
+        }
+
+
+
         public void SaveOne()
         {
 
@@ -94,11 +101,6 @@ namespace Tag.WPF
         {
             Items.RemoveAt(index);
         }
-        public void SelectModel(int index)
-        {
-            SelectItem = Items[index];
-        }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string Name = "")

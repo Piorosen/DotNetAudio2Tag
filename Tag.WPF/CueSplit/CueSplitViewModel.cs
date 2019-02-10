@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -19,8 +20,11 @@ namespace Tag.WPF
 
         public string AlbumTitle { get => albumTitle; private set { albumTitle = value; OnPropertyChanged(); } }
         public string Barcode { get => barcode; private set { barcode = value; OnPropertyChanged(); } }
-        public int AvgBytePerSecond { get => avgBytePerSecond; private set { avgBytePerSecond = value; OnPropertyChanged(); }  }
+        public int AvgBytePerSecond { get => avgBytePerSecond; private set { avgBytePerSecond = value; OnPropertyChanged(); } }
         public string Genre { get => genre; private set { genre = value; OnPropertyChanged(); } }
+
+        public Visibility LabelVisibility { get => _labelVisibility; set { _labelVisibility = value; OnPropertyChanged(); } }
+
 
         int _TaskPercent = 0;
         public int TaskPercent
@@ -108,6 +112,8 @@ namespace Tag.WPF
                 Items.Add(model);
                 index++;
             }
+            TaskPercent = 0;
+            LabelVisibility = Visibility.Hidden;
         }
         delegate bool Test();
         bool isTask = false;
@@ -115,13 +121,22 @@ namespace Tag.WPF
         private string barcode;
         private int avgBytePerSecond;
         private string genre;
+        private Visibility _labelVisibility;
 
-        public async Task Execute(Control control)
+        public async Task Execute(Control control, string SavePath = null)
         {
             await Task.Factory.StartNew(() =>
             {
                 if (isTask == false)
                 {
+                    if (SavePath != null)
+                    {
+                        foreach (var value in cueSpliter.List())
+                        {
+                            value.SavePath = SavePath;
+                        }
+                    }
+
                     TaskPercent = 0;
                     isTask = true;
                     foreach (var value in cueSpliter.Execute())

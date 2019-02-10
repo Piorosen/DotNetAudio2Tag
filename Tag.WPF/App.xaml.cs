@@ -21,9 +21,9 @@ namespace Tag.WPF
          {
              cfg.PositionProvider = new WindowPositionProvider(
                  parentWindow: Application.Current.MainWindow,
-                 corner: Corner.TopRight,
+                 corner: Corner.BottomRight,
                  offsetX: 10,
-                 offsetY: 10);
+                 offsetY: 20);
 
              cfg.LifetimeSupervisor = new TimeAndCountBasedLifetimeSupervisor(
                  notificationLifetime: TimeSpan.FromSeconds(3),

@@ -45,10 +45,11 @@
         </Border>
 
         <TextBlock Grid.Row="1" 
-                   Text="Please Drag and Drop."
+                   Text="분리할 CUE 파일을 드롭 해주세요."
                    TextAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="25" Foreground="#FF787878"
+                   Visibility="{Binding LabelVisibility}"
                    />
 
         <Border AllowDrop="True" Grid.Row="1"
@@ -133,14 +134,14 @@
             Content="{Binding CueFileSplitExecute}"
             HorizontalAlignment="Right"
             Margin="0,9,10,9"
-            Width="127"
+            Width="130"
             Click="Execute"
             />
         <Button
             Content="{Binding CueFileOpen}"
             HorizontalAlignment="Right"
-            Margin="0,9,142,9"
-            Width="142"
+            Margin="0,9,150,9"
+            Width="130"
             Click="CueFileOpen"/>
         <ProgressBar Value="{Binding TaskPercent}" Height="Auto" Margin="10,16,345,16"/>
         <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="{Binding TaskPercent, StringFormat={}{0:0}%}" 

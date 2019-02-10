@@ -70,8 +70,19 @@ namespace Tag.WPF
         }
         private async void Execute(object sender, RoutedEventArgs e)
         {
-            await viewModel.Execute(this);
-            Application.notifier.ShowInformation("성공적으로 분리를 하였습니다.");
+            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (dialog.SelectedPath != string.Empty)
+                {
+                    await viewModel.Execute(this, dialog.SelectedPath + @"\");
+
+                    Application.notifier.ShowInformation("성공적으로 분리를 하였습니다.");
+                }
+            }
+
+            
         }
         
         private void CueFileOpen(object sender, RoutedEventArgs e)

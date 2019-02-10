@@ -1,0 +1,2 @@
+﻿1. Converter 100% 여도 창이 안꺼지는 버그
+2. DialogHost 창 2개 안켜지게 하기.

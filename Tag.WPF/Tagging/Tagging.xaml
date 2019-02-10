@@ -32,8 +32,12 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Grid.RowSpan="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <Grid VerticalAlignment="Top">
+        <Grid Grid.Column="0" Grid.RowSpan="2">
+            <Grid VerticalAlignment="Top"
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.CanContentScroll="True"
+                  Height="724"
+                  >
                 <Grid Height="60" Margin="10,10,10,0" VerticalAlignment="Top">
                     <Label x:Name="LabelTitle" Content="{Binding Title}" Margin="6,5,10,29"/>
                     <TextBox x:Name="TextTitle" Text="{Binding SelectItem.TagInfo.Title}"  materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -100,9 +104,9 @@
                     </Grid>
                 </Grid>
 
-                <Grid Margin="10,530,0,0" VerticalAlignment="Top" Height="166">
+                <Grid  VerticalAlignment="Bottom" Height="195">
                     <Label x:Name="LabelAlbumArt" Content="{Binding AlbumArt}" Margin="6,5,10,0" Height="23" VerticalAlignment="Top"/>
-                    <Grid Margin="6,33,10,-33">
+                    <Grid Margin="6,33,10,0">
                         <Border BorderBrush="Black" BorderThickness="1,1,1,1" Margin="0,0,124,-6" Width="150" Height="150" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <Image 
                                 Source="{Binding SelectItem.TagInfo.Image,
@@ -187,7 +191,7 @@
                 >
                 태그 정보 가져오기
             </Button>
-            </Grid>
+        </Grid>
 
         <!--
         <Grid Height="60" Width="180" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
