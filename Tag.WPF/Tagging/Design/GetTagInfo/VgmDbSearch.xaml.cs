@@ -20,9 +20,11 @@ namespace Tag.WPF
     /// </summary>
     public partial class VgmDbSearch : UserControl
     {
+        VgmDbSearchViewModel viewModel;
         public VgmDbSearch()
         {
             InitializeComponent();
+            DataContext = viewModel = new VgmDbSearchViewModel();
         }
     }
 }

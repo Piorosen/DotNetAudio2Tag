@@ -28,6 +28,7 @@
                    />
         <ListView Grid.Row="1" Grid.Column="0"
                   Margin="3"
+                  ItemsSource="{Binding Items}"
                   >
             <ListView.View>
                 <GridView>

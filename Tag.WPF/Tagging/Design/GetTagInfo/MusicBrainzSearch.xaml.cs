@@ -20,9 +20,11 @@ namespace Tag.WPF
     /// </summary>
     public partial class MusicBrainzSearch : UserControl
     {
+        MusicBrainzSearchViewModel viewModel;
         public MusicBrainzSearch()
         {
             InitializeComponent();
+            DataContext = viewModel = new MusicBrainzSearchViewModel();
         }
     }
 }
