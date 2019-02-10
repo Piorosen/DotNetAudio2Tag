@@ -23,7 +23,7 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
+                
                 <TextBlock 
                     Grid.Column="0"
                     Text="{Binding AlbumTitle, StringFormat={}앨범 명 : {0}}"
@@ -44,6 +44,13 @@
             </Grid>
         </Border>
 
+        <TextBlock Grid.Row="1" 
+                   Text="Please Drag and Drop."
+                   TextAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="25" Foreground="#FF787878"
+                   />
+
         <Border AllowDrop="True" Grid.Row="1"
                 Drop="ItemDragDrop"
                 Background="Transparent"
@@ -56,7 +63,7 @@
                 ItemsSource="{Binding Items}"
                 Margin="5">
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="{x:Type local:CueSplitModel}">
+                    <DataTemplate>
                         <Border
                             Tag="{Binding Index}"
                             MouseEnter="ItemMouseEnter"

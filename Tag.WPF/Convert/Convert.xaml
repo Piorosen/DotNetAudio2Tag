@@ -13,7 +13,13 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
-        <ListView Margin="5" DragEnter="ItemDragEnter" Drop="ItemDragDrop"
+        <TextBlock Grid.Row="0" 
+                   Text="Please Drag and Drop."
+                   TextAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="25" Foreground="#FF787878"
+                   />
+        <ListView Grid.Row="0" Margin="5" DragEnter="ItemDragEnter" Drop="ItemDragDrop"
                   AllowDrop="True"
                   ItemsSource="{Binding ConvInfos}" KeyDown="List_KeyDown">
             <ListView.View>

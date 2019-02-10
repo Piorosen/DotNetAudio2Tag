@@ -9,7 +9,7 @@ namespace Tag.WPF
         public int Index { get; set; } = 0;
         public string IndexString => Index != 0 ? Index.ToString() : string.Empty;
 
-        public Brush Color => Index % 2 == 0 ? Brushes.Beige : Brushes.Transparent;
+        public Brush Color => Index != 0 ? Index % 2 == 0 ? Brushes.Beige : Brushes.Transparent : (Brush)Application.Current.FindResource("MaterialDesignSelection");
         public bool IsSelect { get; set; } = false;
 
         public string Duration => DurationMS == -1 ? "곡의 길이" : $"{(int)(DurationMS / 60 / 1000)}분 : {(int)(DurationMS / 1000 % 60)}초 : {(int)(DurationMS % 1000)}ms";
