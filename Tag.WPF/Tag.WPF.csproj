@@ -108,16 +108,18 @@
     <Compile Include="CueSplit\CueSplitViewModel.cs" />
     <Compile Include="Convert\PresetModel.cs" />
     <Compile Include="Lib\ListToString.cs" />
-    <Compile Include="Tagging\Design\GetTagInfo.xaml.cs">
+    <Compile Include="Tagging\Design\TagInfo\GetTagInfo.xaml.cs">
       <DependentUpon>GetTagInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tagging\Design\MusicBrainzSearch.xaml.cs">
+    <Compile Include="Tagging\Design\TagInfo\MusicBrainzSearch.xaml.cs">
       <DependentUpon>MusicBrainzSearch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tagging\Design\TagAllSave.xaml.cs">
+    <Compile Include="Tagging\Design\TagInfo\MusicBrainzSearchViewModel.cs" />
+    <Compile Include="Tagging\Design\TagInfo\VgmDbSearchViewModel.cs" />
+    <Compile Include="Tagging\Design\SaveTag\TagAllSave.xaml.cs">
       <DependentUpon>TagAllSave.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tagging\Design\VgmDbSearch.xaml.cs">
+    <Compile Include="Tagging\Design\TagInfo\VgmDbSearch.xaml.cs">
       <DependentUpon>VgmDbSearch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tagging\Tagging.xaml.cs">
@@ -150,19 +152,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Tagging\Design\GetTagInfo.xaml">
+    <Page Include="Tagging\Design\TagInfo\GetTagInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Tagging\Design\MusicBrainzSearch.xaml">
+    <Page Include="Tagging\Design\TagInfo\MusicBrainzSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Tagging\Design\TagAllSave.xaml">
+    <Page Include="Tagging\Design\SaveTag\TagAllSave.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Tagging\Design\VgmDbSearch.xaml">
+    <Page Include="Tagging\Design\TagInfo\VgmDbSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

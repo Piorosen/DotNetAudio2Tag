@@ -30,7 +30,7 @@ namespace Tag.WPF
         }
         private void GetTagInfo(object sender, RoutedEventArgs e)
         {
-            if (TagListView.SelectedIndex != -1)
+            if (TagListView.Items.Count != 0)
             {
                 viewModel.GetTagInfo(TagListView.SelectedIndex);
             }

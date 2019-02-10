@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tag.Core.Tagging;
 
 namespace Tag.WPF
 {
@@ -21,10 +22,22 @@ namespace Tag.WPF
     public partial class MusicBrainzSearch : UserControl
     {
         MusicBrainzSearchViewModel viewModel;
-        public MusicBrainzSearch()
+
+        public MusicBrainzSearch(TagInfo info)
         {
             InitializeComponent();
             DataContext = viewModel = new MusicBrainzSearchViewModel();
+            viewModel.SearchAlbum(info);
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listView = (sender is ListView) ? sender as ListView : null;
+            Console.WriteLine(sender.GetType());
+            if (listView != null && listView?.SelectedIndex != -1)
+            {
+                viewModel.SelectItem(listView.SelectedIndex);
+            }
         }
     }
 }

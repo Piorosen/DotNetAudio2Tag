@@ -32,7 +32,5 @@
                 Padding="0"
                 Click="VGMDB_Search"
                 />
-
-
     </Grid>
 </UserControl>

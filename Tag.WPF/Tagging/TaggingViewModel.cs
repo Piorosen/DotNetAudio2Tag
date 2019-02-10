@@ -79,7 +79,8 @@ namespace Tag.WPF
 
         public async void GetTagInfo(int index)
         {
-            var view = new GetTagInfo
+           
+            var view = new GetTagInfo(Items[index == -1 ? 0 : index].TagInfo)
             {
                 Width = 200,
                 Height = 100

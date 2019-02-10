@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tag.Core.Tagging;
 
 namespace Tag.WPF
 {
@@ -22,14 +23,17 @@ namespace Tag.WPF
     /// 
     public partial class GetTagInfo : UserControl
     {
-        public GetTagInfo()
+        public GetTagInfo(TagInfo SearchInfo)
         {
             InitializeComponent();
+            this.SearchInfo = SearchInfo;
         }
+
+        TagInfo SearchInfo;
 
         private async void MusicBrainz_Search(object sender, RoutedEventArgs e)
         {
-            var view = new MusicBrainzSearch
+            var view = new MusicBrainzSearch(SearchInfo)
             {
                 Width=400,
                 Height=200
