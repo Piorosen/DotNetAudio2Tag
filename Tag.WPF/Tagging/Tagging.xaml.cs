@@ -24,28 +24,16 @@ namespace Tag.WPF
             DataContext = viewModel = new TaggingViewModel();
         }
 
-        private async void TagAllSave(object sender, RoutedEventArgs e)
+        private void TagAllSave(object sender, RoutedEventArgs e)
         {
-            var view = new TagAllSave
-            {
-                Width = 300,
-                Height = 100
-            };
-            var result = (bool)(await DialogHost.Show(view));
-
-            if (result  == true)
-            {
-                viewModel.AllTagSave();
-            }
+            viewModel.AllTagSave();
         }
-        private async void GetTagInfo(object sender, RoutedEventArgs e)
+        private void GetTagInfo(object sender, RoutedEventArgs e)
         {
-            var view = new GetTagInfo
+            if (TagListView.SelectedIndex != -1)
             {
-                Width = 200,
-                Height = 100
-            };
-            var result = await DialogHost.Show(view);
+                viewModel.GetTagInfo(TagListView.SelectedIndex);
+            }
         }
 
         private void ItemDragDrop(object sender, DragEventArgs e)
@@ -71,11 +59,9 @@ namespace Tag.WPF
 
         private void ListView_Selected(object sender, SelectionChangedEventArgs e)
         {
-            var listView = (sender is ListView) ? sender as ListView : null ;
-            Console.WriteLine(sender.GetType());
-            if (listView != null && listView?.SelectedIndex != -1)
+            if (TagListView.SelectedIndex != -1)
             {
-                viewModel.SelectModel(listView.SelectedIndex);
+                viewModel.SelectModel(TagListView.SelectedIndex);
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using NAudio.Wave;
+﻿using MaterialDesignThemes.Wpf;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -65,15 +66,27 @@ namespace Tag.WPF
 
         }
 
-        public void AllTagSave()
+        public async void AllTagSave()
         {
-
+            var view = new TagAllSave
+            {
+                Width = 300,
+                Height = 100
+            };
+            var result = await DialogHost.Show(view);
+            
         }
 
-        public TagInfo GetTagInfo(int index)
+        public async void GetTagInfo(int index)
         {
+            var view = new GetTagInfo
+            {
+                Width = 200,
+                Height = 100
+            };
 
-            return new TagInfo();
+            var result = await DialogHost.Show(view);
+
         }
 
         public void RemoveModel(int index)

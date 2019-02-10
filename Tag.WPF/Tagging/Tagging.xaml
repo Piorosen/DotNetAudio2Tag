@@ -115,7 +115,9 @@
 
             </Grid>
         </Grid>
-        <ListView AllowDrop="True" Grid.Column="1" Grid.Row="0"
+        <ListView 
+            x:Name="TagListView"
+            AllowDrop="True" Grid.Column="1" Grid.Row="0"
             ItemsSource="{Binding Items}"
             ScrollViewer.HorizontalScrollBarVisibility="Visible"
                   ScrollViewer.VerticalScrollBarVisibility="Visible"
