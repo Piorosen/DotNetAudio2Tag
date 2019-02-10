@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tag.Core.Cue;
 using Tag.Core.Cue.Split;
+using Tag.Core.Tagging;
 
 namespace Tag.Core.Cue
 {
@@ -141,9 +142,15 @@ namespace Tag.Core.Cue
                     {
                         yield return (int)((value / (index + 1)) * cueCount);
                     }
+                }
+                AudioTagging tagging = new AudioTagging();
+                tagging.CueFile(CueList[index]);
+                foreach (var i in tagging.Execute())
+                {
 
                 }
             }
+            
             yield return 100;
         }
 

@@ -42,6 +42,24 @@ namespace Tag.Core.Tagging
         public string Country { get; set; } = string.Empty;
         public TagTypes TagType { get; set; } = TagTypes.Id3v2;
 
+        public static void Move(TagLib.Tag A, TagLib.Tag B)
+        {
+            A.Title = B.Title;
+            A.Performers = B.Performers;
+            A.Album = B.Album;
+            A.Year = B.Year;
+            A.Track = B.Track;
+            A.Genres = B.Genres;
+            A.Comment = B.Comment;
+            A.AlbumArtists = B.AlbumArtists;
+            A.Composers = B.Composers;
+            A.MusicBrainzDiscId = B.MusicBrainzDiscId;
+            A.Pictures = B.Pictures;
+            A.MusicBrainzReleaseCountry = B.MusicBrainzReleaseCountry;
+            A.Conductor = B.Conductor;
+        }
+
+
         public TagInfo(TagLib.Tag value, string filePath)
         {
             Title = value.Title;

@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ATL.CatalogDataReaders;
 using NAudio.Lame;
 using NAudio.Wave;
+using Tag.Core.Cue;
 using TagLib;
 
 namespace Tag.Core.Tagging
@@ -13,6 +15,40 @@ namespace Tag.Core.Tagging
     public class AudioTagging : ICore<TagInfo>
     {
         readonly public List<TagInfo> tagList = new List<TagInfo>();
+
+        public bool CueFile(CueInfo cue)
+        {
+            for(int i = 0; i < cue.Track.Count; i++)
+            {
+                string file = cue.SavePath + $"{cue.Track[i].Track}. " + cue.Track[i].Title;
+                switch (cue.AudioType)
+                {
+                    case AudioType.WAV:
+                        file += ".wav";
+                        break;
+                    case AudioType.FLAC:
+                        file += ".flac";
+                        break;
+                }
+                AddFile(file);
+                {
+                    TagInfo tag = tagList[i];
+                    tag.Album = cue.Title;
+                    tag.AlbumArtist = cue.Artist?.Split(';').ToList();
+                    tag.Barcode = cue.Barcode;
+                    tag.DiscNum = cue.REM.DiscId;
+                    tag.Composer = cue.Track[i].Composer?.Split(';').ToList();
+                    tag.Genre = cue.REM.Genre?.Split(';').ToList();
+
+                    tag.Artist = cue.Track[i].Artist?.Split(';').ToList();
+                    tag.Title = cue.Track[i].Title;
+                    tag.Track.RemoveRange(0, tag.Track.Count);
+                    tag.Track.Add((uint)cue.Track[i].Track);
+                }
+            }
+            return true;
+        }
+
 
         public bool AddFile(TagInfo file)
         {
@@ -56,19 +92,19 @@ namespace Tag.Core.Tagging
         {
             var mp3File = TagLib.File.Create(taginfo.Path);
             mp3File.Tag.Title = taginfo.Title;
-            mp3File.Tag.Performers = taginfo.Artist.ToArray();
+            mp3File.Tag.Performers = taginfo.Artist?.ToArray();
             mp3File.Tag.Album = taginfo.Album;
-            mp3File.Tag.Year = uint.Parse(taginfo.Year.Split('-')[0]);
+            mp3File.Tag.Year = uint.Parse(taginfo.Year?.Split('-')[0]);
             mp3File.Tag.Track = taginfo.Track.Count != 0 ? taginfo.Track[0] : 1;
             mp3File.Tag.TrackCount = taginfo.Track.Aggregate((a, b) => a + b);
-            mp3File.Tag.Genres = taginfo.Genre.ToArray();
+            mp3File.Tag.Genres = taginfo.Genre?.ToArray();
             mp3File.Tag.Comment = taginfo.Comment;
-            mp3File.Tag.AlbumArtists = taginfo.AlbumArtist.ToArray();
-            mp3File.Tag.Composers = taginfo.Composer.ToArray();
+            mp3File.Tag.AlbumArtists = taginfo.AlbumArtist?.ToArray();
+            mp3File.Tag.Composers = taginfo.Composer?.ToArray();
             mp3File.Tag.MusicBrainzDiscId = taginfo.DiscNum;
             mp3File.Tag.TrackCount = (uint)taginfo.Track.Count;
             mp3File.Tag.Conductor = string.Join(";", taginfo.Publisher);
-            mp3File.Tag.Pictures = taginfo.Image.ToArray();
+            mp3File.Tag.Pictures = taginfo.Image?.ToArray();
             mp3File.Save();
         }
         
