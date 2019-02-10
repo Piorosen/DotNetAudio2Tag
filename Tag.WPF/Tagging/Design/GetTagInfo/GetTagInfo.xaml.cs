@@ -31,8 +31,8 @@ namespace Tag.WPF
         {
             var view = new MusicBrainzSearch
             {
-                Width=100,
-                Height=100
+                Width=400,
+                Height=200
             };
 
             DialogHost.CloseDialogCommand.Execute(false, null);
@@ -46,6 +46,7 @@ namespace Tag.WPF
                 Width = 100,
                 Height = 100
             };
+
             DialogHost.CloseDialogCommand.Execute(false, null);
             await Task.Delay(500);
             await DialogHost.Show(view);

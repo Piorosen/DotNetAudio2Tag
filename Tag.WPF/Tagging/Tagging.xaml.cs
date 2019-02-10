@@ -46,9 +46,6 @@ namespace Tag.WPF
                 Height = 100
             };
             var result = await DialogHost.Show(view);
-
-            //check the result...
-            Console.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
         }
 
         private void ItemDragDrop(object sender, DragEventArgs e)
