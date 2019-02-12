@@ -38,10 +38,10 @@ namespace Tag.WPF
         AudioTagging audioTagging;
         private TaggingModel _selectItem;
 
-        public ObservableCollection<TaggingModel> Items { get; set; }
+        public ObservableCollection<TaggingModel> Items { get => _items; set { _items = value; OnPropertyChanged(); } }
         public TaggingModel SelectItem { get => _selectItem; set { _selectItem = value; OnPropertyChanged(); } }
 
-        
+
         public void AddModel(string filePath)
         {
             audioTagging.AddFile(filePath);
@@ -99,12 +99,14 @@ namespace Tag.WPF
                     {
                         p.SetValue(SelectItem.TagInfo, Value);
                     }
-                    
+
                 }
             }
         }
 
         public bool Select = false;
+        private ObservableCollection<TaggingModel> _items;
+
         public void SelectModel(int index)
         {
             Select = true;
@@ -127,12 +129,12 @@ namespace Tag.WPF
                 Height = 100
             };
             var result = await DialogHost.Show(view);
-            
+
         }
 
         public async void GetTagInfo(int index)
         {
-           
+
             var view = new GetTagInfo(Items[index == -1 ? 0 : index].TagInfo)
             {
                 Width = 200,

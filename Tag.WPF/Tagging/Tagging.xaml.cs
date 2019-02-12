@@ -84,6 +84,8 @@ namespace Tag.WPF
             }
         }
 
+        int currentSort = -1;
+
         private void TagListView_Click(object sender, RoutedEventArgs e)
         {
             GridViewColumnHeader column = e.OriginalSource as GridViewColumnHeader;
@@ -91,34 +93,53 @@ namespace Tag.WPF
             var view = list.View as GridView;
 
             int result = 0;
-            for (int i = 0; i < view.Columns.Count; i++)
+            try
             {
-                if (view.Columns[i].Header == column.Content)
+                for (int i = 0; i < view.Columns.Count; i++)
                 {
-                    result = i;
-                    break;
+                    if (view.Columns[i].Header == column.Content)
+                    {
+                        result = i;
+                        break;
+                    }
                 }
             }
+            catch
+            {
+                return;
+            }
+
+            if (result == currentSort)
+            {
+                currentSort = -1;
+            }else
+            {
+                currentSort = result;
+            }
+
+            var viewModelItem = viewModel.Items.ToList();
+
+            
 
             if (result == 0)
             {
-                viewModel.Items.ToList().Sort((a, b) =>
+                viewModelItem.Sort((a, b) =>
                 {
-                    return a.FileName.CompareTo(b);
+                    return a.FileName.CompareTo(b.FileName);
                 });
             }
             else if (result == 1)
             {
-                viewModel.Items.ToList().Sort((a, b) =>
+                viewModelItem.Sort((a, b) =>
                 {
-                    return a.TagInfo.Title.CompareTo(b.TagInfo.Title);
+                    return a?.TagInfo?.Title?.CompareTo(b?.TagInfo?.Title) ?? 1;
                 });
             }
             else if (result == 2)
             {
-                viewModel.Items.ToList().Sort((a, b) =>
+                viewModelItem.Sort((a, b) =>
                 {
-                    return a.TagInfo.Path.CompareTo(b.TagInfo.Path);
+                    return a?.TagInfo?.Path?.CompareTo(b?.TagInfo?.Path) ?? 1;
                 });
             }
             else if (result == 3)
@@ -127,10 +148,159 @@ namespace Tag.WPF
             }
             else if (result == 4)
             {
+                viewModelItem.Sort((a, b) =>
+                {
+                    if (a.TagInfo.Artist.Count != b.TagInfo.Artist.Count)
+                    {
+                        return a?.TagInfo?.Artist.Count - b?.TagInfo?.Artist?.Count ?? 1;
+                    }
+                    else
+                    {
+                        for (int w = 0; w < a.TagInfo.Artist.Count; w++)
+                        {
+                            var r = a?.TagInfo?.Artist[w]?.CompareTo(b?.TagInfo?.Artist[w]);
+                            if (r != 0)
+                            {
+                                return r ?? 1;
+                            }
+                        }
+                    }
+                    return 0;
+                });
+            }
+            else if (result == 5)
+            {
+                viewModelItem.Sort((a, b) =>
+                {
+                    if (a.TagInfo.AlbumArtist.Count != b.TagInfo.AlbumArtist.Count)
+                    {
+                        return a.TagInfo.AlbumArtist.Count - b.TagInfo.AlbumArtist.Count;
+                    }
+                    else
+                    {
+                        for (int w = 0; w < a.TagInfo.AlbumArtist.Count; w++)
+                        {
+                            var r = a.TagInfo.AlbumArtist[w]?.CompareTo(b.TagInfo.AlbumArtist[w]);
+                            if (r != 0)
+                            {
+                                return r ?? 1;
+                            }
+                        }
+                    }
+                    return 0;
+                });
+            }
+            else if (result == 6)
+            {
+                viewModelItem.Sort((a, b) =>
+                {
+                    return a.TagInfo.Album?.CompareTo(b.TagInfo.Album) ?? 1;
+                });
+            }
+            else if (result == 7)
+            {
+                viewModelItem.Sort((a, b) =>
+                {
+                    if (a.TagInfo.Track?.Count == null)
+                    {
+                        return 1;
+                    }
+                    if (b.TagInfo.Track?.Count == null)
+                    {
+                        return 1;
+                    }
 
+                    if (a.TagInfo.Track.Count != b.TagInfo.Track.Count)
+                    {
+                        return a.TagInfo.Track.Count - b.TagInfo.Track.Count;
+                    }
+                    else
+                    {
+                        for (int w = 0; w < a.TagInfo.Track.Count; w++)
+                        {
+                            var r = a.TagInfo.Track[w].CompareTo(b.TagInfo.Track[w]);
+                            if (r != 0)
+                            {
+                                return r;
+                            }
+                        }
+                    }
+                    return 0;
+                });
+            }
+            else if (result == 8)
+            {
+                viewModelItem.Sort((a, b) =>
+                {
+                    return a.TagInfo.DiscNum?.CompareTo(b.TagInfo.DiscNum) ?? 1;
+                });
+            }
+            else if (result == 9)
+            {
+                viewModelItem.Sort((a, b) =>
+                {
+                    return a.TagInfo.Year?.CompareTo(b.TagInfo.Year) ?? 1;
+                });
+            }
+            else if (result == 10)
+            {
+                viewModelItem.Sort((a, b) =>
+                {
+                    if (a.TagInfo.Genre.Count != b.TagInfo.Genre.Count)
+                    {
+                        return a.TagInfo.Genre.Count - b.TagInfo.Genre.Count;
+                    }
+                    else
+                    {
+                        for (int w = 0; w < a.TagInfo.Genre.Count; w++)
+                        {
+                            var r = a.TagInfo.Genre[w]?.CompareTo(b.TagInfo.Genre[w]);
+                            if (r != 0)
+                            {
+                                return r ?? 1;
+                            }
+                        }
+                    }
+                    return 0;
+                });
+            }
+            else if (result == 11)
+            {
+                viewModelItem.Sort((a, b) =>
+                {
+                    return a.TagInfo.Year?.CompareTo(b.TagInfo.Comment) ?? 1;
+                });
+            }
+            else if (result == 12)
+            {
+                viewModelItem.Sort((a, b) =>
+                {
+                    return a.WaveFormat.Bitrate.CompareTo(b.WaveFormat.Bitrate);
+                });
+            }
+            else if (result == 13)
+            {
+                viewModelItem.Sort((a, b) =>
+                {
+                    return a.WaveFormat.Length.CompareTo(b.WaveFormat.Length);
+                });
+            }
+            else if (result == 14)
+            {
+                viewModelItem.Sort((a, b) =>
+                {
+                    return a.WaveFormat.Channel.CompareTo(b.WaveFormat.Channel);
+                });
             }
 
-            var name = column.Content;
+            viewModel.Items.Clear();
+
+            for (int w = 0; w < viewModelItem.Count; w++)
+            {
+                viewModel.Items.Add(currentSort == -1
+                    ? viewModelItem[viewModelItem.Count - w - 1]
+                    : viewModelItem[w]);
+            }
         }
     }
 }
