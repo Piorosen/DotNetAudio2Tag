@@ -60,10 +60,56 @@ namespace Tag.WPF
                 });
             }
         }
+        public void ChangeText(string Name, string Value)
+        {
+            if (SelectItem == null)
+            {
+                return;
+            }
 
+            foreach (var p in SelectItem.TagInfo.GetType().GetProperties())
+            {
+                if (p.Name == Name)
+                {
+                    var check = p.GetValue(SelectItem.TagInfo);
+                    if (check == null)
+                    {
+                        return;
+                    }
+
+                    if (check is List<string>)
+                    {
+                        p.SetValue(SelectItem.TagInfo, Value.Split(';').ToList());
+                    }
+                    else if (check is List<uint>)
+                    {
+                        try
+                        {
+                            p.SetValue(SelectItem.TagInfo, Value.Split(',')
+                                .ToList()
+                                .Select((s) => uint.Parse(s))
+                                .ToList());
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+                    else
+                    {
+                        p.SetValue(SelectItem.TagInfo, Value);
+                    }
+                    
+                }
+            }
+        }
+
+        public bool Select = false;
         public void SelectModel(int index)
         {
+            Select = true;
             SelectItem = Items[index];
+            Select = false;
         }
 
 

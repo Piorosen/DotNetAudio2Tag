@@ -64,5 +64,18 @@ namespace Tag.WPF
                 viewModel.SelectModel(TagListView.SelectedIndex);
             }
         }
+
+        private void Tag_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (viewModel.Select == true)
+            {
+                return;
+            }
+            if (sender is TextBox)
+            {
+                var k = (sender as TextBox);
+                viewModel.ChangeText(k.Name, k.Text);
+            }
+        }
     }
 }

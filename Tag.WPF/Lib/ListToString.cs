@@ -47,18 +47,36 @@ namespace Tag.WPF
 
             if (value is List<string>)
             {
-                return string.Join(", ", (value as List<string>));
+                return string.Join("; ", (value as List<string>));
             }
             if (value is List<uint>)
             {
                 return string.Join(", ", (value as List<uint>));
             }
-            return value.ToString();
+            return value?.ToString();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            object result = null;
+            if (typeof(List<uint>) == targetType)
+            {
+                try
+                {
+                    result = (value as string).Split(',')
+                                    .ToList()
+                                    .Select((s) => uint.Parse(s))
+                                    .ToList();
+                }
+                catch { }
+            }
+            else
+            {
+                result = (value as string).Split(';')
+                                        .ToList();
+            }
+
+            return result;
         }
     }
 }
