@@ -148,8 +148,16 @@
             </Grid>
         </ScrollViewer>
 
+        <TextBlock Grid.Column="1" Grid.Row="0" 
+                   Text="음악 파일을 드롭 해주세요."
+                   TextAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="25" Foreground="#FF787878"
+                   Visibility="{Binding LabelVisibility}"
+                   />
         <ListView 
             x:Name="TagListView"
+            KeyDown="List_KeyDown"
             AllowDrop="True" Grid.Column="1" Grid.Row="0"
             ItemsSource="{Binding Items}"
             ScrollViewer.HorizontalScrollBarVisibility="Visible"

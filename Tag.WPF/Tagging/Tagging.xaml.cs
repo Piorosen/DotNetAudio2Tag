@@ -44,6 +44,8 @@ namespace Tag.WPF
 
         private void ItemDragDrop(object sender, DragEventArgs e)
         {
+            viewModel.ClearFile();
+
             string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (var path in items)
             {
@@ -57,7 +59,22 @@ namespace Tag.WPF
                         break;
                 }
             }
+            ItemsConvert(2);
         }
+
+        private void List_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Delete)
+            {
+                var listView = (sender is ListView) ? (sender as ListView) : null;
+
+                if (listView != null && listView.SelectedIndex != -1)
+                {
+                    viewModel.RemoveFile(listView.SelectedIndex);
+                }
+            }
+        }
+
         private void ItemDragEnter(object sender, DragEventArgs e)
         {
             e.Effects = DragDropEffects.Copy;
@@ -85,7 +102,6 @@ namespace Tag.WPF
         }
 
         int currentSort = -1;
-
         private void TagListView_Click(object sender, RoutedEventArgs e)
         {
             GridViewColumnHeader column = e.OriginalSource as GridViewColumnHeader;
@@ -108,18 +124,22 @@ namespace Tag.WPF
             {
                 return;
             }
+            ItemsConvert(result);
+        }
 
+        void ItemsConvert(int result)
+        {
             if (result == currentSort)
             {
                 currentSort = -1;
-            }else
+            }
+            else
             {
                 currentSort = result;
             }
 
             var viewModelItem = viewModel.Items.ToList();
 
-            
 
             if (result == 0)
             {

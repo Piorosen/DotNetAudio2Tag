@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using Tag.Core.Tagging;
 
@@ -41,6 +42,32 @@ namespace Tag.WPF
         public ObservableCollection<TaggingModel> Items { get => _items; set { _items = value; OnPropertyChanged(); } }
         public TaggingModel SelectItem { get => _selectItem; set { _selectItem = value; OnPropertyChanged(); } }
 
+        public Visibility LabelVisibility { get => _LabelVisibility; set { _LabelVisibility = value; OnPropertyChanged(); } }
+
+        private Visibility _LabelVisibility = Visibility.Visible;
+
+        public bool RemoveFile(int index)
+        {
+            if (0 <= index && index < Items.Count)
+            {
+                Items.RemoveAt(index);
+                if (Items.Count == 0)
+                {
+                    LabelVisibility = Visibility.Visible;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void ClearFile()
+        {
+            Items.Clear();
+            LabelVisibility = Visibility.Visible;
+        }
 
         public void AddModel(string filePath)
         {
@@ -59,6 +86,7 @@ namespace Tag.WPF
                     }
                 });
             }
+            LabelVisibility = Visibility.Hidden;
         }
         public void ChangeText(string Name, string Value)
         {
@@ -106,6 +134,7 @@ namespace Tag.WPF
 
         public bool Select = false;
         private ObservableCollection<TaggingModel> _items;
+        
 
         public void SelectModel(int index)
         {
