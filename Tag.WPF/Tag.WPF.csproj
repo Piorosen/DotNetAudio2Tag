@@ -108,6 +108,11 @@
     <Compile Include="CueSplit\CueSplitViewModel.cs" />
     <Compile Include="Convert\PresetModel.cs" />
     <Compile Include="Lib\ListToString.cs" />
+    <Compile Include="Tagging\Design\CheckTag\CheckTagging.xaml.cs">
+      <DependentUpon>CheckTagging.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tagging\Design\CheckTag\CheckTaggingModel.cs" />
+    <Compile Include="Tagging\Design\CheckTag\CheckTaggingViewModel.cs" />
     <Compile Include="Tagging\Design\TagInfo\GetTagInfo.xaml.cs">
       <DependentUpon>GetTagInfo.xaml</DependentUpon>
     </Compile>
@@ -152,6 +157,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Tagging\Design\CheckTag\CheckTagging.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Tagging\Design\TagInfo\GetTagInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
