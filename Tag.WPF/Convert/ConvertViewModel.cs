@@ -4,19 +4,24 @@ using NAudio.Lame;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Tag.Core.Conv;
 using ToastNotifications.Messages;
 
 namespace Tag.WPF
 {
-    class ConvertViewModel
+    class ConvertViewModel : INotifyPropertyChanged
     {
         public List<PresetModel> ConvertMode { get; set; }
         public ObservableCollection<ConvInfo> ConvInfos { get; set; }
         int Index = 0;
+
+        public Visibility LabelVisibility { get => _labelVisibility; set { _labelVisibility = value; OnPropertyChanged(); } }
 
         public void Checked(int index)
         {
@@ -38,6 +43,38 @@ namespace Tag.WPF
         }
 
         DialogSession Session = null;
+        private Visibility _labelVisibility;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChanged([CallerMemberName] string Name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
+        }
+
+        public void AddFile(ConvInfo info)
+        {
+            ConvInfos.Add(info);
+            LabelVisibility = Visibility.Hidden;
+        }
+
+        public bool RemoveFile(int index)
+        {
+            if (0 <= index && index < ConvInfos.Count)
+            {
+                ConvInfos.RemoveAt(index);
+                if (ConvInfos.Count == 0)
+                {
+                    LabelVisibility = Visibility.Visible;
+                }
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         void OpenEventHandler(object sender, DialogOpenedEventArgs envetArgs)
         {
             Session = envetArgs.Session;

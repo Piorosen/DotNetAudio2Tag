@@ -60,7 +60,7 @@ namespace Tag.WPF
                 if (q.Type != AudioType.NONE)
                 {
                     q.ResultPath = q.Directory + "\\" + q.FileName + ".mp3";
-                    viewModel.ConvInfos.Add(q);
+                    viewModel.AddFile(q);
                 }
             }
         }
@@ -97,7 +97,7 @@ namespace Tag.WPF
                         if (q.Type != AudioType.NONE)
                         {
                             q.ResultPath = q.Directory + "\\" + q.FileName + ".mp3";
-                            viewModel.ConvInfos.Add(q);
+                            viewModel.AddFile(q);
                         }
                     }
                 }
@@ -113,11 +113,11 @@ namespace Tag.WPF
         {
             if (e.Key == System.Windows.Input.Key.Delete)
             {
-                var listView = (sender is ListView) ? null : (sender as ListView);
+                var listView = (sender is ListView) ? (sender as ListView) : null;
 
-                if (listView != null || listView.SelectedIndex != -1)
+                if (listView != null && listView.SelectedIndex != -1)
                 {
-                    viewModel.ConvInfos.RemoveAt(listView.SelectedIndex);
+                    viewModel.RemoveFile(listView.SelectedIndex);
                 }
             }
         }

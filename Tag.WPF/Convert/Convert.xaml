@@ -13,11 +13,13 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
+
         <TextBlock Grid.Row="0" 
-                   Text="Please Drag and Drop."
+                   Text="분리할 CUE 파일을 드롭 해주세요."
                    TextAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="25" Foreground="#FF787878"
+                   Visibility="{Binding LabelVisibility}"
                    />
         <ListView Grid.Row="0" Margin="5" DragEnter="ItemDragEnter" Drop="ItemDragDrop"
                   AllowDrop="True"
