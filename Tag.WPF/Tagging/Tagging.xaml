@@ -267,31 +267,5 @@
                 태그 정보 가져오기
             </Button>
         </Grid>
-
-        <!--
-        <Grid Height="60" Width="180" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
-            <Label x:Name="LabelTitle" Content="{Binding Title}" Margin="6,5,10,29"/>
-            <TextBox x:Name="TextTitle" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        </Grid>
-
-       <Grid Width="180" HorizontalAlignment="Left" Margin="10,335,0,0" VerticalAlignment="Top" Height="60">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0" >
-                    <Label x:Name="LabelYear" Content="{Binding Year}" Margin="10,5,0,29" HorizontalAlignment="Left" Width="70"/>
-                    <TextBox x:Name="TextYear" materialDesign:HintAssist.Hint="(origin)" Height="23" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="74" Margin="6,0,0,6"/>
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Label x:Name="LabelTrack" Content="{Binding Track}" Margin="10,5,0,29" Width="70" HorizontalAlignment="Left"/>
-                    <TextBox x:Name="TextTrack" materialDesign:HintAssist.Hint="(origin)" Height="23" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="74" Margin="6,0,10,6"/>
-                </Grid>
-            </Grid>
-            <Grid Width="180" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top" Height="60">
-                <Label x:Name="LabelAlbumArtist" Content="{Binding AlbumArtist}" Margin="6,5,10,29"/>
-                <TextBox x:Name="TextAlbumArtist" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            </Grid>
-        -->
     </Grid>
 </UserControl>
