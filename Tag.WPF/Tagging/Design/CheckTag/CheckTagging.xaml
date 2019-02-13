@@ -21,28 +21,182 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
-            <Grid Grid.Column="0" Grid.Row="0">
 
-            </Grid>
-            <Grid Grid.Column="1" Grid.Row="0">
+            <Border Grid.Column="0" Grid.Row="0"
+                    BorderThickness="1"
+                    BorderBrush="Black"
+                    Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-            </Grid>
-            <Grid Grid.Column="2" Grid.Row="0">
+                    <TextBlock Grid.Column="0" Grid.Row="0"
+                           Text="아티스트"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           />
+                    <TextBlock Grid.Column="0" Grid.Row="1"
+                           Text="앨범 명"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           />
+                    <TextBlock Grid.Column="0" Grid.Row="2"
+                           Text="제작 년도"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           />
+                    <TextBlock Grid.Column="0" Grid.Row="3"
+                           Text="장르"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           />
+                    <TextBlock Grid.Column="0" Grid.Row="4"
+                           Text="설명"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           />
 
-            </Grid>
-            <Grid Grid.Column="0" Grid.Row="1">
+                    <TextBox Grid.Column="1" Grid.Row="0"
+                             
+                             />
+                    <TextBox Grid.Column="1" Grid.Row="1"
+                             
+                             />
+                    <TextBox Grid.Column="1" Grid.Row="2"
+                             
+                             />
+                    <TextBox Grid.Column="1" Grid.Row="3"
+                             
+                             />
+                    <TextBox Grid.Column="1" Grid.Row="4"
+                             
+                             />
+                </Grid>
 
-            </Grid>
-            <Grid Grid.Column="1" Grid.Row="1">
+            </Border>
+            <Border Grid.Column="1" Grid.Row="0"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    Margin="5"
+                    >
+                <Grid>
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn
+                                    Header="이름"
+                                    DisplayMemberBinding="{Binding Name}"
+                                    />
+                                <GridViewColumn
+                                    Header="값"
+                                    DisplayMemberBinding="{Binding Value}"
+                                    />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Border>
+            <Border Grid.Column="2" Grid.Row="0"
+                    Margin="5"
+                    >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0"
+                            BorderBrush="Black"
+                            BorderThickness="1"
+                            >
+                        <Image Stretch="Fill">
 
-            </Grid>
-            <Grid Grid.Column="2" Grid.Row="1">
+                        </Image>
+                    </Border>
+                    <TextBlock Grid.Row="1"
+                               Margin="5 0 0 0"
+                               TextAlignment="Left"
+                               VerticalAlignment="Center"
+                               Text="정보 : "/>
+                </Grid>
+            </Border>
+            <Border Grid.Column="0" Grid.Row="1"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    Margin="5"
+                    >
+                <Grid>
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="트랙"
+                                            DisplayMemberBinding="{Binding Track}"
+                                            />
+                                <GridViewColumn Header="제목"
+                                            DisplayMemberBinding="{Binding Title}"
+                                            />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1" Grid.Row="1"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    Margin="5"
+                    >
+                <Grid>
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="길이"
+                                            DisplayMemberBinding="{Binding Length}"
+                                            />
+                                <GridViewColumn Header="파일 명"
+                                            DisplayMemberBinding="{Binding Title}"
+                                            />
+                                <GridViewColumn Header="트랙"
+                                                DisplayMemberBinding="{Binding Track}"
+                                                />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Border>
 
-            </Grid>
+            <Border Grid.Column="2" Grid.Row="1"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    Margin="5"
+                    >
+                <Grid >
+                    <Button Content="위로 이동"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Width="130"
+                            Margin="10,10"
+                            />
+                    <Button Content="아래로 이동"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Width="130"
+                            Margin="10,47"
+                            />
+                </Grid>
+            </Border>
         </Grid>
+
+
         <Grid Grid.Row="1">
-            
+
         </Grid>
     </Grid>
 </UserControl>
