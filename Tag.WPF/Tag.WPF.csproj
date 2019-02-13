@@ -111,7 +111,6 @@
     <Compile Include="Tagging\Design\CheckTag\CheckTagging.xaml.cs">
       <DependentUpon>CheckTagging.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tagging\Design\CheckTag\CheckTaggingModel.cs" />
     <Compile Include="Tagging\Design\CheckTag\CheckTaggingViewModel.cs" />
     <Compile Include="Tagging\Design\TagInfo\GetTagInfo.xaml.cs">
       <DependentUpon>GetTagInfo.xaml</DependentUpon>
