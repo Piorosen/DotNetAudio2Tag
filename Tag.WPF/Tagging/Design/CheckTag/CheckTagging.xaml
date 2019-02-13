@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" Height="385" Width="740">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -26,7 +25,7 @@
                     BorderThickness="1"
                     BorderBrush="Black"
                     Margin="5">
-                <Grid>
+                <Grid Margin="0,0,0,5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
@@ -89,7 +88,7 @@
                     Margin="5"
                     >
                 <Grid>
-                    <ListView>
+                    <ListView ItemsSource="{Binding Information}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn
@@ -117,15 +116,17 @@
                             BorderBrush="Black"
                             BorderThickness="1"
                             >
-                        <Image Stretch="Fill">
+                        <Image Source="{Binding CoverImage}"
+                               Stretch="Fill">
 
                         </Image>
                     </Border>
-                    <TextBlock Grid.Row="1"
+                    <TextBlock Text="{Binding CoverInfo, StringFormat={}정보 : {0}}"
+                               Grid.Row="1"
                                Margin="5 0 0 0"
                                TextAlignment="Left"
                                VerticalAlignment="Center"
-                               Text="정보 : "/>
+                               />
                 </Grid>
             </Border>
             <Border Grid.Column="0" Grid.Row="1"
@@ -134,7 +135,7 @@
                     Margin="5"
                     >
                 <Grid>
-                    <ListView>
+                    <ListView ItemsSource="{Binding BrainzInfo}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="트랙"
@@ -171,7 +172,6 @@
                     </ListView>
                 </Grid>
             </Border>
-
             <Border Grid.Column="2" Grid.Row="1"
                     BorderBrush="Black"
                     BorderThickness="1"
@@ -196,7 +196,8 @@
 
 
         <Grid Grid.Row="1">
-
+            <Button Content="확인" Margin="0,8,90,10" HorizontalAlignment="Right" Width="75"/>
+            <Button Content="취소" Margin="0,8,10,10" HorizontalAlignment="Right" Width="75"/>
         </Grid>
     </Grid>
 </UserControl>
