@@ -7,6 +7,42 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             
+            <Grid Grid.Column="0" Grid.Row="0">
+
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="0">
+
+            </Grid>
+            <Grid Grid.Column="2" Grid.Row="0">
+
+            </Grid>
+            <Grid Grid.Column="0" Grid.Row="1">
+
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="1">
+
+            </Grid>
+            <Grid Grid.Column="2" Grid.Row="1">
+
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            
+        </Grid>
     </Grid>
 </UserControl>

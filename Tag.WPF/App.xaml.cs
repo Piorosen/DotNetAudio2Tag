@@ -33,7 +33,7 @@ namespace Tag.WPF
          });
         public Application()
         {
-            Setting.Global.Language.Load("eng.lang");
+            Setting.Global.Language.Load("kor.lang");
         }
         
     }
