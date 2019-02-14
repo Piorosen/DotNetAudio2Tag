@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tag.Core.Cue;
 using Tag.Core.Tagging;
 
 namespace Tag.WPF
@@ -24,17 +25,16 @@ namespace Tag.WPF
     {
         MusicBrainzSearchViewModel viewModel;
 
-        public MusicBrainzSearch(TagInfo info)
+        public MusicBrainzSearch(TagInfo info, List<TrackInfo> user)
         {
             InitializeComponent();
-            DataContext = viewModel = new MusicBrainzSearchViewModel();
+            DataContext = viewModel = new MusicBrainzSearchViewModel(user);
             viewModel.SearchAlbum(info);
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var listView = (sender is ListView) ? sender as ListView : null;
-            Console.WriteLine(sender.GetType());
             if (listView != null && listView?.SelectedIndex != -1)
             {
                 viewModel.SelectItem(listView.SelectedIndex, this);
@@ -43,12 +43,14 @@ namespace Tag.WPF
 
         private void Yes_Click(object sender, RoutedEventArgs e)
         {
-            DialogHost.CloseDialogCommand.Execute(true, null);
+            int itemindex = ListViews.SelectedIndex != -1 ? ListViews.SelectedIndex : 0;
+            viewModel.Yes_Click(itemindex);
         }
 
         private void No_Click(object sender, RoutedEventArgs e)
         {
             DialogHost.CloseDialogCommand.Execute(false, null);
+            
         }
     }
 }

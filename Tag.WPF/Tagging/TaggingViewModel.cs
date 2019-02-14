@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
+using Tag.Core.Cue;
 using Tag.Core.Tagging;
 
 namespace Tag.WPF
@@ -163,11 +164,28 @@ namespace Tag.WPF
 
         public async void GetTagInfo(int index)
         {
+            var user = new List<TrackInfo>();
 
-            var view = new GetTagInfo(Items[index == -1 ? 0 : index].TagInfo)
+            foreach (var item in Items)
+            {
+                user.Add(new TrackInfo
+                {
+                    Album = item.TagInfo.Album,
+                    Artist = string.Join("; ", item.TagInfo.Artist),
+                    Composer = string.Join("; ", item.TagInfo.Composer),
+                    DurationMS = item.WaveFormat.Length,
+                    Title = item.TagInfo.Title,
+                    Track = item.TagInfo.Track.Count != 0 ? (int)item.TagInfo.Track[0] : 0,
+
+                });
+            }
+
+
+            var view = new GetTagInfo(Items[index == -1 ? 0 : index].TagInfo, user)
             {
                 Width = 200,
                 Height = 100
+                
             };
 
             var result = await DialogHost.Show(view);

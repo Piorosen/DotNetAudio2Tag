@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tag.Core.Cue;
+using Tag.Core.Tagging;
 
 namespace Tag.WPF
 {
@@ -25,6 +27,11 @@ namespace Tag.WPF
         {
             InitializeComponent();
             DataContext = viewModel = new CheckTaggingViewModel();
+        }
+
+        public void SetValue(List<TagInfo> tag, List<TrackInfo> user)
+        {
+            viewModel.SetValue(tag, user);
         }
     }
 }

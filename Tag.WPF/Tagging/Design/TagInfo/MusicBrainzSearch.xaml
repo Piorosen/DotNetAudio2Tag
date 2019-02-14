@@ -34,6 +34,7 @@
                    />
         <ListView Grid.Row="1" Grid.Column="0"
                   Margin="3"
+                  x:Name="ListViews"
                   ItemsSource="{Binding Items}" SelectionChanged="ListView_SelectionChanged"
                   >
             <ListView.View>

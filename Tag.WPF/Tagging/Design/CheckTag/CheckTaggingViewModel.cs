@@ -48,7 +48,9 @@ namespace Tag.WPF
             BrainzInfo = new ObservableCollection<(uint Track, string Title)>();
             UserInfo = new ObservableCollection<(string Length, string Title, int Track)>();
         }
-        public void SetValeu(List<BrainzInfo> tag, List<TrackInfo> User)
+
+
+        public void SetValue(List<TagInfo> tag, List<TrackInfo> User)
         {
             Information.Add((tag[0].AlbumArtist.GetType().Name, string.Join("; ", tag[0].AlbumArtist)));
             Information.Add((tag[0].Format.GetType().Name, string.Join(", ", tag[0].Format)));

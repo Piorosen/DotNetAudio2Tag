@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Tag.Core.Cue;
 using Tag.Core.Tagging;
 using Tag.Core.Tagging.Library;
 
@@ -21,6 +23,8 @@ namespace Tag.WPF
     {
         public ObservableCollection<BrainzInfo> Items { get; private set; }
         public ImageSource ImageSource { get => _image; private set { _image = value; OnPropertyChanged(); } }
+        List<TrackInfo> user;
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string Name = "")
@@ -28,10 +32,11 @@ namespace Tag.WPF
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
         }
 
-        public MusicBrainzSearchViewModel()
+        public MusicBrainzSearchViewModel(List<TrackInfo> users)
         {
             Items = new ObservableCollection<BrainzInfo>();
             search = new MusicBrain();
+            this.user = users;
         }
 
         MusicBrain search;
@@ -44,6 +49,21 @@ namespace Tag.WPF
                 Items.Add(value);
             }
         }
+
+        public async void Yes_Click(int index)
+        {
+            DialogHost.CloseDialogCommand.Execute(true, null);
+            await Task.Delay(500);
+
+            CheckTagging view = new CheckTagging
+            {
+
+            };
+            view.SetValue(search.GetTrackInfo(Items[index]), user);
+            await DialogHost.Show(view);
+        }
+
+
 
         int TaskIdentified = 0;
         public async void SelectItem(int index, Control control)

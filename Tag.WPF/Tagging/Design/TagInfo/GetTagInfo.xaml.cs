@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tag.Core.Cue;
 using Tag.Core.Tagging;
 
 namespace Tag.WPF
@@ -23,26 +24,30 @@ namespace Tag.WPF
     /// 
     public partial class GetTagInfo : UserControl
     {
-        public GetTagInfo(TagInfo SearchInfo)
+        public GetTagInfo(TagInfo SearchInfo, List<TrackInfo> user)
         {
             InitializeComponent();
             this.SearchInfo = SearchInfo;
+            this.userinfo = user;
         }
 
         TagInfo SearchInfo;
+        List<TrackInfo> userinfo;
 
         private async void MusicBrainz_Search(object sender, RoutedEventArgs e)
         {
-            var view = new MusicBrainzSearch(SearchInfo)
+            var view = new MusicBrainzSearch(SearchInfo, userinfo)
             {
                 Width=400,
-                Height=250
+                Height=250,
+                
             };
 
             DialogHost.CloseDialogCommand.Execute(false, null);
             await Task.Delay(500);
             await DialogHost.Show(view);
         }
+
         private async void VGMDB_Search(object sender, RoutedEventArgs e)
         {
             var view = new VgmDbSearch
