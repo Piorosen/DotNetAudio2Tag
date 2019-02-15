@@ -35,18 +35,24 @@ namespace Tag.WPF
         TagInfo SearchInfo;
         ObservableCollection<TaggingModel> userinfo;
 
+        void OpenEvent(object sender, DialogOpenedEventArgs e)
+        {
+            view.Search(SearchInfo);
+        }
+        MusicBrainzSearch view;
         private async void MusicBrainz_Search(object sender, RoutedEventArgs e)
         {
-            var view = new MusicBrainzSearch(SearchInfo, userinfo)
-            {
-                Width=400,
-                Height=250,
-                
-            };
-
             DialogHost.CloseDialogCommand.Execute(false, null);
+
+            view = new MusicBrainzSearch(userinfo)
+            {
+                Width = 400,
+                Height = 250,
+
+            };
             await Task.Delay(500);
-            await DialogHost.Show(view);
+            var t = await DialogHost.Show(view, OpenEvent);
+
         }
 
         private async void VGMDB_Search(object sender, RoutedEventArgs e)

@@ -26,13 +26,17 @@ namespace Tag.WPF
     {
         MusicBrainzSearchViewModel viewModel;
 
-        public MusicBrainzSearch(TagInfo info, ObservableCollection<TaggingModel> user)
+        public MusicBrainzSearch(ObservableCollection<TaggingModel> user)
         {
             InitializeComponent();
             DataContext = viewModel = new MusicBrainzSearchViewModel(user);
-            viewModel.SearchAlbum(info);
+            
         }
 
+        public void Search(TagInfo info)
+        {
+            viewModel.SearchAlbum(info, this);
+        }
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var listView = (sender is ListView) ? sender as ListView : null;

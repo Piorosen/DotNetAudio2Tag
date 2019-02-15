@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
 using Tag.Core.Tagging.Library;
@@ -42,12 +43,19 @@ namespace Tag.WPF
         MusicBrain search;
         private ImageSource _image;
 
-        public void SearchAlbum(TagInfo SearchInfo)
+        public async void SearchAlbum(TagInfo SearchInfo, UserControl c)
         {
-            foreach (var value in search.GetAlbumInfo(SearchInfo))
+            await Task.Run(() =>
             {
-                Items.Add(value);
-            }
+                c.Dispatcher.Invoke(() =>
+                {
+                    foreach (var value in search.GetAlbumInfo(SearchInfo))
+                    {
+                        Items.Add(value);
+                    }
+                    c.UpdateLayout();
+                });
+            });
         }
 
         public async void Yes_Click(int index)

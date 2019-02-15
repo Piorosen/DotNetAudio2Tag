@@ -44,6 +44,7 @@ namespace Tag.WPF
         private void Yes_Click(object sender, RoutedEventArgs e)
         {
             viewModel.SaveTag();
+            DialogHost.CloseDialogCommand.Execute(true, null);
         }
     }
 }
