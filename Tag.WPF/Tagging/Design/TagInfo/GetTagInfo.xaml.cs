@@ -1,6 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace Tag.WPF
     /// 
     public partial class GetTagInfo : UserControl
     {
-        public GetTagInfo(TagInfo SearchInfo, List<TrackInfo> user)
+        public GetTagInfo(TagInfo SearchInfo, ObservableCollection<TaggingModel> user)
         {
             InitializeComponent();
             this.SearchInfo = SearchInfo;
@@ -32,7 +33,7 @@ namespace Tag.WPF
         }
 
         TagInfo SearchInfo;
-        List<TrackInfo> userinfo;
+        ObservableCollection<TaggingModel> userinfo;
 
         private async void MusicBrainz_Search(object sender, RoutedEventArgs e)
         {

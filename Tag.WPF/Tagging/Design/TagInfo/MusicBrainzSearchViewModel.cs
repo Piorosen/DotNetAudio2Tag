@@ -23,7 +23,7 @@ namespace Tag.WPF
     {
         public ObservableCollection<BrainzInfo> Items { get; private set; }
         public ImageSource ImageSource { get => _image; private set { _image = value; OnPropertyChanged(); } }
-        List<TrackInfo> user;
+        ObservableCollection<TaggingModel> user;
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -32,7 +32,7 @@ namespace Tag.WPF
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
         }
 
-        public MusicBrainzSearchViewModel(List<TrackInfo> users)
+        public MusicBrainzSearchViewModel(ObservableCollection<TaggingModel> users)
         {
             Items = new ObservableCollection<BrainzInfo>();
             search = new MusicBrain();
@@ -72,19 +72,23 @@ namespace Tag.WPF
             {
                 TaskIdentified++;
                 int id = TaskIdentified;
-                var bin = search.GetTrackInfo(Items[index])[0].Image[0].Data.Data;
-                if (id == TaskIdentified)
+                var tmp = search.GetTrackInfo(Items[index]);
+                if (tmp.Count != 0 && tmp[0].Image.Count != 0)
                 {
-                    control?.Dispatcher?.Invoke(() =>
+                    var bin = tmp[0].Image[0].Data.Data;
+                    if (id == TaskIdentified)
                     {
-                        var image = new Bitmap(System.Drawing.Image.FromStream(new MemoryStream(bin)));
-                        var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                             image.GetHbitmap(),
-                             IntPtr.Zero,
-                             Int32Rect.Empty,
-                             BitmapSizeOptions.FromEmptyOptions());
-                        ImageSource = data;
-                    });
+                        control?.Dispatcher?.Invoke(() =>
+                        {
+                            var image = new Bitmap(System.Drawing.Image.FromStream(new MemoryStream(bin)));
+                            var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                                 image.GetHbitmap(),
+                                 IntPtr.Zero,
+                                 Int32Rect.Empty,
+                                 BitmapSizeOptions.FromEmptyOptions());
+                            ImageSource = data;
+                        });
+                    }
                 }
             });
         }

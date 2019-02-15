@@ -197,8 +197,8 @@
 
 
         <Grid Grid.Row="1">
-            <Button Content="확인" Margin="0,8,90,10" HorizontalAlignment="Right" Width="75"/>
-            <Button Content="취소" Margin="0,8,10,10" HorizontalAlignment="Right" Width="75"/>
+            <Button Content="확인" Margin="0,8,90,10" HorizontalAlignment="Right" Width="75" Click="Yes_Click"/>
+            <Button Content="취소" Margin="0,8,10,10" HorizontalAlignment="Right" Width="75" Click="Cancel_Click"/>
         </Grid>
     </Grid>
 </UserControl>

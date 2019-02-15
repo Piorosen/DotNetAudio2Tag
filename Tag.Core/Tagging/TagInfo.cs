@@ -24,7 +24,7 @@ namespace Tag.Core.Tagging
         public string Identifier { get; set; } = string.Empty;
         public string Lang { get; set; } = "en";
         
-        public string Path { get; set; } = string.Empty;
+        public string Path { get; private set; } = string.Empty;
         public string Title { get; set; } = string.Empty;
         public List<string> Artist { get; set; } = new List<string>();
         public string Album { get; set; } = string.Empty;

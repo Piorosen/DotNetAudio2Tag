@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,9 +31,19 @@ namespace Tag.WPF
             DataContext = viewModel = new CheckTaggingViewModel();
         }
 
-        public void SetValue(List<TagInfo> tag, List<TrackInfo> user)
+        public void SetValue(List<TagInfo> tag, ObservableCollection<TaggingModel> user)
         {
             viewModel.SetValue(tag, user);
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            DialogHost.CloseDialogCommand.Execute(false, null);
+        }
+
+        private void Yes_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.SaveTag();
         }
     }
 }

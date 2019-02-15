@@ -140,62 +140,66 @@ namespace Tag.Core.Tagging.Library
             {
                 var data = MusicBrainz.Search.Release(barcode: info.Barcode, reid: info.Identifier);
 
-                var value = data.Data[0];
-
-                var tagging = RequestWeb($"http://musicbrainz.org/ws/2/recording/?query=reid:{data.Data[0].Id}");
-                XmlDocument xmlreader = new XmlDocument();
-                xmlreader.LoadXml(tagging);
-                var list = xmlreader["metadata"]["recording-list"].ChildNodes;
-
-                var pimage = GetImage($"http://coverartarchive.org/release/{data.Data[0].Id}");
-
-                for (int i = 0; i < list.Count; i++)
+                if (data.Data.Count != 0)
                 {
-                    List<string> Artist = new List<string>
+                    var value = data.Data[0];
+
+                    var tagging = RequestWeb($"http://musicbrainz.org/ws/2/recording/?query=reid:{data.Data[0].Id}");
+                    XmlDocument xmlreader = new XmlDocument();
+                    xmlreader.LoadXml(tagging);
+                    var list = xmlreader["metadata"]["recording-list"].ChildNodes;
+
+                    var pimage = GetImage($"http://coverartarchive.org/release/{data.Data[0].Id}");
+
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        List<string> Artist = new List<string>
                     {
                         list[i]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
                     };
-                    var Composer = new List<string>
+                        var Composer = new List<string>
                     {
                         list[i]["release-list"]["release"]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
                     };
-                    var AlubmArtist = new List<string>
+                        var AlubmArtist = new List<string>
                     {
                         list[0]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
                     };
 
-                    TagInfo ti = new TagInfo
-                    {
-                        Title = list[i]["title"].InnerText,
-                        Album = info.Album,
+                        TagInfo ti = new TagInfo
+                        {
+                            Title = list[i]["title"].InnerText,
+                            Album = info.Album,
 
-                        Artist = Artist,
-                        AlbumArtist = info.AlbumArtist,
-                        Composer = Composer,
+                            Artist = Artist,
+                            AlbumArtist = info.AlbumArtist,
+                            Composer = Composer,
 
-                        Year = value.Date,
-                        Country = value.Country,
-                        Barcode = value.Barcode
-                    };
-                    foreach (var w in value.Artistcredit)
-                    {
-                        ti.Artist.Add(w.Artist.Name);
+                            Year = value.Date,
+                            Country = value.Country,
+                            Barcode = value.Barcode
+                        };
+                        foreach (var w in value.Artistcredit)
+                        {
+                            ti.Artist.Add(w.Artist.Name);
+                        }
+
+                        foreach (var w in value.Labelinfolist)
+                        {
+                            ti.Publisher.Add(w.Label.Name);
+                            ti.DiscNum += w.Catalognumber + " ";
+                        }
+                        foreach (var w in value.Mediumlist.Medium)
+                        {
+                            ti.Format.Add(w.Format);
+                        }
+                        ti.Track.Add((uint)i + 1);
+                        ti.Image.Add(pimage);
+
+                        result.Add(ti);
                     }
-
-                    foreach (var w in value.Labelinfolist)
-                    {
-                        ti.Publisher.Add(w.Label.Name);
-                        ti.DiscNum += w.Catalognumber + " ";
-                    }
-                    foreach (var w in value.Mediumlist.Medium)
-                    {
-                        ti.Format.Add(w.Format);
-                    }
-                    ti.Track.Add((uint)i + 1);
-                    ti.Image.Add(pimage);
-
-                    result.Add(ti);
                 }
+                
             }
             return result;
         }

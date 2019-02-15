@@ -20,6 +20,7 @@ namespace Tag.WPF
 
     public class CheckUserModel
     {
+        public int Id = 0;
         public string Length { get; set; }
         public string Title { get; set; }
         public int Track { get; set; }

@@ -26,8 +26,7 @@ namespace Tag.WPF
         private string _genre;
         private string _comment;
         private string _coverInfo;
-
-
+        
         public string CoverInfo { get => _coverInfo; set { _coverInfo = value; OnPropertyChagend(); } }
 
         public string Artst { get => _artst; set { _artst = value; OnPropertyChagend(); } }
@@ -42,6 +41,8 @@ namespace Tag.WPF
         public ObservableCollection<CheckBrainzModel> BrainzInfo { get; set; }
         public ObservableCollection<CheckUserModel> UserInfo { get; set; }
 
+        private List<TagInfo> BrainzTag;
+        private ObservableCollection<TaggingModel> data;
         public CheckTaggingViewModel()
         {
             Information = new ObservableCollection<CheckTagInfoModel>();
@@ -49,21 +50,57 @@ namespace Tag.WPF
             UserInfo = new ObservableCollection<CheckUserModel>();
         }
 
-
-        public void SetValue(List<TagInfo> tag, List<TrackInfo> User)
+        public void SaveTag()
         {
-            Artst = string.Join(", ", tag[0].AlbumArtist);
-            Album = tag[0].Album;
-            Year = tag[0].Year;
-            Genre = string.Join(", ", tag[0].Genre);
-            Comment = tag[0].Comment;
+            int loop = BrainzInfo.Count > UserInfo.Count ? UserInfo.Count : BrainzInfo.Count;
+
+            for (int i = 0; i < loop; i++)
+            {
+                int index = data.IndexOf(data[UserInfo[i].Id]);
+
+                var temp = data[index];
+                {
+                    temp.TagInfo.Album = BrainzTag[i].Album;
+                    temp.TagInfo.AlbumArtist = BrainzTag[i].AlbumArtist;
+                    temp.TagInfo.Artist = BrainzTag[i].Artist;
+                    temp.TagInfo.Barcode = BrainzTag[i].Barcode;
+                    temp.TagInfo.Comment = BrainzTag[i].Comment;
+                    temp.TagInfo.Composer = BrainzTag[i].Composer;
+                    temp.TagInfo.Country = BrainzTag[i].Country;
+                    temp.TagInfo.DiscNum = BrainzTag[i].DiscNum;
+                    temp.TagInfo.Format = BrainzTag[i].Format;
+                    temp.TagInfo.Genre = BrainzTag[i].Genre;
+                    temp.TagInfo.Identifier = BrainzTag[i].Identifier;
+                    temp.TagInfo.Image = BrainzTag[i].Image;
+                    temp.TagInfo.Lang = BrainzTag[i].Lang;
+                    temp.TagInfo.Publisher = BrainzTag[i].Publisher;
+                    temp.TagInfo.TagType = BrainzTag[i].TagType;
+                    temp.TagInfo.Title = BrainzTag[i].Title;
+                    temp.TagInfo.Track = BrainzTag[i].Track;
+                    temp.TagInfo.Year = BrainzTag[i].Year;
+                }
+                data.RemoveAt(index);
+                data.Insert(index, temp);
+            }
+        }
+
+
+        public void SetValue(List<TagInfo> tag, ObservableCollection<TaggingModel> User)
+        {
+            data = User;
+            BrainzTag = tag;
+
+            Artst = string.Join(", ", tag[0]?.AlbumArtist);
+            Album = tag[0]?.Album;
+            Year = tag[0]?.Year;
+            Genre = string.Join(", ", tag[0]?.Genre);
+            Comment = tag[0]?.Comment;
 
             Information.Add(new CheckTagInfoModel
             {
                 Name = tag[0].AlbumArtist.GetType().Name,
-                Value = string.Join("; ", tag[0].AlbumArtist)
+                Value = string.Join(", ", tag[0]?.AlbumArtist)
             });
-
             Information.Add(new CheckTagInfoModel
             {
                 Name = tag[0].Format.GetType().Name,
@@ -74,11 +111,10 @@ namespace Tag.WPF
                 Name = tag[0].Year.GetType().Name,
                 Value = Year
             });
-
             Information.Add(new CheckTagInfoModel
             {
                 Name = tag[0].Publisher.GetType().Name,
-                Value = string.Join(";", tag[0].Publisher)
+                Value = string.Join(", ", tag[0].Publisher)
             });
             Information.Add(new CheckTagInfoModel
             {
@@ -116,14 +152,19 @@ namespace Tag.WPF
                     Title = taginfo.Title
                 });
             }
+
+            int i = 0;
             foreach (var userinfo in User)
             {
+                int tracknum = userinfo.TagInfo.Track.Count == 0 ? 0 : (int)userinfo.TagInfo.Track[0];
                 UserInfo.Add(new CheckUserModel
                 {
-                    Length = $"{string.Format("{00}", (int)userinfo.DurationMS / 60)}:{string.Format("{00}", userinfo.DurationMS % 60)}",
-                    Title = userinfo.Title,
-                    Track = userinfo.Track
+                    Length = $"{string.Format("{00}", (int)userinfo.WaveFormat.Length / 60)}:{string.Format("{00}", userinfo.WaveFormat.Length % 60)}",
+                    Title = userinfo.TagInfo.Title,
+                    Track = tracknum,
+                    Id = i
                 });
+                i++;
             }
         }
 

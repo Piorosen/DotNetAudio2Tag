@@ -1,6 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Tag.WPF
     {
         MusicBrainzSearchViewModel viewModel;
 
-        public MusicBrainzSearch(TagInfo info, List<TrackInfo> user)
+        public MusicBrainzSearch(TagInfo info, ObservableCollection<TaggingModel> user)
         {
             InitializeComponent();
             DataContext = viewModel = new MusicBrainzSearchViewModel(user);
