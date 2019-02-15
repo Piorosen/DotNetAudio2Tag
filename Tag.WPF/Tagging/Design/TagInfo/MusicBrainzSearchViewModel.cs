@@ -63,11 +63,17 @@ namespace Tag.WPF
             DialogHost.CloseDialogCommand.Execute(true, null);
             await Task.Delay(500);
 
-            CheckTagging view = new CheckTagging
+            List<TagInfo> searchResult = new List<TagInfo>();
+            await Task.Run(() =>
             {
+                searchResult = search.GetTrackInfo(Items[index]);
+            });
 
+            CheckTagging view = new CheckTagging(searchResult, user)
+            {
+                Height = 385,
+                Width = 740
             };
-            view.SetValue(search.GetTrackInfo(Items[index]), user);
             await DialogHost.Show(view);
         }
 
