@@ -38,27 +38,57 @@ namespace Tag.WPF
 
         public BitmapSource CoverImage { get => _coverImage; set { _coverImage = value; OnPropertyChagend(); } }
 
-        public ObservableCollection<(string Name, string Value)> Information { get; set; }
-        public ObservableCollection<(uint Track, string Title)> BrainzInfo { get; set; }
-        public ObservableCollection<(string Length, string Title, int Track)> UserInfo { get; set; }
+        public ObservableCollection<CheckTagInfoModel> Information { get; set; }
+        public ObservableCollection<CheckBrainzModel> BrainzInfo { get; set; }
+        public ObservableCollection<CheckUserModel> UserInfo { get; set; }
 
         public CheckTaggingViewModel()
         {
-            Information = new ObservableCollection<(string Name, string Value)>();
-            BrainzInfo = new ObservableCollection<(uint Track, string Title)>();
-            UserInfo = new ObservableCollection<(string Length, string Title, int Track)>();
+            Information = new ObservableCollection<CheckTagInfoModel>();
+            BrainzInfo = new ObservableCollection<CheckBrainzModel>();
+            UserInfo = new ObservableCollection<CheckUserModel>();
         }
 
 
         public void SetValue(List<TagInfo> tag, List<TrackInfo> User)
         {
-            Information.Add((tag[0].AlbumArtist.GetType().Name, string.Join("; ", tag[0].AlbumArtist)));
-            Information.Add((tag[0].Format.GetType().Name, string.Join(", ", tag[0].Format)));
-            Information.Add((tag[0].Year.GetType().Name, Year));
-            Information.Add((tag[0].Publisher.GetType().Name, string.Join(";", tag[0].Publisher)));
-            Information.Add((tag[0].Track.GetType().Name, tag[0].Track.Count.ToString()));
-            Information.Add((tag[0].DiscNum.GetType().Name, tag[0].DiscNum));
-            Information.Add((tag[0].Barcode.GetType().Name, tag[0].Barcode));
+            Information.Add(new CheckTagInfoModel
+            {
+                Name = tag[0].AlbumArtist.GetType().Name,
+                Value = string.Join("; ", tag[0].AlbumArtist)
+            });
+
+            Information.Add(new CheckTagInfoModel
+            {
+                Name = tag[0].Format.GetType().Name,
+                Value = string.Join(", ", tag[0].Format)
+            });
+            Information.Add(new CheckTagInfoModel
+            {
+                Name = tag[0].Year.GetType().Name,
+                Value = Year
+            });
+
+            Information.Add(new CheckTagInfoModel
+            {
+                Name = tag[0].Publisher.GetType().Name,
+                Value = string.Join(";", tag[0].Publisher)
+            });
+            Information.Add(new CheckTagInfoModel
+            {
+                Name = tag[0].Track.GetType().Name,
+                Value = tag[0].Track.Count.ToString()
+            });
+            Information.Add(new CheckTagInfoModel
+            {
+                Name = tag[0].DiscNum.GetType().Name,
+                Value = tag[0].DiscNum
+            });
+            Information.Add(new CheckTagInfoModel
+            {
+                Name = tag[0].Barcode.GetType().Name,
+                Value = tag[0].Barcode
+            });
 
             var tagTemp = tag[0].Image as List<TagLib.IPicture>;
             
@@ -74,13 +104,20 @@ namespace Tag.WPF
 
             foreach (var taginfo in tag)
             {
-                BrainzInfo.Add((taginfo.Track[0], taginfo.Title));
+                BrainzInfo.Add(new CheckBrainzModel
+                {
+                    Track = taginfo.Track[0],
+                    Title = taginfo.Title
+                });
             }
             foreach (var userinfo in User)
             {
-                UserInfo.Add(($"{string.Format("00", userinfo.DurationMS / 60)}" +
-                    $":{string.Format("00", userinfo.DurationMS % 60)}"
-                    , userinfo.Title, userinfo.Track));
+                UserInfo.Add(new CheckUserModel
+                {
+                    Length = $"{string.Format("00", userinfo.DurationMS / 60)}:{string.Format("00", userinfo.DurationMS % 60)}",
+                    Title = userinfo.Title,
+                    Track = userinfo.Track
+                });
             }
         }
 
