@@ -90,8 +90,17 @@ namespace Tag.Core.Tagging.Library
         {
             var result = new List<BrainzInfo>();
 
-            var data = MusicBrainz.Search.Release(query: info.Title, artist: string.Join(" ", info.Artist));
+            string Title = info.Title;
+            string Artist = string.Join(" ", info.Artist);
+            Artist = Artist == string.Empty ? null : Artist;
+            Title = Title == string.Empty ? null : Title;
 
+            var data = MusicBrainz.Search.Release(query: Title, artist: Artist);
+
+            if (data == null)
+            {
+                return result;
+            }
             foreach (var value in data.Data)
             {
                 BrainzInfo binfo = new BrainzInfo

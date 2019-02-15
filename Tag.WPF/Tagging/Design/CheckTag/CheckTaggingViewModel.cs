@@ -98,37 +98,39 @@ namespace Tag.WPF
 
             Information.Add(new CheckTagInfoModel
             {
-                Name = tag[0].AlbumArtist.GetType().Name,
+                Name = Setting.Global.Language.AlbumArtist,
                 Value = string.Join(", ", tag[0]?.AlbumArtist)
             });
+            var t = tag[0].Format.GetType();
+            
             Information.Add(new CheckTagInfoModel
             {
-                Name = tag[0].Format.GetType().Name,
+                Name = "포맷",
                 Value = string.Join(", ", tag[0].Format)
             });
             Information.Add(new CheckTagInfoModel
             {
-                Name = tag[0].Year.GetType().Name,
+                Name = Setting.Global.Language.Year,
                 Value = Year
             });
             Information.Add(new CheckTagInfoModel
             {
-                Name = tag[0].Publisher.GetType().Name,
+                Name = "배급사",
                 Value = string.Join(", ", tag[0].Publisher)
             });
             Information.Add(new CheckTagInfoModel
             {
-                Name = tag[0].Track.GetType().Name,
+                Name = Setting.Global.Language.Track,
                 Value = tag[0].Track.Count.ToString()
             });
             Information.Add(new CheckTagInfoModel
             {
-                Name = tag[0].DiscNum.GetType().Name,
+                Name = Setting.Global.Language.DiscNum,
                 Value = tag[0].DiscNum
             });
             Information.Add(new CheckTagInfoModel
             {
-                Name = tag[0].Barcode.GetType().Name,
+                Name = "바코드",
                 Value = tag[0].Barcode
             });
 
