@@ -113,12 +113,13 @@
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0"
-                            BorderBrush="Black"
-                            BorderThickness="1"
                             >
                         <Image Source="{Binding CoverImage}"
-                               Stretch="Fill">
-
+                               Stretch="Fill"
+                               HorizontalAlignment="Left"
+                               Height="120"
+                               Width="120"
+                               >
                         </Image>
                     </Border>
                     <TextBlock Text="{Binding CoverInfo, StringFormat={}정보 : {0}}"
@@ -155,7 +156,8 @@
                     Margin="5"
                     >
                 <Grid>
-                    <ListView>
+                    <ListView
+                        ItemsSource="{Binding UserInfo}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="길이"
@@ -173,8 +175,7 @@
                 </Grid>
             </Border>
             <Border Grid.Column="2" Grid.Row="1"
-                    BorderBrush="Black"
-                    BorderThickness="1"
+                    
                     Margin="5"
                     >
                 <Grid >

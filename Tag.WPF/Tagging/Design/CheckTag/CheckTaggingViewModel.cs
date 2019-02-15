@@ -52,6 +52,12 @@ namespace Tag.WPF
 
         public void SetValue(List<TagInfo> tag, List<TrackInfo> User)
         {
+            Artst = string.Join(", ", tag[0].AlbumArtist);
+            Album = tag[0].Album;
+            Year = tag[0].Year;
+            Genre = string.Join(", ", tag[0].Genre);
+            Comment = tag[0].Comment;
+
             Information.Add(new CheckTagInfoModel
             {
                 Name = tag[0].AlbumArtist.GetType().Name,
@@ -114,7 +120,7 @@ namespace Tag.WPF
             {
                 UserInfo.Add(new CheckUserModel
                 {
-                    Length = $"{string.Format("00", userinfo.DurationMS / 60)}:{string.Format("00", userinfo.DurationMS % 60)}",
+                    Length = $"{string.Format("{00}", (int)userinfo.DurationMS / 60)}:{string.Format("{00}", userinfo.DurationMS % 60)}",
                     Title = userinfo.Title,
                     Track = userinfo.Track
                 });
