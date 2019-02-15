@@ -18,6 +18,7 @@ namespace Tag.WPF
 {
     public class TaggingViewModel : INotifyPropertyChanged
     {
+        #region Lang
         public string Title => Setting.Global.Language.Title;
         public string Artist => Setting.Global.Language.Artist;
         public string Album => Setting.Global.Language.Album;
@@ -36,8 +37,10 @@ namespace Tag.WPF
         public string TagType => Setting.Global.Language.Tag;
         public string Bitrate => Setting.Global.Language.Bitrate;
         public string Length => Setting.Global.Language.Length;
+        #endregion
 
         AudioTagging audioTagging;
+
         private TaggingModel _selectItem;
 
         public ObservableCollection<TaggingModel> Items { get => _items; set { _items = value; OnPropertyChanged(); } }
@@ -73,7 +76,6 @@ namespace Tag.WPF
         public void AddModel(string filePath)
         {
             audioTagging.AddFile(filePath);
-
             using (AudioFileReader reader = new AudioFileReader(filePath))
             {
                 Items.Add(new TaggingModel
@@ -87,6 +89,7 @@ namespace Tag.WPF
                     }
                 });
             }
+
             LabelVisibility = Visibility.Hidden;
         }
         public void ChangeText(string Name, string Value)
@@ -150,6 +153,23 @@ namespace Tag.WPF
         {
 
         }
+        private void CloseEvent(object sender, DialogClosingEventArgs e)
+        {
+            audioTagging.tagList.Clear();
+            if ((bool)e.Parameter == true)
+            {
+                for (int i = 0; i < Items.Count; i++)
+                {
+                    audioTagging.AddFile(Items[i].TagInfo.Path);
+                    audioTagging.List()[i] = Items[i].TagInfo;
+
+                }
+                foreach (var value in audioTagging.Execute())
+                {
+                    Console.WriteLine(value);
+                }
+            }
+        }
 
         public async void AllTagSave()
         {
@@ -158,7 +178,7 @@ namespace Tag.WPF
                 Width = 300,
                 Height = 100
             };
-            var result = await DialogHost.Show(view);
+            var result = await DialogHost.Show(view, CloseEvent);
 
         }
 
