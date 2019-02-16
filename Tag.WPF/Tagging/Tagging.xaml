@@ -138,20 +138,22 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Width="150"
+                            Background="Transparent"
                             >
                         <Image Source="{Binding SelectItem.TagInfo.Image,
                                Converter={StaticResource ListToSring}}"
-                               Height="150"
+                               VerticalAlignment="Stretch"
+                               HorizontalAlignment="Stretch"
                                >
                             <Image.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="이미지 변경"
                                               Click="ImageChange"
                                               >
-                                            <MenuItem.Icon>
-                                                <materialDesign:PackIcon Kind="FileRemove" />
-                                            </MenuItem.Icon>
-                                        </MenuItem>
+                                        <MenuItem.Icon>
+                                            <materialDesign:PackIcon Kind="FileRemove" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
                                     <MenuItem Header="이미지 삭제"
                                               Click="ImageDelete">
                                         <MenuItem.Icon>

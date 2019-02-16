@@ -327,11 +327,34 @@ namespace Tag.WPF
 
         private void ImageChange(object sender, RoutedEventArgs e)
         {
+            if (viewModel?.SelectItem?.TagInfo?.Image != null)
+            {
+                viewModel.SelectItem.TagInfo.Image.Clear();
+                System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog
+                {
+                    Multiselect = true
+                };
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    foreach (var item in dialog.FileNames)
+                    {
+                        try
+                        {
+                            var pic = new TagLib.Picture(item);
+                            viewModel.SelectItem.TagInfo.Image.Add(pic);
+                        }
+                        catch
+                        {
 
+                        }
+
+                    }
+                }
+            }
         }
         private void ImageDelete(object sender, RoutedEventArgs e)
         {
-
+            viewModel?.SelectItem?.TagInfo?.Image?.Clear();
         }
     }
 }

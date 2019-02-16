@@ -244,8 +244,6 @@ namespace Tag.WPF
 
             audioTagging = new AudioTagging();
             SelectItem = new TaggingModel();
-            SelectItem.TagInfo.Image = new List<TagLib.IPicture>();
-            SelectItem.TagInfo.Image.Add(new Picture(Setting.Global.Resource.Alert));
         }
     }
 }

@@ -33,7 +33,16 @@ namespace Tag.WPF
                          BitmapSizeOptions.FromEmptyOptions());
                     return data;
                 }
-                return image;
+                else
+                {
+                    image = new Bitmap(Setting.Global.Resource.Alert);
+                    var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                         image.GetHbitmap(),
+                         IntPtr.Zero,
+                         Int32Rect.Empty,
+                         BitmapSizeOptions.FromEmptyOptions());
+                    return data;
+                }
             }
 
             if (value is double)
