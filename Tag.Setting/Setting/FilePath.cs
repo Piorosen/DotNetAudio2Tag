@@ -10,7 +10,7 @@ namespace Tag.Setting.Setting
     public static class FilePath
     {
         public static string SettingPath = Application.StartupPath + @"\Setting\Lang\";
-
+        public static string ResourcePath = Application.StartupPath + @"\Setting\Resource\";
 
 
     }

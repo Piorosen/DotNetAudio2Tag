@@ -13,8 +13,8 @@ namespace Tag.WPF
 {
     public class TaggingModel : INotifyPropertyChanged
     {
-        private WaveFormatModel _waveFormat;
-        private TagInfo _tagInfo;
+        private WaveFormatModel _waveFormat = new WaveFormatModel();
+        private TagInfo _tagInfo = new TagInfo();
 
         public string FileName => Path.GetFileName(_tagInfo.Path);
         public WaveFormatModel WaveFormat { get => _waveFormat; set { _waveFormat = value; OnPropertyChanged(); } }

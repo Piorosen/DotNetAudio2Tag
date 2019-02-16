@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing.Imaging;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -13,6 +15,8 @@ using System.Windows;
 using System.Windows.Data;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
+using Tag.WPF.Properties;
+using TagLib;
 
 namespace Tag.WPF
 {
@@ -89,7 +93,6 @@ namespace Tag.WPF
                     }
                 });
             }
-
             LabelVisibility = Visibility.Hidden;
         }
         public void ChangeText(string Name, string Value)
@@ -240,7 +243,9 @@ namespace Tag.WPF
             Items = new ObservableCollection<TaggingModel>();
 
             audioTagging = new AudioTagging();
-
+            SelectItem = new TaggingModel();
+            SelectItem.TagInfo.Image = new List<TagLib.IPicture>();
+            SelectItem.TagInfo.Image.Add(new Picture(Setting.Global.Resource.Alert));
         }
     }
 }
