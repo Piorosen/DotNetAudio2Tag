@@ -26,7 +26,7 @@ namespace Tag.WPF
         private string _genre;
         private string _comment;
         private string _coverInfo;
-        
+
         public string CoverInfo { get => _coverInfo; set { _coverInfo = value; OnPropertyChagend(); } }
 
         public string Artst { get => _artst; set { _artst = value; OnPropertyChagend(); } }
@@ -34,6 +34,8 @@ namespace Tag.WPF
         public string Year { get => _year; set { _year = value; OnPropertyChagend(); } }
         public string Genre { get => _genre; set { _genre = value; OnPropertyChagend(); } }
         public string Comment { get => _comment; set { _comment = value; OnPropertyChagend(); } }
+
+        public Visibility Visible { get => _visible; set { _visible = value; OnPropertyChagend(); } }
 
         public BitmapSource CoverImage { get => _coverImage; set { _coverImage = value; OnPropertyChagend(); } }
 
@@ -43,6 +45,8 @@ namespace Tag.WPF
 
         private List<TagInfo> BrainzTag;
         private ObservableCollection<TaggingModel> data;
+        private Visibility _visible;
+
         public CheckTaggingViewModel()
         {
             Information = new ObservableCollection<CheckTagInfoModel>();
@@ -86,7 +90,6 @@ namespace Tag.WPF
 
         public void SetTagValue(List<TagInfo> tag)
         {
-
             BrainzTag = tag;
 
             Artst = string.Join(", ", tag[0]?.AlbumArtist);
@@ -151,12 +154,13 @@ namespace Tag.WPF
                     Title = taginfo.Title
                 });
             }
+            Visible = Visibility.Hidden;
         }
 
         public void SetValue(ObservableCollection<TaggingModel> User)
         {
             data = User;
-
+            Visible = Visibility.Visible;
             int i = 0;
             foreach (var userinfo in User)
             {

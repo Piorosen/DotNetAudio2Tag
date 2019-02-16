@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" Height="385" Width="740">
     <Grid>
         <Grid.RowDefinitions>
@@ -20,6 +21,26 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+
+            <materialDesign:Card
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="2"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                UniformCornerRadius="10"
+                Padding="5"
+                Height="100"
+                Width="100"
+                Visibility="{Binding Visible}"
+                >
+                <ProgressBar
+                Style="{StaticResource MaterialDesignCircularProgressBar}"
+                    Width="Auto"
+                    Height="Auto"
+                    Margin="10"
+                Value="50"
+                IsIndeterminate="True" />
+            </materialDesign:Card>
 
             <Border Grid.Column="0" Grid.Row="0"
                     BorderThickness="1"

@@ -30,8 +30,11 @@ namespace Tag.WPF
             InitializeComponent();
             DataContext = viewModel = new CheckTaggingViewModel();
             viewModel.SetValue(user);
+            
         }
         
+        
+
         public void SetTagValue(List<TagInfo> info)
         {
             viewModel.SetTagValue(info);
