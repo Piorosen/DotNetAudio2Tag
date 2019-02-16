@@ -139,11 +139,14 @@
                             VerticalAlignment="Top"
                             Width="150"
                             Background="Transparent"
+                            AllowDrop="True"
                             >
                         <Image Source="{Binding SelectItem.TagInfo.Image,
                                Converter={StaticResource ListToSring}}"
                                VerticalAlignment="Stretch"
                                HorizontalAlignment="Stretch"
+                               DragEnter="ItemDragEnter"
+                               Drop="ImageDrop"
                                >
                             <Image.ContextMenu>
                                 <ContextMenu>

@@ -170,17 +170,17 @@ namespace Tag.Core.Tagging.Library
                     for (int i = 0; i < list.Count; i++)
                     {
                         List<string> Artist = new List<string>
-                    {
-                        list[i]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
-                    };
+                        {
+                            list[i]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
+                        };
                         var Composer = new List<string>
-                    {
-                        list[i]["release-list"]["release"]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
-                    };
+                        {
+                            list[i]["release-list"]["release"]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
+                        };
                         var AlubmArtist = new List<string>
-                    {
-                        list[0]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
-                    };
+                        { 
+                            list[0]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
+                        };
 
                         TagInfo ti = new TagInfo
                         {
@@ -215,7 +215,7 @@ namespace Tag.Core.Tagging.Library
                         result.Add(ti);
                     }
                 }
-                
+
             }
             return result;
         }

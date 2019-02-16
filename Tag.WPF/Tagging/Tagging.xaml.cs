@@ -325,6 +325,12 @@ namespace Tag.WPF
             }
         }
 
+        private void ImageDrop(object sender, DragEventArgs e)
+        {
+            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
+            Image(items);
+        }
+
         private void ImageChange(object sender, RoutedEventArgs e)
         {
             if (viewModel?.SelectItem?.TagInfo?.Image != null)
@@ -336,25 +342,35 @@ namespace Tag.WPF
                 };
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    foreach (var item in dialog.FileNames)
-                    {
-                        try
-                        {
-                            var pic = new TagLib.Picture(item);
-                            viewModel.SelectItem.TagInfo.Image.Add(pic);
-                        }
-                        catch
-                        {
-
-                        }
-
-                    }
+                    Image(dialog.FileNames);
                 }
             }
         }
+        void Image(params string[] items)
+        {
+            var tag = viewModel.SelectItem.TagInfo;
+            tag.Image.Clear();
+
+            foreach (var item in items)
+            {
+                try
+                {
+                    var pic = new TagLib.Picture(item);
+                    tag.Image.Add(pic);
+                    viewModel.SelectItem.TagInfo = tag;
+                }
+                catch { }
+            }
+        }
+
         private void ImageDelete(object sender, RoutedEventArgs e)
         {
-            viewModel?.SelectItem?.TagInfo?.Image?.Clear();
+            if (viewModel?.SelectItem?.TagInfo != null)
+            {
+                var tag = viewModel.SelectItem.TagInfo;
+                tag.Image.Clear();
+                viewModel.SelectItem.TagInfo = tag;
+            }
         }
     }
 }
