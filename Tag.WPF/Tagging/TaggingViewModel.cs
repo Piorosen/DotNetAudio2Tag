@@ -178,7 +178,13 @@ namespace Tag.WPF
                 Width = 300,
                 Height = 100
             };
-            var result = await DialogHost.Show(view, CloseEvent);
+
+            if (Setting.Global.DialogCheck == false)
+            {
+                Setting.Global.DialogCheck = true;
+                var result = await DialogHost.Show(view, CloseEvent);
+                Setting.Global.DialogCheck = false;
+            }
 
         }
 
@@ -208,7 +214,12 @@ namespace Tag.WPF
                 
             };
 
-            var result = await DialogHost.Show(view);
+            if (Setting.Global.DialogCheck == false)
+            {
+                Setting.Global.DialogCheck = true;
+                var result = await DialogHost.Show(view);
+                Setting.Global.DialogCheck = false;
+            }
 
         }
 

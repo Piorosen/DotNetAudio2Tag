@@ -51,7 +51,13 @@ namespace Tag.WPF
 
             };
             await Task.Delay(500);
-            var t = await DialogHost.Show(view, OpenEvent);
+
+            if (Setting.Global.DialogCheck == false)
+            {
+                Setting.Global.DialogCheck = true;
+                var t = await DialogHost.Show(view, OpenEvent);
+                Setting.Global.DialogCheck = false;
+            }
 
         }
 
@@ -65,7 +71,13 @@ namespace Tag.WPF
 
             DialogHost.CloseDialogCommand.Execute(false, null);
             await Task.Delay(500);
-            await DialogHost.Show(view);
+
+            if (Setting.Global.DialogCheck == false)
+            {
+                Setting.Global.DialogCheck = true;
+                await DialogHost.Show(view);
+                Setting.Global.DialogCheck = false;
+            }
         }
     }
 }

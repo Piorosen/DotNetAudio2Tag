@@ -11,5 +11,7 @@ namespace Tag.Setting
     public static class Global
     {
         public static Language Language => Language.Insatence;
+
+        public static bool DialogCheck = false;
     }
 }

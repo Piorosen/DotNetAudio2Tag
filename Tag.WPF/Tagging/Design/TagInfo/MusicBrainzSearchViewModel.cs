@@ -84,7 +84,13 @@ namespace Tag.WPF
                 Height = 385,
                 Width = 740
             };
-            await DialogHost.Show(view, OpenDialog);
+
+            if (Setting.Global.DialogCheck == false)
+            {
+                Setting.Global.DialogCheck = true;
+                await DialogHost.Show(view, OpenDialog);
+                Setting.Global.DialogCheck = false;
+            }
         }
 
 

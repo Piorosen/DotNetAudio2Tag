@@ -71,9 +71,9 @@ namespace Tag.WPF
 
 
 
-        private async void Execute(object sender, RoutedEventArgs e)
+        private void Execute(object sender, RoutedEventArgs e)
         {
-            await viewModel.Execute();
+            viewModel.Execute();
         }
 
         private void OpenDialog(object sender, RoutedEventArgs e)

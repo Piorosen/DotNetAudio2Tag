@@ -48,8 +48,11 @@ namespace Tag.WPF
 
         private void Yes_Click(object sender, RoutedEventArgs e)
         {
-            int itemindex = ListViews.SelectedIndex != -1 ? ListViews.SelectedIndex : 0;
-            viewModel.Yes_Click(itemindex);
+            if (ListViews.Items.Count != 0)
+            {
+                int itemindex = ListViews.SelectedIndex != -1 ? ListViews.SelectedIndex : 0;
+                viewModel.Yes_Click(itemindex);
+            }
         }
 
         private void No_Click(object sender, RoutedEventArgs e)

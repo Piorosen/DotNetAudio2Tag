@@ -101,7 +101,7 @@ namespace Tag.WPF
 
         }
 
-        public async Task<object> Execute()
+        public async void Execute()
         {
             var Content = new ConvertStatus
             {
@@ -119,10 +119,12 @@ namespace Tag.WPF
             }
 
             Content.Execute(ConvertMode[Index]);
-            var result = await DialogHost.Show(Content, OpenEventHandler, CloseEventHandler);
-            
-
-            return await Task.FromResult(result);
+            if (Setting.Global.DialogCheck == false)
+            {
+                Setting.Global.DialogCheck = true;
+                var result = await DialogHost.Show(Content, OpenEventHandler, CloseEventHandler);
+                Setting.Global.DialogCheck = false;
+            }
         }
     }
 }
