@@ -46,8 +46,8 @@ namespace Tag.WPF
 
             view = new MusicBrainzSearch(userinfo)
             {
-                Width = 400,
-                Height = 250,
+                Width = 800,
+                Height = 280,
 
             };
             await Task.Delay(500);

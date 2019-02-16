@@ -24,6 +24,9 @@ namespace Tag.WPF
     {
         public ObservableCollection<BrainzInfo> Items { get; private set; }
         public ImageSource ImageSource { get => _image; private set { _image = value; OnPropertyChanged(); } }
+        public Visibility Visible { get => _visible; set { _visible = value; OnPropertyChanged(); } }
+
+
         ObservableCollection<TaggingModel> user;
 
 
@@ -38,6 +41,7 @@ namespace Tag.WPF
             Items = new ObservableCollection<BrainzInfo>();
             search = new MusicBrain();
             this.user = users;
+            Visible = Visibility.Hidden;
         }
 
         MusicBrain search;
@@ -78,11 +82,11 @@ namespace Tag.WPF
 
             DialogHost.CloseDialogCommand.Execute(true, null);
             await Task.Delay(500);
-            
+
             view = new CheckTagging(user)
             {
-                Height = 385,
-                Width = 740
+                Height = 500,
+                Width = 1100
             };
 
             if (Setting.Global.DialogCheck == false)
@@ -96,30 +100,48 @@ namespace Tag.WPF
 
 
         int TaskIdentified = 0;
+        private Visibility _visible = Visibility.Hidden;
+
         public async void SelectItem(int index, Control control)
         {
+            
+            Visible = Visibility.Visible;
             await Task.Run(() =>
             {
+                
                 TaskIdentified++;
                 int id = TaskIdentified;
                 var tmp = search.GetTrackInfo(Items[index]);
                 if (tmp.Count != 0 && tmp[0].Image.Count != 0)
                 {
-                    var bin = tmp[0].Image[0].Data.Data;
-                    if (id == TaskIdentified)
+                    if (tmp[0].Image[0] == null)
                     {
-                        control?.Dispatcher?.Invoke(() =>
+                        ImageSource = null;
+                    }
+                    else
+                    {
+                        var bin = tmp[0].Image[0].Data.Data;
+                        if (id == TaskIdentified)
                         {
-                            var image = new Bitmap(System.Drawing.Image.FromStream(new MemoryStream(bin)));
-                            var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                                 image.GetHbitmap(),
-                                 IntPtr.Zero,
-                                 Int32Rect.Empty,
-                                 BitmapSizeOptions.FromEmptyOptions());
-                            ImageSource = data;
-                        });
+                            control?.Dispatcher?.Invoke(() =>
+                            {
+                                var image = new Bitmap(System.Drawing.Image.FromStream(new MemoryStream(bin)));
+                                var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                                     image.GetHbitmap(),
+                                     IntPtr.Zero,
+                                     Int32Rect.Empty,
+                                     BitmapSizeOptions.FromEmptyOptions());
+
+                                ImageSource = data;
+                            });
+                        }
                     }
                 }
+                else
+                {
+                    ImageSource = null;
+                }
+                Visible = Visibility.Hidden;
             });
         }
 

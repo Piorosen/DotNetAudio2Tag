@@ -5,47 +5,75 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" Height="385" Width="740">
+             mc:Ignorable="d" Height="500" Width="1100">
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <materialDesign:Card
-                Grid.ColumnSpan="3"
-                Grid.RowSpan="2"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                UniformCornerRadius="10"
-                Padding="5"
-                Height="100"
-                Width="100"
-                Visibility="{Binding Visible}"
-                >
-                <ProgressBar
+        <materialDesign:Card
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            UniformCornerRadius="10"
+            Padding="5"
+            Height="100"
+            Width="100"
+            Grid.RowSpan="2"
+            Visibility="{Binding Visible}"
+            >
+            <ProgressBar
                 Style="{StaticResource MaterialDesignCircularProgressBar}"
                     Width="Auto"
                     Height="Auto"
                     Margin="10"
                 Value="50"
                 IsIndeterminate="True" />
-            </materialDesign:Card>
+        </materialDesign:Card>
 
-            <Border Grid.Column="0" Grid.Row="0"
+        <Grid Grid.Row="0" Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0"
+                       Text="앨범 정보"
+                       Margin="10 6 0 0"
+                       VerticalAlignment="Center"
+                       />
+            <TextBlock Grid.Row="0" Grid.Column="1"
+                       Text="추가 정보"
+                       Margin="10 6 0 0"
+                       VerticalAlignment="Center"
+                       />
+            <TextBlock Grid.Row="0" Grid.Column="2"
+                       Text="앨범아트"
+                       Margin="26 6 0 0"
+                       VerticalAlignment="Center"
+                       />
+            <TextBlock Grid.Row="2" Grid.Column="0"
+                       Text="트랙 정보"
+                       VerticalAlignment="Center"
+                       Margin="10 6 0 0"
+                       />
+            <TextBlock Grid.Row="2" Grid.Column="1"
+                       Text="변경할 파일"
+                       VerticalAlignment="Center"
+                       Margin="10 6 0 0"
+                       />
+
+            <Border Grid.Column="0" Grid.Row="1"
                     BorderThickness="1"
                     BorderBrush="Black"
-                    Margin="5">
+                    Margin="5" >
                 <Grid Margin="0,0,0,5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -103,7 +131,7 @@
                 </Grid>
 
             </Border>
-            <Border Grid.Column="1" Grid.Row="0"
+            <Border Grid.Column="1" Grid.Row="1"
                     BorderBrush="Black"
                     BorderThickness="1"
                     Margin="5"
@@ -125,8 +153,8 @@
                     </ListView>
                 </Grid>
             </Border>
-            <Border Grid.Column="2" Grid.Row="0"
-                    Margin="5"
+            <Border Grid.Column="2" Grid.Row="1"
+                    Margin="5" 
                     >
                 <Grid>
                     <Grid.RowDefinitions>
@@ -134,24 +162,24 @@
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0"
+                            BorderThickness="1"
+                            BorderBrush="Black"
+                            Width="173"
+                            Height="Auto"
                             >
                         <Image Source="{Binding CoverImage}"
                                Stretch="Fill"
-                               HorizontalAlignment="Left"
-                               Height="120"
-                               Width="120"
-                               >
-                        </Image>
+                               />
                     </Border>
-                    <TextBlock Text="{Binding CoverInfo, StringFormat={}정보 : {0}}"
+                    <TextBlock Text="{Binding CoverInfo, StringFormat={}{0}}"
                                Grid.Row="1"
-                               Margin="5 0 0 0"
-                               TextAlignment="Left"
+                               Margin="0 0 0 0"
+                               TextAlignment="Center"
                                VerticalAlignment="Center"
                                />
                 </Grid>
             </Border>
-            <Border Grid.Column="0" Grid.Row="1"
+            <Border Grid.Column="0" Grid.Row="3"
                     BorderBrush="Black"
                     BorderThickness="1"
                     Margin="5"
@@ -171,55 +199,80 @@
                     </ListView>
                 </Grid>
             </Border>
-            <Border Grid.Column="1" Grid.Row="1"
+            <Border Grid.Column="1" Grid.Row="3"
                     BorderBrush="Black"
                     BorderThickness="1"
-                    Margin="5"
+                    Margin="5" 
                     >
                 <Grid>
-                    <ListView
+                    <ListView x:Name="UserListView"
                         ItemsSource="{Binding UserInfo}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="길이"
-                                            DisplayMemberBinding="{Binding Length}"
-                                            />
-                                <GridViewColumn Header="파일 명"
-                                            DisplayMemberBinding="{Binding Title}"
-                                            />
                                 <GridViewColumn Header="트랙"
-                                                DisplayMemberBinding="{Binding Track}"
-                                                />
+                                    DisplayMemberBinding="{Binding Track}"
+                                    />
+                                <GridViewColumn Header="파일 명"
+                                    DisplayMemberBinding="{Binding Title}"
+                                    />
+
+                                <GridViewColumn Header="길이"
+                                DisplayMemberBinding="{Binding Length}"
+                                />
                             </GridView>
                         </ListView.View>
                     </ListView>
                 </Grid>
             </Border>
-            <Border Grid.Column="2" Grid.Row="1"
+            <Border Grid.Column="2" Grid.Row="3"
                     
                     Margin="5"
                     >
                 <Grid >
-                    <Button Content="위로 이동"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Width="130"
-                            Margin="10,10"
+                    <Grid Height="75"
+                          Margin="8 0 -2 0"
+                          >
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0"
+                            Content="위로 이동"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Width="130" Click="Up_Click"
                             />
-                    <Button Content="아래로 이동"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Width="130"
-                            Margin="10,47"
+                        <Button Grid.Row="1"
+                            Content="아래로 이동"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Width="130" Click="Down_Click"
                             />
+                    </Grid>
+
                 </Grid>
             </Border>
+
+            <Grid Grid.Row="3" Grid.Column="2"
+                  Margin="8 5 -2 5"
+                  >
+                <Button
+                Content="확인"
+                HorizontalAlignment="Left"
+                Width="100"
+                Click="Yes_Click"
+                VerticalAlignment="Bottom"
+                />
+                <Button
+                Content="취소"
+                HorizontalAlignment="Right"
+                Width="100" Click="Cancel_Click"
+                VerticalAlignment="Bottom"
+                />
+            </Grid>
         </Grid>
 
 
-        <Grid Grid.Row="1">
-            <Button Content="확인" Margin="0,8,90,10" HorizontalAlignment="Right" Width="75" Click="Yes_Click"/>
-            <Button Content="취소" Margin="0,8,10,10" HorizontalAlignment="Right" Width="75" Click="Cancel_Click"/>
-        </Grid>
+
     </Grid>
 </UserControl>

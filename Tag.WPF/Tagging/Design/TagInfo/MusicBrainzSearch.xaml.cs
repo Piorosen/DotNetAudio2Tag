@@ -37,6 +37,7 @@ namespace Tag.WPF
         {
             viewModel.SearchAlbum(info, this);
         }
+
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var listView = (sender is ListView) ? sender as ListView : null;

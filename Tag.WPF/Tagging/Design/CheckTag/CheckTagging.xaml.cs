@@ -50,5 +50,25 @@ namespace Tag.WPF
             viewModel.SaveTag();
             DialogHost.CloseDialogCommand.Execute(true, null);
         }
+
+        private void Up_Click(object sender, RoutedEventArgs e)
+        {
+            int index = UserListView.SelectedIndex;
+            if (index != -1 && index != 0)
+            {
+                viewModel.UpClick(index);
+                UserListView.SelectedIndex = index - 1;
+            }
+
+        }
+        private void Down_Click(object sender, RoutedEventArgs e)
+        {
+            int index = UserListView.SelectedIndex;
+            if (index != -1 && index != UserListView.Items.Count - 1)
+            {
+                viewModel.DownClick(index);
+                UserListView.SelectedIndex = index + 1;
+            }
+        }
     }
 }

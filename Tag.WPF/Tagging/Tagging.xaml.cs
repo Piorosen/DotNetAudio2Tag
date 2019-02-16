@@ -60,6 +60,7 @@ namespace Tag.WPF
                         break;
                 }
             }
+            currentSort = -1;
             ItemsConvert(2);
         }
 

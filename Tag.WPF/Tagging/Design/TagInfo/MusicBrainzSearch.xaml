@@ -4,13 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="250" d:DesignWidth="400">
-    
+             d:DesignHeight="270" d:DesignWidth="800">
+
     <UserControl.Resources>
         <local:ListToString x:Key="ListToString"/>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -91,29 +92,40 @@
                 Height="120"
                 Margin="5"
             >
-            <Image 
+            <Grid>
+                <Image 
                 Source="{Binding ImageSource}"
                Width="Auto"
                Height="Auto"
                />
+                <ProgressBar
+                    Visibility="{Binding Visible}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource MaterialDesignCircularProgressBar}"
+                    Value="66"
+                    Height="45"
+                    Width="45"
+                    IsIndeterminate="True" />
+            </Grid>
+
         </Border>
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0"
+            <Button Grid.Column="1"
                     Height="Auto"
-                    Width="Auto"
-                    Margin="5"
+                    Margin="85,10,165,10"
                     Click="Yes_Click"
                 Content="선택 (Y)"/>
             <Button Grid.Column="1"
-                    Margin="5"
+                    Margin="240,10,10,10"
                     Height="Auto"
-                    Width="Auto"
+                    Width="150"
                     Click="No_Click"
-                Content="취소 (Y)"/>
+                Content="취소 (N)"/>
         </Grid>
 
     </Grid>

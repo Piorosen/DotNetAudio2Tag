@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -138,12 +139,15 @@ namespace Tag.WPF
 
             if (tagTemp.Count > 0)
             {
+                var t = new MemoryStream(tagTemp[0].Data.Data);
+                
                 CoverImage = Imaging.CreateBitmapSourceFromHBitmap(
                      new Bitmap(Image.FromStream(new MemoryStream(tagTemp[0].Data.Data))).GetHbitmap(),
                      IntPtr.Zero,
                      Int32Rect.Empty,
                      BitmapSizeOptions.FromEmptyOptions());
-                CoverInfo = $"{CoverImage.PixelWidth}x{CoverImage.PixelHeight}";
+                
+                CoverInfo = $"{CoverImage.PixelWidth}x{CoverImage.PixelHeight}, {CapacityManage.Change(new System.Numerics.BigInteger(t.Length))}";
             }
 
             foreach (var taginfo in tag)
@@ -175,6 +179,22 @@ namespace Tag.WPF
                 i++;
             }
         }
+
+        public void UpClick(int index)
+        {
+            var now = UserInfo[index];
+
+            UserInfo.RemoveAt(index);
+            UserInfo.Insert(index - 1, now);
+        }
+        public void DownClick(int index)
+        {
+            var now = UserInfo[index];
+
+            UserInfo.RemoveAt(index);
+            UserInfo.Insert(index + 1, now);
+        }
+
 
 
         public event PropertyChangedEventHandler PropertyChanged;

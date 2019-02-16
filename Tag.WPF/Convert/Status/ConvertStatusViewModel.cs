@@ -87,12 +87,19 @@ namespace Tag.WPF
                 data.Value = e % 10000;
                 StatusValue[data.Id] = data.Value;
 
-                TotalStatus = StatusValue.Sum() / AudioCount;
-
-                Control.Dispatcher.Invoke(() =>
+                try
                 {
-                    Control.UpdateLayout();
-                });
+                    TotalStatus = StatusValue.Sum() / AudioCount;
+
+                    Control.Dispatcher.Invoke(() =>
+                    {
+                        Control.UpdateLayout();
+                    });
+                }
+                catch
+                {
+
+                }
             }
 
         }

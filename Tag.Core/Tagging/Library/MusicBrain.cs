@@ -45,40 +45,46 @@ namespace Tag.Core.Tagging.Library
 
         private TagLib.Picture GetImage(string Link)
         {
-            JObject json = JObject.Parse(RequestWeb(Link, true));
-            var test = json.Children();
-            string adress = string.Empty;
-
-            foreach (var t1 in test)
-            {
-                foreach (var t2 in t1.Children().Children().Children())
-                {
-                    JProperty p = t2.ToObject<JProperty>();
-                    if (p.Name == "image")
-                    {
-                        adress = p.Value.ToString();
-                        break;
-                    }
-                }
-                break;
-            }
-
-            WebClient wc = new WebClient();
-            var nameImage = Path.GetRandomFileName();
-            wc.DownloadFile(adress, nameImage);
-
-            var pimage = new TagLib.Picture(nameImage); ;
-
             try
             {
-                new FileInfo(nameImage).Delete();
+                JObject json = JObject.Parse(RequestWeb(Link, true));
+                var test = json.Children();
+                string adress = string.Empty;
+
+                foreach (var t1 in test)
+                {
+                    foreach (var t2 in t1.Children().Children().Children())
+                    {
+                        JProperty p = t2.ToObject<JProperty>();
+                        if (p.Name == "image")
+                        {
+                            adress = p.Value.ToString();
+                            break;
+                        }
+                    }
+                    break;
+                }
+
+                WebClient wc = new WebClient();
+                var nameImage = Path.GetRandomFileName();
+                wc.DownloadFile(adress, nameImage);
+
+                var pimage = new TagLib.Picture(nameImage); ;
+                try
+                {
+                    new FileInfo(nameImage).Delete();
+                }
+                catch
+                {
+                    return null;
+                }
+
+                return pimage;
             }
-            catch (Exception)
+            catch
             {
-
+                return null;
             }
-
-            return pimage;
         }
 
         /// <summary>
