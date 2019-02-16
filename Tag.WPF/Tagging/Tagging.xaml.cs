@@ -324,5 +324,14 @@ namespace Tag.WPF
                     : viewModelItem[w]);
             }
         }
+
+        private void ImageChange(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void ImageDelete(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
