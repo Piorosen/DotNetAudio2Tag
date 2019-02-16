@@ -84,10 +84,9 @@ namespace Tag.WPF
             }
         }
 
-
-        public void SetValue(List<TagInfo> tag, ObservableCollection<TaggingModel> User)
+        public void SetTagValue(List<TagInfo> tag)
         {
-            data = User;
+
             BrainzTag = tag;
 
             Artst = string.Join(", ", tag[0]?.AlbumArtist);
@@ -101,8 +100,6 @@ namespace Tag.WPF
                 Name = Setting.Global.Language.AlbumArtist,
                 Value = string.Join(", ", tag[0]?.AlbumArtist)
             });
-            var t = tag[0].Format.GetType();
-            
             Information.Add(new CheckTagInfoModel
             {
                 Name = "포맷",
@@ -135,7 +132,7 @@ namespace Tag.WPF
             });
 
             var tagTemp = tag[0].Image as List<TagLib.IPicture>;
-            
+
             if (tagTemp.Count > 0)
             {
                 CoverImage = Imaging.CreateBitmapSourceFromHBitmap(
@@ -154,6 +151,11 @@ namespace Tag.WPF
                     Title = taginfo.Title
                 });
             }
+        }
+
+        public void SetValue(ObservableCollection<TaggingModel> User)
+        {
+            data = User;
 
             int i = 0;
             foreach (var userinfo in User)

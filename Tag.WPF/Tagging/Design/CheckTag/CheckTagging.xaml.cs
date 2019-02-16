@@ -25,13 +25,17 @@ namespace Tag.WPF
     public partial class CheckTagging : UserControl
     {
         CheckTaggingViewModel viewModel;
-        public CheckTagging(List<TagInfo> tag, ObservableCollection<TaggingModel> user)
+        public CheckTagging(ObservableCollection<TaggingModel> user)
         {
             InitializeComponent();
             DataContext = viewModel = new CheckTaggingViewModel();
-            viewModel.SetValue(tag, user);
+            viewModel.SetValue(user);
         }
         
+        public void SetTagValue(List<TagInfo> info)
+        {
+            viewModel.SetTagValue(info);
+        }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {

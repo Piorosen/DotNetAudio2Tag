@@ -101,6 +101,7 @@ namespace Tag.Core.Tagging.Library
             {
                 return result;
             }
+
             foreach (var value in data.Data)
             {
                 BrainzInfo binfo = new BrainzInfo

@@ -58,23 +58,33 @@ namespace Tag.WPF
             });
         }
 
-        public async void Yes_Click(int index)
-        {
-            DialogHost.CloseDialogCommand.Execute(true, null);
-            await Task.Delay(500);
 
+        async void OpenDialog(object sender, DialogOpenedEventArgs e)
+        {
             List<TagInfo> searchResult = new List<TagInfo>();
             await Task.Run(() =>
             {
                 searchResult = search.GetTrackInfo(Items[index]);
             });
+            view.SetTagValue(searchResult);
+        }
 
-            CheckTagging view = new CheckTagging(searchResult, user)
+        int index = 0;
+        CheckTagging view;
+
+        public async void Yes_Click(int index)
+        {
+            this.index = index;
+
+            DialogHost.CloseDialogCommand.Execute(true, null);
+            await Task.Delay(500);
+            
+            view = new CheckTagging(user)
             {
                 Height = 385,
                 Width = 740
             };
-            await DialogHost.Show(view);
+            await DialogHost.Show(view, OpenDialog);
         }
 
 
