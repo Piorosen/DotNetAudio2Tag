@@ -152,11 +152,26 @@ namespace Tag.WPF
 
             foreach (var taginfo in tag)
             {
+                int index = (int)taginfo.Track[1];
+                bool check = false;
+                for (int i = tag.IndexOf(taginfo); i < tag.Count; i++)
+                {
+                    if (index != tag[i].Track[1])
+                    {
+                        index = (int)tag[i - 1].Track[0];
+                        check = true;
+                        break;
+                    }
+                }
+                if (check == false)
+                {
+                    index = (int)tag[tag.Count - 1].Track[0];
+                }
                 BrainzInfo.Add(new CheckBrainzModel
                 {
-                    Track = taginfo.Track[0],
+                    Track = $"{taginfo.Track[0]} / {index}",
                     Title = taginfo.Title,
-                    DiscNo = taginfo.Track[1]
+                    DiscNo = $"{taginfo.Track[1]} / {tag[tag.Count - 1].Track[1]}",
                 });
             }
             Visible = Visibility.Hidden;

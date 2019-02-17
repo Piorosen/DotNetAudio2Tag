@@ -14,9 +14,9 @@ namespace Tag.WPF
 
     public class CheckBrainzModel
     {
-        public uint Track { get; set; }
+        public string Track { get; set; }
         public string Title { get; set; }
-        public uint DiscNo { get; set; }
+        public string DiscNo { get; set; }
     }
 
     public class CheckUserModel

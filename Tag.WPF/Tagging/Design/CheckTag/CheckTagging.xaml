@@ -260,7 +260,7 @@
                                     />
 
                                 <GridViewColumn Header="길이"
-                                DisplayMemberBinding="{Binding Length}"
+                                DisplayMemberBinding="{Binding Length, StringFormat=F3}"
                                 />
                             </GridView>
                         </ListView.View>
