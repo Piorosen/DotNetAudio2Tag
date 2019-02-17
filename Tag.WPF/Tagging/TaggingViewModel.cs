@@ -156,6 +156,7 @@ namespace Tag.WPF
         {
 
         }
+
         private void CloseEvent(object sender, DialogClosingEventArgs e)
         {
             audioTagging.tagList.Clear();
@@ -220,16 +221,23 @@ namespace Tag.WPF
             if (Setting.Global.DialogCheck == false)
             {
                 Setting.Global.DialogCheck = true;
-                var result = await DialogHost.Show(view);
+                var result = await DialogHost.Show(view, TagCloseEvent);
                 Setting.Global.DialogCheck = false;
             }
 
+        }
+
+        void TagCloseEvent(object s, DialogClosingEventArgs e)
+        {
+            Console.WriteLine("이건 되긴함?");
         }
 
         public void RemoveModel(int index)
         {
             Items.RemoveAt(index);
         }
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string Name = "")

@@ -79,5 +79,16 @@ namespace Tag.WPF
                 Setting.Global.DialogCheck = false;
             }
         }
+
+        private void UserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                if (Setting.Global.DialogCheck == true)
+                {
+                    DialogHost.CloseDialogCommand.Execute(false, null);
+                }
+            }
+        }
     }
 }

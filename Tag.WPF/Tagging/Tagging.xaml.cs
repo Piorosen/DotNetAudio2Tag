@@ -376,5 +376,16 @@ namespace Tag.WPF
                 viewModel.SelectItem.TagInfo = tag;
             }
         }
+
+        private void UserControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                if (Setting.Global.DialogCheck == true)
+                { 
+                    DialogHost.CloseDialogCommand.Execute(false, null);
+                }
+            }
+        }
     }
 }

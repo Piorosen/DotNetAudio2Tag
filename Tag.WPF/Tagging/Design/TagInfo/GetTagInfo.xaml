@@ -8,6 +8,7 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              Width="200"
              Height="100"
+             KeyDown="UserControl_KeyDown"
              >
 
     <Grid>
