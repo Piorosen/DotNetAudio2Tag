@@ -56,23 +56,23 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" Height="60">
                     <Label Content="{Binding Title}" Margin="6,5,10,29"/>
-                    <TextBox x:Name="Title" Text="{Binding SelectItem.TagInfo.Title}"  materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="Tag_TextChanged"/>
+                    <TextBox x:Name="Title" Text="{Binding SelectItem.TagInfo.Title}"   HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="Tag_TextChanged"/>
                 </Grid>
                 <Grid Grid.Row="1" Height="60">
                     <Label Content="{Binding Artist}" Margin="6,5,10,29"/>
-                    <TextBox x:Name="Artist" TextChanged="Tag_TextChanged" Text="{Binding SelectItem.TagInfo.Artist, Converter={StaticResource ListToSring}}" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="Artist" TextChanged="Tag_TextChanged" Text="{Binding SelectItem.TagInfo.Artist, Converter={StaticResource ListToSring}}"  HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
                 <Grid Grid.Row="2" Height="60">
                     <Label Content="{Binding Album}" Margin="6,5,10,29"/>
-                    <TextBox x:Name="Album" TextChanged="Tag_TextChanged" Text="{Binding SelectItem.TagInfo.Album}" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="Album" TextChanged="Tag_TextChanged" Text="{Binding SelectItem.TagInfo.Album}"  HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
                 <Grid Grid.Row="3" Height="60">
                     <Label Content="{Binding Comment}" Margin="6,5,10,29"/>
-                    <TextBox x:Name="Comment" TextChanged="Tag_TextChanged" Text="{Binding SelectItem.TagInfo.Comment}" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="Comment" TextChanged="Tag_TextChanged" Text="{Binding SelectItem.TagInfo.Comment}"  HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
                 <Grid Grid.Row="4">
                     <Label Content="{Binding Genre}" Margin="6,5,8,29"/>
-                    <TextBox x:Name="Genre" TextChanged="Tag_TextChanged" Text="{Binding SelectItem.TagInfo.Genre, Converter={StaticResource ListToSring}}" materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,8,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="Genre" TextChanged="Tag_TextChanged" Text="{Binding SelectItem.TagInfo.Genre, Converter={StaticResource ListToSring}}"  HorizontalAlignment="Stretch" Height="28" Margin="10,30,8,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
 
                 <Grid Grid.Row="5" >
@@ -84,20 +84,20 @@
                         <Label Content="{Binding Year}" Margin="6,5,0,29" HorizontalAlignment="Left" Width="84"/>
                         <TextBox x:Name="Year"  TextChanged="Tag_TextChanged"
                                  Text="{Binding SelectItem.TagInfo.Year}"
-                                 materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10,0,6,6"/>
+                                  Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10,0,6,6"/>
                     </Grid>
                     <Grid Grid.Column="1">
                         <Label Content="{Binding Track}" Margin="2,5,0,29" Width="88" HorizontalAlignment="Left"/>
                         <TextBox x:Name="Track" TextChanged="Tag_TextChanged"
                                  Text="{Binding SelectItem.TagInfo.Track, Converter={StaticResource ListToSring}}"
-                                 materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="6,0,10,6"/>
+                                  Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="6,0,10,6"/>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="6">
                     <Label Content="{Binding AlbumArtist}" Margin="6,5,10,29"/>
                     <TextBox x:Name="AlbumArtist" TextChanged="Tag_TextChanged"
                              Text="{Binding SelectItem.TagInfo.AlbumArtist, Converter={StaticResource ListToSring}}"
-                             materialDesign:HintAssist.Hint="(origin)" HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                              HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
                 <Grid Grid.Row="7">
                     <Grid.ColumnDefinitions>
@@ -108,7 +108,7 @@
                         <Label Content="{Binding Composer}" Margin="6,5,0,29" HorizontalAlignment="Left" Width="84"/>
                         <TextBox x:Name="Composer" TextChanged="Tag_TextChanged"
                                  Text="{Binding SelectItem.TagInfo.Composer, Converter={StaticResource ListToSring}}"
-                                 materialDesign:HintAssist.Hint="(origin)" Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10,0,6,6"/>
+                                  Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10,0,6,6"/>
                     </Grid>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
@@ -118,7 +118,7 @@
                         <Label Content="{Binding Publisher}" Margin="2,-10,0,0" Width="88" HorizontalAlignment="Left" Height="26" Grid.Row="1" VerticalAlignment="Top"/>
                         <TextBox x:Name="Publisher"  TextChanged="Tag_TextChanged"
                                  Text="{Binding SelectItem.TagInfo.Publisher, Converter={StaticResource ListToSring}}"
-                                 materialDesign:HintAssist.Hint="(origin)" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="6,15,10,6" Grid.Row="1"/>
+                                  TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="6,15,10,6" Grid.Row="1"/>
                     </Grid>
                 </Grid>
 

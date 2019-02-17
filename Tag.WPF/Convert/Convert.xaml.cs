@@ -115,9 +115,13 @@ namespace Tag.WPF
             {
                 var listView = (sender is ListView) ? (sender as ListView) : null;
 
-                if (listView != null && listView.SelectedIndex != -1)
+                if (listView != null && listView.SelectedItems.Count != 0)
                 {
-                    viewModel.RemoveFile(listView.SelectedIndex);
+                    var list = listView.SelectedItems.Cast<object>().ToList();
+                    foreach (var value in list)
+                    {
+                        viewModel.RemoveFile(listView.Items.IndexOf(value));
+                    }
                 }
             }
         }
