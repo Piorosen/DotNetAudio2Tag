@@ -155,7 +155,8 @@ namespace Tag.WPF
                 BrainzInfo.Add(new CheckBrainzModel
                 {
                     Track = taginfo.Track[0],
-                    Title = taginfo.Title
+                    Title = taginfo.Title,
+                    DiscNo = taginfo.Track[1]
                 });
             }
             Visible = Visibility.Hidden;

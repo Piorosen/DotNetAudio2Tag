@@ -16,6 +16,7 @@ namespace Tag.WPF
     {
         public uint Track { get; set; }
         public string Title { get; set; }
+        public uint DiscNo { get; set; }
     }
 
     public class CheckUserModel

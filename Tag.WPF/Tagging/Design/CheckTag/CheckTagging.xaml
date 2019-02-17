@@ -234,6 +234,9 @@
                                 <GridViewColumn Header="제목"
                                             DisplayMemberBinding="{Binding Title}"
                                             />
+                                <GridViewColumn Header="디스크 번호"
+                                            DisplayMemberBinding="{Binding DiscNo}"
+                                            />
                             </GridView>
                         </ListView.View>
                     </ListView>
