@@ -195,10 +195,6 @@ namespace Tag.Core.Tagging.Library
                             Country = value.Country,
                             Barcode = value.Barcode
                         };
-                        foreach (var w in value.Artistcredit)
-                        {
-                            ti.Artist.Add(w.Artist.Name);
-                        }
 
                         foreach (var w in value.Labelinfolist)
                         {

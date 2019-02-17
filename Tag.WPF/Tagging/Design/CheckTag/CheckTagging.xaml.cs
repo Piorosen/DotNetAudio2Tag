@@ -70,5 +70,58 @@ namespace Tag.WPF
                 UserListView.SelectedIndex = index + 1;
             }
         }
+
+        private void ImageDrop(object sender, DragEventArgs e)
+        {
+            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
+            Image(items);
+        }
+
+        private void ItemDragEnter(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.Copy;
+        }
+
+        private void ImageChange(object sender, RoutedEventArgs e)
+        {
+            if (viewModel?.CoverImage != null)
+            {
+                System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog
+                {
+                    Multiselect = true
+                };
+
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    Image(dialog.FileNames);
+                }
+            }
+        }
+        void Image(params string[] items)
+        {
+            var tag = viewModel.CoverImage;
+            tag.Clear();
+
+            foreach (var item in items)
+            {
+                try
+                {
+                    var pic = new TagLib.Picture(item);
+                    tag.Add(pic);
+                    viewModel.CoverImage = tag;
+                }
+                catch { }
+            }
+        }
+
+        private void ImageDelete(object sender, RoutedEventArgs e)
+        {
+            if (viewModel?.CoverImage != null)
+            {
+                var tag = viewModel.CoverImage;
+                tag.Clear();
+                viewModel.CoverImage = tag;
+            }
+        }
     }
 }

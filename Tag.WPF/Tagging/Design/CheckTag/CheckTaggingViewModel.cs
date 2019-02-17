@@ -21,7 +21,7 @@ namespace Tag.WPF
     class CheckTaggingViewModel : INotifyPropertyChanged
     {
         private string _artst;
-        private BitmapSource _coverImage;
+        private List<TagLib.IPicture> _coverImage;
         private string _album;
         private string _year;
         private string _genre;
@@ -38,7 +38,7 @@ namespace Tag.WPF
 
         public Visibility Visible { get => _visible; set { _visible = value; OnPropertyChagend(); } }
 
-        public BitmapSource CoverImage { get => _coverImage; set { _coverImage = value; OnPropertyChagend(); } }
+        public List<TagLib.IPicture> CoverImage { get => _coverImage; set { _coverImage = value; OnPropertyChagend(); } }
 
         public ObservableCollection<CheckTagInfoModel> Information { get; set; }
         public ObservableCollection<CheckBrainzModel> BrainzInfo { get; set; }
@@ -76,7 +76,7 @@ namespace Tag.WPF
                     temp.TagInfo.Format = BrainzTag[i].Format;
                     temp.TagInfo.Genre = BrainzTag[i].Genre;
                     temp.TagInfo.Identifier = BrainzTag[i].Identifier;
-                    temp.TagInfo.Image = BrainzTag[i].Image;
+                    temp.TagInfo.Image = CoverImage;
                     temp.TagInfo.Lang = BrainzTag[i].Lang;
                     temp.TagInfo.Publisher = BrainzTag[i].Publisher;
                     temp.TagInfo.TagType = BrainzTag[i].TagType;
@@ -135,20 +135,7 @@ namespace Tag.WPF
                 Value = tag[0].Barcode
             });
 
-            var tagTemp = tag[0].Image as List<TagLib.IPicture>;
-
-            if (tagTemp.Count > 0)
-            {
-                var t = new MemoryStream(tagTemp[0].Data.Data);
-                
-                CoverImage = Imaging.CreateBitmapSourceFromHBitmap(
-                     new Bitmap(Image.FromStream(new MemoryStream(tagTemp[0].Data.Data))).GetHbitmap(),
-                     IntPtr.Zero,
-                     Int32Rect.Empty,
-                     BitmapSizeOptions.FromEmptyOptions());
-                
-                CoverInfo = $"{CoverImage.PixelWidth}x{CoverImage.PixelHeight}, {CapacityManage.Change(new System.Numerics.BigInteger(t.Length))}";
-            }
+            CoverImage = tag[0].Image;
 
             foreach (var taginfo in tag)
             {

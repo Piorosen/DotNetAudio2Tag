@@ -5,9 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" Height="500" Width="1100">
-    <Grid>
+             mc:Ignorable="d"
+             AllowDrop="True"
+             Height="500" Width="1100">
 
+    <UserControl.Resources>
+        <local:ListToString x:Key="ListToSring" />
+    </UserControl.Resources>
+
+    <Grid AllowDrop="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -31,7 +37,7 @@
                 IsIndeterminate="True" />
         </materialDesign:Card>
 
-        <Grid Grid.Row="0" Margin="15">
+        <Grid Grid.Row="0" Margin="15" AllowDrop="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="*"/>
@@ -154,7 +160,8 @@
                 </Grid>
             </Border>
             <Border Grid.Column="2" Grid.Row="1"
-                    Margin="5" 
+                    Margin="5"
+                    AllowDrop="True"
                     >
                 <Grid>
                     <Grid.RowDefinitions>
@@ -166,10 +173,33 @@
                             BorderBrush="Black"
                             Width="173"
                             Height="Auto"
+                            AllowDrop="True"
                             >
-                        <Image Source="{Binding CoverImage}"
+                        <Image Source="{Binding CoverImage
+                            , Converter={StaticResource ListToSring}}"
                                Stretch="Fill"
-                               />
+                               DragEnter="ItemDragEnter"
+                               Drop="ImageDrop"
+                               >
+                            <Image.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="이미지 변경"
+                                              Click="ImageChange"
+                                              >
+                                        <MenuItem.Icon>
+                                            <materialDesign:PackIcon Kind="FileRemove" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="이미지 삭제"
+                                              Click="ImageDelete">
+                                        <MenuItem.Icon>
+                                            <materialDesign:PackIcon Kind="AddBox" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </Image.ContextMenu>
+                            
+                        </Image>
                     </Border>
                     <TextBlock Text="{Binding CoverInfo, StringFormat={}{0}}"
                                Grid.Row="1"

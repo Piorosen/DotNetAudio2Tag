@@ -143,8 +143,7 @@
                             >
                         <Image Source="{Binding SelectItem.TagInfo.Image,
                                Converter={StaticResource ListToSring}}"
-                               VerticalAlignment="Stretch"
-                               HorizontalAlignment="Stretch"
+                               Stretch="Fill"
                                DragEnter="ItemDragEnter"
                                Drop="ImageDrop"
                                >
