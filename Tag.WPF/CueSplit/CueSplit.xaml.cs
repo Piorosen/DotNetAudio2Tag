@@ -74,11 +74,18 @@ namespace Tag.WPF
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                if (dialog.SelectedPath != string.Empty)
+                if (Directory.Exists(dialog.SelectedPath) == false)
                 {
-                    await viewModel.Execute(this, dialog.SelectedPath + @"\");
+                    Execute(sender, e);
+                }
+                else
+                {
+                    if (dialog.SelectedPath != string.Empty)
+                    {
+                        await viewModel.Execute(this, dialog.SelectedPath + @"\");
 
-                    Application.notifier.ShowInformation("성공적으로 분리를 하였습니다.");
+                        Application.notifier.ShowInformation("성공적으로 분리를 하였습니다.");
+                    }
                 }
             }
 
@@ -90,7 +97,7 @@ namespace Tag.WPF
             System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog
             {
                 Filter = "Cue (*.cue)|*.cue",
-                Multiselect = false
+                Multiselect = false,
             };
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
