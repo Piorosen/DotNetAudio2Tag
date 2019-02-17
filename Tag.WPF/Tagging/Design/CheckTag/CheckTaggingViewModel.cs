@@ -20,7 +20,7 @@ namespace Tag.WPF
 {
     class CheckTaggingViewModel : INotifyPropertyChanged
     {
-        private string _artst;
+        private string _artist;
         private List<TagLib.IPicture> _coverImage;
         private string _album;
         private string _year;
@@ -30,7 +30,7 @@ namespace Tag.WPF
 
         public string CoverInfo { get => _coverInfo; set { _coverInfo = value; OnPropertyChagend(); } }
 
-        public string Artst { get => _artst; set { _artst = value; OnPropertyChagend(); } }
+        public string Artist { get => _artist; set { _artist = value; OnPropertyChagend(); } }
         public string Album { get => _album; set { _album = value; OnPropertyChagend(); } }
         public string Year { get => _year; set { _year = value; OnPropertyChagend(); } }
         public string Genre { get => _genre; set { _genre = value; OnPropertyChagend(); } }
@@ -65,24 +65,24 @@ namespace Tag.WPF
 
                 var temp = data[index];
                 {
-                    temp.TagInfo.Album = BrainzTag[i].Album;
+                    temp.TagInfo.Album = Album;
                     temp.TagInfo.AlbumArtist = BrainzTag[i].AlbumArtist;
-                    temp.TagInfo.Artist = BrainzTag[i].Artist;
+                    temp.TagInfo.Artist = Artist.Split(',').ToList();
                     temp.TagInfo.Barcode = BrainzTag[i].Barcode;
-                    temp.TagInfo.Comment = BrainzTag[i].Comment;
+                    temp.TagInfo.Comment = Comment;
                     temp.TagInfo.Composer = BrainzTag[i].Composer;
                     temp.TagInfo.Country = BrainzTag[i].Country;
                     temp.TagInfo.DiscNum = BrainzTag[i].DiscNum;
                     temp.TagInfo.Format = BrainzTag[i].Format;
-                    temp.TagInfo.Genre = BrainzTag[i].Genre;
+                    temp.TagInfo.Genre = Genre.Split(',').ToList();
                     temp.TagInfo.Identifier = BrainzTag[i].Identifier;
-                    temp.TagInfo.Image = CoverImage;
+                    temp.TagInfo.Image = CoverImage.ToArray().ToList();
                     temp.TagInfo.Lang = BrainzTag[i].Lang;
                     temp.TagInfo.Publisher = BrainzTag[i].Publisher;
                     temp.TagInfo.TagType = BrainzTag[i].TagType;
                     temp.TagInfo.Title = BrainzTag[i].Title;
                     temp.TagInfo.Track = BrainzTag[i].Track;
-                    temp.TagInfo.Year = BrainzTag[i].Year;
+                    temp.TagInfo.Year = Year;
                 }
                 data.RemoveAt(index);
                 data.Insert(index, temp);
@@ -93,7 +93,7 @@ namespace Tag.WPF
         {
             BrainzTag = tag;
 
-            Artst = string.Join(", ", tag[0]?.AlbumArtist);
+            Artist = string.Join(", ", tag[0]?.AlbumArtist);
             Album = tag[0]?.Album;
             Year = tag[0]?.Year;
             Genre = string.Join(", ", tag[0]?.Genre);
@@ -182,6 +182,10 @@ namespace Tag.WPF
             UserInfo.Insert(index + 1, now);
         }
 
+        public void ChangeText(string Name, string Value)
+        {
+            this.GetType().GetProperty(Name).SetValue(this, Value);
+        }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

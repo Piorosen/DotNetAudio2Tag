@@ -120,19 +120,29 @@
                            />
 
                     <TextBox Grid.Column="1" Grid.Row="0"
-                             Text="{Binding Artst}"
+                             x:Name="Artist"
+                             Text="{Binding Artist}"
+                             TextChanged="TextBox_TextChanged"
                              />
                     <TextBox Grid.Column="1" Grid.Row="1"
+                             x:Name="Album"
                              Text="{Binding Album}"
+                             TextChanged="TextBox_TextChanged"
                              />
                     <TextBox Grid.Column="1" Grid.Row="2"
+                             x:Name="Year"
                              Text="{Binding Year}"
+                             TextChanged="TextBox_TextChanged"
                              />
                     <TextBox Grid.Column="1" Grid.Row="3"
+                             x:Name="Genre"
                              Text="{Binding Genre}"
+                             TextChanged="TextBox_TextChanged"
                              />
                     <TextBox Grid.Column="1" Grid.Row="4"
+                             x:Name="Comment"
                              Text="{Binding Comment}"
+                             TextChanged="TextBox_TextChanged"
                              />
                 </Grid>
 

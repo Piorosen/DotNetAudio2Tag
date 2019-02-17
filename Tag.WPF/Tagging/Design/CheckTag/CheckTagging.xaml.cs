@@ -123,5 +123,14 @@ namespace Tag.WPF
                 viewModel.CoverImage = tag;
             }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox)
+            {
+                var k = (sender as TextBox);
+                viewModel.ChangeText(k.Name, k.Text);
+            }
+        }
     }
 }
