@@ -97,6 +97,7 @@ namespace Tag.WPF
                 }
             }
         }
+
         void Image(params string[] items)
         {
             var tag = viewModel.CoverImage;

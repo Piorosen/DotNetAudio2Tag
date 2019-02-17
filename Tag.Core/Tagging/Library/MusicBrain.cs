@@ -166,7 +166,8 @@ namespace Tag.Core.Tagging.Library
                     var list = xmlreader["metadata"]["recording-list"].ChildNodes;
 
                     var pimage = GetImage($"http://coverartarchive.org/release/{data.Data[0].Id}");
-
+                    
+                    
                     for (int i = 0; i < list.Count; i++)
                     {
                         List<string> Artist = new List<string>
@@ -181,7 +182,14 @@ namespace Tag.Core.Tagging.Library
                         { 
                             list[0]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
                         };
+                        uint track = uint.Parse(list[i]["release-list"]
+                            ["release"]["medium-list"]
+                            ["medium"]["track-list"]
+                            ["track"]["number"]
+                            .InnerText);
 
+                        uint num = uint.Parse(list[i]["release-list"]["release"]["medium-list"]["medium"]["position"].InnerText);
+                        Console.WriteLine(num);
                         TagInfo ti = new TagInfo
                         {
                             Title = list[i]["title"].InnerText,
@@ -193,9 +201,11 @@ namespace Tag.Core.Tagging.Library
 
                             Year = value.Date,
                             Country = value.Country,
-                            Barcode = value.Barcode
+                            Barcode = value.Barcode,
                         };
 
+                        ti.Track.Add(track);
+                        ti.Track.Add(num);
                         foreach (var w in value.Labelinfolist)
                         {
                             ti.Publisher.Add(w.Label.Name);
@@ -205,7 +215,7 @@ namespace Tag.Core.Tagging.Library
                         {
                             ti.Format.Add(w.Format);
                         }
-                        ti.Track.Add((uint)i + 1);
+                        // ti.Track.Add((uint)i + 1);
                         ti.Image.Add(pimage);
 
                         result.Add(ti);

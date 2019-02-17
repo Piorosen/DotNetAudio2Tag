@@ -137,6 +137,19 @@ namespace Tag.WPF
 
             CoverImage = tag[0].Image;
 
+            tag.Sort((a, b) =>
+            {
+                var disc = (int)a.Track[1] - (int)b.Track[1];
+                if (disc == 0)
+                {
+                    return (int)a.Track[0] - (int)b.Track[0];
+                }
+                else
+                {
+                    return disc;
+                }
+            });
+
             foreach (var taginfo in tag)
             {
                 BrainzInfo.Add(new CheckBrainzModel
