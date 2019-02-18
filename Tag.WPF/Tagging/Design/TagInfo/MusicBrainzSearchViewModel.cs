@@ -27,6 +27,7 @@ namespace Tag.WPF
         public ImageSource ImageSource { get => _image; private set { _image = value; OnPropertyChanged(); } }
         public string ImageInfo { get => _imageInfo; set { _imageInfo = value; OnPropertyChanged(); } }
         public Visibility Visible { get => _visible; set { _visible = value; OnPropertyChanged(); } }
+        public Visibility Searching { get => _searching; set { _searching = value; OnPropertyChanged(); } }
 
 
         ObservableCollection<TaggingModel> user;
@@ -51,6 +52,8 @@ namespace Tag.WPF
 
         public async void SearchAlbum(TagInfo SearchInfo, UserControl c)
         {
+            Items.Clear();
+            Searching = Visibility.Visible;
             await Task.Run(() =>
             {
                 c.Dispatcher.Invoke(() =>
@@ -59,6 +62,7 @@ namespace Tag.WPF
                     {
                         Items.Add(value);
                     }
+                    Searching = Visibility.Hidden;
                     c.UpdateLayout();
                 });
             });
@@ -104,6 +108,7 @@ namespace Tag.WPF
         int TaskIdentified = 0;
         private Visibility _visible = Visibility.Hidden;
         private string _imageInfo;
+        private Visibility _searching;
 
         public async void SelectItem(int index, Control control)
         {
@@ -120,6 +125,7 @@ namespace Tag.WPF
                     if (tmp[0].Image[0] == null)
                     {
                         ImageSource = null;
+                        ImageInfo = "이미지 정보가 없음";
                     }
                     else
                     {

@@ -61,5 +61,22 @@ namespace Tag.WPF
             DialogHost.CloseDialogCommand.Execute(false, null);
             
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Search(new TagInfo
+            {
+                Title = TextTitle.Text
+            });
+        }
+
+        private void TextTitle_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Button_Click(this, e);
+            }
+
+        }
     }
 }
