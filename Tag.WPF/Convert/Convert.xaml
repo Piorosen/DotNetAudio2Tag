@@ -10,20 +10,19 @@
     <Grid AllowDrop="True">
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
 
 
         <TextBlock Grid.Row="0" 
                    Text="분리할 CUE 파일을 드롭 해주세요."
                    TextAlignment="Center"
-                   VerticalAlignment="Center"
                    FontSize="25" Foreground="#FF787878"
-                   Visibility="{Binding LabelVisibility}"
+                   Visibility="{Binding LabelVisibility}" Margin="0,164" 
                    />
         <ListView Grid.Row="0" Margin="5" DragEnter="ItemDragEnter" Drop="ItemDragDrop"
                   AllowDrop="True"
-                  ItemsSource="{Binding ConvInfos}" KeyDown="List_KeyDown">
+                  ItemsSource="{Binding ConvInfos}" KeyDown="List_KeyDown" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding FileNamePlus}"
@@ -31,21 +30,22 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid Grid.Row="1" >
+        <Grid Grid.Row="1"  >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="280"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="1.8*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" Margin="5 0 0 5">
+            <Border Grid.Column="0" Margin="5 0 0 5" >
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.7*"/>
-                        <RowDefinition/>
+                        <RowDefinition Height="0.5*"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
@@ -76,37 +76,37 @@
                                 VerticalAlignment="Center"
                                  Tag="2"
                             />
-                    <RadioButton Grid.Row="2" Grid.Column="0"
+                    <RadioButton Grid.Row="2" Grid.Column="3"
                                 Style="{StaticResource MaterialDesignRadioButton}"
                                 Content="Flac"
                                  Checked="RadioButton_Checked"
                                 VerticalAlignment="Center"
                                 Tag="3"
                             />
-                    <RadioButton Grid.Row="2" Grid.Column="1"
+                    <RadioButton Grid.Row="2" Grid.Column="4"
                                 Style="{StaticResource MaterialDesignRadioButton}"
-                                Content="Mp3(User)"
+                                Content="MP3(User)"
                                  Checked="RadioButton_Checked"
                                 VerticalAlignment="Center"
                                 Tag="4"
                             />
-                    
+
                 </Grid>
             </Border>
-            <Grid Grid.Column="1" >
+            <Grid Grid.Column="1">
                 <Button
-                    Margin="0,40,115,20"
-                    Height="Auto"
                     Content="파일 열기"
-                    HorizontalAlignment="Right"
-                    Width="100" Click="OpenDialog"/>
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Margin="10 0 10 9"
+                    Width="130" Click="OpenDialog"/>
                 <Button
-                    Margin="0,40,10,20"
                     HorizontalAlignment="Right"
                     Content="변환 시작"
-                    Height="Auto"
-                    Width="100" Click="Execute"/>
-    
+                    VerticalAlignment="Bottom"
+                    Margin="10 0 10 9"
+                    Width="130" Click="Execute"/>
+
             </Grid>
         </Grid>
     </Grid>
