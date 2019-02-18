@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" Height="460" Width="800">
     <Grid AllowDrop="True">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -17,6 +16,7 @@
         <TextBlock Grid.Row="0" 
                    Text="분리할 CUE 파일을 드롭 해주세요."
                    TextAlignment="Center"
+                   VerticalAlignment="Center"
                    FontSize="25" Foreground="#FF787878"
                    Visibility="{Binding LabelVisibility}" Margin="0,164" 
                    />
@@ -32,17 +32,17 @@
         </ListView>
         <Grid Grid.Row="1"  >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.8*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="460"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" Margin="5 0 0 5" >
+            <Border Grid.Column="0" Margin="5 0 0 5"   >
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.5*"/>
@@ -50,56 +50,48 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
                                Text="변환할 확장자"
-                               Margin="5 0 0 0"
-                               VerticalAlignment="Center"
+                               Margin="5,4,0,3" 
                                />
                     <RadioButton Grid.Row="1" Grid.Column="0"
                                 Style="{StaticResource MaterialDesignRadioButton}"
                                 Content="MP3 320Kb"
                                  Tag="0"
                                 IsChecked="True"
-                                 Checked="RadioButton_Checked"
-                                VerticalAlignment="Center"
+                                 Checked="RadioButton_Checked" Margin="0,15,0,14" 
                                 
                             />
                     <RadioButton Grid.Row="1" Grid.Column="1"
                                  Style="{StaticResource MaterialDesignRadioButton}"
                                 Content="MP3 256Kb"
                                  Checked="RadioButton_Checked"
-                                VerticalAlignment="Center"
-                                 Tag="1"
+                                 Tag="1" Margin="0,15,0,14" 
                             />
                     <RadioButton Grid.Row="1" Grid.Column="2"
                                  Style="{StaticResource MaterialDesignRadioButton}"
                                 Content="MP3 128Kb"
                                  Checked="RadioButton_Checked"
-                                VerticalAlignment="Center"
-                                 Tag="2"
+                                 Tag="2" Margin="0,15,0,14" 
                             />
-                    <RadioButton Grid.Row="2" Grid.Column="3"
+                    <RadioButton Grid.Row="1" Grid.Column="3"
                                 Style="{StaticResource MaterialDesignRadioButton}"
                                 Content="Flac"
                                  Checked="RadioButton_Checked"
-                                VerticalAlignment="Center"
-                                Tag="3"
+                                Tag="3" Margin="0,15,0,14" 
                             />
-                    <RadioButton Grid.Row="2" Grid.Column="4"
+                    <RadioButton Grid.Row="1" Grid.Column="4"
                                 Style="{StaticResource MaterialDesignRadioButton}"
                                 Content="MP3(User)"
                                  Checked="RadioButton_Checked"
-                                VerticalAlignment="Center"
-                                Tag="4"
+                                Tag="4" Margin="0,15,0,14" 
                             />
 
                 </Grid>
             </Border>
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1"   >
                 <Button
                     Content="파일 열기"
-                    HorizontalAlignment="Left"
                     VerticalAlignment="Bottom"
-                    Margin="10 0 10 9"
-                    Width="130" Click="OpenDialog"/>
+                    Margin="0,0,145,9" Click="OpenDialog" HorizontalAlignment="Right" Width="130"/>
                 <Button
                     HorizontalAlignment="Right"
                     Content="변환 시작"

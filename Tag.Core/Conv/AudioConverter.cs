@@ -57,7 +57,7 @@ namespace Tag.Core.Conv
             CompleteOfIndex?.Invoke(this, index);
         }
         
-        public async Task<bool> Execute(ConvMode mode, int MultiTask)
+        public async Task<bool> Execute(ConvMode mode, int MultiTask, string resultPath)
         {
             return await Task.Run(async () =>
             {
@@ -94,11 +94,14 @@ namespace Tag.Core.Conv
                     worker = new Task(() =>
                     {
                         var id = CreateID++;
+
+                        value.ResultPath = resultPath + Path.GetFileName(value.ResultPath);
                         var tag = TagLib.File.Create(value.FilePath).Tag;
                         foreach (var status in Conv?.Execute(value))
                         {
                             OnChangeExecute(status + id * 10000);
                         }
+
                         var file = TagLib.File.Create(value.ResultPath);
 
                         TagInfo.Move(file.Tag, tag);

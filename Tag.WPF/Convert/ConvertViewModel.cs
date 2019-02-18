@@ -101,7 +101,7 @@ namespace Tag.WPF
 
         }
 
-        public async void Execute()
+        public async void Execute(string resultPath)
         {
             var Content = new ConvertStatus
             {
@@ -118,7 +118,7 @@ namespace Tag.WPF
                 });
             }
 
-            Content.Execute(ConvertMode[Index]);
+            Content.Execute(ConvertMode[Index], resultPath);
             if (Setting.Global.DialogCheck == false)
             {
                 Setting.Global.DialogCheck = true;

@@ -73,7 +73,22 @@ namespace Tag.WPF
 
         private void Execute(object sender, RoutedEventArgs e)
         {
-            viewModel.Execute();
+            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (Directory.Exists(dialog.SelectedPath) == false)
+                {
+                    Execute(sender, e);
+                }
+                else
+                {
+                    if (dialog.SelectedPath != string.Empty)
+                    {
+                        viewModel.Execute(dialog.SelectedPath + @"\");
+                    }
+                }
+            }
         }
 
         private void OpenDialog(object sender, RoutedEventArgs e)

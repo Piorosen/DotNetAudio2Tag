@@ -36,7 +36,7 @@ namespace Tag.WPF
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
         }
 
-        public async void Execute(PresetModel preset)
+        public async void Execute(PresetModel preset, string resultPath)
         {
             this.preset = preset;
 
@@ -56,7 +56,7 @@ namespace Tag.WPF
                 Items.Add(Dequeue());
             }
 
-            var result = await converter.Execute(preset.ConvMode, MultiTask);
+            var result = await converter.Execute(preset.ConvMode, MultiTask, resultPath);
 
             await Task.Delay(1000);
             DialogHost.CloseDialogCommand.Execute(result, null);
