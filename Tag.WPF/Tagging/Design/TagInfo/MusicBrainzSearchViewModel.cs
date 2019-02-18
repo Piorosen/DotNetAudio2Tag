@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using Library;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,6 +25,7 @@ namespace Tag.WPF
     {
         public ObservableCollection<BrainzInfo> Items { get; private set; }
         public ImageSource ImageSource { get => _image; private set { _image = value; OnPropertyChanged(); } }
+        public string ImageInfo { get => _imageInfo; set { _imageInfo = value; OnPropertyChanged(); } }
         public Visibility Visible { get => _visible; set { _visible = value; OnPropertyChanged(); } }
 
 
@@ -101,14 +103,15 @@ namespace Tag.WPF
 
         int TaskIdentified = 0;
         private Visibility _visible = Visibility.Hidden;
+        private string _imageInfo;
 
         public async void SelectItem(int index, Control control)
         {
-            
+
             Visible = Visibility.Visible;
             await Task.Run(() =>
             {
-                
+
                 TaskIdentified++;
                 int id = TaskIdentified;
                 var tmp = search.GetTrackInfo(Items[index]);
@@ -125,13 +128,14 @@ namespace Tag.WPF
                         {
                             control?.Dispatcher?.Invoke(() =>
                             {
-                                var image = new Bitmap(System.Drawing.Image.FromStream(new MemoryStream(bin)));
+                                var stream = new MemoryStream(bin);
+                                var image = new Bitmap(System.Drawing.Image.FromStream(stream));
                                 var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
                                      image.GetHbitmap(),
                                      IntPtr.Zero,
                                      Int32Rect.Empty,
                                      BitmapSizeOptions.FromEmptyOptions());
-
+                                ImageInfo = $"{image.Width} x {image.Height}, {CapacityManage.Change(new System.Numerics.BigInteger(stream.Length))}";
                                 ImageSource = data;
                             });
                         }

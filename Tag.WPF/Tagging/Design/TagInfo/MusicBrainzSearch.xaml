@@ -85,20 +85,23 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Border Grid.Row="1" Grid.Column="1"
-            BorderBrush="Black"
-            BorderThickness="1"
-                Width="120"
-                Height="120"
-                Margin="5"
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0"
+                BorderBrush="Black"
+                BorderThickness="1"
+                Margin="5,7,5,3"
             >
-            <Grid>
-                <Image 
+                <Grid>
+                    <Image 
                 Source="{Binding ImageSource}"
                Width="Auto"
                Height="Auto"
                />
-                <ProgressBar
+                    <ProgressBar
                     Visibility="{Binding Visible}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
@@ -107,25 +110,37 @@
                     Height="45"
                     Width="45"
                     IsIndeterminate="True" />
-            </Grid>
+                </Grid>
+            </Border>
+            <TextBlock Grid.Row="1"
+                       Text="{Binding ImageInfo}"
+                       TextAlignment="Center" Margin="0,5,0,19" d:LayoutOverrides="Height"
+                       />
+        </Grid>
 
-        </Border>
-        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+              
+              >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="47*"/>
+                <ColumnDefinition Width="33*"/>
             </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                
+            </Grid>
+            
             <Button Grid.Column="1"
-                    Height="Auto"
-                    Margin="85,10,165,10"
-                    Click="Yes_Click"
-                Content="선택 (Y)"/>
+                Width="150"
+                Click="Yes_Click"
+                Content="선택"
+                Margin="10,10,0,8"
+                HorizontalAlignment="Left" Height="Auto"/>
             <Button Grid.Column="1"
-                    Margin="240,10,10,10"
-                    Height="Auto"
-                    Width="150"
-                    Click="No_Click"
-                Content="취소 (N)"/>
+                 HorizontalAlignment="Right"
+                 Width="150"
+                 Click="No_Click"
+                    Margin="0,9,10,9"
+                Content="취소" Height="Auto"/>
         </Grid>
 
     </Grid>
