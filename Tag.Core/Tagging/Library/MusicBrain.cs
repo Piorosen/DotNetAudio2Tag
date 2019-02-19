@@ -45,7 +45,7 @@ namespace Tag.Core.Tagging.Library
             return null;
         }
 
-        private TagLib.Picture GetImage(string Link, string id)
+        public TagLib.Picture GetImage(string Link, string id)
         {
             try
             {
@@ -69,8 +69,11 @@ namespace Tag.Core.Tagging.Library
 
                 
                 WebClient wc = new WebClient();
-               var nameImage = id + Path.GetExtension(adress);
-                wc.DownloadFile(adress, Global.FilePath.CachePath + nameImage);
+                var nameImage = id + ".jpg";
+                if (File.Exists(nameImage) == false)
+                {
+                    wc.DownloadFile(adress, Global.FilePath.CachePath + nameImage);
+                }
 
                 var pimage = new TagLib.Picture(Global.FilePath.CachePath + nameImage);
 

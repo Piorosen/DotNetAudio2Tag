@@ -14,7 +14,7 @@ namespace Tag.Setting
         public static Resource Resource => Resource.Insatence;
         public static FilePath FilePath => FilePath.Insatence;
 
-        public static bool CacheImageDelete = true;
+        public static bool CacheImageDelete = false;
         public static bool DialogCheck = false;
     }
 }

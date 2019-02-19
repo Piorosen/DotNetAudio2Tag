@@ -18,6 +18,7 @@ using System.Windows.Threading;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
 using Tag.Core.Tagging.Library;
+using Tag.Setting;
 
 namespace Tag.WPF
 {
@@ -119,37 +120,39 @@ namespace Tag.WPF
 
                 TaskIdentified++;
                 int id = TaskIdentified;
-                var tmp = search.GetTrackInfo(Items[index]);
-                if (tmp.Count != 0 && tmp[0].Image.Count != 0)
+                TagLib.Picture tmp = null;
+                if (File.Exists(Global.FilePath.CachePath + Items[index].Identifier + ".jpg") == false)
                 {
-                    if (tmp[0].Image[0] == null)
-                    {
-                        ImageSource = null;
-                        ImageInfo = "이미지 정보가 없음";
-                    }
-                    else
-                    {
-                        var bin = tmp[0].Image[0].Data.Data;
-                        if (id == TaskIdentified)
-                        {
-                            control?.Dispatcher?.Invoke(() =>
-                            {
-                                var stream = new MemoryStream(bin);
-                                var image = new Bitmap(System.Drawing.Image.FromStream(stream));
-                                var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                                     image.GetHbitmap(),
-                                     IntPtr.Zero,
-                                     Int32Rect.Empty,
-                                     BitmapSizeOptions.FromEmptyOptions());
-                                ImageInfo = $"{image.Width} x {image.Height}, {CapacityManage.Change(new System.Numerics.BigInteger(stream.Length))}";
-                                ImageSource = data;
-                            });
-                        }
-                    }
+                    tmp = search.GetImage($"http://coverartarchive.org/release/{Items[index].Identifier}", Items[index].Identifier);
                 }
                 else
                 {
+                    tmp = new TagLib.Picture(Global.FilePath.CachePath + Items[index].Identifier + ".jpg");
+                }
+
+                if (tmp == null)
+                {
                     ImageSource = null;
+                    ImageInfo = "이미지 정보가 없음";
+                }
+                else
+                {
+                    var bin = tmp.Data.Data;
+                    if (id == TaskIdentified)
+                    {
+                        control?.Dispatcher?.Invoke(() =>
+                        {
+                            var stream = new MemoryStream(bin);
+                            var image = new Bitmap(System.Drawing.Image.FromStream(stream));
+                            var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                                 image.GetHbitmap(),
+                                 IntPtr.Zero,
+                                 Int32Rect.Empty,
+                                 BitmapSizeOptions.FromEmptyOptions());
+                            ImageInfo = $"{image.Width} x {image.Height}, {CapacityManage.Change(new System.Numerics.BigInteger(stream.Length))}";
+                            ImageSource = data;
+                        });
+                    }
                 }
                 Visible = Visibility.Hidden;
             });

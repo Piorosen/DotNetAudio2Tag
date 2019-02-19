@@ -305,6 +305,7 @@
                 Width="100"
                 Click="Yes_Click"
                 VerticalAlignment="Bottom"
+                    IsEnabled="{Binding CheckButtonEnable}"
                 />
                 <Button
                 Content="취소"

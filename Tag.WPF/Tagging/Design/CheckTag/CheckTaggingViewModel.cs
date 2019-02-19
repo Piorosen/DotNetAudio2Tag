@@ -36,7 +36,19 @@ namespace Tag.WPF
         public string Genre { get => _genre; set { _genre = value; OnPropertyChagend(); } }
         public string Comment { get => _comment; set { _comment = value; OnPropertyChagend(); } }
 
-        public Visibility Visible { get => _visible; set { _visible = value; OnPropertyChagend(); } }
+
+        public bool CheckButtonEnable { get => _checkButtonEnable; set { _checkButtonEnable = value; OnPropertyChagend(); } }
+
+        public Visibility Visible
+        {
+            get => _visible;
+            set
+            {
+                if (value == Visibility.Visible) { CheckButtonEnable = false; }
+                else { CheckButtonEnable = true; }
+                _visible = value; OnPropertyChagend();
+            }
+        }
 
         public List<TagLib.IPicture> CoverImage { get => _coverImage; set { _coverImage = value; OnPropertyChagend(); } }
 
@@ -47,6 +59,7 @@ namespace Tag.WPF
         private List<TagInfo> BrainzTag;
         private ObservableCollection<TaggingModel> data;
         private Visibility _visible;
+        private bool _checkButtonEnable;
 
         public CheckTaggingViewModel()
         {
