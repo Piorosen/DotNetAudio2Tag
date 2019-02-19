@@ -12,7 +12,9 @@ namespace Tag.Setting
     {
         public static Language Language => Language.Insatence;
         public static Resource Resource => Resource.Insatence;
-            
+        public static FilePath FilePath => FilePath.Insatence;
+
+        public static bool CacheImageDelete = true;
         public static bool DialogCheck = false;
     }
 }

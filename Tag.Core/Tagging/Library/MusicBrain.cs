@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Tag.Core.Cue;
+using Tag.Setting;
+using Tag.Setting.Setting;
 
 namespace Tag.Core.Tagging.Library
 {
@@ -43,7 +45,7 @@ namespace Tag.Core.Tagging.Library
             return null;
         }
 
-        private TagLib.Picture GetImage(string Link)
+        private TagLib.Picture GetImage(string Link, string id)
         {
             try
             {
@@ -65,18 +67,20 @@ namespace Tag.Core.Tagging.Library
                     break;
                 }
 
+                
                 WebClient wc = new WebClient();
-                var nameImage = Path.GetRandomFileName();
-                wc.DownloadFile(adress, nameImage);
+               var nameImage = id + Path.GetExtension(adress);
+                wc.DownloadFile(adress, Global.FilePath.CachePath + nameImage);
 
-                var pimage = new TagLib.Picture(nameImage); ;
-                try
+                var pimage = new TagLib.Picture(Global.FilePath.CachePath + nameImage);
+
+                if (Global.CacheImageDelete)
                 {
-                    new FileInfo(nameImage).Delete();
-                }
-                catch
-                {
-                    return null;
+                    try
+                    {
+                        new FileInfo(Global.FilePath.CachePath + nameImage).Delete();
+                    }
+                    catch { }
                 }
 
                 return pimage;
@@ -165,7 +169,7 @@ namespace Tag.Core.Tagging.Library
                     xmlreader.LoadXml(tagging);
                     var list = xmlreader["metadata"]["recording-list"].ChildNodes;
 
-                    var pimage = GetImage($"http://coverartarchive.org/release/{data.Data[0].Id}");
+                    var pimage = GetImage($"http://coverartarchive.org/release/{data.Data[0].Id}", info.Identifier);
                     
                     
                     for (int i = 0; i < list.Count; i++)

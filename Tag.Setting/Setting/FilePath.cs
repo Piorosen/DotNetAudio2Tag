@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tag.Setting.Pattern;
 
 namespace Tag.Setting.Setting
 {
-    public static class FilePath
+    public class FilePath : SingleTon<FilePath>
     {
-        public static string SettingPath = Application.StartupPath + @"\Setting\Lang\";
-        public static string ResourcePath = Application.StartupPath + @"\Setting\Resource\";
-
+        public string SettingPath = Application.StartupPath + @"\Setting\Lang\";
+        public string ResourcePath = Application.StartupPath + @"\Setting\Resource\";
+        public string CachePath = Application.StartupPath + @"\Setting\Cache\Image\";
 
     }
 }

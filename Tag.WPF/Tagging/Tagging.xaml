@@ -246,7 +246,7 @@
                         DisplayMemberBinding="{Binding TagInfo.Path}"
                         Header="{Binding Directory}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding TagIfno.TagType}"
+                        DisplayMemberBinding="{Binding TagInfo.TagType}"
                         Header="{Binding TagType}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding TagInfo.Artist, Converter={StaticResource ListToSring}}"

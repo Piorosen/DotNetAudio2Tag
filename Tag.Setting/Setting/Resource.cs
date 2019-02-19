@@ -9,6 +9,6 @@ namespace Tag.Setting.Setting
 {
     public class Resource : SingleTon<Resource>
     {
-        public string Alert = FilePath.ResourcePath + "Alert.png";
+        public string Alert = Global.FilePath.ResourcePath + "Alert.png";
     }
 }

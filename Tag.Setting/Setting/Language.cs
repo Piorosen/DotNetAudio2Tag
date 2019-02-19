@@ -21,9 +21,9 @@ namespace Tag.Setting.Setting
 
             this._fileName = filename;
 
-            if (new FileInfo(FilePath.SettingPath + filename).Exists)
+            if (new FileInfo(Global.FilePath.SettingPath + filename).Exists)
             {
-                Config.Path = FilePath.SettingPath + filename;
+                Config.Path = Global.FilePath.SettingPath + filename;
                 foreach (var value in this.GetType().GetFields())
                 {
                     var data = value.GetValue(this);
