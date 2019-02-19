@@ -184,10 +184,10 @@
             KeyDown="List_KeyDown"
             AllowDrop="True" Grid.Column="1" Grid.Row="0"
             ItemsSource="{Binding Items}"
-            ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                  ScrollViewer.VerticalScrollBarVisibility="Visible"
-                  DragEnter="ItemDragEnter" Drop="ItemDragDrop" SelectionChanged="ListView_Selected"
-                GridViewColumnHeader.Click="TagListView_Click"
+            ScrollViewer.HorizontalScrollBarVisibility="Auto"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            DragEnter="ItemDragEnter" Drop="ItemDragDrop" SelectionChanged="ListView_Selected"
+            GridViewColumnHeader.Click="TagListView_Click"
             >
             <ListView.ContextMenu>
                 <ContextMenu>

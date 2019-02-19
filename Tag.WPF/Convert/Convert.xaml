@@ -14,7 +14,7 @@
 
 
         <TextBlock Grid.Row="0" 
-                   Text="분리할 CUE 파일을 드롭 해주세요."
+                   Text="변환할 음원 파일을 드롭 해주세요."
                    TextAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="25" Foreground="#FF787878"

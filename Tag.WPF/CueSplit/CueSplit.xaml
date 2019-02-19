@@ -57,15 +57,17 @@
                 Background="Transparent"
                 DragEnter="ItemDragEnter"
                 >
-            <ItemsControl 
+            <ScrollViewer AllowDrop="True"
+                          VerticalScrollBarVisibility="Auto">
+                <ItemsControl 
                 AllowDrop="True"
                 Drop="ItemDragDrop"
                 DragEnter="ItemDragEnter"
                 ItemsSource="{Binding Items}"
                 Margin="5">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border
                             Tag="{Binding Index}"
                             MouseEnter="ItemMouseEnter"
                             MouseLeave="ItemMouseLeave"
@@ -75,58 +77,60 @@
                             BorderThickness="0 0 0 1"
                             Name="Border"
                             BorderBrush="{DynamicResource MaterialDesignDivider}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="40"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="100"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <TextBlock
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock
                                     Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
                                     VerticalAlignment="Center"
                                     Text="{Binding IndexString, StringFormat={}{0:00}}" 
                                     HorizontalAlignment="Center"/>
-                                <TextBlock
+                                    <TextBlock
                                     Grid.Column="1" Grid.Row="0" 
                                     Text="{Binding Title}"
                                 />
-                                <TextBlock
+                                    <TextBlock
                                     Grid.Column="1" Grid.Row="1" 
                                     Text="{Binding Artist}"
                                 />
-                                <TextBlock
+                                    <TextBlock
                                     Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" 
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Text="{Binding Duration}"
                                 />
-                                <TextBlock
+                                    <TextBlock
                                 Grid.Column="3" Grid.Row="0" Grid.RowSpan="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Text="{Binding OffSet}"
                                 />
-                            </Grid>
-                        </Border>
-                        <DataTemplate.Triggers>
-                            <DataTrigger
+                                </Grid>
+                            </Border>
+                            <DataTemplate.Triggers>
+                                <DataTrigger
                                 Binding="{Binding IsSelect}"
                                 Value="True">
-                                <Setter
+                                    <Setter
                                     TargetName="Border"
                                     Property="Background"
                                     Value="{DynamicResource MaterialDesignSelection}" />
-                            </DataTrigger>
-                        </DataTemplate.Triggers>
-                    </DataTemplate>
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
 
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            
         </Border>
 
         <Grid Grid.Row="2">
