@@ -161,6 +161,9 @@ namespace Tag.Core.Tagging.Library
             var result = new List<TagInfo>();
             if (info.Barcode != string.Empty || info.Identifier != string.Empty)
             {
+                info.Barcode = info.Barcode == string.Empty ? null : info.Barcode;
+                info.Identifier = info.Identifier == string.Empty ? null : info.Identifier;
+
                 var data = MusicBrainz.Search.Release(barcode: info.Barcode, reid: info.Identifier);
 
                 if (data.Data.Count != 0)
