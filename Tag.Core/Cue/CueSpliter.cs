@@ -65,6 +65,8 @@ namespace Tag.Core.Cue
                 return false;
             }
 
+            var filereader = new AudioFileReader(wavePath);
+
             CueInfo info = new CueInfo
             {
                 Artist = reader.Artist,
@@ -80,7 +82,7 @@ namespace Tag.Core.Cue
                     DiscId = reader.DiscId,
                     Genre = reader.Genre
                 },
-                WaveFormat = new AudioFileReader(wavePath).WaveFormat
+                WaveFormat = filereader.WaveFormat
             };
             double StartPosition = 0.0;
             foreach (var value in reader.Tracks)
@@ -91,7 +93,7 @@ namespace Tag.Core.Cue
                     Album = value.Album,
                     Artist = value.Artist,
                     Composer = value.Composer,
-                    DurationMS = value.DurationMs,
+                    DurationMS = value.DurationMs < 0 ? filereader.TotalTime.TotalMilliseconds - StartPosition : value.DurationMs,
                     Title = value.Title,
                     Track = value.TrackNumber,
                     StartPosition = StartPosition,
