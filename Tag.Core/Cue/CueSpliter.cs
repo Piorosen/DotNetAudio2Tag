@@ -22,6 +22,17 @@ namespace Tag.Core.Cue
 
         public bool AddFile(string path)
         {
+            StreamReader sr = new StreamReader(path, Encoding.Default);
+
+            string buffer = sr.ReadToEnd();
+            sr.Close();
+
+            File.Delete(path);
+
+            using (StreamWriter sw = new StreamWriter(path, false, Encoding.UTF8))
+            {
+                sw.Write(buffer);
+            }
 
             return AddFile(path
                  , Path.GetDirectoryName(path) + @"\" + Path.GetFileNameWithoutExtension(path)
