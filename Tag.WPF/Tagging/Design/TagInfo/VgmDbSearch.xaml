@@ -4,9 +4,173 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="270" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <local:ListToString x:Key="ListToString"/>
+    </UserControl.Resources>
+
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="130"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <ProgressBar Grid.ColumnSpan="2" Grid.RowSpan="3"
+                    Visibility="{Binding Searching}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource MaterialDesignCircularProgressBar}"
+                    Value="66"
+                    Height="100"
+                    Width="100"
+                    IsIndeterminate="True"
+                    />
+
+        <TextBlock Grid.Row="0" Grid.Column="0"
+                   Text="앨범 정보 선택"
+                   TextAlignment="Center"
+                   VerticalAlignment="Center"
+                   />
+        <TextBlock Grid.Row="0" Grid.Column="1"
+                   Text="앨범 아트"
+                   TextAlignment="Center"
+                   VerticalAlignment="Center"
+                   />
+        <ListView Grid.Row="1" Grid.Column="0"
+                  Margin="3"
+                  x:Name="ListViews"
+                  ItemsSource="{Binding Items}" SelectionChanged="ListView_SelectionChanged"
+                  >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Title}"
+                        Header="제목"/>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Year}"
+                        Header="제작년도"/>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Genre, Converter={StaticResource ListToString}}"
+                        Header="장르"/>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding DiscNum}"
+                        Header="디스크 번호"/>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Lang}"
+                        Header="언어"/>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Identifier}"
+                        Header="고유번호"/>
+                    <!--<GridViewColumn
+                        DisplayMemberBinding="{Binding AlbumArtist, Converter={StaticResource ListToString}}"
+                        Header="앨범 아티스트"/>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Composer, Converter={StaticResource ListToString}}"
+                        Header="작곡가"/>--><!--
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding DiscNum}"
+                        Header="디스크 번호"/>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Barcode}"
+                        Header="바코드"/>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Publisher, Converter={StaticResource ListToString}}"
+                        Header="퍼블리셔"/>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Format, Converter={StaticResource ListToString}}"
+                        Header="포맷"/>
+                    <GridViewColumn
+                        DisplayMemberBinding="{Binding Country}"--><!--
+                        Header="국가"/>-->
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0"
+                BorderBrush="Black"
+                BorderThickness="1"
+                Margin="5,7,5,3"
+            >
+                <Grid>
+                    <Image 
+                Source="{Binding ImageSource}"
+               Width="Auto"
+               Height="Auto"
+               />
+                    <ProgressBar
+                    Visibility="{Binding Visible}"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource MaterialDesignCircularProgressBar}"
+                    Value="66"
+                    Height="45"
+                    Width="45"
+                    IsIndeterminate="True" />
+                </Grid>
+            </Border>
+            <TextBlock Grid.Row="1"
+                       Text="{Binding ImageInfo}"
+                       TextAlignment="Center" Margin="0,5,0,19" d:LayoutOverrides="Height"
+                       />
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+              
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="47*"/>
+                <ColumnDefinition Width="33*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="37*"/>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="33*"/>
+                </Grid.ColumnDefinitions>
+                <materialDesign:PackIcon Grid.Column="0"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Height="Auto"
+                    Width="Auto"
+                    Kind="SearchWeb" Margin="2,5,3,5"  />
+                <TextBox Grid.Column="1" Margin="0,12,8,12"
+                         x:Name="TextTitle"
+                         KeyDown="TextTitle_KeyDown"
+                           />
+                <Button Grid.Column="2"
+                        Padding="0"
+                        Content="수동검색" Height="Auto" Margin="0,9" Click="Button_Click" 
+                        >
+
+                </Button>
+            </Grid>
+
+            <Button Grid.Column="1"
+                Width="150"
+                Click="Yes_Click"
+                Content="선택"
+                Margin="10,10,0,8"
+                HorizontalAlignment="Left" Height="Auto"/>
+            <Button Grid.Column="1"
+                 HorizontalAlignment="Right"
+                 Width="150"
+                 Click="No_Click"
+                    Margin="0,9,10,9"
+                Content="취소" Height="Auto"/>
+        </Grid>
+
     </Grid>
 </UserControl>

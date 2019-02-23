@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Tag.Core.Cue;
+using Tag.Setting;
 
 namespace Tag.Core.Tagging.Library
 {
@@ -138,15 +139,23 @@ namespace Tag.Core.Tagging.Library
         }
         private List<VgmDbInfo> SearchAlbum(TagInfo info)
         {
-            var result = new List<VgmDbInfo>();
-            string data = RequestWeb(info);
-            var split = SplitWeb(data);
-
-            foreach (var parse in split)
+            try
             {
-                result.Add(ParsingWeb(parse));
+                var result = new List<VgmDbInfo>();
+                string data = RequestWeb(info);
+                var split = SplitWeb(data);
+
+                foreach (var parse in split)
+                {
+                    result.Add(ParsingWeb(parse));
+                }
+                return result;
             }
-            return result;
+            catch
+            {
+                return new List<VgmDbInfo>();
+            }
+            
         }
         /// <summary>
         /// 검색할 정보를 담습니다.
@@ -170,27 +179,29 @@ namespace Tag.Core.Tagging.Library
             
             return data;
         }
-        private TagLib.Picture GetImage(string Link)
+        public TagLib.Picture GetImage(string Link, string id)
         {
-            
             WebClient wc = new WebClient();
-            var nameImage = Path.GetRandomFileName();
-            wc.DownloadFile(Link, nameImage);
-
-            var pimage = new TagLib.Picture(nameImage); ;
-
-            try
+            var nameImage = id + ".jpg";
+            if (File.Exists(nameImage) == false)
             {
-                new FileInfo(nameImage).Delete();
+                wc.DownloadFile(Link, Global.FilePath.CachePath + nameImage);
             }
-            catch (Exception)
-            {
 
+            var pimage = new TagLib.Picture(Global.FilePath.CachePath + nameImage);
+
+            if (Global.CacheImageDelete)
+            {
+                try
+                {
+                    new FileInfo(Global.FilePath.CachePath + nameImage).Delete();
+                }
+                catch { }
             }
 
             return pimage;
         }
-        private List<TagInfo> SplitTrackWeb(string web, string lang)
+        private List<TagInfo> SplitTrackWeb(string web, string lang, string identifier)
         {
             List<TagInfo> result = new List<TagInfo>();
             TagInfo basic = new TagInfo();
@@ -221,6 +232,7 @@ namespace Tag.Core.Tagging.Library
                 if (data.Attributes["lang"].Value == lang)
                 {
                     basic.Album = data.InnerText.TrimStart(' ', '\\', '/', ';');
+                    basic.Album = basic.Album.Replace("&amp;", "&");
                     break;
                 }
             }
@@ -230,7 +242,7 @@ namespace Tag.Core.Tagging.Library
             Image = Image.SelectSingleNode("./div/table/tr/td/div[@id='coverart']");
             var imagePath = Image.Attributes["style"].Value.Split('\'')[1];
 
-            basic.Image.Add(GetImage(imagePath));
+            basic.Image.Add(GetImage(imagePath, identifier));
             #endregion
 
             #region Tag
@@ -249,7 +261,8 @@ namespace Tag.Core.Tagging.Library
             {
                 if (data.Attributes["lang"].Value == lang)
                 {
-                    basic.Publisher.Add(data.InnerText);
+                    basic.Publisher.Add(data.InnerText.Replace("&amp;", "&"));
+
                     break;
                 }
             }
@@ -258,11 +271,11 @@ namespace Tag.Core.Tagging.Library
             {
                 if (data.Attributes["lang"] == null)
                 {
-                    basic.Composer.Add(data.InnerText);
+                    basic.Composer.Add(data.InnerText.Replace("&amp;", "&"));
                 }
                 else if (data.Attributes["lang"].Value == lang)
                 {
-                    basic.Composer.Add(data.SelectSingleNode("./span").InnerText);
+                    basic.Composer.Add(data.SelectSingleNode("./span").InnerText.Replace("&amp;", "&"));
                 }
             }
 
@@ -270,11 +283,11 @@ namespace Tag.Core.Tagging.Library
             {
                 if (data.Attributes["lang"] == null)
                 {
-                    basic.AlbumArtist.Add(data.InnerText);
+                    basic.AlbumArtist.Add(data.InnerText.Replace("&amp;", "&"));
                 }
                 else if (data.Attributes["lang"].Value == lang)
                 {
-                    basic.AlbumArtist.Add(data.SelectSingleNode("./span").InnerText);
+                    basic.AlbumArtist.Add(data.SelectSingleNode("./span").InnerText.Replace("&amp;", "&"));
                 }
             }
 
@@ -282,11 +295,11 @@ namespace Tag.Core.Tagging.Library
             {
                 if (data.Attributes["lang"] == null)
                 {
-                    basic.Artist.Add(data.InnerText);
+                    basic.Artist.Add(data.InnerText.Replace("&amp;", "&"));
                 }
                 else if (data.Attributes["lang"].Value == lang)
                 {
-                    basic.Artist.Add(data.SelectSingleNode("./span").InnerText);
+                    basic.Artist.Add(data.SelectSingleNode("./span").InnerText.Replace("&amp;", "&"));
                 }
             }
             #endregion
@@ -317,7 +330,14 @@ namespace Tag.Core.Tagging.Library
                     break;
                 }
                 count++;
+
+                if (count == tracklang.Count)
+                {
+                    count = 0;
+                    break;
+                }
             }
+            
 
             foreach (var list in tracklist[count].SelectNodes("./table"))
             {
@@ -325,7 +345,10 @@ namespace Tag.Core.Tagging.Library
                 {
                     TagInfo value = new TagInfo(basic);
                     value.Track.Add(uint.Parse(data.SelectSingleNode("./td/span[@class='label']").InnerText));
-                    value.Title = data.SelectNodes("./td")[1].InnerText;
+                    value.Track.Add((uint)count + 1);
+
+                    value.Title = data.SelectNodes("./td")[1].InnerText.Replace("&amp;", "&");
+                    
                     result.Add(value);
                 }
             }  
@@ -339,8 +362,15 @@ namespace Tag.Core.Tagging.Library
         /// <returns></returns>
         public List<TagInfo> GetTrackInfo(TagInfo tag)
         {
-            var web = RequestTrackWeb(tag.Identifier);
-            return SplitTrackWeb(web, tag.Lang);
+            try
+            {
+                var web = RequestTrackWeb(tag.Identifier);
+                return SplitTrackWeb(web, tag.Lang, tag.Identifier);
+            }
+            catch
+            {
+                return new List<TagInfo>();
+            }
         }
         #endregion
 

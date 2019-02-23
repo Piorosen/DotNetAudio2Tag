@@ -57,14 +57,14 @@ namespace Tag.WPF
             Searching = Visibility.Visible;
             await Task.Run(() =>
             {
+                var searchresult = search.GetAlbumInfo(SearchInfo);
                 c.Dispatcher.Invoke(() =>
                 {
-                    foreach (var value in search.GetAlbumInfo(SearchInfo))
+                    foreach (var value in searchresult)
                     {
                         Items.Add(value);
                     }
                     Searching = Visibility.Hidden;
-                    c.UpdateLayout();
                 });
             });
         }
@@ -109,7 +109,7 @@ namespace Tag.WPF
         int TaskIdentified = 0;
         private Visibility _visible = Visibility.Hidden;
         private string _imageInfo;
-        private Visibility _searching;
+        private Visibility _searching = Visibility.Hidden;
 
         public async void SelectItem(int index, Control control)
         {

@@ -35,16 +35,23 @@ namespace Tag.WPF
         TagInfo SearchInfo;
         ObservableCollection<TaggingModel> userinfo;
 
-        void OpenEvent(object sender, DialogOpenedEventArgs e)
+        void OpenBrainzEvent(object sender, DialogOpenedEventArgs e)
         {
-            view.Search(SearchInfo);
+            brainz.Search(SearchInfo);
         }
-        MusicBrainzSearch view;
+        void OpenVgmEvent(object sender, DialogOpenedEventArgs e)
+        {
+            vgm.Search(SearchInfo);
+        }
+
+        MusicBrainzSearch brainz;
+        VgmDbSearch vgm;
+
         private async void MusicBrainz_Search(object sender, RoutedEventArgs e)
         {
             DialogHost.CloseDialogCommand.Execute(false, null);
 
-            view = new MusicBrainzSearch(userinfo)
+            brainz = new MusicBrainzSearch(userinfo)
             {
                 Width = 800,
                 Height = 280,
@@ -55,7 +62,7 @@ namespace Tag.WPF
             if (Setting.Global.DialogCheck == false)
             {
                 Setting.Global.DialogCheck = true;
-                var t = await DialogHost.Show(view, OpenEvent);
+                var t = await DialogHost.Show(brainz, OpenBrainzEvent);
                 Setting.Global.DialogCheck = false;
             }
 
@@ -63,10 +70,10 @@ namespace Tag.WPF
 
         private async void VGMDB_Search(object sender, RoutedEventArgs e)
         {
-            var view = new VgmDbSearch
+            vgm = new VgmDbSearch(userinfo)
             {
-                Width = 100,
-                Height = 100
+                Width = 800,
+                Height = 280,
             };
 
             DialogHost.CloseDialogCommand.Execute(false, null);
@@ -75,7 +82,7 @@ namespace Tag.WPF
             if (Setting.Global.DialogCheck == false)
             {
                 Setting.Global.DialogCheck = true;
-                await DialogHost.Show(view);
+                await DialogHost.Show(vgm, OpenVgmEvent);
                 Setting.Global.DialogCheck = false;
             }
         }
