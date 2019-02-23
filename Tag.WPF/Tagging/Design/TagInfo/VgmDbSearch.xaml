@@ -22,8 +22,17 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-
-        <ProgressBar Grid.ColumnSpan="2" Grid.RowSpan="3"
+        <materialDesign:Card
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            UniformCornerRadius="10"
+            Padding="5"
+            Height="130"
+            Width="130"
+            Grid.RowSpan="2"
+            Visibility="{Binding Visible}"
+            >
+            <ProgressBar Grid.ColumnSpan="2" Grid.RowSpan="3"
                     Visibility="{Binding Searching}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
@@ -33,7 +42,7 @@
                     Width="100"
                     IsIndeterminate="True"
                     />
-
+        </materialDesign:Card>
         <TextBlock Grid.Row="0" Grid.Column="0"
                    Text="앨범 정보 선택"
                    TextAlignment="Center"
