@@ -30,10 +30,9 @@
             Height="130"
             Width="130"
             Grid.RowSpan="2"
-            Visibility="{Binding Visible}"
+            Visibility="{Binding Searching}"
             >
             <ProgressBar Grid.ColumnSpan="2" Grid.RowSpan="3"
-                    Visibility="{Binding Searching}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Style="{StaticResource MaterialDesignCircularProgressBar}"
