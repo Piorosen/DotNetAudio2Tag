@@ -36,11 +36,10 @@
         </Grid.RowDefinitions>
 
         <materialDesign:DialogHost
-            
             Identifier="MusicBrainzSearch"
             Grid.RowSpan="2"
             Grid.ColumnSpan="2"
-            Width="Auto" Height="Auto" Margin="-15,0,15,0"/>
+            Width="Auto" Height="Auto"/>
         <materialDesign:DialogHost
             Identifier="VgmDbSearch"
             Grid.RowSpan="2"

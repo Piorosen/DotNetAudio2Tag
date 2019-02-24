@@ -114,13 +114,13 @@ namespace Tag.WPF
                 TaskIdentified++;
                 int id = TaskIdentified;
                 TagLib.Picture tmp = null;
-                if (File.Exists(Global.FilePath.CachePath + Items[index].Identifier + ".jpg") == false)
+                if (File.Exists(Global.FilePath.CacheImagePath + Items[index].Identifier + ".jpg") == false)
                 {
                     tmp = search.GetImage($"http://coverartarchive.org/release/{Items[index].Identifier}", Items[index].Identifier);
                 }
                 else
                 {
-                    tmp = new TagLib.Picture(Global.FilePath.CachePath + Items[index].Identifier + ".jpg");
+                    tmp = new TagLib.Picture(Global.FilePath.CacheImagePath + Items[index].Identifier + ".jpg");
                 }
 
                 if (tmp == null)

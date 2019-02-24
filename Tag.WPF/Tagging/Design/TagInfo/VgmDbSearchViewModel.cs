@@ -114,7 +114,7 @@ namespace Tag.WPF
                 TaskIdentified++;
                 int id = TaskIdentified;
                 TagLib.Picture tmp = null;
-                if (File.Exists(Global.FilePath.CachePath + Items[index].Identifier + ".jpg") == false)
+                if (File.Exists(Global.FilePath.CacheImagePath + Items[index].Identifier + ".jpg") == false)
                 {
                     var t = search.GetTrackInfo(Items[index]);
                     if (t.Count != 0 && t[0].Image.Count != 0)
@@ -124,7 +124,7 @@ namespace Tag.WPF
                 }
                 else
                 {
-                    tmp = new TagLib.Picture(Global.FilePath.CachePath + Items[index].Identifier + ".jpg");
+                    tmp = new TagLib.Picture(Global.FilePath.CacheImagePath + Items[index].Identifier + ".jpg");
                 }
 
                 if (tmp == null)

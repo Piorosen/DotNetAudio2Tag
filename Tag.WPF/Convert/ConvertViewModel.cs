@@ -67,7 +67,6 @@ namespace Tag.WPF
             ConvInfos.Add(info);
             LabelVisibility = Visibility.Hidden;
         }
-
         public bool RemoveFile(int index)
         {
             if (0 <= index && index < ConvInfos.Count)
@@ -117,8 +116,19 @@ namespace Tag.WPF
 
             Content.Execute(ConvertMode[Index], resultPath);
 
-            Global.DialogIdentifier.TaggingEnable = false;
+            Global.DialogIdentifier.ConvertEnable = false;
             var result = await DialogHost.Show(Content, Global.DialogIdentifier.Convert, CloseEventHandler);
+        }
+
+        public async void ModeSetting()
+        {
+            var Content = new LameMode
+            {
+            };
+
+            Global.DialogIdentifier.ConvertEnable = false;
+            var result = await DialogHost.Show(Content, Global.DialogIdentifier.ConvertUserMode);
+
         }
     }
 }

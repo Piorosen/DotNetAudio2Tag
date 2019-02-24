@@ -185,16 +185,16 @@ namespace Tag.Core.Tagging.Library
             var nameImage = id + ".jpg";
             if (File.Exists(nameImage) == false)
             {
-                wc.DownloadFile(Link, Global.FilePath.CachePath + nameImage);
+                wc.DownloadFile(Link, Global.FilePath.CacheImagePath + nameImage);
             }
 
-            var pimage = new TagLib.Picture(Global.FilePath.CachePath + nameImage);
+            var pimage = new TagLib.Picture(Global.FilePath.CacheImagePath + nameImage);
 
             if (Global.CacheImageDelete)
             {
                 try
                 {
-                    new FileInfo(Global.FilePath.CachePath + nameImage).Delete();
+                    new FileInfo(Global.FilePath.CacheImagePath + nameImage).Delete();
                 }
                 catch { }
             }

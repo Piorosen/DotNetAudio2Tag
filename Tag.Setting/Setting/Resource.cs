@@ -10,5 +10,6 @@ namespace Tag.Setting.Setting
     public class Resource : SingleTon<Resource>
     {
         public string Alert = Global.FilePath.ResourcePath + "Alert.png";
+        public string LameDummy = Global.FilePath.ResourcePath + "Test.Dummy";
     }
 }

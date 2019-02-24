@@ -17,6 +17,8 @@ namespace Tag.Setting.Setting
         public string BrainzSearch = "MusicBrainzSearch";
         public string VgmSearch = "VgmDbSearch";
         public string CheckTagInfo = "CheckTagInfo";
+        public string ConvertUserMode = "ConvertUserMode";
+
         private bool _taggingEnable;
         private bool _convertEnable;
         private bool _settingEnable;

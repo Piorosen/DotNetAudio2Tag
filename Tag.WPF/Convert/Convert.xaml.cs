@@ -146,5 +146,10 @@ namespace Tag.WPF
                 }
             }
         }
+
+        private void UserMode_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.ModeSetting();
+        }
     }
 }
