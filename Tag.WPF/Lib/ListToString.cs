@@ -23,9 +23,16 @@ namespace Tag.WPF
 
                 if (tagTemp.Count > 0)
                 {
-                    var bin = tagTemp[0].Data.Data;
- 
-                    image = new Bitmap(Image.FromStream(new MemoryStream(bin)));
+                    if (tagTemp[0] == null)
+                    {
+                        image = new Bitmap(Setting.Global.Resource.Alert);
+                    }
+                    else
+                    {
+                        var bin = tagTemp[0].Data.Data;
+                        image = new Bitmap(Image.FromStream(new MemoryStream(bin)));
+                    }
+                    
                     var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
                          image.GetHbitmap(),
                          IntPtr.Zero,

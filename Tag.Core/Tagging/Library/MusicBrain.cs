@@ -103,14 +103,37 @@ namespace Tag.Core.Tagging.Library
         {
             var result = new List<BrainzInfo>();
 
-            string Title = info.Title;
+            string Title = info.Title == string.Empty ? null : info.Title;
             string Artist = string.Join(" ", info.Artist);
             Artist = Artist == string.Empty ? null : Artist;
-            Title = Title == string.Empty ? null : Title;
-
-            var data = MusicBrainz.Search.Release(query: Title, artist: Artist);
-
+            string barcode = info.Barcode == string.Empty ? null : info.Barcode;
+            string Album = info.Album == string.Empty ? null : info.Album;
+            
+            var data = MusicBrainz.Search.Release(barcode: info.Barcode);
+            
             if (data == null)
+            {
+                if (Album == null)
+                {
+                    data = MusicBrainz.Search.Release(Album);
+                }
+                if (data == null)
+                {
+                    if (Title == null)
+                    {
+                        data = MusicBrainz.Search.Release(Title);
+                    }
+                    if (data == null)
+                    {
+                        if (Artist == null)
+                        {
+                            data = MusicBrainz.Search.Release(artist: Artist);
+                        }
+                    }
+                }
+            }
+
+            if (data == null && data.Count == 0)
             {
                 return result;
             }
