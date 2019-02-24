@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tag.Setting;
 
 namespace Tag.WPF
 {
@@ -29,6 +30,7 @@ namespace Tag.WPF
 
         private void UserControl_KeyDown(object sender, KeyEventArgs e)
         {
+            Global.DialogIdentifier.TaggingEnable = true;
             if (e.Key == Key.Y)
             {
                 DialogHost.CloseDialogCommand.Execute(true, null);
@@ -41,6 +43,23 @@ namespace Tag.WPF
             {
                 DialogHost.CloseDialogCommand.Execute(false, null);
             }
+            
+        }
+
+        private void Yes_Click(object sender, RoutedEventArgs e)
+        {
+            Global.DialogIdentifier.TaggingEnable = true;
+            DialogHost.CloseDialogCommand.Execute(true, null);
+        }
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            Global.DialogIdentifier.TaggingEnable = true;
+            DialogHost.CloseDialogCommand.Execute(false, null);
+        }
+        private void No_Click(object sender, RoutedEventArgs e)
+        {
+            Global.DialogIdentifier.TaggingEnable = true;
+            DialogHost.CloseDialogCommand.Execute(false, null);
         }
     }
 }

@@ -13,8 +13,9 @@ namespace Tag.Setting
         public static Language Language => Language.Insatence;
         public static Resource Resource => Resource.Insatence;
         public static FilePath FilePath => FilePath.Insatence;
+        public static DialogIdentifier DialogIdentifier => DialogIdentifier.Insatence;
 
         public static bool CacheImageDelete = false;
-        public static bool DialogCheck = false;
+        
     }
 }

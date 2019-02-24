@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Tag.Core.Conv;
+using Tag.Setting;
 using ToastNotifications.Messages;
 
 namespace Tag.WPF
@@ -60,6 +61,7 @@ namespace Tag.WPF
 
             await Task.Delay(1000);
             DialogHost.CloseDialogCommand.Execute(result, null);
+            Global.DialogIdentifier.TaggingEnable = true;
         }
 
         ConvertModel Dequeue()

@@ -109,30 +109,16 @@ namespace Tag.Core.Tagging.Library
             string barcode = info.Barcode == string.Empty ? null : info.Barcode;
             string Album = info.Album == string.Empty ? null : info.Album;
             
-            var data = MusicBrainz.Search.Release(barcode: info.Barcode);
+            var data = MusicBrainz.Search.Release(barcode: barcode);
+
+            data = MusicBrainz.Search.Release(query: Title, release: Album, artist: Artist, barcode: barcode);
             
             if (data == null)
             {
-                if (Album == null)
-                {
-                    data = MusicBrainz.Search.Release(Album);
-                }
-                if (data == null)
-                {
-                    if (Title == null)
-                    {
-                        data = MusicBrainz.Search.Release(Title);
-                    }
-                    if (data == null)
-                    {
-                        if (Artist == null)
-                        {
-                            data = MusicBrainz.Search.Release(artist: Artist);
-                        }
-                    }
-                }
+                data = MusicBrainz.Search.Release(Album)
+                    ?? MusicBrainz.Search.Release(Title)
+                    ?? MusicBrainz.Search.Release(artist: Artist);
             }
-
             if (data == null && data.Count == 0)
             {
                 return result;

@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
+using Tag.Setting;
 
 namespace Tag.WPF
 {
@@ -57,15 +58,7 @@ namespace Tag.WPF
                 Height = 280,
 
             };
-            await Task.Delay(500);
-
-            if (Setting.Global.DialogCheck == false)
-            {
-                Setting.Global.DialogCheck = true;
-                var t = await DialogHost.Show(brainz, OpenBrainzEvent);
-                Setting.Global.DialogCheck = false;
-            }
-
+            var t = await DialogHost.Show(brainz, Global.DialogIdentifier.BrainzSearch, OpenBrainzEvent);
         }
 
         private async void VGMDB_Search(object sender, RoutedEventArgs e)
@@ -77,24 +70,17 @@ namespace Tag.WPF
             };
 
             DialogHost.CloseDialogCommand.Execute(false, null);
-            await Task.Delay(500);
 
-            if (Setting.Global.DialogCheck == false)
-            {
-                Setting.Global.DialogCheck = true;
-                await DialogHost.Show(vgm, OpenVgmEvent);
-                Setting.Global.DialogCheck = false;
-            }
+            await DialogHost.Show(vgm, Global.DialogIdentifier.VgmSearch, OpenVgmEvent);
+
         }
 
         private void UserControl_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Escape)
             {
-                if (Setting.Global.DialogCheck == true)
-                {
-                    DialogHost.CloseDialogCommand.Execute(false, null);
-                }
+                DialogHost.CloseDialogCommand.Execute(false, null);
+                Global.DialogIdentifier.TaggingEnable = true;
             }
         }
     }

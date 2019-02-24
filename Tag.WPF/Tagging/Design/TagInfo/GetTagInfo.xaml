@@ -17,8 +17,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <wpf:DialogHost Grid.RowSpan="2" Width="Auto" Height="Auto"/>
-
         <Button Grid.Row="0"
                 Height="Auto"
                 Margin="5"

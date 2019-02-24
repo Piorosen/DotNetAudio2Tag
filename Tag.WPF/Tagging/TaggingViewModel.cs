@@ -15,6 +15,7 @@ using System.Windows;
 using System.Windows.Data;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
+using Tag.Setting;
 using Tag.WPF.Properties;
 using TagLib;
 
@@ -44,15 +45,15 @@ namespace Tag.WPF
         #endregion
 
         AudioTagging audioTagging;
-
         private TaggingModel _selectItem;
 
         public ObservableCollection<TaggingModel> Items { get => _items; set { _items = value; OnPropertyChanged(); } }
         public TaggingModel SelectItem { get => _selectItem; set { _selectItem = value; OnPropertyChanged(); } }
 
         public Visibility LabelVisibility { get => _LabelVisibility; set { _LabelVisibility = value; OnPropertyChanged(); } }
-
         private Visibility _LabelVisibility = Visibility.Visible;
+
+        public bool ButtonEnable { get => _buttonEnable; set { _buttonEnable = value; OnPropertyChanged(); } }
 
         public bool RemoveFile(int index)
         {
@@ -75,6 +76,16 @@ namespace Tag.WPF
         {
             Items.Clear();
             LabelVisibility = Visibility.Visible;
+            
+
+        }
+
+        private void DialogIdentifier_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Global.DialogIdentifier.TaggingEnable))
+            {
+                ButtonEnable = Global.DialogIdentifier.TaggingEnable;
+            }
         }
 
         public void AddModel(string filePath)
@@ -141,7 +152,7 @@ namespace Tag.WPF
 
         public bool Select = false;
         private ObservableCollection<TaggingModel> _items;
-        
+        private bool _buttonEnable = true;
 
         public void SelectModel(int index)
         {
@@ -160,6 +171,11 @@ namespace Tag.WPF
         private void CloseEvent(object sender, DialogClosingEventArgs e)
         {
             audioTagging.tagList.Clear();
+            if (e.Parameter == null)
+            {
+                e.Cancel();
+            }
+
             if ((bool)e.Parameter == true)
             {
                 for (int i = 0; i < Items.Count; i++)
@@ -183,12 +199,9 @@ namespace Tag.WPF
                 Height = 100
             };
 
-            if (Setting.Global.DialogCheck == false)
-            {
-                Setting.Global.DialogCheck = true;
-                var result = await DialogHost.Show(view, CloseEvent);
-                Setting.Global.DialogCheck = false;
-            }
+            Global.DialogIdentifier.TaggingEnable = false;
+            // DialogHost.OpenDialogCommand.Execute(view, new System.Windows.Controls.Button().CommandTarget);
+            var result = await DialogHost.Show(view, Global.DialogIdentifier.TagSave, CloseEvent);
 
         }
 
@@ -215,21 +228,11 @@ namespace Tag.WPF
             {
                 Width = 200,
                 Height = 100
-                
+
             };
 
-            if (Setting.Global.DialogCheck == false)
-            {
-                Setting.Global.DialogCheck = true;
-                var result = await DialogHost.Show(view, TagCloseEvent);
-                Setting.Global.DialogCheck = false;
-            }
-
-        }
-
-        void TagCloseEvent(object s, DialogClosingEventArgs e)
-        {
-            Console.WriteLine("이건 되긴함?");
+            Global.DialogIdentifier.TaggingEnable = false;
+            var result = await DialogHost.Show(view, Global.DialogIdentifier.GetTagInfo);
         }
 
         public void RemoveModel(int index)
@@ -252,6 +255,7 @@ namespace Tag.WPF
 
             audioTagging = new AudioTagging();
             SelectItem = new TaggingModel();
+            Global.DialogIdentifier.PropertyChanged += DialogIdentifier_PropertyChanged;
         }
     }
 }

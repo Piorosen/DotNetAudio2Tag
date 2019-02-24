@@ -33,6 +33,10 @@ namespace Tag.WPF
 
         private void TagAllSave(object sender, RoutedEventArgs e)
         {
+            if (viewModel.Items.Count == 0)
+            {
+                return;
+            }
             viewModel.AllTagSave();
         }
         private void GetTagInfo(object sender, RoutedEventArgs e)
@@ -381,10 +385,8 @@ namespace Tag.WPF
         {
             if (e.Key == System.Windows.Input.Key.Escape)
             {
-                if (Setting.Global.DialogCheck == true)
-                { 
-                    DialogHost.CloseDialogCommand.Execute(false, null);
-                }
+                Global.DialogIdentifier.TaggingEnable = true;
+                DialogHost.CloseDialogCommand.Execute(false, null);
             }
         }
     }

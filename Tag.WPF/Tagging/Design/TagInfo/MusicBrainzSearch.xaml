@@ -22,6 +22,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+
         <materialDesign:Card
             VerticalAlignment="Center"
             HorizontalAlignment="Center"

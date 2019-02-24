@@ -8,6 +8,7 @@
     xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting" 
     x:Class="Tag.WPF.Tagging"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
     mc:Ignorable="d"
     AllowDrop="True"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -18,12 +19,13 @@
     KeyDown="UserControl_KeyDown"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}" Height="710" Width="899">
-
     <UserControl.Resources>
         <local:ListToString x:Key="ListToSring" />
     </UserControl.Resources>
 
-    <Grid AllowDrop="True">
+
+
+    <Grid AllowDrop="True" Grid.ColumnSpan="2" Width="Auto" Height="Auto">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="*"/>
@@ -32,6 +34,37 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+
+        <materialDesign:DialogHost
+            
+            Identifier="MusicBrainzSearch"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            Width="Auto" Height="Auto" Margin="-15,0,15,0"/>
+        <materialDesign:DialogHost
+            Identifier="VgmDbSearch"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            
+            Width="Auto" Height="Auto"/>
+
+        <materialDesign:DialogHost
+            Identifier="CheckTagInfo"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            Width="Auto" Height="Auto"/>
+
+        <materialDesign:DialogHost Grid.RowSpan="2"
+                                   Grid.ColumnSpan="2"
+                                   Identifier="GetTagInfo" Width="Auto" Height="Auto"/>
+
+        <materialDesign:DialogHost Grid.RowSpan="2"
+                                   x:Name="Test"
+                                   Grid.ColumnSpan="2"
+                                   Focusable="True"
+                                   ClipToBounds="True"
+                                   CloseOnClickAway="True"
+                                   Identifier="TagSave" Width="Auto" Height="Auto"/>
 
         <ScrollViewer Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
                       VerticalScrollBarVisibility="Visible"
@@ -288,6 +321,7 @@
             <Button
                 Width="150" HorizontalAlignment="Right" Margin="0,9,10,9"
                 Click="TagAllSave"
+                IsEnabled="{Binding ButtonEnable}"
                 >
                 일괄 저장
             </Button>
@@ -295,6 +329,7 @@
                 Width="150"
                 Margin="0,9,165,9" HorizontalAlignment="Right"
                 Click="GetTagInfo"
+                IsEnabled="{Binding ButtonEnable}"
                 >
                 태그 정보 가져오기
             </Button>

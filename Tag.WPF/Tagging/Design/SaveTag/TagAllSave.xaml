@@ -38,35 +38,26 @@
             <Button Grid.Column="0"
                     Style="{DynamicResource MaterialDesignRaisedLightButton}"
                     wpf:ShadowAssist.ShadowDepth="Depth1"
-                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}"
+                    Click="Yes_Click"
                     Content="Yes (Y)"
                     Margin="4"  Padding="0"
                     >
-                <Button.CommandParameter>
-                    <system:Boolean>True</system:Boolean>
-                </Button.CommandParameter>
             </Button>
             <Button
                 Margin="4" Padding="0"
                 Grid.Column="1"
                 wpf:ShadowAssist.ShadowDepth="Depth1"
                 Style="{DynamicResource MaterialDesignRaisedLightButton}"
-                Command="{x:Static wpf:DialogHost.CloseDialogCommand}"
+                Click="No_Click"
                 Content="No (N)">
-                <Button.CommandParameter>
-                    <system:Boolean>False</system:Boolean>
-                </Button.CommandParameter>
             </Button>
             <Button
                 Margin="4" Padding="0"
                wpf:ShadowAssist.ShadowDepth="Depth1"
                 Grid.Column="2"
                 Style="{DynamicResource MaterialDesignRaisedLightButton}"
-                Command="{x:Static wpf:DialogHost.CloseDialogCommand}"
+                Click="Cancel_Click"
                 Content="Cancel (C)">
-                <Button.CommandParameter>
-                    <system:Boolean>False</system:Boolean>
-                </Button.CommandParameter>
             </Button>
 
         </Grid>

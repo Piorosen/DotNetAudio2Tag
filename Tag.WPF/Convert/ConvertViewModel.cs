@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Tag.Core.Conv;
+using Tag.Setting;
 using ToastNotifications.Messages;
 
 namespace Tag.WPF
@@ -22,6 +23,8 @@ namespace Tag.WPF
         int Index = 0;
 
         public Visibility LabelVisibility { get => _labelVisibility; set { _labelVisibility = value; OnPropertyChanged(); } }
+        public bool ButtonEnable { get => _buttonEnable; set { _buttonEnable = value; OnPropertyChanged(); } }
+        
 
         public void Checked(int index)
         {
@@ -39,11 +42,19 @@ namespace Tag.WPF
             };
 
             ConvInfos = new ObservableCollection<ConvInfo>();
-
+            Global.DialogIdentifier.PropertyChanged += DialogIdentifier_PropertyChanged;
         }
 
-        DialogSession Session = null;
+        private void DialogIdentifier_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Global.DialogIdentifier.TaggingEnable))
+            {
+                ButtonEnable = Global.DialogIdentifier.TaggingEnable;
+            }
+        }
+
         private Visibility _labelVisibility;
+        private bool _buttonEnable = true;
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string Name = "")
@@ -75,11 +86,6 @@ namespace Tag.WPF
             }
         }
 
-        void OpenEventHandler(object sender, DialogOpenedEventArgs envetArgs)
-        {
-            Session = envetArgs.Session;
-        }
-
         private void CloseEventHandler(object sender, DialogClosingEventArgs eventArgs)
         {
             if (bool.Parse(eventArgs.Parameter.ToString()) == true)
@@ -90,15 +96,6 @@ namespace Tag.WPF
             {
                 Application.notifier.ShowInformation("변환을 하는데 실패 하였습니다.");
             }
-
-            //note, you can also grab the session when the dialog opens via the DialogOpenedEventHandler
-
-            if (!Session.IsEnded)
-            {
-                Session.Close();
-                Session = null;
-            }
-
         }
 
         public async void Execute(string resultPath)
@@ -119,12 +116,9 @@ namespace Tag.WPF
             }
 
             Content.Execute(ConvertMode[Index], resultPath);
-            if (Setting.Global.DialogCheck == false)
-            {
-                Setting.Global.DialogCheck = true;
-                var result = await DialogHost.Show(Content, OpenEventHandler, CloseEventHandler);
-                Setting.Global.DialogCheck = false;
-            }
+
+            Global.DialogIdentifier.TaggingEnable = false;
+            var result = await DialogHost.Show(Content, Global.DialogIdentifier.Convert, CloseEventHandler);
         }
     }
 }

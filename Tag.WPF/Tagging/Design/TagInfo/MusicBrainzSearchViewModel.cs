@@ -88,20 +88,13 @@ namespace Tag.WPF
             this.index = index;
 
             DialogHost.CloseDialogCommand.Execute(true, null);
-            await Task.Delay(500);
 
             view = new CheckTagging(user)
             {
                 Height = 500,
                 Width = 1100
             };
-
-            if (Setting.Global.DialogCheck == false)
-            {
-                Setting.Global.DialogCheck = true;
-                await DialogHost.Show(view, OpenDialog);
-                Setting.Global.DialogCheck = false;
-            }
+            await DialogHost.Show(view, Global.DialogIdentifier.CheckTagInfo, OpenDialog);
         }
 
 

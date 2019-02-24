@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
+using Tag.Setting;
 
 namespace Tag.WPF
 {
@@ -59,7 +60,8 @@ namespace Tag.WPF
         private void No_Click(object sender, RoutedEventArgs e)
         {
             DialogHost.CloseDialogCommand.Execute(false, null);
-            
+            Global.DialogIdentifier.TaggingEnable = true;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

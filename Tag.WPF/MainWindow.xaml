@@ -15,7 +15,6 @@
     FontFamily="{StaticResource DefaultFont}"
     Title="Audio2Tag .Ver WPF" Height="640" Width="1200"
     
-    KeyDown="MetroWindow_KeyDown"
     >
 
     <!--<controls:MetroWindow.LeftWindowCommands>
@@ -30,8 +29,6 @@
         </controls:WindowCommands>
     </controls:MetroWindow.LeftWindowCommands>-->
     <Grid>
-        <materialDesign:DialogHost Width="Auto" Height="Auto"/>
-        
         <dockablz:Layout>
             <dragablz:TabablzControl BorderThickness="0">
                 <dragablz:TabablzControl.InterTabController>

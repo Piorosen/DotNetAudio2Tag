@@ -5,12 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" Height="460" Width="800">
+             mc:Ignorable="d" Height="460" Width="800"
+             xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+             >
     <Grid AllowDrop="True">
+
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
+
+
+        <materialDesign:DialogHost
+            Grid.RowSpan="2"
+            Identifier="Convert"
+            Width="Auto" Height="Auto"/>
+
 
 
         <TextBlock Grid.Row="0" 
@@ -22,6 +32,7 @@
                    />
         <ListView Grid.Row="0" Margin="5" DragEnter="ItemDragEnter" Drop="ItemDragDrop"
                   AllowDrop="True"
+                  x:Name="ConvertList"
                   ItemsSource="{Binding ConvInfos}" KeyDown="List_KeyDown" >
             <ListView.View>
                 <GridView>
@@ -83,7 +94,8 @@
                                 Content="MP3(User)"
                                  Checked="RadioButton_Checked"
                                 Tag="4" Margin="0,15,0,14" 
-                            />
+                            >
+                    </RadioButton>
 
                 </Grid>
             </Border>
@@ -91,15 +103,18 @@
                 <Button
                     Content="파일 열기"
                     VerticalAlignment="Bottom"
+                    IsEnabled="{Binding ButtonEnable}"
                     Margin="0,0,145,9" Click="OpenDialog" HorizontalAlignment="Right" Width="130"/>
                 <Button
                     HorizontalAlignment="Right"
                     Content="변환 시작"
                     VerticalAlignment="Bottom"
                     Margin="10 0 10 9"
+                    IsEnabled="{Binding ButtonEnable}"
                     Width="130" Click="Execute"/>
 
             </Grid>
         </Grid>
+
     </Grid>
 </UserControl>

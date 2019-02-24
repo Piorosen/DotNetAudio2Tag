@@ -26,6 +26,7 @@ namespace Tag.WPF
                     if (tagTemp[0] == null)
                     {
                         image = new Bitmap(Setting.Global.Resource.Alert);
+                        image.MakeTransparent(Color.White);
                     }
                     else
                     {
@@ -43,6 +44,8 @@ namespace Tag.WPF
                 else
                 {
                     image = new Bitmap(Setting.Global.Resource.Alert);
+                    image.MakeTransparent(Color.White);
+
                     var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
                          image.GetHbitmap(),
                          IntPtr.Zero,

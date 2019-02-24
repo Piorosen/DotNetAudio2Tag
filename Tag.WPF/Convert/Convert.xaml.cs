@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
+
 namespace Tag.WPF
 {
     /// <summary>
@@ -73,6 +74,11 @@ namespace Tag.WPF
 
         private void Execute(object sender, RoutedEventArgs e)
         {
+            if (viewModel.ConvInfos.Count == 0)
+            {
+                return;
+            }
+
             System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)

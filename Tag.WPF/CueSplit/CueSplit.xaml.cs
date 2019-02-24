@@ -70,6 +70,10 @@ namespace Tag.WPF
         }
         private async void Execute(object sender, RoutedEventArgs e)
         {
+            if (viewModel.Items.Count == 1)
+            {
+                return;
+            }
             System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
