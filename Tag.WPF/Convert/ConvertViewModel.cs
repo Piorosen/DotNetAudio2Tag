@@ -121,7 +121,8 @@ namespace Tag.WPF
             Global.DialogIdentifier.ConvertEnable = true;
         }
 
-        (string Path, string Format) Param = (string.Empty, string.Empty);
+        (string Path, string Format) Param = (Global.Resource.Lame, "-V3");
+
 
         public async void ModeSetting()
         {
