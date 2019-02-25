@@ -39,10 +39,19 @@ namespace Tag.Core.Conv.Library
                         FileName = info.Source,
                         Arguments = info.Format,
                         CreateNoWindow = true,
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
                     }
                 };
-                proc.Start();
-                proc.WaitForExit();
+                string err = string.Empty;
+                try
+                {
+                    proc.Start();
+                    err = proc.StandardError.ReadToEnd();
+                }
+                catch { }
+                
             }
             catch
             {
