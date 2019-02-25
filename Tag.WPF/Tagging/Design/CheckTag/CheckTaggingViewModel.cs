@@ -94,7 +94,8 @@ namespace Tag.WPF
                     temp.TagInfo.Publisher = BrainzTag[i].Publisher;
                     temp.TagInfo.TagType = BrainzTag[i].TagType;
                     temp.TagInfo.Title = BrainzTag[i].Title;
-                    temp.TagInfo.Track = BrainzTag[i].Track;
+                    temp.TagInfo.Track.Clear();
+                    temp.TagInfo.Track.Add(BrainzTag[i].Track.Count != 0 ? BrainzTag[i].Track[0] : 1);
                     temp.TagInfo.Year = Year;
                 }
                 data.RemoveAt(index);

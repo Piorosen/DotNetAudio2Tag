@@ -50,15 +50,15 @@ namespace Tag.Core.Tagging.Library
             using (var stream = request.GetRequestStream())
             {
                 byte[] data = Encoding.UTF8.GetBytes("action=advancedsearch" +
-                                $"&albumtitles={info.Title}" +
-                                $"&catalognum={info.DiscNum}" +
-                                $"&eanupcjan={info.Barcode}" +
+                                $"&albumtitles={info.Album}" +
+                                $"&catalognum={string.Empty/*info.DiscNum*/}" +
+                                $"&eanupcjan={string.Empty/*info.Barcode*/}" +
                                 $"&dosearch=Search+Albums+Now&pubtype%5B0%5D=1&pubtype%5B1%5D=1&pubtype%5B2%5D=1&distype%5B0%5D=1&distype%5B1%5D=1&distype%5B2%5D=1&distype%5B3%5D=1&distype%5B4%5D=1&distype%5B5%5D=1&distype%5B6%5D=1&distype%5B7%5D=1&distype%5B8%5D=1&category%5B1%5D=0&category%5B2%5D=0&category%5B4%5D=0&category%5B8%5D=0&category%5B16%5D=0" +
-                                $"&composer={string.Join(" ", info.Composer)}" +
+                                $"&composer={string.Empty/*string.Join(" ", info.Composer)*/}" +
                                 $"&arranger={string.Empty}" +
                                 $"&performer={string.Join(" ", info.Artist)}" +
                                 $"&lyricist={string.Empty}" +
-                                $"&publisher={string.Join(" ", info.Publisher)}" +
+                                $"&publisher={string.Empty/*string.Join(" ", info.Publisher)*/}" +
                                 $"&game={string.Empty /* Product */}" +
                                 $"&trackname={string.Empty}" +
                                 $"&caption={string.Empty /* Scan Caption */}" +

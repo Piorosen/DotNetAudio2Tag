@@ -120,7 +120,11 @@ namespace Tag.WPF
                 }
                 else
                 {
-                    tmp = new TagLib.Picture(Global.FilePath.CacheImagePath + Items[index].Identifier + ".jpg");
+                    try
+                    {
+                        tmp = new TagLib.Picture(Global.FilePath.CacheImagePath + Items[index].Identifier + ".jpg");
+                    }
+                    catch { }
                 }
 
                 if (tmp == null)
