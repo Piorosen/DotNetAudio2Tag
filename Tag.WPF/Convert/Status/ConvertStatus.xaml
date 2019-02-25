@@ -101,15 +101,11 @@
                 <ColumnDefinition Width="27*"/>
                 <ColumnDefinition Width="30*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="일시 정지"
+            <Button Content="창 닫기"
                     Width="100"
-                    Margin="22,10,10,8" Grid.Column="1" Grid.ColumnSpan="2"
-                    />
-            <Button Content="중 단"
-                    Width="100"
-                    Margin="180,10,-22,8"
-                    CommandParameter="False"
-                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}"
+                    Margin="32,9,9,8"
+                    CommandParameter="{Binding Result}"
+                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}" Grid.ColumnSpan="2" Grid.Column="1" Click="Button_Click"
                     />
         </Grid>
     </Grid>

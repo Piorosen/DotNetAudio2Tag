@@ -97,11 +97,11 @@ namespace Tag.Core.Conv
 
                         value.ResultPath = resultPath + Path.GetFileName(value.ResultPath);
                         var tag = TagLib.File.Create(value.FilePath).Tag;
+                        
                         foreach (var status in Conv?.Execute(value))
                         {
                             OnChangeExecute(status + id * 10000);
                         }
-
                         var file = TagLib.File.Create(value.ResultPath);
 
                         TagInfo.Move(file.Tag, tag);

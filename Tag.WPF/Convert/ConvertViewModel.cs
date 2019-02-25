@@ -37,7 +37,7 @@ namespace Tag.WPF
                 new PresetModel(LAMEPreset.ABR_320, ConvMode.NORMAL),
                 new PresetModel(LAMEPreset.ABR_256, ConvMode.NORMAL),
                 new PresetModel(LAMEPreset.ABR_128, ConvMode.NORMAL),
-                new PresetModel(LAMEPreset.ABR_320, ConvMode.NORMAL),
+                new PresetModel(LAMEPreset.ABR_320, ConvMode.MYFLAC),
                 new PresetModel(LAMEPreset.ABR_320, ConvMode.USER)
             };
 
@@ -47,9 +47,9 @@ namespace Tag.WPF
 
         private void DialogIdentifier_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(Global.DialogIdentifier.TaggingEnable))
+            if (e.PropertyName == nameof(Global.DialogIdentifier.ConvertEnable))
             {
-                ButtonEnable = Global.DialogIdentifier.TaggingEnable;
+                ButtonEnable = Global.DialogIdentifier.ConvertEnable;
             }
         }
 
@@ -114,11 +114,14 @@ namespace Tag.WPF
                 });
             }
 
-            Content.Execute(ConvertMode[Index], resultPath);
+            Content.Execute(ConvertMode[Index], resultPath, Param);
 
             Global.DialogIdentifier.ConvertEnable = false;
             var result = await DialogHost.Show(Content, Global.DialogIdentifier.Convert, CloseEventHandler);
+            Global.DialogIdentifier.ConvertEnable = true;
         }
+
+        (string Path, string Format) Param = (string.Empty, string.Empty);
 
         public async void ModeSetting()
         {
@@ -129,6 +132,7 @@ namespace Tag.WPF
             Global.DialogIdentifier.ConvertEnable = false;
             var result = await DialogHost.Show(Content, Global.DialogIdentifier.ConvertUserMode);
 
+            Param = (ValueTuple<string, string>)result;
         }
     }
 }

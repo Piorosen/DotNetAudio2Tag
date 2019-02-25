@@ -13,34 +13,41 @@ namespace Tag.Core.Conv.Library
         {
             try
             {
-                String.Format(info.Format, info.Parameter);
+                info.Format = String.Format(info.Format, info.Parameter);
             }
             catch { }
-
             try
             {
-                info.Format.Replace("%File%", info.FilePath);
-            }
-            catch { }
-
-            try
-            {
-                info.Format.Replace("%SaveFile%", info.ResultPath);
-            }
-            catch { }
-
-            bool result = false;
-            try
-            {
-                Process.Start(info.Source, info.Format);
-                result = true;
+                info.Format = info.Format.Replace("%File%", $"\"{info.FilePath}\"");
             }
             catch
             {
-                result = false;
             }
-
-            yield return result ? 100 : 0;
+            try
+            {
+                info.Format = info.Format.Replace("%SaveFile%", $"\"{info.ResultPath}\"");
+            }
+            catch { }
+            
+            Process proc = new Process();
+            try
+            {
+                proc = new Process
+                {
+                    StartInfo =
+                    {
+                        FileName = info.Source,
+                        Arguments = info.Format,
+                        CreateNoWindow = true,
+                    }
+                };
+                proc.Start();
+                proc.WaitForExit();
+            }
+            catch
+            {
+            }
+            yield return 100;
         }
     }
 }

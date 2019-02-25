@@ -29,13 +29,18 @@ namespace Tag.WPF
             DataContext = viewModel = new ConvertStatusViewModel(this);
             
         }
-        public void Execute(PresetModel preset, string resultPath)
+        public void Execute(PresetModel preset, string resultPath, (string Path, string Format) Param)
         {
-            viewModel.Execute(preset, resultPath);
+            viewModel.Execute(preset, resultPath, Param);
         }
         public void Enqueue(ConvertModel info)
         {
             viewModel.Enqueue(info);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

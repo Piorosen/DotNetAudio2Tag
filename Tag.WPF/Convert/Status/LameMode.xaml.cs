@@ -1,9 +1,11 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,24 +24,48 @@ namespace Tag.WPF
     /// <summary>
     /// LameMode.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class LameMode : UserControl
+    public partial class LameMode : UserControl, INotifyPropertyChanged
     {
+        private bool _buttonEnable = true;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChanged([CallerMemberName] string Name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
+        }
+
+        private void DialogIdentifier_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Global.DialogIdentifier.LameEnable))
+            {
+                ButtonEnableA = Global.DialogIdentifier.LameEnable;
+            }
+        }
+
+        public bool ButtonEnableA { get => _buttonEnable; set { _buttonEnable = value; OnPropertyChanged(); } }
         public LameMode()
         {
             InitializeComponent();
+            TextFilePath.Text = Global.Resource.Lame;
+            Global.DialogIdentifier.PropertyChanged += DialogIdentifier_PropertyChanged;
         }
+
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            DialogHost.CloseDialogCommand.Execute(false, (sender as Button)?.CommandTarget);
+            Global.DialogIdentifier.ConvertEnable = true;
+            DialogHost.CloseDialogCommand.Execute((string.Empty, string.Empty), (sender as Button)?.CommandTarget);
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            DialogHost.CloseDialogCommand.Execute((TextFilePath.Text, TextEncode.Text), (sender as Button)?.CommandTarget);
+            Global.DialogIdentifier.ConvertEnable = true;
+            DialogHost.CloseDialogCommand.Execute((TextFilePath.Text, TextEncode.Text + " %File% %SaveFile%"), (sender as Button)?.CommandTarget);
         }
 
-        private void CodeCheck_Click(object sender, RoutedEventArgs e)
+
+        private async void CodeCheck_Click(object sender, RoutedEventArgs e)
         {
+
             var proc = new Process
             {
                 StartInfo =
@@ -53,9 +79,17 @@ namespace Tag.WPF
                 }
             };
 
-            proc.Start();
-            
-            var err = proc.StandardError.ReadToEnd();
+            string err = string.Empty;
+            try
+            {
+                proc.Start();
+                err = proc.StandardError.ReadToEnd();
+            }
+            catch { err = e.ToString(); }
+
+            Global.DialogIdentifier.LameEnable = false;
+            await DialogHost.Show(new LameTestCode(err), Global.DialogIdentifier.LameCodeTest);
+
         }
 
         private void Find_Click(object sender, RoutedEventArgs e)

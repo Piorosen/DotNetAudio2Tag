@@ -18,6 +18,8 @@ namespace Tag.WPF
 {
     public class ConvertStatusViewModel : INotifyPropertyChanged
     {
+        public bool Result { get => _result; set { _result = value; OnPropertyChanged();  } }
+
         public int MultiTask = 4;
         public ObservableCollection<ConvertModel> Items { get; set; }
         public Queue<ConvertModel> ConvertModelQueue = new Queue<ConvertModel>();
@@ -30,6 +32,7 @@ namespace Tag.WPF
         int AudioCount = 0;
         List<int> StatusValue = new List<int>();
         private int _totalStatus = 0;
+        private bool _result = false;
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string Name = "")
@@ -37,8 +40,9 @@ namespace Tag.WPF
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
         }
 
-        public async void Execute(PresetModel preset, string resultPath)
+        public async void Execute(PresetModel preset, string resultPath, (string Path, string Format) Param)
         {
+            Result = false;
             this.preset = preset;
 
             int count = (MultiTask > ConvertModelQueue.Count
@@ -46,6 +50,12 @@ namespace Tag.WPF
                 : MultiTask);
 
             AudioCount = ConvertModelQueue.Count;
+
+            for (int i = 0; i < converter.List().Count; i++)
+            {
+                converter[i].Format = Param.Format;
+                converter[i].Source = Param.Path;
+            }
 
             for (int i = 0; i < AudioCount; i++)
             {
@@ -56,12 +66,8 @@ namespace Tag.WPF
             {
                 Items.Add(Dequeue());
             }
-
             var result = await converter.Execute(preset.ConvMode, MultiTask, resultPath);
-
-            await Task.Delay(1000);
-            DialogHost.CloseDialogCommand.Execute(result, null);
-            Global.DialogIdentifier.TaggingEnable = true;
+            Result = true;
         }
 
         ConvertModel Dequeue()

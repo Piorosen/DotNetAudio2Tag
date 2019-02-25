@@ -11,5 +11,6 @@ namespace Tag.Setting.Setting
     {
         public string Alert = Global.FilePath.ResourcePath + "Alert.png";
         public string LameDummy = Global.FilePath.ResourcePath + "Test.Dummy";
+        public string Lame = Global.FilePath.ResourcePath + "lame.exe";
     }
 }

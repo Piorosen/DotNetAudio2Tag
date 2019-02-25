@@ -18,10 +18,13 @@ namespace Tag.Setting.Setting
         public string VgmSearch = "VgmDbSearch";
         public string CheckTagInfo = "CheckTagInfo";
         public string ConvertUserMode = "ConvertUserMode";
+        public string LameCodeTest = "LameTest";
+
 
         private bool _taggingEnable;
         private bool _convertEnable;
         private bool _settingEnable;
+        private bool _lameEnable;
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnProertyChange([CallerMemberName] string Name = "")
@@ -32,6 +35,6 @@ namespace Tag.Setting.Setting
         public bool TaggingEnable { get => _taggingEnable; set { _taggingEnable = value; OnProertyChange(); } }
         public bool ConvertEnable { get => _convertEnable; set { _convertEnable = value; OnProertyChange(); } }
         public bool SettingEnable { get => _settingEnable; set { _settingEnable = value; OnProertyChange(); } }
-
+        public bool LameEnable { get => _lameEnable; set { _lameEnable = value; OnProertyChange(); } }
     }
 }

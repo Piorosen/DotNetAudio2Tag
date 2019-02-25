@@ -3,10 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Tag.WPF"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" Height="460" Width="800"
-             xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
              >
     <Grid AllowDrop="True">
 
@@ -25,8 +23,12 @@
             Grid.RowSpan="2"
             Identifier="Convert"
             Width="Auto" Height="Auto"/>
+        <materialDesign:DialogHost
+            Grid.RowSpan="2"
+            Identifier="LameTest"
+            Width="Auto" Height="Auto"/>
 
-
+        
 
         <TextBlock Grid.Row="0" 
                    Text="변환할 음원 파일을 드롭 해주세요."
@@ -102,6 +104,7 @@
                                  />
                     <Button Grid.Row="1" Grid.Column="4"
                         HorizontalAlignment="Right"
+                            IsEnabled="{Binding ButtonEnable}"
                         Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
                         Width="16"
                         Height="16"
