@@ -17,6 +17,9 @@
                 BorderThickness="1"
                 >
             <TextBox x:Name="TextResult"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top"
+                     TextAlignment="Left"
                        ScrollViewer.HorizontalScrollBarVisibility="Auto"
                        ScrollViewer.VerticalScrollBarVisibility="Auto"
                        />
