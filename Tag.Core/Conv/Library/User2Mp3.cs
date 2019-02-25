@@ -28,7 +28,7 @@ namespace Tag.Core.Conv.Library
                 info.Format = info.Format.Replace("%SaveFile%", $"\"{info.ResultPath}\"");
             }
             catch { }
-            
+
             Process proc = new Process();
             try
             {
@@ -44,17 +44,31 @@ namespace Tag.Core.Conv.Library
                         RedirectStandardError = true,
                     }
                 };
-                string err = string.Empty;
                 try
                 {
                     proc.Start();
-                    err = proc.StandardError.ReadToEnd();
                 }
                 catch { }
-                
             }
             catch
             {
+            }
+
+            while (!proc.StandardError.EndOfStream)
+            {
+                var err = proc.StandardError.ReadLine();
+                var l = err.Split('%');
+                if (l.Length != 1)
+                {
+                    var t = l[0].Split('(');
+                    if (t.Length != 1)
+                    {
+                        if (int.TryParse(t[1].Trim(), out int r))
+                        {
+                            yield return r;
+                        }
+                    }
+                }
             }
             yield return 100;
         }
