@@ -35,7 +35,7 @@
                     <dragablz:InterTabController />
                 </dragablz:TabablzControl.InterTabController>
                 <TabItem Header="{Binding CustomizeMode}">
-
+                    <mylib:AutoMode Width="Auto" Height="Auto"/>
                 </TabItem>
                 <TabItem Header="{Binding CueSplit}">
                     <mylib:CueSplit Width="Auto" Height="Auto"/>

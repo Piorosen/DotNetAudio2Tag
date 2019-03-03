@@ -98,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AutoMode\AutoMode.xaml.cs">
+      <DependentUpon>AutoMode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AutoMode\AutoModeViewModel.cs" />
     <Compile Include="Convert\ConvertModel.cs" />
     <Compile Include="Convert\Status\ConvertStatus.xaml.cs">
       <DependentUpon>ConvertStatus.xaml</DependentUpon>
@@ -146,6 +150,10 @@
     <Compile Include="Tagging\TaggingModel.cs" />
     <Compile Include="Tagging\TaggingViewModel.cs" />
     <Compile Include="Tagging\WaveFormatModel.cs" />
+    <Page Include="AutoMode\AutoMode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Convert\Convert.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
