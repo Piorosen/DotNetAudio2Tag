@@ -27,10 +27,14 @@ namespace Tag.WPF
             DataContext = viewModel = new AutoModeViewModel();
             
         }
+        int GetNum(CheckBox box)
+        {
+            return box.IsChecked == true ? (int)box.Tag : 0;
+        }
 
         private void Execute_Click(object sender, RoutedEventArgs e)
         {
-            int run = (int)CheckBoxCueSplit.Tag | (int)CheckBoxConv.Tag | (int)CheckBoxTagging.Tag;
+            int run = GetNum(CheckBoxCueSplit) | GetNum(CheckBoxConv) | GetNum(CheckBoxTagging);
             viewModel.Execute(run);
         }
 

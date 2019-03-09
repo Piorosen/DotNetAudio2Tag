@@ -25,6 +25,7 @@ namespace Tag.WPF
             var audio = new AudioFileReader(file);
             Format = audio.WaveFormat;
             DurationMS = audio.TotalTime.Seconds;
+            Title = Tag.Title;
 
             Artist = string.Join("; ", Tag.Artist);
             Composer = string.Join("; ", Tag.Composer);
