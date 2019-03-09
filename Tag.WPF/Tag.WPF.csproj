@@ -102,6 +102,12 @@
       <DependentUpon>AutoMode.xaml</DependentUpon>
     </Compile>
     <Compile Include="AutoMode\AutoModeViewModel.cs" />
+    <Compile Include="AutoMode\Check\AutoModeStatus.xaml.cs">
+      <DependentUpon>AutoModeStatus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AutoMode\Check\ConvCheck.xaml.cs">
+      <DependentUpon>ConvCheck.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Convert\ConvertModel.cs" />
     <Compile Include="Convert\Status\ConvertStatus.xaml.cs">
       <DependentUpon>ConvertStatus.xaml</DependentUpon>
@@ -151,6 +157,14 @@
     <Compile Include="Tagging\TaggingViewModel.cs" />
     <Compile Include="Tagging\WaveFormatModel.cs" />
     <Page Include="AutoMode\AutoMode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AutoMode\Check\AutoModeStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AutoMode\Check\ConvCheck.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

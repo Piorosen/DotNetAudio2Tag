@@ -11,15 +11,18 @@ namespace Tag.Setting.Setting
 {
     public class DialogIdentifier : SingleTon<DialogIdentifier>, INotifyPropertyChanged
     {
-        public string Convert = "Convert";
-        public string GetTagInfo = "GetTagInfo";
-        public string TagSave = "TagSave";
-        public string BrainzSearch = "MusicBrainzSearch";
-        public string VgmSearch = "VgmDbSearch";
-        public string CheckTagInfo = "CheckTagInfo";
-        public string ConvertUserMode = "ConvertUserMode";
-        public string LameCodeTest = "LameTest";
+        public readonly string Convert = "Convert";
+        public readonly string GetTagInfo = "GetTagInfo";
+        public readonly string TagSave = "TagSave";
+        public readonly string BrainzSearch = "MusicBrainzSearch";
+        public readonly string VgmSearch = "VgmDbSearch";
+        public readonly string CheckTagInfo = "CheckTagInfo";
+        public readonly string ConvertUserMode = "ConvertUserMode";
+        public readonly string LameCodeTest = "LameTest";
 
+        public readonly string AutoModeStatus = "AutoModeStatus";
+        public readonly string AutoModeCodec = "AutoModeCodec";
+        public readonly string AutoModeTagSelect = "AutoModeTagSelect";
 
         private bool _taggingEnable;
         private bool _convertEnable;

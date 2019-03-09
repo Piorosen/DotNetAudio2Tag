@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="Tag.WPF.ConvCheck"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tag.WPF"
+             xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+             mc:Ignorable="d" 
+             Width="475" Height="100">
+    <Border Grid.Column="0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                               Text="변환할 확장자"
+                               Margin="5,4,0,3" 
+                               />
+            <RadioButton Grid.Row="1" Grid.Column="0"
+                                Style="{StaticResource MaterialDesignRadioButton}"
+                                Content="MP3 320Kb"
+                                 Tag="0"
+                                IsChecked="True"
+                                 Checked="RadioButton_Checked" VerticalAlignment="Center"
+                                
+                            />
+            <RadioButton Grid.Row="1" Grid.Column="1"
+                                 Style="{StaticResource MaterialDesignRadioButton}"
+                                Content="MP3 256Kb"
+                                 Checked="RadioButton_Checked"
+                                 Tag="1" VerticalAlignment="Center" 
+                            />
+            <RadioButton Grid.Row="1" Grid.Column="2"
+                                 Style="{StaticResource MaterialDesignRadioButton}"
+                                Content="MP3 128Kb"
+                                 Checked="RadioButton_Checked"
+                                 Tag="2" VerticalAlignment="Center"
+                            />
+            <RadioButton Grid.Row="1" Grid.Column="3"
+                                Style="{StaticResource MaterialDesignRadioButton}"
+                                Content="Flac"
+                                 Checked="RadioButton_Checked"
+                                Tag="3" VerticalAlignment="Center" 
+                            />
+            <RadioButton Grid.Row="1" Grid.Column="4"
+                                Style="{StaticResource MaterialDesignRadioButton}"
+                                 Checked="RadioButton_Checked"
+                                 Tag="4" VerticalAlignment="Center"
+                                 Content="MP3(User)"
+                                 />
+            <Button Grid.Row="1" Grid.Column="4"
+                        HorizontalAlignment="Right"
+                            IsEnabled="{Binding ButtonEnable}"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                        Width="16"
+                        Height="16"
+                        Padding="0"
+                        Margin="3 0 10 0"
+                        Click="UserMode_Click"
+                        >
+                <materialDesign:PackIcon
+                                      Padding="0"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"
+                                      Kind="Cog"
+                                      Height="16"
+                                      Width="16" />
+            </Button>
+
+
+            <Button Grid.RowSpan="3"
+                    Grid.ColumnSpan="5"
+                    Width="130"
+                    Margin="5"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right"
+                    Click="OK_Click"
+                    Content="확인"/>
+        </Grid>
+    </Border>
+</UserControl>

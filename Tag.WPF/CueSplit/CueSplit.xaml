@@ -55,7 +55,6 @@
         <Border AllowDrop="True" Grid.Row="1"
                 Drop="ItemDragDrop"
                 Background="Transparent"
-                DragEnter="ItemDragEnter"
                 >
             <ScrollViewer AllowDrop="True"
                           VerticalScrollBarVisibility="Auto">

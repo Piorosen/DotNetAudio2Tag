@@ -20,9 +20,35 @@ namespace Tag.WPF
     /// </summary>
     public partial class AutoMode : UserControl
     {
+        AutoModeViewModel viewModel;
         public AutoMode()
         {
             InitializeComponent();
+            DataContext = viewModel = new AutoModeViewModel();
+            
+        }
+
+        private void Execute_Click(object sender, RoutedEventArgs e)
+        {
+            int run = (int)CheckBoxCueSplit.Tag | (int)CheckBoxConv.Tag | (int)CheckBoxTagging.Tag;
+            viewModel.Execute(run);
+        }
+
+        private void ItemDragDrop(object sender, DragEventArgs e)
+        {
+            string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (var path in items)
+            {
+               // var t = Path.GetExtension(path).ToLower();
+               // if (t == ".cue")
+                {
+                    viewModel.AddFile(path);
+                }
+            }
+        }
+        private void ItemDragEnter(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.Copy;
         }
     }
 }
