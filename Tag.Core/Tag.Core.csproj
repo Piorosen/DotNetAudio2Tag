@@ -83,6 +83,7 @@
     <Compile Include="Conv\Library\Flac2Mp3.cs" />
     <Compile Include="Conv\Library\IConv.cs" />
     <Compile Include="Conv\Library\User2Mp3.cs" />
+    <Compile Include="Conv\Library\Wav2Flac.cs" />
     <Compile Include="Conv\Library\Wav2Mp3.cs" />
     <Compile Include="Cue\CueInfo.cs" />
     <Compile Include="Cue\CueSpliter.cs" />

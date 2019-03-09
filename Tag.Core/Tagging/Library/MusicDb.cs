@@ -49,8 +49,9 @@ namespace Tag.Core.Tagging.Library
 
             using (var stream = request.GetRequestStream())
             {
+                var title = info.Album == string.Empty ? info.Title : info.Album;
                 byte[] data = Encoding.UTF8.GetBytes("action=advancedsearch" +
-                                $"&albumtitles={info.Album}" +
+                                $"&albumtitles={title}" +
                                 $"&catalognum={string.Empty/*info.DiscNum*/}" +
                                 $"&eanupcjan={string.Empty/*info.Barcode*/}" +
                                 $"&dosearch=Search+Albums+Now&pubtype%5B0%5D=1&pubtype%5B1%5D=1&pubtype%5B2%5D=1&distype%5B0%5D=1&distype%5B1%5D=1&distype%5B2%5D=1&distype%5B3%5D=1&distype%5B4%5D=1&distype%5B5%5D=1&distype%5B6%5D=1&distype%5B7%5D=1&distype%5B8%5D=1&category%5B1%5D=0&category%5B2%5D=0&category%5B4%5D=0&category%5B8%5D=0&category%5B16%5D=0" +

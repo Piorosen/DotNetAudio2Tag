@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tag.WPF.AutoMode
+namespace Tag.WPF
 {
     class AutoModeViewModel
     {

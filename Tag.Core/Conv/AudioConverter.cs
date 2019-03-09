@@ -86,6 +86,10 @@ namespace Tag.Core.Conv
                             return await Task.FromResult(false);
                         }
                     }
+                    else if (mode == ConvMode.MYFLAC)
+                    {
+                        Conv = new Wav2Flac();
+                    }
                     else if (mode == ConvMode.USER)
                     {
                         Conv = new User2Mp3();
