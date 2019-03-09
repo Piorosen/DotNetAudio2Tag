@@ -88,7 +88,9 @@ namespace Tag.WPF
             catch { err = e.ToString(); }
 
             Global.DialogIdentifier.LameEnable = false;
-            await DialogHost.Show(new LameTestCode(err), Global.DialogIdentifier.LameCodeTest);
+            await DialogHost.Show(new LameTestCode(err), Global.IsAutoMode
+                ? Global.DialogIdentifier.AutoLameCodeTest
+                : Global.DialogIdentifier.LameCodeTest);
 
         }
 

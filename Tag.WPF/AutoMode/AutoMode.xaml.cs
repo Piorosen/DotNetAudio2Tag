@@ -36,6 +36,7 @@ namespace Tag.WPF
 
         private void ItemDragDrop(object sender, DragEventArgs e)
         {
+            viewModel.Items.Clear();
             string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (var path in items)
             {

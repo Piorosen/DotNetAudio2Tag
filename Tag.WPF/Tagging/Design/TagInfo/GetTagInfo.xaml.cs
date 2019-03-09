@@ -50,15 +50,18 @@ namespace Tag.WPF
 
         private async void MusicBrainz_Search(object sender, RoutedEventArgs e)
         {
-            DialogHost.CloseDialogCommand.Execute(false, null);
-
             brainz = new MusicBrainzSearch(userinfo)
             {
                 Width = 800,
                 Height = 280,
 
             };
-            var t = await DialogHost.Show(brainz, Global.DialogIdentifier.BrainzSearch, OpenBrainzEvent);
+
+            var result = await DialogHost.Show(brainz, Global.IsAutoMode
+                ? Global.DialogIdentifier.AutoBrainzSearch
+                : Global.DialogIdentifier.BrainzSearch, OpenBrainzEvent);
+            await Task.Delay(500);
+            DialogHost.CloseDialogCommand.Execute(result, (sender as Button).CommandTarget);
         }
 
         private async void VGMDB_Search(object sender, RoutedEventArgs e)
@@ -68,11 +71,12 @@ namespace Tag.WPF
                 Width = 800,
                 Height = 280,
             };
-
-            DialogHost.CloseDialogCommand.Execute(false, null);
-
-            await DialogHost.Show(vgm, Global.DialogIdentifier.VgmSearch, OpenVgmEvent);
-
+            var result = await DialogHost.Show(vgm, Global.IsAutoMode
+                ? Global.DialogIdentifier.AutoVgmSearch
+                : Global.DialogIdentifier.VgmSearch, OpenVgmEvent);
+            await Task.Delay(500);
+            DialogHost.CloseDialogCommand.Execute(result, null);
+            
         }
 
         private void UserControl_KeyDown(object sender, KeyEventArgs e)

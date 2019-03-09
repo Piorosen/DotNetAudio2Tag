@@ -101,6 +101,7 @@
     <Compile Include="AutoMode\AutoMode.xaml.cs">
       <DependentUpon>AutoMode.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AutoMode\AutoModeModel.cs" />
     <Compile Include="AutoMode\AutoModeViewModel.cs" />
     <Compile Include="AutoMode\Check\AutoModeStatus.xaml.cs">
       <DependentUpon>AutoModeStatus.xaml</DependentUpon>

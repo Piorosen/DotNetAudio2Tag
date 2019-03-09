@@ -16,6 +16,7 @@ namespace Tag.Setting
         public static DialogIdentifier DialogIdentifier => DialogIdentifier.Insatence;
 
         public static bool CacheImageDelete = false;
+        public static bool IsAutoMode = false;
         
     }
 }

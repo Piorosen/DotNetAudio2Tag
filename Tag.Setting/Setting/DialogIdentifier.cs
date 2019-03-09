@@ -24,6 +24,13 @@ namespace Tag.Setting.Setting
         public readonly string AutoModeCodec = "AutoModeCodec";
         public readonly string AutoModeTagSelect = "AutoModeTagSelect";
 
+        public readonly string AutoConvertUserMode = "AutoConvertUserMode";
+        public readonly string AutoBrainzSearch = "AutoBrainzSearch";
+        public readonly string AutoVgmSearch = "AutoVgmSearch";
+        public readonly string AutoCheckTagInfo = "AutoCheckTagInfo";
+        public readonly string AutoLameCodeTest = "AutoLameCodeTest";
+
+
         private bool _taggingEnable;
         private bool _convertEnable;
         private bool _settingEnable;

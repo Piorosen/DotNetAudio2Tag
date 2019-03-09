@@ -57,9 +57,10 @@ namespace Tag.WPF
             }
         }
 
-        private void No_Click(object sender, RoutedEventArgs e)
+        private async void No_Click(object sender, RoutedEventArgs e)
         {
-            DialogHost.CloseDialogCommand.Execute(false, null);
+            await Task.Delay(500);
+            DialogHost.CloseDialogCommand.Execute(false, (sender as Button).CommandTarget);
             Global.DialogIdentifier.TaggingEnable = true;
 
         }

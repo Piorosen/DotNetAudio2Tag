@@ -2,26 +2,47 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tag.Core.Cue;
+using Tag.Core.Tagging;
 using Tag.Setting;
 
 namespace Tag.WPF
 {
     enum AutoModeTag : int
     {
-        CueSplit = 1 << 0,
-        Conv = 1 << 1,
-        Tagging = 1 << 2
+        CueSplit = 1,
+        Conv = 2,
+        Tagging = 4
     }
     class AutoModeViewModel
     {
-        public ObservableCollection<CueSplitModel> Items { get; set; } = new ObservableCollection<CueSplitModel>();
+        public ObservableCollection<AutoModeModel> Items { get; set; } = new ObservableCollection<AutoModeModel>();
 
         public void AddFile(string file)
         {
+            var ext = Path.GetExtension(file).ToLower();
 
+            if (ext == ".cue")
+            {
+                CueSpliter cue = new CueSpliter();
+                cue.AddFile(file);
+                foreach (var item in cue[0].Track)
+                {
+                    Items.Add(new AutoModeModel(item)
+                    {
+                        Path = file
+                    });
+                }
+            }
+            else
+            {
+                Items.Add(new AutoModeModel(file));
+            }
+            
         }
 
         bool CheckCueSplit()
@@ -37,25 +58,74 @@ namespace Tag.WPF
             return false;
         }
 
-        bool CheckTagging()
+        async Task<bool> CheckTagging(ObservableCollection<TaggingModel> data)
         {
-            return false;
+            var check = new GetTagInfo(data[0].TagInfo, data);
+
+            var result = await DialogHost.Show(check, Global.DialogIdentifier.AutoModeTagSelect);
+
+            return true;
         }
 
         async Task<bool> CheckMode(int run)
         {
+            string ext = Path.GetExtension(Items[0].Path).ToLower();
+            ObservableCollection<TaggingModel> list = new ObservableCollection<TaggingModel>();
+
+            if (ext == ".cue")
+            {
+                CueSpliter cue = new CueSpliter();
+                cue.AddFile(Items[0].Path);
+
+                foreach (var item in cue.List()[0].Track)
+                {
+                    var model = new TaggingModel
+                    {
+                        TagInfo = new TagInfo
+                        {
+                            Album = item.Album,
+                            Title = item.Title,
+                        },
+                        WaveFormat = new WaveFormatModel
+                        {
+                            Length = item.DurationMS / 1000.0
+                        }
+                    };
+                    model.TagInfo.Track.Add((uint)item.Track);
+                    model.TagInfo.Artist.Add(item.Artist);
+                    model.TagInfo.Composer.Add(item.Composer);
+                    list.Add(model);
+                }
+            }
+            else
+            {
+                foreach (var item in Items)
+                {
+                    var model = new TaggingModel
+                    {
+                        TagInfo = item.Tag,
+                        WaveFormat = new WaveFormatModel
+                        {
+                            Bitrate = item.Format.SampleRate,
+                            Channel = item.Format.Channels,
+                            Length = item.DurationMS
+                        }
+                    };
+                }
+            }
+
             bool result = true;
-            if ((run & (int)AutoModeTag.CueSplit) == 1)
+            if ((run & (int)AutoModeTag.CueSplit) == (int)AutoModeTag.CueSplit)
             {
                 result &= CheckCueSplit();
             }
-            if ((run & (int)AutoModeTag.Conv) == 1)
+            if ((run & (int)AutoModeTag.Conv) == (int)AutoModeTag.Conv)
             {
                 result &= await CheckConv();
             }
-            if ((run & (int)AutoModeTag.Tagging) == 1)
+            if ((run & (int)AutoModeTag.Tagging) == (int)AutoModeTag.Tagging)
             {
-                result &= CheckTagging();
+                result &= await CheckTagging(list);
             }
             return true;
         }
@@ -64,10 +134,13 @@ namespace Tag.WPF
 
         public async void Execute(int run)
         {
-            if (await CheckMode(run))
+            Global.IsAutoMode = true;
+            var result = await CheckMode(run);
+            if (result)
             {
 
             }
+            
         }
     }
 }

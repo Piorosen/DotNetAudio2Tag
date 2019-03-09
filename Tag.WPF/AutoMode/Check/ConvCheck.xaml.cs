@@ -62,7 +62,7 @@ namespace Tag.WPF
             };
 
             Global.DialogIdentifier.ConvertEnable = false;
-            var result = (ValueTuple<string, string>)(await DialogHost.Show(Content, Global.DialogIdentifier.ConvertUserMode));
+            var result = (ValueTuple<string, string>)(await DialogHost.Show(Content, Global.DialogIdentifier.AutoConvertUserMode));
 
             Param = result == (string.Empty, string.Empty) ? Param : result;
         }
