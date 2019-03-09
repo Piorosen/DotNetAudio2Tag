@@ -44,9 +44,10 @@ namespace Tag.WPF
             string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (var path in items)
             {
-               // var t = Path.GetExtension(path).ToLower();
-               // if (t == ".cue")
+                // var t = Path.GetExtension(path).ToLower();
+                // if (t == ".cue")
                 {
+                    viewModel.LabelVisibility = Visibility.Hidden;
                     viewModel.AddFile(path);
                 }
             }

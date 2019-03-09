@@ -2,10 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
 using Tag.Setting;
@@ -18,9 +21,17 @@ namespace Tag.WPF
         Conv = 2,
         Tagging = 4
     }
-    class AutoModeViewModel
+    class AutoModeViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<AutoModeModel> Items { get; set; } = new ObservableCollection<AutoModeModel>();
+        public Visibility LabelVisibility { get => _labelVisibility; set { _labelVisibility = value; OnPropertyChanged(); } }
+        Visibility _labelVisibility = Visibility.Visible;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChanged([CallerMemberName] string Name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
+        }
 
         public void AddFile(string file)
         {
