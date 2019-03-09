@@ -5,8 +5,48 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             Width="800" Height="450">
+    <Grid Margin="10"
+        >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="1" Margin="5, 0, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <CheckBox Content="Cue 분리"
+                  Grid.Row="0"
+                  />
+            <CheckBox Content="코덱 변환"
+                  Grid.Row="1"
+                  />
+            <CheckBox Content="자동 태깅"
+                  Grid.Row="2"
+                  />
+            <Button Content="작업 시작"
+                    
+                    Grid.Row="3"
+                    />
+        </Grid>
+
+        <ItemsControl
+            Grid.Row="0"
+            ItemsSource="{Binding Items}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        BorderBrush="{DynamicResource MaterialDesignDivider}"
+                        BorderThickness="0 0 0 1">
+                        <TextBlock Text="{Binding Title}"/>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+
+        </ItemsControl>
     </Grid>
 </UserControl>
