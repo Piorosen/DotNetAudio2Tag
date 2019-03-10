@@ -65,8 +65,14 @@ namespace Tag.WPF
         {
             var check = new ConvCheck();
             var result = await DialogHost.Show(check, Global.DialogIdentifier.AutoModeCodec);
-
-            return false;
+            if (result is bool)
+            {
+                if ((bool)result == false)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         async Task<bool> CheckTagging(ObservableCollection<TaggingModel> data)
@@ -74,7 +80,13 @@ namespace Tag.WPF
             var check = new GetTagInfo(data[0].TagInfo, data);
 
             var result = await DialogHost.Show(check, Global.DialogIdentifier.AutoModeTagSelect);
-
+            if (result is bool)
+            {
+                if ((bool)result == false)
+                {
+                    return false;
+                }
+            }
             return true;
         }
 
@@ -149,7 +161,9 @@ namespace Tag.WPF
             var result = await CheckMode(run);
             if (result)
             {
-
+                var check = new AutoModeStatus(run);
+                
+                await DialogHost.Show(check, Global.DialogIdentifier.AutoModeStatus);
             }
             
         }

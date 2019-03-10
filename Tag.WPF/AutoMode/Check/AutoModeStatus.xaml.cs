@@ -20,9 +20,15 @@ namespace Tag.WPF
     /// </summary>
     public partial class AutoModeStatus : UserControl
     {
-        public AutoModeStatus()
+        AutoModeStatusViewModel viewModel;
+
+
+        public AutoModeStatus(int run)
         {
             InitializeComponent();
+            DataContext = viewModel = new AutoModeStatusViewModel();
         }
+
+
     }
 }

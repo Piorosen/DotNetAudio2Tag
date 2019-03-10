@@ -5,8 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             Height="300" Width="600">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Text="{Binding Title}"
+                   VerticalAlignment="Center"
+                   TextAlignment="Center"/>
+        <ProgressBar Grid.Row="1"
+                     Margin="10"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Stretch"
+                     Height="10"
+                     Value="{Binding Value}"
+                     >
             
+        </ProgressBar>
+        
     </Grid>
 </UserControl>
