@@ -28,7 +28,16 @@ namespace Tag.WPF
         public ImageSource ImageSource { get => _image; private set { _image = value; OnPropertyChanged(); } }
         public string ImageInfo { get => _imageInfo; set { _imageInfo = value; OnPropertyChanged(); } }
         public Visibility Visible { get => _visible; set { _visible = value; OnPropertyChanged(); } }
-        public Visibility Searching { get => _searching; set { _searching = value; OnPropertyChanged(); } }
+        public Visibility Searching
+        {
+            get => _searching;
+            set
+            {
+                _searching = value; OnPropertyChanged();
+                if (value == Visibility.Visible) { ButtonEnable = false; } else { ButtonEnable = true; }
+            }
+        }
+        public bool ButtonEnable { get => _buttonEnable; set { _buttonEnable = value; OnPropertyChanged(); } }
 
 
         ObservableCollection<TaggingModel> user;
@@ -105,6 +114,7 @@ namespace Tag.WPF
         private Visibility _visible = Visibility.Hidden;
         private string _imageInfo;
         private Visibility _searching;
+        private bool _buttonEnable = true;
 
         public async void SelectItem(int index, Control control)
         {

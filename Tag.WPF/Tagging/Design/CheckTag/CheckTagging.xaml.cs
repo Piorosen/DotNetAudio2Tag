@@ -41,16 +41,18 @@ namespace Tag.WPF
             viewModel.SetTagValue(info);
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        private async void Cancel_Click(object sender, RoutedEventArgs e)
         {
             DialogHost.CloseDialogCommand.Execute(false, null);
+            await Task.Delay(500);
             Global.DialogIdentifier.TaggingEnable = true;
         }
 
-        private void Yes_Click(object sender, RoutedEventArgs e)
+        private async void Yes_Click(object sender, RoutedEventArgs e)
         {
             viewModel.SaveTag();
             DialogHost.CloseDialogCommand.Execute(true, null);
+            await Task.Delay(500);
             Global.DialogIdentifier.TaggingEnable = true;
         }
 

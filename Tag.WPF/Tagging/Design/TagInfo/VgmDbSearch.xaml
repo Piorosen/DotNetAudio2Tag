@@ -172,6 +172,7 @@
                 Click="Yes_Click"
                 Content="선택"
                 Margin="10,10,0,8"
+                   IsEnabled="{Binding ButtonEnable}"
                 HorizontalAlignment="Left" Height="Auto"/>
             <Button Grid.Column="1"
                  HorizontalAlignment="Right"
