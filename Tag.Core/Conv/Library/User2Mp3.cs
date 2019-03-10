@@ -26,7 +26,7 @@ namespace Tag.Core.Conv.Library
             }
             try
             {
-                info.Format = info.Format.Replace("%SaveFile%", $"\"{info.ResultPath}\"");
+                info.Format = info.Format.Replace("%SaveFile%", $"\"{info.ResultPath}\\{info.FileName}.mp3\"");
             }
             catch { }
             if (!Directory.Exists(info.ResultPath))

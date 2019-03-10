@@ -20,7 +20,7 @@ namespace Tag.Core.Conv.Library
                 {
                     Directory.CreateDirectory(resultPath);
                 }
-                using (var mp3 = new LameMP3FileWriter($"{resultPath}", flac.WaveFormat, preset))
+                using (var mp3 = new LameMP3FileWriter($"{resultPath}\\{Path.GetFileNameWithoutExtension(filePath)}.mp3", flac.WaveFormat, preset))
                 {
                     byte[] buffer = new byte[flac.WaveFormat.BlockAlign * 100];
                     while (flac.Position < flac.Length)

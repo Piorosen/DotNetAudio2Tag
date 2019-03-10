@@ -82,7 +82,7 @@ namespace Tag.Core.Tagging
         {
         }
 
-        public TagInfo(TagInfo value)
+        public TagInfo(TagInfo value, string path = "")
         {
             Identifier = value.Identifier;
             Lang = value.Lang;
@@ -103,7 +103,14 @@ namespace Tag.Core.Tagging
             Format = value.Format.ToArray().ToList();
             Country = value.Country;
             TagType = value.TagType;
-            Path = value.Path;
+            if (path == string.Empty)
+            {
+                Path = value.Path;
+            }
+            else
+            {
+                Path = path;
+            }
         }
     }
 }

@@ -66,6 +66,8 @@ namespace Tag.Core.Conv
                 int percent = 0;
                 int CreateID = 0;
 
+                string resultext = "";
+
                 foreach (var value in AudioList)
                 {
                     Task worker = new Task(() => { });
@@ -76,10 +78,12 @@ namespace Tag.Core.Conv
                         if (value.Type == AudioType.WAV)
                         {
                             Conv = new Wav2Mp3();
+                            resultext = ".mp3";
                         }
                         else if (value.Type == AudioType.FLAC)
                         {
                             Conv = new Flac2Mp3();
+                            resultext = ".mp3";
                         }
                         else if (value.Type == AudioType.NONE)
                         {
@@ -89,23 +93,28 @@ namespace Tag.Core.Conv
                     else if (mode == ConvMode.MYFLAC)
                     {
                         Conv = new Wav2Flac();
+                        resultext = ".flac";
                     }
                     else if (mode == ConvMode.USER)
                     {
                         Conv = new User2Mp3();
+                        resultext = ".mp3";
                     }
 
                     worker = new Task(() =>
                     {
                         var id = CreateID++;
+                        string ext = resultext;
 
-                        value.ResultPath = resultPath + Path.GetFileName(value.ResultPath);
                         var tag = TagLib.File.Create(value.FilePath).Tag;
                         
                         foreach (var status in Conv?.Execute(value))
                         {
                             OnChangeExecute(status + id * 10000);
                         }
+
+                        value.ResultPath = resultPath + value.FileName + ext;
+
                         var file = TagLib.File.Create(value.ResultPath);
 
                         TagInfo.Move(file.Tag, tag);

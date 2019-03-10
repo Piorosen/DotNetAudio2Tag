@@ -1,4 +1,5 @@
-﻿using NAudio.Wave;
+﻿using ATL.CatalogDataReaders;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,18 +19,26 @@ namespace Tag.WPF
         public string Path { get => _path; set { _path = value; OnPropertyChanged(); } }
         public TagInfo Tag { get; set; }
         public WaveFormat Format { get; set; }
-
+        public AudioType Type { get; private set; }
         public AutoModeModel(string file)
         {
-            Tag = new TagInfo(TagLib.File.Create(file).Tag, file);
-            var audio = new AudioFileReader(file);
-            Format = audio.WaveFormat;
-            DurationMS = audio.TotalTime.Seconds;
+            using (var tag = TagLib.File.Create(file))
+            {
+                Tag = new TagInfo(tag.Tag, file);
+            }
+
+            using (var audio = new AudioFileReader(file))
+            {
+                Format = audio.WaveFormat;
+                DurationMS = audio.TotalTime.Seconds;
+            }
             Title = Tag.Title;
 
             Artist = string.Join("; ", Tag.Artist);
             Composer = string.Join("; ", Tag.Composer);
             Track = Tag.Track.Count != 0 ? (int)Tag.Track[0] : 1;
+
+            Type = System.IO.Path.GetExtension(file) == ".wav" ? AudioType.WAV : AudioType.FLAC;
 
             Path = file;
         }
@@ -52,6 +61,8 @@ namespace Tag.WPF
             Tag.Composer.Add(info.Artist);
             Tag.Track.Add((uint)info.Track);
             Tag.Album = info.Album;
+
+            Type = System.IO.Path.GetExtension(file) == ".wav" ? AudioType.WAV : AudioType.FLAC;
 
             Path = file;
         }

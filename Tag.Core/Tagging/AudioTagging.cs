@@ -55,6 +55,11 @@ namespace Tag.Core.Tagging
             tagList.Add(file);
             return true;
         }
+        public bool AddFile(TagInfo file, string path)
+        {
+            tagList.Add(new TagInfo(file, path));
+            return true;
+        }
 
         public bool AddFile(string filePath)
         {
@@ -90,23 +95,24 @@ namespace Tag.Core.Tagging
 
         private void Tagging(TagInfo taginfo)
         {
-            var mp3File = TagLib.File.Create(taginfo.Path);
-            mp3File.Tag.Title = taginfo.Title;
-            mp3File.Tag.Performers = taginfo.Artist?.ToArray();
-            mp3File.Tag.Album = taginfo.Album;
-            mp3File.Tag.Year = uint.Parse(taginfo.Year?.Split('-')[0]);
-            mp3File.Tag.Track = taginfo.Track.Count != 0 ? taginfo.Track[0] : 1;
-            mp3File.Tag.TrackCount = taginfo.Track.Aggregate((a, b) => a + b);
-            mp3File.Tag.Genres = taginfo.Genre?.ToArray();
-            mp3File.Tag.Comment = taginfo.Comment;
-            mp3File.Tag.AlbumArtists = taginfo.AlbumArtist?.ToArray();
-            mp3File.Tag.Composers = taginfo.Composer?.ToArray();
-            mp3File.Tag.MusicBrainzDiscId = taginfo.DiscNum;
-            mp3File.Tag.TrackCount = (uint)taginfo.Track.Count;
-            mp3File.Tag.Conductor = string.Join(";", taginfo.Publisher);
-            mp3File.Tag.Pictures = taginfo.Image?.ToArray();
-            mp3File.Save();
+            using (var mp3File = TagLib.File.Create(taginfo.Path))
+            {
+                mp3File.Tag.Title = taginfo.Title;
+                mp3File.Tag.Performers = taginfo.Artist?.ToArray();
+                mp3File.Tag.Album = taginfo.Album;
+                mp3File.Tag.Year = uint.Parse(taginfo.Year?.Split('-')[0]);
+                mp3File.Tag.Track = taginfo.Track.Count != 0 ? taginfo.Track[0] : 1;
+                mp3File.Tag.TrackCount = taginfo.Track.Aggregate((a, b) => a + b);
+                mp3File.Tag.Genres = taginfo.Genre?.ToArray();
+                mp3File.Tag.Comment = taginfo.Comment;
+                mp3File.Tag.AlbumArtists = taginfo.AlbumArtist?.ToArray();
+                mp3File.Tag.Composers = taginfo.Composer?.ToArray();
+                mp3File.Tag.MusicBrainzDiscId = taginfo.DiscNum;
+                mp3File.Tag.TrackCount = (uint)taginfo.Track.Count;
+                mp3File.Tag.Conductor = string.Join(";", taginfo.Publisher);
+                mp3File.Tag.Pictures = taginfo.Image?.ToArray();
+                mp3File.Save();
+            }
         }
-        
     }
 }

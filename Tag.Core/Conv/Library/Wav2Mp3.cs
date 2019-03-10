@@ -21,7 +21,7 @@ namespace Tag.Core.Conv.Library
                 {
                     Directory.CreateDirectory(resultPath);
                 }
-                using (var mp3 = new LameMP3FileWriter($"{resultPath}", wav.WaveFormat, preset))
+                using (var mp3 = new LameMP3FileWriter($"{resultPath}\\{Path.GetFileNameWithoutExtension(filePath)}.mp3", wav.WaveFormat, preset))
                 {
                     byte[] buffer = new byte[wav.WaveFormat.BlockAlign * 100];
                     while (wav.Position < wav.Length)

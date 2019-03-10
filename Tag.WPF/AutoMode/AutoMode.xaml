@@ -19,36 +19,36 @@
         
         <wpf:DialogHost
             Identifier="AutoModeStatus"
-            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
             Width="Auto" Height="Auto"/>
         <wpf:DialogHost
             Identifier="AutoModeCodec"
-            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
             Width="Auto" Height="Auto"/>
         <wpf:DialogHost
             Identifier="AutoModeTagSelect"
-            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
             Width="Auto" Height="Auto"/>
 
         <wpf:DialogHost
             Identifier="AutoConvertUserMode"
-            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
             Width="Auto" Height="Auto"/>
         <wpf:DialogHost
             Identifier="AutoBrainzSearch"
-            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
             Width="Auto" Height="Auto"/>
         <wpf:DialogHost
             Identifier="AutoVgmSearch"
-            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
             Width="Auto" Height="Auto"/>
         <wpf:DialogHost
             Identifier="AutoCheckTagInfo"
-            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
             Width="Auto" Height="Auto"/>
         <wpf:DialogHost
             Identifier="AutoLameCodeTest"
-            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
             Width="Auto" Height="Auto"/>
 
         <TextBlock Grid.Column="0"

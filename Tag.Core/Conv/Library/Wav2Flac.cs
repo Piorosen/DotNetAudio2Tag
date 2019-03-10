@@ -25,7 +25,7 @@ namespace Tag.Core.Conv.Library
                 {
                     Directory.CreateDirectory(resultPath);
                 }
-                using (var flac = new FlakeWriter($"{resultPath}", config))
+                using (var flac = new FlakeWriter($"{resultPath}\\{Path.GetFileNameWithoutExtension(filePath)}.flac", config))
                 {
                     var wavbuffer = new byte[wav.WaveFormat.BlockAlign * 100];
 

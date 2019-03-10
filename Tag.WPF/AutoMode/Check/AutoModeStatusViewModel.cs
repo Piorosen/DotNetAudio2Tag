@@ -18,112 +18,118 @@ namespace Tag.WPF
         AudioConverter audioconv = new AudioConverter();
         AudioTagging audiotag = new AudioTagging();
 
-        public string Title { get; set; }
-        public int Value { get; set; }
+        Dictionary<int, int> status = new Dictionary<int, int>();
+        private string _title;
+        private int _value;
 
-        // run 정보와 현재 파일 상태, 태그정보
-        public async void Execute(int run, string resultPath, List<AutoModeModel> data, List<TagInfo> tag, ConvCheckModel preset)
+        public string Title { get => _title; set { _title = value; OnPropertyChanged(); } }
+        public int Value { get => _value; set { _value = value; OnPropertyChanged(); } }
+
+        public AutoModeStatusViewModel()
         {
-            cue.List().Clear();
-            audioconv.List().Clear();
-            audiotag.List().Clear();
-
-            if ((run & 1) == 1)
+            audioconv.ChangeExecute += (s, e) =>
             {
-                cue.AddFile(data[0].Path);
-                foreach (var item in cue.List())
+                try
                 {
-                    item.SavePath = resultPath + @"\Cue\";
+                    status[(e / 10000)] = e % 1000;
+                    Value = status.Values.Sum() / audioconv.List().Count();
                 }
-                Title = "Cue 분리 중";
+                catch
+                {
 
-                foreach (var value in cue.Execute())
-                {
-                    Value = value;
                 }
+            };
+        }
+
+        void CueSplit(List<AutoModeModel> data, string resultPath)
+        {
+            cue.AddFile(data[0].Path);
+            foreach (var item in cue.List())
+            {
+                item.SavePath = resultPath + @"\Cue\";
             }
-            if ((run & 4) == 4)
-            {
-                Title = "Cue 태깅 중";
-                for (int i = 0; i < cue[0].Track.Count; i++)
-                {
-                    string file = cue[0].SavePath + $"{cue[0].Track[i].Track}. " + cue[0].Track[i].Title;
-                    switch (cue[0].AudioType)
-                    {
-                        case AudioType.WAV:
-                            file += ".wav";
-                            break;
-                        case AudioType.FLAC:
-                            file += ".flac";
-                            break;
-                    }
-                    audiotag.AddFile(file);
-                }
+            Title = "Cue 분리 중";
 
-                for (int i = 0; i < (audiotag.List().Count < tag.Count ? audiotag.List().Count : tag.Count); i++)
+            foreach (var value in cue.Execute())
+            {
+                Value = value;
+            }
+            data.Clear();
+            for (int i = 0; i < cue[0].Track.Count; i++)
+            {
+                data.Add(new AutoModeModel(cue[0].SavePath + $"{cue[0].Track[i].Track}. " + cue[0].Track[i].Title +
+                    (cue[0].AudioType == AudioType.WAV ? ".wav" : ".flac")));
+            }
+        }
+
+        async Task<bool> Conv(List<AutoModeModel> data, string resultPath, ConvCheckModel preset)
+        {
+            Title = "컨버팅 중";
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                string file = data[i].Path;
+
+                audioconv.AddFile(new ConvInfo
                 {
-                    audiotag.List()[i] = tag[i];
-                }
+                    FilePath = file,
+                    Type = data[i].Type,
+                    ResultPath = resultPath + @"\Conv\",
+                    Source = preset.Param.Path,
+                    Format = preset.Param.Format
+                });
+            }
+            return await audioconv.Execute(preset.preset.ConvMode, 4, resultPath + @"\Conv\");
+        }
+
+        void Tagging(List<AutoModeModel> data, List<TagInfo> tag)
+        {
+            Title = "Cue 태깅 중";
+            for (int i = 0; i < data.Count; i++)
+            {
+                string file = data[i].Path;
+                audiotag.AddFile(tag[i], file);
             }
 
-            if ((run & 2) == 2)
+            foreach (var value in audiotag.Execute())
             {
-                Title = "컨버팅 중";
-
-                for (int i = 0; i < cue[0].Track.Count; i++)
-                {
-                    string file = cue[0].SavePath + $"{cue[0].Track[i].Track}. " + cue[0].Track[i].Title;
-                    switch (cue[i].AudioType)
-                    {
-                        case AudioType.WAV:
-                            file += ".wav";
-                            break;
-                        case AudioType.FLAC:
-                            file += ".flac";
-                            break;
-                    }
-                    audioconv.AddFile(new ConvInfo
-                    {
-                        FilePath = file,
-                        Type = cue[i].AudioType,
-                        ResultPath = resultPath + @"\Conv\",
-                        Source = preset.Param.Path,
-                        Format = preset.Param.Format
-                    });
-                    Dictionary<int, int> status = new Dictionary<int, int>();
-                    audioconv.ChangeExecute += (s, e) =>
-                    {
-                        status[(e / 10000)] = e % 1000;
-                        Value = status.Values.Sum() / audioconv.List().Count;
-                    };
-                    bool p = await audioconv.Execute(preset.preset.ConvMode, 4, resultPath + @"\Conv\");
-                }
             }
-            if ((run & 4) == 4)
+        }
+        // run 정보와 현재 파일 상태, 태그정보
+        public async Task<bool> Execute(int run, string resultPath, List<AutoModeModel> data, List<TagInfo> tag, ConvCheckModel preset)
+        {
+            await Task.Run(async () =>
             {
-                Title = "음악 파일 태깅 중";
+                cue.List().Clear();
+                audioconv.List().Clear();
                 audiotag.List().Clear();
 
-                for (int i = 0; i < cue[0].Track.Count; i++)
+                if ((run & 1) == 1)
                 {
-                    string file = cue[0].SavePath + $"{cue[0].Track[i].Track}. " + cue[0].Track[i].Title;
-                    switch (cue[0].AudioType)
+                    CueSplit(data, resultPath);
+
+                    if ((run & 4) == 4)
                     {
-                        case AudioType.WAV:
-                            file += ".wav";
-                            break;
-                        case AudioType.FLAC:
-                            file += ".flac";
-                            break;
+                        Tagging(data, tag);
                     }
-                    audiotag.AddFile(file);
                 }
 
-                for (int i = 0; i < (audiotag.List().Count < tag.Count ? audiotag.List().Count : tag.Count); i++)
+                if ((run & 2) == 2)
                 {
-                    audiotag.List()[i] = tag[i];
+                    var result = await Conv(data, resultPath, preset);
+
+                    if ((run & 4) == 4)
+                    {
+                        Tagging(data, tag);
+                    }
                 }
-            }
+
+                if (run == 4)
+                {
+                    Tagging(data, tag);
+                }
+            });
+            return true;
         }
 
 

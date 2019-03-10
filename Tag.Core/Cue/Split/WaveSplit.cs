@@ -17,7 +17,7 @@ namespace Tag.Core.Cue.Split
                 int percent = 0;
                 foreach (var trackinfo in info.Track)
                 {
-                    if (Directory.Exists(info.SavePath))
+                    if (!Directory.Exists(info.SavePath))
                     {
                         Directory.CreateDirectory(info.SavePath);
                     }

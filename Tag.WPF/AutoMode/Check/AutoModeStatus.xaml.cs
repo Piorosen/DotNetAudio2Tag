@@ -35,12 +35,13 @@ namespace Tag.WPF
             DataContext = viewModel = new AutoModeStatusViewModel();
             this.data = data;
             this.run = run;
+            this.tag = tag;
             this.result = result;
             this.preset = preset;
         }
-        public void Execute()
+        public async void Execute()
         {
-            viewModel.Execute(run, result,  data, tag, preset);
+            await viewModel.Execute(run, result,  data, tag, preset);
         }
 
 
