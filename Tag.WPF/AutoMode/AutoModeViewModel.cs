@@ -75,11 +75,26 @@ namespace Tag.WPF
 
         bool CheckCueSplit()
         {
+            foreach (var value in Items)
+            {
+                if (Path.GetExtension(value.Path) != ".cue")
+                {
+                    return false;
+                }
+            }
             return true;
         }
 
         async Task<bool> CheckConv()
         {
+            foreach (var value in Items)
+            {
+                if (Path.GetExtension(value.Path) == ".cue")
+                {
+                    return false;
+                }
+            }
+
             var check = new ConvCheck();
             var result = await DialogHost.Show(check, Global.DialogIdentifier.AutoModeCodec);
 
