@@ -70,12 +70,38 @@ namespace Tag.WPF
         private void ItemDragDrop(object sender, DragEventArgs e)
         {
             viewModel.Items.Clear();
+            int cue = 0, other = 0;
+
             
+
             string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (var value in items)
+            {
+                if (System.IO.Path.GetExtension(value).ToLower() == ".cue")
+                {
+                    cue++;
+                }
+                else
+                {
+                    other++;
+                }
+            }
+            if (cue == 0 && other > 0)
+            {
+
+            }else if (cue == 1 && other == 0)
+            {
+
+            }
+            else
+            {
+                return;
+            }
+
             foreach (var path in items)
             {
-                // var t = Path.GetExtension(path).ToLower();
-                // if (t == ".cue")
+                var t = System.IO.Path.GetExtension(path).ToLower();
+                if (t == ".cue")
                 {
                     viewModel.LabelVisibility = Visibility.Hidden;
                     viewModel.AddFile(path);
