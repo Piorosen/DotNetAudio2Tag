@@ -30,7 +30,7 @@ namespace Tag.WPF
             using (var audio = new AudioFileReader(file))
             {
                 Format = audio.WaveFormat;
-                DurationMS = audio.TotalTime.Seconds;
+                DurationMS = audio.TotalTime.TotalMilliseconds;
             }
             Title = Tag.Title;
 

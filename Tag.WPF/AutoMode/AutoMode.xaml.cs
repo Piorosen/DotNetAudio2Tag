@@ -36,30 +36,41 @@ namespace Tag.WPF
 
         private void Execute_Click(object sender, RoutedEventArgs e)
         {
-            int run = GetNum(CheckBoxCueSplit) | GetNum(CheckBoxConv) | GetNum(CheckBoxTagging);
-
-            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
-
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (viewModel.Items.Count == 0)
             {
-                if (Directory.Exists(dialog.SelectedPath) == false)
+                return;
+            }
+            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+            int run = GetNum(CheckBoxCueSplit) | GetNum(CheckBoxConv) | GetNum(CheckBoxTagging);
+            var path = string.Empty;
+
+            if (run != 4)
+            {
+                
+
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    Execute_Click(sender, e);
-                }
-                else
-                {
-                    if (dialog.SelectedPath != string.Empty)
+                    if (Directory.Exists(dialog.SelectedPath) == false)
                     {
-                        viewModel.Execute(run, dialog.SelectedPath + @"\");
+                        Execute_Click(sender, e);
+                    }
+                    else
+                    {
+                        if (dialog.SelectedPath != string.Empty)
+                        {
+                            path = dialog.SelectedPath + @"\";
+                        }
                     }
                 }
             }
+
+            viewModel.Execute(run, path);
         }
 
         private void ItemDragDrop(object sender, DragEventArgs e)
         {
             viewModel.Items.Clear();
-
+            
             string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (var path in items)
             {

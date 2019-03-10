@@ -190,6 +190,7 @@ namespace Tag.WPF
         
         public async void Execute(int run, string resultPath)
         {
+            Global.DialogIdentifier.AutoModeEnable = false;
             Global.IsAutoMode = true;
             var result = await CheckMode(run);
             if (result)
@@ -213,6 +214,7 @@ namespace Tag.WPF
                     check.Execute();
                 });
             }
+            Global.DialogIdentifier.AutoModeEnable = true;
         }
     }
 }
