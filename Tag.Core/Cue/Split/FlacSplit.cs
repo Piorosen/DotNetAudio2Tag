@@ -22,7 +22,7 @@ namespace Tag.Core.Cue.Split
             using (FlakeReader b = new FlakeReader(info.WavPath, stream.BaseStream))
             {
                 int percent = 0;
-                if (Directory.Exists(info.SavePath))
+                if (!Directory.Exists(info.SavePath))
                 {
                     Directory.CreateDirectory(info.SavePath);
                 }

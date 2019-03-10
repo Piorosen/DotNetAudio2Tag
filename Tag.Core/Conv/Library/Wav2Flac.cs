@@ -21,7 +21,7 @@ namespace Tag.Core.Conv.Library
             using (var wav = new WaveFileReader(filePath))
             {
                 var config = new AudioPCMConfig(wav.WaveFormat.BitsPerSample, wav.WaveFormat.Channels, wav.WaveFormat.SampleRate);
-                if (Directory.Exists(resultPath))
+                if (!Directory.Exists(resultPath))
                 {
                     Directory.CreateDirectory(resultPath);
                 }

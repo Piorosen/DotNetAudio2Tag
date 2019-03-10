@@ -29,7 +29,7 @@ namespace Tag.Core.Conv.Library
                 info.Format = info.Format.Replace("%SaveFile%", $"\"{info.ResultPath}\"");
             }
             catch { }
-            if (Directory.Exists(info.ResultPath))
+            if (!Directory.Exists(info.ResultPath))
             {
                 Directory.CreateDirectory(info.ResultPath);
             }

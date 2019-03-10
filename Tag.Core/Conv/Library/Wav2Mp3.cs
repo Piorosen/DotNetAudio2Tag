@@ -17,7 +17,7 @@ namespace Tag.Core.Conv.Library
             int percent = 0;
             using (var wav = new WaveFileReader(filePath))
             {
-                if (Directory.Exists(resultPath))
+                if (!Directory.Exists(resultPath))
                 {
                     Directory.CreateDirectory(resultPath);
                 }
