@@ -11,7 +11,7 @@ using Tag.Core.Tagging;
 
 namespace Tag.WPF
 {
-    class AutoModeModel : TrackInfo, INotifyPropertyChanged
+    public class AutoModeModel : TrackInfo, INotifyPropertyChanged
     {
         private string _path;
 
@@ -34,7 +34,7 @@ namespace Tag.WPF
             Path = file;
         }
 
-        public AutoModeModel(TrackInfo info)
+        public AutoModeModel(TrackInfo info, string file)
         {
             this.Artist = info.Artist;
             this.Composer = info.Composer;
@@ -43,7 +43,17 @@ namespace Tag.WPF
             this.Title = info.Title;
             this.Track = info.Track;
             this.TimeOffSet = info.TimeOffSet;
-            
+            Format = new WaveFormat(0, 0, 2);
+            Tag = new TagInfo
+            {
+                Title = Title,
+            };
+            Tag.Artist.Add(info.Artist);
+            Tag.Composer.Add(info.Artist);
+            Tag.Track.Add((uint)info.Track);
+            Tag.Album = info.Album;
+
+            Path = file;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

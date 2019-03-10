@@ -22,6 +22,10 @@ namespace Tag.Core.Cue.Split
             using (FlakeReader b = new FlakeReader(info.WavPath, stream.BaseStream))
             {
                 int percent = 0;
+                if (Directory.Exists(info.SavePath))
+                {
+                    Directory.CreateDirectory(info.SavePath);
+                }
                 foreach (var trackinfo in info.Track)
                 {
                     var config = b.PCM;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,10 @@ namespace Tag.Core.Conv.Library
                 info.Format = info.Format.Replace("%SaveFile%", $"\"{info.ResultPath}\"");
             }
             catch { }
-
+            if (Directory.Exists(info.ResultPath))
+            {
+                Directory.CreateDirectory(info.ResultPath);
+            }
             Process proc = new Process();
             try
             {

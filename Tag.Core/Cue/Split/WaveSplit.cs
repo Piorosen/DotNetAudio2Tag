@@ -1,6 +1,7 @@
 ﻿using NAudio.Wave;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,10 @@ namespace Tag.Core.Cue.Split
                 int percent = 0;
                 foreach (var trackinfo in info.Track)
                 {
+                    if (Directory.Exists(info.SavePath))
+                    {
+                        Directory.CreateDirectory(info.SavePath);
+                    }
                     using (WaveFileWriter writer = new WaveFileWriter(info.SavePath + $"{trackinfo.Track}. " + trackinfo.Title + ".wav", reader.WaveFormat))
                     {
 

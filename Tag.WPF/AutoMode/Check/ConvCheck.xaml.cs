@@ -69,7 +69,7 @@ namespace Tag.WPF
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            DialogHost.CloseDialogCommand.Execute(ConvertMode[Index], (sender as Button).CommandTarget);
+            DialogHost.CloseDialogCommand.Execute(new ConvCheckModel { preset = ConvertMode[Index], Param = Param }, (sender as Button).CommandTarget);
         }
     }
 }

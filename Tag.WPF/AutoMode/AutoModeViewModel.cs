@@ -24,8 +24,16 @@ namespace Tag.WPF
     class AutoModeViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<AutoModeModel> Items { get; set; } = new ObservableCollection<AutoModeModel>();
+
         public Visibility LabelVisibility { get => _labelVisibility; set { _labelVisibility = value; OnPropertyChanged(); } }
         Visibility _labelVisibility = Visibility.Visible;
+
+
+
+        ObservableCollection<TaggingModel> list = new ObservableCollection<TaggingModel>();
+        ConvCheckModel ConvPreset = new ConvCheckModel();
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string Name = "")
@@ -36,24 +44,19 @@ namespace Tag.WPF
         public void AddFile(string file)
         {
             var ext = Path.GetExtension(file).ToLower();
-
             if (ext == ".cue")
             {
                 CueSpliter cue = new CueSpliter();
                 cue.AddFile(file);
                 foreach (var item in cue[0].Track)
                 {
-                    Items.Add(new AutoModeModel(item)
-                    {
-                        Path = file
-                    });
+                    Items.Add(new AutoModeModel(item, file));
                 }
             }
             else
             {
                 Items.Add(new AutoModeModel(file));
             }
-            
         }
 
         bool CheckCueSplit()
@@ -65,21 +68,39 @@ namespace Tag.WPF
         {
             var check = new ConvCheck();
             var result = await DialogHost.Show(check, Global.DialogIdentifier.AutoModeCodec);
-            if (result is bool)
+
+            if (result is ConvCheckModel)
             {
-                if ((bool)result == false)
-                {
-                    return false;
-                }
+                ConvPreset = result as ConvCheckModel;
+                return true;
             }
-            return true;
+            else
+            {
+                return false;
+            }
         }
 
-        async Task<bool> CheckTagging(ObservableCollection<TaggingModel> data)
+        async Task<bool> CheckTagging()
         {
-            var check = new GetTagInfo(data[0].TagInfo, data);
+            list.Clear();
+            foreach (var value in Items)
+            {
+                list.Add(new TaggingModel
+                {
+                    TagInfo = value.Tag,
+                    WaveFormat = new WaveFormatModel
+                    {
+                        Bitrate = value.Format.SampleRate,
+                        Channel = value.Format.Channels,
+                        Length = value.DurationMS / 1000
+                    }
+                });
+            }
+
+            var check = new GetTagInfo(Items[0].Tag, list);
 
             var result = await DialogHost.Show(check, Global.DialogIdentifier.AutoModeTagSelect);
+
             if (result is bool)
             {
                 if ((bool)result == false)
@@ -93,7 +114,6 @@ namespace Tag.WPF
         async Task<bool> CheckMode(int run)
         {
             string ext = Path.GetExtension(Items[0].Path).ToLower();
-            ObservableCollection<TaggingModel> list = new ObservableCollection<TaggingModel>();
 
             if (ext == ".cue")
             {
@@ -148,24 +168,37 @@ namespace Tag.WPF
             }
             if ((run & (int)AutoModeTag.Tagging) == (int)AutoModeTag.Tagging)
             {
-                result &= await CheckTagging(list);
+                result &= await CheckTagging();
             }
-            return true;
+            return result;
         }
 
         
-
-        public async void Execute(int run)
+        public async void Execute(int run, string resultPath)
         {
             Global.IsAutoMode = true;
             var result = await CheckMode(run);
             if (result)
             {
-                var check = new AutoModeStatus(run);
+                var list = new List<AutoModeModel>();
+                var tag = new List<TagInfo>();
+                foreach (var value in this.list)
+                {
+                    tag.Add(value.TagInfo);
+                }
+
+                foreach (var item in Items)
+                {
+                    list.Add(item);
+                }
+                // run 정보와 현재 파일 상태, 태그정보
+                var check = new AutoModeStatus(run, resultPath, list, tag, ConvPreset);
                 
-                await DialogHost.Show(check, Global.DialogIdentifier.AutoModeStatus);
+                await DialogHost.Show(check, Global.DialogIdentifier.AutoModeStatus, (object a, DialogOpenedEventArgs b) =>
+                {
+                    check.Execute();
+                });
             }
-            
         }
     }
 }

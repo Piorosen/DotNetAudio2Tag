@@ -17,6 +17,10 @@ namespace Tag.Core.Conv.Library
             int percent = 0;
             using (var wav = new WaveFileReader(filePath))
             {
+                if (Directory.Exists(resultPath))
+                {
+                    Directory.CreateDirectory(resultPath);
+                }
                 using (var mp3 = new LameMP3FileWriter($"{resultPath}", wav.WaveFormat, preset))
                 {
                     byte[] buffer = new byte[wav.WaveFormat.BlockAlign * 100];

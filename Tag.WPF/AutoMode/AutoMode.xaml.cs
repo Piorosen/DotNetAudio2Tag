@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ToastNotifications.Messages;
 
 namespace Tag.WPF
 {
@@ -35,12 +37,29 @@ namespace Tag.WPF
         private void Execute_Click(object sender, RoutedEventArgs e)
         {
             int run = GetNum(CheckBoxCueSplit) | GetNum(CheckBoxConv) | GetNum(CheckBoxTagging);
-            viewModel.Execute(run);
+
+            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (Directory.Exists(dialog.SelectedPath) == false)
+                {
+                    Execute_Click(sender, e);
+                }
+                else
+                {
+                    if (dialog.SelectedPath != string.Empty)
+                    {
+                        viewModel.Execute(run, dialog.SelectedPath + @"\");
+                    }
+                }
+            }
         }
 
         private void ItemDragDrop(object sender, DragEventArgs e)
         {
             viewModel.Items.Clear();
+
             string[] items = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (var path in items)
             {

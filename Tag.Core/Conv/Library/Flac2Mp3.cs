@@ -16,6 +16,10 @@ namespace Tag.Core.Conv.Library
             int percent = 0;
             using (var flac = new FlacReader(filePath))
             {
+                if (Directory.Exists(resultPath))
+                {
+                    Directory.CreateDirectory(resultPath);
+                }
                 using (var mp3 = new LameMP3FileWriter($"{resultPath}", flac.WaveFormat, preset))
                 {
                     byte[] buffer = new byte[flac.WaveFormat.BlockAlign * 100];
