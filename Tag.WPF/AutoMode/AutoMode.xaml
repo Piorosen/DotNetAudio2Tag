@@ -148,6 +148,7 @@
             <CheckBox Content="Cue 분리"
                   Grid.Column="0"
                   x:Name="CheckBoxCueSplit"
+                      IsEnabled="{Binding ButtonEnable}"
                   HorizontalAlignment="Center"
                 >
                 <CheckBox.Tag>
@@ -160,6 +161,7 @@
                   Grid.Column="1"
                   x:Name="CheckBoxConv"
                   HorizontalAlignment="Center"
+                      IsEnabled="{Binding ButtonEnable}"
                   >
                 <CheckBox.Tag>
                     <System:Int32>
@@ -171,6 +173,7 @@
                   Grid.Column="2"
                   x:Name="CheckBoxTagging"
                   HorizontalAlignment="Center"
+                      IsEnabled="{Binding ButtonEnable}"
                   >
                 <CheckBox.Tag>
                     <System:Int32>
@@ -185,6 +188,7 @@
                     Width="130"
                     VerticalAlignment="Bottom"
                     Click="Execute_Click"
+                    IsEnabled="{Binding ButtonEnable}"
                     />
         </Grid>
     </Grid>

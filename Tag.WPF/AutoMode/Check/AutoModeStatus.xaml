@@ -5,16 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
              mc:Ignorable="d" 
-             Height="300" Width="600">
+             Height="150" Width="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0"
                    Text="{Binding Title}"
                    VerticalAlignment="Center"
-                   TextAlignment="Center"/>
+                   TextAlignment="Center"
+                   Grid.ColumnSpan="2"
+                   />
         <ProgressBar Grid.Row="1"
                      Margin="10"
                      VerticalAlignment="Center"
@@ -23,15 +29,25 @@
                      Value="{Binding Value}"
                      >
         </ProgressBar>
-        <TextBlock Text="{Binding Value}"
+        <TextBlock
                    Grid.Row="1"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    TextAlignment="Center"
                    FontSize="15"
-                   >
-            
-        </TextBlock>
-        
+                   ></TextBlock>
+
+
+        <Button Width="Auto"
+                Grid.Row="1"
+                Grid.Column="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="10"
+                Content="창 닫기" Click="Button_Click"
+                
+                >
+                    
+                </Button>
     </Grid>
 </UserControl>

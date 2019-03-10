@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace Tag.WPF
         public AutoModeStatus(int run, string result, List<AutoModeModel> data, List<TagInfo> tag, ConvCheckModel preset)
         {
             InitializeComponent();
-            DataContext = viewModel = new AutoModeStatusViewModel();
+            DataContext = viewModel = new AutoModeStatusViewModel(this);
             this.data = data;
             this.run = run;
             this.tag = tag;
@@ -44,6 +45,9 @@ namespace Tag.WPF
             await viewModel.Execute(run, result,  data, tag, preset);
         }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogHost.CloseDialogCommand.Execute(true, (sender as Button).CommandTarget);
+        }
     }
 }

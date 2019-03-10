@@ -35,6 +35,7 @@ namespace Tag.Setting.Setting
         private bool _convertEnable;
         private bool _settingEnable;
         private bool _lameEnable;
+        private bool _autoModeEnable;
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnProertyChange([CallerMemberName] string Name = "")
@@ -42,6 +43,7 @@ namespace Tag.Setting.Setting
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
         }
 
+        public bool AutoModeEnable { get => _autoModeEnable; set { _autoModeEnable = value; OnProertyChange(); } }
         public bool TaggingEnable { get => _taggingEnable; set { _taggingEnable = value; OnProertyChange(); } }
         public bool ConvertEnable { get => _convertEnable; set { _convertEnable = value; OnProertyChange(); } }
         public bool SettingEnable { get => _settingEnable; set { _settingEnable = value; OnProertyChange(); } }

@@ -28,7 +28,21 @@ namespace Tag.WPF
         public Visibility LabelVisibility { get => _labelVisibility; set { _labelVisibility = value; OnPropertyChanged(); } }
         Visibility _labelVisibility = Visibility.Visible;
 
+        private bool _buttonEnable = true;
+        public bool ButtonEnable { get => _buttonEnable; set { _buttonEnable = value; OnPropertyChanged(); } }
 
+        public AutoModeViewModel()
+        {
+            Global.DialogIdentifier.PropertyChanged += DialogIdentifier_PropertyChanged;
+
+        }
+        private void DialogIdentifier_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Global.DialogIdentifier.AutoModeEnable))
+            {
+                ButtonEnable = Global.DialogIdentifier.AutoModeEnable;
+            }
+        }
 
         ObservableCollection<TaggingModel> list = new ObservableCollection<TaggingModel>();
         ConvCheckModel ConvPreset = new ConvCheckModel();

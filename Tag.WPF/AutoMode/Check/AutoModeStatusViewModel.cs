@@ -6,9 +6,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using Tag.Core.Conv;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
+using Tag.Setting;
 
 namespace Tag.WPF
 {
@@ -21,12 +23,15 @@ namespace Tag.WPF
         Dictionary<int, int> status = new Dictionary<int, int>();
         private string _title;
         private int _value;
+        readonly UserControl Control;
 
-        public string Title { get => _title; set { _title = value; OnPropertyChanged(); } }
-        public int Value { get => _value; set { _value = value; OnPropertyChanged(); } }
+        public string Title { get => _title; set { Control?.Dispatcher?.Invoke(() => { _title = value; OnPropertyChanged(); }); } }
+        public int Value { get => _value; set { Control?.Dispatcher?.Invoke(() => { _value = value; OnPropertyChanged(); }); } }
 
-        public AutoModeStatusViewModel()
+
+        public AutoModeStatusViewModel(UserControl control)
         {
+            Control = control;
             audioconv.ChangeExecute += (s, e) =>
             {
                 try
@@ -34,13 +39,10 @@ namespace Tag.WPF
                     status[(e / 10000)] = e % 1000;
                     Value = status.Values.Sum() / audioconv.List().Count();
                 }
-                catch
-                {
-
-                }
+                catch { }
             };
         }
-
+        
         void CueSplit(List<AutoModeModel> data, string resultPath)
         {
             cue.AddFile(data[0].Path);
@@ -48,7 +50,6 @@ namespace Tag.WPF
             {
                 item.SavePath = resultPath + @"\Cue\";
             }
-            Title = "Cue 분리 중";
 
             foreach (var value in cue.Execute())
             {
@@ -61,11 +62,8 @@ namespace Tag.WPF
                     (cue[0].AudioType == AudioType.WAV ? ".wav" : ".flac")));
             }
         }
-
         async Task<bool> Conv(List<AutoModeModel> data, string resultPath, ConvCheckModel preset)
         {
-            Title = "컨버팅 중";
-
             for (int i = 0; i < data.Count; i++)
             {
                 string file = data[i].Path;
@@ -81,10 +79,8 @@ namespace Tag.WPF
             }
             return await audioconv.Execute(preset.preset.ConvMode, 4, resultPath + @"\Conv\");
         }
-
         void Tagging(List<AutoModeModel> data, List<TagInfo> tag)
         {
-            Title = "Cue 태깅 중";
             for (int i = 0; i < data.Count; i++)
             {
                 string file = data[i].Path;
@@ -95,6 +91,7 @@ namespace Tag.WPF
             {
             }
         }
+
         // run 정보와 현재 파일 상태, 태그정보
         public async Task<bool> Execute(int run, string resultPath, List<AutoModeModel> data, List<TagInfo> tag, ConvCheckModel preset)
         {
