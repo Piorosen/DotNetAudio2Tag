@@ -95,6 +95,33 @@ namespace Tag.Setting
         public string ExtenName { get; set; } = string.Empty;
         public string ExtenValue { get; set; } = string.Empty;
 
+        public string ConvExt { get; set; } = string.Empty;
+        public string Conv320Kb { get; set; } = string.Empty;
+        public string Conv256Kb { get; set; } = string.Empty;
+        public string Conv128Kb { get; set; } = string.Empty;
+        public string ConvFlac { get; set; } = string.Empty;
+        public string ConvUser { get; set; } = string.Empty;
+        public string ConvFileOpen { get; set; } = string.Empty;
+        public string ConvExecute { get; set; } = string.Empty;
+        public string ConvDragDrop { get; set; } = string.Empty;
+
+        public string LameExternalPath { get; set; } = string.Empty;
+        public string LameEncoding { get; set; } = string.Empty;
+        public string LameCodeTest { get; set; } = string.Empty;
+        public string LameCancel { get; set; } = string.Empty;
+        public string LameSave { get; set; } = string.Empty;
+
+        public string ConvStatusAllProgress { get; set; } = string.Empty;
+        public string ConvStatusClose { get; set; } = string.Empty;
+
+        public string CueDragDrop { get; set; } = string.Empty;
+        public string CueFileOpen { get; set; } = string.Empty;
+        public string CueFileSplitExecute { get; set; } = string.Empty;
+        public string CueAlbum { get; set; } = string.Empty;
+        public string CueBarcode { get; set; } = string.Empty;
+        public string CueAverage { get; set; } = string.Empty;
+        public string CueGenre { get; set; } = string.Empty;
+
 
 
         public string CueSplit { get; set; } = string.Empty;
@@ -104,9 +131,7 @@ namespace Tag.Setting
         public string Setting { get; set; } = string.Empty;
 
         public string Execute { get; set; } = string.Empty;
-
-        public string CueFileOpen { get; set; } = string.Empty;
-        public string CueFileSplitExecute { get; set; } = string.Empty;
+        
 
     }
 }

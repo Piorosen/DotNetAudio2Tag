@@ -10,18 +10,16 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Tag.Setting;
 
 namespace Tag.WPF
 {
     public class CueSplitViewModel : INotifyPropertyChanged
     {
-        public string CueFileOpen { get; private set; } = Setting.Global.Language.CueFileOpen;
-        public string CueFileSplitExecute { get; private set; } = Setting.Global.Language.CueFileSplitExecute;
-
-        public string AlbumTitle { get => albumTitle; private set { albumTitle = value; OnPropertyChanged(); } }
-        public string Barcode { get => barcode; private set { barcode = value; OnPropertyChanged(); } }
-        public int AvgBytePerSecond { get => avgBytePerSecond; private set { avgBytePerSecond = value; OnPropertyChanged(); } }
-        public string Genre { get => genre; private set { genre = value; OnPropertyChanged(); } }
+        public string AlbumTitle { get => Global.Language.CueAlbum + albumTitle; private set {albumTitle =value; OnPropertyChanged(); } }
+        public string Barcode { get => Global.Language.CueBarcode + barcode; private set { barcode = value; OnPropertyChanged(); } }
+        public string AvgBytePerSecond { get => Global.Language.CueAverage + avgBytePerSecond; private set { avgBytePerSecond = value; OnPropertyChanged(); } }
+        public string Genre { get => genre; private set { genre = Global.Language.CueGenre + value; OnPropertyChanged(); } }
 
         public Visibility LabelVisibility { get => _labelVisibility; set { _labelVisibility = value; OnPropertyChanged(); } }
 
@@ -52,8 +50,8 @@ namespace Tag.WPF
             cueSpliter = new Core.Cue.CueSpliter();
             Items.Add(new CueSplitModel
             {
-                Title = "제목",
-                Artist = "아티스트",
+                Title = Global.Language.Title,
+                Artist = Global.Language.Artist,
                 DurationMS = -1,
                 TimeOffSet = -1
             });
@@ -92,13 +90,13 @@ namespace Tag.WPF
 
             AlbumTitle = cueSpliter[0].Track[0].Album;
             Barcode = cueSpliter[0].Barcode ?? cueSpliter[0].REM.DiscId;
-            AvgBytePerSecond = cueSpliter[0].WaveFormat.AverageBytesPerSecond;
+            AvgBytePerSecond = cueSpliter[0].WaveFormat.AverageBytesPerSecond.ToString();
             Genre = cueSpliter[0].REM.Genre;
 
             Items.Add(new CueSplitModel
             {
-                Title = "제목",
-                Artist = "아티스트",
+                Title = Global.Language.Title,
+                Artist = Global.Language.Artist,
                 DurationMS = -1,
                 TimeOffSet = -1
             });
@@ -119,7 +117,7 @@ namespace Tag.WPF
         bool isTask = false;
         private string albumTitle;
         private string barcode;
-        private int avgBytePerSecond;
+        private string avgBytePerSecond;
         private string genre;
         private Visibility _labelVisibility;
 

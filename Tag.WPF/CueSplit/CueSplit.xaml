@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              xmlns:local="clr-namespace:Tag.WPF"
+             xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
              d:DesignHeight="450" d:DesignWidth="800"
              AllowDrop="True"
              >
@@ -26,26 +27,26 @@
                 
                 <TextBlock 
                     Grid.Column="0"
-                    Text="{Binding AlbumTitle, StringFormat={}앨범 명 : {0}}"
+                    Text="{Binding AlbumTitle}"
                     HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <TextBlock 
                     Grid.Column="1"
-                    Text="{Binding Barcode, StringFormat={}바코드 : {0}}"
+                    Text="{Binding Barcode}"
                     HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <TextBlock 
                     Grid.Column="2"
-                    Text="{Binding AvgBytePerSecond, StringFormat={}평균 바이트 : {0}}"
+                    Text="{Binding AvgBytePerSecond}"
                     HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <TextBlock 
                     Grid.Column="3"
-                    Text="{Binding Genre, StringFormat={}장르 : {0}}"
+                    Text="{Binding Genre}"
                     HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             </Grid>
         </Border>
 
         <TextBlock Grid.Row="1" 
-                   Text="분리할 CUE 파일을 드롭 해주세요."
+                   Text="{Binding Source={x:Static Setting:Global.Language}, Path=CueDragDrop}"
                    TextAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="25" Foreground="#FF787878"
@@ -134,14 +135,16 @@
 
         <Grid Grid.Row="2">
         <Button
-            Content="{Binding CueFileSplitExecute}"
+            Content="{Binding Source={x:Static Setting:Global.Language}, Path=CueFileSplitExecute}"
+            
             HorizontalAlignment="Right"
             Margin="0,9,10,9"
             Width="130"
             Click="Execute"
             />
         <Button
-            Content="{Binding CueFileOpen}"
+            Content="{Binding Source={x:Static Setting:Global.Language}, Path=CueFileOpen}"
+            
             HorizontalAlignment="Right"
             Margin="0,9,150,9"
             Width="130"
