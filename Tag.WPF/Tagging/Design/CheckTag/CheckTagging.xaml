@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
              mc:Ignorable="d"
              AllowDrop="True"
              Height="500" Width="1100">
@@ -51,27 +52,27 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0"
-                       Text="앨범 정보"
+                       Text="{Binding Source={x:Static Setting:Global.Language}, Path=AlbumInfo}"
                        Margin="10 6 0 0"
                        VerticalAlignment="Center"
                        />
             <TextBlock Grid.Row="0" Grid.Column="1"
-                       Text="추가 정보"
+                       Text="{Binding Source={x:Static Setting:Global.Language}, Path=ExtensionInfo}"
                        Margin="10 6 0 0"
                        VerticalAlignment="Center"
                        />
             <TextBlock Grid.Row="0" Grid.Column="2"
-                       Text="앨범아트"
+                       Text="{Binding Source={x:Static Setting:Global.Language}, Path=AlbumArt}"
                        Margin="26 6 0 0"
                        VerticalAlignment="Center"
                        />
             <TextBlock Grid.Row="2" Grid.Column="0"
-                       Text="트랙 정보"
+                       Text="{Binding Source={x:Static Setting:Global.Language}, Path=TrackInfo}"
                        VerticalAlignment="Center"
                        Margin="10 6 0 0"
                        />
             <TextBlock Grid.Row="2" Grid.Column="1"
-                       Text="변경할 파일"
+                       Text="{Binding Source={x:Static Setting:Global.Language}, Path=MyFile}"
                        VerticalAlignment="Center"
                        Margin="10 6 0 0"
                        />
@@ -157,11 +158,11 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn
-                                    Header="이름"
+                                    Header="{Binding Source={x:Static Setting:Global.Language}, Path=ExtenName}"
                                     DisplayMemberBinding="{Binding Name}"
                                     />
                                 <GridViewColumn
-                                    Header="값"
+                                    Header="{Binding Source={x:Static Setting:Global.Language}, Path=ExtenValue}"
                                     DisplayMemberBinding="{Binding Value}"
                                     />
                             </GridView>
@@ -208,7 +209,7 @@
                                     </MenuItem>
                                 </ContextMenu>
                             </Image.ContextMenu>
-                            
+
                         </Image>
                     </Border>
                     <TextBlock Text="{Binding CoverInfo, StringFormat={}{0}}"
@@ -225,16 +226,20 @@
                     Margin="5"
                     >
                 <Grid>
-                    <ListView ItemsSource="{Binding BrainzInfo}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="191*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView ItemsSource="{Binding BrainzInfo}" Grid.ColumnSpan="2">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="트랙"
+                                <GridViewColumn Header="{Binding Source={x:Static Setting:Global.Language}, Path=Track}"
                                             DisplayMemberBinding="{Binding Track}"
                                             />
-                                <GridViewColumn Header="제목"
+                                <GridViewColumn Header="{Binding Source={x:Static Setting:Global.Language}, Path=Title}"
                                             DisplayMemberBinding="{Binding Title}"
                                             />
-                                <GridViewColumn Header="디스크 번호"
+                                <GridViewColumn Header="{Binding Source={x:Static Setting:Global.Language}, Path=DiscNum}"
                                             DisplayMemberBinding="{Binding DiscNo}"
                                             />
                             </GridView>
@@ -252,14 +257,14 @@
                         ItemsSource="{Binding UserInfo}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="트랙"
+                                <GridViewColumn Header="{Binding Source={x:Static Setting:Global.Language}, Path=Track}"
                                     DisplayMemberBinding="{Binding Track}"
                                     />
-                                <GridViewColumn Header="파일 명"
+                                <GridViewColumn Header="{Binding Source={x:Static Setting:Global.Language}, Path=FileName}"
                                     DisplayMemberBinding="{Binding Title}"
                                     />
 
-                                <GridViewColumn Header="길이"
+                                <GridViewColumn Header="{Binding Source={x:Static Setting:Global.Language}, Path=Length}"
                                 DisplayMemberBinding="{Binding Length, StringFormat=F3}"
                                 />
                             </GridView>
@@ -280,13 +285,13 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Button Grid.Row="0"
-                            Content="위로 이동"
+                            Content="{Binding Source={x:Static Setting:Global.Language}, Path=UpMove}"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Width="130" Click="Up_Click"
                             />
                         <Button Grid.Row="1"
-                            Content="아래로 이동"
+                            Content="{Binding Source={x:Static Setting:Global.Language}, Path=DownMove}"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Width="130" Click="Down_Click"
@@ -300,7 +305,7 @@
                   Margin="8 5 -2 5"
                   >
                 <Button
-                Content="확인"
+                Content="{Binding Source={x:Static Setting:Global.Language}, Path=OK}"
                 HorizontalAlignment="Left"
                 Width="100"
                 Click="Yes_Click"
@@ -308,7 +313,7 @@
                     IsEnabled="{Binding CheckButtonEnable}"
                 />
                 <Button
-                Content="취소"
+                Content="{Binding Source={x:Static Setting:Global.Language}, Path=Cancel}"
                 HorizontalAlignment="Right"
                 Width="100" Click="Cancel_Click"
                 VerticalAlignment="Bottom"

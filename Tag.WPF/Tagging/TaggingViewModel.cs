@@ -23,27 +23,6 @@ namespace Tag.WPF
 {
     public class TaggingViewModel : INotifyPropertyChanged
     {
-        #region Lang
-        public string Title => Setting.Global.Language.Title;
-        public string Artist => Setting.Global.Language.Artist;
-        public string Album => Setting.Global.Language.Album;
-        public string Comment => Setting.Global.Language.Comment;
-        public string Genre => Setting.Global.Language.Genre;
-        public string Year => Setting.Global.Language.Year;
-        public string Track => Setting.Global.Language.Track;
-        public string AlbumArtist => Setting.Global.Language.AlbumArtist;
-        public string Composer => Setting.Global.Language.Composer;
-        public string DiscNum => Setting.Global.Language.DiscNum;
-        public string Publisher => "제작사";
-        public string AlbumArt => Setting.Global.Language.AlbumArt;
-
-        public string FileName => Setting.Global.Language.FileName;
-        public string Directory => Setting.Global.Language.Path;
-        public string TagType => Setting.Global.Language.Tag;
-        public string Bitrate => Setting.Global.Language.Bitrate;
-        public string Length => Setting.Global.Language.Length;
-        #endregion
-
         AudioTagging audioTagging;
         private TaggingModel _selectItem;
 

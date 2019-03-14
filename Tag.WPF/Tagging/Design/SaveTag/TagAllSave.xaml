@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Tag.WPF"
              xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
              Width="300"
              Height="100"
              KeyDown="UserControl_KeyDown">
@@ -20,7 +21,7 @@
                 TextAlignment="Center"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
-                Text="전체 내용이 저장됩니다. &#x0a; 저장하시겠습니까?"
+                Text="{Binding Source={x:Static Setting:Global.Language}, Path=TASCheck}"
                 >
             </TextBlock>
         </Grid>
@@ -39,7 +40,7 @@
                     Style="{DynamicResource MaterialDesignRaisedLightButton}"
                     wpf:ShadowAssist.ShadowDepth="Depth1"
                     Click="Yes_Click"
-                    Content="Yes (Y)"
+                    Content="{Binding Source={x:Static Setting:Global.Language}, Path=TASYes}"
                     Margin="4"  Padding="0"
                     >
             </Button>
@@ -49,7 +50,7 @@
                 wpf:ShadowAssist.ShadowDepth="Depth1"
                 Style="{DynamicResource MaterialDesignRaisedLightButton}"
                 Click="No_Click"
-                Content="No (N)">
+                Content="{Binding Source={x:Static Setting:Global.Language}, Path=TASNO}">
             </Button>
             <Button
                 Margin="4" Padding="0"
@@ -57,7 +58,7 @@
                 Grid.Column="2"
                 Style="{DynamicResource MaterialDesignRaisedLightButton}"
                 Click="Cancel_Click"
-                Content="Cancel (C)">
+                Content="{Binding Source={x:Static Setting:Global.Language}, Path=TASCancel}">
             </Button>
 
         </Grid>

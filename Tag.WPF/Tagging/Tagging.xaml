@@ -5,9 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
      xmlns:system="clr-namespace:System;assembly=mscorlib"         
-    xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting" 
     x:Class="Tag.WPF.Tagging"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
+    
     xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
     mc:Ignorable="d"
     AllowDrop="True"
@@ -21,6 +22,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}" Height="710" Width="899">
     <UserControl.Resources>
         <local:ListToString x:Key="ListToSring" />
+        <Setting:Language x:Key="LangaugePack"/>
     </UserControl.Resources>
 
 
@@ -88,23 +90,23 @@
                     <RowDefinition Height="195"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" Height="60">
-                    <Label Content="{Binding Title}" Margin="6,5,10,29"/>
+                    <Label Margin="6,5,10,29" Content="{Binding Source={x:Static Setting:Global.Language}, Path=Title}"/>
                     <TextBox x:Name="Title" Text="{Binding SelectItem.TagInfo.Title}"   HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="Tag_TextChanged"/>
                 </Grid>
                 <Grid Grid.Row="1" Height="60">
-                    <Label Content="{Binding Artist}" Margin="6,5,10,29"/>
+                    <Label Content="{Binding Source={x:Static Setting:Global.Language}, Path=Artist}" Margin="6,5,10,29"/>
                     <TextBox x:Name="Artist" TextChanged="Tag_TextChanged" Text="{Binding SelectItem.TagInfo.Artist, Converter={StaticResource ListToSring}}"  HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
                 <Grid Grid.Row="2" Height="60">
-                    <Label Content="{Binding Album}" Margin="6,5,10,29"/>
+                    <Label Content="{Binding Source={x:Static Setting:Global.Language}, Path=Album}" Margin="6,5,10,29"/>
                     <TextBox x:Name="Album" TextChanged="Tag_TextChanged" Text="{Binding SelectItem.TagInfo.Album}"  HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
                 <Grid Grid.Row="3" Height="60">
-                    <Label Content="{Binding Comment}" Margin="6,5,10,29"/>
+                    <Label Content="{Binding Source={x:Static Setting:Global.Language}, Path=Comment}" Margin="6,5,10,29"/>
                     <TextBox x:Name="Comment" TextChanged="Tag_TextChanged" Text="{Binding SelectItem.TagInfo.Comment}"  HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
                 <Grid Grid.Row="4">
-                    <Label Content="{Binding Genre}" Margin="6,5,8,29"/>
+                    <Label Content="{Binding Source={x:Static Setting:Global.Language}, Path=Genre}" Margin="6,5,8,29"/>
                     <TextBox x:Name="Genre" TextChanged="Tag_TextChanged" Text="{Binding SelectItem.TagInfo.Genre, Converter={StaticResource ListToSring}}"  HorizontalAlignment="Stretch" Height="28" Margin="10,30,8,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
 
@@ -114,20 +116,20 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" >
-                        <Label Content="{Binding Year}" Margin="6,5,0,29" HorizontalAlignment="Left" Width="84"/>
+                        <Label Content="{Binding Source={x:Static Setting:Global.Language}, Path=Year}" Margin="6,5,0,29" HorizontalAlignment="Left" Width="84"/>
                         <TextBox x:Name="Year"  TextChanged="Tag_TextChanged"
                                  Text="{Binding SelectItem.TagInfo.Year}"
                                   Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10,0,6,6"/>
                     </Grid>
                     <Grid Grid.Column="1">
-                        <Label Content="{Binding Track}" Margin="2,5,0,29" Width="88" HorizontalAlignment="Left"/>
+                        <Label Content="{Binding Source={x:Static Setting:Global.Language}, Path=Track}" Margin="2,5,0,29" Width="88" HorizontalAlignment="Left"/>
                         <TextBox x:Name="Track" TextChanged="Tag_TextChanged"
                                  Text="{Binding SelectItem.TagInfo.Track, Converter={StaticResource ListToSring}}"
                                   Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="6,0,10,6"/>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="6">
-                    <Label Content="{Binding AlbumArtist}" Margin="6,5,10,29"/>
+                    <Label Content="{Binding Source={x:Static Setting:Global.Language}, Path=AlbumArtist}" Margin="6,5,10,29"/>
                     <TextBox x:Name="AlbumArtist" TextChanged="Tag_TextChanged"
                              Text="{Binding SelectItem.TagInfo.AlbumArtist, Converter={StaticResource ListToSring}}"
                               HorizontalAlignment="Stretch" Height="28" Margin="10,30,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
@@ -138,7 +140,7 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0" >
-                        <Label Content="{Binding Composer}" Margin="6,5,0,29" HorizontalAlignment="Left" Width="84"/>
+                        <Label Content="{Binding Source={x:Static Setting:Global.Language}, Path=Composer}" Margin="6,5,0,29" HorizontalAlignment="Left" Width="84"/>
                         <TextBox x:Name="Composer" TextChanged="Tag_TextChanged"
                                  Text="{Binding SelectItem.TagInfo.Composer, Converter={StaticResource ListToSring}}"
                                   Height="24" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10,0,6,6"/>
@@ -148,7 +150,7 @@
                             <RowDefinition/>
                             <RowDefinition Height="3*"/>
                         </Grid.RowDefinitions>
-                        <Label Content="{Binding Publisher}" Margin="2,-10,0,0" Width="88" HorizontalAlignment="Left" Height="26" Grid.Row="1" VerticalAlignment="Top"/>
+                        <Label Content="{Binding Source={x:Static Setting:Global.Language}, Path=Publisher}" Margin="2,-10,0,0" Width="88" HorizontalAlignment="Left" Height="26" Grid.Row="1" VerticalAlignment="Top"/>
                         <TextBox x:Name="Publisher"  TextChanged="Tag_TextChanged"
                                  Text="{Binding SelectItem.TagInfo.Publisher, Converter={StaticResource ListToSring}}"
                                   TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="6,15,10,6" Grid.Row="1"/>
@@ -161,7 +163,7 @@
                         <RowDefinition Height="190"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0"
-                           Content="{Binding AlbumArt}"
+                           Content="{Binding Source={x:Static Setting:Global.Language}, Path=AlbumArt}"
                            Height="23"/>
                     <Border Grid.Row="1"
                             BorderBrush="Black"
@@ -182,14 +184,14 @@
                                >
                             <Image.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="이미지 변경"
+                                    <MenuItem Header="{Binding Source={x:Static Setting:Global.Language}, Path=ImageChange}"
                                               Click="ImageChange"
                                               >
                                         <MenuItem.Icon>
                                             <materialDesign:PackIcon Kind="FileRemove" />
                                         </MenuItem.Icon>
                                     </MenuItem>
-                                    <MenuItem Header="이미지 삭제"
+                                    <MenuItem Header="{Binding Source={x:Static Setting:Global.Language}, Path=ImageDelete}"
                                               Click="ImageDelete">
                                         <MenuItem.Icon>
                                             <materialDesign:PackIcon Kind="AddBox" />
@@ -205,7 +207,7 @@
         </ScrollViewer>
 
         <TextBlock Grid.Column="1" Grid.Row="0" 
-                   Text="음악 파일을 드롭 해주세요."
+                   Text="{Binding Source={x:Static Setting:Global.Language}, Path=TagDragDrop}"
                    TextAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="25" Foreground="#FF787878"
@@ -270,49 +272,49 @@
                 <GridView>
                     <GridViewColumn
                         DisplayMemberBinding="{Binding FileName}"
-                        Header="{Binding FileName}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=FileName}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding TagInfo.Title}"
-                        Header="{Binding Title}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Title}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding TagInfo.Path}"
-                        Header="{Binding Directory}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Directory}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding TagInfo.TagType}"
-                        Header="{Binding TagType}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Tag}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding TagInfo.Artist, Converter={StaticResource ListToSring}}"
-                        Header="{Binding Artist}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Artist}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding TagInfo.AlbumArtist, Converter={StaticResource ListToSring}}"
-                        Header="{Binding AlbumArtist}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=AlbumArtist}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding TagInfo.Album}"
-                        Header="{Binding Album}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Album}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding TagInfo.Track, Converter={StaticResource ListToSring}}"
-                        Header="{Binding Track}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Track}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding TagInfo.DiscNum}"
-                        Header="{Binding DiscNum}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=DiscNum}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding TagInfo.Year}"
-                        Header="{Binding Year}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Year}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding TagInfo.Genre, Converter={StaticResource ListToSring}}"
-                        Header="{Binding Genre}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Genre}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding TagInfo.Comment}"
-                        Header="{Binding Comment}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Comment}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding WaveFormat.Bitrate}"
-                        Header="{Binding Bitrate}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Bitrate}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding WaveFormat.Length}"
-                        Header="{Binding Length}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Length}" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding WaveFormat.Channel}"
-                        Header="채널" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Channel}" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -321,16 +323,16 @@
                 Width="150" HorizontalAlignment="Right" Margin="0,9,10,9"
                 Click="TagAllSave"
                 IsEnabled="{Binding ButtonEnable}"
+                Content="{Binding Source={x:Static Setting:Global.Language}, Path=TagAllSave}"
                 >
-                일괄 저장
             </Button>
             <Button
                 Width="150"
                 Margin="0,9,165,9" HorizontalAlignment="Right"
                 Click="GetTagInfo"
                 IsEnabled="{Binding ButtonEnable}"
+                Content="{Binding Source={x:Static Setting:Global.Language}, Path=TagGetInfo}"
                 >
-                태그 정보 가져오기
             </Button>
         </Grid>
     </Grid>
