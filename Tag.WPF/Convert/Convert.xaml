@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
              mc:Ignorable="d" Height="460" Width="800"
              >
     <Grid AllowDrop="True">
@@ -31,7 +32,7 @@
         
 
         <TextBlock Grid.Row="0" 
-                   Text="변환할 음원 파일을 드롭 해주세요."
+                   Text="{Binding Source={x:Static Setting:Global.Language}, Path=ConvDragDrop}"
                    TextAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="25" Foreground="#FF787878"
@@ -44,7 +45,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding FileNamePlus}"
-                                    Header="파일 이름"/>
+                                    Header="{Binding Source={x:Static Setting:Global.Language}, Path=FileName}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -67,12 +68,12 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
-                               Text="변환할 확장자"
+                               Text="{Binding Source={x:Static Setting:Global.Language}, Path=ConvExt}"
                                Margin="5,4,0,3" 
                                />
                     <RadioButton Grid.Row="1" Grid.Column="0"
                                 Style="{StaticResource MaterialDesignRadioButton}"
-                                Content="MP3 320Kb"
+                                Content="{Binding Source={x:Static Setting:Global.Language}, Path=Conv320Kb}"
                                  Tag="0"
                                 IsChecked="True"
                                  Checked="RadioButton_Checked" Margin="0,15,0,14" 
@@ -80,19 +81,19 @@
                             />
                     <RadioButton Grid.Row="1" Grid.Column="1"
                                  Style="{StaticResource MaterialDesignRadioButton}"
-                                Content="MP3 256Kb"
+                                Content="{Binding Source={x:Static Setting:Global.Language}, Path=Conv256Kb}"
                                  Checked="RadioButton_Checked"
                                  Tag="1" Margin="0,15,0,14" 
                             />
                     <RadioButton Grid.Row="1" Grid.Column="2"
                                  Style="{StaticResource MaterialDesignRadioButton}"
-                                Content="MP3 128Kb"
+                                Content="{Binding Source={x:Static Setting:Global.Language}, Path=Conv128Kb}"
                                  Checked="RadioButton_Checked"
                                  Tag="2" Margin="0,15,0,14" 
                             />
                     <RadioButton Grid.Row="1" Grid.Column="3"
                                 Style="{StaticResource MaterialDesignRadioButton}"
-                                Content="Flac"
+                                Content="{Binding Source={x:Static Setting:Global.Language}, Path=ConvFlac}"
                                  Checked="RadioButton_Checked"
                                 Tag="3" Margin="0,15,0,14" 
                             />
@@ -100,7 +101,7 @@
                                 Style="{StaticResource MaterialDesignRadioButton}"
                                  Checked="RadioButton_Checked"
                                  Tag="4" Margin="0,15,-5,14" 
-                                 Content="MP3(User)"
+                                 Content="{Binding Source={x:Static Setting:Global.Language}, Path=ConvUser}"
                                  />
                     <Button Grid.Row="1" Grid.Column="4"
                         HorizontalAlignment="Right"
@@ -124,13 +125,13 @@
             </Border>
             <Grid Grid.Column="1">
                 <Button
-                    Content="파일 열기"
+                    Content="{Binding Source={x:Static Setting:Global.Language}, Path=ConvFileOpen}"
                     VerticalAlignment="Bottom"
                     IsEnabled="{Binding ButtonEnable}"
                     Margin="0,0,145,9" Click="OpenDialog" HorizontalAlignment="Right" Width="130"/>
                 <Button
                     HorizontalAlignment="Right"
-                    Content="변환 시작"
+                    Content="{Binding Source={x:Static Setting:Global.Language}, Path=ConvExecute}"
                     VerticalAlignment="Bottom"
                     Margin="10 0 10 9"
                     IsEnabled="{Binding ButtonEnable}"

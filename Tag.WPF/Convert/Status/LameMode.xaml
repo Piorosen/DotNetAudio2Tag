@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
+             xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
              Width="600" Height="250">
     <Grid>
         <Grid.RowDefinitions>
@@ -19,10 +20,12 @@
             <TextBlock HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Margin="10, 20, 0 0"
-                       Text="외부 인코더 위치 (Lame)"
+                       
+                       Text="{Binding Source={x:Static Setting:Global.Language}, Path=LameExternalPath}"
                        FontSize="15"
                        />
         </Grid>
+        <!--"{Binding Source={x:Static Setting:Global.Language}, Path=FileName}"-->
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -52,7 +55,7 @@
             <TextBlock HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Margin="10, 20, 0 0"
-                       Text="인코더 값"
+                       Text="{Binding Source={x:Static Setting:Global.Language}, Path=LameEncoding}"
                        FontSize="15"
                        />
         </Grid>
@@ -63,7 +66,7 @@
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="130"/>
             </Grid.ColumnDefinitions>
-            <Button Content="코드 테스트"
+            <Button Content="{Binding Source={x:Static Setting:Global.Language}, Path=LameCodeTest}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Width="130"
@@ -79,8 +82,8 @@
         </Grid>
 
         <Grid Grid.Row="4">
-            <Button IsEnabled="{Binding ButtonEnableA}" Content="저장" HorizontalAlignment="Right" Margin="0,10,10,8" Width="130" Click="Save_Click"/>
-            <Button IsEnabled="{Binding ButtonEnableA}" Content="취소" HorizontalAlignment="Right" Margin="0,10,145,8" Width="130" Click="Cancel_Click"/>
+            <Button IsEnabled="{Binding ButtonEnableA}" Content="{Binding Source={x:Static Setting:Global.Language}, Path=LameSave}" HorizontalAlignment="Right" Margin="0,10,10,8" Width="130" Click="Save_Click"/>
+            <Button IsEnabled="{Binding ButtonEnableA}" Content="{Binding Source={x:Static Setting:Global.Language}, Path=LameCancel}" HorizontalAlignment="Right" Margin="0,10,145,8" Width="130" Click="Cancel_Click"/>
         </Grid>
 
     </Grid>
