@@ -17,11 +17,11 @@ namespace Tag.WPF
     /// <summary>
     /// CueSplit.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class Setting : UserControl
+    public partial class SettingPage : UserControl
     {
         SettingViewModel  viewModel;
 
-        public Setting()
+        public SettingPage()
         {
             InitializeComponent();
             DataContext = viewModel = new SettingViewModel();

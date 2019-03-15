@@ -22,9 +22,9 @@ namespace Tag.Setting
 
             this._fileName = filename;
 
-            if (new FileInfo(Global.FilePath.SettingPath + filename).Exists)
+            if (new FileInfo(Global.FilePath.LangPath + filename).Exists)
             {
-                Config.Path = Global.FilePath.SettingPath + filename;
+                Config.Path = Global.FilePath.LangPath + filename;
                 foreach (var value in this.GetType().GetProperties())
                 {
                     var data = value.GetValue(this);

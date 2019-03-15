@@ -13,10 +13,17 @@ namespace Tag.Setting
         public static Language Language => Language.Insatence;
         public static Resource Resource => Resource.Insatence;
         public static FilePath FilePath => FilePath.Insatence;
+        public static SettingManager Setting => SettingManager.Insatence;
         public static DialogIdentifier DialogIdentifier => DialogIdentifier.Insatence;
 
         public static bool CacheImageDelete = false;
         public static bool IsAutoMode = false;
+
+        public static void Load()
+        {
+
+            Setting.Load();
+        }
         
     }
 }

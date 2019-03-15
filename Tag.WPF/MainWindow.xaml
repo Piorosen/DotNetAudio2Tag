@@ -7,8 +7,12 @@
     xmlns:mylib="clr-namespace:Tag.WPF"
     xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
+    
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Tag.WPF.MainWindow"
+    
     WindowTransitionsEnabled="False"
+    
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     Background="{DynamicResource MaterialDesignPaper}"					  
     GlowBrush="{DynamicResource AccentColorBrush}"					  
@@ -47,7 +51,7 @@
                     <mylib:Convert Width="Auto" Height="Auto"/>
                 </TabItem>
                 <TabItem Header="{Binding Source={x:Static Setting:Global.Language}, Path=Setting}">
-                    <mylib:Setting Width="Auto" Height="Auto"/>
+                    <mylib:SettingPage Width="Auto" Height="Auto"/>
                 </TabItem>
             </dragablz:TabablzControl>
         </dockablz:Layout>
