@@ -12,7 +12,7 @@ namespace Tag.Setting
     public class SettingManager : SingleTon<SettingManager>
     {
         public string LameEncode { get; set; } = string.Empty;
-        public string LamePath { get { return Global.Resource.Lame; } set { Global.Resource.Lame = value; } } = string.Empty;
+        public string LamePath { get { return Global.Resource.Lame; } set { Global.Resource.Lame = value; } }
         public string LangIndex { get; set; } = string.Empty;
         public string LangPath { get; set; } = string.Empty;
         

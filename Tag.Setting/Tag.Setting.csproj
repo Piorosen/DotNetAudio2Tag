@@ -53,6 +53,7 @@
     <Compile Include="Setting\FilePath.cs" />
     <Compile Include="Setting\Language.cs" />
     <Compile Include="Setting\Resource.cs" />
+    <Compile Include="Setting\SettingManager.cs" />
     <Compile Include="Update\Update.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
