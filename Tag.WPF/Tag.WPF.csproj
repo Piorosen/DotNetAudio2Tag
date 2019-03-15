@@ -227,6 +227,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Setting\Setting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="Setting\Setting.xaml.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Setting\SettingModel.cs" />
+    <Compile Include="Setting\SettingViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindowsViewModel.cs" />

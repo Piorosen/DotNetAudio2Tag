@@ -11,13 +11,6 @@ namespace Tag.WPF
 {
     class MainWindowsViewModel
     {
-        public string CustomizeMode => Setting.Global.Language.AutoMode;
-        public string CueSplit => Setting.Global.Language.CueSplit;
-        public string Tagging => Setting.Global.Language.Tagging;
-        public string Converting => Setting.Global.Language.Mp3Conv;
-        public string Option => Setting.Global.Language.Setting;
-
-
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string Name = "")
         {

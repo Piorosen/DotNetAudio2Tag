@@ -34,20 +34,20 @@
                 <dragablz:TabablzControl.InterTabController>
                     <dragablz:InterTabController />
                 </dragablz:TabablzControl.InterTabController>
-                <TabItem Header="{Binding CustomizeMode}">
+                <TabItem Header="{Binding Source={x:Static Setting:Global.Language}, Path=AutoMode}">
                     <mylib:AutoMode Width="Auto" Height="Auto"/>
                 </TabItem>
-                <TabItem Header="{Binding CueSplit}">
+                <TabItem Header="{Binding Source={x:Static Setting:Global.Language}, Path=CueSplit}">
                     <mylib:CueSplit Width="Auto" Height="Auto"/>
                 </TabItem>
-                <TabItem Header="{Binding Tagging}">
+                <TabItem Header="{Binding Source={x:Static Setting:Global.Language}, Path=Tagging}">
                     <mylib:Tagging Width="Auto" Height="Auto"/>
                 </TabItem>
-                <TabItem Header="{Binding Converting}">
+                <TabItem Header="{Binding Source={x:Static Setting:Global.Language}, Path=Mp3Conv}">
                     <mylib:Convert Width="Auto" Height="Auto"/>
                 </TabItem>
-                <TabItem Header="{Binding Option}">
-
+                <TabItem Header="{Binding Source={x:Static Setting:Global.Language}, Path=Setting}">
+                    <mylib:Setting Width="Auto" Height="Auto"/>
                 </TabItem>
             </dragablz:TabablzControl>
         </dockablz:Layout>
