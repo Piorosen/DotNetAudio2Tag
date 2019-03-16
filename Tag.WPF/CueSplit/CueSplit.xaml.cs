@@ -10,7 +10,7 @@ using ToastNotifications;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Position;
 using ToastNotifications.Messages;
-
+using Tag.Setting;
 
 namespace Tag.WPF
 {
@@ -88,7 +88,11 @@ namespace Tag.WPF
                     {
                         await viewModel.Execute(this, dialog.SelectedPath + @"\");
 
-                        Application.notifier.ShowInformation("성공적으로 분리를 하였습니다.");
+                        Application.notifier.ShowInformation(Global.Language.CueSuccess);
+                    }
+                    else
+                    {
+                        Application.notifier.ShowInformation(Global.Language.CueFail);
                     }
                 }
             }

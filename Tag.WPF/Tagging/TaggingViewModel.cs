@@ -18,6 +18,7 @@ using Tag.Core.Tagging;
 using Tag.Setting;
 using Tag.WPF.Properties;
 using TagLib;
+using ToastNotifications.Messages;
 
 namespace Tag.WPF
 {
@@ -181,7 +182,14 @@ namespace Tag.WPF
             Global.DialogIdentifier.TaggingEnable = false;
             // DialogHost.OpenDialogCommand.Execute(view, new System.Windows.Controls.Button().CommandTarget);
             var result = await DialogHost.Show(view, Global.DialogIdentifier.TagSave, CloseEvent);
-
+            if ((result as bool?).HasValue && (result as bool?).Value)
+            {
+                Application.notifier.ShowInformation(Global.Language.TagSuccess);
+            }
+            else
+            {
+                Application.notifier.ShowInformation(Global.Language.TagFail);
+            }
         }
 
         public async void GetTagInfo(int index)

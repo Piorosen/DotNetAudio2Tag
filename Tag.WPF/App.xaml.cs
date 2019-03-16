@@ -10,6 +10,7 @@ using Tag.Setting;
 using ToastNotifications;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Position;
+using ToastNotifications.Messages;
 
 namespace Tag.WPF
 {
@@ -32,6 +33,7 @@ namespace Tag.WPF
 
              cfg.Dispatcher = Application.Current.Dispatcher;
          });
+
         public Application()
         {
             Global.Load();

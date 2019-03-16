@@ -89,11 +89,11 @@ namespace Tag.WPF
         {
             if (bool.Parse(eventArgs.Parameter.ToString()) == true)
             {
-                Application.notifier.ShowInformation("성공적으로 변환을 하였습니다.");
+                Application.notifier.ShowInformation(Global.Language.ConvSuccess);
             }
             else
             {
-                Application.notifier.ShowInformation("변환을 하는데 실패 하였습니다.");
+                Application.notifier.ShowInformation(Global.Language.ConvFail);
             }
         }
 

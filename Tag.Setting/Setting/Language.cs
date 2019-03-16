@@ -143,7 +143,19 @@ namespace Tag.Setting
         public string AutoAudioTag { get; set; } = string.Empty;
         public string AutoComplete { get; set; } = string.Empty;
 
-
+        public string CacheSize { get; set; } = string.Empty;
+        public string LangOther { get; set; } = string.Empty;
+        public string ProgramLang { get; set; } = string.Empty;
+        public string CacheRemove { get; set; } = string.Empty;
+        
+        public string ConvSuccess { get; set; } = string.Empty;
+        public string ConvFail { get; set; } = string.Empty;
+        public string CueSuccess { get; set; } = string.Empty;
+        public string CueFail { get; set; } = string.Empty;
+        public string AutoFail { get; set; } = string.Empty;
+        public string AutoSuccess { get; set; } = string.Empty;
+        public string TagSuccess { get; set; } = string.Empty;
+        public string TagFail { get; set; } = string.Empty;
 
         public string CueSplit { get; set; } = string.Empty;
         public string Tagging { get; set; } = string.Empty;

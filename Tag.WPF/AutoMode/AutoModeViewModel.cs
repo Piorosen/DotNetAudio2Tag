@@ -12,6 +12,7 @@ using System.Windows;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
 using Tag.Setting;
+using ToastNotifications.Messages;
 
 namespace Tag.WPF
 {
@@ -179,15 +180,15 @@ namespace Tag.WPF
             }
 
             bool result = true;
-            if ((run & (int)AutoModeTag.CueSplit) == (int)AutoModeTag.CueSplit)
+            if (result && (run & (int)AutoModeTag.CueSplit) == (int)AutoModeTag.CueSplit)
             {
                 result &= CheckCueSplit();
             }
-            if ((run & (int)AutoModeTag.Conv) == (int)AutoModeTag.Conv)
+            if (result && (run & (int)AutoModeTag.Conv) == (int)AutoModeTag.Conv)
             {
                 result &= await CheckConv();
             }
-            if ((run & (int)AutoModeTag.Tagging) == (int)AutoModeTag.Tagging)
+            if (result && (run & (int)AutoModeTag.Tagging) == (int)AutoModeTag.Tagging)
             {
                 result &= await CheckTagging();
             }
@@ -220,6 +221,11 @@ namespace Tag.WPF
                 {
                     check.Execute();
                 });
+                Application.notifier.ShowError(Global.Language.AutoSuccess);
+            }
+            else
+            {
+                Application.notifier.ShowError(Global.Language.AutoFail);
             }
             Global.DialogIdentifier.AutoModeEnable = true;
         }

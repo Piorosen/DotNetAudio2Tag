@@ -22,7 +22,7 @@
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="프로그램 표기 언어"
+            <TextBlock Text="{Binding Source={x:Static Setting:Global.Language}, Path=ProgramLang}"
                        TextAlignment="Left"
                        Grid.Row="0"
                        VerticalAlignment="Center"
@@ -58,7 +58,7 @@
                              IsChecked="{Binding bIndex[2]}"
                              >
                 </RadioButton>
-                <RadioButton Content="Others"
+                <RadioButton Content="{Binding Source={x:Static Setting:Global.Language}, Path=LangOther}"
                              VerticalAlignment="Center"
                              HorizontalAlignment="Left"
                              Grid.Column="3" Checked="RadioButton_Checked"
@@ -69,15 +69,22 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="1" Margin="10">
-            <TextBlock Text="{Binding Capacity, StringFormat={}캐시 파일 용량 : {0}}"
+            <TextBlock 
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
-                       />
+                       >
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0} {1}">
+                        <Binding Path="CacheSize"  Source="{x:Static Setting:Global.Language}"/>
+                        <Binding Path="Capacity"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
             <Button HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     Width="100"
                     Height="30"
-                    Content="캐시 삭제" Click="Button_Click"
+                    Content="{Binding Source={x:Static Setting:Global.Language}, Path=CacheRemove}" Click="Button_Click"
                     />
         </Grid>
     </Grid>
