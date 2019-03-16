@@ -107,15 +107,16 @@ namespace Tag.Core.Conv
                         string ext = resultext;
 
                         var tag = TagLib.File.Create(value.FilePath).Tag;
-                        
+
+                        value.ResultPath = resultPath;
+
                         foreach (var status in Conv?.Execute(value))
                         {
                             OnChangeExecute(status + id * 10000);
                         }
 
-                        value.ResultPath = resultPath + value.FileName + ext;
 
-                        var file = TagLib.File.Create(value.ResultPath);
+                        var file = TagLib.File.Create(value.ResultPath + value.FileName + ext);
 
                         TagInfo.Move(file.Tag, tag);
                         file.Save();

@@ -43,12 +43,9 @@
                 Grid.Row="1"
                 Grid.Column="1"
                 VerticalAlignment="Bottom"
-                HorizontalAlignment="Right"
-                Margin="10"
-                Content="{Binding Source={x:Static Setting:Global.Language}, Path=ConvStatusClos}" Click="Button_Click"
+                Margin="10,0,10,10"
+                Content="{Binding Source={x:Static Setting:Global.Language}, Path=ConvStatusClose}" Click="Button_Click" d:LayoutOverrides="Width, LeftMargin, RightMargin"
              
-                >
-                    
-                </Button>
+                />
     </Grid>
 </UserControl>
