@@ -26,5 +26,20 @@ namespace Tag.WPF
             InitializeComponent();
             DataContext = viewModel = new SettingViewModel();
         }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            viewModel.ChangeLang((sender as Control).Tag as string);
+        }
+
+        private void Update(object sender, MouseEventArgs e)
+        {
+            viewModel.CapacityUpdate();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CacheRemove();
+        }
     }
 }

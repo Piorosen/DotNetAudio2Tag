@@ -1,9 +1,11 @@
 ﻿
+using Library;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +16,58 @@ using Tag.Setting;
 
 namespace Tag.WPF
 {
-    public class SettingViewModel
+    public class SettingViewModel : INotifyPropertyChanged
     {
+        private string _capacity = "0Kb";
 
+        public string Capacity { get => _capacity; set
+            {
+                _capacity = value;
+                OnPropertyChange();
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        void OnPropertyChange([CallerMemberName] string Name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
+        }
+
+        public void ChangeLang(string Tag)
+        {
+            Global.Language.Load(Tag);
+        }
+
+        public void CacheRemove()
+        {
+            DirectoryInfo dummy = new DirectoryInfo(Global.FilePath.CachePath);
+            DirectoryInfo image = new DirectoryInfo(Global.FilePath.CacheImagePath);
+            BigInteger num = BigInteger.Zero;
+
+            foreach (var i in dummy.GetFiles())
+            {
+                i.Delete();
+            }
+            foreach (var i in image.GetFiles())
+            {
+                i.Delete();
+            }
+            CapacityUpdate();
+        }
+        public void CapacityUpdate()
+        {
+            DirectoryInfo dummy = new DirectoryInfo(Global.FilePath.CachePath);
+            DirectoryInfo image = new DirectoryInfo(Global.FilePath.CacheImagePath);
+            BigInteger num = BigInteger.Zero;
+
+            foreach (var i in dummy.GetFiles())
+            {
+                num += i.Length;
+            }
+            foreach (var i in image.GetFiles())
+            {
+                num += i.Length;
+            }
+            Capacity = CapacityManage.Change(num);
+        }
     }
 }

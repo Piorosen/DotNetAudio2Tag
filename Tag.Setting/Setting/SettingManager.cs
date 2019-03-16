@@ -32,5 +32,22 @@ namespace Tag.Setting
                 }
             }
         }
+
+        public void Save()
+        {
+            string filename = "Setting.ini";
+            if (new FileInfo(Global.FilePath.SettingPath + filename).Exists)
+            {
+                Config.Path = Global.FilePath.SettingPath + filename;
+                foreach (var value in this.GetType().GetProperties())
+                {
+                    var data = value.GetValue(this);
+                    if (data.GetType() == typeof(string))
+                    {
+                        Config.SetOption("Option", value.Name, value.GetValue(this) as String);
+                    }
+                }
+            }
+        }
     }
 }

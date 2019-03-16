@@ -10,7 +10,7 @@ namespace Library
     class CapacityManage
     {
         static private readonly string[] Unit = { "Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" };
-        static public string Change(BigInteger? capcity)
+        static public string Change(BigInteger capcity)
         {
             int i = 0;
 
@@ -20,9 +20,9 @@ namespace Library
                 capcity /= 1024;
             }
 
-            return capcity + Unit[i];
+            return $"{capcity} {Unit[i]}";
         }
-        static public BigInteger? ReverseChange(BigInteger? capacity, String Unit)
+        static public BigInteger? ReverseChange(BigInteger capacity, String Unit)
         {
             double k = -1;
             for (int i = 0; i < CapacityManage.Unit.Length; i++)

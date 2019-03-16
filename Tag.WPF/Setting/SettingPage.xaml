@@ -9,7 +9,7 @@
              xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              Width="800" Height="450"
-             AllowDrop="True"
+             AllowDrop="True" MouseEnter="Update"
              >
     <Grid>
         <Grid.RowDefinitions>
@@ -37,46 +37,30 @@
                 <RadioButton Content="English"
                              VerticalAlignment="Center"
                              HorizontalAlignment="Left"
-                             Grid.Column="0"
+                             Grid.Column="0" Checked="RadioButton_Checked"
+                             Tag="en-us.lang"
                              >
-                    <RadioButton.Tag>
-                        <System:Int32>
-                            0
-                        </System:Int32>
-                    </RadioButton.Tag>
                 </RadioButton>
                 <RadioButton Content="한국어"
                              VerticalAlignment="Center"
                              HorizontalAlignment="Left"
-                             Grid.Column="1"
+                             Grid.Column="1" Checked="RadioButton_Checked"
+                             Tag="ko-kr.lang"
                              >
-                    <RadioButton.Tag>
-                        <System:Int32>
-                            1
-                        </System:Int32>
-                    </RadioButton.Tag>
                 </RadioButton>
                 <RadioButton Content="日本語"
                              VerticalAlignment="Center"
                              HorizontalAlignment="Left"
-                             Grid.Column="2"
+                             Grid.Column="2" Checked="RadioButton_Checked"
+                             Tag="ja-jp.lang"
                              >
-                    <RadioButton.Tag>
-                        <System:Int32>
-                            2
-                        </System:Int32>
-                    </RadioButton.Tag>
                 </RadioButton>
                 <RadioButton Content="Others"
                              VerticalAlignment="Center"
                              HorizontalAlignment="Left"
-                             Grid.Column="3"
+                             Grid.Column="3" Checked="RadioButton_Checked"
+                             Tag="other.lang"
                              >
-                    <RadioButton.Tag>
-                        <System:Int32>
-                            3
-                        </System:Int32>
-                    </RadioButton.Tag>
                 </RadioButton>
             </Grid>
         </Grid>
@@ -89,7 +73,7 @@
                     VerticalAlignment="Center"
                     Width="100"
                     Height="30"
-                    Content="캐시 삭제"
+                    Content="캐시 삭제" Click="Button_Click"
                     />
         </Grid>
     </Grid>

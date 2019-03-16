@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,11 @@ using Tag.Setting.Setting;
 
 namespace Tag.Setting
 {
-    public class Language : SingleTon<Language>
+    public class Language : SingleTon<Language>, INotifyPropertyChanged
     {
         private string _fileName = string.Empty;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public void Load(string filename)
         {
@@ -31,6 +34,7 @@ namespace Tag.Setting
                     if (data.GetType() == typeof(string))
                     {
                         value.SetValue(this, Config.GetOption("Lang", value.Name));
+                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(value.Name));
                     }
                 }
             }
