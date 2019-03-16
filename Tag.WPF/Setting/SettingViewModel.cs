@@ -18,7 +18,7 @@ namespace Tag.WPF
 {
     public class SettingViewModel : INotifyPropertyChanged
     {
-        private string _capacity = "0Kb";
+        private string _capacity = "0 Bytes";
 
         public string Capacity { get => _capacity; set
             {
@@ -26,15 +26,41 @@ namespace Tag.WPF
                 OnPropertyChange();
             }
         }
+
+        List<string> Index = new List<string>();
+
+        public bool[] bIndex { get; set; } = new bool[4] { false, false, false, false };
+
+        public SettingViewModel()
+        {
+            Index.Add("en-us.lang");
+            Index.Add("ko-kr.lang");
+            Index.Add("ja-jp.lang");
+            Index.Add("other.lang");
+            ChangeLang(Global.Setting.LangFile, true);
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChange([CallerMemberName] string Name = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
         }
 
-        public void ChangeLang(string Tag)
+        public void ChangeLang(string Tag, bool First = false)
         {
-            Global.Language.Load(Tag);
+            if (First == false)
+            {
+                Global.Language.Load(Tag);
+            }
+            Global.Setting.LangIndex = Index.IndexOf(Tag).ToString();
+            Global.Setting.LangFile = Tag;
+            Global.Setting.Save();
+            for (int i = 0; i < bIndex.Length; i++)
+            {
+                bIndex[i] = false;
+            }
+            bIndex[Index.IndexOf(Tag)] = true;
+            OnPropertyChange(nameof(bIndex));
         }
 
         public void CacheRemove()
@@ -53,6 +79,7 @@ namespace Tag.WPF
             }
             CapacityUpdate();
         }
+
         public void CapacityUpdate()
         {
             DirectoryInfo dummy = new DirectoryInfo(Global.FilePath.CachePath);

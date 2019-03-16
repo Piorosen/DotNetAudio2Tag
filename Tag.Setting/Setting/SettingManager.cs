@@ -33,10 +33,10 @@ namespace Tag.Setting
                     {
                         var get = Config.GetOption("Option", value.Name);
 
-                        if (get.Length > 1 && get[0] == '.' && get[1] == '\\')
-                        {
-                            get = Application.StartupPath + get;
-                        }
+                        //if (get.Length > 1 && get[0] == '.' && get[1] == '\\')
+                        //{
+                        //    get = Application.StartupPath + get;
+                        //}
                         value.SetValue(this, get);
                         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(value.Name));
                     }

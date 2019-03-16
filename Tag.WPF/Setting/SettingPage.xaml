@@ -39,6 +39,7 @@
                              HorizontalAlignment="Left"
                              Grid.Column="0" Checked="RadioButton_Checked"
                              Tag="en-us.lang"
+                             IsChecked="{Binding bIndex[0]}"
                              >
                 </RadioButton>
                 <RadioButton Content="한국어"
@@ -46,6 +47,7 @@
                              HorizontalAlignment="Left"
                              Grid.Column="1" Checked="RadioButton_Checked"
                              Tag="ko-kr.lang"
+                             IsChecked="{Binding bIndex[1]}"
                              >
                 </RadioButton>
                 <RadioButton Content="日本語"
@@ -53,6 +55,7 @@
                              HorizontalAlignment="Left"
                              Grid.Column="2" Checked="RadioButton_Checked"
                              Tag="ja-jp.lang"
+                             IsChecked="{Binding bIndex[2]}"
                              >
                 </RadioButton>
                 <RadioButton Content="Others"
@@ -60,6 +63,7 @@
                              HorizontalAlignment="Left"
                              Grid.Column="3" Checked="RadioButton_Checked"
                              Tag="other.lang"
+                             IsChecked="{Binding bIndex[3]}"
                              >
                 </RadioButton>
             </Grid>

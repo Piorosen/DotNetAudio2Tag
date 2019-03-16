@@ -45,7 +45,7 @@ namespace Tag.WPF
             Index = int.Parse((e.Source as RadioButton).Tag.ToString());
         }
 
-        (string Path, string Format) Param = (Global.Resource.Lame, "-V3 %File% %SaveFile%");
+        (string Path, string Format) Param = (Global.Setting.LamePath, $"{Global.Setting.LameEncode} %File% %SaveFile%");
 
         private async void UserMode_Click(object sender, RoutedEventArgs e)
         {

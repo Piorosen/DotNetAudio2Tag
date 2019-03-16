@@ -121,7 +121,7 @@ namespace Tag.WPF
             Global.DialogIdentifier.ConvertEnable = true;
         }
 
-        (string Path, string Format) Param = (Global.Resource.Lame, "-V3 %File% %SaveFile%");
+        (string Path, string Format) Param = (Global.Setting.LamePath, $"{Global.Setting.LameEncode} %File% %SaveFile%");
 
 
         public async void ModeSetting()

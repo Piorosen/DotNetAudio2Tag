@@ -46,7 +46,6 @@ namespace Tag.WPF
         public LameMode()
         {
             InitializeComponent();
-            Global.Setting.LameEncode = TextEncode.Text;
             TextFilePath.Text = Global.Setting.LamePath;
             TextEncode.Text = Global.Setting.LameEncode;
             Global.DialogIdentifier.PropertyChanged += DialogIdentifier_PropertyChanged;
