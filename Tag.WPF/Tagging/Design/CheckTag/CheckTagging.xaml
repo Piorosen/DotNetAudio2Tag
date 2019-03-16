@@ -95,27 +95,27 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Grid.Column="0" Grid.Row="0"
-                           Text="아티스트"
+                           Text="{Binding Source={x:Static Setting:Global.Language}, Path=Artist}"
                            TextAlignment="Center"
                            VerticalAlignment="Center"
                            />
                     <TextBlock Grid.Column="0" Grid.Row="1"
-                           Text="앨범 명"
+                           Text="{Binding Source={x:Static Setting:Global.Language}, Path=Album}"
                            TextAlignment="Center"
                            VerticalAlignment="Center"
                            />
                     <TextBlock Grid.Column="0" Grid.Row="2"
-                           Text="제작 년도"
+                           Text="{Binding Source={x:Static Setting:Global.Language}, Path=Year}"
                            TextAlignment="Center"
                            VerticalAlignment="Center"
                            />
                     <TextBlock Grid.Column="0" Grid.Row="3"
-                           Text="장르"
+                           Text="{Binding Source={x:Static Setting:Global.Language}, Path=Genre}"
                            TextAlignment="Center"
                            VerticalAlignment="Center"
                            />
                     <TextBlock Grid.Column="0" Grid.Row="4"
-                           Text="설명"
+                           Text="{Binding Source={x:Static Setting:Global.Language}, Path=Comment}"
                            TextAlignment="Center"
                            VerticalAlignment="Center"
                            />

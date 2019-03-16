@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
+using Tag.Setting;
 
 namespace Tag.WPF
 {
@@ -120,7 +121,7 @@ namespace Tag.WPF
             });
             Information.Add(new CheckTagInfoModel
             {
-                Name = "포맷",
+                Name = Global.Language.Format,
                 Value = string.Join(", ", tag[0].Format)
             });
             Information.Add(new CheckTagInfoModel
@@ -130,7 +131,7 @@ namespace Tag.WPF
             });
             Information.Add(new CheckTagInfoModel
             {
-                Name = "배급사",
+                Name = Global.Language.Publisher,
                 Value = string.Join(", ", tag[0].Publisher)
             });
             Information.Add(new CheckTagInfoModel
@@ -145,7 +146,7 @@ namespace Tag.WPF
             });
             Information.Add(new CheckTagInfoModel
             {
-                Name = "바코드",
+                Name = Global.Language.Barcode,
                 Value = tag[0].Barcode
             });
 
