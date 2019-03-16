@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Tag.Setting;
 using ToastNotifications;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Position;
@@ -33,7 +34,7 @@ namespace Tag.WPF
          });
         public Application()
         {
-            Setting.Global.Language.Load("kor.lang");
+            Global.Load();
         }
         
     }

@@ -39,10 +39,14 @@ namespace Tag.WPF
         void OpenBrainzEvent(object sender, DialogOpenedEventArgs e)
         {
             brainz.Search(SearchInfo);
+            this.Width = 0;
+            this.Height = 0;
         }
         void OpenVgmEvent(object sender, DialogOpenedEventArgs e)
         {
             vgm.Search(SearchInfo);
+            this.Width = 0;
+            this.Height = 0;
         }
 
         MusicBrainzSearch brainz;

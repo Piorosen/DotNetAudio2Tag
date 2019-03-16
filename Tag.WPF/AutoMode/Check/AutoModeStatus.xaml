@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tag.WPF"
              mc:Ignorable="d" 
+             xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
              Height="150" Width="400">
     <Grid>
         <Grid.RowDefinitions>
@@ -44,8 +45,8 @@
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Right"
                 Margin="10"
-                Content="창 닫기" Click="Button_Click"
-                
+                Content="{Binding Source={x:Static Setting:Global.Language}, Path=ConvStatusClos}" Click="Button_Click"
+             
                 >
                     
                 </Button>

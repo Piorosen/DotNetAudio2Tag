@@ -103,34 +103,34 @@ namespace Tag.WPF
 
                 if ((run & 1) == 1)
                 {
-                    Title = "Cue 분리";
+                    Title = Global.Language.AutoCueSplit;
                     CueSplit(data, resultPath);
 
                     if ((run & 4) == 4)
                     {
-                        Title = "Cue 분리 된 파일 태깅";
+                        Title = Global.Language.AutoCueTag;
                         Tagging(data, tag);
                     }
                 }
 
                 if ((run & 2) == 2)
                 {
-                    Title = "음악 파일 컨버팅";
+                    Title = Global.Language.AutoAudioConv;
                     var result = await Conv(data, resultPath, preset);
 
                     if ((run & 4) == 4)
                     {
-                        Title = "컨버팅된 파일 태깅";
+                        Title = Global.Language.AutoAudioTag;
                         Tagging(data, tag);
                     }
                 }
 
                 if (run == 4)
                 {
-                    Title = "태깅";
+                    Title = Global.Language.AutoTag;
                     Tagging(data, tag);
                 }
-                Title = "모든 작업 완료";
+                Title = Global.Language.AutoComplete;
             });
             return true;
         }

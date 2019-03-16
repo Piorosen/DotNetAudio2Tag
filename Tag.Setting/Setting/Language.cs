@@ -125,6 +125,23 @@ namespace Tag.Setting
         public string CueBarcode { get; set; } = string.Empty;
         public string CueAverage { get; set; } = string.Empty;
         public string CueGenre { get; set; } = string.Empty;
+        public string CueSongLength { get; set; } = string.Empty;
+        public string CueIndexLength { get; set; } = string.Empty;
+        public string CueMin { get; set; } = string.Empty;
+        public string CueSecond { get; set; } = string.Empty;
+        public string CueMiliSecond { get; set; } = string.Empty;
+
+        public string AutoDragDrop { get; set; } = string.Empty;
+        public string AutoCueSplit { get; set; } = string.Empty;
+        public string AutoCodecConvert { get; set; } = string.Empty;
+        public string AutoTag { get; set; } = string.Empty;
+        public string AutoExecute { get; set; } = string.Empty;
+
+
+        public string AutoCueTag { get; set; } = string.Empty;
+        public string AutoAudioConv { get; set; } = string.Empty;
+        public string AutoAudioTag { get; set; } = string.Empty;
+        public string AutoComplete { get; set; } = string.Empty;
 
 
 

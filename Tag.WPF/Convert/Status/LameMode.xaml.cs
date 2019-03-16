@@ -46,7 +46,9 @@ namespace Tag.WPF
         public LameMode()
         {
             InitializeComponent();
-            TextFilePath.Text = Global.Resource.Lame;
+            Global.Setting.LameEncode = TextEncode.Text;
+            TextFilePath.Text = Global.Setting.LamePath;
+            TextEncode.Text = Global.Setting.LameEncode;
             Global.DialogIdentifier.PropertyChanged += DialogIdentifier_PropertyChanged;
         }
 
@@ -59,7 +61,10 @@ namespace Tag.WPF
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             Global.DialogIdentifier.ConvertEnable = true;
+            Global.Setting.LamePath = TextFilePath.Text;
+            Global.Setting.LameEncode = TextEncode.Text;
             DialogHost.CloseDialogCommand.Execute((TextFilePath.Text, TextEncode.Text + " %File% %SaveFile%"), (sender as Button)?.CommandTarget);
+            Global.Setting.Save();
         }
 
 
