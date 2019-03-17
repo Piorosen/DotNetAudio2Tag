@@ -88,6 +88,7 @@ namespace Tag.WPF
 
         async Task<bool> CheckConv()
         {
+
             var check = new ConvCheck();
             var result = await DialogHost.Show(check, Global.DialogIdentifier.AutoModeCodec);
 
@@ -104,6 +105,7 @@ namespace Tag.WPF
 
         async Task<bool> CheckTagging()
         {
+
             list.Clear();
             foreach (var value in Items)
             {

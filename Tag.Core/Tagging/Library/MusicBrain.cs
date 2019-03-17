@@ -189,26 +189,54 @@ namespace Tag.Core.Tagging.Library
                     
                     for (int i = 0; i < list.Count; i++)
                     {
-                        List<string> Artist = new List<string>
+                        List<string> Artist = new List<string>();
+                        var Composer = new List<string>();
+                        var AlubmArtist = new List<string>();
+                        uint track = 0;
+                        uint num = 0;
+                        try
                         {
-                            list[i]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
-                        };
-                        var Composer = new List<string>
+                            Artist = new List<string>
+                            {
+                                list[i]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
+                            };
+                        }
+                        catch { }
+                        try
                         {
-                            list[i]["release-list"]["release"]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
-                        };
-                        var AlubmArtist = new List<string>
-                        { 
-                            list[0]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
-                        };
-                        uint track = uint.Parse(list[i]["release-list"]
-                            ["release"]["medium-list"]
-                            ["medium"]["track-list"]
-                            ["track"]["number"]
-                            .InnerText);
+                            Composer = new List<string>
+                            {
+                                list[i]["release-list"]["release"]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
+                            };
+                        }
+                        catch { }
 
-                        uint num = uint.Parse(list[i]["release-list"]["release"]["medium-list"]["medium"]["position"].InnerText);
-                        Console.WriteLine(num);
+                        try
+                        {
+                            AlubmArtist = new List<string>
+                            {
+                                list[0]["artist-credit"]["name-credit"]["artist"]["name"].InnerText
+                            };
+                        }
+                        catch { }
+
+                        try
+                        {
+                            track = uint.Parse(list[i]["release-list"]
+                                ["release"]["medium-list"]
+                                ["medium"]["track-list"]
+                                ["track"]["number"]
+                                .InnerText);
+                        }
+                        catch { }
+
+                        // 디스크 번호
+                        try
+                        {
+                            num = uint.Parse(list[i]["release-list"]["release"]["medium-list"]["medium"]["position"].InnerText);
+                        }
+                        catch { }
+                        
                         TagInfo ti = new TagInfo
                         {
                             Title = list[i]["title"].InnerText,

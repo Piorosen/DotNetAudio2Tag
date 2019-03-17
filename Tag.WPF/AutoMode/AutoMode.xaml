@@ -64,9 +64,6 @@
                 Drop="ItemDragDrop"
                 Background="Transparent"
                 Margin="10"
-                CornerRadius="10"
-                    BorderBrush="Black"
-                    BorderThickness="1"
                 >
             <ScrollViewer AllowDrop="True"
                           VerticalScrollBarVisibility="Auto">
