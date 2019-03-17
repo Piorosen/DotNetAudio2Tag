@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tag.Setting;
 using ToastNotifications.Messages;
 
 namespace Tag.WPF
@@ -44,22 +45,26 @@ namespace Tag.WPF
             int run = GetNum(CheckBoxCueSplit) | GetNum(CheckBoxConv) | GetNum(CheckBoxTagging);
             var path = string.Empty;
 
-            if (run != 4)
+            if (System.IO.Path.GetExtension(viewModel.Items[0].Path).ToLower() == ".cue")
             {
-                
-
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if ((run & (int)AutoModeTag.CueSplit) != (int)AutoModeTag.CueSplit)
                 {
-                    if (Directory.Exists(dialog.SelectedPath) == false)
+                    Application.notifier.ShowError(Global.Language.AutoFail);
+                    return;
+                }
+            }
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (Directory.Exists(dialog.SelectedPath) == false)
+                {
+                    Execute_Click(sender, e);
+                }
+                else
+                {
+                    if (dialog.SelectedPath != string.Empty)
                     {
-                        Execute_Click(sender, e);
-                    }
-                    else
-                    {
-                        if (dialog.SelectedPath != string.Empty)
-                        {
-                            path = dialog.SelectedPath + @"\";
-                        }
+                        path = dialog.SelectedPath + @"\";
                     }
                 }
             }
@@ -100,7 +105,6 @@ namespace Tag.WPF
             {
                 var t = System.IO.Path.GetExtension(path).ToLower();
                 viewModel.LabelVisibility = Visibility.Hidden;
-
                 viewModel.AddFile(path);
             }
         }

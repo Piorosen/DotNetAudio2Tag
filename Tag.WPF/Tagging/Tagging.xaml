@@ -223,7 +223,7 @@
             DragEnter="ItemDragEnter" Drop="ItemDragDrop" SelectionChanged="ListView_Selected"
             GridViewColumnHeader.Click="TagListView_Click"
             >
-            <ListView.ContextMenu>
+            <!--<ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Tag Save">
                         <MenuItem.Icon>
@@ -267,7 +267,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
-            </ListView.ContextMenu>
+            </ListView.ContextMenu>-->
             <ListView.View>
                 <GridView>
                     <GridViewColumn

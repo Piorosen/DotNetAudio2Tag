@@ -24,6 +24,10 @@ namespace Tag.WPF
     }
     class AutoModeViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// View에 보여주는 리스트
+        /// Cue이면 Path에 Cue파일 경로, Mp3나 Wav파일이면 해당 파일경로
+        /// </summary>
         public ObservableCollection<AutoModeModel> Items { get; set; } = new ObservableCollection<AutoModeModel>();
 
         public Visibility LabelVisibility { get => _labelVisibility; set { _labelVisibility = value; OnPropertyChanged(); } }
@@ -35,8 +39,8 @@ namespace Tag.WPF
         public AutoModeViewModel()
         {
             Global.DialogIdentifier.PropertyChanged += DialogIdentifier_PropertyChanged;
-
         }
+
         private void DialogIdentifier_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(Global.DialogIdentifier.AutoModeEnable))
@@ -45,7 +49,7 @@ namespace Tag.WPF
             }
         }
 
-        ObservableCollection<TaggingModel> list = new ObservableCollection<TaggingModel>();
+        List<TaggingModel> TagData = new List<TaggingModel>();
         ConvCheckModel ConvPreset = new ConvCheckModel();
 
 
@@ -56,6 +60,10 @@ namespace Tag.WPF
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
         }
 
+        /// <summary>
+        /// 파일 추가
+        /// </summary>
+        /// <param name="file">해당 파일 경로</param>
         public void AddFile(string file)
         {
             var ext = Path.GetExtension(file).ToLower();
@@ -74,6 +82,10 @@ namespace Tag.WPF
             }
         }
 
+        /// <summary>
+        /// Path가 Cue파일인지 아닌지 체크
+        /// </summary>
+        /// <returns>cue인지 아닌지 결과</returns>
         bool CheckCueSplit()
         {
             foreach (var value in Items)
@@ -86,9 +98,12 @@ namespace Tag.WPF
             return true;
         }
 
-        async Task<bool> CheckConv()
+        async Task<bool> CheckConv(bool isCue)
         {
-
+            if (isCue)
+            {
+                return false;
+            }
             var check = new ConvCheck();
             var result = await DialogHost.Show(check, Global.DialogIdentifier.AutoModeCodec);
 
@@ -103,13 +118,19 @@ namespace Tag.WPF
             }
         }
 
-        async Task<bool> CheckTagging()
+        async Task<bool> CheckTagging(bool isCue)
         {
+            if (isCue)
+            {
+                return false;
+            }
 
-            list.Clear();
+            TagData.Clear();
+
+            var tag = new ObservableCollection<TaggingModel>();
             foreach (var value in Items)
             {
-                list.Add(new TaggingModel
+                var model = new TaggingModel
                 {
                     TagInfo = value.Tag,
                     WaveFormat = new WaveFormatModel
@@ -118,12 +139,20 @@ namespace Tag.WPF
                         Channel = value.Format.Channels,
                         Length = value.DurationMS / 1000
                     }
-                });
+                };
+                TagData.Add(model);
+                tag.Add(model);
             }
-
-            var check = new GetTagInfo(Items[0].Tag, list);
-
-            var result = await DialogHost.Show(check, Global.DialogIdentifier.AutoModeTagSelect);
+            var check = new GetTagInfo(Items[0].Tag, tag);
+            
+            var result = await DialogHost.Show(check, Global.DialogIdentifier.AutoModeTagSelect, (object s, DialogClosingEventArgs e) =>
+            {
+                for (int i = 0; i < TagData.Count; i++)
+                {
+                    var data = tag.First((model) => (model.WaveFormat.Length == TagData[i].WaveFormat.Length));
+                    TagData[i] = data;
+                }
+            });
 
             if (result is bool)
             {
@@ -139,8 +168,11 @@ namespace Tag.WPF
         {
             string ext = Path.GetExtension(Items[0].Path).ToLower();
 
+            bool isCue = false;
+
             if (ext == ".cue")
             {
+                isCue = true;
                 CueSpliter cue = new CueSpliter();
                 cue.AddFile(Items[0].Path);
 
@@ -161,7 +193,7 @@ namespace Tag.WPF
                     model.TagInfo.Track.Add((uint)item.Track);
                     model.TagInfo.Artist.Add(item.Artist);
                     model.TagInfo.Composer.Add(item.Composer);
-                    list.Add(model);
+                    TagData.Add(model);
                 }
             }
             else
@@ -181,18 +213,20 @@ namespace Tag.WPF
                 }
             }
 
+
             bool result = true;
             if (result && (run & (int)AutoModeTag.CueSplit) == (int)AutoModeTag.CueSplit)
             {
+                isCue = false;
                 result &= CheckCueSplit();
             }
             if (result && (run & (int)AutoModeTag.Conv) == (int)AutoModeTag.Conv)
             {
-                result &= await CheckConv();
+                result &= await CheckConv(isCue);
             }
             if (result && (run & (int)AutoModeTag.Tagging) == (int)AutoModeTag.Tagging)
             {
-                result &= await CheckTagging();
+                result &= await CheckTagging(isCue);
             }
             return result;
         }
@@ -202,12 +236,13 @@ namespace Tag.WPF
         {
             Global.DialogIdentifier.AutoModeEnable = false;
             Global.IsAutoMode = true;
+
             var result = await CheckMode(run);
             if (result)
             {
                 var list = new List<AutoModeModel>();
                 var tag = new List<TagInfo>();
-                foreach (var value in this.list)
+                foreach (var value in TagData)
                 {
                     tag.Add(value.TagInfo);
                 }
@@ -223,7 +258,7 @@ namespace Tag.WPF
                 {
                     check.Execute();
                 });
-                Application.notifier.ShowError(Global.Language.AutoSuccess);
+                Application.notifier.ShowSuccess(Global.Language.AutoSuccess);
             }
             else
             {
