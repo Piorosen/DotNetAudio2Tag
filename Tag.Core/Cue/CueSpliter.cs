@@ -130,32 +130,43 @@ namespace Tag.Core.Cue
 
             for (int index = 0; index < cueCount; index++)
             {
+                ISplit user = null;
+
                 if (CueList[index].AudioType == AudioType.WAV)
                 {
-                    WaveSplit wav = new WaveSplit();
-                    foreach (var value in wav.Execute(CueList[index]))
-                    {
-                        yield return (int)((value / (index + 1)) * cueCount);
-                    }
+                    user = new WaveSplit();
                 }
                 else if (CueList[index].AudioType == AudioType.FLAC)
                 {
-                    FlacSplit flac = new FlacSplit();
-                    foreach (var value in flac.Execute(CueList[index]))
-                    {
-                        yield return (int)((value / (index + 1)) * cueCount);
-                    }
+                    user = new FlacSplit();
                 }
                 // 커스텀 Spliter 사용함.
                 else if (CueList[index].AudioType == AudioType.NONE)
                 {
-                    UserSplit user = new UserSplit();
+                    user = new UserSplit();
+                }
 
-                    foreach (var value in user.Execute(CueList[index]))
+                foreach (var value in CueList[index].Track)
+                {
+                    char[] chars = Path.GetInvalidFileNameChars();
+                    for (int i = 0; i < value.Title.Length; i++)
                     {
-                        yield return (int)((value / (index + 1)) * cueCount);
+                        for (int w = 0; w < chars.Length; w++)
+                        {
+                            if (value.Title[i] == chars[w])
+                            {
+                                value.Title = value.Title.Remove(i);
+                                break;
+                            }
+                        }
                     }
                 }
+
+                foreach (var value in user.Execute(CueList[index]))
+                {
+                    yield return (int)((value / (index + 1)) * cueCount);
+                }
+
                 AudioTagging tagging = new AudioTagging();
                 tagging.CueFile(CueList[index]);
                 foreach (var i in tagging.Execute())

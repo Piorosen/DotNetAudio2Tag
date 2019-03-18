@@ -67,9 +67,8 @@ namespace Tag.WPF
                         path = dialog.SelectedPath + @"\";
                     }
                 }
+                viewModel.Execute(run, path);
             }
-
-            viewModel.Execute(run, path);
         }
 
         private void ItemDragDrop(object sender, DragEventArgs e)

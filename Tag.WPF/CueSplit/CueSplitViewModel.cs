@@ -113,6 +113,7 @@ namespace Tag.WPF
             TaskPercent = 0;
             LabelVisibility = Visibility.Hidden;
         }
+
         delegate bool Test();
         bool isTask = false;
         private string albumTitle;
