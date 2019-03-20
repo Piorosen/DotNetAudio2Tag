@@ -217,9 +217,12 @@ namespace Tag.WPF
                 Height = 100
 
             };
-
-            Global.DialogIdentifier.TaggingEnable = false;
-            var result = await DialogHost.Show(view, Global.DialogIdentifier.GetTagInfo);
+            try
+            {
+                var result = await DialogHost.Show(view, Global.DialogIdentifier.GetTagInfo);
+                Global.DialogIdentifier.TaggingEnable = false;
+            }
+            catch { }
         }
 
         public void RemoveModel(int index)

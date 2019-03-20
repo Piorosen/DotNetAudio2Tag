@@ -91,5 +91,10 @@ namespace Tag.WPF
                 Global.DialogIdentifier.TaggingEnable = true;
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -8,12 +8,13 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
              Width="200"
-             Height="100"
+             Height="150"
              KeyDown="UserControl_KeyDown"
              >
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -31,6 +32,13 @@
                 Content="{Binding Source={x:Static Setting:Global.Language}, Path=VGMDBSearch}"
                 Padding="0"
                 Click="VGMDB_Search"
+                />
+        <Button Grid.Row="2"
+                Margin="5"
+                Height="Auto"
+                Content="{Binding Source={x:Static Setting:Global.Language}, Path=Cancel}"
+                Padding="0"
+                Click="Close"
                 />
     </Grid>
 </UserControl>

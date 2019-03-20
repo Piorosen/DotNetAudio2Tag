@@ -119,7 +119,7 @@ namespace Tag.Core.Tagging.Library
                     ?? MusicBrainz.Search.Release(Title)
                     ?? MusicBrainz.Search.Release(artist: Artist);
             }
-            if (data == null && data.Count == 0)
+            if (data == null || data.Count == 0)
             {
                 return result;
             }
