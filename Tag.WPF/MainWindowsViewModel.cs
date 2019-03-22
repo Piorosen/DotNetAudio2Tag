@@ -14,6 +14,7 @@ namespace Tag.WPF
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged([CallerMemberName] string Name = "")
         {
+
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
         }
     }

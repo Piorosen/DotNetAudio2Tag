@@ -21,6 +21,7 @@ namespace Tag.Setting
 
         public static void Load()
         {
+
             Setting.Load();
             Language.Load(Setting.LangFile);
         }
