@@ -14,6 +14,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using Tag.Core.Tagging;
 using Tag.Setting;
+using ToastNotifications.Messages;
 
 namespace Tag.WPF
 {
@@ -35,6 +36,7 @@ namespace Tag.WPF
         {
             if (viewModel.Items.Count == 0)
             {
+                Application.notifier.ShowInformation(Global.Language.AutoFail);
                 return;
             }
             viewModel.AllTagSave();
@@ -44,6 +46,10 @@ namespace Tag.WPF
             if (TagListView.Items.Count != 0)
             {
                 viewModel.GetTagInfo(TagListView.SelectedIndex);
+            }
+            else
+            {
+                Application.notifier.ShowInformation(Global.Language.AutoFail);
             }
         }
 

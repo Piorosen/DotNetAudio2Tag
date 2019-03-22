@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-
+using Tag.Setting;
+using ToastNotifications.Messages;
 
 namespace Tag.WPF
 {
@@ -76,6 +77,7 @@ namespace Tag.WPF
         {
             if (viewModel.ConvInfos.Count == 0)
             {
+                Application.notifier.ShowInformation(Global.Language.AutoFail);
                 return;
             }
 

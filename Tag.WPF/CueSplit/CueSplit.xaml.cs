@@ -72,6 +72,7 @@ namespace Tag.WPF
         {
             if (viewModel.Items.Count == 1)
             {
+                Application.notifier.ShowInformation(Global.Language.AutoFail);
                 return;
             }
             System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
