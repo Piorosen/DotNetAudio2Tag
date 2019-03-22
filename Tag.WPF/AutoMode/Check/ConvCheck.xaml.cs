@@ -71,5 +71,10 @@ namespace Tag.WPF
         {
             DialogHost.CloseDialogCommand.Execute(new ConvCheckModel { preset = ConvertMode[Index], Param = Param }, (sender as Button).CommandTarget);
         }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            DialogHost.CloseDialogCommand.Execute(false, (sender as Button).CommandTarget);
+        }
     }
 }

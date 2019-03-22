@@ -44,7 +44,7 @@
                 Grid.Column="1"
                 VerticalAlignment="Bottom"
                 Margin="10,0,10,10"
-                Content="{Binding Source={x:Static Setting:Global.Language}, Path=ConvStatusClose}" Click="Button_Click" d:LayoutOverrides="Width, LeftMargin, RightMargin"
+                Content="{Binding Source={x:Static Setting:Global.Language}, Path=ConvStatusClose}" Click="Button_Click"
              
                 />
     </Grid>

@@ -87,6 +87,18 @@ namespace Tag.WPF
             view.SetTagValue(searchResult);
         }
 
+        async void CloseDialog(object sender, DialogClosingEventArgs e)
+        {
+            if (e.Parameter is bool)
+            {
+                if ((bool)e.Parameter != false)
+                {
+                    await Task.Delay(500);
+                    DialogHost.CloseDialogCommand.Execute(e.Parameter, null);
+                }
+            }
+        }
+
         int index = 0;
         CheckTagging view;
 
@@ -94,17 +106,11 @@ namespace Tag.WPF
         {
             this.index = index;
 
-            view = new CheckTagging(user)
-            {
-                Height = 500,
-                Width = 1100
-            };
+            view = new CheckTagging(user);
             var result = await DialogHost.Show(view, Global.IsAutoMode
                 ? Global.DialogIdentifier.AutoCheckTagInfo
-                : Global.DialogIdentifier.CheckTagInfo, OpenDialog);
+                : Global.DialogIdentifier.CheckTagInfo, OpenDialog, CloseDialog);
 
-            await Task.Delay(500);
-            DialogHost.CloseDialogCommand.Execute(result, null);
         }
 
 

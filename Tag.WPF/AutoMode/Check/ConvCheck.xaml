@@ -83,8 +83,16 @@
                     Margin="5"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Right"
-                    Click="OK_Click"
-                    Content="{Binding Source={x:Static Setting:Global.Language}, Path=OK}"/>
+                    Click="Cancel_Click"
+                    Content="{Binding Source={x:Static Setting:Global.Language}, Path=Cancel}"/>
+            <Button
+                Width="130"
+                Margin="0,0,30,5"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Click="OK_Click"
+                Content="{Binding OK, Source={x:Static Setting:Global.Language}}"
+                Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"/>
         </Grid>
     </Border>
 </UserControl>
