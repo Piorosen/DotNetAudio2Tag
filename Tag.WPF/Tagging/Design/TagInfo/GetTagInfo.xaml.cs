@@ -48,6 +48,11 @@ namespace Tag.WPF
             this.Width = 0;
             this.Height = 0;
         }
+        void CloseEvent(object sender, DialogClosingEventArgs e)
+        {
+            this.Height = 150;
+            this.Width = 200;
+        }
 
         MusicBrainzSearch brainz;
         VgmDbSearch vgm;
@@ -63,7 +68,7 @@ namespace Tag.WPF
 
             var result = await DialogHost.Show(brainz, Global.IsAutoMode
                 ? Global.DialogIdentifier.AutoBrainzSearch
-                : Global.DialogIdentifier.BrainzSearch, OpenBrainzEvent);
+                : Global.DialogIdentifier.BrainzSearch, OpenBrainzEvent, CloseEvent);
             await Task.Delay(500);
             DialogHost.CloseDialogCommand.Execute(result, (sender as Button).CommandTarget);
         }
@@ -77,7 +82,7 @@ namespace Tag.WPF
             };
             var result = await DialogHost.Show(vgm, Global.IsAutoMode
                 ? Global.DialogIdentifier.AutoVgmSearch
-                : Global.DialogIdentifier.VgmSearch, OpenVgmEvent);
+                : Global.DialogIdentifier.VgmSearch, OpenVgmEvent, CloseEvent);
             await Task.Delay(500);
             DialogHost.CloseDialogCommand.Execute(result, null);
             
@@ -92,9 +97,10 @@ namespace Tag.WPF
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Close(object sender, RoutedEventArgs e)
         {
-
+            DialogHost.CloseDialogCommand.Execute(false, null);
+            Global.DialogIdentifier.TaggingEnable = true;
         }
     }
 }

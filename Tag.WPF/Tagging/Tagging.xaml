@@ -10,6 +10,7 @@
     xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
     
     xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
+    xmlns:wave="clr-namespace:NAudio.Wave;assembly=NAudio"
     mc:Ignorable="d"
     AllowDrop="True"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -310,8 +311,15 @@
                         DisplayMemberBinding="{Binding WaveFormat.Bitrate}"
                         Header="{Binding Source={x:Static Setting:Global.Language}, Path=Bitrate}" />
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding WaveFormat.Length}"
-                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Length}" />
+                        Header="{Binding Source={x:Static Setting:Global.Language}, Path=Length}">
+                        <GridViewColumn.DisplayMemberBinding>
+                            <MultiBinding StringFormat="{}{0}{1}">
+                                <Binding Path="WaveFormat.Length"/>
+                                <Binding Source="{x:Static Setting:Global.Language}"
+                                         Path="CueSecond"/>
+                            </MultiBinding>
+                        </GridViewColumn.DisplayMemberBinding>
+                    </GridViewColumn>
                     <GridViewColumn
                         DisplayMemberBinding="{Binding WaveFormat.Channel}"
                         Header="{Binding Source={x:Static Setting:Global.Language}, Path=Channel}" />

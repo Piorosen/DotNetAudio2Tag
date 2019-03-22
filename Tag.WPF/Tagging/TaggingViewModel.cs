@@ -211,16 +211,11 @@ namespace Tag.WPF
             }
 
 
-            var view = new GetTagInfo(Items[index == -1 ? 0 : index].TagInfo, Items)
-            {
-                Width = 200,
-                Height = 100
-
-            };
+            var view = new GetTagInfo(Items[index == -1 ? 0 : index].TagInfo, Items);
             try
             {
-                var result = await DialogHost.Show(view, Global.DialogIdentifier.GetTagInfo);
                 Global.DialogIdentifier.TaggingEnable = false;
+                var result = await DialogHost.Show(view, Global.DialogIdentifier.GetTagInfo);
             }
             catch { }
         }

@@ -265,7 +265,7 @@
                                     />
 
                                 <GridViewColumn Header="{Binding Source={x:Static Setting:Global.Language}, Path=Length}"
-                                DisplayMemberBinding="{Binding Length, StringFormat=F3}"
+                                DisplayMemberBinding="{Binding Length, StringFormat={}{0:F2}}"
                                 />
                             </GridView>
                         </ListView.View>
