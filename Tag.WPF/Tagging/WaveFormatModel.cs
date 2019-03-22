@@ -8,6 +8,7 @@ namespace Tag.WPF
 {
     public class WaveFormatModel
     {
+
         public double Length { get; set; } = 0;
         public int Bitrate { get; set; } = 0;
         public int Channel { get; set; } = 0;
