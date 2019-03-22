@@ -37,6 +37,7 @@ namespace Tag.WPF
             Index.Add("ko-kr.lang");
             Index.Add("ja-jp.lang");
             Index.Add("other.lang");
+
             ChangeLang(Global.Setting.LangFile, true);
         }
 
