@@ -220,6 +220,7 @@ namespace Tag.WPF
                 isCue = false;
                 result &= CheckCueSplit();
             }
+            
             if (result && (run & (int)AutoModeTag.Conv) == (int)AutoModeTag.Conv)
             {
                 result &= await CheckConv(isCue);

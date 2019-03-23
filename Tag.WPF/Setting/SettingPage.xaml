@@ -4,14 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             xmlns:local="clr-namespace:Tag.WPF"
              xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
-             xmlns:System="clr-namespace:System;assembly=mscorlib"
              Width="800" Height="450"
              AllowDrop="True" MouseEnter="Update"
              >
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="150"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
@@ -68,9 +68,72 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="CUE 분리 설정"
+                       TextAlignment="Left"
+                       Grid.Row="0"
+                       VerticalAlignment="Center"
+                       />
+            <TextBlock Text="분리시 저장될 파일명 형식"
+                       TextAlignment="Left"
+                       Grid.Row="1"
+                       VerticalAlignment="Center"
+                       />
+            <TextBox TextAlignment="Left"
+                     Grid.Row="2"
+                     VerticalAlignment="Center"
+                >
+
+            </TextBox>
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="95"/>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="%A% : 앨범 아티스트"
+                           VerticalAlignment="Center"
+                           Grid.Row="0"
+                           Grid.Column="0" Grid.ColumnSpan="2" Margin="0,2"
+                           />
+                <TextBlock Text="%a% : 트랙 아티스트" 
+                           VerticalAlignment="Center"
+                           Grid.Row="1"
+                           Grid.Column="0" Grid.ColumnSpan="2" Margin="0,3,0,2"
+                           />
+                <TextBlock Text="%n% : 트랙명 (트랙제목)"
+                           VerticalAlignment="Center"
+                           Grid.Row="0"
+                           Grid.Column="2" Margin="0,2"
+                           />
+                <TextBlock Text="%t% : 트랙 순서" 
+                           VerticalAlignment="Center"
+                           Grid.Row="1"
+                           Grid.Column="2" Margin="0,3,0,2"
+                           />
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
             <TextBlock 
                        VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
+                       HorizontalAlignment="Left" Margin="0,12"
                        >
                 <TextBlock.Text>
                     <MultiBinding StringFormat="{}{0} {1}">
@@ -79,11 +142,14 @@
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            <Button HorizontalAlignment="Right"
+            <Button 
+                    HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    Width="130"
                     Height="30"
-                    Content="{Binding Source={x:Static Setting:Global.Language}, Path=CacheRemove}" Click="Button_Click" Margin="0,5"
+                    Width="130"
+                    Content="{Binding Source={x:Static Setting:Global.Language}, Path=CacheRemove}"
+                    Click="Button_Click"
+                    Grid.Column="1"
                     />
         </Grid>
     </Grid>

@@ -57,7 +57,7 @@ namespace Tag.WPF
             }
         }
 
-        private async void No_Click(object sender, RoutedEventArgs e)
+        private void No_Click(object sender, RoutedEventArgs e)
         {
             DialogHost.CloseDialogCommand.Execute(false, null);
         }
