@@ -179,7 +179,7 @@ namespace Tag.Core.Tagging.Library
                 {
                     var value = data.Data[0];
 
-                    var tagging = RequestWeb($"http://musicbrainz.org/ws/2/recording/?query=reid:{data.Data[0].Id}&limit=1000");
+                    var tagging = RequestWeb($"http://musicbrainz.org/ws/2/recording/?query=reid:{data.Data[0].Id}&limit=100");
                     XmlDocument xmlreader = new XmlDocument();
                     xmlreader.LoadXml(tagging);
                     var list = xmlreader["metadata"]["recording-list"].ChildNodes;

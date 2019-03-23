@@ -79,11 +79,7 @@ namespace Tag.WPF
 
         private async void VGMDB_Search(object sender, RoutedEventArgs e)
         {
-            vgm = new VgmDbSearch(userinfo)
-            {
-                Width = 800,
-                Height = 280,
-            };
+            vgm = new VgmDbSearch(userinfo);
             var result = await DialogHost.Show(vgm, Global.IsAutoMode
                 ? Global.DialogIdentifier.AutoVgmSearch
                 : Global.DialogIdentifier.VgmSearch, OpenVgmEvent, CloseEvent);

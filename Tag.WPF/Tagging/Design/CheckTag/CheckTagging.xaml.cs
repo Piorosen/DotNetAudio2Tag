@@ -138,5 +138,15 @@ namespace Tag.WPF
                 viewModel.ChangeText(k.Name, k.Text);
             }
         }
+
+        private void Remove_GetTag(object sender, KeyEventArgs e)
+        {
+            var list = (sender as ListView).SelectedItems;
+            if (list == null)
+            {
+                return;
+            }
+            viewModel.RemoveGetTag(list);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Library;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -193,6 +194,7 @@ namespace Tag.WPF
             Visible = Visibility.Hidden;
         }
 
+
         public void SetValue(ObservableCollection<TaggingModel> User)
         {
             data = User;
@@ -226,7 +228,14 @@ namespace Tag.WPF
             UserInfo.RemoveAt(index);
             UserInfo.Insert(index + 1, now);
         }
-
+    
+        public void RemoveGetTag(IList list)
+        {
+            foreach (var value in list)
+            {
+                BrainzInfo.Remove(value as CheckBrainzModel);
+            }
+        }
         public void ChangeText(string Name, string Value)
         {
             this.GetType().GetProperty(Name).SetValue(this, Value);

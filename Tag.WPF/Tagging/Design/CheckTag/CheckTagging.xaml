@@ -230,7 +230,10 @@
                         <ColumnDefinition Width="17*"/>
                         <ColumnDefinition Width="191*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView ItemsSource="{Binding BrainzInfo}" Grid.ColumnSpan="2">
+                    <ListView ItemsSource="{Binding BrainzInfo}" Grid.ColumnSpan="2"
+                              KeyDown="Remove_GetTag"
+                              SelectionMode="Multiple"
+                              >
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="{Binding Source={x:Static Setting:Global.Language}, Path=Track}"
