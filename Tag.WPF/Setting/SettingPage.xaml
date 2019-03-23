@@ -12,7 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition Height="150"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -122,10 +122,55 @@
                            />
             </Grid>
         </Grid>
-        <Grid Grid.Row="2">
-            
-        </Grid>
+        <Grid Grid.Row="2" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="자동 모드 설정"
+                       TextAlignment="Left"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       VerticalAlignment="Center"
+                />
 
+            <TextBlock Text="Cue 분리한 파일이 저장될 폴더명"
+                       TextAlignment="Left"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       VerticalAlignment="Center"
+                />
+            <TextBlock Text="FLAC 코덱으로 변환시 파일이 저장될 폴더명"
+                       TextAlignment="Left"
+                       Grid.Row="2"
+                       Grid.Column="0"
+                       VerticalAlignment="Center"
+                />
+            <TextBlock Text="MP3 코덱으로 변환시 저장될 폴더명"
+                       TextAlignment="Left"
+                       Grid.Row="3"
+                       Grid.Column="0"
+                       VerticalAlignment="Center"
+                />
+
+            <TextBox Grid.Row="1"
+                     Grid.Column="1"
+                />
+            <TextBox Grid.Row="2"
+                     Grid.Column="1"
+                />
+            <TextBox Grid.Row="3"
+                     Grid.Column="1"
+                />
+
+
+        </Grid>
         <Grid Grid.Row="3" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
