@@ -3,12 +3,14 @@ using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Media;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
+using Tag.Setting;
 
 namespace Tag.WPF
 {
@@ -20,8 +22,21 @@ namespace Tag.WPF
         public TagInfo Tag { get; set; }
         public WaveFormat Format { get; set; }
         public AudioType Type { get; private set; }
-        public AutoModeModel(string file)
+
+        public string Duration
         {
+            get
+            {
+                return ((int)DurationMS / 1000).ToString() + Global.Language.CueSecond;
+            }
+        }
+        public int Index { get; private set; }
+
+
+        public AutoModeModel(string file, int index)
+        {
+            Index = index;
+
             using (var tag = TagLib.File.Create(file))
             {
                 Tag = new TagInfo(tag.Tag, file);
@@ -43,8 +58,10 @@ namespace Tag.WPF
             Path = file;
         }
 
-        public AutoModeModel(TrackInfo info, string file)
+        public AutoModeModel(TrackInfo info, string file, int index)
         {
+            Index = index;
+
             this.Artist = info.Artist;
             this.Composer = info.Composer;
             this.DurationMS = info.DurationMS;

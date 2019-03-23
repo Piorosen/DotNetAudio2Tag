@@ -73,12 +73,12 @@ namespace Tag.WPF
                 cue.AddFile(file);
                 foreach (var item in cue[0].Track)
                 {
-                    Items.Add(new AutoModeModel(item, file));
+                    Items.Add(new AutoModeModel(item, file, Items.Count + 1));
                 }
             }
             else
             {
-                Items.Add(new AutoModeModel(file));
+                Items.Add(new AutoModeModel(file, Items.Count + 1));
             }
         }
 

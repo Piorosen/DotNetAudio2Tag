@@ -77,7 +77,6 @@
                         <DataTemplate>
                             <Border
                             Tag="{Binding Index}"
-                            Background="{Binding Color}"
                             BorderThickness="0 0 0 1"
                             Name="Border"
                             BorderBrush="{DynamicResource MaterialDesignDivider}">
@@ -95,7 +94,7 @@
                                     <TextBlock
                                     Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
                                     VerticalAlignment="Center"
-                                    Text="{Binding IndexString, StringFormat={}{0:00}}" 
+                                    Text="{Binding Index}" 
                                     HorizontalAlignment="Center"/>
                                     <TextBlock
                                     Grid.Column="1" Grid.Row="0" 
@@ -111,15 +110,9 @@
                                     VerticalAlignment="Center"
                                     Text="{Binding Duration}"
                                 />
-                                    <TextBlock
-                                Grid.Column="3" Grid.Row="0" Grid.RowSpan="2"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Text="{Binding OffSet}"
-                                />
                                 </Grid>
                             </Border>
-                            <DataTemplate.Triggers>
+                            <!--<DataTemplate.Triggers>
                                 <DataTrigger
                                 Binding="{Binding IsSelect}"
                                 Value="True">
@@ -128,7 +121,7 @@
                                     Property="Background"
                                     Value="{DynamicResource MaterialDesignSelection}" />
                                 </DataTrigger>
-                            </DataTemplate.Triggers>
+                            </DataTemplate.Triggers>-->
                         </DataTemplate>
 
                     </ItemsControl.ItemTemplate>

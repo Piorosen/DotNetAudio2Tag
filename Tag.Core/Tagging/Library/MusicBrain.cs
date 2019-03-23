@@ -171,14 +171,15 @@ namespace Tag.Core.Tagging.Library
             {
                 info.Barcode = info.Barcode == string.Empty ? null : info.Barcode;
                 info.Identifier = info.Identifier == string.Empty ? null : info.Identifier;
+                
 
-                var data = MusicBrainz.Search.Release(barcode: info.Barcode, reid: info.Identifier);
-
+                var data = MusicBrainz.Search.Release(barcode: info.Barcode, reid: info.Identifier, limit:50);
+                
                 if (data.Data.Count != 0)
                 {
                     var value = data.Data[0];
 
-                    var tagging = RequestWeb($"http://musicbrainz.org/ws/2/recording/?query=reid:{data.Data[0].Id}");
+                    var tagging = RequestWeb($"http://musicbrainz.org/ws/2/recording/?query=reid:{data.Data[0].Id}&limit=1000");
                     XmlDocument xmlreader = new XmlDocument();
                     xmlreader.LoadXml(tagging);
                     var list = xmlreader["metadata"]["recording-list"].ChildNodes;

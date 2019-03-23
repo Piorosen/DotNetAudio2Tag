@@ -77,7 +77,7 @@ namespace Tag.WPF
                     filename = filename.Replace("%t%", cue[0].Track[i].Track.ToString());
                 }
                 data.Add(new AutoModeModel(cue[0].SavePath + filename +
-                    (cue[0].AudioType == AudioType.WAV ? ".wav" : ".flac")));
+                    (cue[0].AudioType == AudioType.WAV ? ".wav" : ".flac"), data.Count + 1));
             }
         }
         async Task<bool> Conv(List<AutoModeModel> data, string resultPath, ConvCheckModel preset)
@@ -166,7 +166,7 @@ namespace Tag.WPF
                 //    File.Move(datatmp[i].Path, filename);
                 //}
 
-                data.Add(new AutoModeModel(filename));
+                data.Add(new AutoModeModel(filename, data.Count + 1));
 
                 string file = filename;
                 audiotag.AddFile(tag[i], file);
