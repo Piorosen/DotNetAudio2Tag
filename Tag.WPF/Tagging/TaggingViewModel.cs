@@ -243,26 +243,32 @@ namespace Tag.WPF
 
                             var dir = Path.GetDirectoryName(value.TagInfo.Path);
                             var ext = Path.GetExtension(value.FileName);
-                            filename = dir + @"\" + filename;
+                            filename = dir + @"\" + filename + ext;
 
-                            if (System.IO.File.Exists(filename + ext) == true)
+                            try
                             {
-                                int num = 1;
-                                for (; System.IO.File.Exists($"{filename} ({num}){ext}"); num++)
-                                {
-                                }
-                                filename += $" ({num}){ext}";
+                                System.IO.File.Move(value.TagInfo.Path, filename);
                             }
-                            else
-                            {
-                                filename += ext;
-                            }
-
-                            System.IO.File.Move(value.TagInfo.Path, filename);
-
+                            catch { }
                             t.Add(filename);
-                        }
+                            //if (filename + ext != value.TagInfo.Path)
+                            //{
+                            //    if (System.IO.File.Exists(filename + ext) == true)
+                            //    {
+                            //        int num = 1;
+                            //        for (; System.IO.File.Exists($"{filename} ({num}){ext}"); num++)
+                            //        {
+                            //        }
+                            //        filename += $" ({num}){ext}";
+                            //    }
+                            //    else
+                            //    {
+                            //        filename += ext;
+                            //    }
+                            //    System.IO.File.Move(value.TagInfo.Path, filename);
+                            //}
 
+                        }
                         ClearFile();
                         foreach (var value in t)
                         {

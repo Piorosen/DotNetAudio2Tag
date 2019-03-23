@@ -142,21 +142,29 @@ namespace Tag.WPF
                 var dir = Path.GetDirectoryName(datatmp[i].Tag.Path);
                 var ext = Path.GetExtension(datatmp[i].Path);
 
-                filename = dir + @"\" + filename;
-                if (File.Exists(filename + ext) == true)
+                filename = dir + @"\" + filename + ext;
+                try
                 {
-                    int num = 1;
-                    for (; File.Exists($"{filename} ({num}){ext}"); num++)
-                    {
-                    }
-                    filename += $" ({num}){ext}";
+                    File.Move(datatmp[i].Path, filename);
                 }
-                else
-                {
-                    filename += ext;
-                }
-                
-                File.Move(datatmp[i].Path, filename);
+                catch { }
+
+                //if (filename + ext != datatmp[i].Path)
+                //{
+                //    if (File.Exists(filename + ext) == true)
+                //    {
+                //        int num = 1;
+                //        for (; File.Exists($"{filename} ({num}){ext}"); num++)
+                //        {
+                //        }
+                //        filename += $" ({num}){ext}";
+                //    }
+                //    else
+                //    {
+                //        filename += ext;
+                //    }
+                //    File.Move(datatmp[i].Path, filename);
+                //}
 
                 data.Add(new AutoModeModel(filename));
 
