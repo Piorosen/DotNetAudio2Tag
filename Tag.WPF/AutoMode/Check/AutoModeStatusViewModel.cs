@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -61,19 +62,19 @@ namespace Tag.WPF
                 string filename = Global.Setting.CueSplitSetting;
                 while (filename.IndexOf("%a%") != -1)
                 {
-                    filename = filename.Replace("%a", cue[0].Track[0].Artist);
+                    filename = filename.Replace("%a%", cue[0].Track[i].Artist);
                 }
                 while (filename.IndexOf("%A%") != -1)
                 {
-                    filename = filename.Replace("%a", cue[0].Artist);
+                    filename = filename.Replace("%A%", cue[0].Artist);
                 }
                 while (filename.IndexOf("%n%") != -1)
                 {
-                    filename = filename.Replace("%a", cue[0].Track[0].Title);
+                    filename = filename.Replace("%n%", cue[0].Track[i].Title);
                 }
                 while (filename.IndexOf("%t%") != -1)
                 {
-                    filename = filename.Replace("%a", cue[0].Track[0].Track.ToString());
+                    filename = filename.Replace("%t%", cue[0].Track[i].Track.ToString());
                 }
                 data.Add(new AutoModeModel(cue[0].SavePath + filename +
                     (cue[0].AudioType == AudioType.WAV ? ".wav" : ".flac")));
@@ -98,15 +99,75 @@ namespace Tag.WPF
         }
         void Tagging(List<AutoModeModel> data, List<TagInfo> tag)
         {
-            for (int i = 0; i < data.Count; i++)
+            audiotag.List().Clear();
+            int count = data.Count > tag.Count ? tag.Count : data.Count;
+
+            var datatmp = data.ToArray().ToList();
+
+            data.Clear();
+            for (int i = 0; i < count ; i++)
             {
-                string file = data[i].Path;
+                string filename = Global.Setting.TagTypeSetting;
+                while (filename.IndexOf("%a%") != -1)
+                {
+                    filename = filename.Replace("%a%", tag[i].Artist.Count != 0
+                                                                    ? tag[i].Artist[0]
+                                                                    : string.Empty);
+                }
+                while (filename.IndexOf("%A%") != -1)
+                {
+                    filename = filename.Replace("%A%", tag[i].AlbumArtist.Count != 0
+                                                                    ? tag[i].AlbumArtist[0]
+                                                                    : string.Empty);
+                }
+                while (filename.IndexOf("%n%") != -1)
+                {
+                    filename = filename.Replace("%n%", tag[i].Title);
+                }
+                while (filename.IndexOf("%t%") != -1)
+                {
+                    filename = filename.Replace("%t%", tag[i].Track.Count != 0
+                                                                    ? tag[i].Track[0].ToString()
+                                                                    : string.Empty);
+                }
+                while (filename.IndexOf("%y%") != -1)
+                {
+                    filename = filename.Replace("%y%", tag[i].Year);
+                }
+                while (filename.IndexOf("%an%") != -1)
+                {
+                    filename = filename.Replace("%an%", tag[i].Album);
+                }
+
+                var dir = Path.GetDirectoryName(datatmp[i].Tag.Path);
+                var ext = Path.GetExtension(datatmp[i].Path);
+
+                filename = dir + @"\" + filename;
+                if (File.Exists(filename + ext) == true)
+                {
+                    int num = 1;
+                    for (; File.Exists($"{filename} ({num}){ext}"); num++)
+                    {
+                    }
+                    filename += $" ({num}){ext}";
+                }
+                else
+                {
+                    filename += ext;
+                }
+                
+                File.Move(datatmp[i].Path, filename);
+
+                data.Add(new AutoModeModel(filename));
+
+                string file = filename;
                 audiotag.AddFile(tag[i], file);
             }
 
             foreach (var value in audiotag.Execute())
             {
             }
+
         }
 
         // run 정보와 현재 파일 상태, 태그정보

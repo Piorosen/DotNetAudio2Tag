@@ -102,6 +102,7 @@ namespace Tag.WPF
                 data.RemoveAt(index);
                 data.Insert(index, temp);
             }
+           
         }
 
         public void SetTagValue(List<TagInfo> tag)

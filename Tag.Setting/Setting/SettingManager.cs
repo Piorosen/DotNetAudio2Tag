@@ -21,7 +21,9 @@ namespace Tag.Setting
         public string CueSplitSetting { get; set; } = string.Empty;
         public string AutoCueFolder { get; set; } = string.Empty;
         public string AutoConvFolder { get; set; } = string.Empty;
-        
+
+        public string TagTypeSetting { get; set; } = string.Empty;
+
 
 
 

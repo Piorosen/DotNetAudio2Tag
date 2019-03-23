@@ -194,28 +194,83 @@ namespace Tag.WPF
 
         public async void GetTagInfo(int index)
         {
-            var user = new List<TrackInfo>();
-
-            foreach (var item in Items)
-            {
-                user.Add(new TrackInfo
-                {
-                    Album = item.TagInfo.Album,
-                    Artist = string.Join("; ", item.TagInfo.Artist),
-                    Composer = string.Join("; ", item.TagInfo.Composer),
-                    DurationMS = item.WaveFormat.Length,
-                    Title = item.TagInfo.Title,
-                    Track = item.TagInfo.Track.Count != 0 ? (int)item.TagInfo.Track[0] : 0,
-
-                });
-            }
-
-
             var view = new GetTagInfo(Items[index == -1 ? 0 : index].TagInfo, Items);
             try
             {
                 Global.DialogIdentifier.TaggingEnable = false;
                 var result = await DialogHost.Show(view, Global.DialogIdentifier.GetTagInfo);
+
+                if (result is bool)
+                {
+                    if ((bool)result == true)
+                    {
+                        List<string> t = new List<string>();
+
+                        foreach (var value in Items)
+                        {
+                            
+                            string filename = Global.Setting.TagTypeSetting;
+                            while (filename.IndexOf("%a%") != -1)
+                            {
+                                filename = filename.Replace("%a%", value.TagInfo.Artist.Count != 0
+                                                                                ? value.TagInfo.Artist[0]
+                                                                                : string.Empty);
+                            }
+                            while (filename.IndexOf("%A%") != -1)
+                            {
+                                filename = filename.Replace("%A%", value.TagInfo.AlbumArtist.Count != 0
+                                                                                ? value.TagInfo.AlbumArtist[0]
+                                                                                : string.Empty);
+                            }
+                            while (filename.IndexOf("%n%") != -1)
+                            {
+                                filename = filename.Replace("%n%", value.TagInfo.Title);
+                            }
+                            while (filename.IndexOf("%t%") != -1)
+                            {
+                                filename = filename.Replace("%t%", value.TagInfo.Track.Count != 0
+                                                                                ? value.TagInfo.Track[0].ToString()
+                                                                                : string.Empty);
+                            }
+                            while (filename.IndexOf("%y%") != -1)
+                            {
+                                filename = filename.Replace("%y%", value.TagInfo.Year);
+                            }
+                            while (filename.IndexOf("%an%") != -1)
+                            {
+                                filename = filename.Replace("%an%", value.TagInfo.Album);
+                            }
+
+                            var dir = Path.GetDirectoryName(value.TagInfo.Path);
+                            var ext = Path.GetExtension(value.FileName);
+                            filename = dir + @"\" + filename;
+
+                            if (System.IO.File.Exists(filename + ext) == true)
+                            {
+                                int num = 1;
+                                for (; System.IO.File.Exists($"{filename} ({num}){ext}"); num++)
+                                {
+                                }
+                                filename += $" ({num}){ext}";
+                            }
+                            else
+                            {
+                                filename += ext;
+                            }
+
+                            System.IO.File.Move(value.TagInfo.Path, filename);
+
+                            t.Add(filename);
+                        }
+
+                        ClearFile();
+                        foreach (var value in t)
+                        {
+                            AddModel(value);
+                        }
+
+                    }
+                }
             }
             catch { }
         }
