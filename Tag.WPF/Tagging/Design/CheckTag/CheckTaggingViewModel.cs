@@ -153,6 +153,22 @@ namespace Tag.WPF
             });
 
             CoverImage = tag[0].Image;
+            if (CoverImage == null || CoverImage.Count == 0)
+            {
+                CoverInfo = "이미지가 없음";
+            }
+            else
+            {
+                var stream = new MemoryStream(CoverImage[0].Data.Data);
+                var image = new Bitmap(System.Drawing.Image.FromStream(stream));
+                var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                     image.GetHbitmap(),
+                     IntPtr.Zero,
+                     Int32Rect.Empty,
+                     BitmapSizeOptions.FromEmptyOptions());
+
+                CoverInfo = $"{image.Width} x {image.Height}, {CapacityManage.Change(new System.Numerics.BigInteger(stream.Length))}";
+            }
 
             tag.Sort((a, b) =>
             {

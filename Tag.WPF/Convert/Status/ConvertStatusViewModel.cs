@@ -66,6 +66,7 @@ namespace Tag.WPF
             {
                 Items.Add(Dequeue());
             }
+
             var result = await converter.Execute(preset.ConvMode, MultiTask, resultPath);
             Result = true;
         }

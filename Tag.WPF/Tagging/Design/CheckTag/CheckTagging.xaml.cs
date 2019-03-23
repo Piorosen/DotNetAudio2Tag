@@ -31,10 +31,7 @@ namespace Tag.WPF
             InitializeComponent();
             DataContext = viewModel = new CheckTaggingViewModel();
             viewModel.SetValue(user);
-            
         }
-        
-        
 
         public void SetTagValue(List<TagInfo> info)
         {
@@ -45,7 +42,6 @@ namespace Tag.WPF
         {
             DialogHost.CloseDialogCommand.Execute(false, null);
             await Task.Delay(500);
-            Global.DialogIdentifier.TaggingEnable = true;
         }
 
         private async void Yes_Click(object sender, RoutedEventArgs e)
@@ -53,7 +49,6 @@ namespace Tag.WPF
             viewModel.SaveTag();
             DialogHost.CloseDialogCommand.Execute(true, null);
             await Task.Delay(500);
-            Global.DialogIdentifier.TaggingEnable = true;
         }
 
         private void Up_Click(object sender, RoutedEventArgs e)
@@ -64,8 +59,8 @@ namespace Tag.WPF
                 viewModel.UpClick(index);
                 UserListView.SelectedIndex = index - 1;
             }
-
         }
+
         private void Down_Click(object sender, RoutedEventArgs e)
         {
             int index = UserListView.SelectedIndex;

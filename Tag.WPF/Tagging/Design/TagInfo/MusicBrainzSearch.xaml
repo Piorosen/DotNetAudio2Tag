@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
-             Height="400" Width="800">
+             Height="400" Width="1100">
 
     <UserControl.Resources>
         <local:ListToString x:Key="ListToString"/>
@@ -25,13 +25,14 @@
         </Grid.RowDefinitions>
 
         <materialDesign:Card
+            Grid.Column="0"
+            Grid.Row="1"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             UniformCornerRadius="10"
             Padding="5"
-            Height="130"
-            Width="130"
-            Grid.RowSpan="2"
+            Height="100"
+            Width="100"
             Visibility="{Binding Searching}"
             >
             <ProgressBar Grid.ColumnSpan="2" Grid.RowSpan="3"
@@ -39,8 +40,8 @@
                     HorizontalAlignment="Center"
                     Style="{StaticResource MaterialDesignCircularProgressBar}"
                     Value="66"
-                    Height="100"
-                    Width="100"
+                    Height="70"
+                    Width="70"
                     IsIndeterminate="True"
                     />
         </materialDesign:Card>
@@ -174,12 +175,10 @@
             </Grid>
 
             <Button Grid.Column="1"
-                Width="150"
                 Click="Yes_Click"
                 Content="{Binding Source={x:Static Setting:Global.Language}, Path=OK}"
-                Margin="10,10,0,8"
-                    IsEnabled="{Binding ButtonEnable}"
-                HorizontalAlignment="Left" Height="Auto"/>
+                Margin="139,9,165,9"
+                IsEnabled="{Binding ButtonEnable}" Height="Auto"/>
             <Button Grid.Column="1"
                  HorizontalAlignment="Right"
                  Width="150"

@@ -115,11 +115,13 @@ namespace Tag.Core.Conv
                             OnChangeExecute(status + id * 10000);
                         }
 
+                        if (File.Exists(value.ResultPath + value.FileName + ext) != false)
+                        {
+                            var file = TagLib.File.Create(value.ResultPath + value.FileName + ext);
+                            TagInfo.Move(file.Tag, tag);
+                            file.Save();
+                        }
 
-                        var file = TagLib.File.Create(value.ResultPath + value.FileName + ext);
-
-                        TagInfo.Move(file.Tag, tag);
-                        file.Save();
                         OnCompleteOfIndex(id);
                     });
 

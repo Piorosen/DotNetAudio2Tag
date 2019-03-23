@@ -352,7 +352,7 @@ namespace Tag.Core.Tagging.Library
                     
                     result.Add(value);
                 }
-            }  
+            }
 
             return result;
         }

@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
              mc:Ignorable="d" 
-             Height="400" Width="800">
+             Height="400" Width="1100">
 
     <UserControl.Resources>
         <local:ListToString x:Key="ListToString"/>
@@ -23,15 +23,16 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        
+
         <materialDesign:Card
+            Grid.Column="0"
+            Grid.Row="1"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             UniformCornerRadius="10"
             Padding="5"
-            Height="130"
-            Width="130"
-            Grid.RowSpan="2"
+            Height="100"
+            Width="100"
             Visibility="{Binding Searching}"
             >
             <ProgressBar Grid.ColumnSpan="2" Grid.RowSpan="3"
@@ -39,8 +40,8 @@
                     HorizontalAlignment="Center"
                     Style="{StaticResource MaterialDesignCircularProgressBar}"
                     Value="66"
-                    Height="100"
-                    Width="100"
+                    Height="70"
+                    Width="70"
                     IsIndeterminate="True"
                     />
         </materialDesign:Card>
@@ -84,7 +85,8 @@
                         Header="앨범 아티스트"/>
                     <GridViewColumn
                         DisplayMemberBinding="{Binding Composer, Converter={StaticResource ListToString}}"
-                        Header="작곡가"/>--><!--
+                        Header="작곡가"/>-->
+                    <!--
                     <GridViewColumn
                         DisplayMemberBinding="{Binding DiscNum}"
                         Header="디스크 번호"/>
@@ -98,7 +100,8 @@
                         DisplayMemberBinding="{Binding Format, Converter={StaticResource ListToString}}"
                         Header="포맷"/>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Country}"--><!--
+                        DisplayMemberBinding="{Binding Country}"-->
+                    <!--
                         Header="국가"/>-->
                 </GridView>
             </ListView.View>
@@ -170,12 +173,10 @@
             </Grid>
 
             <Button Grid.Column="1"
-                Width="150"
                 Click="Yes_Click"
                 Content="{Binding Source={x:Static Setting:Global.Language}, Path=OK}"
-                Margin="10,10,0,8"
-                   IsEnabled="{Binding ButtonEnable}"
-                HorizontalAlignment="Left" Height="Auto"/>
+                Margin="139,9,165,9"
+                   IsEnabled="{Binding ButtonEnable}" Height="Auto"/>
             <Button Grid.Column="1"
                  HorizontalAlignment="Right"
                  Width="150"
