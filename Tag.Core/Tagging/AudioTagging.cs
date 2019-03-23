@@ -8,6 +8,7 @@ using ATL.CatalogDataReaders;
 using NAudio.Lame;
 using NAudio.Wave;
 using Tag.Core.Cue;
+using Tag.Setting;
 using TagLib;
 
 namespace Tag.Core.Tagging
@@ -15,12 +16,29 @@ namespace Tag.Core.Tagging
     public class AudioTagging : ICore<TagInfo>
     {
         readonly public List<TagInfo> tagList = new List<TagInfo>();
-
+            
         public bool CueFile(CueInfo cue)
         {
             for(int i = 0; i < cue.Track.Count; i++)
             {
-                string file = cue.SavePath + $"{cue.Track[i].Track}. " + cue.Track[i].Title;
+                string filename = Global.Setting.CueSplitSetting;
+                while (filename.IndexOf("%a%") != -1)
+                {
+                    filename = filename.Replace("%a%", cue.Track[i].Artist);
+                }
+                while (filename.IndexOf("%A%") != -1)
+                {
+                    filename = filename.Replace("%A%", cue.Artist);
+                }
+                while (filename.IndexOf("%n%") != -1)
+                {
+                    filename = filename.Replace("%n%", cue.Track[i].Title);
+                }
+                while (filename.IndexOf("%t%") != -1)
+                {
+                    filename = filename.Replace("%t%", cue.Track[i].Track.ToString());
+                }
+                string file = cue.SavePath + filename;
                 switch (cue.AudioType)
                 {
                     case AudioType.WAV:

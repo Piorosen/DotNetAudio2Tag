@@ -123,7 +123,6 @@ namespace Tag.WPF
 
         public async void SelectItem(int index, Control control)
         {
-
             Visible = Visibility.Visible;
             await Task.Run(() =>
             {

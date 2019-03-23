@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tag.Setting;
 
 namespace Tag.Core.Cue.Split
 {
@@ -21,7 +22,26 @@ namespace Tag.Core.Cue.Split
                     {
                         Directory.CreateDirectory(info.SavePath);
                     }
-                    using (WaveFileWriter writer = new WaveFileWriter(info.SavePath + $"{trackinfo.Track}. " + trackinfo.Title + ".wav", reader.WaveFormat))
+
+                    string filename = Global.Setting.CueSplitSetting;
+                    while (filename.IndexOf("%a%") != -1)
+                    {
+                        filename = filename.Replace("%a%", trackinfo.Artist);
+                    }
+                    while (filename.IndexOf("%A%") != -1)
+                    {
+                        filename = filename.Replace("%A%", info.Artist);
+                    }
+                    while (filename.IndexOf("%n%") != -1)
+                    {
+                        filename = filename.Replace("%n%", trackinfo.Title);
+                    }
+                    while (filename.IndexOf("%t%") != -1)
+                    {
+                        filename = filename.Replace("%t%", trackinfo.Track.ToString());
+                    }
+
+                    using (WaveFileWriter writer = new WaveFileWriter(info.SavePath + filename + ".wav", reader.WaveFormat))
                     {
 
                         double BytesPerMillisecond = reader.WaveFormat.AverageBytesPerSecond / 1000.0;

@@ -135,7 +135,6 @@ namespace Tag.Core.Tagging.Library
                     Barcode = value.Barcode,
                     Identifier = value.Id,
                     Album = value.Title,
-
                 };
                 binfo.AlbumArtist.Add(value.Artistcredit[0].Artist.Name);
                 binfo.Composer.Add(value.Artistcredit[0].Artist.Name);
@@ -263,7 +262,10 @@ namespace Tag.Core.Tagging.Library
                             ti.Format.Add(w.Format);
                         }
                         // ti.Track.Add((uint)i + 1);
-                        ti.Image.Add(pimage);
+                        if (pimage != null)
+                        {
+                            ti.Image.Add(pimage);
+                        }
 
                         result.Add(ti);
                     }

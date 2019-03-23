@@ -70,6 +70,10 @@ namespace Tag.WPF
                 }
                 viewModel.Execute(run, path);
             }
+            else
+            {
+                Application.notifier.ShowError(Global.Language.AutoFail);
+            }
         }
 
         private void ItemDragDrop(object sender, DragEventArgs e)

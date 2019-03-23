@@ -194,14 +194,14 @@
                                >
                             <Image.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="이미지 변경"
+                                    <MenuItem Header="{Binding Source={x:Static Setting:Global.Language}, Path=ImageChange}"
                                               Click="ImageChange"
                                               >
                                         <MenuItem.Icon>
                                             <materialDesign:PackIcon Kind="FileRemove" />
                                         </MenuItem.Icon>
                                     </MenuItem>
-                                    <MenuItem Header="이미지 삭제"
+                                    <MenuItem Header="{Binding Source={x:Static Setting:Global.Language}, Path=ImageDelete}"
                                               Click="ImageDelete">
                                         <MenuItem.Icon>
                                             <materialDesign:PackIcon Kind="AddBox" />

@@ -48,9 +48,9 @@ namespace Tag.WPF
             cue.AddFile(data[0].Path);
             foreach (var item in cue.List())
             {
-                item.SavePath = resultPath + @"\Cue\";
+                item.SavePath = resultPath + $"\\{Global.Setting.AutoCueFolder}\\";
             }
-
+            
             foreach (var value in cue.Execute())
             {
                 Value = value;
@@ -58,7 +58,24 @@ namespace Tag.WPF
             data.Clear();
             for (int i = 0; i < cue[0].Track.Count; i++)
             {
-                data.Add(new AutoModeModel(cue[0].SavePath + $"{cue[0].Track[i].Track}. " + cue[0].Track[i].Title +
+                string filename = Global.Setting.CueSplitSetting;
+                while (filename.IndexOf("%a%") != -1)
+                {
+                    filename = filename.Replace("%a", cue[0].Track[0].Artist);
+                }
+                while (filename.IndexOf("%A%") != -1)
+                {
+                    filename = filename.Replace("%a", cue[0].Artist);
+                }
+                while (filename.IndexOf("%n%") != -1)
+                {
+                    filename = filename.Replace("%a", cue[0].Track[0].Title);
+                }
+                while (filename.IndexOf("%t%") != -1)
+                {
+                    filename = filename.Replace("%a", cue[0].Track[0].Track.ToString());
+                }
+                data.Add(new AutoModeModel(cue[0].SavePath + filename +
                     (cue[0].AudioType == AudioType.WAV ? ".wav" : ".flac")));
             }
         }
@@ -72,12 +89,12 @@ namespace Tag.WPF
                 {
                     FilePath = file,
                     Type = data[i].Type,
-                    ResultPath = resultPath + @"\Conv\",
+                    ResultPath = resultPath + $"\\{Global.Setting.AutoConvFolder}\\",
                     Source = preset.Param.Path,
                     Format = preset.Param.Format
                 });
             }
-            return await audioconv.Execute(preset.preset.ConvMode, 4, resultPath + @"\Conv\");
+            return await audioconv.Execute(preset.preset.ConvMode, 4, resultPath + $"\\{Global.Setting.AutoConvFolder}\\");
         }
         void Tagging(List<AutoModeModel> data, List<TagInfo> tag)
         {

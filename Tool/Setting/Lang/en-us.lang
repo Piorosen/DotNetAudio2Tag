@@ -127,6 +127,17 @@ LangOther=Other languages
 ProgramLang=list of programming languages
 CacheRemove=Clear cache
 
+CueSplitSetting=Cue Split Setting
+CueFormatType=Cue Split Format
+SettingAlbumArtist=Album Artist
+SettingTrackArtist=Track Artist
+SettingTrackName=Track Name
+SettingTrackNum=Track Num
+
+AutoModeSetting=Auto Mode Setting
+CueSplitFolder=Cue Save Folder
+ConvFolder=Codec Save Folder
+
 ; Notifier
 ConvSuccess=Converted successfully.
 ConvFail=Conversion failed.

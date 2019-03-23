@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tag.Setting;
 
 namespace Tag.Core.Cue.Split
 {
@@ -29,7 +30,26 @@ namespace Tag.Core.Cue.Split
                 foreach (var trackinfo in info.Track)
                 {
                     var config = b.PCM;
-                    using (FlakeWriter a = new FlakeWriter(info.SavePath + $"{ trackinfo.Track }. " + trackinfo.Title + ".flac", config))
+
+                    string filename = Global.Setting.CueSplitSetting;
+                    while (filename.IndexOf("%a%") != -1)
+                    {
+                        filename = filename.Replace("%a", trackinfo.Artist);
+                    }
+                    while (filename.IndexOf("%A%") != -1)
+                    {
+                        filename = filename.Replace("%a", info.Artist);
+                    }
+                    while (filename.IndexOf("%n%") != -1)
+                    {
+                        filename = filename.Replace("%a", trackinfo.Title);
+                    }
+                    while (filename.IndexOf("%t%") != -1)
+                    {
+                        filename = filename.Replace("%a", trackinfo.ToString());
+                    }
+
+                    using (FlakeWriter a = new FlakeWriter(info.SavePath + filename + ".flac", config))
                     {
                         int start = (int)(trackinfo.StartPosition * BytesPerMillisecond / 8.0);
                         start -= start % config.BlockAlign;

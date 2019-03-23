@@ -147,7 +147,17 @@ namespace Tag.Setting
         public string LangOther { get; set; } = string.Empty;
         public string ProgramLang { get; set; } = string.Empty;
         public string CacheRemove { get; set; } = string.Empty;
-        
+
+        public string CueSplitSetting { get; set; } = string.Empty;
+        public string CueFormatType { get; set; } = string.Empty;
+        public string SettingAlbumArtist { get; set; } = string.Empty;
+        public string SettingTrackArtist { get; set; } = string.Empty;
+        public string SettingTrackName { get; set; } = string.Empty;
+        public string SettingTrackNum { get; set; } = string.Empty;
+        public string AutoModeSetting { get; set; } = string.Empty;
+        public string CueSplitFolder { get; set; } = string.Empty;
+        public string ConvFolder { get; set; } = string.Empty;
+
         public string ConvSuccess { get; set; } = string.Empty;
         public string ConvFail { get; set; } = string.Empty;
         public string CueSuccess { get; set; } = string.Empty;

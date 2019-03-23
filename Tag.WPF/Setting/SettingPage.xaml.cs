@@ -10,7 +10,7 @@ using ToastNotifications;
 using ToastNotifications.Lifetime;
 using ToastNotifications.Position;
 using ToastNotifications.Messages;
-
+using Tag.Setting;
 
 namespace Tag.WPF
 {
@@ -37,9 +37,14 @@ namespace Tag.WPF
             viewModel.CapacityUpdate();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CacheRemove(object sender, RoutedEventArgs e)
         {
             viewModel.CacheRemove();
+        }
+
+        private void AllSave(object sender, RoutedEventArgs e)
+        {
+            Global.Setting.Save();
         }
     }
 }

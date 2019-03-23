@@ -18,6 +18,13 @@ namespace Tag.Setting
         public string LangFile { get; set; } = string.Empty;
         public string LangIndex { get; set; } = string.Empty;
 
+        public string CueSplitSetting { get; set; } = string.Empty;
+        public string AutoCueFolder { get; set; } = string.Empty;
+        public string AutoConvFolder { get; set; } = string.Empty;
+        
+
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void Load()

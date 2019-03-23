@@ -11,11 +11,12 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
         <Grid Grid.Row="0" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
@@ -67,6 +68,8 @@
                 </RadioButton>
             </Grid>
         </Grid>
+        
+        
         <Grid Grid.Row="1" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="15"/>
@@ -74,12 +77,12 @@
                 <RowDefinition Height="35"/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="CUE 분리 설정"
+            <TextBlock Text="{Binding Source={x:Static Setting:Global.Language}, Path=CueSplitSetting}"
                        TextAlignment="Left"
                        Grid.Row="0"
                        VerticalAlignment="Center"
                        />
-            <TextBlock Text="분리시 저장될 파일명 형식"
+            <TextBlock Text="{Binding Source={x:Static Setting:Global.Language}, Path=CueFormatType}"
                        TextAlignment="Left"
                        Grid.Row="1"
                        VerticalAlignment="Center"
@@ -87,6 +90,8 @@
             <TextBox TextAlignment="Left"
                      Grid.Row="2"
                      VerticalAlignment="Center"
+                     FontSize="12"
+                     Text="{Binding Source={x:Static Setting:Global.Setting}, Path=CueSplitSetting}"
                 >
 
             </TextBox>
@@ -96,35 +101,35 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="95"/>
-                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="150"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="%A% : 앨범 아티스트"
-                           VerticalAlignment="Center"
+                <TextBlock Text="{Binding Source={x:Static Setting:Global.Language},
+                                    Path=SettingAlbumArtist, StringFormat={}%A% : {0}}"
                            Grid.Row="0"
-                           Grid.Column="0" Grid.ColumnSpan="2" Margin="0,2"
-                           />
-                <TextBlock Text="%a% : 트랙 아티스트" 
-                           VerticalAlignment="Center"
+                           Grid.Column="0"
+                           >
+                </TextBlock>
+                <TextBlock Text="{Binding Source={x:Static Setting:Global.Language},
+                                    Path=SettingTrackArtist, StringFormat={}%a% : {0}}" 
                            Grid.Row="1"
-                           Grid.Column="0" Grid.ColumnSpan="2" Margin="0,3,0,2"
+                           Grid.Column="0"
                            />
-                <TextBlock Text="%n% : 트랙명 (트랙제목)"
-                           VerticalAlignment="Center"
+                <TextBlock Text="{Binding Source={x:Static Setting:Global.Language},
+                                    Path=SettingTrackName, StringFormat={}%n% : {0}}"
                            Grid.Row="0"
-                           Grid.Column="2" Margin="0,2"
+                           Grid.Column="2"
                            />
-                <TextBlock Text="%t% : 트랙 순서" 
-                           VerticalAlignment="Center"
+                <TextBlock Text="{Binding Source={x:Static Setting:Global.Language},
+                                    Path=SettingTrackNum, StringFormat={}%t% : {0}}" 
                            Grid.Row="1"
-                           Grid.Column="2" Margin="0,3,0,2"
+                           Grid.Column="2"
                            />
             </Grid>
         </Grid>
+        
         <Grid Grid.Row="2" Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -133,44 +138,43 @@
                 <ColumnDefinition Width="250"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="자동 모드 설정"
+            <TextBlock Text="{Binding Source={x:Static Setting:Global.Language},
+                                    Path=AutoModeSetting}"
                        TextAlignment="Left"
                        Grid.Row="0"
                        Grid.Column="0"
                        VerticalAlignment="Center"
                 />
 
-            <TextBlock Text="Cue 분리한 파일이 저장될 폴더명"
+            <TextBlock Text="{Binding Source={x:Static Setting:Global.Language},
+                                    Path=CueSplitFolder}"
                        TextAlignment="Left"
                        Grid.Row="1"
                        Grid.Column="0"
                        VerticalAlignment="Center"
                 />
-            <TextBlock Text="FLAC 코덱으로 변환시 파일이 저장될 폴더명"
+            <TextBlock Text="{Binding Source={x:Static Setting:Global.Language},
+                                    Path=ConvFolder}"
                        TextAlignment="Left"
                        Grid.Row="2"
-                       Grid.Column="0"
-                       VerticalAlignment="Center"
-                />
-            <TextBlock Text="MP3 코덱으로 변환시 저장될 폴더명"
-                       TextAlignment="Left"
-                       Grid.Row="3"
                        Grid.Column="0"
                        VerticalAlignment="Center"
                 />
 
             <TextBox Grid.Row="1"
                      Grid.Column="1"
+                     FontSize="12"
+                     Text="{Binding Source={x:Static Setting:Global.Setting},
+                                    Path=AutoCueFolder}"
                 />
             <TextBox Grid.Row="2"
                      Grid.Column="1"
+                     FontSize="12"
+                     Text="{Binding Source={x:Static Setting:Global.Setting},
+                                    Path=AutoConvFolder}"
                 />
-            <TextBox Grid.Row="3"
-                     Grid.Column="1"
-                />
-
-
         </Grid>
+        
         <Grid Grid.Row="3" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -178,7 +182,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock 
                        VerticalAlignment="Center"
-                       HorizontalAlignment="Left" Margin="0,12"
+                       HorizontalAlignment="Left"
                        >
                 <TextBlock.Text>
                     <MultiBinding StringFormat="{}{0} {1}">
@@ -193,9 +197,18 @@
                     Height="30"
                     Width="130"
                     Content="{Binding Source={x:Static Setting:Global.Language}, Path=CacheRemove}"
-                    Click="Button_Click"
+                    Click="CacheRemove"
                     Grid.Column="1"
                     />
         </Grid>
+
+        <Button Grid.Row="4"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="10"
+                Width="130"
+                Content="{Binding Source={x:Static Setting:Global.Language}, Path=LameSave}"
+                Click="AllSave"
+                />
     </Grid>
 </UserControl>
