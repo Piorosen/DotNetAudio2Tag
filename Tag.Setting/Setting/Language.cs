@@ -156,6 +156,8 @@ namespace Tag.Setting
         public string SettingTrackNum { get; set; } = string.Empty;
         public string SettingAlbumName { get; set; } = string.Empty;
         public string SettingTrackYear { get; set; } = string.Empty;
+        public string SettingFileName { get; set; } = string.Empty;
+
 
 
         public string AutoModeSetting { get; set; } = string.Empty;

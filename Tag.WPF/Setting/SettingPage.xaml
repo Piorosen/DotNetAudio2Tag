@@ -161,6 +161,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{Binding Source={x:Static Setting:Global.Language},
@@ -193,6 +194,11 @@
                                     Path=SettingTrackYear, StringFormat={}%y% : {0}}" 
                            Grid.Row="1"
                            Grid.Column="2"
+                           />
+                <TextBlock Text="{Binding Source={x:Static Setting:Global.Language},
+                                    Path=SettingTrackYear, StringFormat={}%fn% : {0}}" 
+                           Grid.Row="0"
+                           Grid.Column="3"
                            />
             </Grid>
         </Grid>

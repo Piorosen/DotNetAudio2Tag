@@ -240,6 +240,10 @@ namespace Tag.WPF
                             {
                                 filename = filename.Replace("%an%", value.TagInfo.Album);
                             }
+                            while (filename.IndexOf("%fn%") != -1)
+                            {
+                                filename = filename.Replace("%fn%", Path.GetFileNameWithoutExtension(value.TagInfo.Path));
+                            }
 
                             var dir = Path.GetDirectoryName(value.TagInfo.Path);
                             var ext = Path.GetExtension(value.FileName);
