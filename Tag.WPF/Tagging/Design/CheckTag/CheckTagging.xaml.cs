@@ -33,7 +33,7 @@ namespace Tag.WPF
             viewModel.SetValue(user);
         }
 
-        public void SetTagValue(List<TagInfo> info)
+        public void SetTagValue(Dictionary<string, List<TagInfo>> info)
         {
             viewModel.SetTagValue(info);
         }
@@ -142,6 +142,11 @@ namespace Tag.WPF
                 return;
             }
             viewModel.RemoveGetTag(list);
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            viewModel?.SetTagChange((string)(sender as Control)?.Tag);
         }
     }
 }

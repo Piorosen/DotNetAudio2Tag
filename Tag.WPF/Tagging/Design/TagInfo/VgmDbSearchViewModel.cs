@@ -81,10 +81,15 @@ namespace Tag.WPF
 
         async void OpenDialog(object sender, DialogOpenedEventArgs e)
         {
-            List<TagInfo> searchResult = new List<TagInfo>();
+            var searchResult = new Dictionary<string, List<TagInfo>>();
             await Task.Run(() =>
             {
-                searchResult = search.GetTrackInfo(Items[index]);
+                var list = new List<string>();
+                foreach (var value in Items[index].AnothorName.Keys)
+                {
+                    list.Add(value);
+                }
+                searchResult = search.GetTrackInfoList(list, Items[index].Identifier);
             });
             view.SetTagValue(searchResult);
         }

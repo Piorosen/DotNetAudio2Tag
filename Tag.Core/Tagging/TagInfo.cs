@@ -12,6 +12,13 @@ namespace Tag.Core.Tagging
     public class VgmDbInfo : TagInfo
     {
         public Dictionary<string, string> AnothorName { get; set; } = new Dictionary<string, string>();
+        public string AnothorNameList
+        {
+            get
+            {
+                return string.Join(", ", AnothorName.Keys);
+            }
+        }
     }
    
     public class BrainzInfo : TagInfo

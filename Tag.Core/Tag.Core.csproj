@@ -98,6 +98,7 @@
     <Compile Include="Extension\Log.cs" />
     <Compile Include="Library\AutoConverter.cs" />
     <Compile Include="Library\ICore.cs" />
+    <Compile Include="Tagging\Library\VGMLang.cs" />
     <Compile Include="Tagging\Library\MusicDb.cs" />
     <Compile Include="Tagging\ReadTagDb.cs" />
     <Compile Include="Tagging\TagInfo.cs" />

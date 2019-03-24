@@ -14,6 +14,7 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Tag.Core;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
 using Tag.Setting;
@@ -58,7 +59,14 @@ namespace Tag.WPF
         public ObservableCollection<CheckBrainzModel> BrainzInfo { get; set; }
         public ObservableCollection<CheckUserModel> UserInfo { get; set; }
 
-        private List<TagInfo> BrainzTag;
+        public bool[] LangMode { get; set; } = new bool[3] { false, false, false };
+        public bool[] CheckLang { get; set; } = new bool[3] { false, false, false };
+
+        Dictionary<string, List<TagInfo>> SetTagInfoList = new Dictionary<string, List<TagInfo>>();
+
+
+        private List<TagInfo> BrainzTag = new List<TagInfo>();
+
         private ObservableCollection<TaggingModel> data;
         private Visibility _visible;
         private bool _checkButtonEnable;
@@ -106,9 +114,14 @@ namespace Tag.WPF
            
         }
 
-        public void SetTagValue(List<TagInfo> tag)
+        public void SetTagChange(string Tag)
         {
-            BrainzTag = tag;
+            SetValue(SetTagInfoList[Tag]);
+        }
+
+        public void SetValue(List<TagInfo> tag)
+        {
+            BrainzInfo.Clear();
 
             Artist = string.Join(", ", tag[0]?.AlbumArtist);
             Album = tag[0]?.Album;
@@ -208,6 +221,55 @@ namespace Tag.WPF
                 });
             }
             Visible = Visibility.Hidden;
+        }
+
+        public void SetTagValue(Dictionary<string, List<TagInfo>> tags)
+        {
+            SetTagInfoList = tags;
+
+            List<TagInfo> tag = null;
+            if (tags.ContainsKey("MusicBrainz") == true)
+            {
+                tag = tags["MusicBrainz"];
+                for (int i = 0; i < 3; i++)
+                {
+                    LangMode[i] = false;
+                }
+            }
+            else
+            {
+                if (tags.ContainsKey(VGMLang.English))
+                {
+                    LangMode[0] = true;
+
+                    CheckLang[0] = true;
+                    CheckLang[1] = false;
+                    CheckLang[2] = false;
+                    tag = tags[VGMLang.English];
+                }
+                if (tags.ContainsKey(VGMLang.Romjai))
+                {
+                    LangMode[1] = true;
+
+                    CheckLang[0] = false;
+                    CheckLang[1] = true;
+                    CheckLang[2] = false;
+                    tag = tags[VGMLang.Romjai];
+                }
+                if (tags.ContainsKey(VGMLang.Japanese))
+                {
+                    LangMode[2] = true;
+
+                    CheckLang[0] = false;
+                    CheckLang[1] = false;
+                    CheckLang[2] = true;
+                    tag = tags[VGMLang.Japanese];
+                }
+            }
+            OnPropertyChagend(nameof(LangMode));
+            OnPropertyChagend(nameof(CheckLang));
+            SetValue(tag);
+            
         }
 
 

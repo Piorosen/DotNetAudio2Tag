@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Tag.WPF"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
+             xmlns:Lang="clr-namespace:Tag.Core;assembly=Tag.Core"
              mc:Ignorable="d"
              AllowDrop="True"
              Height="500" Width="1100">
@@ -66,11 +67,40 @@
                        Margin="26 6 0 0"
                        VerticalAlignment="Center"
                        />
-            <TextBlock Grid.Row="2" Grid.Column="0"
+
+            <Grid Grid.Row="2" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
                        Text="{Binding Source={x:Static Setting:Global.Language}, Path=TrackInfo}"
                        VerticalAlignment="Center"
                        Margin="10 6 0 0"
                        />
+                <RadioButton Grid.Column="1"
+                             Content="영어"
+                             Tag="en"
+                             IsEnabled="{Binding LangMode[0]}"
+                             Checked="RadioButton_Checked"
+                             IsChecked="{Binding CheckLang[0]}"
+                             />
+                <RadioButton Grid.Column="2"
+                             Tag="ja-Latn"
+                             IsEnabled="{Binding LangMode[1]}"
+                             IsChecked="{Binding CheckLang[1]}"
+                             Checked="RadioButton_Checked"
+                             Content="로마자"/>
+                <RadioButton Grid.Column="3"
+                             Tag="ja"
+                             IsEnabled="{Binding LangMode[2]}"
+                             IsChecked="{Binding CheckLang[2]}"
+                             Checked="RadioButton_Checked"
+                             Content="일본어"/>
+                </Grid>
+            
             <TextBlock Grid.Row="2" Grid.Column="1"
                        Text="{Binding Source={x:Static Setting:Global.Language}, Path=MyFile}"
                        VerticalAlignment="Center"

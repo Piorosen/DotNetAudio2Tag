@@ -75,7 +75,7 @@
                         DisplayMemberBinding="{Binding DiscNum}"
                         Header="{Binding Source={x:Static Setting:Global.Language}, Path=DiscNum}"/>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Lang}"
+                        DisplayMemberBinding="{Binding AnothorNameList}"
                         Header="{Binding Source={x:Static Setting:Global.Language}, Path=Lang}"/>
                     <GridViewColumn
                         DisplayMemberBinding="{Binding Identifier}"

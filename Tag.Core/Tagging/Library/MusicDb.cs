@@ -114,23 +114,27 @@ namespace Tag.Core.Tagging.Library
             next = Regex.Split(next, "title=\'")[1];
             tag.Title = Regex.Split(next, "\'>")[0];
 
-            try
+
+            var langlist = Regex.Split(next, "<span class");
+            for (int i = 1; i < langlist.Length; i++)
             {
-                var langlist = Regex.Split(next, "<span class");
-                for (int i = 2; i < langlist.Length; i++)
+                var next2 = Regex.Split(langlist[i], "lang=\"")[1];
+                var lang = next2.Split('\"')[0];
+                string title = string.Empty;
+                try
                 {
-                    var next2 = Regex.Split(langlist[i], "lang=\"")[1];
-                    var lang = next2.Split('\"')[0];
-
                     next2 = Regex.Split(next2, "</em>")[1];
-                    var title = Regex.Split(next2, "</span>")[0];
-
-                    title.Trim('\r', '\t', '\n', ' ', '/', '\\', '\"', '\'');
-
-                    tag.AnothorName[lang] = title;
+                    title = Regex.Split(next2, "</span>")[0];
                 }
+                catch
+                {
+                    title = next2.Split('>')[1];
+                    title = Regex.Split(title, "</span>")[0];
+                }
+                title.Trim('\r', '\t', '\n', ' ', '/', '\\', '\"', '\'');
+                tag.AnothorName[lang] = title;
             }
-            catch { }
+
 
             next = tmp.Split('#')[1].Split('\"')[0];
             tag.Year = next.Split('\"')[0].Insert(6, "-").Insert(4, "-");
@@ -316,13 +320,13 @@ namespace Tag.Core.Tagging.Library
                 switch (data.SelectSingleNode("./a").InnerText)
                 {
                     case "English":
-                        convertLang = "en";
+                        convertLang = VGMLang.English;
                         break;
                     case "Romjai":
-                        convertLang = "ja-Latn";
+                        convertLang = VGMLang.Romjai;
                         break;
                     case "Japanese":
-                        convertLang = "ja";
+                        convertLang = VGMLang.Japanese;
                         break;
                 }
 
@@ -356,21 +360,53 @@ namespace Tag.Core.Tagging.Library
 
             return result;
         }
+        string lastweb = string.Empty;
+        string iden = string.Empty;
+
         /// <summary>
         /// 앨범의 고유 아이디와 검색할 언어를 선택합니다.
         /// </summary>
         /// <param name="tag">Tag : Identifier, Lang = "en"을 꼭 선택하셔야합니다.</param>
         /// <returns></returns>
+        [Obsolete()]
         public List<TagInfo> GetTrackInfo(TagInfo tag)
         {
             try
             {
                 var web = RequestTrackWeb(tag.Identifier);
+
+                lastweb = web;
+                iden = tag.Identifier;
+
                 return SplitTrackWeb(web, tag.Lang, tag.Identifier);
             }
             catch
             {
                 return new List<TagInfo>();
+            }
+        }
+        /// <summary>
+        /// 앨범의 고유 아이디와 검색할 언어를 선택합니다.
+        /// </summary>
+        /// <param name="tag">Tag : Identifier, Lang = "en"을 꼭 선택하셔야합니다.</param>
+        /// <returns></returns>
+        public Dictionary<string, List<TagInfo>> GetTrackInfoList(List<string> lang, string iden)
+        {
+            var result = new Dictionary<string, List<TagInfo>>();
+
+            try
+            {
+                var web = RequestTrackWeb(iden);
+                
+                foreach (var value in lang)
+                {
+                    result.Add(value, SplitTrackWeb(web, value, iden));
+                }
+                return result;
+            }
+            catch
+            {
+                return new Dictionary<string, List<TagInfo>>();
             }
         }
         #endregion

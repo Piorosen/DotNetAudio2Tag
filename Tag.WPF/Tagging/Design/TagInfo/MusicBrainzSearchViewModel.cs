@@ -84,7 +84,9 @@ namespace Tag.WPF
             {
                 searchResult = search.GetTrackInfo(Items[index]);
             });
-            view.SetTagValue(searchResult);
+            var d = new Dictionary<string, List<TagInfo>>();
+            d.Add("MusicBrainz", searchResult);
+            view.SetTagValue(d);
         }
 
         async void CloseDialog(object sender, DialogClosingEventArgs e)
