@@ -285,7 +285,7 @@ namespace Tag.WPF
                 int tracknum = userinfo.TagInfo.Track.Count == 0 ? 0 : (int)userinfo.TagInfo.Track[0];
                 UserInfo.Add(new CheckUserModel
                 {
-                    Length = $"{string.Format("{0:F2}", (int)userinfo.WaveFormat.Length / 60)}:{string.Format("{0:F2}", userinfo.WaveFormat.Length % 60)}",
+                    Length = $"{string.Format("{0}", (int)userinfo.WaveFormat.Length / 60)}{Global.Language.CueMin} : {string.Format("{0}", ((int)userinfo.WaveFormat.Length % 60))}{Global.Language.CueSecond}",
                     Title = userinfo.TagInfo.Title,
                     Track = tracknum,
                     Id = i
