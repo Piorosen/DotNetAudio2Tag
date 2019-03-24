@@ -82,6 +82,8 @@ namespace Tag.Setting
         public string OK { get; set; } = string.Empty;
         public string Cancel { get; set; } = string.Empty;
 
+        public string ImageNone { get; set; } = string.Empty;
+        
         public string Lang { get; set; } = string.Empty;
         public string Identifier { get; set; } = string.Empty;
 
@@ -98,6 +100,9 @@ namespace Tag.Setting
         public string DownMove { get; set; } = string.Empty;
         public string ExtenName { get; set; } = string.Empty;
         public string ExtenValue { get; set; } = string.Empty;
+        public string English { get; set; } = string.Empty;
+        public string Romjai { get; set; } = string.Empty;
+        public string Japanese { get; set; } = string.Empty;
 
         public string ConvExt { get; set; } = string.Empty;
         public string Conv320Kb { get; set; } = string.Empty;

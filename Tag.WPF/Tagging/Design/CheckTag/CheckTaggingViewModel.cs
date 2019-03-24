@@ -122,12 +122,14 @@ namespace Tag.WPF
         public void SetValue(List<TagInfo> tag)
         {
             BrainzInfo.Clear();
+            Information.Clear();
 
             Artist = string.Join(", ", tag[0]?.AlbumArtist);
             Album = tag[0]?.Album;
             Year = tag[0]?.Year;
             Genre = string.Join(", ", tag[0]?.Genre);
             Comment = tag[0]?.Comment;
+
 
             Information.Add(new CheckTagInfoModel
             {
@@ -168,7 +170,7 @@ namespace Tag.WPF
             CoverImage = tag[0].Image;
             if (CoverImage == null || CoverImage.Count == 0)
             {
-                CoverInfo = "이미지가 없음";
+                CoverInfo = Global.Language.ImageNone;
             }
             else
             {
@@ -238,14 +240,14 @@ namespace Tag.WPF
             }
             else
             {
-                if (tags.ContainsKey(VGMLang.English))
+                if (tags.ContainsKey(VGMLang.Japanese))
                 {
-                    LangMode[0] = true;
+                    LangMode[2] = true;
 
-                    CheckLang[0] = true;
+                    CheckLang[0] = false;
                     CheckLang[1] = false;
-                    CheckLang[2] = false;
-                    tag = tags[VGMLang.English];
+                    CheckLang[2] = true;
+                    tag = tags[VGMLang.Japanese];
                 }
                 if (tags.ContainsKey(VGMLang.Romjai))
                 {
@@ -256,14 +258,14 @@ namespace Tag.WPF
                     CheckLang[2] = false;
                     tag = tags[VGMLang.Romjai];
                 }
-                if (tags.ContainsKey(VGMLang.Japanese))
+                if (tags.ContainsKey(VGMLang.English))
                 {
-                    LangMode[2] = true;
+                    LangMode[0] = true;
 
-                    CheckLang[0] = false;
+                    CheckLang[0] = true;
                     CheckLang[1] = false;
-                    CheckLang[2] = true;
-                    tag = tags[VGMLang.Japanese];
+                    CheckLang[2] = false;
+                    tag = tags[VGMLang.English];
                 }
             }
             OnPropertyChagend(nameof(LangMode));
@@ -283,7 +285,7 @@ namespace Tag.WPF
                 int tracknum = userinfo.TagInfo.Track.Count == 0 ? 0 : (int)userinfo.TagInfo.Track[0];
                 UserInfo.Add(new CheckUserModel
                 {
-                    Length = $"{string.Format("{00}", (int)userinfo.WaveFormat.Length / 60)}:{string.Format("{00}", userinfo.WaveFormat.Length % 60)}",
+                    Length = $"{string.Format("{0:F2}", (int)userinfo.WaveFormat.Length / 60)}:{string.Format("{0:F2}", userinfo.WaveFormat.Length % 60)}",
                     Title = userinfo.TagInfo.Title,
                     Track = tracknum,
                     Id = i

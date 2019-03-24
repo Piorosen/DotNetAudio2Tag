@@ -148,7 +148,7 @@ namespace Tag.WPF
                 if (tmp == null)
                 {
                     ImageSource = null;
-                    ImageInfo = "이미지 정보가 없음";
+                    ImageInfo = Global.Language.ImageNone;
                 }
                 else
                 {

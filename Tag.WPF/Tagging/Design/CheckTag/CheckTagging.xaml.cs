@@ -137,11 +137,11 @@ namespace Tag.WPF
         private void Remove_GetTag(object sender, KeyEventArgs e)
         {
             var list = (sender as ListView).SelectedItems;
-            if (list == null)
+            if (list == null || list.Count == 0)
             {
                 return;
             }
-            viewModel.RemoveGetTag(list);
+            //viewModel.RemoveGetTag(list);
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)

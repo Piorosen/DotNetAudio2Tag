@@ -81,7 +81,7 @@
                        Margin="10 6 0 0"
                        />
                 <RadioButton Grid.Column="1"
-                             Content="영어"
+                             Content="{Binding Source={x:Static Setting:Global.Language}, Path=English}"
                              Tag="en"
                              IsEnabled="{Binding LangMode[0]}"
                              Checked="RadioButton_Checked"
@@ -92,13 +92,13 @@
                              IsEnabled="{Binding LangMode[1]}"
                              IsChecked="{Binding CheckLang[1]}"
                              Checked="RadioButton_Checked"
-                             Content="로마자"/>
+                             Content="{Binding Source={x:Static Setting:Global.Language}, Path=Romjai}"/>
                 <RadioButton Grid.Column="3"
                              Tag="ja"
                              IsEnabled="{Binding LangMode[2]}"
                              IsChecked="{Binding CheckLang[2]}"
                              Checked="RadioButton_Checked"
-                             Content="일본어"/>
+                             Content="{Binding Source={x:Static Setting:Global.Language}, Path=Japanese}"/>
                 </Grid>
             
             <TextBlock Grid.Row="2" Grid.Column="1"
