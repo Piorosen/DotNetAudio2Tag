@@ -155,7 +155,7 @@ namespace Tag.Core.Cue
                         {
                             if (value.Title[i] == chars[w])
                             {
-                                value.Title = value.Title.Remove(i);
+                                value.Title = value.Title.Remove(i, 1);
                                 break;
                             }
                         }

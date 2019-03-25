@@ -80,6 +80,7 @@ namespace Tag.WPF
                     (cue[0].AudioType == AudioType.WAV ? ".wav" : ".flac"), data.Count + 1));
             }
         }
+
         async Task<bool> Conv(List<AutoModeModel> data, string resultPath, ConvCheckModel preset)
         {
             for (int i = 0; i < data.Count; i++)
@@ -146,10 +147,24 @@ namespace Tag.WPF
                 var dir = Path.GetDirectoryName(datatmp[i].Tag.Path);
                 var ext = Path.GetExtension(datatmp[i].Path);
 
+                var path = Path.GetFullPath(datatmp[i].Tag.Path);
+
+                char[] chars = Path.GetInvalidFileNameChars();
+                for (int q = 0; q < filename.Length; q++)
+                {
+                    for (int w = 0; w < chars.Length; w++)
+                    {
+                        if (filename[q] == chars[w])
+                        {
+                            filename = filename.Remove(q, 1);
+                            break;
+                        }
+                    }
+                }
                 filename = dir + @"\" + filename + ext;
                 try
                 {
-                    File.Move(datatmp[i].Path, filename);
+                    File.Move(path, filename);
                 }
                 catch { }
 

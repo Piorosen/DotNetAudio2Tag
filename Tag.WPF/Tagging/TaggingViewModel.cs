@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
@@ -247,8 +248,20 @@ namespace Tag.WPF
 
                             var dir = Path.GetDirectoryName(value.TagInfo.Path);
                             var ext = Path.GetExtension(value.FileName);
+                           
+                            char[] chars = Path.GetInvalidFileNameChars();
+                            for (int i = 0; i < filename.Length; i++)
+                            {
+                                for (int w = 0; w < chars.Length; w++)
+                                {
+                                    if (filename[i] == chars[w])
+                                    {
+                                        filename = filename.Remove(i, 1);
+                                        break;
+                                    }
+                                }
+                            }
                             filename = dir + @"\" + filename + ext;
-
                             try
                             {
                                 System.IO.File.Move(value.TagInfo.Path, filename);

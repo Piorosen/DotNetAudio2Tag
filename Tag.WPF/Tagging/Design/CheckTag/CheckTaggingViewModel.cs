@@ -89,21 +89,21 @@ namespace Tag.WPF
                 var temp = data[index];
                 {
                     temp.TagInfo.Album = Album;
-                    temp.TagInfo.AlbumArtist = BrainzTag[i].AlbumArtist;
+                    temp.TagInfo.AlbumArtist = BrainzTag[i]?.AlbumArtist;
                     temp.TagInfo.Artist = Artist.Split(',').ToList();
                     temp.TagInfo.Barcode = BrainzTag[i].Barcode;
                     temp.TagInfo.Comment = Comment;
-                    temp.TagInfo.Composer = BrainzTag[i].Composer;
-                    temp.TagInfo.Country = BrainzTag[i].Country;
-                    temp.TagInfo.DiscNum = BrainzTag[i].DiscNum;
-                    temp.TagInfo.Format = BrainzTag[i].Format;
-                    temp.TagInfo.Genre = Genre.Split(',').ToList();
-                    temp.TagInfo.Identifier = BrainzTag[i].Identifier;
-                    temp.TagInfo.Image = CoverImage.ToArray().ToList();
-                    temp.TagInfo.Lang = BrainzTag[i].Lang;
-                    temp.TagInfo.Publisher = BrainzTag[i].Publisher;
+                    temp.TagInfo.Composer = BrainzTag[i]?.Composer;
+                    temp.TagInfo.Country = BrainzTag[i]?.Country;
+                    temp.TagInfo.DiscNum = BrainzTag[i]?.DiscNum;
+                    temp.TagInfo.Format = BrainzTag[i]?.Format;
+                    temp.TagInfo.Genre = Genre?.Split(',').ToList();
+                    temp.TagInfo.Identifier = BrainzTag[i]?.Identifier;
+                    temp.TagInfo.Image = CoverImage?.ToArray().ToList();
+                    temp.TagInfo.Lang = BrainzTag[i]?.Lang;
+                    temp.TagInfo.Publisher = BrainzTag[i]?.Publisher;
                     temp.TagInfo.TagType = BrainzTag[i].TagType;
-                    temp.TagInfo.Title = BrainzTag[i].Title;
+                    temp.TagInfo.Title = BrainzTag[i]?.Title;
                     temp.TagInfo.Track.Clear();
                     temp.TagInfo.Track.Add(BrainzTag[i].Track.Count != 0 ? BrainzTag[i].Track[0] : 1);
                     temp.TagInfo.Year = Year;
@@ -123,6 +123,8 @@ namespace Tag.WPF
         {
             BrainzInfo.Clear();
             Information.Clear();
+
+            BrainzTag = tag;
 
             Artist = string.Join(", ", tag[0]?.AlbumArtist);
             Album = tag[0]?.Album;
