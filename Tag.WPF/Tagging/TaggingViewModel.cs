@@ -264,6 +264,10 @@ namespace Tag.WPF
                             filename = dir + @"\" + filename + ext;
                             try
                             {
+                                if (System.IO.File.Exists(filename))
+                                {
+                                    System.IO.File.Delete(filename);
+                                }
                                 System.IO.File.Move(value.TagInfo.Path, filename);
                             }
                             catch { }

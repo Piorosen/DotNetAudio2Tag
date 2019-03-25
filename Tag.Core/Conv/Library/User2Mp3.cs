@@ -12,6 +12,10 @@ namespace Tag.Core.Conv.Library
     {
         public IEnumerable<int> Execute(ConvInfo info)
         {
+            string dummyname = Path.GetDirectoryName(info.FilePath) + "\\" + Path.GetRandomFileName();
+            string resultdummyname = Path.GetRandomFileName();
+
+
             try
             {
                 info.Format = String.Format(info.Format, info.Parameter);
@@ -19,20 +23,27 @@ namespace Tag.Core.Conv.Library
             catch { }
             try
             {
-                info.Format = info.Format.Replace("%File%", $"\"{info.FilePath}\"");
+                info.Format = info.Format.Replace("%File%", $"\"{dummyname}\"");
             }
             catch
             {
             }
             try
             {
-                info.Format = info.Format.Replace("%SaveFile%", $"\"{info.ResultPath}\\{info.FileName}.mp3\"");
+                info.Format = info.Format.Replace("%SaveFile%", $"\"{info.ResultPath}\\{resultdummyname}.mp3\"");
             }
             catch { }
             if (!Directory.Exists(info.ResultPath))
             {
                 Directory.CreateDirectory(info.ResultPath);
             }
+
+            try
+            {
+                File.Move(info.FilePath, dummyname);
+            }
+            catch { }
+
             Process proc = new Process();
             try
             {
@@ -74,6 +85,14 @@ namespace Tag.Core.Conv.Library
                     }
                 }
             }
+
+            try
+            {
+                File.Move(dummyname, info.FilePath);
+                File.Move($"{info.ResultPath}\\{resultdummyname}.mp3", $"\"{info.ResultPath}\\{info.FileName}.mp3\"");
+            }
+            catch { }
+            
             yield return 100;
         }
     }

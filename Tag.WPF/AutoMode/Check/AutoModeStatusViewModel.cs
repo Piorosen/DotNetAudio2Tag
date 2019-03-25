@@ -56,6 +56,7 @@ namespace Tag.WPF
             {
                 Value = value;
             }
+
             data.Clear();
             for (int i = 0; i < cue[0].Track.Count; i++)
             {
@@ -76,8 +77,9 @@ namespace Tag.WPF
                 {
                     filename = filename.Replace("%t%", cue[0].Track[i].Track.ToString());
                 }
-                data.Add(new AutoModeModel(cue[0].SavePath + filename +
-                    (cue[0].AudioType == AudioType.WAV ? ".wav" : ".flac"), data.Count + 1));
+                filename += Path.GetExtension(cue[0].WavPath);
+                filename = cue[0].SavePath + filename;
+                data.Add(new AutoModeModel(filename, data.Count + 1));
             }
         }
 
@@ -96,14 +98,51 @@ namespace Tag.WPF
                     Format = preset.Param.Format
                 });
             }
-            return await audioconv.Execute(preset.preset.ConvMode, 4, resultPath + $"\\{Global.Setting.AutoConvFolder}\\");
+
+
+            var result = await audioconv.Execute(preset.preset.ConvMode, 4, resultPath + $"\\{Global.Setting.AutoConvFolder}\\");
+
+            var t = data.ToArray().ToList();
+            data.Clear();
+            foreach (var value in t)
+            {
+                string ext = string.Empty;
+                if (preset.preset.ConvMode == ConvMode.MYFLAC)
+                {
+                    ext = ".flac";
+                }
+                else
+                {
+                    ext = ".mp3";
+                }
+                var path = resultPath + $"\\{Global.Setting.AutoConvFolder}\\" + Path.GetFileNameWithoutExtension(value.Tag.Path) + ext;
+                data.Add(new AutoModeModel(path, data.Count + 1));
+            }
+
+
+            return result;
         }
-        void Tagging(List<AutoModeModel> data, List<TagInfo> tag)
+
+        void Tagging(List<AutoModeModel> data, List<TagInfo> tag, bool isCue = false)
         {
             audiotag.List().Clear();
             int count = data.Count > tag.Count ? tag.Count : data.Count;
 
             var datatmp = data.ToArray().ToList();
+
+            for (int i = 0; i < count; i++)
+            {
+                audiotag.AddFile(tag[i], data[i].Path);
+            }
+
+            foreach (var value in audiotag.Execute())
+            {
+            }
+
+            if (isCue == true)
+            {
+                return; 
+            }
 
             data.Clear();
             for (int i = 0; i < count ; i++)
@@ -131,6 +170,7 @@ namespace Tag.WPF
                                                                     ? tag[i].Track[0].ToString()
                                                                     : string.Empty);
                 }
+
                 while (filename.IndexOf("%y%") != -1)
                 {
                     filename = filename.Replace("%y%", tag[i].Year);
@@ -143,6 +183,7 @@ namespace Tag.WPF
                 {
                     filename = filename.Replace("%fn%", Path.GetFileNameWithoutExtension(tag[i].Path));
                 }
+                
 
                 var dir = Path.GetDirectoryName(datatmp[i].Tag.Path);
                 var ext = Path.GetExtension(datatmp[i].Path);
@@ -164,37 +205,16 @@ namespace Tag.WPF
                 filename = dir + @"\" + filename + ext;
                 try
                 {
+                    if (File.Exists(filename))
+                    {
+                        File.Delete(filename);
+                    }
                     File.Move(path, filename);
                 }
                 catch { }
-
-                //if (filename + ext != datatmp[i].Path)
-                //{
-                //    if (File.Exists(filename + ext) == true)
-                //    {
-                //        int num = 1;
-                //        for (; File.Exists($"{filename} ({num}){ext}"); num++)
-                //        {
-                //        }
-                //        filename += $" ({num}){ext}";
-                //    }
-                //    else
-                //    {
-                //        filename += ext;
-                //    }
-                //    File.Move(datatmp[i].Path, filename);
-                //}
-
+                
                 data.Add(new AutoModeModel(filename, data.Count + 1));
-
-                string file = filename;
-                audiotag.AddFile(tag[i], file);
             }
-
-            foreach (var value in audiotag.Execute())
-            {
-            }
-
         }
 
         // run 정보와 현재 파일 상태, 태그정보
@@ -214,7 +234,7 @@ namespace Tag.WPF
                     if ((run & 4) == 4)
                     {
                         Title = Global.Language.AutoCueTag;
-                        Tagging(data, tag);
+                        Tagging(data, tag, true);
                     }
                 }
 
