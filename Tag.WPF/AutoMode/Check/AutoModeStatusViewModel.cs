@@ -205,11 +205,14 @@ namespace Tag.WPF
                 filename = dir + @"\" + filename + ext;
                 try
                 {
-                    if (File.Exists(filename))
+                    if (Path.GetFullPath(filename) != Path.GetFullPath(path))
                     {
-                        File.Delete(filename);
+                        if (File.Exists(filename))
+                        {
+                            File.Delete(filename);
+                        }
+                        File.Move(path, filename);
                     }
-                    File.Move(path, filename);
                 }
                 catch { }
                 
@@ -234,7 +237,7 @@ namespace Tag.WPF
                     if ((run & 4) == 4)
                     {
                         Title = Global.Language.AutoCueTag;
-                        Tagging(data, tag, true);
+                        Tagging(data, tag, !Global.Setting.CueTagging);
                     }
                 }
 

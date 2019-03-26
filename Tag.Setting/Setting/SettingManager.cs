@@ -24,6 +24,7 @@ namespace Tag.Setting
 
         public string TagTypeSetting { get; set; } = string.Empty;
 
+        public bool CueTagging { get; set; } = true;
 
 
 
@@ -40,15 +41,16 @@ namespace Tag.Setting
                     var data = value.GetValue(this);
                     if (data.GetType() == typeof(string))
                     {
-                        var get = Config.GetOption("Option", value.Name);
-
-                        //if (get.Length > 1 && get[0] == '.' && get[1] == '\\')
-                        //{
-                        //    get = Application.StartupPath + get;
-                        //}
-                        value.SetValue(this, get);
-                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(value.Name));
+                       
                     }
+                    var get = Config.GetOption("Option", value.Name);
+
+                    //if (get.Length > 1 && get[0] == '.' && get[1] == '\\')
+                    //{
+                    //    get = Application.StartupPath + get;
+                    //}
+                    value.SetValue(this, Convert.ChangeType(get, data.GetType()));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(value.Name));
                 }
             }
         }
@@ -62,10 +64,7 @@ namespace Tag.Setting
                 foreach (var value in this.GetType().GetProperties())
                 {
                     var data = value.GetValue(this);
-                    if (data.GetType() == typeof(string))
-                    {
-                        Config.SetOption("Option", value.Name, value.GetValue(this) as String);
-                    }
+                    Config.SetOption("Option", value.Name, value.GetValue(this).ToString());
                 }
             }
         }
