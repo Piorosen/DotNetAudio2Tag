@@ -61,6 +61,7 @@ namespace Tag.WPF
                 bIndex[i] = false;
             }
             bIndex[Index.IndexOf(Tag)] = true;
+            Global.DialogIdentifier.LangChange = true;
             OnPropertyChange(nameof(bIndex));
         }
 

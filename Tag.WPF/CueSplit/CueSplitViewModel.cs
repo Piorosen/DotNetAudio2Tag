@@ -16,10 +16,10 @@ namespace Tag.WPF
 {
     public class CueSplitViewModel : INotifyPropertyChanged
     {
-        public string AlbumTitle { get => Global.Language.CueAlbum + albumTitle; private set {albumTitle =value; OnPropertyChanged(); } }
+        public string AlbumTitle { get => Global.Language.CueAlbum + albumTitle; private set { albumTitle = value; OnPropertyChanged(); } }
         public string Barcode { get => Global.Language.CueBarcode + barcode; private set { barcode = value; OnPropertyChanged(); } }
         public string AvgBytePerSecond { get => Global.Language.CueAverage + avgBytePerSecond; private set { avgBytePerSecond = value; OnPropertyChanged(); } }
-        public string Genre { get => genre; private set { genre = Global.Language.CueGenre + value; OnPropertyChanged(); } }
+        public string Genre { get => Global.Language.CueGenre + genre; private set { genre = value; OnPropertyChanged(); } }
 
         public Visibility LabelVisibility { get => _labelVisibility; set { _labelVisibility = value; OnPropertyChanged(); } }
 
@@ -44,6 +44,8 @@ namespace Tag.WPF
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
         }
 
+        
+
         public CueSplitViewModel()
         {
             Items = new ObservableCollection<CueSplitModel>();
@@ -55,12 +57,35 @@ namespace Tag.WPF
                 DurationMS = -1,
                 TimeOffSet = -1
             });
+            Global.DialogIdentifier.PropertyChanged += DialogIdentifier_PropertyChanged;
+        }
+
+        private void DialogIdentifier_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Global.DialogIdentifier.LangChange))
+            {
+                Items.RemoveAt(0);
+                Items.Insert(0, new CueSplitModel
+                {
+                    Title = Global.Language.Title,
+                    Artist = Global.Language.Artist,
+                    DurationMS = -1,
+                    TimeOffSet = -1
+                });
+
+                OnPropertyChanged(nameof(AlbumTitle));
+                OnPropertyChanged(nameof(Barcode));
+                OnPropertyChanged(nameof(AvgBytePerSecond));
+                OnPropertyChanged(nameof(Genre));
+            }
         }
 
         void Change(int index, CueSplitModel newdata)
         {
             Items.RemoveAt(index);
             Items.Insert(index, newdata);
+
+
         }
 
         public void Click(int index)

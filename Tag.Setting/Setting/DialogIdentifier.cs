@@ -48,5 +48,7 @@ namespace Tag.Setting.Setting
         public bool ConvertEnable { get => _convertEnable; set { _convertEnable = value; OnProertyChange(); } }
         public bool SettingEnable { get => _settingEnable; set { _settingEnable = value; OnProertyChange(); } }
         public bool LameEnable { get => _lameEnable; set { _lameEnable = value; OnProertyChange(); } }
+
+        public bool LangChange { set { OnProertyChange(); } }
     }
 }
