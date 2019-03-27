@@ -36,9 +36,9 @@ namespace Tag.WPF
 
         private void DialogIdentifier_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(Global.DialogIdentifier.LameEnable))
+            if (e.PropertyName == nameof(Global.DialogIdentifier.CodecEnable))
             {
-                ButtonEnableA = Global.DialogIdentifier.LameEnable;
+                ButtonEnableA = Global.DialogIdentifier.CodecEnable;
             }
         }
 
@@ -55,14 +55,14 @@ namespace Tag.WPF
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Global.DialogIdentifier.ConvertEnable = true;
-            DialogHost.CloseDialogCommand.Execute((string.Empty, string.Empty), (sender as Button)?.CommandTarget);
+            DialogHost.CloseDialogCommand.Execute(false, (sender as Button)?.CommandTarget);
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             Global.DialogIdentifier.ConvertEnable = true;
             Global.Setting.LamePath = TextFilePath.Text;
             Global.Setting.LameEncode = TextEncode.Text;
-            DialogHost.CloseDialogCommand.Execute((TextFilePath.Text, TextEncode.Text + " %File% %SaveFile%"), (sender as Button)?.CommandTarget);
+            DialogHost.CloseDialogCommand.Execute(true, (sender as Button)?.CommandTarget);
             Global.Setting.Save();
         }
 
@@ -91,7 +91,7 @@ namespace Tag.WPF
             }
             catch { err = e.ToString(); }
 
-            Global.DialogIdentifier.LameEnable = false;
+            Global.DialogIdentifier.CodecEnable = false;
             await DialogHost.Show(new FFMpegTestCode(err), Global.IsAutoMode
                 ? Global.DialogIdentifier.AutoCodecCodeTest
                 : Global.DialogIdentifier.CodecCodeTest);

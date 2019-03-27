@@ -37,20 +37,18 @@ namespace Tag.Setting.Setting
         private bool _settingEnable;
         private bool _lameEnable;
         private bool _autoModeEnable;
-        private bool _fFMpegEnable;
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnProertyChange([CallerMemberName] string Name = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
         }
-
-        public bool FFMpegEnable { get => _fFMpegEnable; set { _fFMpegEnable = value; OnProertyChange(); } }
+        
         public bool AutoModeEnable { get => _autoModeEnable; set { _autoModeEnable = value; OnProertyChange(); } }
         public bool TaggingEnable { get => _taggingEnable; set { _taggingEnable = value; OnProertyChange(); } }
         public bool ConvertEnable { get => _convertEnable; set { _convertEnable = value; OnProertyChange(); } }
         public bool SettingEnable { get => _settingEnable; set { _settingEnable = value; OnProertyChange(); } }
-        public bool LameEnable { get => _lameEnable; set { _lameEnable = value; OnProertyChange(); } }
+        public bool CodecEnable { get => _lameEnable; set { _lameEnable = value; OnProertyChange(); } }
 
         public bool LangChange { set { OnProertyChange(); } }
     }

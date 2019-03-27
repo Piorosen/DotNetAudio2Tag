@@ -43,7 +43,7 @@
                     <materialDesign:PackIcon Kind="EllipsisHorizontal" />
                 </Button.Content>
             </Button>
-            <TextBox x:Name="TextFilePath"
+            <TextBox Text="{Binding Source={x:Static Setting:Global.Setting}, Path=FFMpegPath}"
                      Margin="10"
                      VerticalAlignment="Center"
                      TextAlignment="Left"
@@ -73,7 +73,7 @@
                     IsEnabled="{Binding ButtonEnableA}"
                     Grid.Column="1" Grid.ColumnSpan="2" Margin="10,10"
                     Click="CodeCheck_Click"/>
-            <TextBox x:Name="TextEncode"
+            <TextBox Text="{Binding Source={x:Static Setting:Global.Setting}, Path=FFMpegEncode}"
                      Margin="10,13"
                      VerticalAlignment="Center"
                      TextAlignment="Left"
@@ -82,12 +82,12 @@
         </Grid>
 
         <Grid Grid.Row="4">
-            <Button IsEnabled="{Binding ButtonEnable}"
+            <Button IsEnabled="{Binding ButtonEnableA}"
                     Content="{Binding Source={x:Static Setting:Global.Language}, Path=LameSave}"
                     HorizontalAlignment="Right"
                     Margin="0,10,10,8" Width="130"
                     Click="Save_Click"/>
-            <Button IsEnabled="{Binding ButtonEnable}"
+            <Button IsEnabled="{Binding ButtonEnableA}"
                     Content="{Binding Source={x:Static Setting:Global.Language}, Path=LameCancel}"
                     HorizontalAlignment="Right"
                     Margin="0,10,145,8" Width="130"

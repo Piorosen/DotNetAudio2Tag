@@ -129,18 +129,18 @@ namespace Tag.WPF
             };
 
             Global.DialogIdentifier.ConvertEnable = false;
-            var result = (ValueTuple<string, string>)(await DialogHost.Show(Content, Global.DialogIdentifier.ConvertUserMode));
+            var result = (bool)(await DialogHost.Show(Content, Global.DialogIdentifier.ConvertUserMode));
             
         }
 
         public async void FFMpegSetting()
         {
-            var Content = new LameMode
+            var Content = new FFMpegMode
             {
             };
 
             Global.DialogIdentifier.ConvertEnable = false;
-            var result = (ValueTuple<string, string>)(await DialogHost.Show(Content, Global.DialogIdentifier.ConvertUserMode));
+            var result = (bool)(await DialogHost.Show(Content, Global.DialogIdentifier.ConvertUserMode));
             
         }
     }

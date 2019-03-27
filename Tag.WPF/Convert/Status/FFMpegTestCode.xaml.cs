@@ -30,7 +30,7 @@ namespace Tag.WPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Global.DialogIdentifier.FFMpegEnable = true;
+            Global.DialogIdentifier.CodecEnable = true;
             DialogHost.CloseDialogCommand.Execute(true, (sender as Button)?.CommandTarget);
         }
     }

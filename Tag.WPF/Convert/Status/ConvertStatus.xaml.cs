@@ -38,17 +38,13 @@ namespace Tag.WPF
             }
             else if (preset.ConvMode == Core.Conv.ConvMode.USER)
             {
-                viewModel.Execute(preset, resultPath, (Global.Setting.LamePath, Global.Setting.LameEncode));
+                viewModel.Execute(preset, resultPath, (Global.Setting.LamePath, Global.Setting.LameEncode + " %File% %SaveFile%"));
             }
         }
         public void Enqueue(ConvertModel info)
         {
             viewModel.Enqueue(info);
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

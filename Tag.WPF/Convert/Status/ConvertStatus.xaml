@@ -106,7 +106,7 @@
                     Width="100"
                     Margin="32,9,9,8"
                     CommandParameter="{Binding Result}"
-                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}" Grid.ColumnSpan="2" Grid.Column="1" Click="Button_Click"
+                    Command="{x:Static wpf:DialogHost.CloseDialogCommand}" Grid.ColumnSpan="2" Grid.Column="1"
                     />
         </Grid>
     </Grid>

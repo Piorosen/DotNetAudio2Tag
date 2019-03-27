@@ -36,9 +36,9 @@ namespace Tag.WPF
 
         private void DialogIdentifier_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(Global.DialogIdentifier.FFMpegEnable))
+            if (e.PropertyName == nameof(Global.DialogIdentifier.CodecEnable))
             {
-                ButtonEnable = Global.DialogIdentifier.FFMpegEnable;
+                ButtonEnable = Global.DialogIdentifier.CodecEnable;
             }
         }
 
@@ -47,8 +47,6 @@ namespace Tag.WPF
         public FFMpegMode()
         {
             InitializeComponent();
-            TextFilePath.Text = Global.Setting.FFMpegPath;
-            TextEncode.Text = Global.Setting.FFMpegEncode;
             Global.DialogIdentifier.PropertyChanged += DialogIdentifier_PropertyChanged;
         }
         
@@ -61,8 +59,6 @@ namespace Tag.WPF
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             Global.DialogIdentifier.ConvertEnable = true;
-            Global.Setting.FFMpegPath = TextFilePath.Text;
-            Global.Setting.FFMpegEncode = TextEncode.Text;
             DialogHost.CloseDialogCommand.Execute(true, (sender as Button)?.CommandTarget);
             Global.Setting.Save();
         }
@@ -74,8 +70,8 @@ namespace Tag.WPF
             {
                 StartInfo =
                 {
-                    FileName = TextFilePath.Text,
-                    Arguments = TextEncode.Text + $" {Global.Resource.LameDummy} {Global.FilePath.CachePath}{System.IO.Path.GetRandomFileName()}",
+                    FileName = Global.Setting.FFMpegPath,
+                    Arguments = Global.Setting.FFMpegEncode + $" {Global.Resource.LameDummy} {Global.FilePath.CachePath}{System.IO.Path.GetRandomFileName()}",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
@@ -91,7 +87,7 @@ namespace Tag.WPF
             }
             catch { err = e.ToString(); }
 
-            Global.DialogIdentifier.FFMpegEnable = false;
+            Global.DialogIdentifier.CodecEnable = false;
             await DialogHost.Show(new FFMpegTestCode(err), Global.IsAutoMode
                 ? Global.DialogIdentifier.AutoCodecCodeTest
                 : Global.DialogIdentifier.CodecCodeTest);
@@ -116,7 +112,7 @@ namespace Tag.WPF
                 {
                     if (dialog.FileName != string.Empty)
                     {
-                        TextFilePath.Text = dialog.FileName;
+                        Global.Setting.FFMpegPath = dialog.FileName;
                     }
                 }
             }
