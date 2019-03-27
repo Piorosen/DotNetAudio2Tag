@@ -38,7 +38,7 @@ namespace Tag.WPF
                     Type = AudioType.FLAC;
                     break;
                 case ".mp3":
-                    Type = AudioType.NONE;
+                    Type = AudioType.MP3;
                     break;
                 default:
                     Type = AudioType.NONE;
@@ -61,7 +61,6 @@ namespace Tag.WPF
 
                 if (q.Type != AudioType.NONE)
                 {
-                    q.ResultPath = q.Directory + "\\" + q.FileName + ".mp3";
                     viewModel.AddFile(q);
                 }
             }

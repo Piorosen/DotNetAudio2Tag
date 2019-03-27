@@ -10,77 +10,110 @@ using Tag.Core.Cue;
 using NAudio.Flac;
 using CUETools.Codecs.FLAKE;
 using CUETools.Codecs;
+using System.Diagnostics;
+using System.Text.RegularExpressions;
+using Tag.Setting;
 
 namespace Tag.Core.Conv.Library
 {
     class Wav2Flac : IConv
     {
-        private IEnumerable<int> Execute(string filePath, string resultPath, LAMEPreset preset = LAMEPreset.ABR_320)
-        {
-            int percent = 0;
-            using (var wav = new WaveFileReader(filePath))
-            {
-                var config = new AudioPCMConfig(wav.WaveFormat.BitsPerSample, wav.WaveFormat.Channels, wav.WaveFormat.SampleRate);
-                if (!Directory.Exists(resultPath))
-                {
-                    Directory.CreateDirectory(resultPath);
-                }
-                using (var flac = new FlakeWriter($"{resultPath}\\{Path.GetFileNameWithoutExtension(filePath)}.flac", config))
-                {
-                    var wavbuffer = new byte[wav.WaveFormat.BlockAlign * 100];
-
-                    while (wav.Position < wav.Length)
-                    {
-                        int bytesRequired = (int)(wav.Length - wav.Position);
-                        if (bytesRequired > 0)
-                        {
-                            int bytesToRead = Math.Min(bytesRequired, wavbuffer.Length);
-                            int bytesRead = wav.Read(wavbuffer, 0, bytesToRead);
-                            if (bytesRead > 0)
-                            {
-                                try
-                                {
-                                    var buffer = new AudioBuffer(config, wavbuffer, wavbuffer.Length);
-                                    flac.Write(buffer);
-                                }
-                                catch { }
-                            }
-                        }
-
-                        var value = (int)(wav.Position * 100.0 / wav.Length);
-                        if (percent == value)
-                        {
-                            continue;
-                        }
-                        if (percent != value)
-                        {
-                            percent = value;
-                            yield return percent;
-                        }
-                    }
-                    // wav.CopyTo(mp3);
-                }
-            }
-
-            yield return 100;
-        }
-
         public IEnumerable<int> Execute(ConvInfo info)
         {
-            LAMEPreset preset = new LAMEPreset();
+            info.Format = Global.Setting.FFMpegEncode;
 
-            foreach (var value in info.Parameter)
+            string dummyname = Path.GetDirectoryName(info.FilePath) + "\\" + Path.GetRandomFileName() + info.Extension;
+            string resultdummyname = $"{info.ResultPath}{Path.GetRandomFileName()}";
+
+            AudioFileReader afr = new AudioFileReader(info.FilePath);
+            afr.Close();
+            while (info.Format.IndexOf("%fn%") != -1)
             {
-                if (value is LAMEPreset)
-                {
-                    preset |= (LAMEPreset)value;
-                }
+                info.Format = info.Format.Replace("%fn%", dummyname);
+            }
+            while (info.Format.IndexOf("%bit%") != -1)
+            {
+                info.Format = info.Format.Replace("%bit%", afr.WaveFormat.BitsPerSample.ToString());
+            }
+            while (info.Format.IndexOf("%rate%") != -1)
+            {
+                info.Format = info.Format.Replace("%rate%", afr.WaveFormat.SampleRate.ToString());
+            }
+            while (info.Format.IndexOf("%outputfn%") != -1)
+            {
+                info.Format = info.Format.Replace("%outputfn%", resultdummyname);
             }
             
-            foreach (var value in Execute(info.FilePath, info.ResultPath, preset == 0 ? LAMEPreset.ABR_320 : preset))
+            if (!Directory.Exists(info.ResultPath))
             {
-                yield return value;
+                Directory.CreateDirectory(info.ResultPath);
             }
+
+            try
+            {
+                File.Move(info.FilePath, dummyname);
+            }
+            catch {
+                
+            }
+
+            Process proc = new Process();
+            try
+            {
+                proc = new Process
+                {
+                    StartInfo =
+                    {
+                        FileName = info.Source,
+                        Arguments = info.Format,
+                        CreateNoWindow = true,
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                    }
+                };
+                try
+                {
+                    proc.Start();
+                }
+                catch { }
+            }
+            catch
+            {
+            }
+
+            string ext = string.Empty;
+
+            while (!proc.StandardError.EndOfStream)
+            {
+                var err = proc.StandardError.ReadLine();
+
+                var get = Regex.Split(err, "Output #0, ");
+                if (get.Length == 2)
+                {
+                    ext = get[1].Split(',')[0];
+                }
+                var list = Regex.Split(err, "time=");
+                if (list.Length == 2)
+                {
+                    var time = list[1].Split(' ')[0];
+                    int hour = int.Parse(time.Split(':')[0]);
+                    int min = int.Parse(time.Split(':')[1]);
+                    int second = int.Parse(time.Split(':')[2].Split('.')[0]);
+                    int mili = int.Parse(time.Split('.')[1]);
+                    TimeSpan data = new TimeSpan(0, hour, min, second, mili);
+                    yield return (int)(afr.TotalTime.TotalMilliseconds / data.TotalMilliseconds) * 100;
+                }
+            }
+
+            try
+            {
+                File.Move(dummyname, info.FilePath);
+                File.Move($"{resultdummyname}.{ext}", Path.GetFullPath($"{info.ResultPath}\\{info.FileName}.{ext}"));
+            }
+            catch { }
+
+            yield return 100;
         }
     }
 }

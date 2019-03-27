@@ -69,7 +69,6 @@ namespace Tag.WPF
 
         private async void CodeCheck_Click(object sender, RoutedEventArgs e)
         {
-
             var proc = new Process
             {
                 StartInfo =

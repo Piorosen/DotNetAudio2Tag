@@ -120,6 +120,18 @@ namespace Tag.Setting
         public string LameCancel { get; set; } = string.Empty;
         public string LameSave { get; set; } = string.Empty;
 
+        public string FFMpegExternalPath { get; set; } = string.Empty;
+        public string FFMpegEncoding { get; set; } = string.Empty;
+        public string FFMpegCodeTest { get; set; } = string.Empty;
+        public string FFMpegCancel { get; set; } = string.Empty;
+        public string FFMpegSave { get; set; } = string.Empty;
+
+        public string FFMpegFileName { get; set; } = string.Empty;
+        public string FFMpegBitrate { get; set; } = string.Empty;
+        public string FFMpegRate { get; set; } = string.Empty;
+        public string FFMpegOutputFileName { get; set; } = string.Empty;
+
+
         public string ConvStatusAllProgress { get; set; } = string.Empty;
         public string ConvStatusClose { get; set; } = string.Empty;
 

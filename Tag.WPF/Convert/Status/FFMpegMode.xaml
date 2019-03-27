@@ -21,7 +21,7 @@
                        VerticalAlignment="Center"
                        Margin="10, 20, 0 0"
                        
-                       Text="{Binding Source={x:Static Setting:Global.Language}, Path=LameExternalPath}"
+                       Text="{Binding Source={x:Static Setting:Global.Language}, Path=FFMpegExternalPath}"
                        FontSize="15"
                        />
         </Grid>
@@ -55,7 +55,7 @@
             <TextBlock HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Margin="10, 20, 0 0"
-                       Text="{Binding Source={x:Static Setting:Global.Language}, Path=LameEncoding}"
+                       Text="{Binding Source={x:Static Setting:Global.Language}, Path=FFMpegEncoding}"
                        FontSize="15"
                        />
         </Grid>
@@ -66,7 +66,7 @@
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="130"/>
             </Grid.ColumnDefinitions>
-            <Button Content="{Binding Source={x:Static Setting:Global.Language}, Path=LameCodeTest}"
+            <Button Content="{Binding Source={x:Static Setting:Global.Language}, Path=FFMpegCodeTest}"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Width="130"
@@ -82,13 +82,61 @@
         </Grid>
 
         <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Margin="10 0 0 5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Text="{Binding Source={x:Static Setting:Global.Language}
+                           , Path=FFMpegFileName, StringFormat={}%fn% : {0}}"
+                           TextAlignment="Left"
+                           VerticalAlignment="Center"
+                           />
+                <TextBlock Grid.Row="0"
+                           Grid.Column="1"
+                           Text="{Binding Source={x:Static Setting:Global.Language}
+                           , Path=FFMpegBitrate, StringFormat={}%bit% : {0}}"
+                           TextAlignment="Left"
+                           VerticalAlignment="Center"
+                           />
+                <TextBlock Grid.Row="1"
+                           Grid.Column="0"
+                           Text="{Binding Source={x:Static Setting:Global.Language}
+                           , Path=FFMpegRate, StringFormat={}%rate% : {0}}"
+                           TextAlignment="Left"
+                           VerticalAlignment="Center"
+                           />
+                <TextBlock Grid.Row="1"
+                           Grid.Column="1"
+                           Text="{Binding Source={x:Static Setting:Global.Language}
+                           , Path=FFMpegOutputFileName, StringFormat={}%outputfn% : {0}}"
+                           TextAlignment="Left"
+                           VerticalAlignment="Center"
+                           />
+
+            </Grid>
+
+
             <Button IsEnabled="{Binding ButtonEnableA}"
-                    Content="{Binding Source={x:Static Setting:Global.Language}, Path=LameSave}"
+                    Grid.Column="1"
+                    Content="{Binding Source={x:Static Setting:Global.Language}, Path=FFMpegSave}"
                     HorizontalAlignment="Right"
                     Margin="0,10,10,8" Width="130"
                     Click="Save_Click"/>
             <Button IsEnabled="{Binding ButtonEnableA}"
-                    Content="{Binding Source={x:Static Setting:Global.Language}, Path=LameCancel}"
+                    Grid.Column="1"
+                    Content="{Binding Source={x:Static Setting:Global.Language}, Path=FFMpegCancel}"
                     HorizontalAlignment="Right"
                     Margin="0,10,145,8" Width="130"
                     Click="Cancel_Click"/>

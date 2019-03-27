@@ -1,4 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
+using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,11 +39,11 @@ namespace Tag.WPF
         {
             if (e.PropertyName == nameof(Global.DialogIdentifier.CodecEnable))
             {
-                ButtonEnable = Global.DialogIdentifier.CodecEnable;
+                ButtonEnableA = Global.DialogIdentifier.CodecEnable;
             }
         }
 
-        public bool ButtonEnable { get => _buttonEnable; set { _buttonEnable = value; OnPropertyChanged(); } }
+        public bool ButtonEnableA { get => _buttonEnable; set { _buttonEnable = value; OnPropertyChanged(); } }
 
         public FFMpegMode()
         {
@@ -66,12 +67,32 @@ namespace Tag.WPF
 
         private async void CodeCheck_Click(object sender, RoutedEventArgs e)
         {
+            string arg = Global.Setting.FFMpegEncode;
+            AudioFileReader afr = new AudioFileReader(Global.Resource.LameDummy + ".wav");
+            afr.Close();
+            while (arg.IndexOf("%fn%") != -1)
+            {
+                arg = arg.Replace("%fn%", Global.Resource.LameDummy + ".wav");
+            }
+            while (arg.IndexOf("%bit%") != -1)
+            {
+                arg = arg.Replace("%bit%", afr.WaveFormat.BitsPerSample.ToString());
+            }
+            while (arg.IndexOf("%rate%") != -1)
+            {
+                arg = arg.Replace("%rate%", afr.WaveFormat.SampleRate.ToString());
+            }
+            while (arg.IndexOf("%outputfn%") != -1)
+            {
+                arg = arg.Replace("%outputfn%", $"{Global.FilePath.CachePath}{System.IO.Path.GetRandomFileName()}");
+            }
+
             var proc = new Process
             {
                 StartInfo =
                 {
                     FileName = Global.Setting.FFMpegPath,
-                    Arguments = Global.Setting.FFMpegEncode + $" {Global.Resource.LameDummy} {Global.FilePath.CachePath}{System.IO.Path.GetRandomFileName()}",
+                    Arguments = arg,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     RedirectStandardError = true,
