@@ -26,10 +26,10 @@ namespace Tag.WPF
     public class TaggingViewModel : INotifyPropertyChanged
     {
         AudioTagging audioTagging;
-        private TaggingModel _selectItem;
+        private List<TaggingModel> _selectItem;
 
         public ObservableCollection<TaggingModel> Items { get => _items; set { _items = value; OnPropertyChanged(); } }
-        public TaggingModel SelectItem { get => _selectItem; set { _selectItem = value; OnPropertyChanged(); } }
+        public List<TaggingModel> SelectItem { get => _selectItem; set { _selectItem = value; OnPropertyChanged(); } }
 
         public Visibility LabelVisibility { get => _LabelVisibility; set { _LabelVisibility = value; OnPropertyChanged(); } }
         private Visibility _LabelVisibility = Visibility.Visible;
@@ -94,51 +94,75 @@ namespace Tag.WPF
                 return;
             }
 
-            foreach (var p in SelectItem.TagInfo.GetType().GetProperties())
+            foreach (var value in SelectItem)
             {
-                if (p.Name == Name)
+                foreach (var p in value.TagInfo.GetType().GetProperties())
                 {
-                    var check = p.GetValue(SelectItem.TagInfo);
-                    if (check == null)
+                    if (p.Name == Name)
                     {
-                        return;
-                    }
-
-                    if (check is List<string>)
-                    {
-                        p.SetValue(SelectItem.TagInfo, Value.Split(';').ToList());
-                    }
-                    else if (check is List<uint>)
-                    {
-                        try
+                        var check = p.GetValue(value.TagInfo);
+                        if (check == null)
                         {
-                            p.SetValue(SelectItem.TagInfo, Value.Split(',')
-                                .ToList()
-                                .Select((s) => uint.Parse(s))
-                                .ToList());
+                            return;
                         }
-                        catch
+
+                        if (check is List<string>)
                         {
-
+                            p.SetValue(value.TagInfo, Value.Split(';').ToList());
                         }
-                    }
-                    else
-                    {
-                        p.SetValue(SelectItem.TagInfo, Value);
-                    }
+                        else if (check is List<uint>)
+                        {
+                            try
+                            {
+                                p.SetValue(value.TagInfo, Value.Split(',')
+                                    .ToList()
+                                    .Select((s) => uint.Parse(s))
+                                    .ToList());
+                            }
+                            catch
+                            {
 
+                            }
+                        }
+                        else
+                        {
+                            p.SetValue(value.TagInfo, Value);
+                        }
+
+                    }
                 }
             }
+            
+        }
+
+        
+
+        TagInfo copyFile = new TagInfo();
+
+        public void CopyFile(TaggingModel taggingModel)
+        {
+            copyFile = new TagInfo(taggingModel.TagInfo);
+        }
+
+        public void CutFile(TaggingModel taggingModel)
+        {
+            copyFile = new TagInfo(taggingModel.TagInfo);
+            taggingModel.TagInfo = new TagInfo(copyFile.Path);
+        }
+
+        public void PasteFile(TaggingModel taggingModel)
+        {
+            taggingModel.TagInfo = new TagInfo(copyFile, taggingModel.TagInfo.Path);
         }
 
         public bool Select = false;
         private ObservableCollection<TaggingModel> _items;
         private bool _buttonEnable = true;
 
-        public void SelectModel(int index)
+        public void SelectModel(List<TaggingModel> items)
         {
             Select = true;
-            SelectItem = Items[index];
+            SelectItem = items;
             Select = false;
         }
 
@@ -324,7 +348,7 @@ namespace Tag.WPF
             Items = new ObservableCollection<TaggingModel>();
 
             audioTagging = new AudioTagging();
-            SelectItem = new TaggingModel();
+            SelectItem = new List<TaggingModel>();
             Global.DialogIdentifier.PropertyChanged += DialogIdentifier_PropertyChanged;
         }
     }

@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Input;
 using Tag.Core.Tagging;
 using Tag.Setting;
 using ToastNotifications.Messages;
@@ -76,17 +77,42 @@ namespace Tag.WPF
 
         private void List_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
+            var listView = (sender is ListView) ? (sender as ListView) : null;
             if (e.Key == System.Windows.Input.Key.Delete)
             {
-                var listView = (sender is ListView) ? (sender as ListView) : null;
-                
                 if (listView != null && listView.SelectedItems.Count != 0)
                 {
                     var list = listView.SelectedItems.Cast<object>().ToList();
                     foreach (var value in list)
                     {
-                        viewModel.RemoveFile(listView.Items.IndexOf(value));
+                        int index = listView.Items.IndexOf(value);
+                        viewModel.RemoveFile(index);
+                        if (listView.Items.Count != 0)
+                        {
+                            listView.SelectedIndex = index;
+                        }
                     }
+                }
+            }
+            else if (e.Key == System.Windows.Input.Key.C && Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                if (listView.SelectedItems.Count > 0)
+                {
+                    viewModel.CopyFile(listView.SelectedItems[0] as TaggingModel);
+                }
+            }
+            else if (e.Key == Key.V && Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                if (listView.SelectedItems.Count > 0)
+                {
+                    viewModel.PasteFile(listView.SelectedItems[0] as TaggingModel);
+                }
+            }
+            else if (e.Key == Key.X && Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                if (listView.SelectedItems.Count > 0)
+                {
+                    viewModel.CutFile(listView.SelectedItems[0] as TaggingModel);
                 }
             }
         }
@@ -98,9 +124,14 @@ namespace Tag.WPF
 
         private void ListView_Selected(object sender, SelectionChangedEventArgs e)
         {
-            if (TagListView.SelectedIndex != -1)
+            if (TagListView.SelectedItems.Count > 0)
             {
-                viewModel.SelectModel(TagListView.SelectedIndex);
+                var items = new List<TaggingModel>();
+                foreach (var value in TagListView.SelectedItems)
+                {
+                    items.Add(value as TaggingModel);
+                }
+                viewModel.SelectModel(items);
             }
         }
 
@@ -347,44 +378,60 @@ namespace Tag.WPF
 
         private void ImageChange(object sender, RoutedEventArgs e)
         {
-            if (viewModel?.SelectItem?.TagInfo?.Image != null)
+            if (viewModel.SelectItem?.Count > 0)
             {
-                viewModel.SelectItem.TagInfo.Image.Clear();
-                System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog
+                if (viewModel?.SelectItem[0]?.TagInfo?.Image != null)
                 {
-                    Multiselect = true
-                };
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    Image(dialog.FileNames);
+                    foreach (var value in viewModel.SelectItem)
+                    {
+                        value.TagInfo.Image.Clear();
+                    }
+                    System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog
+                    {
+                        Multiselect = true
+                    };
+                    if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        Image(dialog.FileNames);
+                    }
                 }
             }
         }
+
         void Image(params string[] items)
         {
-            var tag = viewModel.SelectItem.TagInfo;
-            tag.Image.Clear();
-
-            foreach (var item in items)
+            foreach (var value in viewModel.SelectItem)
             {
-                try
+                var tag = value.TagInfo;
+                tag.Image.Clear();
+
+                foreach (var item in items)
                 {
-                    var pic = new TagLib.Picture(item);
-                    tag.Image.Add(pic);
-                    viewModel.SelectItem.TagInfo = tag;
+                    try
+                    {
+                        var pic = new TagLib.Picture(item);
+                        tag.Image.Add(pic);
+
+                        value.TagInfo = tag;
+                    }
+                    catch { }
                 }
-                catch { }
             }
+            
         }
 
         private void ImageDelete(object sender, RoutedEventArgs e)
         {
-            if (viewModel?.SelectItem?.TagInfo != null)
+            foreach (var value in viewModel.SelectItem)
             {
-                var tag = viewModel.SelectItem.TagInfo;
-                tag.Image.Clear();
-                viewModel.SelectItem.TagInfo = tag;
+                if (value.TagInfo != null)
+                {
+                    var tag = value.TagInfo;
+                    tag.Image.Clear();
+                    value.TagInfo = tag;
+                }
             }
+            
         }
 
         private void UserControl_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)

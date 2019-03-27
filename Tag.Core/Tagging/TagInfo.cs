@@ -35,7 +35,7 @@ namespace Tag.Core.Tagging
         public string Title { get; set; } = string.Empty;
         public List<string> Artist { get; set; } = new List<string>();
         public string Album { get; set; } = string.Empty;
-        public string Year { get; set; } = string.Empty;
+        public string Year { get; set; } = "0";
         public List<uint> Track { get; set; } = new List<uint>();
         public List<string> Genre { get; set; } = new List<string>();
         public string Comment { get; set; } = string.Empty;
@@ -85,8 +85,13 @@ namespace Tag.Core.Tagging
             Publisher.Add(value.Conductor);
             Path = filePath;
         }
+
         public TagInfo()
         {
+        }
+        public TagInfo(string Path)
+        {
+            this.Path = Path;
         }
 
         public TagInfo(TagInfo value, string path = "")

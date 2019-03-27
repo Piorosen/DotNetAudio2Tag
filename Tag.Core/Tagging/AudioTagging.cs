@@ -118,9 +118,16 @@ namespace Tag.Core.Tagging
                 mp3File.Tag.Title = taginfo.Title;
                 mp3File.Tag.Performers = taginfo.Artist?.ToArray();
                 mp3File.Tag.Album = taginfo.Album;
-                mp3File.Tag.Year = uint.Parse(taginfo.Year?.Split('-')[0]);
+                if (uint.TryParse(taginfo.Year?.Split('-')[0], out uint result))
+                {
+                    mp3File.Tag.Year = result;
+                }
                 mp3File.Tag.Track = taginfo.Track.Count != 0 ? taginfo.Track[0] : 1;
-                mp3File.Tag.TrackCount = taginfo.Track.Aggregate((a, b) => a + b);
+                if (taginfo.Track.Count > 0)
+                {
+                    mp3File.Tag.TrackCount = taginfo.Track.Aggregate((a, b) => a + b);
+                }
+                
                 mp3File.Tag.Genres = taginfo.Genre?.ToArray();
                 mp3File.Tag.Comment = taginfo.Comment;
                 mp3File.Tag.AlbumArtists = taginfo.AlbumArtist?.ToArray();

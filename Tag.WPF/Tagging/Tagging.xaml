@@ -101,7 +101,7 @@
                            Content="{Binding Source={x:Static Setting:Global.Language}, Path=Title}"/>
                     <TextBox x:Name="Title"
                              Grid.Row="1"
-                             Text="{Binding SelectItem.TagInfo.Title}" 
+                             Text="{Binding SelectItem[0].TagInfo.Title}" 
                              TextChanged="Tag_TextChanged"/>
                 </Grid>
                 <Grid Grid.Row="1">
@@ -115,7 +115,7 @@
                     <TextBox x:Name="Artist"
                              Grid.Row="1"
                              TextChanged="Tag_TextChanged"
-                             Text="{Binding SelectItem.TagInfo.Artist, Converter={StaticResource ListToSring}}"
+                             Text="{Binding SelectItem[0].TagInfo.Artist, Converter={StaticResource ListToSring}}"
                              />
                 </Grid>
                 <Grid Grid.Row="2">
@@ -128,7 +128,7 @@
                            />
                     <TextBox x:Name="Album"
                              TextChanged="Tag_TextChanged"
-                             Text="{Binding SelectItem.TagInfo.Album}"
+                             Text="{Binding SelectItem[0].TagInfo.Album}"
                              Grid.Row="1"
                              />
                 </Grid>
@@ -142,7 +142,7 @@
                            />
                     <TextBox x:Name="Comment"
                              TextChanged="Tag_TextChanged"
-                             Text="{Binding SelectItem.TagInfo.Comment}"
+                             Text="{Binding SelectItem[0].TagInfo.Comment}"
                              Grid.Row="1"
                              />
                 </Grid>
@@ -156,7 +156,7 @@
                            />
                     <TextBox x:Name="Genre"
                              TextChanged="Tag_TextChanged"
-                             Text="{Binding SelectItem.TagInfo.Genre, Converter={StaticResource ListToSring}}"
+                             Text="{Binding SelectItem[0].TagInfo.Genre, Converter={StaticResource ListToSring}}"
                              Grid.Row="1"
                              />
                 </Grid>
@@ -176,7 +176,7 @@
                                />
                         <TextBox x:Name="Year" 
                                  TextChanged="Tag_TextChanged"
-                                 Text="{Binding SelectItem.TagInfo.Year}"
+                                 Text="{Binding SelectItem[0].TagInfo.Year}"
                                  Grid.Row="1"
                                  />
                     </Grid>
@@ -189,7 +189,7 @@
                                Grid.Row="0"/>
                         <TextBox x:Name="Track"
                                  TextChanged="Tag_TextChanged"
-                                 Text="{Binding SelectItem.TagInfo.Track, Converter={StaticResource ListToSring}}"
+                                 Text="{Binding SelectItem[0].TagInfo.Track, Converter={StaticResource ListToSring}}"
                                  Grid.Row="1"
                                  />
                     </Grid>
@@ -204,7 +204,7 @@
                            />
                     <TextBox x:Name="AlbumArtist"
                              TextChanged="Tag_TextChanged"
-                             Text="{Binding SelectItem.TagInfo.AlbumArtist, Converter={StaticResource ListToSring}}"
+                             Text="{Binding SelectItem[0].TagInfo.AlbumArtist, Converter={StaticResource ListToSring}}"
                              Grid.Row="1"
                              />
                 </Grid>
@@ -223,7 +223,7 @@
                                />
                         <TextBox x:Name="Composer"
                                  TextChanged="Tag_TextChanged"
-                                 Text="{Binding SelectItem.TagInfo.Composer, Converter={StaticResource ListToSring}}"
+                                 Text="{Binding SelectItem[0].TagInfo.Composer, Converter={StaticResource ListToSring}}"
                                  Grid.Row="1"
                                  />
                     </Grid>
@@ -237,7 +237,7 @@
                                />
                         <TextBox x:Name="Publisher"
                                  TextChanged="Tag_TextChanged"
-                                 Text="{Binding SelectItem.TagInfo.Publisher, Converter={StaticResource ListToSring}}"
+                                 Text="{Binding SelectItem[0].TagInfo.Publisher, Converter={StaticResource ListToSring}}"
                                  Grid.Row="1"
                                  />
                     </Grid>
@@ -262,7 +262,7 @@
                             Background="Transparent"
                             AllowDrop="True"
                             >
-                        <Image Source="{Binding SelectItem.TagInfo.Image,
+                        <Image Source="{Binding SelectItem[0].TagInfo.Image,
                                Converter={StaticResource ListToSring}}"
                                Stretch="Fill"
                                DragEnter="ItemDragEnter"
@@ -308,6 +308,7 @@
             ScrollViewer.VerticalScrollBarVisibility="Auto"
             DragEnter="ItemDragEnter" Drop="ItemDragDrop" SelectionChanged="ListView_Selected"
             GridViewColumnHeader.Click="TagListView_Click"
+            SelectionMode="Single"
             >
             <!--<ListView.ContextMenu>
                 <ContextMenu>
