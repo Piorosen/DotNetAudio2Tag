@@ -12,5 +12,7 @@ namespace Tag.Setting.Setting
         public string Alert = Global.FilePath.ResourcePath + "Alert.png";
         public string LameDummy = Global.FilePath.ResourcePath + "Test.Dummy";
         public string Lame { get; set; } = string.Empty;
+        public string FFMpeg { get; set; } = string.Empty;
+
     }
 }

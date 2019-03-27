@@ -140,8 +140,14 @@
       <DependentUpon>Convert.xaml</DependentUpon>
     </Compile>
     <Compile Include="Convert\Status\ConvertStatusViewModel.cs" />
+    <Compile Include="Convert\Status\FFMpegMode.xaml.cs">
+      <DependentUpon>FFMpegMode.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Convert\Status\LameMode.xaml.cs">
       <DependentUpon>LameMode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Convert\Status\FFMpegTestCode.xaml.cs">
+      <DependentUpon>FFMpegTestCode.xaml</DependentUpon>
     </Compile>
     <Compile Include="Convert\Status\LameTestCode.xaml.cs">
       <DependentUpon>LameTestCode.xaml</DependentUpon>
@@ -199,9 +205,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Convert\Status\FFMpegMode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Convert\Status\LameMode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Convert\Status\FFMpegTestCode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Convert\Status\LameTestCode.xaml">
       <SubType>Designer</SubType>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tag.Setting;
 using ToastNotifications.Messages;
 
 namespace Tag.WPF
@@ -29,9 +30,16 @@ namespace Tag.WPF
             DataContext = viewModel = new ConvertStatusViewModel(this);
             
         }
-        public void Execute(PresetModel preset, string resultPath, (string Path, string Format) Param)
+        public void Execute(PresetModel preset, string resultPath)
         {
-            viewModel.Execute(preset, resultPath, Param);
+            if (preset.ConvMode == Core.Conv.ConvMode.MYFLAC)
+            {
+                viewModel.Execute(preset, resultPath, (Global.Setting.FFMpegPath, Global.Setting.FFMpegEncode));
+            }
+            else if (preset.ConvMode == Core.Conv.ConvMode.USER)
+            {
+                viewModel.Execute(preset, resultPath, (Global.Setting.LamePath, Global.Setting.LameEncode));
+            }
         }
         public void Enqueue(ConvertModel info)
         {

@@ -48,7 +48,7 @@
             Grid.RowSpan="2"
             Width="Auto" Height="Auto"/>
         <wpf:DialogHost
-            Identifier="AutoLameCodeTest"
+            Identifier="AutoCodecCodeTest"
             Grid.RowSpan="2"
             Width="Auto" Height="Auto"/>
 

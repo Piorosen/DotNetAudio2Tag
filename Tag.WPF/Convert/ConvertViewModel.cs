@@ -114,34 +114,34 @@ namespace Tag.WPF
                 });
             }
 
-            Content.Execute(ConvertMode[Index], resultPath, Param);
+            Content.Execute(ConvertMode[Index], resultPath);
 
             Global.DialogIdentifier.ConvertEnable = false;
             var result = await DialogHost.Show(Content, Global.DialogIdentifier.Convert, CloseEventHandler);
             Global.DialogIdentifier.ConvertEnable = true;
         }
+        
 
-        (string Path, string Format) Param = (Global.Setting.LamePath, $"{Global.Setting.LameEncode} %File% %SaveFile%");
-
-
-        public async void ModeSetting()
+        public async void LameSetting()
         {
             var Content = new LameMode
             {
-                TextEncode =
-                {
-                    Text = Param.Format.Replace(" %File% %SaveFile%", string.Empty)
-                },
-                TextFilePath =
-                {
-                    Text = Param.Path
-                }
             };
 
             Global.DialogIdentifier.ConvertEnable = false;
             var result = (ValueTuple<string, string>)(await DialogHost.Show(Content, Global.DialogIdentifier.ConvertUserMode));
+            
+        }
 
-            Param = result == (string.Empty, string.Empty) ? Param : result;
+        public async void FFMpegSetting()
+        {
+            var Content = new LameMode
+            {
+            };
+
+            Global.DialogIdentifier.ConvertEnable = false;
+            var result = (ValueTuple<string, string>)(await DialogHost.Show(Content, Global.DialogIdentifier.ConvertUserMode));
+            
         }
     }
 }

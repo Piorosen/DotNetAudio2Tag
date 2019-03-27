@@ -18,7 +18,7 @@ namespace Tag.Setting.Setting
         public readonly string VgmSearch = "VgmDbSearch";
         public readonly string CheckTagInfo = "CheckTagInfo";
         public readonly string ConvertUserMode = "ConvertUserMode";
-        public readonly string LameCodeTest = "LameTest";
+        public readonly string CodecCodeTest = "CodecCodeTest";
 
         public readonly string AutoModeStatus = "AutoModeStatus";
         public readonly string AutoModeCodec = "AutoModeCodec";
@@ -28,7 +28,8 @@ namespace Tag.Setting.Setting
         public readonly string AutoBrainzSearch = "AutoBrainzSearch";
         public readonly string AutoVgmSearch = "AutoVgmSearch";
         public readonly string AutoCheckTagInfo = "AutoCheckTagInfo";
-        public readonly string AutoLameCodeTest = "AutoLameCodeTest";
+
+        public readonly string AutoCodecCodeTest = "AutoCodecCodeTest";
 
 
         private bool _taggingEnable;
@@ -36,6 +37,7 @@ namespace Tag.Setting.Setting
         private bool _settingEnable;
         private bool _lameEnable;
         private bool _autoModeEnable;
+        private bool _fFMpegEnable;
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnProertyChange([CallerMemberName] string Name = "")
@@ -43,6 +45,7 @@ namespace Tag.Setting.Setting
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
         }
 
+        public bool FFMpegEnable { get => _fFMpegEnable; set { _fFMpegEnable = value; OnProertyChange(); } }
         public bool AutoModeEnable { get => _autoModeEnable; set { _autoModeEnable = value; OnProertyChange(); } }
         public bool TaggingEnable { get => _taggingEnable; set { _taggingEnable = value; OnProertyChange(); } }
         public bool ConvertEnable { get => _convertEnable; set { _convertEnable = value; OnProertyChange(); } }

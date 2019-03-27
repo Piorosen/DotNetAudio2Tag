@@ -153,11 +153,11 @@ namespace Tag.WPF
         {
             if ((string)(sender as Control).Tag == "FFMpeg")
             {
-
+                viewModel.FFMpegSetting();
             }
             else
             {
-                viewModel.ModeSetting();
+                viewModel.LameSetting();
             }
         }
     }

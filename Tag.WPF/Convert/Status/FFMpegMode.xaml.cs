@@ -24,7 +24,7 @@ namespace Tag.WPF
     /// <summary>
     /// LameMode.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class LameMode : UserControl, INotifyPropertyChanged
+    public partial class FFMpegMode : UserControl, INotifyPropertyChanged
     {
         private bool _buttonEnable = true;
 
@@ -34,42 +34,42 @@ namespace Tag.WPF
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(Name));
         }
 
-        private void DialogIdentifier_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void DialogIdentifier_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(Global.DialogIdentifier.LameEnable))
+            if (e.PropertyName == nameof(Global.DialogIdentifier.FFMpegEnable))
             {
-                ButtonEnableA = Global.DialogIdentifier.LameEnable;
+                ButtonEnable = Global.DialogIdentifier.FFMpegEnable;
             }
         }
 
-        public bool ButtonEnableA { get => _buttonEnable; set { _buttonEnable = value; OnPropertyChanged(); } }
-        public LameMode()
+        public bool ButtonEnable { get => _buttonEnable; set { _buttonEnable = value; OnPropertyChanged(); } }
+
+        public FFMpegMode()
         {
             InitializeComponent();
-            TextFilePath.Text = Global.Setting.LamePath;
-            TextEncode.Text = Global.Setting.LameEncode;
+            TextFilePath.Text = Global.Setting.FFMpegPath;
+            TextEncode.Text = Global.Setting.FFMpegEncode;
             Global.DialogIdentifier.PropertyChanged += DialogIdentifier_PropertyChanged;
         }
-
-
+        
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             Global.DialogIdentifier.ConvertEnable = true;
-            DialogHost.CloseDialogCommand.Execute((string.Empty, string.Empty), (sender as Button)?.CommandTarget);
+            DialogHost.CloseDialogCommand.Execute(false, (sender as Button)?.CommandTarget);
         }
+
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             Global.DialogIdentifier.ConvertEnable = true;
-            Global.Setting.LamePath = TextFilePath.Text;
-            Global.Setting.LameEncode = TextEncode.Text;
-            DialogHost.CloseDialogCommand.Execute((TextFilePath.Text, TextEncode.Text + " %File% %SaveFile%"), (sender as Button)?.CommandTarget);
+            Global.Setting.FFMpegPath = TextFilePath.Text;
+            Global.Setting.FFMpegEncode = TextEncode.Text;
+            DialogHost.CloseDialogCommand.Execute(true, (sender as Button)?.CommandTarget);
             Global.Setting.Save();
         }
 
 
         private async void CodeCheck_Click(object sender, RoutedEventArgs e)
         {
-
             var proc = new Process
             {
                 StartInfo =
@@ -91,7 +91,7 @@ namespace Tag.WPF
             }
             catch { err = e.ToString(); }
 
-            Global.DialogIdentifier.LameEnable = false;
+            Global.DialogIdentifier.FFMpegEnable = false;
             await DialogHost.Show(new FFMpegTestCode(err), Global.IsAutoMode
                 ? Global.DialogIdentifier.AutoCodecCodeTest
                 : Global.DialogIdentifier.CodecCodeTest);
