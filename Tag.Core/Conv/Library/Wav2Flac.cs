@@ -38,8 +38,12 @@ namespace Tag.Core.Conv.Library
                             int bytesRead = wav.Read(wavbuffer, 0, bytesToRead);
                             if (bytesRead > 0)
                             {
-                                var buffer = new AudioBuffer(config, wavbuffer, wav.WaveFormat.BlockAlign * 100);
-                                flac.Write(buffer);
+                                try
+                                {
+                                    var buffer = new AudioBuffer(config, wavbuffer, wavbuffer.Length);
+                                    flac.Write(buffer);
+                                }
+                                catch { }
                             }
                         }
 

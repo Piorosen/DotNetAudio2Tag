@@ -23,8 +23,10 @@ namespace Tag.Setting.Setting
                 Path = Config.Path;
             }
             StringBuilder sb = new StringBuilder(256);
+            
             GetPrivateProfileString(Section, Key, null, sb, 256, Path);
-            return sb.ToString();
+            var encode = Encoding.UTF8.GetBytes(sb.ToString());
+            return Encoding.UTF8.GetString(encode, 0, encode.Length);
         }
 
         public static long SetOption(string Section, string Key, string Val, string Path = null)

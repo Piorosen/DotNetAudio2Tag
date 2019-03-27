@@ -15,6 +15,11 @@ namespace Tag.Setting
     {
         public string LameEncode { get; set; } = string.Empty;
         public string LamePath { get { return Global.Resource.Lame; } set { Global.Resource.Lame = value; } }
+
+        public string FFMpegEncode { get; set; } = string.Empty;
+        public string FFMpegPath { get { return Global.Resource.Lame; } set { Global.Resource.Lame = value; } }
+
+
         public string LangFile { get; set; } = string.Empty;
         public string LangIndex { get; set; } = string.Empty;
 
