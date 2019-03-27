@@ -22,14 +22,14 @@ namespace ProjectSetting
             {
                 Directory.CreateDirectory(destDirName);
             }
-            
+
             FileInfo[] files = dir.GetFiles();
             foreach (FileInfo file in files)
             {
                 string temppath = Path.Combine(destDirName, file.Name);
                 file.CopyTo(temppath, false);
             }
-            
+
             if (copySubDirs)
             {
                 foreach (DirectoryInfo subdir in dirs)
@@ -41,7 +41,7 @@ namespace ProjectSetting
         }
         static void Main(string[] args)
         {
-            var SlnDir = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent;
+            var SlnDir = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent;
             var dir = SlnDir.FullName;
 
             if (Directory.Exists(dir + @"\Tag.WPF\bin\Debug"))

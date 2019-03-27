@@ -163,6 +163,9 @@ namespace Tag.Setting
         public string SettingTrackYear { get; set; } = string.Empty;
         public string SettingFileName { get; set; } = string.Empty;
 
+        public string SettingTagSaveFormat { get; set; } = string.Empty;
+        public string SettingTagSaveFileFormat { get; set; } = string.Empty;
+        public string SettingCueFileNameChnage { get; set; } = string.Empty;
 
 
         public string AutoModeSetting { get; set; } = string.Empty;
