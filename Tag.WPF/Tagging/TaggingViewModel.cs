@@ -176,10 +176,7 @@ namespace Tag.WPF
         private void CloseEvent(object sender, DialogClosingEventArgs e)
         {
             audioTagging.tagList.Clear();
-            if (e.Parameter == null)
-            {
-                e.Cancel();
-            }
+
 
             if ((bool)e.Parameter == true)
             {
@@ -193,6 +190,12 @@ namespace Tag.WPF
                 {
                     Console.WriteLine(value);
                 }
+                Application.notifier.ShowInformation(Global.Language.TagSuccess);
+            }
+            else
+            {
+                Application.notifier.ShowInformation(Global.Language.TagFail);
+                return;
             }
         }
 
@@ -207,14 +210,6 @@ namespace Tag.WPF
             Global.DialogIdentifier.TaggingEnable = false;
             // DialogHost.OpenDialogCommand.Execute(view, new System.Windows.Controls.Button().CommandTarget);
             var result = await DialogHost.Show(view, Global.DialogIdentifier.TagSave, CloseEvent);
-            if ((result as bool?).HasValue && (result as bool?).Value)
-            {
-                Application.notifier.ShowInformation(Global.Language.TagSuccess);
-            }
-            else
-            {
-                Application.notifier.ShowInformation(Global.Language.TagFail);
-            }
         }
 
         public async void GetTagInfo(int index)
@@ -229,6 +224,8 @@ namespace Tag.WPF
                 {
                     if ((bool)result == true)
                     {
+                        CloseEvent(this, new DialogClosingEventArgs(null, true));
+
                         List<string> t = new List<string>();
 
                         foreach (var value in Items)
