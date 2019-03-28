@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,10 @@ namespace Tag.WPF
         {
             viewModel.Enqueue(info);
         }
-        
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.CloseEvent((sender as Button).CommandTarget);
+        }
     }
 }

@@ -192,6 +192,7 @@
                                     DisplayMemberBinding="{Binding Name}"
                                     />
                                 <GridViewColumn
+                                    Width="Auto"
                                     Header="{Binding Source={x:Static Setting:Global.Language}, Path=ExtenValue}"
                                     DisplayMemberBinding="{Binding Value}"
                                     />

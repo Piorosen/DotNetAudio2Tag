@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tag.Core.Conv.Library;
 using Tag.Core.Tagging;
+using Tag.Setting;
 
 namespace Tag.Core.Conv
 {
@@ -144,7 +145,7 @@ namespace Tag.Core.Conv
                     {
                         await Task.WhenAny(Worker.ToArray());
                     }
-
+                    
                     percent += 100;
                 }
                 Task.WaitAll(Worker.ToArray());

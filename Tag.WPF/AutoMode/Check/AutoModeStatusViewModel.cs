@@ -233,7 +233,6 @@ namespace Tag.WPF
                 {
                     Title = Global.Language.AutoCueSplit;
                     CueSplit(data, resultPath);
-
                     if ((run & 4) == 4)
                     {
                         Title = Global.Language.AutoCueTag;
@@ -245,7 +244,6 @@ namespace Tag.WPF
                 {
                     Title = Global.Language.AutoAudioConv;
                     var result = await Conv(data, resultPath, preset);
-
                     if ((run & 4) == 4)
                     {
                         Title = Global.Language.AutoAudioTag;

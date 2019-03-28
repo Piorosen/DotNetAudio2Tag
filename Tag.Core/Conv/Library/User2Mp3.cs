@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tag.Setting;
 
 namespace Tag.Core.Conv.Library
 {
@@ -14,25 +15,25 @@ namespace Tag.Core.Conv.Library
         {
             string dummyname = Path.GetDirectoryName(info.FilePath) + "\\" + Path.GetRandomFileName();
             string resultdummyname = Path.GetRandomFileName();
-
-
+            
             try
             {
                 info.Format = String.Format(info.Format, info.Parameter);
             }
             catch { }
+
             try
             {
                 info.Format = info.Format.Replace("%File%", $"\"{dummyname}\"");
             }
-            catch
-            {
-            }
+            catch { }
+
             try
             {
-                info.Format = info.Format.Replace("%SaveFile%", $"\"{info.ResultPath}\\{resultdummyname}.mp3\"");
+                info.Format = info.Format.Replace("%SaveFile%", $"\"{info.ResultPath}\\{resultdummyname}\"");
             }
             catch { }
+
             if (!Directory.Exists(info.ResultPath))
             {
                 Directory.CreateDirectory(info.ResultPath);
@@ -89,7 +90,7 @@ namespace Tag.Core.Conv.Library
             try
             {
                 File.Move(dummyname, info.FilePath);
-                File.Move(Path.GetFullPath($"{info.ResultPath}\\{resultdummyname}.mp3"), Path.GetFullPath($"{info.ResultPath}\\{info.FileName}.mp3"));
+                File.Move(Path.GetFullPath($"{info.ResultPath}\\{resultdummyname}"), Path.GetFullPath($"{info.ResultPath}\\{info.FileName}.mp3"));
             }
             catch { }
             

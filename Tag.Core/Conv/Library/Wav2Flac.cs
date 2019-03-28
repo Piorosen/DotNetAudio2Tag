@@ -24,7 +24,7 @@ namespace Tag.Core.Conv.Library
 
             string dummyname = Path.GetDirectoryName(info.FilePath) + "\\" + Path.GetRandomFileName() + info.Extension;
             string resultdummyname = $"{info.ResultPath}{Path.GetRandomFileName()}";
-
+            
             AudioFileReader afr = new AudioFileReader(info.FilePath);
             afr.Close();
             while (info.Format.IndexOf("%fn%") != -1)
@@ -117,7 +117,7 @@ namespace Tag.Core.Conv.Library
                 File.Move($"{resultdummyname}.{ext}", Path.GetFullPath($"{info.ResultPath}\\{info.FileName}.{ext}"));
             }
             catch { }
-
+            
             yield return 100;
         }
     }

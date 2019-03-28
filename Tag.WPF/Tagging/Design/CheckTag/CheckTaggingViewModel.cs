@@ -288,7 +288,8 @@ namespace Tag.WPF
                 UserInfo.Add(new CheckUserModel
                 {
                     Length = $"{string.Format("{0}", (int)userinfo.WaveFormat.Length / 60)}{Global.Language.CueMin} : {string.Format("{0}", ((int)userinfo.WaveFormat.Length % 60))}{Global.Language.CueSecond}",
-                    Title = Path.GetFileName(userinfo.TagInfo.Path),
+                    Title = userinfo.TagInfo.Path != String.Empty ? Path.GetFileName(userinfo.TagInfo.Path)
+                                                        : userinfo.TagInfo.Title,
                     Track = tracknum,
                     Id = i
                 });

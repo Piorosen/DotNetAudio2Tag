@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Tag.Core.Cue;
 using Tag.Core.Cue.Split;
 using Tag.Core.Tagging;
+using Tag.Setting;
 
 namespace Tag.Core.Cue
 {
