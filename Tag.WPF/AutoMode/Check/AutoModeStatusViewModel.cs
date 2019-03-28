@@ -144,7 +144,6 @@ namespace Tag.WPF
                 return; 
             }
 
-            data.Clear();
             for (int i = 0; i < count ; i++)
             {
                 string filename = Global.Setting.TagTypeSetting;
@@ -181,9 +180,10 @@ namespace Tag.WPF
                 }
                 while (filename.IndexOf("%fn%") != -1)
                 {
-                    filename = filename.Replace("%fn%", Path.GetFileNameWithoutExtension(tag[i].Path));
+                    filename = filename.Replace("%fn%", Path.GetFileNameWithoutExtension(data[0].Path));
                 }
-                
+
+                data.RemoveAt(0);
 
                 var dir = Path.GetDirectoryName(datatmp[i].Tag.Path);
                 var ext = Path.GetExtension(datatmp[i].Path);

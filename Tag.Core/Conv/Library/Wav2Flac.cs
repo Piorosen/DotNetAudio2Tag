@@ -83,7 +83,7 @@ namespace Tag.Core.Conv.Library
             }
 
             string ext = string.Empty;
-
+            int last = 0;
             while (!proc.StandardError.EndOfStream)
             {
                 var err = proc.StandardError.ReadLine();
@@ -96,13 +96,18 @@ namespace Tag.Core.Conv.Library
                 var list = Regex.Split(err, "time=");
                 if (list.Length == 2)
                 {
-                    var time = list[1].Split(' ')[0];
-                    int hour = int.Parse(time.Split(':')[0]);
-                    int min = int.Parse(time.Split(':')[1]);
-                    int second = int.Parse(time.Split(':')[2].Split('.')[0]);
-                    int mili = int.Parse(time.Split('.')[1]);
-                    TimeSpan data = new TimeSpan(0, hour, min, second, mili);
-                    yield return (int)(afr.TotalTime.TotalMilliseconds / data.TotalMilliseconds) * 100;
+                    try
+                    {
+                        var time = list[1].Split(' ')[0];
+                        int hour = int.Parse(time.Split(':')[0]);
+                        int min = int.Parse(time.Split(':')[1]);
+                        int second = int.Parse(time.Split(':')[2].Split('.')[0]);
+                        int mili = int.Parse(time.Split('.')[1]);
+                        TimeSpan data = new TimeSpan(0, hour, min, second, mili);
+                        last = (int)(afr.TotalTime.TotalMilliseconds / data.TotalMilliseconds) * 100; ;
+                    }
+                    catch { }
+                    yield return last;
                 }
             }
 
