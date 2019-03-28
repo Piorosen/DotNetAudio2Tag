@@ -45,6 +45,7 @@ namespace Tag.WPF
         private void AllSave(object sender, RoutedEventArgs e)
         {
             Global.Setting.Save();
+            Application.notifier.ShowSuccess("저장이 완료 되었습니다.");
         }
     }
 }

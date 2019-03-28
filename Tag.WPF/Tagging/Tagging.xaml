@@ -308,7 +308,6 @@
             ScrollViewer.VerticalScrollBarVisibility="Auto"
             DragEnter="ItemDragEnter" Drop="ItemDragDrop" SelectionChanged="ListView_Selected"
             GridViewColumnHeader.Click="TagListView_Click"
-            SelectionMode="Single"
             >
             <!--<ListView.ContextMenu>
                 <ContextMenu>
