@@ -105,7 +105,10 @@ namespace Tag.WPF
             {
                 if (listView.SelectedItems.Count > 0)
                 {
-                    viewModel.PasteFile(listView.SelectedItems[0] as TaggingModel);
+                    foreach (var value in listView.SelectedItems)
+                    {
+                        viewModel.PasteFile(value as TaggingModel);
+                    }
                 }
             }
             else if (e.Key == Key.X && Keyboard.Modifiers == ModifierKeys.Control)
