@@ -311,7 +311,7 @@ namespace Tag.WPF
             UserInfo.Insert(index + 1, now);
         }
     
-        public void RemoveGetTag(IList list)
+        public void RemoveGetTag(List<CheckBrainzModel> list)
         {
             foreach (var value in list)
             {

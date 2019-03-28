@@ -141,7 +141,15 @@ namespace Tag.WPF
             {
                 return;
             }
-            //viewModel.RemoveGetTag(list);
+            if (e.Key == Key.Delete || e.Key == Key.Back)
+            {
+                var items = new List<CheckBrainzModel>();
+                foreach (var value in list)
+                {
+                    items.Add(value as CheckBrainzModel);
+                }
+                viewModel.RemoveGetTag(items);
+            }
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)

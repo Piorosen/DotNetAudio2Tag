@@ -258,7 +258,6 @@
                 <Grid>
                     <ListView ItemsSource="{Binding BrainzInfo}" Grid.ColumnSpan="2"
                               KeyDown="Remove_GetTag"
-                              SelectionMode="Multiple"
                               >
                         <ListView.View>
                             <GridView>
