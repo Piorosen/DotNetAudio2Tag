@@ -80,18 +80,11 @@ namespace Tag.WPF
             var listView = (sender is ListView) ? (sender as ListView) : null;
             if (e.Key == System.Windows.Input.Key.Delete)
             {
-                if (listView != null && listView.SelectedItems.Count != 0)
+                int index = 0;
+                while (listView.SelectedItems.Count > 0)
                 {
-                    var list = listView.SelectedItems.Cast<object>().ToList();
-                    foreach (var value in list)
-                    {
-                        int index = listView.Items.IndexOf(value);
-                        viewModel.RemoveFile(index);
-                        if (listView.Items.Count != 0)
-                        {
-                            listView.SelectedIndex = index;
-                        }
-                    }
+                    index = listView.Items.IndexOf(listView.SelectedItems[0]);
+                    viewModel.RemoveFile(index);
                 }
             }
             else if (e.Key == System.Windows.Input.Key.C && Keyboard.Modifiers == ModifierKeys.Control)
@@ -383,20 +376,14 @@ namespace Tag.WPF
         {
             if (viewModel.SelectItem?.Count > 0)
             {
-                if (viewModel?.SelectItem[0]?.TagInfo?.Image != null)
+                System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog
                 {
-                    foreach (var value in viewModel.SelectItem)
-                    {
-                        value.TagInfo.Image.Clear();
-                    }
-                    System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog
-                    {
-                        Multiselect = true
-                    };
-                    if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    {
-                        Image(dialog.FileNames);
-                    }
+                    Multiselect = true
+                };
+
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    Image(dialog.FileNames);
                 }
             }
         }

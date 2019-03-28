@@ -13,6 +13,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
@@ -89,7 +90,7 @@ namespace Tag.WPF
         }
         public void ChangeText(string Name, string Value)
         {
-            if (SelectItem == null)
+            if (SelectItem == null && SelectItem.Count == 0)
             {
                 return;
             }
@@ -128,11 +129,10 @@ namespace Tag.WPF
                         {
                             p.SetValue(value.TagInfo, Value);
                         }
-
+                        value.TagInfo = value.TagInfo;
                     }
                 }
             }
-            
         }
 
         
