@@ -5,20 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              xmlns:Setting="clr-namespace:Tag.Setting;assembly=Tag.Setting"
-             Width="800" Height="450"
+             Width="800" Height="600"
              AllowDrop="True" MouseEnter="Update"
              >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="140"/>
-            <RowDefinition Height="140"/>
-            <RowDefinition Height="90"/>
             <RowDefinition Height="70"/>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
-        <Grid Grid.Row="0" Margin="10">
+        <Grid Grid.Row="0" Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
@@ -70,7 +70,7 @@
             </Grid>
         </Grid>
         
-        <Grid Grid.Row="1" Margin="10">
+        <Grid Grid.Row="1" Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="15"/>
                 <RowDefinition Height="20"/>
@@ -128,7 +128,7 @@
             </Grid>
         </Grid>
         
-        <Grid Grid.Row="2" Margin="10">
+        <Grid Grid.Row="2" Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="15"/>
                 <RowDefinition Height="20"/>
@@ -210,11 +210,11 @@
         </Grid>
         
         
-        <Grid Grid.Row="3" Margin="10">
+        <Grid Grid.Row="3" Margin="5">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
@@ -245,19 +245,17 @@
 
             <TextBox Grid.Row="1"
                      Grid.Column="1"
-                     FontSize="12"
                      Text="{Binding Source={x:Static Setting:Global.Setting},
                                     Path=AutoCueFolder}"
                 />
             <TextBox Grid.Row="2"
                      Grid.Column="1"
-                     FontSize="12"
                      Text="{Binding Source={x:Static Setting:Global.Setting},
                                     Path=AutoConvFolder}"
                 />
         </Grid>
         
-        <Grid Grid.Row="4" Margin="10">
+        <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="150"/>
@@ -273,10 +271,9 @@
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
-            <Button 
+            <Button Margin="0 0 10 0"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
-                    Height="30"
                     Width="130"
                     Content="{Binding Source={x:Static Setting:Global.Language}, Path=CacheRemove}"
                     Click="CacheRemove"
