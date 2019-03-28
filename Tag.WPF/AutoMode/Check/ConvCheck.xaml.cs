@@ -45,30 +45,37 @@ namespace Tag.WPF
             Index = int.Parse((e.Source as RadioButton).Tag.ToString());
         }
 
-        (string Path, string Format) Param = (Global.Setting.LamePath, $"{Global.Setting.LameEncode} %File% %SaveFile%");
+        (string Path, string Format) Param = (string.Empty, String.Empty);
+
 
         private async void UserMode_Click(object sender, RoutedEventArgs e)
         {
-            var Content = new LameMode
+            UserControl Content;
+
+            if ((string)(sender as Control).Tag == "FFMpeg")
             {
-                TextEncode =
-                {
-                    Text = Param.Format.Replace(" %File% %SaveFile%", string.Empty)
-                },
-                TextFilePath =
-                {
-                    Text = Param.Path
-                }
-            };
-
+                Content = new FFMpegMode();
+            }
+            else
+            {
+                Content = new LameMode();
+            }
             Global.DialogIdentifier.ConvertEnable = false;
-            var result = (ValueTuple<string, string>)(await DialogHost.Show(Content, Global.DialogIdentifier.AutoConvertUserMode));
-
-            Param = result == (string.Empty, string.Empty) ? Param : result;
+            var result = (bool)(await DialogHost.Show(Content, Global.DialogIdentifier.AutoConvertUserMode));
         }
+
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
+            if (ConvertMode[Index].ConvMode == ConvMode.MYFLAC)
+            {
+                Param = (Global.Setting.FFMpegPath, Global.Setting.FFMpegEncode);
+            }
+            else
+            {
+                Param = (Global.Setting.LamePath, Global.Setting.LameEncode);
+            }
+
             DialogHost.CloseDialogCommand.Execute(new ConvCheckModel { preset = ConvertMode[Index], Param = Param }, (sender as Button).CommandTarget);
         }
 
