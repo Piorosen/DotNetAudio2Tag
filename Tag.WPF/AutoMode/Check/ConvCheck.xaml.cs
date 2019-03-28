@@ -73,7 +73,7 @@ namespace Tag.WPF
             }
             else
             {
-                Param = (Global.Setting.LamePath, Global.Setting.LameEncode);
+                Param = (Global.Setting.LamePath, Global.Setting.LameEncode + " %File% %SaveFile%");
             }
 
             DialogHost.CloseDialogCommand.Execute(new ConvCheckModel { preset = ConvertMode[Index], Param = Param }, (sender as Button).CommandTarget);

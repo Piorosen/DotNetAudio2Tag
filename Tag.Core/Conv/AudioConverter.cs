@@ -90,6 +90,7 @@ namespace Tag.Core.Conv
                             return await Task.FromResult(false);
                         }
                     }
+
                     else if (mode == ConvMode.MYFLAC)
                     {
                         Conv = new Wav2Flac();
@@ -101,6 +102,7 @@ namespace Tag.Core.Conv
                         resultext = ".mp3";
                     }
 
+                    
                     worker = new Task(() =>
                     {
                         var id = CreateID++;

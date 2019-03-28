@@ -91,7 +91,7 @@ namespace Tag.WPF
             catch { err = e.ToString(); }
 
             Global.DialogIdentifier.CodecEnable = false;
-            await DialogHost.Show(new FFMpegTestCode(err), Global.IsAutoMode
+            await DialogHost.Show(new LameTestCode(err), Global.IsAutoMode
                 ? Global.DialogIdentifier.AutoCodecCodeTest
                 : Global.DialogIdentifier.CodecCodeTest);
 
