@@ -13,6 +13,8 @@ namespace Tag.Setting
 {
     public class SettingManager : SingleTon<SettingManager>, INotifyPropertyChanged
     {
+        private bool _executeProgram = false;
+
         public string LameEncode { get; set; } = string.Empty;
         public string LamePath { get { return Global.Resource.Lame; } set { Global.Resource.Lame = value; } }
 
@@ -32,6 +34,11 @@ namespace Tag.Setting
         public bool CueTagging { get; set; } = true;
 
 
+        public bool ExecuteProgram { get => _executeProgram; set
+            {
+                _executeProgram = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ExecuteProgram)));
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -46,7 +53,7 @@ namespace Tag.Setting
                     var data = value.GetValue(this);
                     if (data.GetType() == typeof(string))
                     {
-                       
+
                     }
                     var get = Config.GetOption("Option", value.Name);
 

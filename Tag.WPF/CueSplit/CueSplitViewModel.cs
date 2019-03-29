@@ -151,6 +151,10 @@ namespace Tag.WPF
         {
             await Task.Factory.StartNew(() =>
             {
+                control.Dispatcher.Invoke(() =>
+                {
+                    Global.Setting.ExecuteProgram = false;
+                });
                 if (isTask == false)
                 {
                     if (SavePath != null)
@@ -176,6 +180,10 @@ namespace Tag.WPF
                     }
                     isTask = false;
                 }
+                control.Dispatcher.Invoke(() =>
+                {
+                    Global.Setting.ExecuteProgram = true;
+                });
             }).ConfigureAwait(true);
 
         }

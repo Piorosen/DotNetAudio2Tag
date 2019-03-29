@@ -99,6 +99,8 @@ namespace Tag.WPF
 
         public async void Execute(string resultPath)
         {
+            Global.Setting.ExecuteProgram = false;
+            Global.DialogIdentifier.ConvertEnable = false;
             var Content = new ConvertStatus
             {
                 Width = 450,
@@ -116,7 +118,6 @@ namespace Tag.WPF
 
             Content.Execute(ConvertMode[Index], resultPath);
 
-            Global.DialogIdentifier.ConvertEnable = false;
             var result = await DialogHost.Show(Content, Global.DialogIdentifier.Convert, CloseEventHandler);
             Global.DialogIdentifier.ConvertEnable = true;
         }

@@ -237,6 +237,8 @@ namespace Tag.WPF
         {
             Global.DialogIdentifier.AutoModeEnable = false;
             Global.IsAutoMode = true;
+            
+            Global.Setting.ExecuteProgram = false;
 
             var result = await CheckMode(run);
             if (result)

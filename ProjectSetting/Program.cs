@@ -42,17 +42,24 @@ namespace ProjectSetting
         {
             var SlnDir = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent;
             var dir = SlnDir.FullName;
+            string mode = "";
+#if DEBUG
+            mode = "Debug";
+#else
+            mode = "Release";
+#endif
 
-            if (Directory.Exists(dir + @"\Tag.WPF\bin\Debug"))
+
+            if (Directory.Exists(dir + @"\Tag.WPF\bin\" + mode))
             {
-                Directory.Delete(dir + @"\Tag.WPF\bin\Debug", true);
+                Directory.Delete(dir + @"\Tag.WPF\bin\" + mode, true);
             }
             else
             {
-                Directory.CreateDirectory(dir + @"\Tag.WPF\bin\Debug");
+                Directory.CreateDirectory(dir + @"\Tag.WPF\bin\" + mode);
             }
 
-            DirectoryCopy(dir + @"\Tool", dir + @"\Tag.WPF\bin\Debug", true);
+            DirectoryCopy(dir + @"\Tool", dir + @"\Tag.WPF\bin\" + mode, true);
         }
     }
 }

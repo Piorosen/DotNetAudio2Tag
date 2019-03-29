@@ -46,6 +46,7 @@ namespace Tag.WPF
                 viewModel.Execute(preset, resultPath, (null, null));
             }
         }
+
         public void Enqueue(ConvertModel info)
         {
             viewModel.Enqueue(info);

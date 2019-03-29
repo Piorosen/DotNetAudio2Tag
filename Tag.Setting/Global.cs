@@ -18,6 +18,7 @@ namespace Tag.Setting
 
         public static bool CacheImageDelete = false;
         public static bool IsAutoMode = false;
+
         
 
         public static void Load()

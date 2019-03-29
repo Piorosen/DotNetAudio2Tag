@@ -69,6 +69,8 @@ namespace Tag.WPF
             }
 
             var result = await converter.Execute(preset.ConvMode, MultiTask, resultPath);
+
+            Global.Setting.ExecuteProgram = true;
             Result = true;
         }
 

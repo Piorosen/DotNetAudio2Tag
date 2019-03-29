@@ -45,6 +45,8 @@ namespace Tag.WPF
         public async void Execute()
         {
             await viewModel.Execute(run, result,  data, tag, preset);
+
+            Global.Setting.ExecuteProgram = true;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

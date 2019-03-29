@@ -136,7 +136,7 @@
         <Grid Grid.Row="2">
         <Button
             Content="{Binding Source={x:Static Setting:Global.Language}, Path=CueFileSplitExecute}"
-            
+            IsEnabled="{Binding Source={x:Static Setting:Global.Setting}, Path=ExecuteProgram}"
             HorizontalAlignment="Right"
             Margin="0,9,10,9"
             Width="130"
