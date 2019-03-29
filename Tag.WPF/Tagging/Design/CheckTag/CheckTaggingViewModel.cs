@@ -88,9 +88,9 @@ namespace Tag.WPF
 
                 var temp = data[index];
                 {
-                    temp.TagInfo.Album = Album;
-                    temp.TagInfo.AlbumArtist = BrainzTag[i]?.AlbumArtist;
-                    temp.TagInfo.Artist = Artist.Split(',').ToList();
+                    temp.TagInfo.Album = Album ?? String.Empty;
+                    temp.TagInfo.AlbumArtist = BrainzTag[i].AlbumArtist ?? new List<string>();
+                    temp.TagInfo.Artist = Artist != null ? Artist.Split(',').ToList() : new List<string>();
                     temp.TagInfo.Barcode = BrainzTag[i].Barcode;
                     temp.TagInfo.Comment = Comment;
                     temp.TagInfo.Composer = BrainzTag[i]?.Composer;

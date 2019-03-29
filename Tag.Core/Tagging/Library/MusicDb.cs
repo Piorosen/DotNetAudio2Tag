@@ -253,60 +253,88 @@ namespace Tag.Core.Tagging.Library
             #region Tag
             var tag = Stat.SelectSingleNode("./div/div[@id='rightfloat']");
             var tagcollection = tag.SelectNodes("./div/div/table[@id='album_infobit_large']/tr");
-
-            basic.DiscNum = tagcollection[0].SelectNodes("./td")[1].InnerText.Trim();
-            basic.Year = tagcollection[1].SelectSingleNode("./td/a").Attributes["href"].Value.Split('#')[1].Split('\"')[0].Insert(6, "-").Insert(4, "-");
-
-            foreach (var data in tagcollection[4].SelectNodes("./td")[1].InnerText.Split('+'))
+            try
             {
-                basic.Format.Add(data.Trim());
+                basic.DiscNum = tagcollection[0].SelectNodes("./td")[1].InnerText.Trim();
             }
-
-            foreach (var data in tagcollection[6].SelectNodes("./td/a/span[@class='productname']"))
+            catch { }
+            try
             {
-                if (data.Attributes["lang"].Value == lang)
-                {
-                    basic.Publisher.Add(data.InnerText.Replace("&amp;", "&"));
-
-                    break;
-                }
+                basic.Year = tagcollection[1].SelectSingleNode("./td/a").Attributes["href"].Value.Split('#')[1].Split('\"')[0].Insert(6, "-").Insert(4, "-");
             }
+            catch { }
 
-            foreach (var data in tagcollection[7].SelectNodes("./td/a"))
+            try
             {
-                if (data.Attributes["lang"] == null)
+                foreach (var data in tagcollection[4].SelectNodes("./td")[1].InnerText.Split('+'))
                 {
-                    basic.Composer.Add(data.InnerText.Replace("&amp;", "&"));
-                }
-                else if (data.Attributes["lang"].Value == lang)
-                {
-                    basic.Composer.Add(data.SelectSingleNode("./span").InnerText.Replace("&amp;", "&"));
+                    basic.Format.Add(data.Trim());
                 }
             }
+            catch { }
 
-            foreach (var data in tagcollection[8].SelectNodes("./td/a"))
+            try
             {
-                if (data.Attributes["lang"] == null)
+                foreach (var data in tagcollection[6].SelectNodes("./td/a/span[@class='productname']"))
                 {
-                    basic.AlbumArtist.Add(data.InnerText.Replace("&amp;", "&"));
-                }
-                else if (data.Attributes["lang"].Value == lang)
-                {
-                    basic.AlbumArtist.Add(data.SelectSingleNode("./span").InnerText.Replace("&amp;", "&"));
+                    if (data.Attributes["lang"].Value == lang)
+                    {
+                        basic.Publisher.Add(data.InnerText.Replace("&amp;", "&"));
+
+                        break;
+                    }
                 }
             }
+            catch { }
 
-            foreach (var data in tagcollection[9].SelectNodes("./td/a"))
+            try
             {
-                if (data.Attributes["lang"] == null)
+                foreach (var data in tagcollection[7].SelectNodes("./td/a"))
                 {
-                    basic.Artist.Add(data.InnerText.Replace("&amp;", "&"));
-                }
-                else if (data.Attributes["lang"].Value == lang)
-                {
-                    basic.Artist.Add(data.SelectSingleNode("./span").InnerText.Replace("&amp;", "&"));
+                    if (data.Attributes["lang"] == null)
+                    {
+                        basic.Composer.Add(data.InnerText.Replace("&amp;", "&"));
+                    }
+                    else if (data.Attributes["lang"].Value == lang)
+                    {
+                        basic.Composer.Add(data.SelectSingleNode("./span").InnerText.Replace("&amp;", "&"));
+                    }
                 }
             }
+            catch { }
+
+            try
+            {
+                foreach (var data in tagcollection[8].SelectNodes("./td/a"))
+                {
+                    if (data.Attributes["lang"] == null)
+                    {
+                        basic.AlbumArtist.Add(data.InnerText.Replace("&amp;", "&"));
+                    }
+                    else if (data.Attributes["lang"].Value == lang)
+                    {
+                        basic.AlbumArtist.Add(data.SelectSingleNode("./span").InnerText.Replace("&amp;", "&"));
+                    }
+                }
+            }
+            catch { }
+
+            try
+            {
+                foreach (var data in tagcollection[9].SelectNodes("./td/a"))
+                {
+                    if (data.Attributes["lang"] == null)
+                    {
+                        basic.Artist.Add(data.InnerText.Replace("&amp;", "&"));
+                    }
+                    else if (data.Attributes["lang"].Value == lang)
+                    {
+                        basic.Artist.Add(data.SelectSingleNode("./span").InnerText.Replace("&amp;", "&"));
+                    }
+                }
+            }
+            catch { }
+            
             #endregion
 
             var tracklang = Stat.SelectNodes("./div/div/ul[@id='tlnav']/li");
@@ -342,21 +370,25 @@ namespace Tag.Core.Tagging.Library
                     break;
                 }
             }
-            
 
-            foreach (var list in tracklist[count].SelectNodes("./table"))
+            try
             {
-                foreach (var data in list.SelectNodes("./tr"))
+                foreach (var list in tracklist[count].SelectNodes("./table"))
                 {
-                    TagInfo value = new TagInfo(basic);
-                    value.Track.Add(uint.Parse(data.SelectSingleNode("./td/span[@class='label']").InnerText));
-                    value.Track.Add((uint)count + 1);
+                    foreach (var data in list.SelectNodes("./tr"))
+                    {
+                        TagInfo value = new TagInfo(basic);
+                        value.Track.Add(uint.Parse(data.SelectSingleNode("./td/span[@class='label']").InnerText));
+                        value.Track.Add((uint)count + 1);
 
-                    value.Title = data.SelectNodes("./td")[1].InnerText.Replace("&amp;", "&");
-                    
-                    result.Add(value);
+                        value.Title = data.SelectNodes("./td")[1].InnerText.Replace("&amp;", "&");
+
+                        result.Add(value);
+                    }
                 }
             }
+            catch { }
+            
 
             return result;
         }
