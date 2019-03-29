@@ -1,4 +1,5 @@
 ﻿using Library;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -119,8 +120,14 @@ namespace Tag.WPF
             SetValue(SetTagInfoList[Tag]);
         }
 
-        public void SetValue(List<TagInfo> tag)
+        public async void SetValue(List<TagInfo> tag)
         {
+            if(tag == null)
+            {
+                DialogHost.CloseDialogCommand.Execute(false, null);
+                await Task.Delay(500);
+                return;
+            }
             BrainzInfo.Clear();
             Information.Clear();
 
