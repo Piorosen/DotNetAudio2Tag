@@ -45,6 +45,7 @@
             </Button>
             <TextBox Text="{Binding Source={x:Static Setting:Global.Setting}, Path=FFMpegPath}"
                      Margin="10"
+                     Height="30"
                      VerticalAlignment="Center"
                      TextAlignment="Left"
                      />
@@ -74,7 +75,8 @@
                     Grid.Column="1" Grid.ColumnSpan="2" Margin="10,10"
                     Click="CodeCheck_Click"/>
             <TextBox Text="{Binding Source={x:Static Setting:Global.Setting}, Path=FFMpegEncode}"
-                     Margin="10,13"
+                     Margin="10"
+                     Height="30"
                      VerticalAlignment="Center"
                      TextAlignment="Left"
                      />
