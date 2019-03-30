@@ -212,8 +212,7 @@ namespace Tag.WPF
                     };
                 }
             }
-
-
+            
             bool result = true;
             if (result && (run & (int)AutoModeTag.CueSplit) == (int)AutoModeTag.CueSplit)
             {
