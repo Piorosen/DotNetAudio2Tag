@@ -243,7 +243,7 @@
 
                         </Image>
                     </Border>
-                    <TextBlock Text="{Binding CoverInfo, StringFormat={}{0}}"
+                    <TextBlock Text="{Binding CoverInfo}"
                                Grid.Row="1"
                                Margin="0 0 0 0"
                                TextAlignment="Center"

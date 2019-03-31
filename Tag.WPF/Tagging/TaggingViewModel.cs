@@ -1,9 +1,11 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using Library;
+using MaterialDesignThemes.Wpf;
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
@@ -15,6 +17,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media.Imaging;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
 using Tag.Setting;
@@ -36,6 +39,8 @@ namespace Tag.WPF
         private Visibility _LabelVisibility = Visibility.Visible;
 
         public bool ButtonEnable { get => _buttonEnable; set { _buttonEnable = value; OnPropertyChanged(); } }
+        public string FileSize { get => _fileSize; set { _fileSize = value; OnPropertyChanged(); } }
+        public string IsTagSave { get => _isTagSave; set { _isTagSave = value; OnPropertyChanged(); } }
 
         public bool RemoveFile(int index)
         {
@@ -53,12 +58,11 @@ namespace Tag.WPF
                 return false;
             }
         }
-
         public void ClearFile()
         {
             Items.Clear();
             LabelVisibility = Visibility.Visible;
-            
+
 
         }
 
@@ -130,12 +134,13 @@ namespace Tag.WPF
                             p.SetValue(value.TagInfo, Value);
                         }
                         value.TagInfo = value.TagInfo;
+                        IsTagSave = "태그를 저장하시오.";
                     }
                 }
             }
         }
 
-        
+
 
         TagInfo copyFile = new TagInfo();
 
@@ -143,13 +148,11 @@ namespace Tag.WPF
         {
             copyFile = new TagInfo(taggingModel.TagInfo);
         }
-
         public void CutFile(TaggingModel taggingModel)
         {
             copyFile = new TagInfo(taggingModel.TagInfo);
             taggingModel.TagInfo = new TagInfo(copyFile.Path);
         }
-
         public void PasteFile(TaggingModel taggingModel)
         {
             taggingModel.TagInfo = new TagInfo(copyFile, taggingModel.TagInfo.Path);
@@ -158,11 +161,31 @@ namespace Tag.WPF
         public bool Select = false;
         private ObservableCollection<TaggingModel> _items;
         private bool _buttonEnable = true;
+        private string _fileSize;
+        private string _isTagSave;
 
         public void SelectModel(List<TaggingModel> items)
         {
             Select = true;
             SelectItem = items;
+            if (SelectItem.Count != 0 && SelectItem[0].TagInfo.Image.Count != 0 && SelectItem[0].TagInfo.Image[0] != null)
+            {
+                var coverImage = SelectItem[0].TagInfo.Image[0];
+
+                var stream = new MemoryStream(coverImage.Data.Data);
+                var image = new Bitmap(System.Drawing.Image.FromStream(stream));
+                var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                     image.GetHbitmap(),
+                     IntPtr.Zero,
+                     Int32Rect.Empty,
+                     BitmapSizeOptions.FromEmptyOptions());
+
+                FileSize = $"{image.Width} x {image.Height}, {CapacityManage.Change(new System.Numerics.BigInteger(stream.Length))}";
+            }
+            else
+            {
+                FileSize = Global.Language.ImageNone;
+            }
             Select = false;
         }
 
@@ -209,7 +232,11 @@ namespace Tag.WPF
 
             Global.DialogIdentifier.TaggingEnable = false;
             // DialogHost.OpenDialogCommand.Execute(view, new System.Windows.Controls.Button().CommandTarget);
-            var result = await DialogHost.Show(view, Global.DialogIdentifier.TagSave, CloseEvent);
+            bool result = (bool)(await DialogHost.Show(view, Global.DialogIdentifier.TagSave, CloseEvent));
+            if (result == true)
+            {
+                IsTagSave = "";
+            }
         }
 
         public async void GetTagInfo(int index)
@@ -230,7 +257,6 @@ namespace Tag.WPF
 
                         foreach (var value in Items)
                         {
-                            
                             string filename = Global.Setting.TagTypeSetting;
                             while (filename.IndexOf("%a%") != -1)
                             {
@@ -269,7 +295,7 @@ namespace Tag.WPF
 
                             var dir = Path.GetDirectoryName(value.TagInfo.Path);
                             var ext = Path.GetExtension(value.FileName);
-                           
+
                             char[] chars = Path.GetInvalidFileNameChars();
                             for (int i = 0; i < filename.Length; i++)
                             {

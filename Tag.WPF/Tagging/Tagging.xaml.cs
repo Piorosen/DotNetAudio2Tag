@@ -407,7 +407,6 @@ namespace Tag.WPF
                     catch { }
                 }
             }
-            
         }
 
         private void ImageDelete(object sender, RoutedEventArgs e)
