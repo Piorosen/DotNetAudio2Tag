@@ -64,10 +64,7 @@ namespace Tag.WPF
         public bool[] CheckLang { get; set; } = new bool[3] { false, false, false };
 
         Dictionary<string, List<TagInfo>> SetTagInfoList = new Dictionary<string, List<TagInfo>>();
-
-
-        private List<TagInfo> BrainzTag = new List<TagInfo>();
-
+        
         private ObservableCollection<TaggingModel> data;
         private Visibility _visible;
         private bool _checkButtonEnable;
@@ -90,23 +87,23 @@ namespace Tag.WPF
                 var temp = data[index];
                 {
                     temp.TagInfo.Album = Album ?? String.Empty;
-                    temp.TagInfo.AlbumArtist = BrainzTag[i].AlbumArtist ?? new List<string>();
+                    temp.TagInfo.AlbumArtist = BrainzInfo[i].Tag.AlbumArtist ?? new List<string>();
                     temp.TagInfo.Artist = Artist != null ? Artist.Split(',').ToList() : new List<string>();
-                    temp.TagInfo.Barcode = BrainzTag[i].Barcode;
+                    temp.TagInfo.Barcode = BrainzInfo[i].Tag.Barcode;
                     temp.TagInfo.Comment = Comment;
-                    temp.TagInfo.Composer = BrainzTag[i]?.Composer;
-                    temp.TagInfo.Country = BrainzTag[i]?.Country;
-                    temp.TagInfo.DiscNum = BrainzTag[i]?.DiscNum;
-                    temp.TagInfo.Format = BrainzTag[i]?.Format;
+                    temp.TagInfo.Composer = BrainzInfo[i].Tag?.Composer;
+                    temp.TagInfo.Country = BrainzInfo[i].Tag?.Country;
+                    temp.TagInfo.DiscNum = BrainzInfo[i].Tag?.DiscNum;
+                    temp.TagInfo.Format = BrainzInfo[i].Tag?.Format;
                     temp.TagInfo.Genre = Genre?.Split(',').ToList();
-                    temp.TagInfo.Identifier = BrainzTag[i]?.Identifier;
+                    temp.TagInfo.Identifier = BrainzInfo[i].Tag?.Identifier;
                     temp.TagInfo.Image = CoverImage?.ToArray().ToList();
-                    temp.TagInfo.Lang = BrainzTag[i]?.Lang;
-                    temp.TagInfo.Publisher = BrainzTag[i]?.Publisher;
-                    temp.TagInfo.TagType = BrainzTag[i].TagType;
-                    temp.TagInfo.Title = BrainzTag[i]?.Title;
+                    temp.TagInfo.Lang = BrainzInfo[i].Tag?.Lang;
+                    temp.TagInfo.Publisher = BrainzInfo[i].Tag?.Publisher;
+                    temp.TagInfo.TagType = BrainzInfo[i].Tag.TagType;
+                    temp.TagInfo.Title = BrainzInfo[i].Tag?.Title;
                     temp.TagInfo.Track.Clear();
-                    temp.TagInfo.Track.Add(BrainzTag[i].Track.Count != 0 ? BrainzTag[i].Track[0] : 1);
+                    temp.TagInfo.Track.Add(BrainzInfo[i].Tag.Track.Count != 0 ? BrainzInfo[i].Tag.Track[0] : 1);
                     temp.TagInfo.Year = Year;
                 }
                 data.RemoveAt(index);
@@ -130,9 +127,7 @@ namespace Tag.WPF
             }
             BrainzInfo.Clear();
             Information.Clear();
-
-            BrainzTag = tag;
-
+            
             Artist = string.Join(", ", tag[0]?.AlbumArtist);
             Album = tag[0]?.Album;
             Year = tag[0]?.Year;
@@ -226,6 +221,7 @@ namespace Tag.WPF
                 }
                 BrainzInfo.Add(new CheckBrainzModel
                 {
+                    Tag = taginfo,
                     Track = $"{taginfo.Track[0]} / {index}",
                     Title = taginfo.Title,
                     DiscNo = $"{taginfo.Track[1]} / {tag[tag.Count - 1].Track[1]}",

@@ -132,7 +132,7 @@ namespace Tag.Core.Tagging.Library
                     title = Regex.Split(title, "</span>")[0];
                 }
                 title.Trim('\r', '\t', '\n', ' ', '/', '\\', '\"', '\'');
-                tag.AnothorName[lang] = title;
+                tag.AnothorName[lang] = WebUtility.HtmlDecode(title);
             }
 
 
@@ -229,7 +229,7 @@ namespace Tag.Core.Tagging.Library
             #endregion
 
             Stat = Stat.SelectSingleNode("./td/div");
-
+            
             #region Title
             var Title = Stat.SelectNodes("./h1/span");
             foreach (var data in Title)
@@ -237,7 +237,7 @@ namespace Tag.Core.Tagging.Library
                 if (data.Attributes["lang"].Value == lang)
                 {
                     basic.Album = data.InnerText.TrimStart(' ', '\\', '/', ';');
-                    basic.Album = basic.Album.Replace("&amp;", "&");
+                    basic.Album = WebUtility.HtmlDecode(basic.Album);
                     break;
                 }
             }
@@ -279,7 +279,7 @@ namespace Tag.Core.Tagging.Library
                 {
                     if (data.Attributes["lang"].Value == lang)
                     {
-                        basic.Publisher.Add(data.InnerText.Replace("&amp;", "&"));
+                        basic.Publisher.Add(WebUtility.HtmlDecode(data.InnerText));
 
                         break;
                     }
@@ -293,11 +293,11 @@ namespace Tag.Core.Tagging.Library
                 {
                     if (data.Attributes["lang"] == null)
                     {
-                        basic.Composer.Add(data.InnerText.Replace("&amp;", "&"));
+                        basic.Composer.Add(WebUtility.HtmlDecode(data.InnerText));
                     }
                     else if (data.Attributes["lang"].Value == lang)
                     {
-                        basic.Composer.Add(data.SelectSingleNode("./span").InnerText.Replace("&amp;", "&"));
+                        basic.Composer.Add(WebUtility.HtmlDecode(data.SelectSingleNode("./span").InnerText));
                     }
                 }
             }
@@ -309,11 +309,11 @@ namespace Tag.Core.Tagging.Library
                 {
                     if (data.Attributes["lang"] == null)
                     {
-                        basic.AlbumArtist.Add(data.InnerText.Replace("&amp;", "&"));
+                        basic.AlbumArtist.Add(WebUtility.HtmlDecode(data.InnerText));
                     }
                     else if (data.Attributes["lang"].Value == lang)
                     {
-                        basic.AlbumArtist.Add(data.SelectSingleNode("./span").InnerText.Replace("&amp;", "&"));
+                        basic.AlbumArtist.Add(WebUtility.HtmlDecode(data.SelectSingleNode("./span").InnerText));
                     }
                 }
             }
@@ -325,11 +325,11 @@ namespace Tag.Core.Tagging.Library
                 {
                     if (data.Attributes["lang"] == null)
                     {
-                        basic.Artist.Add(data.InnerText.Replace("&amp;", "&"));
+                        basic.Artist.Add(WebUtility.HtmlDecode(data.InnerText));
                     }
                     else if (data.Attributes["lang"].Value == lang)
                     {
-                        basic.Artist.Add(data.SelectSingleNode("./span").InnerText.Replace("&amp;", "&"));
+                        basic.Artist.Add(WebUtility.HtmlDecode(data.SelectSingleNode("./span").InnerText));
                     }
                 }
             }
@@ -381,7 +381,7 @@ namespace Tag.Core.Tagging.Library
                         value.Track.Add(uint.Parse(data.SelectSingleNode("./td/span[@class='label']").InnerText));
                         value.Track.Add((uint)count + 1);
 
-                        value.Title = data.SelectNodes("./td")[1].InnerText.Replace("&amp;", "&");
+                        value.Title = WebUtility.HtmlDecode(data.SelectNodes("./td")[1].InnerText);
 
                         result.Add(value);
                     }

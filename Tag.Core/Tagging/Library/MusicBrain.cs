@@ -178,15 +178,16 @@ namespace Tag.Core.Tagging.Library
                 if (data.Data.Count != 0)
                 {
                     var value = data.Data[0];
-
                     var tagging = RequestWeb($"http://musicbrainz.org/ws/2/recording/?query=reid:{data.Data[0].Id}&limit=100");
-                    XmlDocument xmlreader = new XmlDocument();
+                   // var tagging = RequestWeb($"https://musicbrainz.org/ws/2/release/{data.Data[0].Id}?inc=aliases&artist-credits+discids&labels&recordings");
+                    XmlDocument xmlreader = new XmlDocument();  
                     xmlreader.LoadXml(tagging);
                     var list = xmlreader["metadata"]["recording-list"].ChildNodes;
 
                     var pimage = GetImage($"http://coverartarchive.org/release/{data.Data[0].Id}", info.Identifier);
-                    
-                    
+                    // https://musicbrainz.org/ws/2/release/038d43b9-8484-4f0c-812b-d03db0f7ba60?inc=aliases+artist-credits+discids+labels+recordings
+                    // https://musicbrainz.org/ws/2/release/038d43b9-8484-4f0c-812b-d03db0f7ba60?inc=aliases+artist-credits+discids+labels+recordings
+
                     for (int i = 0; i < list.Count; i++)
                     {
                         List<string> Artist = new List<string>();

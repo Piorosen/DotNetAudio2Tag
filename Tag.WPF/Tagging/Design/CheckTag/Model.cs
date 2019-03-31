@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tag.Core.Tagging;
 
 namespace Tag.WPF
 {
@@ -14,6 +15,7 @@ namespace Tag.WPF
 
     public class CheckBrainzModel
     {
+        public TagInfo Tag { get; set; }
         public string Track { get; set; }
         public string Title { get; set; }
         public string DiscNo { get; set; }
