@@ -46,6 +46,8 @@ namespace Tag.WPF
         
         void CueSplit(List<AutoModeModel> data, string resultPath)
         {
+            Value = 0;
+
             cue.AddFile(data[0].Path);
             foreach (var item in cue.List())
             {
@@ -85,6 +87,8 @@ namespace Tag.WPF
 
         async Task<bool> Conv(List<AutoModeModel> data, string resultPath, ConvCheckModel preset)
         {
+            Value = 0;
+
             for (int i = 0; i < data.Count; i++)
             {
                 string file = data[i].Path;
@@ -125,6 +129,8 @@ namespace Tag.WPF
 
         void Tagging(List<AutoModeModel> data, List<TagInfo> tag, bool isCue = false)
         {
+            Value = 0;
+
             audiotag.List().Clear();
             int count = data.Count > tag.Count ? tag.Count : data.Count;
 
@@ -137,6 +143,7 @@ namespace Tag.WPF
 
             foreach (var value in audiotag.Execute())
             {
+                Value = value;
             }
 
             if (isCue == true)
