@@ -13,6 +13,7 @@ using CUETools.Codecs;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using Tag.Setting;
+using System.Windows.Forms;
 
 namespace Tag.Core.Conv.Library
 {
@@ -86,29 +87,39 @@ namespace Tag.Core.Conv.Library
             int last = 0;
             while (!proc.StandardError.EndOfStream)
             {
-                var err = proc.StandardError.ReadLine();
+                string[] get = { "" };
+                string[] list = { "" };
+                try
+                {
+                    var err = proc.StandardError.ReadLine();
 
-                var get = Regex.Split(err, "Output #0, ");
-                if (get.Length == 2)
-                {
-                    ext = get[1].Split(',')[0];
-                }
-                var list = Regex.Split(err, "time=");
-                if (list.Length == 2)
-                {
-                    try
+                    get = Regex.Split(err, "Output #0, ");
+                    if (get.Length == 2)
                     {
-                        var time = list[1].Split(' ')[0];
-                        int hour = int.Parse(time.Split(':')[0]);
-                        int min = int.Parse(time.Split(':')[1]);
-                        int second = int.Parse(time.Split(':')[2].Split('.')[0]);
-                        int mili = int.Parse(time.Split('.')[1]);
-                        TimeSpan data = new TimeSpan(0, hour, min, second, mili);
-                        last = (int)(afr.TotalTime.TotalMilliseconds / data.TotalMilliseconds) * 100; ;
+                        ext = get[1].Split(',')[0];
                     }
-                    catch { }
-                    yield return last;
+                    list = Regex.Split(err, "time=");
+                    if (list.Length == 2)
+                    {
+                        try
+                        {
+                            var time = list[1].Split(' ')[0];
+                            int hour = int.Parse(time.Split(':')[0]);
+                            int min = int.Parse(time.Split(':')[1]);
+                            int second = int.Parse(time.Split(':')[2].Split('.')[0]);
+                            int mili = int.Parse(time.Split('.')[1]);
+                            TimeSpan data = new TimeSpan(0, hour, min, second, mili);
+                            last = (int)(data.TotalMilliseconds / afr.TotalTime.TotalMilliseconds * 100);
+                        }
+                        catch { }
+
+                    }
                 }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"{e.ToString()}\n{get.Length} : Get {get.ToString()}\n{list.Length} : list {list.ToString()}");
+                }
+                yield return last;
             }
 
             try
