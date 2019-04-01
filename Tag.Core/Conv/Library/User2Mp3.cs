@@ -90,7 +90,13 @@ namespace Tag.Core.Conv.Library
             try
             {
                 File.Move(dummyname, info.FilePath);
-                File.Move(Path.GetFullPath($"{info.ResultPath}\\{resultdummyname}"), Path.GetFullPath($"{info.ResultPath}\\{info.FileName}.mp3"));
+                string result = Path.GetFullPath($"{info.ResultPath}\\{info.FileName}.mp3");
+
+                if (File.Exists(result))
+                {
+                    File.Delete(result);
+                }
+                File.Move($"{resultdummyname}.mp3", result);
             }
             catch { }
             

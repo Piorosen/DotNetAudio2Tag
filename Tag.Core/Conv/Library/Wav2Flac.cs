@@ -25,7 +25,7 @@ namespace Tag.Core.Conv.Library
 
             string dummyname = Path.GetDirectoryName(info.FilePath) + "\\" + Path.GetRandomFileName() + info.Extension;
             string resultdummyname = $"{info.ResultPath}{Path.GetRandomFileName()}";
-            
+
             AudioFileReader afr = new AudioFileReader(info.FilePath);
             afr.Close();
             while (info.Format.IndexOf("%fn%") != -1)
@@ -44,7 +44,7 @@ namespace Tag.Core.Conv.Library
             {
                 info.Format = info.Format.Replace("%outputfn%", resultdummyname);
             }
-            
+
             if (!Directory.Exists(info.ResultPath))
             {
                 Directory.CreateDirectory(info.ResultPath);
@@ -55,7 +55,7 @@ namespace Tag.Core.Conv.Library
                 File.Move(info.FilePath, dummyname);
             }
             catch {
-                
+
             }
 
             Process proc = new Process();
@@ -85,39 +85,39 @@ namespace Tag.Core.Conv.Library
 
             string ext = string.Empty;
             int last = 0;
+            bool getExt = false;
+
             while (!proc.StandardError.EndOfStream)
             {
                 string[] get = { "" };
                 string[] list = { "" };
-                try
-                {
-                    var err = proc.StandardError.ReadLine();
+                var err = proc.StandardError.ReadLine();
 
+                if (getExt == false)
+                {
                     get = Regex.Split(err, "Output #0, ");
                     if (get.Length == 2)
                     {
                         ext = get[1].Split(',')[0];
-                    }
-                    list = Regex.Split(err, "time=");
-                    if (list.Length == 2)
-                    {
-                        try
-                        {
-                            var time = list[1].Split(' ')[0];
-                            int hour = int.Parse(time.Split(':')[0]);
-                            int min = int.Parse(time.Split(':')[1]);
-                            int second = int.Parse(time.Split(':')[2].Split('.')[0]);
-                            int mili = int.Parse(time.Split('.')[1]);
-                            TimeSpan data = new TimeSpan(0, hour, min, second, mili);
-                            last = (int)(data.TotalMilliseconds / afr.TotalTime.TotalMilliseconds * 100);
-                        }
-                        catch { }
-
+                        getExt = true;
                     }
                 }
-                catch (Exception e)
+
+                list = Regex.Split(err, "time=");
+                if (list.Length == 2)
                 {
-                    MessageBox.Show($"{e.ToString()}\n{get.Length} : Get {get.ToString()}\n{list.Length} : list {list.ToString()}");
+                    try
+                    {
+                        var time = list[1].Split(' ')[0];
+                        int hour = int.Parse(time.Split(':')[0]);
+                        int min = int.Parse(time.Split(':')[1]);
+                        int second = int.Parse(time.Split(':')[2].Split('.')[0]);
+                        int mili = int.Parse(time.Split('.')[1]);
+                        TimeSpan data = new TimeSpan(0, hour, min, second, mili);
+                        last = (int)(data.TotalMilliseconds / afr.TotalTime.TotalMilliseconds * 100);
+                    }
+                    catch { }
+
                 }
                 yield return last;
             }
@@ -125,7 +125,13 @@ namespace Tag.Core.Conv.Library
             try
             {
                 File.Move(dummyname, info.FilePath);
-                File.Move($"{resultdummyname}.{ext}", Path.GetFullPath($"{info.ResultPath}\\{info.FileName}.{ext}"));
+                string result = Path.GetFullPath($"{info.ResultPath}\\{info.FileName}.{ext}");
+
+                if (File.Exists(result))
+                {
+                    File.Delete(result);
+                }
+                File.Move($"{resultdummyname}.{ext}", result);
             }
             catch { }
             
