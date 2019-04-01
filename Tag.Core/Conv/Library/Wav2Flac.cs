@@ -1,19 +1,10 @@
-﻿using NAudio.Lame;
-using NAudio.Wave;
+﻿using NAudio.Wave;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tag.Core.Cue;
-using NAudio.Flac;
-using CUETools.Codecs.FLAKE;
-using CUETools.Codecs;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using Tag.Setting;
-using System.Windows.Forms;
 
 namespace Tag.Core.Conv.Library
 {
