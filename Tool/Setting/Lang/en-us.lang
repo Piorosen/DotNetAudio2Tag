@@ -1,4 +1,6 @@
 [Lang]
+; Font
+Font=Comic Sans MS
 ; Tagging Left
 Title=Title
 Artist=Artist

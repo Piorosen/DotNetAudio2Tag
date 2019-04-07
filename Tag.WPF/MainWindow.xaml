@@ -16,11 +16,12 @@
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     Background="{DynamicResource MaterialDesignPaper}"					  
     GlowBrush="{DynamicResource AccentColorBrush}"					  
-    FontFamily="{StaticResource DefaultFont}"
+   
     Title="A2T (Beta)" Height="640" Width="1200"
     
+    FontFamily="{Binding Source={x:Static Setting:Global.Language}, Path=Font}"
     >
-
+    <!--FontFamily="{StaticResource DefaultFont}"-->
     <!--<controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands>
             <wpf:PopupBox Style="{StaticResource WindowCommandsPopupBoxStyle}">

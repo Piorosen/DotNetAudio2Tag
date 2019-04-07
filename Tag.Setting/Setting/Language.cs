@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using Tag.Setting.Pattern;
 using Tag.Setting.Setting;
 
@@ -34,11 +36,17 @@ namespace Tag.Setting
                     if (data.GetType() == typeof(string))
                     {
                         value.SetValue(this, Config.GetOption("Lang", value.Name));
-                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(value.Name));
                     }
+                    else
+                    {
+                        value.SetValue(this, new FontFamily(Config.GetOption("Lang", value.Name)));
+                    }
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(value.Name));
                 }
             }
         }
+
+        public FontFamily Font { get; set; } = new FontFamily();
 
         public string Title { get; set; } = string.Empty;
         public string Artist { get; set; } = string.Empty;
