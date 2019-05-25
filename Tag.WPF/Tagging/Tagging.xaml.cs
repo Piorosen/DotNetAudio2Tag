@@ -75,15 +75,64 @@ namespace Tag.WPF
             ItemsConvert(2);
         }
 
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var listView = TagListView;
+            var type = ((sender as Control).Tag as string).Split('_');
+
+            if (listView == null || listView.SelectedItems == null || listView.SelectedItems.Count <= 0) return;
+            
+            if (type[0] == "Tag")
+            {
+                switch (type[1])
+                {
+                    case "Remove":
+                        foreach (var value in listView.SelectedItems)
+                        {
+                            viewModel.RemoveFile(value as TaggingModel);
+                        }
+                        break;
+                    case "Cut":
+                        viewModel.CutFile(listView.SelectedItems[0] as TaggingModel);
+                        break;
+                    case "Copy":
+                        viewModel.CopyFile(listView.SelectedItems[0] as TaggingModel);
+                        break;
+                    case "Paste":
+                        foreach (var value in listView.SelectedItems)
+                        {
+                            viewModel.PasteFile(value as TaggingModel);
+                        }
+                        break;
+                }
+            }
+            else if (type[0] == "File")
+            {
+                switch (type[1])
+                {
+                    case "Rename":
+                        
+
+                        break;
+                    case "Remove":
+                        while (listView.SelectedItems.Count > 0)
+                        {
+                            int index = listView.Items.IndexOf(listView.SelectedItems[0]);
+                            viewModel.RemoveFile(index);
+                        }
+                        break;
+                }
+            }
+
+        }
         private void List_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             var listView = (sender is ListView) ? (sender as ListView) : null;
             if (e.Key == System.Windows.Input.Key.Delete)
             {
-                int index = 0;
                 while (listView.SelectedItems.Count > 0)
                 {
-                    index = listView.Items.IndexOf(listView.SelectedItems[0]);
+                    int index = listView.Items.IndexOf(listView.SelectedItems[0]);
                     viewModel.RemoveFile(index);
                 }
             }
@@ -431,5 +480,6 @@ namespace Tag.WPF
                 DialogHost.CloseDialogCommand.Execute(false, null);
             }
         }
+
     }
 }

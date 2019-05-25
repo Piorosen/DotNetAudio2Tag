@@ -153,6 +153,13 @@ namespace Tag.WPF
             copyFile = new TagInfo(taggingModel.TagInfo);
             taggingModel.TagInfo = new TagInfo(copyFile.Path);
         }
+        public void RemoveFile(TaggingModel taggingModel)
+        {
+            copyFile = new TagInfo(taggingModel.TagInfo);
+            taggingModel.TagInfo = new TagInfo(copyFile.Path);
+            copyFile = new TagInfo();
+        }
+
         public void PasteFile(TaggingModel taggingModel)
         {
             taggingModel.TagInfo = new TagInfo(copyFile, taggingModel.TagInfo.Path);

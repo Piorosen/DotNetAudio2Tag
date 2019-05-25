@@ -310,51 +310,66 @@
             DragEnter="ItemDragEnter" Drop="ItemDragDrop" SelectionChanged="ListView_Selected"
             GridViewColumnHeader.Click="TagListView_Click"
             >
-            <!--<ListView.ContextMenu>
+            <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Tag Save">
+                    <!--<MenuItem Header="Tag Save"
+                              Tag="Tag_Save"
+                              Click="MenuItem_Click"
+                              >
                         <MenuItem.Icon>
                             <materialDesign:PackIcon Kind="ContentSave" />
                         </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Tag Remove">
+                    </MenuItem>-->
+                    <MenuItem Header="Tag Remove"
+                              Tag="Tag_Remove"
+                              Click="MenuItem_Click">
                         <MenuItem.Icon>
                             <materialDesign:PackIcon Kind="DeleteForeverOutline" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Tag Cut">
+                    <MenuItem Header="Tag Cut"
+                              Tag="Tag_Cut"
+                              Click="MenuItem_Click">
                         <MenuItem.Icon>
                             <materialDesign:PackIcon Kind="ContentCut" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Tag Copy">
+                    <MenuItem Header="Tag Copy"
+                              Tag="Tag_Copy"
+                              Click="MenuItem_Click">
                         <MenuItem.Icon>
                             <materialDesign:PackIcon Kind="ContentCopy" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Tag Paste">
+                    <MenuItem Header="Tag Paste"
+                              Tag="Tag_Paste"
+                              Click="MenuItem_Click">
                         <MenuItem.Icon>
                             <materialDesign:PackIcon Kind="ContentPaste" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Tag Export">
+                    <!--<MenuItem Header="Tag Export">
                         <MenuItem.Icon>
                             <materialDesign:PackIcon Kind="ExportVariant" />
                         </MenuItem.Icon>
-                    </MenuItem>
+                    </MenuItem>-->
                     <Separator />
-                    <MenuItem Header="Rename">
+                    <!--<MenuItem Header="Rename"
+                              Tag="File_Rename"
+                              Click="MenuItem_Click">
                         <MenuItem.Icon>
                             <materialDesign:PackIcon Kind="RenameBox" />
                         </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Header="Remove">
+                    </MenuItem>-->
+                    <MenuItem Header="Remove"
+                              Tag="File_Remove"
+                              Click="MenuItem_Click">
                         <MenuItem.Icon>
                             <materialDesign:PackIcon Kind="PlaylistRemove" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
-            </ListView.ContextMenu>-->
+            </ListView.ContextMenu>
             <ListView.View>
                 <GridView>
                     <GridViewColumn
