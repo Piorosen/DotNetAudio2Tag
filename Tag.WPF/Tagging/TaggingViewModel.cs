@@ -46,6 +46,7 @@ namespace Tag.WPF
         {
             if (0 <= index && index < Items.Count)
             {
+                SelectItem.Remove(Items[index]);
                 Items.RemoveAt(index);
                 if (Items.Count == 0)
                 {
@@ -62,8 +63,6 @@ namespace Tag.WPF
         {
             Items.Clear();
             LabelVisibility = Visibility.Visible;
-
-
         }
 
         private void DialogIdentifier_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -175,19 +174,14 @@ namespace Tag.WPF
         {
             Select = true;
             SelectItem = items;
-            if (SelectItem.Count != 0 && SelectItem[0].TagInfo.Image.Count != 0 && SelectItem[0].TagInfo.Image[0] != null)
+            if (SelectItem.Count != 0 && SelectItem[0].TagInfo.UIImage != null)
             {
-                var coverImage = SelectItem[0].TagInfo.Image[0];
-
-                var stream = new MemoryStream(coverImage.Data.Data);
-                var image = new Bitmap(System.Drawing.Image.FromStream(stream));
-                var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                     image.GetHbitmap(),
-                     IntPtr.Zero,
-                     Int32Rect.Empty,
-                     BitmapSizeOptions.FromEmptyOptions());
-
-                FileSize = $"{image.Width} x {image.Height}, {CapacityManage.Change(new System.Numerics.BigInteger(stream.Length))}";
+                //var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                //     image.GetHbitmap(),
+                //     IntPtr.Zero,
+                //     Int32Rect.Empty,
+                //     BitmapSizeOptions.FromEmptyOptions());
+                FileSize = $"{SelectItem[0].TagInfo.UIImage.Width} x {SelectItem[0].TagInfo.UIImage.Height}"; // , {CapacityManage.Change(new System.Numerics.BigInteger(image.))}";
             }
             else
             {

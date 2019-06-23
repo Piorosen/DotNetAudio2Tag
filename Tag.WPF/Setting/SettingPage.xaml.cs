@@ -47,5 +47,10 @@ namespace Tag.WPF
             Global.Setting.Save();
             Application.notifier.ShowSuccess("저장이 완료 되었습니다.");
         }
+
+        private void MemoryClear(object sender, RoutedEventArgs e)
+        {
+            GC.Collect();
+        }
     }
 }

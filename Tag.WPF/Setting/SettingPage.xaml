@@ -257,6 +257,8 @@
         
         <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
@@ -278,6 +280,14 @@
                     Content="{Binding Source={x:Static Setting:Global.Language}, Path=CacheRemove}"
                     Click="CacheRemove"
                     Grid.Column="1"
+                    />
+            <Button Margin="0 0 10 0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Width="130"
+                    Content="{Binding Source={x:Static Setting:Global.Language}, Path=ClearMemory}"
+                    Click="MemoryClear"
+                    Grid.Column="3"
                     />
         </Grid>
 

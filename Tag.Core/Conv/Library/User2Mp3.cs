@@ -96,7 +96,7 @@ namespace Tag.Core.Conv.Library
                 {
                     File.Delete(result);
                 }
-                File.Move($"{resultdummyname}.mp3", result);
+                File.Move(Path.GetFullPath($"{info.ResultPath}{resultdummyname}"), result);
             }
             catch { }
             

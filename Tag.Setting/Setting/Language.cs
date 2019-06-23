@@ -187,6 +187,7 @@ namespace Tag.Setting
         public string SettingTagSaveFileFormat { get; set; } = string.Empty;
         public string SettingCueFileNameChnage { get; set; } = string.Empty;
 
+        public string ClearMemory { get; set; } = string.Empty;
 
         public string AutoModeSetting { get; set; } = string.Empty;
         public string CueSplitFolder { get; set; } = string.Empty;

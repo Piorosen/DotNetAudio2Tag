@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using TagLib;
 
 namespace Tag.Core.Tagging
@@ -49,6 +51,8 @@ namespace Tag.Core.Tagging
         public string Country { get; set; } = string.Empty;
         public TagTypes TagType { get; set; } = TagTypes.Id3v2;
 
+        public BitmapImage UIImage { get; set; } = null;
+
         public static void Move(TagLib.Tag A, TagLib.Tag B)
         {
             A.Title = B.Title;
@@ -66,7 +70,6 @@ namespace Tag.Core.Tagging
             A.Conductor = B.Conductor;
         }
 
-
         public TagInfo(TagLib.Tag value, string filePath)
         {
             Title = value.Title;
@@ -79,6 +82,15 @@ namespace Tag.Core.Tagging
             AlbumArtist = value.AlbumArtists.ToList();
             Composer = value.Composers.ToList();
             DiscNum = value.MusicBrainzDiscId;
+
+            if (Image == null || Image.Count == 0)
+            {
+                UIImage = new BitmapImage();
+                UIImage.BeginInit();
+                UIImage.StreamSource = new MemoryStream(value.Pictures[0].Data.Data);
+                UIImage.EndInit();
+            }
+            
             Image = value.Pictures.ToList();
             Country = value.MusicBrainzReleaseCountry;
             TagType = value.TagTypes;
@@ -115,6 +127,8 @@ namespace Tag.Core.Tagging
             Format = value.Format.ToArray().ToList();
             Country = value.Country;
             TagType = value.TagType;
+            UIImage = value.UIImage.Clone() as BitmapImage;
+
             if (path == string.Empty)
             {
                 Path = value.Path;

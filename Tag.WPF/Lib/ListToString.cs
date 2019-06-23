@@ -16,43 +16,28 @@ namespace Tag.WPF
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is List<TagLib.IPicture>)
+            if (value is Image)
             {
-                var tagTemp = value as List<TagLib.IPicture>;
+                var tagTemp = value as List<Bitmap>;
                 Bitmap image = null;
 
-                if (tagTemp.Count > 0)
-                {
-                    if (tagTemp[0] == null)
-                    {
-                        image = new Bitmap(Setting.Global.Resource.Alert);
-                        image.MakeTransparent(Color.White);
-                    }
-                    else
-                    {
-                        var bin = tagTemp[0].Data.Data;
-                        image = new Bitmap(Image.FromStream(new MemoryStream(bin)));
-                    }
-                    
-                    var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                         image.GetHbitmap(),
-                         IntPtr.Zero,
-                         Int32Rect.Empty,
-                         BitmapSizeOptions.FromEmptyOptions());
-                    return data;
-                }
-                else
+                if (tagTemp[0] == null || tagTemp.Count == 0)
                 {
                     image = new Bitmap(Setting.Global.Resource.Alert);
                     image.MakeTransparent(Color.White);
-
-                    var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                         image.GetHbitmap(),
-                         IntPtr.Zero,
-                         Int32Rect.Empty,
-                         BitmapSizeOptions.FromEmptyOptions());
-                    return data;
                 }
+                else
+                {
+                    image = tagTemp[0];
+                }
+
+                var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                     image.GetHbitmap(),
+                     IntPtr.Zero,
+                     Int32Rect.Empty,
+                     BitmapSizeOptions.FromEmptyOptions());
+                return data;
+
             }
 
             if (value is double)

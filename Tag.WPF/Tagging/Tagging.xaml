@@ -260,8 +260,8 @@
                             Background="Transparent"
                             AllowDrop="True"
                             >
-                        <Image Source="{Binding SelectItem[0].TagInfo.Image,
-                               Converter={StaticResource ListToSring}}"
+                        <Image x:Name="Image_UIMain"
+                               Source="{Binding SelectItem[0].TagInfo.UIImage}"
                                Stretch="Fill"
                                DragEnter="ItemDragEnter"
                                Drop="ImageDrop"
