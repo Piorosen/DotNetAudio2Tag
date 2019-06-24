@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
+using TagLib;
 
 namespace Tag.WPF
 {
@@ -16,19 +17,18 @@ namespace Tag.WPF
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is Image)
+            if (value is List<IPicture>)
             {
-                var tagTemp = value as List<Bitmap>;
+                var tagTemp = value as List<IPicture>;
                 Bitmap image = null;
-
-                if (tagTemp[0] == null || tagTemp.Count == 0)
+                if (tagTemp == null || tagTemp.Count == 0)
                 {
                     image = new Bitmap(Setting.Global.Resource.Alert);
                     image.MakeTransparent(Color.White);
                 }
                 else
                 {
-                    image = tagTemp[0];
+                    image = new Bitmap(new MemoryStream(tagTemp[0].Data.Data));
                 }
 
                 var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
@@ -37,7 +37,29 @@ namespace Tag.WPF
                      Int32Rect.Empty,
                      BitmapSizeOptions.FromEmptyOptions());
                 return data;
+            }
 
+            if (value is Image)
+            {
+                var tagTemp = value as Image;
+                Bitmap image = null;
+
+                if (tagTemp == null)
+                {
+                    image = new Bitmap(Setting.Global.Resource.Alert);
+                    image.MakeTransparent(Color.White);
+                }
+                else
+                {
+                    image = new Bitmap(tagTemp);
+                }
+
+                var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                     image.GetHbitmap(),
+                     IntPtr.Zero,
+                     Int32Rect.Empty,
+                     BitmapSizeOptions.FromEmptyOptions());
+                return data;
             }
 
             if (value is double)

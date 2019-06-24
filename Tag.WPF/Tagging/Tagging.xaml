@@ -44,7 +44,6 @@
             Identifier="VgmDbSearch"
             Grid.RowSpan="2"
             Grid.ColumnSpan="2"
-            
             Width="Auto" Height="Auto"/>
 
         <materialDesign:DialogHost

@@ -82,8 +82,8 @@ namespace Tag.Core.Tagging
             AlbumArtist = value.AlbumArtists.ToList();
             Composer = value.Composers.ToList();
             DiscNum = value.MusicBrainzDiscId;
-
-            if (Image == null || Image.Count == 0)
+            Image = value.Pictures.ToList();
+            if (Image?.Count != 0)
             {
                 UIImage = new BitmapImage();
                 UIImage.BeginInit();
@@ -91,7 +91,7 @@ namespace Tag.Core.Tagging
                 UIImage.EndInit();
             }
             
-            Image = value.Pictures.ToList();
+            
             Country = value.MusicBrainzReleaseCountry;
             TagType = value.TagTypes;
             Publisher.Add(value.Conductor);
@@ -127,7 +127,15 @@ namespace Tag.Core.Tagging
             Format = value.Format.ToArray().ToList();
             Country = value.Country;
             TagType = value.TagType;
-            UIImage = value.UIImage.Clone() as BitmapImage;
+
+            if (Image?.Count != 0)
+            {
+                UIImage = new BitmapImage();
+                UIImage.BeginInit();
+                UIImage.StreamSource = new MemoryStream(value.Image[0].Data.Data);
+                UIImage.EndInit();
+            }
+
 
             if (path == string.Empty)
             {
