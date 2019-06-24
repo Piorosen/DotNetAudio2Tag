@@ -260,7 +260,7 @@
                             AllowDrop="True"
                             >
                         <Image x:Name="Image_UIMain"
-                               Source="{Binding SelectItem[0].TagInfo.UIImage}"
+                               Source="{Binding Thumbnail}"
                                Stretch="Fill"
                                DragEnter="ItemDragEnter"
                                Drop="ImageDrop"

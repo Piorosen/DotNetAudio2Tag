@@ -51,7 +51,27 @@ namespace Tag.Core.Tagging
         public string Country { get; set; } = string.Empty;
         public TagTypes TagType { get; set; } = TagTypes.Id3v2;
 
-        public BitmapImage UIImage { get; set; } = null;
+
+        private BitmapImage _thumbnail = new BitmapImage();
+
+        public BitmapImage Thumbnail
+        {
+            get
+            {
+                if (_thumbnail.StreamSource == null && Image.Count > 0)
+                {
+                    using (var ms = new MemoryStream(Image[0].Data.Data))
+                    {
+                        _thumbnail.BeginInit();
+                        _thumbnail.StreamSource = ms;
+                        _thumbnail.EndInit();
+                    }
+                    
+                }
+
+                return _thumbnail;
+            }
+        }
 
         public static void Move(TagLib.Tag A, TagLib.Tag B)
         {
@@ -83,14 +103,6 @@ namespace Tag.Core.Tagging
             Composer = value.Composers.ToList();
             DiscNum = value.MusicBrainzDiscId;
             Image = value.Pictures.ToList();
-            if (Image?.Count != 0)
-            {
-                UIImage = new BitmapImage();
-                UIImage.BeginInit();
-                UIImage.StreamSource = new MemoryStream(value.Pictures[0].Data.Data);
-                UIImage.EndInit();
-            }
-            
             
             Country = value.MusicBrainzReleaseCountry;
             TagType = value.TagTypes;
@@ -127,15 +139,6 @@ namespace Tag.Core.Tagging
             Format = value.Format.ToArray().ToList();
             Country = value.Country;
             TagType = value.TagType;
-
-            if (Image?.Count != 0)
-            {
-                UIImage = new BitmapImage();
-                UIImage.BeginInit();
-                UIImage.StreamSource = new MemoryStream(value.Image[0].Data.Data);
-                UIImage.EndInit();
-            }
-
 
             if (path == string.Empty)
             {

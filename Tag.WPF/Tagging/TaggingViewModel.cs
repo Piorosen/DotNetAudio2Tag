@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Tag.Core.Cue;
 using Tag.Core.Tagging;
@@ -31,6 +32,8 @@ namespace Tag.WPF
     {
         AudioTagging audioTagging;
         private List<TaggingModel> _selectItem;
+
+        public BitmapImage Thumbnail { get => thumbnail; set { thumbnail = value; OnPropertyChanged(); } }
 
         public ObservableCollection<TaggingModel> Items { get => _items; set { _items = value; OnPropertyChanged(); } }
         public List<TaggingModel> SelectItem { get => _selectItem; set { _selectItem = value; OnPropertyChanged(); } }
@@ -169,19 +172,21 @@ namespace Tag.WPF
         private bool _buttonEnable = true;
         private string _fileSize;
         private string _isTagSave;
+        private BitmapImage thumbnail;
 
         public void SelectModel(List<TaggingModel> items)
         {
             Select = true;
+
+            SelectItem = null;
             SelectItem = items;
-            if (SelectItem.Count != 0 && SelectItem[0].TagInfo.UIImage != null)
+            GC.Collect();
+            Thumbnail = null;
+            Thumbnail = items[0].TagInfo.Thumbnail;
+
+            if (SelectItem.Count != 0)
             {
-                //var data = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                //     image.GetHbitmap(),
-                //     IntPtr.Zero,
-                //     Int32Rect.Empty,
-                //     BitmapSizeOptions.FromEmptyOptions());
-                FileSize = $"{SelectItem[0].TagInfo.UIImage.Width} x {SelectItem[0].TagInfo.UIImage.Height}"; // , {CapacityManage.Change(new System.Numerics.BigInteger(image.))}";
+                FileSize = $"{SelectItem[0].TagInfo.Thumbnail.Width} x {SelectItem[0].TagInfo.Thumbnail.Height}"; // , {CapacityManage.Change(new System.Numerics.BigInteger(image.))}";
             }
             else
             {
@@ -190,12 +195,6 @@ namespace Tag.WPF
             Select = false;
         }
 
-
-
-        public void SaveOne()
-        {
-
-        }
 
         private void CloseEvent(object sender, DialogClosingEventArgs e)
         {
