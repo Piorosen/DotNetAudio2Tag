@@ -56,7 +56,7 @@ namespace Tag.Core.Tagging.Library
             var nameImage = Global.FilePath.CacheImagePath + id + ".jpg";
             if (File.Exists(nameImage) == true)
             {
-                return new TagLib.Picture(Global.FilePath.CacheImagePath + nameImage);
+                return new TagLib.Picture(nameImage);
             }
             
 
@@ -187,10 +187,14 @@ namespace Tag.Core.Tagging.Library
             {
                 info.Barcode = info.Barcode == string.Empty ? null : info.Barcode;
                 info.Identifier = info.Identifier == string.Empty ? null : info.Identifier;
-                
 
-                var data = MusicBrainz.Search.Release(barcode: info.Barcode, reid: info.Identifier, limit:50);
-                
+                MusicBrainz.Data.Release data = null;
+                while (data == null)
+                {
+                    data = MusicBrainz.Search.Release(barcode: info.Barcode, reid: info.Identifier, limit: 50);
+                }
+
+
                 if (data.Data.Count != 0)
                 {
                     var value = data.Data[0];
