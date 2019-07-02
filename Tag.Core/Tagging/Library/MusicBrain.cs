@@ -38,60 +38,76 @@ namespace Tag.Core.Tagging.Library
                     var result = wc.DownloadString(Link);
                     return result;
                 }
-            } catch (Exception)
+            }
+            catch (WebException e)
             {
+                if (e.Status == WebExceptionStatus.ProtocolError)
+                {
+                    return null;
+                }
 
             }
-            return null;
+            return string.Empty;
         }
 
         public TagLib.Picture GetImage(string Link, string id)
         {
-            try
+
+            var nameImage = Global.FilePath.CacheImagePath + id + ".jpg";
+            if (File.Exists(nameImage) == true)
             {
-                JObject json = JObject.Parse(RequestWeb(Link, true));
-                var test = json.Children();
-                string adress = string.Empty;
-
-                foreach (var t1 in test)
-                {
-                    foreach (var t2 in t1.Children().Children().Children())
-                    {
-                        JProperty p = t2.ToObject<JProperty>();
-                        if (p.Name == "image")
-                        {
-                            adress = p.Value.ToString();
-                            break;
-                        }
-                    }
-                    break;
-                }
-
-                
-                WebClient wc = new WebClient();
-                var nameImage = id + ".jpg";
-                if (File.Exists(nameImage) == false)
-                {
-                    wc.DownloadFile(adress, Global.FilePath.CacheImagePath + nameImage);
-                }
-
-                var pimage = new TagLib.Picture(Global.FilePath.CacheImagePath + nameImage);
-
-                if (Global.CacheImageDelete)
-                {
-                    try
-                    {
-                        new FileInfo(Global.FilePath.CacheImagePath + nameImage).Delete();
-                    }
-                    catch { }
-                }
-
-                return pimage;
+                return new TagLib.Picture(Global.FilePath.CacheImagePath + nameImage);
             }
-            catch
+            
+
+
+            var dataa = string.Empty;
+            while (dataa == string.Empty)
             {
-                return null;
+                dataa = RequestWeb(Link, true);
+                if (dataa == null)
+                {
+                    return null;
+                }
             }
+
+            JObject json = JObject.Parse(dataa);
+            var test = json.Children();
+            string adress = string.Empty;
+
+            foreach (var t1 in test)
+            {
+                foreach (var t2 in t1.Children().Children().Children())
+                {
+                    JProperty p = t2.ToObject<JProperty>();
+                    if (p.Name == "image")
+                    {
+                        adress = p.Value.ToString();
+                        break;
+                    }
+                }
+                break;
+            }
+
+
+            
+            if (File.Exists(nameImage) == false)
+            {
+                new WebClient().DownloadFile(adress, nameImage);
+            }
+
+            var pimage = new TagLib.Picture(nameImage);
+
+            if (Global.CacheImageDelete)
+            {
+                try
+                {
+                    new FileInfo(nameImage).Delete();
+                }
+                catch { }
+            }
+
+            return pimage;
         }
 
         /// <summary>
@@ -264,6 +280,7 @@ namespace Tag.Core.Tagging.Library
                             ti.Format.Add(w.Format);
                         }
                         // ti.Track.Add((uint)i + 1);
+                        
                         if (pimage != null)
                         {
                             ti.Image.Add(pimage);
