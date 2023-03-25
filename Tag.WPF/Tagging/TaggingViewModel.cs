@@ -186,7 +186,14 @@ namespace Tag.WPF
 
             if (SelectItem.Count != 0)
             {
-                FileSize = $"{SelectItem[0].TagInfo.Thumbnail.Width} x {SelectItem[0].TagInfo.Thumbnail.Height}"; // , {CapacityManage.Change(new System.Numerics.BigInteger(image.))}";
+                try
+                {
+                    FileSize = $"{SelectItem[0].TagInfo.Thumbnail.Width} x {SelectItem[0].TagInfo.Thumbnail.Height}"; // , {CapacityManage.Change(new System.Numerics.BigInteger(image.))}";
+                }catch
+                {
+                    FileSize = Global.Language.ImageNone;
+
+                }
             }
             else
             {
